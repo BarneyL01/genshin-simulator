@@ -11,9 +11,9 @@ Output: `kb/characters/<id>.json` matching `docs/KB_SCHEMA.md` → Character.
 
 1. **Resolve id** (kebab-case English name). Read the existing file if present; keep fields that are `high` confidence unless a source shows a change.
 
-2. **genshin-db (exact numbers)**. The package is a devDependency from M1; before that, install it in a scratch folder (`npm i genshin-db`). Use `characters(name)` for rarity, element, weapon type, version, `stats(90)` (and 100 if available); `talents(name)` for multipliers at every level (parse `attributes.labels` + `parameters`); `constellations(name)` for C1–C6 text/values. This is the primary source for numbers.
+2. **genshin-db (exact numbers)**. The package is a devDependency from M1; before that, install it in a scratch folder (`npm i genshin-db`). Use `characters(name)` for rarity, element, weapon type, version, `stats(90)` (Lv 90 only; leave `lv100` null); `talents(name)` for multipliers at every level (parse `attributes.labels` + `parameters`); `constellations(name)` for C1–C6 text/values. This is the primary source for numbers.
 
-3. **Game8 character page** → name, rarity, element, weapon type, release version, Lv 90 base HP/ATK/DEF (and Lv 100 if present), ascension stat, talent scaling tables (all levels shown), passive and constellation text, recommended weapons and artifact sets (ordered), best teams (names only — teams are handled by `/kb-update-teams`).
+3. **Game8 character page** → name, rarity, element, weapon type, release version, Lv 90 base HP/ATK/DEF, ascension stat, talent scaling tables (all levels shown), passive and constellation text, recommended weapons and artifact sets (ordered), best teams (names only — teams are handled by `/kb-update-teams`).
 
 4. **GameWith character page** → cross-check base stats and talent multipliers against genshin-db; recommended weapons/sets. Record any difference > 0.5% in `provenance.conflicts`.
 

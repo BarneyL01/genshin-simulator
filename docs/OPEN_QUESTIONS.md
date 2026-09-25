@@ -4,13 +4,7 @@ Answer inline (edit the "Answer" column) or tell the agent. Resolved items move 
 
 | # | Question | Default if unanswered | Answer |
 |---|---|---|---|
-| 5 | Level 100 / beyond-90 progression: include if present in the current version? | Lv 90 default, Lv 100 optional per character | |
-| 6 | Artifact assumption: KQM Standards (KQMS) substat pool, or "user enters own stats" only? | KQMS default + manual override | |
-| 7 | Hosting: GitHub Pages from this repo? | Yes | |
-| 8 | Include GameWith JP (gamewith.jp) as well as the EN site? | EN only; JP for new characters if EN lacks them | |
 | 9 | Should team finder enumerate outside known archetypes (anchor + pruning), or only rank known archetypes? | Both, anchor mode opt-in | |
-| 10 | Execution profile default: "Relaxed" (fixed delay per action, see `docs/SIMULATION.md`) with the delay value 18 frames (300 ms)? | Yes | |
-| 11 | gcsim changed license to AGPL-3.0 on 2026-09-19. Plan: read it only as a reference for numbers (frames, ICD, particles), never copy its code. OK? | Yes | |
 
 ## Resolved
 
@@ -20,3 +14,9 @@ Answer inline (edit the "Answer" column) or tell the agent. Resolved items move 
 | 2 | Supplementary numeric sources | Approved. Use for timing and exact numbers. Execution must be relaxed (user has ~300 ms ping) but deterministic. |
 | 3 | Engine | Own TypeScript engine. Must run with no LLM. |
 | 4 | Roster input | Manual tick boxes (no UID import). |
+| 5 | Beyond Lv 90 | Excluded for now; roadmap item. |
+| 6 | Artifact stats | KQM Standards pool only; manual stat entry is a roadmap item. |
+| 7 | Hosting | GitHub Pages, plus local `npm run dev` for debugging. |
+| 8 | GameWith JP | EN only. |
+| 10 | Relaxed delay | 18 frames (300 ms) per action and swap. |
+| 11 | gcsim use | Reference for numbers only; no code copied. |

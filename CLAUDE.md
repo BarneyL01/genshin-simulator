@@ -34,7 +34,7 @@ npm run lint && npm run typecheck
 ### Runtime
 - The web app must work with no network access to any LLM or API. KB is bundled JSON.
 - `src/engine/` has no DOM or React imports; it runs in a Web Worker and in Vitest.
-- Default assumptions: all characters C0, all weapons R1 (user sets R1–R5 per weapon; event weapons show an "R5 obtainable" hint), Lv 90, talents 9/9/9. All configurable.
+- Default assumptions: all characters C0, all weapons R1 (user sets R1–R5 per weapon; event weapons show an "R5 obtainable" hint), Lv 90 only (beyond-90 is a roadmap item), talents 9/9/9, KQM Standards artifact stats (manual stat entry is a roadmap item). C/R/talents configurable.
 - Roster is entered manually with tick boxes; no UID/account import.
 - Default execution profile is "Relaxed": a fixed 18-frame (300 ms) delay after each cancel and swap, deterministic. Frame-perfect DPS is always shown alongside. See `docs/SIMULATION.md`.
 - The simulator is our own TypeScript engine. gcsim is a numbers reference only (AGPL-3.0): never copy its code.

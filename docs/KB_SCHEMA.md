@@ -42,7 +42,7 @@ The zod schemas in `src/schema/` (created in M1) are the source of truth. This d
   "roles": ["driver", "battery", "sub-dps"],
   "baseStats": {
     "lv90": { "hp": 12907, "atk": 337, "def": 789 },
-    "lv100": null
+    "lv100": null          // reserved; not filled in v1 (beyond-90 excluded, see PLAN roadmap)
   },
   "ascensionStat": { "stat": "er", "value": 0.32 },
   "talents": {

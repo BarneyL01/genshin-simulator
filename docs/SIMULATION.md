@@ -41,7 +41,8 @@ Final stat = (base + weapon base ATK) × (1 + %) + flat, per the standard formul
 
 - Main stats by role (from team archetype, else role template).
 - KQMS-style substats: fixed pool of liquid rolls, distributed by a greedy optimiser that first meets the ER target, then maximises damage.
-- User override: manual final stats per character.
+- Manual stat entry: roadmap item (see `docs/PLAN.md` §11), not in v1.
+- Level: Lv 90 only in v1.
 
 ## Damage
 

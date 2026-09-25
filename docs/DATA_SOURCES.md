@@ -6,7 +6,7 @@
 |---|---|---|---|
 | KeqingMains (KQM) | https://keqingmains.com/ and https://library.keqingmains.com/ | Rotations, frame data, ICD, mechanics, team DPS calcs, weapon/artifact comparisons, KQM Standards | Coverage of the newest characters can lag; some pages are guides, not tables |
 | Game8 | https://game8.co/games/Genshin-Impact | Complete lists (characters, weapons, sets), base stats, talent scaling tables, best teams and tier lists, current version | Rotations are simplified; team ranks are editorial |
-| GameWith | https://gamewith.net/genshin-impact/ (EN), https://gamewith.jp/genshin/ (JP) | Second opinion on best teams and builds, tier ranks, fast new-character coverage (JP site) | JP site needs translation; numeric tables sometimes rounded |
+| GameWith | https://gamewith.net/genshin-impact/ (EN only) | Second opinion on best teams and builds, tier ranks | Numeric tables sometimes rounded. New characters can take a couple of days to appear; re-run `/kb-update-teams` then |
 
 ## Approved supplementary sources (numbers and timing)
 
@@ -50,4 +50,4 @@ Where gcsim frames live: `internal/characters/<name>/attack.go`, `charge.go`, `s
 |---|---|---|---|---|---|---|---|
 | 2026-09-25 | Claude Code cloud session | Blocked | Blocked | Blocked | OK | OK (github.com web/API 403; git clone and raw files work) | Blocked |
 
-To allow them in a cloud session, add the three domains (plus `library.keqingmains.com` and `gamewith.jp` if used) to the environment's allowed network domains, or run the skills from a local Claude Code install.
+To allow them in a cloud session, add the three domains (plus `library.keqingmains.com`) to the environment's allowed network domains, or run the skills from a local Claude Code install.

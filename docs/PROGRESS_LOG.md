@@ -16,6 +16,18 @@ Entry format:
 
 ---
 
+## 2026-09-25 — More decisions applied
+
+- Milestone: M0 (Planning)
+- Decisions (from user): #5 Lv 90 only, beyond-90 moved to roadmap; #6 KQMS stat pool only, manual stat entry added to roadmap (`docs/PLAN.md` §11); #7 GitHub Pages + local `npm run dev`; #8 GameWith EN only; #10 18-frame Relaxed delay confirmed; #11 gcsim reference-only confirmed.
+- Done: updated PLAN (roadmap §11, stats, hosting), SIMULATION, KB_SCHEMA, DATA_SOURCES, CLAUDE.md, kb-add-character skill.
+- KB changes: none.
+- Tests / validation: none (no code yet).
+- Blockers: #9 (team finder scope) awaiting user answer. KQM/Game8/GameWith still blocked in cloud environment.
+- Next: answer #9 → M1 skeleton.
+
+---
+
 ## 2026-09-25 — Decisions applied, timing sources found
 
 - Milestone: M0 (Planning)

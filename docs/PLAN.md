@@ -50,7 +50,7 @@ Constraints:
 | Layer | Choice | Reason |
 |---|---|---|
 | Language | TypeScript (strict) | One language for engine, UI, schemas, and validation scripts. |
-| Build | Vite | Static output; deployable to GitHub Pages with no server. |
+| Build | Vite | Static output. Hosted on GitHub Pages from this repo; also runs locally with `npm run dev` for debugging. |
 | UI | React + Tailwind | Common, well supported by agents. |
 | Charts / timeline | Custom SVG Gantt + a small chart lib (e.g. visx or uPlot) | Buff-uptime timeline is a Gantt view; DPS bars are simple. |
 | Schemas | zod | Same schema validates KB at build time and types the engine. |
@@ -134,7 +134,8 @@ Details: `docs/SIMULATION.md`. Summary:
   | Custom | user value | user value | |
 
   Results show Relaxed DPS and Frame-perfect DPS side by side so the cost of the delay is visible per team. Teams with many short actions (e.g. swap-heavy rotations) lose more under Relaxed; this is reported, not hidden.
-- Stats: KQM Standards (KQMS) style artifact assumption by default — fixed main stats by role plus a fixed pool of liquid substats, auto-distributed to maximise the character's damage subject to ER requirement. User can override with manual stats.
+- Stats: KQM Standards (KQMS) artifact assumption for every character — fixed main stats by role plus a fixed pool of liquid substats, auto-distributed to maximise the character's damage subject to ER requirement. Manual stat entry is a roadmap item (§11).
+- Level: all characters and weapons at Lv 90. Beyond-90 levels are excluded for now (roadmap §11).
 - Enemy: default level-100 enemy with 10% all RES; selectable presets.
 
 ### Outputs
@@ -200,3 +201,10 @@ Every KB sync runs `kb:validate` and the golden tests before commit.
 ## 10. Open questions
 
 Tracked in `docs/OPEN_QUESTIONS.md`.
+
+## 11. Roadmap (after M8)
+
+| Item | Description |
+|---|---|
+| Manual stats | Enter own artifact stats per character (final panel stats, or individual artifact pieces) instead of the KQMS pool. Show KQMS vs. own-stats DPS side by side. |
+| Beyond Lv 90 | Add Lv 100 base stats (schema already has a `lv100` slot) once the user has access to it. |
