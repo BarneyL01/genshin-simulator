@@ -29,7 +29,7 @@ Constraints:
 ┌──────────────────────── Browser (static site, no backend) ────────────────────────┐
 │  UI (React)                                                                        │
 │   ├─ Roster editor ─ Team builder ─ Rotation editor ─ Results / timeline views     │
-│   └─ Team finder / weapon comparer                                                 │
+│   └─ Known-team ranking / custom team builder / weapon comparer                    │
 │        │  postMessage                                                              │
 │  Web Worker: sim engine (pure TS)                                                  │
 │   ├─ Stat resolver   ├─ Action scheduler   ├─ Buff manager                         │
@@ -121,7 +121,7 @@ Details: `docs/SIMULATION.md`. Summary:
 
 - Discrete-event timeline in frames (60 fps). Default duration: one full rotation, repeated N times (default 4) to reach steady state; report the average of cycles 2..N.
 - Actions per character: normal/charged/plunge, skill (press/hold), burst, swap, dash, wait. Each action has frame data (cancel windows) from the KB.
-- Rotation is a script: an ordered list of `{char, action, variant?, repeat?}`. Every team archetype ships a default rotation from its source; the user can edit it. If none exists, a role-based template generates one (e.g. "buffers burst → sub-DPS skill → driver on-field").
+- Rotation is a script: an ordered list of `{char, action, variant?, repeat?}`. Every team archetype ships a default rotation from its source; the user can edit it. For a custom team (§6 Mode B) the script is assembled from each character's `usualCombo` in the order the user sets.
 - Buff manager tracks start/end frames, stacks and snapshot vs. dynamic behaviour. Output feeds the timeline view.
 - Elemental gauge and aura decay with standard ICD (3 hits / 2.5 s) and per-KB overrides. Reactions: amplifying, transformative, additive (quicken), and KB-defined newer reactions.
 - Energy: particle generation + flat energy, ER requirement reported per character ("needs 180% ER to burst every rotation").
@@ -155,9 +155,14 @@ Details: `docs/SIMULATION.md`. Summary:
 - "Assume I own every weapon" toggle for theory-crafting.
 - Stored in `localStorage`; JSON export/import for backup.
 
-## 6. Team finding and weapon comparison
+## 6. Team modes and weapon comparison
 
-- **Team finder**: from the owned roster, generate candidate teams by (1) matching KB team archetypes whose required members are owned (substitutions allowed), then (2) optionally enumerating teams that contain a chosen "anchor" character, pruned by element/role rules (max 1 on-field driver unless the archetype allows, elemental pair requirements). Simulate each; rank by team DPS. Full brute force over all C(n,4) teams is avoided because the count is large (100 characters → ~3.9 million teams).
+- **Mode A — Known teams (default)**: list every KB team archetype whose members (or listed substitutes) the user owns. Simulate each with its published rotation; rank by team DPS.
+- **Mode B — Custom team**: the user picks any 4 owned characters and sets the order they act in (drag to reorder). Each character performs its usual combo from the KB (`usualCombo`, e.g. "E → Q" for a buffer, "Q → E → N3C × until burst ends" for a driver). The engine chains the combos in the chosen order into one rotation and simulates it:
+  - Characters marked as on-field in their combo fill the time left until the rotation repeats. Rotation length defaults to the longest cooldown that the team's combos wait on (typically a burst), and can be changed.
+  - The user can switch a character between its combo variants (e.g. "on-field" / "off-field") and edit individual actions in the rotation editor afterwards.
+  - Output is approximate DPS plus the same action and buff timelines as Mode A. Results are labelled "custom rotation".
+  - No automatic search: the app never generates or tries team combinations by itself.
 - **Weapon comparer**: for one character in one team, simulate with every owned (or every KB) weapon of that type at chosen refinements; report DPS delta vs. a baseline weapon and the ER-requirement change. New weapons are simulated from their structured passive, so a result is available without community test data; the result is flagged with the weapon's `dataConfidence` and the list of passive conditions that were assumed (e.g. "stacks assumed at max after 2 s").
 - **Sensitivity**: show result with passive conditions at best case and worst case so the user sees the range when uptime is uncertain.
 
@@ -182,7 +187,7 @@ Every KB sync runs `kb:validate` and the golden tests before commit.
 | M3 | Elements | Aura/gauge, ICD, all reactions, energy | Reaction golden tests pass. |
 | M4 | Seed KB | ~15 characters, their common weapons and sets, 5 team archetypes (via skills) | Seed teams simulate within tolerance of published figures. |
 | M5 | UI v1 | Roster, team builder, results, action + buff timelines | User can build a team and read the timeline. |
-| M6 | Comparison | Team finder, weapon comparer, sensitivity range | Rankings produced for owned roster. |
+| M6 | Comparison | Known-team ranking (Mode A), custom team builder (Mode B), weapon comparer, sensitivity range | Rankings produced for owned roster; any 4 owned characters can be simulated in a chosen order. |
 | M7 | Full KB | All released characters, weapons, sets (via `/kb-sync-patch`) | `kb:validate` clean; coverage report 100% or hooks listed. |
 | M8 | Maintenance | Patch-day workflow tested end to end | New patch ingested by an agent with no code changes other than hooks. |
 

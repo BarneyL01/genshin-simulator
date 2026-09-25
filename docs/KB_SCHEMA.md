@@ -73,6 +73,12 @@ The zod schemas in `src/schema/` (created in M1) are the source of truth. This d
   "passives": [ { "id": "raiden.a4", "unlock": "a4", "effects": [ /* Effect */ ] } ],
   "constellations": [ { "level": 1, "effects": [], "text": "..." } /* ... up to 6 */ ],
   "effects": [ /* Effect definitions referenced by id above */ ],
+  "usualCombo": [                // used by custom teams (PLAN §6 Mode B); first variant is the default
+    { "variant": "off-field", "actions": [ { "action": "skill" }, { "action": "burst" } ] },
+    { "variant": "on-field",  "actions": [ { "action": "burst" }, { "action": "skill" },
+                                           { "action": "normal", "hits": 3, "then": "charged",
+                                             "repeat": "untilRotationEnd" } ] }
+  ],
   "recommended": {
     "weapons": [ { "id": "engulfing-lightning", "source": "game8" } ],
     "artifacts": [ { "sets": { "emblem-of-severed-fate": 4 }, "source": "keqingmains" } ]

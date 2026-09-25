@@ -4,7 +4,7 @@ Answer inline (edit the "Answer" column) or tell the agent. Resolved items move 
 
 | # | Question | Default if unanswered | Answer |
 |---|---|---|---|
-| 9 | Should team finder enumerate outside known archetypes (anchor + pruning), or only rank known archetypes? | Both, anchor mode opt-in | |
+| — | (none open) | | |
 
 ## Resolved
 
@@ -20,3 +20,4 @@ Answer inline (edit the "Answer" column) or tell the agent. Resolved items move 
 | 8 | GameWith JP | EN only. |
 | 10 | Relaxed delay | 18 frames (300 ms) per action and swap. |
 | 11 | gcsim use | Reference for numbers only; no code copied. |
+| 9 | Team modes | Mode A: rank known teams. Mode B: user picks 4 characters and their order; each uses its usual combo; approximate DPS. No automatic team search. |

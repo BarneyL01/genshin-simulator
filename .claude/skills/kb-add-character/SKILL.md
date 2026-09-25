@@ -26,6 +26,8 @@ Output: `kb/characters/<id>.json` matching `docs/KB_SCHEMA.md` → Character.
    - If it cannot be expressed, reference a hook id `<char>.<name>` in `hooks`, set `needsHook: true`, and describe the required behaviour in the effect's `assumption`.
    - Constellations are stored but only applied by the engine when the roster's constellation ≥ level.
 
+7b. **Usual combo.** Write `usualCombo` variants (off-field and/or on-field) from the KQM character guide's standard combo; fall back to Game8/GameWith "how to play" sections. Each variant is a short action list. Mark the default variant first. If no source gives one, write the minimal kit usage (skill, burst) and add an `assumptions` entry.
+
 8. **Recommended builds.** Store `recommended.weapons` and `recommended.artifacts` as ordered lists with `source` per item. Every referenced weapon/set id must exist; if not, run `/kb-add-weapon` or `/kb-add-artifact-set` first.
 
 9. **Provenance.** One `provenance.sources` item per page used (site, url, retrieved date, fields). Set `gameVersion` to the live version.

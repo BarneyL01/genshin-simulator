@@ -16,6 +16,18 @@ Entry format:
 
 ---
 
+## 2026-09-25 — Team modes decided (M0 complete)
+
+- Milestone: M0 (Planning) — complete
+- Decision (from user, #9): no automatic team search. Mode A ranks known KB teams. Mode B lets the user pick any 4 owned characters and set their order; each character runs its usual combo; the app reports approximate DPS and timelines.
+- Done: updated `docs/PLAN.md` §4 and §6 and M6; added `usualCombo` to the character schema (`docs/KB_SCHEMA.md`) and a step to `/kb-add-character` to fill it.
+- KB changes: none.
+- Tests / validation: none (no code yet).
+- Blockers: KQM/Game8/GameWith still blocked in the cloud environment (needed for teams, rotations and usual combos).
+- Next: M1 skeleton (Vite + React + TS, zod schemas, `kb:validate`, genshin-db as devDependency).
+
+---
+
 ## 2026-09-25 — More decisions applied
 
 - Milestone: M0 (Planning)
