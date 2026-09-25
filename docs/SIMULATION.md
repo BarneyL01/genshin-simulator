@@ -90,3 +90,30 @@ dmg = (MV × scalingStat + flatDmg) × baseDmgMultiplier
 - Skill/burst cooldowns start at the action's start frame; a too-early repeat waits and is reported in the result's `assumptions`.
 - Negative RES is halved (`res < 0 → 1 − res/2`); RES shred effects use stat `res.enemy.<element>` with negative values.
 - `scaling` on an effect replaces `value`: `value = base + ratio × stat`, capped at `cap`; only `self.<stat>` sources are supported so far.
+
+## Implemented in M3
+
+Mechanics constants live in `kb/mechanics/*.json` and are parsed with zod when the engine loads.
+
+**Resolve pass.** After scheduling, every hit and every reaction follow-up (EC ticks, bloom cores, burning ticks, Lunar-Charged ticks) is processed from one frame-ordered queue.
+
+**ICD.** Per (character, ICD tag): the first hit starts a counter; the group `pattern` says which hits apply (standard `[1,0,0]`: hits 1, 4, 7...); the counter resets `resetFrames` (150) after its first hit. Hits without ICD data use tag `default`, group `standard`. A hit that does not apply neither attaches an element nor reacts, but still deals its damage.
+
+**Auras.** Gauge units (U) with lazy decay. Applying `g` units attaches `0.8 g` and lasts `60 × (7 + 2.5 g)` frames. Pyro refreshes when the new aura is at least the old one; other elements only refill. A trigger consumes `trigger gauge × consume` of the aura (see `pairs` in `reactions.json`); leftover trigger gauge attaches. Shatter is checked first on `strike: blunt` hits.
+
+**Reaction order per trigger element** (from gcsim): electro: hyperbloom, aggravate, overloaded, EC/LC, superconduct, quicken. pyro: burgeon, overloaded, vaporize, melt, burning. cryo: superconduct, melt, freeze. hydro: vaporize, freeze, bloom, EC/LC. dendro: spread, quicken, bloom, burning. anemo: swirl.
+
+**Damage.**
+- Amplifying: `mult × (1 + 2.78 EM/(EM+1400) + reactionBonus.<id>)` on the final hit damage.
+- Additive: `mult × 1446.8535 × (1 + 5 EM/(EM+1200) + bonus)` added to the hit's base damage (before DMG bonus, crit, DEF, RES).
+- Transformative: `mult × 1446.8535 × (1 + 16 EM/(EM+2000) + bonus) × RES`; no crit, no DEF. Owner = the character whose hit triggered it (EM and `reactionBonus.<id>` from their stats). Overloaded, superconduct, swirl and shatter have a 6-frame global cooldown.
+- Reaction ids used in `reactionBonus.<id>`: vaporize, melt, overloaded, superconduct, electroCharged, swirl, shatter, bloom, hyperbloom, burgeon, burning, aggravate, spread, lunarCharged.
+
+**Energy.** Particles are collected `delay` frames after the hit (default 100, per-character `particles.delay` overrides). Same element 3, colourless 2, other 1; off-field × (1 − 0.1 × party size); × ER. A burst needs its cost; if short it still fires, the shortfall is listed in `assumptions`, and energy goes to 0. `energyGain` effects are instant flat energy. Cycle 1 starts with full energy (`startEnergy: 'empty'` to change). The result reports per-character energy per cycle and the ER needed to burst every cycle.
+
+**Known simplifications (M3).**
+- Single enemy; auras are not tracked per source (gcsim tracks per-source durability).
+- Electro-Charged: no multi-trigger stacking. Freeze: no decay ramp or freeze resistance. Burning: no fuel aura. Dendro cores: all live cores react to one Electro/Pyro hit; no core cap.
+- Lunar-Charged only when `lunarCharged: true` is passed (team Moonsign condition); contributors are characters who applied Hydro/Electro while the aura lasts. gcsim is the only source.
+- Not implemented: Crystallize (shield), Stellar Swirl, Lunar-Crystallize, Lunar-Bloom, Stellar Conduct. Listed in `reactions.json` with `implemented: false`.
+- Swirl does not spread and adds no RES shred (shred is a character effect).

@@ -1,5 +1,5 @@
 import { relative } from 'node:path';
-import { KB_DIR, listRecords, readMeta } from './kb-lib';
+import { KB_DIR, listRecords, readMechanics, readMeta } from './kb-lib';
 import { validateRecords } from './validate-core';
 
 const records = listRecords();
@@ -8,6 +8,11 @@ try {
   readMeta();
 } catch (e) {
   issues.push({ file: 'kb/meta.json', message: String(e) });
+}
+
+for (const m of readMechanics()) {
+  if (m.result.success) continue;
+  for (const i of m.result.error.issues) issues.push({ file: m.file, message: `${i.path.join('.')}: ${i.message}` });
 }
 
 if (issues.length > 0) {

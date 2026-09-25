@@ -16,6 +16,20 @@ Entry format:
 
 ---
 
+## 2026-09-25 — M3 elements complete
+
+- Milestone: M3 (Elements) — complete
+- Done:
+  - KB: `kb/mechanics/reactions.json`, `icd.json`, `constants.json` with provenance (gcsim @ 3d48bd5 for numbers only, cross-checked with KeqingMains; multipliers agree). Zod schemas in `src/schema/mechanics.ts`; `kb:validate` checks them; the engine loads them from the KB.
+  - Engine: aura/gauge model (`aura.ts`), reaction engine (`reactions.ts`: vaporize, melt, overloaded, superconduct, electro-charged, swirl, freeze/shatter, quicken/aggravate/spread, bloom/hyperbloom/burgeon, burning, Lunar-Charged), ICD, energy and particles (`energy.ts`), event-ordered resolve pass in `simulate.ts`. Results now carry per-hit `reactions` and a per-character `energy` report (energy per cycle, ER needed to burst every cycle, shortfalls).
+  - Character schema: `hits[].strike`, `particles.delay`, `particles.element`.
+- KB changes: mechanics files only (see `kb/CHANGELOG.md`).
+- Tests / validation: lint clean, typecheck clean, `npm test` 60/60 (hand-computed reaction, aura decay, ICD, energy cases with a fake host plus full-simulation ICD and energy cases), `kb:validate` ok, build ok.
+- Blockers / limits: Lunar-Charged rests on gcsim only (KQM has no page); crystallize, Stellar Swirl, Lunar-Crystallize, Lunar-Bloom, Stellar Conduct not implemented (listed as `implemented: false`). Simplifications listed in `docs/SIMULATION.md` "Implemented in M3".
+- Next: M4 seed KB (~15 characters, their weapons and sets, 5 team archetypes) using the `/kb-*` skills now that sources are reachable.
+
+---
+
 ## 2026-09-25 — M2 engine core complete; sources re-checked
 
 - Milestone: M2 (Engine core) — complete

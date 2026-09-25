@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { effect, weapon, roster } from '../src/schema';
 import { validateRecords } from '../scripts/validate-core';
-import { listRecords } from '../scripts/kb-lib';
+import { listRecords, readMechanics } from '../scripts/kb-lib';
 
 const provenance = {
   sources: [{ site: 'genshin-db', url: 'https://github.com/theBowja/genshin-db', retrieved: '2026-09-25' }],
@@ -49,6 +49,9 @@ describe('schemas', () => {
 describe('kb validation', () => {
   it('the checked-in KB is valid', () => {
     expect(validateRecords(listRecords()).issues).toEqual([]);
+  });
+  it('mechanics files parse', () => {
+    for (const m of readMechanics()) expect(m.result.success, m.name).toBe(true);
   });
   it('flags dangling references', () => {
     const team = {

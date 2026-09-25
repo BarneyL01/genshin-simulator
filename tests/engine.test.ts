@@ -83,7 +83,7 @@ describe('buff manager', () => {
 const hitAt = (frame: number, mv: number, talent: HitDef['talent']): HitDef => ({ frame, mv, scaling: 'atk', element: 'physical', talent });
 const act = (talent: ActionDef['talent'], hits: HitDef[], cancel: number, cooldown?: number): ActionDef => ({ talent, hits, cancel: { default: cancel }, cooldown });
 const mkChar = (id: string, extra: Partial<CharacterInput> = {}): CharacterInput => ({
-  id, level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [], refinement: 1, talentLevel: 9, effects: [],
+  id, element: 'pyro', level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [], refinement: 1, talentLevel: 9, effects: [],
   actions: {
     n1: act('normal', [hitAt(10, 1, 'normal')], 20),
     n2: act('normal', [hitAt(8, 1, 'normal')], 30),

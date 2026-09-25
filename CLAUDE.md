@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestone **M2 (engine core) complete**; next is **M3 (elements: aura/gauge, ICD, reactions, energy)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
+Milestone **M3 (elements) complete**; next is **M4 (seed KB via the skills)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
 
 ## Commands
 

@@ -1,0 +1,21 @@
+{
+  "id": "constants",
+  "provenance": {
+    "sources": [
+      { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/core/player/character/energy.go", "retrieved": "2026-09-25", "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d", "fields": ["particle energy", "off-field penalty"] },
+      { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/core/player/player.go", "retrieved": "2026-09-25", "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d", "fields": ["swap cooldown"] }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "particleDelayFrames is a placeholder: particle travel time differs per character in gcsim. Per-character values belong in the character's particles block (delay)."
+  ],
+  "swapCooldownFrames": 60,
+  "particleDelayFrames": 100,
+  "energy": {
+    "particle": { "sameElement": 3, "neutral": 2, "otherElement": 1 },
+    "offFieldPenaltyPerPartyMember": 0.1
+  }
+}

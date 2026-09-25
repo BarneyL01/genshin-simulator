@@ -18,6 +18,21 @@ export interface HitDef {
   element: Element;
   talent: Talent;
   flat?: number;
+  /** Gauge units applied (default 1 for non-physical hits; 0 = no application). */
+  gauge?: number;
+  /** ICD tag/group. Default: tag "default", group "standard" (shared per character). */
+  icd?: { tag: string; group: string };
+  /** 'blunt' hits shatter Frozen enemies. */
+  strike?: 'default' | 'blunt';
+}
+
+export interface ParticleDef {
+  count: number;
+  perHit: boolean;
+  icd: number;
+  delay: number;
+  /** Particle element; 'none' = colourless. */
+  element: Element | 'none';
 }
 
 export interface ActionDef {
@@ -27,10 +42,14 @@ export interface ActionDef {
    *  ("normal", "skill", "burst", "swap", ...). `default` is the fallback. */
   cancel: Record<string, number> & { default: number };
   cooldown?: number;
+  /** Burst energy cost (burst action only). */
+  energyCost?: number;
+  particles?: ParticleDef;
 }
 
 export interface CharacterInput {
   id: string;
+  element: Element;
   level: number;
   base: { hp: number; atk: number; def: number };
   weaponAtk: number;
@@ -83,8 +102,11 @@ export interface HitRecord {
   char: string;
   action: string;
   element: Element;
-  talent: Talent;
+  /** 'reaction' for transformative/lunar damage; `action` then holds the reaction id. */
+  talent: Talent | 'reaction';
   damage: number;
+  /** Reactions triggered by this hit (for reaction damage: the reaction itself). */
+  reactions: string[];
 }
 
 export interface BuffRecord {
@@ -108,6 +130,22 @@ export interface SimResult {
   windowDamage: number;
   dps: number;
   perCharacterDps: Record<string, number>;
+  energy: Record<string, EnergyReport>;
   /** Human-readable simplifications applied (skipped triggers, ignored conditions, waits). */
   assumptions: string[];
+}
+
+export interface EnergyReport {
+  burstCost: number;
+  burstsPerCycle: number;
+  /** Particle energy per cycle at ER 100% (after the off-field penalty). */
+  particleEnergyBase: number;
+  /** Flat (non-particle) energy per cycle. */
+  flatEnergy: number;
+  /** Total energy per cycle at the character's actual ER. */
+  gainedPerCycle: number;
+  /** ER needed to burst every cycle; null when the character has no burst in the rotation. */
+  requiredEr: number | null;
+  /** Number of bursts that fired without enough energy. */
+  shortfalls: number;
 }

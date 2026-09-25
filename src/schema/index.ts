@@ -7,3 +7,4 @@ export * from './team';
 export * from './enemy';
 export * from './meta';
 export * from './roster';
+export * from './mechanics';

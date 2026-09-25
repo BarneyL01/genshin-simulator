@@ -228,6 +228,16 @@ New stat keys require a schema change (code) and an entry in `docs/PROGRESS_LOG.
 - `kb/mechanics/icd.json`: named ICD groups (hit sequence, reset timer).
 - `kb/mechanics/constants.json`: enemy DEF formula constants, level multipliers.
 
+### Mechanics file shapes (M3)
+
+Each mechanics file carries `id`, `provenance`, `dataConfidence`, `assumptions` like other records.
+
+- `reactions.json`: `levelBase.lv90`, `aura { tax, decayBaseSeconds, decayPerUnitSeconds }`, `em { amplifying|transformative|additive|lunar: { k, c } }`, and `reactions.<id>` with `type`, `implemented`, `element?`, `multiplier?`, `pairs[] { trigger, aura, consume, multiplier? }`, optional `gcd`, `effect`, `tickFrames`, `firstHitDelay`, `waneUnits`, `coreDelay`, `coreDuration`, `cloudDuration`, `contributorWeights`, `notes`. `consume` is the aura gauge removed per unit of trigger gauge; 0 means the auras coexist (EC, burning, Lunar-Charged) or nothing is consumed (additive).
+- `icd.json`: `groups.<name> { pattern, resetFrames }`. `pattern` repeats: 1 = the hit applies its element.
+- `constants.json`: `swapCooldownFrames`, `particleDelayFrames`, `energy.particle { sameElement, neutral, otherElement }`, `energy.offFieldPenaltyPerPartyMember`.
+
+Character talent blocks gained optional fields: `hits[].strike` (`'blunt'` shatters Frozen), `particles.delay`, `particles.element` (defaults to the character's element, `'none'` = colourless).
+
 ## meta.json
 
 ```jsonc

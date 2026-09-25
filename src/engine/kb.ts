@@ -1,6 +1,7 @@
 import type { Character } from '../schema/character';
 import type { Effect } from '../schema/effect';
 import type { Weapon } from '../schema/weapon';
+import { CONSTANTS } from './mechanics';
 import type { ActionDef, CharacterInput, HitDef, StatMod, Talent } from './types';
 
 export interface BuildOptions {
@@ -37,6 +38,9 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
       scaling: h.scaling,
       element: h.element,
       talent,
+      gauge: h.gauge,
+      icd: h.icd,
+      strike: h.strike,
     };
   };
   const cancelOf = (h: { frames?: { hitmark: number; cancel: Record<string, number> } }): ActionDef['cancel'] => {
@@ -59,6 +63,14 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
         hits: block.hits.map((h) => toHit(h, talent)),
         cancel: cancelOf(last),
         cooldown: block.cooldown,
+        energyCost: talent === 'burst' ? block.energyCost : undefined,
+        particles: block.particles && {
+          count: block.particles.count,
+          perHit: block.particles.perHit ?? false,
+          icd: block.particles.icd ?? 0,
+          delay: block.particles.delay ?? CONSTANTS.particleDelayFrames,
+          element: block.particles.element ?? c.element,
+        },
       };
     }
   }
@@ -75,6 +87,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
 
   return {
     id: c.id,
+    element: c.element,
     level: 90,
     base: c.baseStats.lv90,
     weaponAtk: o.weapon.baseAtk.lv90,

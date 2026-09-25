@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import type { ZodType } from 'zod';
-import { artifactSet, character, enemy, meta, team, weapon } from '../src/schema';
+import { MECHANICS_FILES, artifactSet, character, enemy, meta, team, weapon } from '../src/schema';
 
 export const KB_DIR = resolve(import.meta.dirname, '..', 'kb');
 
@@ -35,4 +35,11 @@ export function listRecords(kbDir = KB_DIR): LoadedRecord[] {
 
 export function readMeta(kbDir = KB_DIR) {
   return meta.parse(JSON.parse(readFileSync(join(kbDir, 'meta.json'), 'utf8')));
+}
+
+export function readMechanics(kbDir = KB_DIR) {
+  return Object.entries(MECHANICS_FILES).map(([name, schema]) => {
+    const file = join(kbDir, 'mechanics', `${name}.json`);
+    return { name, file, result: schema.safeParse(JSON.parse(readFileSync(file, 'utf8'))) };
+  });
 }

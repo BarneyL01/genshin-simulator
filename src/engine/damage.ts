@@ -25,11 +25,15 @@ export interface DamageContext {
   charLevel: number;
   enemyLevel: number;
   enemyRes: Partial<Record<Element, number>>;
+  /** Amplifying reaction factor: multiplier × (1 + EM bonus + reaction bonus). Default 1. */
+  reactionFactor?: number;
+  /** Flat base damage added by additive reactions (Aggravate/Spread). */
+  catalyzeFlat?: number;
 }
 
 /**
  * dmg = (MV × scalingStat + flat) × baseMult × (1 + dmgBonus) × crit × def × res
- * Reactions are added in M3.
+ * Amplifying and additive reactions enter through `reactionFactor` and `catalyzeFlat`.
  */
 export function calcHitDamage(c: DamageContext): number {
   const m = (k: string) => c.mods[k] ?? 0;
@@ -37,7 +41,7 @@ export function calcHitDamage(c: DamageContext): number {
   const t = hit.talent;
   const scalingValue = stats[hit.scaling];
   const mv = hit.mv + m(`mvBonus.${t}`);
-  const flat = (hit.flat ?? 0) + m(`flatDmg.${t}`) + m('flatDmg.all');
+  const flat = (hit.flat ?? 0) + m(`flatDmg.${t}`) + m('flatDmg.all') + (c.catalyzeFlat ?? 0);
   const baseMult = 1 + m(`baseDmgMultiplier.${t}`);
   const dmgBonus = 1 + m('dmgBonus.all') + m(`dmgBonus.${hit.element}`) + m(`dmgBonus.${t}`);
   const cr = stats.critRate + m(`critRate.${t}`);
@@ -49,6 +53,7 @@ export function calcHitDamage(c: DamageContext): number {
     dmgBonus *
     critFactor(cr, cd) *
     defMultiplier(c.charLevel, c.enemyLevel, -m('def.enemy.shred'), m('defIgnore')) *
-    resMultiplier(res)
+    resMultiplier(res) *
+    (c.reactionFactor ?? 1)
   );
 }

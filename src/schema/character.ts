@@ -12,6 +12,8 @@ const hit = z.object({
   frames: frameData.optional(),
   icd: z.object({ tag: z.string(), group: z.string() }).optional(),
   gauge: z.number().nonnegative().optional(),
+  /** 'blunt' hits can shatter Frozen enemies. */
+  strike: z.enum(['default', 'blunt']).optional(),
 });
 
 const talentBlock = z.object({
@@ -20,7 +22,17 @@ const talentBlock = z.object({
   cooldown: frames.optional(),
   energyCost: z.number().optional(),
   stamina: z.number().optional(),
-  particles: z.object({ count: z.number(), perHit: z.boolean().optional(), icd: frames.optional() }).optional(),
+  particles: z
+    .object({
+      count: z.number(),
+      perHit: z.boolean().optional(),
+      icd: frames.optional(),
+      /** Frames from the hit until the particles can be collected. Default: kb/mechanics/constants.json. */
+      delay: frames.optional(),
+      /** Particle element; defaults to the character's own. 'none' = colourless. */
+      element: z.enum(['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro', 'none']).optional(),
+    })
+    .optional(),
   effects: z.array(z.string()).default([]),
   hook: z.string().optional(),
 });

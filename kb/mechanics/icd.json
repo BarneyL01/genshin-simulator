@@ -1,0 +1,16 @@
+{
+  "id": "icd",
+  "provenance": {
+    "sources": [
+      { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/core/attacks/icd_groups.dm.go", "retrieved": "2026-09-25", "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d", "fields": ["default group pattern", "reset timer"] }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": ["Only the default group is listed. Character-specific groups are added by /kb-add-character as needed."],
+  "groups": {
+    "standard": { "pattern": [1, 0, 0], "resetFrames": 150, "notes": "Applies on hits 1, 4, 7...; the counter resets 150 frames (2.5 s) after the first hit of the sequence." },
+    "none": { "pattern": [1], "resetFrames": 0, "notes": "No ICD: every hit applies." }
+  }
+}

@@ -1,0 +1,406 @@
+{
+  "id": "reactions",
+  "provenance": {
+    "sources": [
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/combat-mechanics/elemental-effects/transformative-reactions",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "transformative multipliers",
+          "transformative EM formula"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/combat-mechanics/elemental-effects/amplifying-reactions",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "amplifying multipliers",
+          "amplifying EM formula"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/combat-mechanics/elemental-effects/additive-reactions",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "aggravate/spread multipliers",
+          "additive EM formula"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/combat-mechanics/elemental-effects/elemental-gauge-theory",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "aura tax",
+          "decay rates"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/reactable",
+        "retrieved": "2026-09-25",
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d",
+        "fields": [
+          "consumption coefficients",
+          "level base",
+          "EC tick timing",
+          "lunar-charged",
+          "dendro core",
+          "superconduct shred"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Values are read from gcsim (numbers only, no code copied) and cross-checked against KeqingMains where a page exists. KeqingMains has no page for Lunar reactions, so lunarCharged is gcsim-only.",
+    "Freeze, burning and dendro cores are simplified (see notes on each reaction); the engine does not model per-source aura tracking or hitlag."
+  ],
+  "levelBase": {
+    "lv90": 1446.8535
+  },
+  "aura": {
+    "tax": 0.8,
+    "decayBaseSeconds": 7,
+    "decayPerUnitSeconds": 2.5
+  },
+  "em": {
+    "amplifying": {
+      "k": 2.78,
+      "c": 1400
+    },
+    "transformative": {
+      "k": 16,
+      "c": 2000
+    },
+    "additive": {
+      "k": 5,
+      "c": 1200
+    },
+    "lunar": {
+      "k": 6,
+      "c": 2000
+    }
+  },
+  "reactions": {
+    "vaporize": {
+      "type": "amplifying",
+      "implemented": true,
+      "pairs": [
+        {
+          "trigger": "pyro",
+          "aura": "hydro",
+          "consume": 0.5,
+          "multiplier": 1.5
+        },
+        {
+          "trigger": "hydro",
+          "aura": "pyro",
+          "consume": 2,
+          "multiplier": 2
+        }
+      ]
+    },
+    "melt": {
+      "type": "amplifying",
+      "implemented": true,
+      "pairs": [
+        {
+          "trigger": "pyro",
+          "aura": "cryo",
+          "consume": 2,
+          "multiplier": 2
+        },
+        {
+          "trigger": "cryo",
+          "aura": "pyro",
+          "consume": 0.5,
+          "multiplier": 1.5
+        }
+      ]
+    },
+    "overloaded": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "pyro",
+      "multiplier": 2.75,
+      "gcd": 6,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "pyro",
+          "consume": 1
+        },
+        {
+          "trigger": "pyro",
+          "aura": "electro",
+          "consume": 1
+        }
+      ]
+    },
+    "superconduct": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "cryo",
+      "multiplier": 1.5,
+      "gcd": 6,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "cryo",
+          "consume": 1
+        },
+        {
+          "trigger": "cryo",
+          "aura": "electro",
+          "consume": 1
+        }
+      ],
+      "effect": {
+        "stat": "res.enemy.physical",
+        "value": -0.4,
+        "duration": 720
+      }
+    },
+    "electroCharged": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "electro",
+      "multiplier": 2,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "hydro",
+          "consume": 0
+        },
+        {
+          "trigger": "hydro",
+          "aura": "electro",
+          "consume": 0
+        }
+      ],
+      "tickFrames": 60,
+      "firstHitDelay": 10,
+      "waneUnits": 0.4,
+      "notes": "Both auras coexist. Immediate hit, then a tick every 60 frames; each tick wanes both auras by 0.4U. Multiplier is per tick; the game's multi-trigger stacking (2 \u00d7 ECTriggers) is not modelled."
+    },
+    "swirl": {
+      "type": "transformative",
+      "implemented": true,
+      "multiplier": 0.6,
+      "gcd": 6,
+      "pairs": [
+        {
+          "trigger": "anemo",
+          "aura": "electro",
+          "consume": 0.5
+        },
+        {
+          "trigger": "anemo",
+          "aura": "pyro",
+          "consume": 0.5
+        },
+        {
+          "trigger": "anemo",
+          "aura": "hydro",
+          "consume": 0.5
+        },
+        {
+          "trigger": "anemo",
+          "aura": "cryo",
+          "consume": 0.5
+        }
+      ],
+      "notes": "Damage element is the swirled aura's element. Single target only: no spread to nearby enemies. RES shred from swirl is a character/passive effect, not built in."
+    },
+    "shatter": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "physical",
+      "multiplier": 3,
+      "notes": "Triggered by a hit with strike 'blunt' on a Frozen enemy. Removes the Frozen aura."
+    },
+    "aggravate": {
+      "type": "additive",
+      "implemented": true,
+      "multiplier": 1.15,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "quicken",
+          "consume": 0
+        }
+      ]
+    },
+    "spread": {
+      "type": "additive",
+      "implemented": true,
+      "multiplier": 1.25,
+      "pairs": [
+        {
+          "trigger": "dendro",
+          "aura": "quicken",
+          "consume": 0
+        }
+      ]
+    },
+    "quicken": {
+      "type": "other",
+      "implemented": true,
+      "pairs": [
+        {
+          "trigger": "dendro",
+          "aura": "electro",
+          "consume": 1
+        },
+        {
+          "trigger": "electro",
+          "aura": "dendro",
+          "consume": 1
+        }
+      ],
+      "notes": "Creates a Quicken aura with the consumed gauge. Decay 12 \u00d7 durability + 360 frames in gcsim units (25 = 1U)."
+    },
+    "bloom": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "dendro",
+      "multiplier": 2,
+      "pairs": [
+        {
+          "trigger": "hydro",
+          "aura": "dendro",
+          "consume": 0.5
+        },
+        {
+          "trigger": "dendro",
+          "aura": "hydro",
+          "consume": 2
+        }
+      ],
+      "coreDelay": 30,
+      "coreDuration": 300,
+      "notes": "Spawns a Dendro core after 30 frames. Core lifetime 300 frames (gcsim marks this value as uncertain), then it explodes as Bloom. A Hyperbloom/Burgeon trigger consumes the core."
+    },
+    "hyperbloom": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "dendro",
+      "multiplier": 3,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "core",
+          "consume": 0
+        }
+      ]
+    },
+    "burgeon": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "dendro",
+      "multiplier": 3,
+      "pairs": [
+        {
+          "trigger": "pyro",
+          "aura": "core",
+          "consume": 0
+        }
+      ]
+    },
+    "burning": {
+      "type": "transformative",
+      "implemented": true,
+      "element": "pyro",
+      "multiplier": 0.25,
+      "pairs": [
+        {
+          "trigger": "pyro",
+          "aura": "dendro",
+          "consume": 0
+        },
+        {
+          "trigger": "dendro",
+          "aura": "pyro",
+          "consume": 0
+        }
+      ],
+      "tickFrames": 15,
+      "notes": "Simplified: ticks every 15 frames while Pyro and Dendro auras coexist. The game's Burning fuel aura is not modelled."
+    },
+    "freeze": {
+      "type": "other",
+      "implemented": true,
+      "pairs": [
+        {
+          "trigger": "cryo",
+          "aura": "hydro",
+          "consume": 1
+        },
+        {
+          "trigger": "hydro",
+          "aura": "cryo",
+          "consume": 1
+        }
+      ],
+      "notes": "Simplified: Frozen aura = 2 \u00d7 consumed gauge, lasting 150 frames per unit with no decay ramp and no freeze resistance."
+    },
+    "lunarCharged": {
+      "type": "lunar",
+      "implemented": true,
+      "element": "electro",
+      "multiplier": 3,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "hydro",
+          "consume": 0
+        },
+        {
+          "trigger": "hydro",
+          "aura": "electro",
+          "consume": 0
+        }
+      ],
+      "cloudDuration": 330,
+      "tickFrames": 120,
+      "contributorWeights": [
+        0.6,
+        0.3,
+        0.05,
+        0.05
+      ],
+      "notes": "Replaces Electro-Charged when the team has the Lunar-Charged (Moonsign) condition. Cloud lasts 330 frames and is refreshed on each trigger; ticks every 120 frames; damage is the contributor-weighted sum, ignores enemy DEF, has no crit here (expected-value crit of the top contributor is applied). gcsim-only."
+    },
+    "crystallize": {
+      "type": "other",
+      "implemented": false,
+      "notes": "Produces a shield, no damage. Shield absorption is out of scope."
+    },
+    "stellarSwirl": {
+      "type": "lunar",
+      "implemented": false,
+      "notes": "Not implemented. Needs a source other than gcsim."
+    },
+    "lunarCrystallize": {
+      "type": "lunar",
+      "implemented": false,
+      "notes": "Not implemented. Needs a source other than gcsim."
+    },
+    "lunarBloom": {
+      "type": "lunar",
+      "implemented": false,
+      "notes": "Not implemented."
+    },
+    "stellarConduct": {
+      "type": "other",
+      "implemented": false,
+      "notes": "Not implemented."
+    }
+  }
+}
