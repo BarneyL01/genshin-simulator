@@ -83,7 +83,7 @@ describe('buff manager', () => {
 const hitAt = (frame: number, mv: number, talent: HitDef['talent']): HitDef => ({ frame, mv, scaling: 'atk', element: 'physical', talent });
 const act = (talent: ActionDef['talent'], hits: HitDef[], cancel: number, cooldown?: number): ActionDef => ({ talent, hits, cancel: { default: cancel }, cooldown });
 const mkChar = (id: string, extra: Partial<CharacterInput> = {}): CharacterInput => ({
-  id, element: 'pyro', level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [], refinement: 1, talentLevel: 9, effects: [],
+  id, element: 'pyro', level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [], refinement: 1, talentLevels: [9, 9, 9], effects: [],
   actions: {
     n1: act('normal', [hitAt(10, 1, 'normal')], 20),
     n2: act('normal', [hitAt(8, 1, 'normal')], 30),
@@ -195,5 +195,49 @@ describe('effects in the simulation', () => {
     expect(() =>
       simulate({ characters: [mkChar('a')], enemy, cycles: 1, profile: EXECUTION_PROFILES.relaxed, rotation: [{ char: 'a', action: 'burst' }] }),
     ).toThrow(/no action "burst"/);
+  });
+});
+
+describe('dynamic scaling effects', () => {
+  it('re-evaluates each hit: ER→ATK conversion follows a mid-rotation ER buff', () => {
+    // ATK% = −0.28 + 0.28 × ER (ER is the multiplier, 1 + bonus), like a "% of ER over 100%" passive
+    const conv = effect.parse({
+      id: 'w.er-atk', trigger: { on: 'always' }, target: 'self', stat: 'atk%', value: 0,
+      scaling: { from: 'self.er', ratio: { perRefinement: [0.28, 0.35, 0.42, 0.49, 0.56] }, base: { perRefinement: [-0.28, -0.35, -0.42, -0.49, -0.56] }, cap: 0.8 },
+    });
+    const erBuff = effect.parse({ id: 'a.er', trigger: { on: 'onSkill' }, target: 'self', stat: 'er', value: 0.3, duration: 200 });
+    const r = simulate({
+      characters: [mkChar('a', { effects: [conv, erBuff], baseMods: [{ stat: 'er', value: 0.5 }] })], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'n1' }, { char: 'a', action: 'skill' }, { char: 'a', action: 'n1' }],
+    });
+    const [before, , after] = r.hits;
+    // before: ER 1.5 → ATK% 0.14; after the skill's +0.3 ER: ER 1.8 → 0.224
+    expect(after!.damage / before!.damage).toBeCloseTo(1.224 / 1.14, 6);
+  });
+
+  it('scales off the owner base ATK for the whole team, and respects the cap', () => {
+    const buff = effect.parse({
+      id: 'b.burst', trigger: { on: 'always' }, target: 'team', stat: 'atk', value: 0,
+      scaling: { from: 'self.baseAtk', ratio: 0.5, cap: 400 },
+    });
+    const b = mkChar('b', { weaponAtk: 500, effects: [buff] }); // base ATK 1500 → 750, capped to 400
+    const r = simulate({
+      characters: [mkChar('a'), b], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'n1' }],
+    });
+    expect(r.hits[0]!.damage).toBeCloseTo(PER_MV * 1.4); // atk 1000 + 400
+  });
+
+  it('snapshot: true freezes the value at application', () => {
+    const conv = effect.parse({
+      id: 'x', trigger: { on: 'always' }, target: 'self', stat: 'atk%', value: 0, snapshot: true,
+      scaling: { from: 'self.er', ratio: 1, base: -1 },
+    });
+    const erBuff = effect.parse({ id: 'a.er', trigger: { on: 'onSkill' }, target: 'self', stat: 'er', value: 1, duration: 200 });
+    const r = simulate({
+      characters: [mkChar('a', { effects: [conv, erBuff], baseMods: [{ stat: 'er', value: 0.5 }] })], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'n1' }, { char: 'a', action: 'skill' }, { char: 'a', action: 'n1' }],
+    });
+    expect(r.hits[2]!.damage).toBeCloseTo(r.hits[0]!.damage); // still ATK% 0.5
   });
 });

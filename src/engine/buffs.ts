@@ -1,4 +1,4 @@
-import type { BuffRecord } from './types';
+import type { BuffRecord, DynamicScaling } from './types';
 
 export interface BuffSpec {
   effectId: string;
@@ -10,6 +10,7 @@ export interface BuffSpec {
   duration: number | null;
   maxStacks: number;
   stackMode: 'refresh' | 'independent';
+  dynamic?: DynamicScaling;
 }
 
 /**
@@ -46,10 +47,15 @@ export class BuffManager {
   modsFor(char: string, frame: number): Record<string, number> {
     const out: Record<string, number> = {};
     for (const r of this.records) {
-      if ((r.target !== char && r.target !== 'active') || !this.isLive(r, frame)) continue;
+      if ((r.target !== char && r.target !== 'active') || r.dynamic || !this.isLive(r, frame)) continue;
       out[r.stat] = (out[r.stat] ?? 0) + r.value * r.stacks;
     }
     return out;
+  }
+
+  /** Active dynamic-scaling records affecting `char` at `frame`, in application order. */
+  dynamicFor(char: string, frame: number): BuffRecord[] {
+    return this.records.filter((r) => (r.target === char || r.target === 'active') && r.dynamic && this.isLive(r, frame));
   }
 
   /** Debuffs on the enemy (res shred etc.) at `frame`. */
@@ -64,7 +70,7 @@ export class BuffManager {
   private open(spec: BuffSpec, stacks: number, start: number, end: number | null): void {
     this.records.push({
       effectId: spec.effectId, source: spec.source, target: spec.target, stat: spec.stat,
-      value: spec.value, stacks, start, end,
+      value: spec.value, stacks, start, end, dynamic: spec.dynamic,
     });
   }
 }

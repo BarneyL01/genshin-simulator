@@ -60,8 +60,8 @@ export interface CharacterInput {
   /** Passives, constellations, weapon passive, set bonuses owned by this character. */
   effects: Effect[];
   refinement: number;
-  /** Talent level used for `perTalentLevel` effect values. */
-  talentLevel: number;
+  /** Talent levels [normal, skill, burst] (constellation bonuses included) for `perTalentLevel` effect values. */
+  talentLevels: [number, number, number];
 }
 
 export interface EnemyInput {
@@ -86,6 +86,10 @@ export interface FinalStats {
   er: number;
   critRate: number;
   critDmg: number;
+  /** Character + weapon base ATK, base HP, base DEF (for effects that scale off base stats). */
+  baseAtk: number;
+  baseHp: number;
+  baseDef: number;
 }
 
 export interface ActionRecord {
@@ -118,6 +122,15 @@ export interface BuffRecord {
   stacks: number;
   start: number;
   end: number | null;
+  /** Set for effects evaluated at hit time: value = base + ratio × source stat, capped. */
+  dynamic?: DynamicScaling;
+}
+
+export interface DynamicScaling {
+  from: string;
+  ratio: number;
+  base: number;
+  cap?: number;
 }
 
 export interface SimResult {

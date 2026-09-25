@@ -27,5 +27,8 @@ export function resolveStats(
     er: 1 + m('er'),
     critRate: BASE_CRIT_RATE + m('critRate'),
     critDmg: BASE_CRIT_DMG + m('critDmg'),
+    baseAtk: base.atk + weaponAtk,
+    baseHp: base.hp,
+    baseDef: base.def,
   };
 }

@@ -26,13 +26,22 @@ const TALENT_LEVEL_INDEX: Record<Talent, 0 | 1 | 2> = { normal: 0, charged: 0, p
  * hitmark. A KB `attack` key doubles as the `normal` key.
  */
 export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInput {
-  const levels = o.talentLevels ?? [9, 9, 9];
+  const cons = o.constellation ?? 0;
+  const levels = [...(o.talentLevels ?? [9, 9, 9])] as [number, number, number];
+  for (const k of c.constellations) {
+    if (k.level > cons || !k.talentLevelBonus) continue;
+    const b = k.talentLevelBonus;
+    levels[0] += b.normal ?? 0;
+    levels[1] += b.skill ?? 0;
+    levels[2] += b.burst ?? 0;
+  }
+  for (let i = 0; i < 3; i++) levels[i] = Math.min(levels[i]!, 15);
   const actions: Record<string, ActionDef> = {};
 
-  const toHit = (h: KbHit, talent: Talent): HitDef => {
+  const toHits = (h: KbHit, talent: Talent): HitDef[] => {
     if (!h.frames) throw new Error(`${c.id} ${talent} hit "${h.name}" has no frame data`);
     const lvl = levels[TALENT_LEVEL_INDEX[talent]];
-    return {
+    const base: HitDef = {
       frame: h.frames.hitmark,
       mv: h.mv[Math.min(lvl, h.mv.length) - 1]!,
       scaling: h.scaling,
@@ -42,6 +51,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
       icd: h.icd,
       strike: h.strike,
     };
+    return [base, ...(h.extraHitmarks ?? []).map((frame) => ({ ...base, frame }))];
   };
   const cancelOf = (h: { frames?: { hitmark: number; cancel: Record<string, number> } }): ActionDef['cancel'] => {
     const cancel: Record<string, number> = { ...h.frames?.cancel };
@@ -54,13 +64,14 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
     if (!block || block.hits.length === 0) continue;
     if (talent === 'normal') {
       block.hits.forEach((h, i) => {
-        actions[`n${i + 1}`] = { talent, hits: [toHit(h, talent)], cancel: cancelOf(h) };
+        actions[`n${i + 1}`] = { talent, hits: toHits(h, talent), cancel: cancelOf(h) };
       });
     } else {
-      const last = block.hits.reduce((a, b) => ((b.frames?.hitmark ?? 0) >= (a.frames?.hitmark ?? 0) ? b : a));
+      const lastFrame = (h: KbHit) => Math.max(h.frames?.hitmark ?? 0, ...(h.extraHitmarks ?? []));
+      const last = block.hits.reduce((a, b) => (lastFrame(b) >= lastFrame(a) ? b : a));
       actions[talent] = {
         talent,
-        hits: block.hits.map((h) => toHit(h, talent)),
+        hits: block.hits.flatMap((h) => toHits(h, talent)),
         cancel: cancelOf(last),
         cooldown: block.cooldown,
         energyCost: talent === 'burst' ? block.energyCost : undefined,
@@ -76,7 +87,6 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
   }
 
   const refinement = o.refinement ?? 1;
-  const cons = o.constellation ?? 0;
   const effects: Effect[] = [
     ...c.effects,
     ...c.passives.flatMap((p) => p.effects),
@@ -99,6 +109,6 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
     actions,
     effects,
     refinement,
-    talentLevel: levels[2],
+    talentLevels: levels,
   };
 }

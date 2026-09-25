@@ -1,4 +1,4 @@
-import type { Effect } from '../schema/effect';
+import { SCALING_SOURCES, type Effect, type EffectValue } from '../schema/effect';
 import { BuffManager } from './buffs';
 import { calcHitDamage } from './damage';
 import { EnergyTracker } from './energy';
@@ -7,7 +7,7 @@ import { EXECUTION_PROFILES, FPS, type ExecutionProfile } from './profiles';
 import { ReactionEngine } from './reactions';
 import { resolveStats, sumMods } from './stats';
 import type {
-  ActionDef, ActionRecord, CharacterInput, EnemyInput, EnergyReport, HitDef, HitRecord, RotationStep, SimResult, Talent,
+  DynamicScaling, ActionDef, ActionRecord, CharacterInput, EnemyInput, EnergyReport, HitDef, HitRecord, RotationStep, SimResult, Talent,
 } from './types';
 
 export const SWAP_COOLDOWN = CONSTANTS.swapCooldownFrames;
@@ -63,8 +63,27 @@ export function simulate(input: SimInput): SimResult {
   const pending: PendingHit[] = [];
   let cycle = 1;
 
-  const modsAt = (c: CharacterInput, frame: number) =>
-    sumMods([...c.baseMods, ...Object.entries(bm.modsFor(c.id, frame)).map(([stat, value]) => ({ stat, value }))]);
+  /**
+   * Stat modifiers for `c` at `frame`: base mods + static buffs, then dynamic-scaling buffs in
+   * application order. A dynamic buff reads its owner's stats; for the owner itself that is the
+   * accumulated mods so far (so effects can chain, but not depend on themselves).
+   */
+  const modsAt = (c: CharacterInput, frame: number, depth = 0): Record<string, number> => {
+    const mods = sumMods([...c.baseMods, ...Object.entries(bm.modsFor(c.id, frame)).map(([stat, value]) => ({ stat, value }))]);
+    for (const r of bm.dynamicFor(c.id, frame)) {
+      const d = r.dynamic!;
+      const owner = byId.get(r.source);
+      if (!owner) continue;
+      let src: Record<string, number> | undefined = owner === c ? mods : depth < 2 ? modsAt(owner, frame, depth + 1) : undefined;
+      src ??= sumMods(owner.baseMods);
+      const stats = resolveStats(owner.base, owner.weaponAtk, src);
+      const s = stats[d.from as keyof typeof stats];
+      let v = d.base + d.ratio * s;
+      if (d.cap !== undefined) v = Math.min(v, d.cap);
+      mods[r.stat] = (mods[r.stat] ?? 0) + v * r.stacks;
+    }
+    return mods;
+  };
   const statsFor = (c: CharacterInput, frame: number) => {
     const mods = modsAt(c, frame);
     return { stats: resolveStats(c.base, c.weaponAtk, mods), mods };
@@ -76,26 +95,37 @@ export function simulate(input: SimInput): SimResult {
   };
   const energy = new EnergyTracker(characters, activeAt, (c, f) => statsFor(c, f).stats.er, (input.startEnergy ?? 'full') === 'full');
 
-  function applyEffect(owner: CharacterInput, e: Effect, frame: number): void {
+  function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number): void {
+    const frame = triggerFrame + (e.delay ?? 0);
     if (e.hook) {
       assumptions.add(`${e.id}: hook "${e.hook}" not implemented, effect skipped`);
       return;
     }
     if (e.condition) assumptions.add(`${e.id}: condition ignored (assumed met)${e.assumption ? ` — ${e.assumption}` : ''}`);
-    let value: number;
+    const scalar = (v: EffectValue): number => {
+      if (typeof v === 'number') return v;
+      if ('perRefinement' in v) return v.perRefinement[owner.refinement - 1] ?? 0;
+      const lvl = owner.talentLevels[{ normal: 0, skill: 1, burst: 2 }[v.talent ?? 'burst']];
+      return v.perTalentLevel[Math.min(lvl ?? 9, v.perTalentLevel.length) - 1] ?? 0;
+    };
+    let value = 0;
+    let dynamic: DynamicScaling | undefined;
     if (e.scaling) {
       const [who, stat] = e.scaling.from.split('.');
-      const stats = who === 'self' ? statsFor(owner, frame).stats : undefined;
-      const s = stats?.[stat as keyof typeof stats];
-      if (s === undefined) {
+      if (who !== 'self' || !(SCALING_SOURCES as readonly string[]).includes(stat ?? '')) {
         assumptions.add(`${e.id}: unsupported scaling source "${e.scaling.from}", effect skipped`);
         return;
       }
-      value = (e.scaling.base ?? 0) + e.scaling.ratio * s;
-      if (e.scaling.cap !== undefined) value = Math.min(value, e.scaling.cap);
-    } else if (typeof e.value === 'number') value = e.value;
-    else if ('perRefinement' in e.value) value = e.value.perRefinement[owner.refinement - 1] ?? 0;
-    else value = e.value.perTalentLevel[Math.min(owner.talentLevel, e.value.perTalentLevel.length) - 1] ?? 0;
+      dynamic = {
+        from: stat!, ratio: scalar(e.scaling.ratio), base: e.scaling.base === undefined ? 0 : scalar(e.scaling.base),
+        cap: e.scaling.cap === undefined ? undefined : scalar(e.scaling.cap),
+      };
+      if (e.snapshot) {
+        const st = statsFor(owner, frame).stats;
+        value = Math.min(dynamic.base + dynamic.ratio * st[dynamic.from as keyof typeof st], dynamic.cap ?? Infinity);
+        dynamic = undefined;
+      }
+    } else value = scalar(e.value);
 
     const recipients =
       e.target === 'self' ? [owner]
@@ -117,7 +147,7 @@ export function simulate(input: SimInput): SimResult {
     for (const target of targets) {
       bm.apply(
         { effectId: e.id, source: owner.id, target, stat: e.stat, value, duration: e.duration ?? null,
-          maxStacks: e.maxStacks, stackMode: e.stackMode ?? 'refresh' },
+          maxStacks: e.maxStacks, stackMode: e.stackMode ?? 'refresh', dynamic },
         frame,
       );
     }

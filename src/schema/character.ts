@@ -12,6 +12,8 @@ const hit = z.object({
   frames: frameData.optional(),
   icd: z.object({ tag: z.string(), group: z.string() }).optional(),
   gauge: z.number().nonnegative().optional(),
+  /** Extra identical hits (same MV, element, ICD tag) at these frames after the action starts; `frames.hitmark` is the first. */
+  extraHitmarks: z.array(frames).optional(),
   /** 'blunt' hits can shatter Frozen enemies. */
   strike: z.enum(['default', 'blunt']).optional(),
 });
@@ -57,7 +59,13 @@ export const character = z.object({
   talents: z.partialRecord(talentKind, talentBlock),
   passives: z.array(z.object({ id: z.string(), unlock: z.string(), effects: z.array(effect) })).default([]),
   constellations: z
-    .array(z.object({ level: z.number().int().min(1).max(6), effects: z.array(effect).default([]), text: z.string().optional() }))
+    .array(z.object({
+        level: z.number().int().min(1).max(6),
+        effects: z.array(effect).default([]),
+        text: z.string().optional(),
+        /** Talent level increases granted by this constellation (C3/C5 in the game), e.g. { skill: 3 }. */
+        talentLevelBonus: z.object({ normal: z.number().int(), skill: z.number().int(), burst: z.number().int() }).partial().optional(),
+      }))
     .max(6)
     .default([]),
   effects: z.array(effect).default([]),

@@ -9,7 +9,7 @@ const LB = 1446.8535; // Lv90 reaction base (KB kb/mechanics/reactions.json)
 
 const mkChar = (id: string, over: Partial<CharacterInput> = {}): CharacterInput => ({
   id, element: 'pyro', level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [],
-  refinement: 1, talentLevel: 9, effects: [], actions: {}, ...over,
+  refinement: 1, talentLevels: [9, 9, 9], effects: [], actions: {}, ...over,
 });
 
 interface Harness {
@@ -26,7 +26,7 @@ function harness(opts: { em?: number; res?: number; lunar?: boolean; chars?: Cha
   let seq = 0;
   const records: HitRecord[] = [];
   const buffs: Harness['buffs'] = [];
-  const stats: FinalStats = { hp: 10000, atk: 1000, def: 500, em: opts.em ?? 0, er: 1, critRate: 0.05, critDmg: 0.5, ...opts.stats };
+  const stats: FinalStats = { hp: 10000, atk: 1000, def: 500, em: opts.em ?? 0, er: 1, critRate: 0.05, critDmg: 0.5, baseAtk: 1000, baseHp: 10000, baseDef: 500, ...opts.stats };
   const host: ReactionHost = {
     characters: opts.chars ?? [],
     lunarCharged: opts.lunar ?? false,
