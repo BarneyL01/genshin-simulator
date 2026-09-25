@@ -16,6 +16,21 @@ Entry format:
 
 ---
 
+## 2026-09-25 — M1 skeleton complete
+
+- Milestone: M1 (Skeleton) — complete
+- Done:
+  - Vite + React + Tailwind 4 + TypeScript strict app shell (`src/ui/App.tsx`), Web Worker stub (`src/worker/sim.worker.ts`), engine package with execution profiles (`src/engine/profiles.ts`; ESLint forbids React/UI imports in `src/engine/`).
+  - zod schemas in `src/schema/` for character, weapon, artifact set, team, enemy, meta, roster and the Effect DSL (stat keys enforced by regex; fractions guarded against whole-number percentages).
+  - `scripts/kb-validate.ts` (schema, filename = id, duplicate ids, cross-references, `needsHook` without hooks), `scripts/kb-index.ts` (index.json, meta counts, coverage report).
+  - Empty `kb/` layout, `kb/meta.json`, `kb/CHANGELOG.md`; GitHub Actions CI (lint, typecheck, kb:validate, test, build; `BASE_PATH` set for Pages).
+- KB changes: none (empty KB; layout only).
+- Tests / validation: `npm run lint` clean; `npm run typecheck` clean; `npm run kb:validate` ok (0 records); `npm run kb:index` ok; `npm test` 9/9 pass; `npm run build` ok.
+- Blockers: KQM/Game8/GameWith still blocked in the cloud environment. GitHub Pages deploy workflow not added (CI only builds); enable Pages and add a deploy job when ready.
+- Next: M2 engine core (stat resolver, damage formula, buff manager, action scheduler).
+
+---
+
 ## 2026-09-25 — Team modes decided (M0 complete)
 
 - Milestone: M0 (Planning) — complete

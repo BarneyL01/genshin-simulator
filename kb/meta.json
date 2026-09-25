@@ -1,0 +1,32 @@
+{
+  "gameVersion": "7.1",
+  "lastSync": null,
+  "sources": {
+    "genshin-db": {
+      "status": "ok",
+      "lastChecked": "2026-09-25"
+    },
+    "gcsim": {
+      "status": "ok",
+      "lastChecked": "2026-09-25"
+    },
+    "keqingmains": {
+      "status": "blocked",
+      "lastChecked": "2026-09-25"
+    },
+    "game8": {
+      "status": "blocked",
+      "lastChecked": "2026-09-25"
+    },
+    "gamewith": {
+      "status": "blocked",
+      "lastChecked": "2026-09-25"
+    }
+  },
+  "counts": {
+    "characters": 0,
+    "weapons": 0,
+    "artifacts": 0,
+    "teams": 0
+  }
+}

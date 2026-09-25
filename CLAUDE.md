@@ -15,9 +15,9 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestone **M0 (planning) complete**; next is **M1 (skeleton)**. No application code or KB data exists yet. Build commands below are the target once M1 is done.
+Milestone **M1 (skeleton) complete**; next is **M2 (engine core)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
 
-## Commands (target, from M1)
+## Commands
 
 ```bash
 npm install
