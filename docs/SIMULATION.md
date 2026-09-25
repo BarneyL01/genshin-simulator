@@ -21,6 +21,20 @@ This describes what the engine in `src/engine/` computes. Simplifications are li
 
 Off-field damage (e.g. Xiangling Pyronado, Oz) is modelled as scheduled hits owned by the summon/state, tied to its duration and tick interval.
 
+## Execution profile (latency)
+
+The user plays with ~300 ms ping and cannot hit frame-perfect cancels. The engine adds a fixed delay so results are consistent between teams:
+
+- After each action becomes cancellable (the KB cancel frame for the next action), the next action starts `actionDelay` frames later.
+- Swaps add `swapDelay` frames on top of the 1 s swap cooldown rule.
+- Hitmarks, buff durations, and cooldowns are not changed; only when the next input starts.
+- Profiles: Frame-perfect (0/0), Relaxed (default, 18/18 frames = 300 ms), Custom.
+- The delay is deterministic (no randomness), so repeated runs give identical numbers.
+- This is a modelling choice, not a model of network behaviour: the game's actual response to ping is not simulated. It penalises rotations in proportion to their number of inputs, which is the practical effect the user described.
+- Every result also shows the Frame-perfect DPS so the delay cost is visible.
+
+Rotations defined by duration (e.g. "N1 spam for the remaining burst duration") fit fewer attacks when delay is added; the script's `repeat: "untilBuffEnds:<effectId>"` form handles this automatically.
+
 ## Stats
 
 Final stat = (base + weapon base ATK) × (1 + %) + flat, per the standard formula. Artifact default:

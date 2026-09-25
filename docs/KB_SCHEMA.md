@@ -96,6 +96,8 @@ The zod schemas in `src/schema/` (created in M1) are the source of truth. This d
   "releaseVersion": "2.1",
   "baseAtk": { "lv90": 608 },
   "substat": { "stat": "er", "lv90": 0.551 },
+  "obtain": { "method": "gacha", "freeRefinement": null },   // method: gacha | craft | event | battlepass | shop | chest
+                                                            // freeRefinement: highest refinement obtainable free (e.g. 5 for an event weapon), null otherwise
   "passive": {
     "name": "Timeless Dream: Eternal Stove",
     "text": "...",
@@ -104,6 +106,40 @@ The zod schemas in `src/schema/` (created in M1) are the source of truth. This d
   "assumptions": [ "Passive ER buff assumed to trigger on every burst" ],
   "provenance": {},
   "dataConfidence": "high"
+}
+```
+
+Example of an event weapon (numbers from genshin-db 5.2.14):
+
+```jsonc
+{
+  "id": "silver-light", "name": "Silver Light", "type": "sword", "rarity": 4, "releaseVersion": "7.1",
+  "baseAtk": { "lv90": 509.61 }, "substat": { "stat": "atk%", "lv90": 0.4135 },
+  "obtain": { "method": "event", "freeRefinement": 5, "event": "Silverwing in Pursuit of the Moon" },
+  "passive": { "effects": [ { "id": "silver-light.em", "trigger": { "on": "onSkill" }, "target": "self",
+      "stat": "em", "value": { "perRefinement": [52, 65, 78, 91, 104] },
+      "duration": 720, "maxStacks": 2, "stackMode": "independent" } ] },
+  "dataConfidence": "medium"
+}
+```
+
+## Frame data provenance
+
+Frame blocks (`frames`) carry their own source because they often come from gcsim while multipliers come from genshin-db:
+
+```jsonc
+"frames": { "hitmark": 14, "cancel": { "attack": 18, "skill": 14, "burst": 14, "dash": 14, "swap": 24 },
+            "source": { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/<commit>/internal/characters/raiden/attack.go", "commit": "<hash>" } }
+```
+
+## Roster (browser storage / export JSON, not part of KB)
+
+```jsonc
+{
+  "version": 1,
+  "characters": { "raiden-shogun": { "owned": true, "constellation": 0, "talents": [9, 9, 9], "level": 90 } },
+  "weapons": { "silver-light": { "owned": true, "refinement": 5 } },
+  "settings": { "executionProfile": "relaxed", "actionDelay": 18, "swapDelay": 18, "assumeAllWeapons": false }
 }
 ```
 

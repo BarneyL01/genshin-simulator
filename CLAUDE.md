@@ -34,7 +34,10 @@ npm run lint && npm run typecheck
 ### Runtime
 - The web app must work with no network access to any LLM or API. KB is bundled JSON.
 - `src/engine/` has no DOM or React imports; it runs in a Web Worker and in Vitest.
-- Default assumptions: all characters C0, weapon refinement per `docs/OPEN_QUESTIONS.md` #1, Lv 90, talents 9/9/9 (configurable).
+- Default assumptions: all characters C0, all weapons R1 (user sets R1–R5 per weapon; event weapons show an "R5 obtainable" hint), Lv 90, talents 9/9/9. All configurable.
+- Roster is entered manually with tick boxes; no UID/account import.
+- Default execution profile is "Relaxed": a fixed 18-frame (300 ms) delay after each cancel and swap, deterministic. Frame-perfect DPS is always shown alongside. See `docs/SIMULATION.md`.
+- The simulator is our own TypeScript engine. gcsim is a numbers reference only (AGPL-3.0): never copy its code.
 
 ### Knowledge base
 - Edit KB only through the skills (or following their steps). Do not hand-invent numbers.
@@ -65,7 +68,7 @@ npm run lint && npm run typecheck
 | `/kb-update-teams [character]` | Refresh best teams and rotations from KQM, Game8, GameWith. |
 | `/kb-validate` | Run schema/reference checks and golden tests; fix or report failures. |
 
-Sources: KeqingMains, Game8, GameWith (see `docs/DATA_SOURCES.md`). In the Claude Code cloud environment these domains were blocked on 2026-09-25; they must be added to the environment's allowed domains, or the skills run locally.
+Sources: genshin-db (numbers) and gcsim (frames) are reachable from the cloud environment. KeqingMains, Game8 and GameWith (teams, rotations, builds) were blocked on 2026-09-25; add them to the environment's allowed domains, or run the skills locally. See `docs/DATA_SOURCES.md`.
 
 ## Git
 - Commit KB syncs separately from code changes. Commit message prefix: `kb:`, `engine:`, `ui:`, `docs:`, `build:`.

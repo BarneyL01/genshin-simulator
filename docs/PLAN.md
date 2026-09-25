@@ -18,7 +18,10 @@ Constraints:
 | Runs without an LLM | All logic is deterministic TypeScript. The KB is static JSON bundled into the site. |
 | KB kept current by an LLM agent | Update procedures live as Claude Code skills in `.claude/skills/`. |
 | Everyone is C0 unless specified | Constellation defaults to 0 in the roster; C1–C6 effects are stored in the KB and only applied when set. |
-| Sources: KeqingMains, Game8, GameWith | Each KB record stores provenance (source URL, retrieval date, game version). |
+| Weapons default to R1 | Roster has a refinement selector (R1–R5) per owned weapon. Event/free weapons (e.g. 7.1 "Silver Light") show a hint that R5 is obtainable. |
+| Roster entered manually | Tick boxes per character and weapon; no UID import. |
+| User plays with ~300 ms ping | Default "Relaxed" execution profile adds a fixed, deterministic delay to every action (see §4 and `docs/SIMULATION.md`). |
+| Sources: KeqingMains, Game8, GameWith, plus genshin-db and gcsim for exact numbers and timing | Each KB record stores provenance (source URL, retrieval date, game version). |
 
 ## 2. Architecture
 
@@ -122,6 +125,15 @@ Details: `docs/SIMULATION.md`. Summary:
 - Buff manager tracks start/end frames, stacks and snapshot vs. dynamic behaviour. Output feeds the timeline view.
 - Elemental gauge and aura decay with standard ICD (3 hits / 2.5 s) and per-KB overrides. Reactions: amplifying, transformative, additive (quicken), and KB-defined newer reactions.
 - Energy: particle generation + flat energy, ER requirement reported per character ("needs 180% ER to burst every rotation").
+- Execution profile (user setting, applied to every character the same way so results stay comparable):
+
+  | Profile | Extra delay after each action's cancel frame | Swap | Use |
+  |---|---|---|---|
+  | Frame-perfect | 0 | 0 | Theoretical ceiling; matches published calcs |
+  | Relaxed (default) | 18 frames (300 ms) | +18 frames | Matches a player on ~300 ms ping |
+  | Custom | user value | user value | |
+
+  Results show Relaxed DPS and Frame-perfect DPS side by side so the cost of the delay is visible per team. Teams with many short actions (e.g. swap-heavy rotations) lose more under Relaxed; this is reported, not hidden.
 - Stats: KQM Standards (KQMS) style artifact assumption by default — fixed main stats by role plus a fixed pool of liquid substats, auto-distributed to maximise the character's damage subject to ER requirement. User can override with manual stats.
 - Enemy: default level-100 enemy with 10% all RES; selectable presets.
 
@@ -135,13 +147,20 @@ Details: `docs/SIMULATION.md`. Summary:
 | Hit log | Every damage instance: time, attacker, talent, element, reaction, buffs applied, damage. |
 | Assumptions | Which KB records are low confidence, which hooks are unimplemented, which effects were skipped. |
 
-## 5. Team finding and weapon comparison
+## 5. Roster
+
+- Character grid: tick box "owned", constellation dropdown (C0 default), talent levels (9/9/9 default).
+- Weapon grid: filtered by type; tick box "owned", refinement dropdown (R1 default). Event weapons show "R5 free via event" hint from KB `obtain` data.
+- "Assume I own every weapon" toggle for theory-crafting.
+- Stored in `localStorage`; JSON export/import for backup.
+
+## 6. Team finding and weapon comparison
 
 - **Team finder**: from the owned roster, generate candidate teams by (1) matching KB team archetypes whose required members are owned (substitutions allowed), then (2) optionally enumerating teams that contain a chosen "anchor" character, pruned by element/role rules (max 1 on-field driver unless the archetype allows, elemental pair requirements). Simulate each; rank by team DPS. Full brute force over all C(n,4) teams is avoided because the count is large (100 characters → ~3.9 million teams).
 - **Weapon comparer**: for one character in one team, simulate with every owned (or every KB) weapon of that type at chosen refinements; report DPS delta vs. a baseline weapon and the ER-requirement change. New weapons are simulated from their structured passive, so a result is available without community test data; the result is flagged with the weapon's `dataConfidence` and the list of passive conditions that were assumed (e.g. "stacks assumed at max after 2 s").
 - **Sensitivity**: show result with passive conditions at best case and worst case so the user sees the range when uptime is uncertain.
 
-## 6. Accuracy and verification
+## 7. Accuracy and verification
 
 | Check | Method |
 |---|---|
@@ -152,7 +171,7 @@ Details: `docs/SIMULATION.md`. Summary:
 
 Every KB sync runs `kb:validate` and the golden tests before commit.
 
-## 7. Milestones
+## 8. Milestones
 
 | # | Milestone | Deliverables | Exit criteria |
 |---|---|---|---|
@@ -166,16 +185,18 @@ Every KB sync runs `kb:validate` and the golden tests before commit.
 | M7 | Full KB | All released characters, weapons, sets (via `/kb-sync-patch`) | `kb:validate` clean; coverage report 100% or hooks listed. |
 | M8 | Maintenance | Patch-day workflow tested end to end | New patch ingested by an agent with no code changes other than hooks. |
 
-## 8. Risks
+## 9. Risks
 
 | Risk | Mitigation |
 |---|---|
 | Source sites block scraping or change layout | Skills describe what to extract, not HTML selectors; agent reads pages. Record failures in `kb/meta.json`. |
 | Source sites disagree | Priority order and conflict notes in `docs/DATA_SOURCES.md`; record both values with provenance. |
-| Guide sites lack exact numbers (frames, ICD, multipliers) | Allow supplementary datamine/wiki sources for numeric fields (needs user approval — see open questions). |
+| Guide sites lack exact numbers (frames, ICD, multipliers) | Approved supplementary sources: genshin-db (stats, multipliers, passive values) and gcsim (frames, ICD, particles). See `docs/DATA_SOURCES.md`. |
+| gcsim is AGPL-3.0 since 2026-09-19 | Read it for numbers only; never copy its code into this repo. |
+| gcsim lags on newest characters (no Vesna, Vodyanitsa, Alyosha as of 2026-09-23) | Frames from KQM when available, else estimated with `dataConfidence: low`, flagged in results. |
 | Unique mechanics not expressible in DSL | Named hooks with tests; validator lists missing hooks. |
 | Scope of a full combat sim | Ship a simplified model first (M2–M3), mark simplifications in the Assumptions view. |
 
-## 9. Open questions
+## 10. Open questions
 
 Tracked in `docs/OPEN_QUESTIONS.md`.

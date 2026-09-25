@@ -9,12 +9,12 @@ Orchestrates a full KB refresh. Read `CLAUDE.md`, `docs/DATA_SOURCES.md` and `do
 
 ## Steps
 
-1. **Check source access.** Fetch the home page of each source (KQM, Game8, GameWith). Update `kb/meta.json` → `sources.<site>.status` (`ok` / `blocked` / `changed`) and `lastChecked`. If all three are blocked, stop, log the blocker in `docs/PROGRESS_LOG.md`, and tell the user which domains to allow.
+1. **Check source access.** Fetch the home page of each source (KQM, Game8, GameWith), check `npm view genshin-db version` (and publish date), and `git ls-remote https://github.com/genshinsim/gcsim HEAD`. Update `kb/meta.json` → `sources.<site>.status` (`ok` / `blocked` / `changed`) and `lastChecked`. If genshin-db is reachable but the three guide sites are blocked, continue with numbers only (characters, weapons, sets) and skip `/kb-update-teams`; log it. If everything is blocked, stop, log the blocker in `docs/PROGRESS_LOG.md`, and tell the user which domains to allow.
 
-2. **Determine current version.** From Game8's version/banner pages (fallback: GameWith), get the live version number and release date. Only released content counts; ignore "upcoming" and leak pages.
+2. **Determine current version.** From Game8's version/banner pages (fallback: GameWith, then the highest `version` in genshin-db data), get the live version number and release date. If genshin-db's latest publish predates the patch, note that new entities may be missing and re-run later. Only released content counts; ignore "upcoming" and leak pages.
 
 3. **Build the diff.** Fetch the full lists:
-   - Characters list (Game8 "All Characters" list; cross-check GameWith).
+   - Characters list (genshin-db `characters("names", {matchCategories: true})`; cross-check Game8 "All Characters" and GameWith).
    - Weapons list per type.
    - Artifact sets list.
    Compare against `kb/characters/`, `kb/weapons/`, `kb/artifacts/`. Produce three lists: `new`, `changed` (release notes mention buffs/adjustments, or `provenance.gameVersion` older than the version where the entity was changed), `unchanged`.
