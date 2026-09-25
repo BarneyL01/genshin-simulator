@@ -16,6 +16,22 @@ Entry format:
 
 ---
 
+## 2026-09-25 — M2 engine core complete; sources re-checked
+
+- Milestone: M2 (Engine core) — complete
+- Source access (answered by user, verified): from a local session KeqingMains, library.keqingmains.com, GameWith, `game8.co` (not `www.`), gcsim raw files and npm all return 200. The earlier block applied to the cloud session only. `kb/meta.json`, `docs/DATA_SOURCES.md` and `CLAUDE.md` updated.
+- Done (`src/engine/`, no DOM/React):
+  - `stats.ts` stat resolver; `damage.ts` damage formula (DEF, piecewise RES, expected-value crit, flat/mv/base-multiplier modifiers); `buffs.ts` buff manager (refresh and independent stacking, Gantt-ready segment records, pure queries at any frame); `simulate.ts` action scheduler (cancel frames, execution profile delay, swap rules incl. 1 s swap cooldown, skill/burst cooldown waits, cycles 2..N measurement, Relaxed + Frame-perfect via `simulateBoth`); `kb.ts` builds engine input from a KB character + weapon (talent levels, constellations up to set level, weapon refinement).
+  - Effect handling: `always`, `onSkill/onBurst/onNormal/onCharged/onPlunge`, `onSwapIn/onSwapOut`; values from numbers, `perRefinement`, `perTalentLevel`, `scaling` from `self.<stat>`; targets self/team/teamExceptSelf/active/enemy. Skipped and reported in `assumptions`: hooks, `onHit/onReaction/custom` triggers, unsupported scaling sources; conditions are ignored and listed.
+  - Schema fix: `talents` is now a partial record (a character need not have every talent kind).
+- KB changes: none.
+- Tests / validation: lint clean, typecheck clean, `npm test` 30/30 (hand-computed stat, damage, scheduling, cooldown, swap, buff-window and KB-builder cases), `kb:validate` ok.
+- Known simplifications added by M2 (see `docs/SIMULATION.md`): effects trigger at action start; values are computed at application time (no dynamic re-scaling or snapshot distinction yet); `stackGroup` not enforced; no energy model, so burst energy cost is not checked (M3); enemy is stationary single-target; no reactions (M3).
+- Blockers: none. Note the repo has no KB data yet, so nothing exercises real characters until M4.
+- Next: M3 elements (aura/gauge, ICD, reactions, energy), then M4 seed KB via the skills now that KQM/Game8/GameWith are reachable locally.
+
+---
+
 ## 2026-09-25 — M1 skeleton complete
 
 - Milestone: M1 (Skeleton) — complete

@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestone **M1 (skeleton) complete**; next is **M2 (engine core)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
+Milestone **M2 (engine core) complete**; next is **M3 (elements: aura/gauge, ICD, reactions, energy)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
 
 ## Commands
 
@@ -69,7 +69,7 @@ npm run lint && npm run typecheck
 | `/kb-update-teams [character]` | Refresh best teams and rotations from KQM, Game8, GameWith. |
 | `/kb-validate` | Run schema/reference checks and golden tests; fix or report failures. |
 
-Sources: genshin-db (numbers) and gcsim (frames) are reachable from the cloud environment. KeqingMains, Game8 and GameWith (teams, rotations, builds) were blocked on 2026-09-25; add them to the environment's allowed domains, or run the skills locally. See `docs/DATA_SOURCES.md`.
+Sources: genshin-db (numbers) and gcsim (frames) are reachable from the cloud environment. KeqingMains, Game8 (use `game8.co`, not `www.`) and GameWith are reachable from a local session but were blocked in the cloud session on 2026-09-25; run the KB skills locally, or allow the domains in the cloud environment. See `docs/DATA_SOURCES.md`.
 
 ## Git
 - Commit KB syncs separately from code changes. Commit message prefix: `kb:`, `engine:`, `ui:`, `docs:`, `build:`.

@@ -42,7 +42,7 @@ export const character = z.object({
   roles: z.array(z.string()).default([]),
   baseStats: z.object({ lv90: stats, lv100: stats.nullable().default(null) }),
   ascensionStat: z.object({ stat: z.string(), value: fraction }),
-  talents: z.record(talentKind, talentBlock),
+  talents: z.partialRecord(talentKind, talentBlock),
   passives: z.array(z.object({ id: z.string(), unlock: z.string(), effects: z.array(effect) })).default([]),
   constellations: z
     .array(z.object({ level: z.number().int().min(1).max(6), effects: z.array(effect).default([]), text: z.string().optional() }))

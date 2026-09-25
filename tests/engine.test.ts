@@ -1,0 +1,199 @@
+import { describe, expect, it } from 'vitest';
+import {
+  BuffManager, EXECUTION_PROFILES, type ExecutionProfile, calcHitDamage, critFactor, defMultiplier, resMultiplier,
+  resolveStats, simulate, simulateBoth, sumMods,
+  type ActionDef, type CharacterInput, type EnemyInput, type HitDef,
+} from '../src/engine';
+import { effect } from '../src/schema';
+
+describe('stat resolver', () => {
+  it('(base + weapon) × (1 + %) + flat', () => {
+    const s = resolveStats(
+      { hp: 10000, atk: 1000, def: 500 },
+      500,
+      sumMods([
+        { stat: 'atk%', value: 0.3 }, { stat: 'atk%', value: 0.2 }, { stat: 'atk', value: 300 },
+        { stat: 'hp%', value: 0.466 }, { stat: 'er', value: 0.32 }, { stat: 'critRate', value: 0.3 }, { stat: 'em', value: 80 },
+      ]),
+    );
+    expect(s.atk).toBeCloseTo(1500 * 1.5 + 300); // 2550
+    expect(s.hp).toBeCloseTo(14660);
+    expect(s.def).toBe(500);
+    expect(s.er).toBeCloseTo(1.32);
+    expect(s.critRate).toBeCloseTo(0.35);
+    expect(s.critDmg).toBe(0.5);
+    expect(s.em).toBe(80);
+  });
+});
+
+describe('damage formula', () => {
+  it('DEF multiplier for Lv90 vs Lv100 is 190/390', () => {
+    expect(defMultiplier(90, 100)).toBeCloseTo(190 / 390);
+    expect(defMultiplier(90, 100, 0.2)).toBeCloseTo(190 / (190 + 200 * 0.8));
+  });
+  it('RES is piecewise', () => {
+    expect(resMultiplier(-0.2)).toBeCloseTo(1.1);
+    expect(resMultiplier(0.1)).toBeCloseTo(0.9);
+    expect(resMultiplier(0.9)).toBeCloseTo(1 / 4.6);
+  });
+  it('crit rate is capped at 100%', () => {
+    expect(critFactor(1.4, 2)).toBe(3);
+  });
+  it('full hit matches a hand calculation', () => {
+    const hit: HitDef = { frame: 0, mv: 2, scaling: 'atk', element: 'pyro', talent: 'skill' };
+    const mods = sumMods([{ stat: 'dmgBonus.pyro', value: 0.466 }, { stat: 'dmgBonus.skill', value: 0.2 }, { stat: 'critRate', value: 0.45 }, { stat: 'critDmg', value: 0.5 }]);
+    const stats = resolveStats({ hp: 1, atk: 1000, def: 1 }, 500, { ...mods, 'atk%': 0.5, atk: 300 });
+    const dmg = calcHitDamage({ hit, stats, mods: { ...mods, 'res.enemy.pyro': -0.2 }, charLevel: 90, enemyLevel: 100, enemyRes: { pyro: 0.1 } });
+    // atk 2550; (2×2550) × (1+0.666) × (1 + 0.5×1.0) × 190/390 × (1 − (0.1 − 0.2)/2), i.e. 1.05 for negative RES
+    expect(dmg).toBeCloseTo(5100 * 1.666 * 1.5 * (190 / 390) * 1.05, 6);
+  });
+});
+
+describe('buff manager', () => {
+  const spec = (over = {}) => ({ effectId: 'e', source: 'a', target: 'a', stat: 'atk%', value: 0.1, duration: 100, maxStacks: 3, stackMode: 'refresh' as const, ...over });
+  it('refresh mode stacks and refreshes duration', () => {
+    const bm = new BuffManager();
+    bm.apply(spec(), 0);
+    bm.apply(spec(), 50);
+    expect(bm.modsFor('a', 40)['atk%']).toBeCloseTo(0.1);
+    expect(bm.modsFor('a', 60)['atk%']).toBeCloseTo(0.2);
+    expect(bm.modsFor('a', 149)['atk%']).toBeCloseTo(0.2);
+    expect(bm.modsFor('a', 150)['atk%']).toBeUndefined();
+    expect(bm.records.map((r) => [r.start, r.end, r.stacks])).toEqual([[0, 50, 1], [50, 150, 2]]);
+  });
+  it('independent mode keeps separate timers and drops the oldest at max stacks', () => {
+    const bm = new BuffManager();
+    const s = spec({ stackMode: 'independent', maxStacks: 2 });
+    bm.apply(s, 0);
+    bm.apply(s, 30);
+    bm.apply(s, 60);
+    expect(bm.modsFor('a', 70)['atk%']).toBeCloseTo(0.2);
+    expect(bm.modsFor('a', 110)['atk%']).toBeCloseTo(0.2); // first dropped at 60, second (30..130) and third (60..160)
+    expect(bm.modsFor('a', 140)['atk%']).toBeCloseTo(0.1);
+  });
+  it('"active" targets apply to any attacker; other targets do not', () => {
+    const bm = new BuffManager();
+    bm.apply(spec({ target: 'active' }), 0);
+    bm.apply(spec({ effectId: 'x', target: 'b', value: 0.5 }), 0);
+    expect(bm.modsFor('a', 1)['atk%']).toBeCloseTo(0.1);
+    expect(bm.modsFor('b', 1)['atk%']).toBeCloseTo(0.6);
+  });
+});
+
+const hitAt = (frame: number, mv: number, talent: HitDef['talent']): HitDef => ({ frame, mv, scaling: 'atk', element: 'physical', talent });
+const act = (talent: ActionDef['talent'], hits: HitDef[], cancel: number, cooldown?: number): ActionDef => ({ talent, hits, cancel: { default: cancel }, cooldown });
+const mkChar = (id: string, extra: Partial<CharacterInput> = {}): CharacterInput => ({
+  id, level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [], refinement: 1, talentLevel: 9, effects: [],
+  actions: {
+    n1: act('normal', [hitAt(10, 1, 'normal')], 20),
+    n2: act('normal', [hitAt(8, 1, 'normal')], 30),
+    skill: act('skill', [hitAt(15, 2, 'skill')], 40, 100),
+  },
+  ...extra,
+});
+const enemy: EnemyInput = { level: 90, res: {} };
+// Lv90 vs Lv90, 5% crit rate, 50% crit dmg, 0 RES: 1000 × 190/380 × 1.025 = 512.5 per 1.0 MV
+const PER_MV = 512.5;
+
+describe('scheduler', () => {
+  const rot = ['n1', 'n2', 'skill'].map((action) => ({ char: 'a', action }));
+  const run = (profile: ExecutionProfile, cycles = 1) => simulate({ characters: [mkChar('a')], enemy, rotation: rot, cycles, profile });
+
+  it('frame-perfect: each action starts at the previous cancel frame', () => {
+    const r = run(EXECUTION_PROFILES.framePerfect);
+    expect(r.actions.map((a) => a.start)).toEqual([0, 20, 50]);
+    expect(r.hits.map((h) => h.frame)).toEqual([10, 28, 65]);
+    expect(r.windowFrames).toBe(90);
+    expect(r.windowDamage).toBeCloseTo(PER_MV * (1 + 1 + 2));
+    expect(r.dps).toBeCloseTo((PER_MV * 4) / (90 / 60));
+  });
+
+  it('relaxed adds 18 frames after every action', () => {
+    const r = run(EXECUTION_PROFILES.relaxed);
+    expect(r.actions.map((a) => a.start)).toEqual([0, 38, 86]);
+    expect(r.windowFrames).toBe(86 + 40 + 18);
+  });
+
+  it('simulateBoth reports the delay cost', () => {
+    const { relaxed, framePerfect } = simulateBoth({ characters: [mkChar('a')], enemy, rotation: rot, cycles: 1 });
+    expect(relaxed.dps).toBeLessThan(framePerfect.dps);
+    expect(relaxed.windowDamage).toBeCloseTo(framePerfect.windowDamage);
+  });
+
+  it('swaps respect the 1 s swap cooldown', () => {
+    const r = simulate({
+      characters: [mkChar('a'), mkChar('b')], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'n1' }, { char: 'b', action: 'n1' }, { char: 'a', action: 'n1' }],
+    });
+    expect(r.actions.map((a) => a.start)).toEqual([0, 20, 80]);
+  });
+
+  it('waits for cooldowns and says so', () => {
+    const r = simulate({
+      characters: [mkChar('a')], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'skill' }, { char: 'a', action: 'skill' }],
+    });
+    expect(r.actions.map((a) => a.start)).toEqual([0, 100]);
+    expect(r.assumptions.some((a) => a.includes('cooldown'))).toBe(true);
+  });
+
+  it('measures cycles 2..N only', () => {
+    const one = run(EXECUTION_PROFILES.framePerfect, 1);
+    const three = run(EXECUTION_PROFILES.framePerfect, 3);
+    expect(three.actions.length).toBe(9);
+    // Cycle 2 starts at 90; its skill waits for the 100-frame cooldown (ready at 150), so each steady cycle is 100 frames.
+    expect(three.actions.filter((a) => a.action === 'skill').map((a) => a.start)).toEqual([50, 150, 250]);
+    expect(three.windowFrames).toBe(200);
+    expect(three.windowDamage).toBeCloseTo(one.windowDamage * 2);
+    expect(three.dps).toBeCloseTo((PER_MV * 8) / (200 / 60));
+  });
+});
+
+describe('effects in the simulation', () => {
+  const buff = effect.parse({
+    id: 'a.skill.bonus', trigger: { on: 'onSkill' }, target: 'self', stat: 'dmgBonus.all', value: 0.5, duration: 30,
+  });
+
+  it('applies triggered buffs at action start for their duration only', () => {
+    const r = simulate({
+      characters: [mkChar('a', { effects: [buff] })], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'skill' }, { char: 'a', action: 'n1' }],
+    });
+    expect(r.buffs).toHaveLength(1);
+    expect(r.buffs[0]).toMatchObject({ start: 0, end: 30, value: 0.5 });
+    const [skillHit, n1Hit] = r.hits;
+    expect(skillHit!.damage).toBeCloseTo(PER_MV * 2 * 1.5); // hit at frame 15: buffed
+    expect(n1Hit!.damage).toBeCloseTo(PER_MV); // hit at frame 50: expired
+  });
+
+  it('resolves refinement values and always-on effects; enemy shred stacks with base RES', () => {
+    const passive = effect.parse({
+      id: 'w.atk', trigger: { on: 'always' }, target: 'self', stat: 'atk%', value: { perRefinement: [0.1, 0.2, 0.3, 0.4, 0.5] },
+    });
+    const shred = effect.parse({
+      id: 'a.shred', trigger: { on: 'always' }, target: 'enemy', stat: 'res.enemy.physical', value: -0.2,
+    });
+    const r = simulate({
+      characters: [mkChar('a', { effects: [passive, shred], refinement: 5 })], enemy: { level: 90, res: { physical: 0.1 } },
+      cycles: 1, profile: EXECUTION_PROFILES.framePerfect, rotation: [{ char: 'a', action: 'n1' }],
+    });
+    // atk 1000 × 1.5, RES 0.1 − 0.2 = −0.1 → ×1.05
+    expect(r.hits[0]!.damage).toBeCloseTo(1500 * 0.5 * 1.025 * 1.05);
+  });
+
+  it('skips effects that need unimplemented hooks and reports them', () => {
+    const hooked = effect.parse({ id: 'x.hook', trigger: { on: 'always' }, target: 'self', stat: 'atk%', value: 0.5, hook: 'x.hook' });
+    const r = simulate({
+      characters: [mkChar('a', { effects: [hooked] })], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
+      rotation: [{ char: 'a', action: 'n1' }],
+    });
+    expect(r.buffs).toHaveLength(0);
+    expect(r.assumptions[0]).toContain('hook "x.hook" not implemented');
+  });
+
+  it('errors on unknown actions', () => {
+    expect(() =>
+      simulate({ characters: [mkChar('a')], enemy, cycles: 1, profile: EXECUTION_PROFILES.relaxed, rotation: [{ char: 'a', action: 'burst' }] }),
+    ).toThrow(/no action "burst"/);
+  });
+});

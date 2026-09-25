@@ -82,3 +82,11 @@ dmg = (MV × scalingStat + flatDmg) × baseDmgMultiplier
 - Single target, stationary enemy, no enemy attacks, no shields broken, no HP loss unless an effect requires it (then assumed per KB `assumption`).
 - Human-reaction delays not modelled beyond cancel frames.
 - Movement and particle travel time approximated by fixed delay from KB constants.
+
+## Implemented in M2
+
+- Hits are evaluated after the whole schedule is built, each at its own frame against the buff timeline.
+- Action start = previous action start + its cancel frame for the next action's kind (`normal`, `skill`, `burst`, `swap`, else `default`) + `actionDelay`; on a character change, plus `swapDelay` and never earlier than 60 frames after the previous swap.
+- Skill/burst cooldowns start at the action's start frame; a too-early repeat waits and is reported in the result's `assumptions`.
+- Negative RES is halved (`res < 0 → 1 − res/2`); RES shred effects use stat `res.enemy.<element>` with negative values.
+- `scaling` on an effect replaces `value`: `value = base + ratio × stat`, capped at `cap`; only `self.<stat>` sources are supported so far.

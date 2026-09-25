@@ -49,5 +49,6 @@ Where gcsim frames live: `internal/characters/<name>/attack.go`, `charge.go`, `s
 | Date | Environment | keqingmains.com | game8.co | gamewith.net | genshin-db (npm) | gcsim (git / raw.githubusercontent) | Fandom wiki |
 |---|---|---|---|---|---|---|---|
 | 2026-09-25 | Claude Code cloud session | Blocked | Blocked | Blocked | OK | OK (github.com web/API 403; git clone and raw files work) | Blocked |
+| 2026-09-25 | Local Claude Code (user machine) | OK (+ library.keqingmains.com) | OK (`game8.co` only; `www.game8.co` does not resolve) | OK | OK | OK | not checked |
 
 To allow them in a cloud session, add the three domains (plus `library.keqingmains.com`) to the environment's allowed network domains, or run the skills from a local Claude Code install.
