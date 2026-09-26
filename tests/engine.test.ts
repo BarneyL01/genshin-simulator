@@ -75,8 +75,9 @@ describe('buff manager', () => {
     const bm = new BuffManager();
     bm.apply(spec({ target: 'active' }), 0);
     bm.apply(spec({ effectId: 'x', target: 'b', value: 0.5 }), 0);
-    expect(bm.modsFor('a', 1)['atk%']).toBeCloseTo(0.1);
-    expect(bm.modsFor('b', 1)['atk%']).toBeCloseTo(0.6);
+    expect(bm.modsFor('a', 1, true)['atk%']).toBeCloseTo(0.1);
+    expect(bm.modsFor('a', 1, false)['atk%']).toBeUndefined(); // off-field: "active" buffs do not apply
+    expect(bm.modsFor('b', 1, true)['atk%']).toBeCloseTo(0.6);
   });
 });
 

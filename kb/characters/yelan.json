@@ -1,0 +1,607 @@
+{
+  "id": "yelan",
+  "name": "Yelan",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Skill and burst damage scale with Max HP (hits use scaling \"hp\").",
+    "Exquisite Throw, the A4 damage ramp and the A1 Max HP bonus run through hook \"yelan\" (src/engine/hooks/yelan.ts, tested in tests/hooks.test.ts). A4 applies only while the attacker is on the field.",
+    "Only the skill press is modelled (no hold, no Breakthrough Barb / aimed shots, no plunge). C1 extra charge is not modelled.",
+    "Yelan's normal attacks are physical arrows; they land 10 frames after release.",
+    "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "bow",
+  "releaseVersion": "2.7",
+  "roles": [
+    "sub-dps",
+    "off-field-dps",
+    "buffer"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 14450.174906400001,
+      "atk": 243.96194960000003,
+      "def": 547.97926581
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.40678,
+            0.43989,
+            0.473,
+            0.5203,
+            0.55341,
+            0.59125,
+            0.64328,
+            0.69531,
+            0.74734,
+            0.8041,
+            0.86086,
+            0.91762,
+            0.97438,
+            1.03114,
+            1.0879
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "default": 15,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.39044,
+            0.42222,
+            0.454,
+            0.4994,
+            0.53118,
+            0.5675,
+            0.61744,
+            0.66738,
+            0.71732,
+            0.7718,
+            0.82628,
+            0.88076,
+            0.93524,
+            0.98972,
+            1.0442
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "default": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.516,
+            0.558,
+            0.6,
+            0.66,
+            0.702,
+            0.75,
+            0.816,
+            0.882,
+            0.948,
+            1.02,
+            1.092,
+            1.164,
+            1.236,
+            1.308,
+            1.38
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "default": 38,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.32508,
+            0.35154,
+            0.378,
+            0.4158,
+            0.44226,
+            0.4725,
+            0.51408,
+            0.55566,
+            0.59724,
+            0.6426,
+            0.68796,
+            0.73332,
+            0.77868,
+            0.82404,
+            0.8694
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "default": 67,
+              "skill": 29,
+              "burst": 29,
+              "dash": 29,
+              "jump": 29,
+              "swap": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            39
+          ],
+          "extraMv": [
+            [
+              0.32508,
+              0.35154,
+              0.378,
+              0.4158,
+              0.44226,
+              0.4725,
+              0.51408,
+              0.55566,
+              0.59724,
+              0.6426,
+              0.68796,
+              0.73332,
+              0.77868,
+              0.82404,
+              0.8694
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Lingering Lifeline",
+          "mv": [
+            0.226136,
+            0.243096,
+            0.260056,
+            0.28267,
+            0.29963,
+            0.31659,
+            0.339204,
+            0.361818,
+            0.384431,
+            0.407045,
+            0.429658,
+            0.452272,
+            0.480539,
+            0.508806,
+            0.537073
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "default": 42,
+              "burst": 41,
+              "dash": 41,
+              "jump": 41,
+              "swap": 40
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 18,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Depth-Clarion Dice",
+          "mv": [
+            0.07308,
+            0.078561,
+            0.084042,
+            0.09135,
+            0.096831,
+            0.102312,
+            0.10962,
+            0.116928,
+            0.124236,
+            0.131544,
+            0.138852,
+            0.14616,
+            0.155295,
+            0.16443,
+            0.173565
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 76,
+            "cancel": {
+              "default": 93,
+              "skill": 92,
+              "jump": 91,
+              "swap": 90
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "yelan.a1",
+      "unlock": "a1",
+      "effects": []
+    },
+    {
+      "id": "yelan.a4",
+      "unlock": "a4",
+      "effects": []
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Lingering Lifeline gains 1 additional charge."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "yelan.c2",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "yelan"
+        }
+      ],
+      "text": "Exquisite Throw fires an additional arrow worth 14% of Yelan's Max HP as Hydro DMG (once per 1.8 s)."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Depth-Clarion Dice by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "yelan.c4.hp",
+          "trigger": {
+            "on": "onSkill"
+          },
+          "target": "team",
+          "stat": "hp%",
+          "value": 0.1,
+          "delay": 36,
+          "duration": 1500,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Single-target sim: one enemy marked, +10% Max HP for 25 s."
+        }
+      ],
+      "text": "All party members' Max HP +10% for 25 s per enemy marked by Lifeline (max 40%)."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Lingering Lifeline by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "yelan.c6",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "yelan.c6",
+          "assumption": "Needs a hook and the Breakthrough Barb action; not modelled."
+        }
+      ],
+      "text": "After the burst, Yelan enters Mastermind: her normal attacks are Breakthrough Barbs (156% damage, Charged Attack DMG) for 5 arrows / 20 s."
+    }
+  ],
+  "effects": [
+    {
+      "id": "yelan.a1-hp",
+      "trigger": {
+        "on": "always",
+        "filter": {
+          "1": "0.06",
+          "2": "0.12",
+          "3": "0.18",
+          "4": "0.3"
+        }
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "yelan",
+      "assumption": "Max HP bonus by number of elemental types among the four party members (6/12/18/30%)."
+    },
+    {
+      "id": "yelan.burst.state",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "delay": 76,
+      "duration": 900,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "yelan"
+    },
+    {
+      "id": "yelan.burst.wave",
+      "trigger": {
+        "on": "onAnyNormal"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "yelan",
+      "assumption": "While Depth-Clarion Dice is up, any team member starting a normal attack fires an Exquisite Throw (max one per 60 frames, 3 arrows landing 20/26/32 frames later)."
+    },
+    {
+      "id": "yelan.burst.skill",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "delay": 36,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "yelan"
+    }
+  ],
+  "extraActions": {},
+  "hookHits": {
+    "exquisite-throw": {
+      "name": "Exquisite Throw",
+      "mv": [
+        0.04872,
+        0.052374,
+        0.056028,
+        0.0609,
+        0.064554,
+        0.068208,
+        0.07308,
+        0.077952,
+        0.082824,
+        0.087696,
+        0.092568,
+        0.09744,
+        0.10353,
+        0.10962,
+        0.11571
+      ],
+      "scaling": "hp",
+      "element": "hydro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "yelanBurst",
+        "group": "yelanBurst"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    },
+    "exquisite-throw-c2": {
+      "name": "Exquisite Throw (C2)",
+      "mv": [
+        0
+      ],
+      "scaling": "hp",
+      "element": "hydro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yelan/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    }
+  },
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "burst"
+        },
+        {
+          "action": "skill"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": []
+  },
+  "hooks": [
+    "yelan",
+    "yelan.c6"
+  ],
+  "needsHook": true
+}

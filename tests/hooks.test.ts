@@ -192,3 +192,65 @@ describe('hutao hook', () => {
     expect(withC2.damage / base.damage).toBeCloseTo(2, 6);
   });
 });
+
+describe('yelan hook', () => {
+  const Y = (id: string, trigger: string, extra: Record<string, unknown> = {}) =>
+    effect.parse({ id, trigger: { on: trigger }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'yelan', ...extra });
+  const yelan = (extra: CharacterInput['effects'] = []) =>
+    mk('yelan', {
+      element: 'hydro',
+      actions: { burst: act('burst', [], 30, { energyCost: 0 }), skill: act('skill', [hit(5, 'hydro', 'skill')], 20) },
+      hookHits: {
+        'exquisite-throw': { frame: 0, mv: 1, scaling: 'hp', element: 'hydro', talent: 'burst', gauge: 1, icd: { tag: 'yelanBurst', group: 'yelanBurst' } },
+        'exquisite-throw-c2': { frame: 0, mv: 0, scaling: 'hp', element: 'hydro', talent: 'burst', gauge: 1, icd: { tag: 'none', group: 'none' } },
+      },
+      effects: [
+        Y('yelan.a1-hp', 'always', { trigger: { on: 'always', filter: { '1': '0.06', '2': '0.12', '3': '0.18', '4': '0.3' } } }),
+        Y('yelan.burst.state', 'onBurst', { delay: 10, duration: 300 }),
+        Y('yelan.burst.wave', 'onAnyNormal'),
+        Y('yelan.burst.skill', 'onSkill', { delay: 5 }),
+        ...extra,
+      ],
+    });
+  const dps = mk('dps', { element: 'pyro', actions: { n1: act('normal', [hit(5)], 20) } });
+  const run = (chars: CharacterInput[], rotation: Array<[string, string]>) =>
+    simulate({ characters: chars, enemy, cycles: 1, profile: fp, startEnergy: 'empty', rotation: rotation.map(([char, action]) => ({ char, action })) });
+
+  it('A1: Max HP by number of elemental types', () => {
+    const one = run([yelan(), mk('h', { element: 'hydro' })], [['yelan', 'skill']]);
+    const four = run([yelan(), mk('p', { element: 'pyro' }), mk('e', { element: 'electro' }), mk('c', { element: 'cryo' })], [['yelan', 'skill']]);
+    const hp = (r: ReturnType<typeof run>) => r.buffs.find((b) => b.effectId === 'yelan.a1-hp')?.value;
+    expect(hp(one)).toBeCloseTo(0.06); // hydro + hydro: one elemental type
+    expect(hp(four)).toBeCloseTo(0.3); // hydro, pyro, electro, cryo: four types
+  });
+
+  it('waves: 3 arrows 20/26/32 frames after a normal attack, at most one per 60 frames, only inside the window', () => {
+    const r = run([yelan(), dps], [['yelan', 'burst'], ...Array.from({ length: 6 }, () => ['dps', 'n1'] as [string, string])]);
+    const arrows = r.hits.filter((h) => h.action === 'exquisite-throw').map((h) => h.frame);
+    // burst at 0 (window opens at 10); dps.n1 starts 30, 50, 70, 90, ...; waves at 30 and 90
+    expect(arrows.slice(0, 6)).toEqual([50, 56, 62, 110, 116, 122]);
+  });
+
+  it('A4 ramps +1%, then +3.5% per second up to 50%, for the active attacker only', () => {
+    const r = run([yelan(), dps], [['yelan', 'burst'], ['dps', 'n1']]);
+    const ramp = r.buffs.filter((b) => b.effectId.startsWith('yelan.a4.'));
+    expect(ramp[0]!.value).toBeCloseTo(0.01);
+    expect(ramp[1]!.value).toBeCloseTo(0.035);
+    expect(ramp.length).toBe(5); // 300-frame window: seconds 0..4
+    expect(ramp.every((b) => b.target === 'active')).toBe(true);
+    // Yelan's own off-field arrows do not get the bonus: same MV/scaling as a bonus-free hit
+    const arrow = r.hits.find((h) => h.action === 'exquisite-throw')!;
+    const noA4 = run([yelan(), dps], [['yelan', 'burst'], ['dps', 'n1']]).hits.find((h) => h.action === 'exquisite-throw')!;
+    expect(arrow.damage).toBeCloseTo(noA4.damage);
+    const dpsHit = r.hits.find((h) => h.char === 'dps' && h.action === 'n1')!;
+    expect(dpsHit.damage).toBeGreaterThan(0);
+  });
+
+  it('C2: extra 14% HP arrow at most once per 108 frames', () => {
+    const c2 = Y('yelan.c2', 'always');
+    const r = run([yelan([c2]), dps], [['yelan', 'burst'], ...Array.from({ length: 8 }, () => ['dps', 'n1'] as [string, string])]);
+    const extras = r.hits.filter((h) => h.action === 'exquisite-throw-c2').map((h) => h.frame);
+    expect(extras.length).toBeGreaterThan(0);
+    expect(extras.every((f, i) => i === 0 || f - extras[i - 1]! >= 108)).toBe(true);
+  });
+});

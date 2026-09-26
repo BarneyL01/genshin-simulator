@@ -68,14 +68,19 @@ export function simulate(input: SimInput): SimResult {
   let resolving = false;
   let queueHit: (p: PendingHit) => void = () => undefined;
 
+  const activeAt = (frame: number): string | undefined => {
+    for (let i = actions.length - 1; i >= 0; i--) if (actions[i]!.start <= frame) return actions[i]!.char;
+    return undefined;
+  };
   /**
    * Stat modifiers for `c` at `frame`: base mods + static buffs, then dynamic-scaling buffs in
    * application order. A dynamic buff reads its owner's stats; for the owner itself that is the
    * accumulated mods so far (so effects can chain, but not depend on themselves).
    */
   const modsAt = (c: CharacterInput, frame: number, depth = 0): Record<string, number> => {
-    const mods = sumMods([...c.baseMods, ...Object.entries(bm.modsFor(c.id, frame)).map(([stat, value]) => ({ stat, value }))]);
-    for (const r of bm.dynamicFor(c.id, frame)) {
+    const isActive = activeAt(frame) === c.id;
+    const mods = sumMods([...c.baseMods, ...Object.entries(bm.modsFor(c.id, frame, isActive)).map(([stat, value]) => ({ stat, value }))]);
+    for (const r of bm.dynamicFor(c.id, frame, isActive)) {
       const d = r.dynamic!;
       const owner = byId.get(r.source);
       if (!owner) continue;
@@ -95,10 +100,6 @@ export function simulate(input: SimInput): SimResult {
     return { stats: resolveStats(c.base, c.weaponAtk, mods), mods };
   };
 
-  const activeAt = (frame: number): string | undefined => {
-    for (let i = actions.length - 1; i >= 0; i--) if (actions[i]!.start <= frame) return actions[i]!.char;
-    return undefined;
-  };
   const energy = new EnergyTracker(characters, activeAt, (c, f) => statsFor(c, f).stats.er, (input.startEnergy ?? 'full') === 'full');
 
   const hookState = new Map<string, Record<string, unknown>>();

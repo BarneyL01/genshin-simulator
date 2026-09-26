@@ -43,19 +43,23 @@ export class BuffManager {
     }
   }
 
-  /** Sum of active stat values (value × stacks) affecting `char` at `frame`, keyed by stat. */
-  modsFor(char: string, frame: number): Record<string, number> {
+  /**
+   * Sum of active stat values (value × stacks) affecting `char` at `frame`, keyed by stat.
+   * Records targeting "active" apply only when `char` is the on-field character (`isActive`).
+   */
+  modsFor(char: string, frame: number, isActive = false): Record<string, number> {
     const out: Record<string, number> = {};
     for (const r of this.records) {
-      if ((r.target !== char && r.target !== 'active') || r.dynamic || !this.isLive(r, frame)) continue;
+      if (r.target !== char && !(r.target === 'active' && isActive)) continue;
+      if (r.dynamic || !this.isLive(r, frame)) continue;
       out[r.stat] = (out[r.stat] ?? 0) + r.value * r.stacks;
     }
     return out;
   }
 
   /** Active dynamic-scaling records affecting `char` at `frame`, in application order. */
-  dynamicFor(char: string, frame: number): BuffRecord[] {
-    return this.records.filter((r) => (r.target === char || r.target === 'active') && r.dynamic && this.isLive(r, frame));
+  dynamicFor(char: string, frame: number, isActive = false): BuffRecord[] {
+    return this.records.filter((r) => (r.target === char || (r.target === 'active' && isActive)) && r.dynamic && this.isLive(r, frame));
   }
 
   /** Debuffs on the enemy (res shred etc.) at `frame`. */

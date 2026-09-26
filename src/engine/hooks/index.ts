@@ -4,3 +4,4 @@ import './favonius';
 import './xingqiu';
 import './raiden';
 import './hutao';
+import './yelan';
