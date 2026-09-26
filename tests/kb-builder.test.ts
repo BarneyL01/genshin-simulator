@@ -52,7 +52,7 @@ describe('buildCharacterInput', () => {
   });
 
   it('simulates end to end with hand-checkable numbers', () => {
-    const c = buildCharacterInput(char, { weapon: sword, refinement: 3 });
+    const c = buildCharacterInput(char, { weapon: sword, refinement: 3, talentLevels: [9, 9, 9] });
     const r = simulate({
       characters: [c], enemy: { level: 100, res: { pyro: 0.1 } }, cycles: 1, profile: EXECUTION_PROFILES.framePerfect,
       rotation: [{ char: 'test-pyro', action: 'skill' }],

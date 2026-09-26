@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { KbData, TeamRun } from '../kb';
+import type { KbData, SavedTeam, TeamRun } from '../kb';
 import { buildCustomRotation } from '../kb/custom';
 import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
@@ -8,7 +8,15 @@ import { Button, Section } from './Common';
 import { nameOf } from './format';
 import { ResultView } from './ResultView';
 
-export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
+interface SavedApi {
+  teams: SavedTeam[];
+  save: (t: SavedTeam) => void;
+  remove: (id: string) => void;
+}
+
+export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; saved: SavedApi }) {
+  const [name, setName] = useState('');
+  const [currentId, setCurrentId] = useState('');
   const owned = useMemo(() => [...kb.characters.values()].filter((c) => roster.characters[c.id]?.owned).sort((a, b) => a.name.localeCompare(b.name)), [kb, roster]);
   const [order, setOrder] = useState<string[]>([]);
   const [variants, setVariants] = useState<Record<string, string>>({});
@@ -32,6 +40,22 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
       return undefined;
     }
   }, [kb, ready, order, variants, length, builds]);
+
+  const saveTeam = () => {
+    const id = currentId || `t${Date.now().toString(36)}`;
+    saved.save({ id, name: name.trim() || order.map(nameOf).join(' / '), team, rotationJson: json || undefined });
+    setCurrentId(id);
+  };
+  const load = (t: SavedTeam) => {
+    setOrder(t.team.order.filter((id) => kb.characters.has(id)));
+    setVariants(t.team.variants ?? {});
+    setBuilds(t.team.builds ?? {});
+    setLength(t.team.lengthSeconds ? String(t.team.lengthSeconds) : '');
+    setJson(t.rotationJson ?? '');
+    setName(t.name);
+    setCurrentId(t.id);
+    setRun(undefined);
+  };
 
   const toggle = (id: string) => setOrder((o) => (o.includes(id) ? o.filter((x) => x !== id) : o.length < 4 ? [...o, id] : o));
   const move = (i: number, d: -1 | 1) => setOrder((o) => {
@@ -65,6 +89,22 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
         Pick any four owned characters and the order they act in. Each performs its usual combo; the app chains them into one rotation.
         Results are approximate and labelled "custom rotation". Choose each character's weapon and artifact set below, or leave them on the recommended build.
       </p>
+
+      {saved.teams.length > 0 && (
+        <Section title="Saved teams">
+          <ul className="space-y-1">
+            {saved.teams.map((t) => (
+              <li key={t.id} className={`flex flex-wrap items-center gap-2 rounded border px-2 py-1 text-sm ${t.id === currentId ? 'border-blue-400 bg-blue-50' : 'border-slate-200'}`}>
+                <span className="font-medium">{t.name}</span>
+                <span className="text-xs text-slate-500">{t.team.order.map(nameOf).join(' → ')}{t.rotationJson ? ' · edited rotation' : ''}</span>
+                <Button onClick={() => load(t)}>Load</Button>
+                <Button onClick={() => { saved.remove(t.id); if (t.id === currentId) setCurrentId(''); }}>Delete</Button>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1 text-xs text-slate-500">Saved teams are kept in this browser and can be chosen in the Team comparison and Weapon comparer tabs.</p>
+        </Section>
+      )}
 
       <Section title={`1. Choose four owned characters (${order.length}/4)`}>
         {owned.length === 0 && <p className="text-sm text-amber-700">Tick some characters on the Roster tab first.</p>}
@@ -119,6 +159,9 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Button primary onClick={() => go(false)} disabled={!ready || busy}>{busy ? 'Simulating…' : 'Simulate custom rotation'}</Button>
+        <input className="w-48 rounded border px-2 text-sm" aria-label="team name" placeholder="Team name" value={name} onChange={(e) => setName(e.target.value)} />
+        <Button onClick={saveTeam} disabled={!ready}>{currentId ? 'Update saved team' : 'Save team'}</Button>
+        {currentId && <Button onClick={() => setCurrentId('')}>Save as new</Button>}
         {preview && <span className="self-center text-sm text-slate-600">rotation length {(preview.lengthFrames / 60).toFixed(1)} s</span>}
       </div>
       {error && <p className="mt-2 text-sm text-red-700">{error}</p>}

@@ -10,10 +10,16 @@ export interface RunSettings {
   swapDelay?: number;
 }
 
+export interface CustomSource {
+  team: CustomTeam;
+  rotationJson?: string;
+  name?: string;
+}
+
 export type Request =
-  | { id: number; type: 'team'; teamId: string; settings: RunSettings }
+  | { id: number; type: 'team'; teamId: string; custom?: CustomSource; settings: RunSettings }
   | { id: number; type: 'custom'; team: CustomTeam; settings: RunSettings; rotationJson?: string }
-  | { id: number; type: 'compare'; teamId: string; characterId: string; candidates: WeaponCandidate[]; baseline: WeaponCandidate; settings: RunSettings };
+  | { id: number; type: 'compare'; teamId: string; custom?: CustomSource; characterId: string; candidates: WeaponCandidate[]; baseline: WeaponCandidate; settings: RunSettings };
 
 export type Response =
   | { id: number; ok: true; type: 'team'; result: TeamRun }

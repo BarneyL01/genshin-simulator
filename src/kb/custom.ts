@@ -16,6 +16,22 @@ export interface CustomTeam {
   builds?: Record<string, { weapon?: string; refinement?: number; set?: string }>;
 }
 
+/** A custom team the user saved under a name (optionally with an edited rotation script as JSON). */
+export interface SavedTeam {
+  id: string;
+  name: string;
+  team: CustomTeam;
+  rotationJson?: string;
+}
+
+/** The run input of a saved team: its custom rotation, or the edited script when one was saved. */
+export function savedTeamInput(kb: KbData, s: { team: CustomTeam; rotationJson?: string; name?: string }): RunInput & { notes: string[] } {
+  const input = customRunInput(kb, s.team);
+  if (s.rotationJson) input.rotation = JSON.parse(s.rotationJson);
+  if (s.name) input.label = `${s.name} (custom rotation)`;
+  return input;
+}
+
 export interface CustomRotation {
   script: RotationItem[];
   lengthFrames: number;

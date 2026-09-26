@@ -37,7 +37,7 @@ export function RosterView({ kb, roster, update, setRoster }: Props) {
   return (
     <div>
       <p className="text-sm text-slate-600">
-        Tick what you own. Everyone defaults to C0, talents 9/9/9 and Lv 90; weapons to R1 (set your real refinement per weapon).
+        Tick what you own. Everyone defaults to C0, talents 1/1/1 and Lv 90; weapons to R1 (set your real refinement per weapon).
         Nothing leaves your browser.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">

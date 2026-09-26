@@ -23,7 +23,7 @@ export interface MemberSpec {
 }
 
 export interface BuildOptions {
-  /** Owned characters/weapons and their levels. Without it: everything C0, 9/9/9, R1, all weapons owned. */
+  /** Owned characters/weapons and their levels. Without it: everything C0, 1/1/1, R1, all weapons owned. */
   roster?: Roster;
   enemy?: EnemyInput;
   profile?: ExecutionProfile;
@@ -86,7 +86,7 @@ export function buildMember(kb: KbData, m: MemberSpec, opts: BuildOptions, notic
   const input = buildCharacterInput(c, {
     weapon, refinement,
     constellation: rc?.constellation ?? 0,
-    talentLevels: rc?.talents ?? [9, 9, 9],
+    talentLevels: rc?.talents ?? [1, 1, 1],
     artifactEffects: setEffects(kb, m.sets),
   });
 

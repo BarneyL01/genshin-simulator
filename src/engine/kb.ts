@@ -7,7 +7,7 @@ import type { ActionDef, CharacterInput, HitDef, StatMod, Talent } from './types
 export interface BuildOptions {
   weapon: Weapon;
   refinement?: number;
-  /** [normal/charged/plunge, skill, burst]. Default 9/9/9. */
+  /** [normal/charged/plunge, skill, burst]. Default 1/1/1. */
   talentLevels?: [number, number, number];
   constellation?: number;
   /** Artifact main/sub stats and set bonuses that are plain stat mods (KQMS pool arrives with the stat optimiser). */
@@ -27,7 +27,7 @@ const TALENT_LEVEL_INDEX: Record<Talent, 0 | 1 | 2> = { normal: 0, charged: 0, p
  */
 export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInput {
   const cons = o.constellation ?? 0;
-  const levels = [...(o.talentLevels ?? [9, 9, 9])] as [number, number, number];
+  const levels = [...(o.talentLevels ?? [1, 1, 1])] as [number, number, number];
   for (const k of c.constellations) {
     if (k.level > cons || !k.talentLevelBonus) continue;
     const b = k.talentLevelBonus;

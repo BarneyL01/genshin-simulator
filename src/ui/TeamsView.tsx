@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { KbData, TeamRun } from '../kb';
+import type { KbData, SavedTeam, TeamRun } from '../kb';
 import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
 import { sim } from './client';
@@ -10,6 +10,7 @@ import { ResultView } from './ResultView';
 interface Props {
   kb: KbData;
   roster: Roster;
+  saved: SavedTeam[];
 }
 
 interface Entry {
@@ -20,7 +21,7 @@ interface Entry {
   error?: string;
 }
 
-export function TeamsView({ kb, roster }: Props) {
+export function TeamsView({ kb, roster, saved }: Props) {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [busy, setBusy] = useState<string>('');
   const [open, setOpen] = useState<string>('');
@@ -32,6 +33,19 @@ export function TeamsView({ kb, roster }: Props) {
   async function runAll() {
     const results: Entry[] = teams.filter((t) => missingOf(t).length > 0).map((t) => ({ teamId: t.id, name: t.name, missing: missingOf(t) }));
     setEntries(results);
+    for (const st of saved) {
+      setBusy(`Simulating ${st.name}…`);
+      try {
+        const r = (await sim().request({
+          type: 'team', teamId: '', custom: { team: st.team, rotationJson: st.rotationJson, name: st.name },
+          settings: { roster, actionDelay: roster.settings.actionDelay, swapDelay: roster.settings.swapDelay },
+        })) as Response & { ok: true; type: 'team' };
+        results.push({ teamId: `saved:${st.id}`, name: `${st.name} (saved)`, run: r.result, missing: [] });
+      } catch (e) {
+        results.push({ teamId: `saved:${st.id}`, name: st.name, missing: [], error: e instanceof Error ? e.message : String(e) });
+      }
+      setEntries([...results].sort((a, b) => (b.run?.relaxed.dps ?? -1) - (a.run?.relaxed.dps ?? -1)));
+    }
     for (const t of runnable) {
       setBusy(`Simulating ${t.name}…`);
       try {
@@ -54,14 +68,14 @@ export function TeamsView({ kb, roster }: Props) {
   return (
     <div>
       <p className="text-sm text-slate-600">
-        Known team archetypes from the knowledge base, simulated with their published rotation and ranked by team DPS.
+        Known team archetypes from the knowledge base (published rotation) and your saved custom teams, ranked by team DPS.
         A team needs all four of its members ticked in your roster. The app never searches for teams by itself.
       </p>
       <div className="mt-3 flex items-center gap-3">
-        <Button primary onClick={runAll} disabled={!!busy || runnable.length === 0}>Rank teams I can build ({runnable.length})</Button>
+        <Button primary onClick={runAll} disabled={!!busy || runnable.length + saved.length === 0}>Rank teams ({runnable.length + saved.length})</Button>
         {busy && <span className="text-sm text-slate-600">{busy}</span>}
       </div>
-      {runnable.length === 0 && <p className="mt-2 text-sm text-amber-700">None of the {teams.length} known teams is fully covered by your roster yet. Tick characters on the Roster tab.</p>}
+      {runnable.length + saved.length === 0 && <p className="mt-2 text-sm text-amber-700">None of the {teams.length} known teams is fully covered by your roster yet. Tick characters on the Roster tab.</p>}
 
       <Section title="Ranking">
         {entries.length === 0 && <p className="text-sm text-slate-500">No results yet.</p>}

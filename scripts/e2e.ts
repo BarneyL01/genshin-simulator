@@ -37,8 +37,8 @@ try {
   await page.screenshot({ path: `${shots}/1-roster.png`, fullPage: true });
 
   // Known teams
-  await page.getByRole('tab', { name: 'Known teams' }).click();
-  await page.getByRole('button', { name: /Rank teams I can build/ }).click();
+  await page.getByRole('tab', { name: 'Team comparison' }).click();
+  await page.getByRole('button', { name: /Rank teams/ }).click();
   await page.getByText(/DPS relaxed/).first().waitFor({ timeout: 120_000 });
   await page.getByText(/DPS relaxed/).nth(1).waitFor({ timeout: 120_000 });
   console.log('ranking:\n' + (await page.locator('ol > li').allInnerTexts()).map((t) => '  ' + t.split('\n').slice(0, 2).join(' | ')).join('\n'));
@@ -55,9 +55,13 @@ try {
   await page.getByRole('button', { name: 'Simulate custom rotation' }).click();
   await page.getByText(/custom rotation\)/).waitFor({ timeout: 120_000 });
   await page.screenshot({ path: `${shots}/7-custom.png`, fullPage: true });
+  await page.getByLabel('team name').fill('E2E team');
+  await page.getByRole('button', { name: 'Save team' }).click();
+  await page.getByRole('heading', { name: 'Saved teams' }).waitFor();
 
   // Weapon comparer
   await page.getByRole('tab', { name: 'Weapon comparer' }).click();
+  await page.getByLabel('Team', { exact: false }).first().selectOption({ label: 'E2E team (saved)' });
   await page.getByRole('button', { name: 'Compare' }).click();
   await page.getByText('Results (sorted by team DPS)').waitFor({ timeout: 180_000 });
   await page.screenshot({ path: `${shots}/8-compare.png`, fullPage: true });

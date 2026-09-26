@@ -17,7 +17,7 @@ const KQM = { 'staff-of-homa:5': 1.66, 'staff-of-homa:1': 1.36, 'white-tassel:5'
 function huTaoDps(weaponId: string, refinement: number): number {
   const c = kb.characters.get('hu-tao')!;
   const w = kb.weapons.get(weaponId)!;
-  const input = buildCharacterInput(c, { weapon: w, refinement, artifactEffects: setEffects(kb, { 'crimson-witch-of-flames': 4 }) });
+  const input = buildCharacterInput(c, { weapon: w, refinement, talentLevels: [9, 9, 9], artifactEffects: setEffects(kb, { 'crimson-witch-of-flames': 4 }) });
   const rotation = [
     { char: 'hu-tao', action: 'skill' }, { char: 'hu-tao', action: 'burst' },
     { repeat: { times: 7 }, steps: ['n1', 'n2', 'charged'].map((action) => ({ char: 'hu-tao', action })) },

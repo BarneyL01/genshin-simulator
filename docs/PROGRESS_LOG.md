@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-26 — Default talents 1/1/1; saved custom teams
+
+- Milestone: M8 (UI).
+- Done: default talent level is now 1/1/1 (schema, builder, engine, roster store, docs; a saved roster still holding the old all-9 default is migrated once). Custom teams can be saved by name in the browser (localStorage), loaded, updated and deleted; saved teams appear in the Team comparison ranking (tab renamed from "Known teams") and as teams in the Weapon comparer. Worker requests take an optional `custom` source. Golden and KQM checks now run at 9/9/9 explicitly.
+- KB changes: none.
+- Tests / validation: `npx vitest run` 117 pass; lint, tsc clean; `npm run e2e` ok (saves a team and compares weapons on it).
+- Blockers: none.
+- Next: export/import of saved teams; weapon/set pickers for known teams.
+
+---
+
 ## 2026-09-26 — Per-character weapon/set choice; two-weapon comparer
 
 - Milestone: M8 (UI).

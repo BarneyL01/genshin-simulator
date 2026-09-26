@@ -155,7 +155,7 @@ Frame blocks (`frames`) carry their own source because they often come from gcsi
 ```jsonc
 {
   "version": 1,
-  "characters": { "raiden-shogun": { "owned": true, "constellation": 0, "talents": [9, 9, 9], "level": 90 } },
+  "characters": { "raiden-shogun": { "owned": true, "constellation": 0, "talents": [1, 1, 1], "level": 90 } },
   "weapons": { "silver-light": { "owned": true, "refinement": 5 } },
   "settings": { "executionProfile": "relaxed", "actionDelay": 18, "swapDelay": 18, "assumeAllWeapons": false }
 }

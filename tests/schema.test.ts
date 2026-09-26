@@ -40,7 +40,7 @@ describe('schemas', () => {
   });
   it('applies roster defaults', () => {
     const r = roster.parse({ version: 1, characters: { a: { owned: true } }, weapons: { b: { owned: true } }, settings: {} });
-    expect(r.characters.a).toMatchObject({ constellation: 0, talents: [9, 9, 9], level: 90 });
+    expect(r.characters.a).toMatchObject({ constellation: 0, talents: [1, 1, 1], level: 90 });
     expect(r.weapons.b!.refinement).toBe(1);
     expect(r.settings.actionDelay).toBe(18);
   });

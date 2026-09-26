@@ -7,7 +7,7 @@ export const roster = z.object({
     z.object({
       owned: z.boolean(),
       constellation: z.number().int().min(0).max(6).default(0),
-      talents: z.tuple([z.number().int().min(1).max(15), z.number().int().min(1).max(15), z.number().int().min(1).max(15)]).default([9, 9, 9]),
+      talents: z.tuple([z.number().int().min(1).max(15), z.number().int().min(1).max(15), z.number().int().min(1).max(15)]).default([1, 1, 1]),
       level: z.literal(90).default(90),
     }),
   ),

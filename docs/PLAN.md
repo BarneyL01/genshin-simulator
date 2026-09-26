@@ -150,7 +150,7 @@ Details: `docs/SIMULATION.md`. Summary:
 
 ## 5. Roster
 
-- Character grid: tick box "owned", constellation dropdown (C0 default), talent levels (9/9/9 default).
+- Character grid: tick box "owned", constellation dropdown (C0 default), talent levels (1/1/1 default).
 - Weapon grid: filtered by type; tick box "owned", refinement dropdown (R1 default). Event weapons show "R5 free via event" hint from KB `obtain` data.
 - "Assume I own every weapon" toggle for theory-crafting.
 - Stored in `localStorage`; JSON export/import for backup.

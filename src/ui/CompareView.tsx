@@ -1,15 +1,19 @@
 import { useMemo, useState } from 'react';
-import type { KbData, WeaponComparison } from '../kb';
+import type { KbData, SavedTeam, WeaponComparison } from '../kb';
 import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
 import { sim } from './client';
 import { Badge, Button, Section, Table, confidenceTone } from './Common';
 import { fmt, nameOf, pct, signedPct } from './format';
 
-export function CompareView({ kb, roster }: { kb: KbData; roster: Roster }) {
+export function CompareView({ kb, roster, saved }: { kb: KbData; roster: Roster; saved: SavedTeam[] }) {
   const teams = [...kb.teams.values()].filter((t) => t.status === 'active');
   const [teamId, setTeamId] = useState(teams[0]?.id ?? '');
-  const team = kb.teams.get(teamId);
+  const savedTeam = saved.find((t) => `saved:${t.id}` === teamId);
+  const knownTeam = kb.teams.get(teamId);
+  const team = savedTeam
+    ? { members: savedTeam.team.order.map((id) => ({ character: id, weapons: savedTeam.team.builds?.[id]?.weapon ? [savedTeam.team.builds[id]!.weapon!] : kb.characters.get(id)?.recommended.weapons.map((w) => w.id) ?? [] })) }
+    : knownTeam;
   const [charId, setCharId] = useState('');
   const activeChar = team?.members.find((m) => m.character === charId)?.character ?? team?.members[0]?.character ?? '';
   const character = kb.characters.get(activeChar);
@@ -31,7 +35,7 @@ export function CompareView({ kb, roster }: { kb: KbData; roster: Roster }) {
     try {
       const list = a.weaponId === b.weaponId && a.refinement === b.refinement ? [a] : [a, b];
       const r = (await sim().request({
-        type: 'compare', teamId, characterId: activeChar, candidates: list, baseline: a,
+        type: 'compare', teamId, custom: savedTeam && { team: savedTeam.team, rotationJson: savedTeam.rotationJson, name: savedTeam.name }, characterId: activeChar, candidates: list, baseline: a,
         settings: { roster: { ...roster, settings: { ...roster.settings, assumeAllWeapons: true } }, cycles: 3, actionDelay: roster.settings.actionDelay, swapDelay: roster.settings.swapDelay },
       })) as Response & { ok: true; type: 'compare' };
       setRows(r.result);
@@ -57,13 +61,14 @@ export function CompareView({ kb, roster }: { kb: KbData; roster: Roster }) {
   return (
     <div>
       <p className="text-sm text-slate-600">
-        Pick two weapons for one character of a known team and compare them against each other in the same rotation. Deltas are B relative to A. Only that character's artifact stats are re-optimised (KQM Standard).
+        Pick two weapons for one character of a known or saved team and compare them against each other in the same rotation. Deltas are B relative to A. Only that character's artifact stats are re-optimised (KQM Standard).
         New weapons are simulated from their passive as recorded in the knowledge base, so a result exists even without community test data; the
         confidence badge and the listed assumptions tell you how far to trust it. "Worst case" assumes uncertain passive conditions are not met.
       </p>
       <div className="mt-3 flex flex-wrap gap-3 text-sm">
         <label>Team <select className="rounded border px-1" value={teamId} onChange={(e) => { setTeamId(e.target.value); setCharId(''); setPickA(undefined); setPickB(undefined); setRows([]); }}>
           {teams.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
+          {saved.map((t) => <option key={t.id} value={`saved:${t.id}`}>{t.name} (saved)</option>)}
         </select></label>
         <label>Character <select className="rounded border px-1" value={activeChar} onChange={(e) => { setCharId(e.target.value); setPickA(undefined); setPickB(undefined); setRows([]); }}>
           {team?.members.map((m) => <option key={m.character} value={m.character}>{nameOf(m.character)}</option>)}

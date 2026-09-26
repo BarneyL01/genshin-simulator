@@ -4,14 +4,15 @@ import { CompareView } from './CompareView';
 import { CustomView } from './CustomView';
 import { RosterView } from './RosterView';
 import { TeamsView } from './TeamsView';
-import { useRoster } from './store';
+import { useRoster, useSavedTeams } from './store';
 
 type Tab = 'roster' | 'teams' | 'custom' | 'compare';
-const TABS: Array<[Tab, string]> = [['roster', 'Roster'], ['teams', 'Known teams'], ['custom', 'Custom team'], ['compare', 'Weapon comparer']];
+const TABS: Array<[Tab, string]> = [['roster', 'Roster'], ['teams', 'Team comparison'], ['custom', 'Custom team'], ['compare', 'Weapon comparer']];
 
 export function App() {
   const kb = useMemo(() => bundledKb(), []);
   const { roster, setRoster, update } = useRoster(kb);
+  const saved = useSavedTeams();
   const [tab, setTab] = useState<Tab>('roster');
 
   return (
@@ -33,9 +34,9 @@ export function App() {
       </nav>
       <div className="mt-4">
         {tab === 'roster' && <RosterView kb={kb} roster={roster} update={update} setRoster={setRoster} />}
-        {tab === 'teams' && <TeamsView kb={kb} roster={roster} />}
-        {tab === 'custom' && <CustomView kb={kb} roster={roster} />}
-        {tab === 'compare' && <CompareView kb={kb} roster={roster} />}
+        {tab === 'teams' && <TeamsView kb={kb} roster={roster} saved={saved.teams} />}
+        {tab === 'custom' && <CustomView kb={kb} roster={roster} saved={saved} />}
+        {tab === 'compare' && <CompareView kb={kb} roster={roster} saved={saved.teams} />}
       </div>
       <footer className="mt-10 border-t border-slate-200 pt-3 text-xs text-slate-500">
         Numbers come from genshin-db, gcsim (reference only) and KeqingMains; see each result's Assumptions tab for what it rests on.

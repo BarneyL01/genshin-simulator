@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { loadKb } from '../scripts/kb-node';
-import { buildCustomRotation, compareWeapons, customRunInput, rankTeams, runTeam, teamInput } from '../src/kb';
+import { buildCustomRotation, compareWeapons, customRunInput, rankTeams, runTeam, savedTeamInput, teamInput } from '../src/kb';
 import type { Roster } from '../src/schema';
 
 const kb = loadKb();
@@ -17,10 +17,25 @@ const GOLDEN = join(import.meta.dirname, 'golden', 'teams.json');
 const golden: Record<string, { relaxedDps: number; framePerfectDps: number }> = existsSync(GOLDEN) ? JSON.parse(readFileSync(GOLDEN, 'utf8')) : {};
 const recorded: typeof golden = {};
 
+// Golden numbers were recorded with talents 9/9/9 (the KeqingMains standard); the app default is now 1/1/1.
+const roster9 = (): Roster => ({
+  version: 1,
+  characters: Object.fromEntries([...kb.characters.keys()].map((id) => [id, { owned: true, constellation: 0, talents: [9, 9, 9] as [number, number, number], level: 90 as const }])),
+  weapons: {},
+  settings: { executionProfile: 'relaxed', actionDelay: 18, swapDelay: 18, assumeAllWeapons: true },
+});
+
+describe('talent default', () => {
+  it('is 1/1/1 unless the roster says otherwise', () => {
+    const r = (talents?: [number, number, number]) => runTeam(kb, teamInput(kb.teams.get('raiden-national')!), talents && { roster: { ...roster9(), characters: Object.fromEntries(Object.keys(roster9().characters).map((id) => [id, { owned: true, constellation: 0, talents, level: 90 as const }])) } }).relaxed.dps;
+    expect(r()).toBeLessThan(r([9, 9, 9]));
+  });
+});
+
 describe('seed teams simulate end to end from the KB', () => {
   for (const id of ['raiden-national', 'hu-tao-double-hydro-zhongli']) {
     it(id, () => {
-      const run = runTeam(kb, teamInput(kb.teams.get(id)!));
+      const run = runTeam(kb, teamInput(kb.teams.get(id)!), { roster: roster9() });
       expect(run.members).toHaveLength(4);
       expect(run.relaxed.dps).toBeGreaterThan(1000);
       expect(run.framePerfect.dps).toBeGreaterThan(run.relaxed.dps); // the Relaxed delay always costs something
@@ -138,5 +153,16 @@ describe('custom team builds', () => {
     expect(m.weaponId).toBe('the-catch');
     expect(m.refinement).toBe(5);
     expect(input.members[0]!.sets).toEqual({ 'emblem-of-severed-fate': 4 });
+  });
+});
+
+describe('saved custom teams', () => {
+  it('rebuild from their saved definition and honour an edited rotation', () => {
+    const team = { order: ['xiangling', 'bennett', 'xingqiu', 'zhongli'], builds: { bennett: { set: 'noblesse-oblige' } } };
+    const a = savedTeamInput(kb, { team, name: 'Mine' });
+    expect(a.label).toBe('Mine (custom rotation)');
+    expect(a.members[1]!.sets).toEqual({ 'noblesse-oblige': 4 });
+    const b = savedTeamInput(kb, { team, rotationJson: JSON.stringify([{ char: 'xiangling', action: 'skill' }]) });
+    expect(b.rotation).toHaveLength(1);
   });
 });

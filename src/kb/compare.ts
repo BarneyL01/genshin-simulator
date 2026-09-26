@@ -52,7 +52,7 @@ export function compareWeapons(
   const notices: string[] = [];
 
   const buildAll = (w: WeaponCandidate) => {
-    const members: MemberSpec[] = input.members.map((m) => (m.character === characterId ? { ...m, weapons: [w.weaponId] } : m));
+    const members: MemberSpec[] = input.members.map((m) => (m.character === characterId ? { ...m, weapons: [w.weaponId], pinned: { refinement: w.refinement } } : m));
     const roster = opts.roster && {
       ...opts.roster,
       weapons: { ...opts.roster.weapons, [w.weaponId]: { owned: true, refinement: w.refinement } },
