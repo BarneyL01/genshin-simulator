@@ -1,0 +1,463 @@
+{
+  "id": "kaveh",
+  "name": "Kaveh",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/kaveh",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "dendro",
+  "weaponType": "claymore",
+  "releaseVersion": "3.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11962.4064649,
+      "atk": 233.6369112,
+      "def": 750.7736775
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 96
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.761857,
+            0.823868,
+            0.88588,
+            0.974468,
+            1.03648,
+            1.10735,
+            1.204797,
+            1.302244,
+            1.39969,
+            1.505996,
+            1.612302,
+            1.718607,
+            1.824913,
+            1.931218,
+            2.037524
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 35,
+              "charged": 44,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.696385,
+            0.753068,
+            0.80975,
+            0.890725,
+            0.947407,
+            1.012188,
+            1.10126,
+            1.190333,
+            1.279405,
+            1.376575,
+            1.473745,
+            1.570915,
+            1.668085,
+            1.765255,
+            1.862425
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 35,
+              "charged": 45,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.842611,
+            0.911195,
+            0.97978,
+            1.077758,
+            1.146343,
+            1.224725,
+            1.332501,
+            1.440277,
+            1.548052,
+            1.665626,
+            1.7832,
+            1.900773,
+            2.018347,
+            2.13592,
+            2.253494
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 42,
+              "charged": 56,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.026883,
+            1.110467,
+            1.19405,
+            1.313455,
+            1.397039,
+            1.492563,
+            1.623908,
+            1.755254,
+            1.886599,
+            2.029885,
+            2.173171,
+            2.316457,
+            2.459743,
+            2.603029,
+            2.746315
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 67,
+              "charged": 81,
+              "skill": 40,
+              "burst": 40,
+              "dash": 40,
+              "jump": 40,
+              "swap": 40,
+              "default": 81
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.04,
+            2.193,
+            2.346,
+            2.55,
+            2.703,
+            2.856,
+            3.06,
+            3.264,
+            3.468,
+            3.672,
+            3.876,
+            4.08,
+            4.335,
+            4.59,
+            4.845
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 45,
+              "skill": 45,
+              "burst": 45,
+              "dash": 34,
+              "jump": 34,
+              "swap": 44,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.6,
+            1.72,
+            1.84,
+            2,
+            2.12,
+            2.24,
+            2.4,
+            2.56,
+            2.72,
+            2.88,
+            3.04,
+            3.2,
+            3.4,
+            3.6,
+            3.8
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 48,
+              "dash": 44,
+              "jump": 44,
+              "swap": 42,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaveh/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kaveh.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "An Architect's Undertaking: When DMG dealt by a Dendro Core (including DMG from Burgeon and Hyperbloom) hits Kaveh, Kaveh will regain HP equal to 300% of his Elemental Mastery. This effect can be triggered once every 0.5s."
+    },
+    {
+      "id": "kaveh.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "A Craftsman's Curious Conceptions: During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by 25. This effect can be triggered once every 0.1s. Max 4 stacks.\nThis effect will be canceled when Painted Dome's effects end."
+    },
+    {
+      "id": "kaveh.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "The Art of Budgeting: When Kaveh crafts Landscape, Building, and Courtyard-type Furnishings, he has a 100% chance to refund a portion of the materials used."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Sublime Salutations: Within 3s after using Artistic Ingenuity, Kaveh's Dendro RES and Incoming Healing Bonus will be increased by 50% and 25% respectively."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Grace of Royal Roads: Kaveh's Normal Attack SPD increases by 15% during Painted Dome."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Profferings of Dur Untash: Increases the Level of Painted Dome by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Feast of Apadana: Dendro Cores created from Bloom and Lunar-Bloom reactions Kaveh triggers will deal 60% more DMG when they burst."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Treasures of Bonkhanak: Increases the Level of Artistic Ingenuity by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Pairidaeza's Dreams: When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during Painted Dome, they will unleash Pairidaeza's Light upon the opponent's position, dealing 61.8% of Kaveh's ATK as AoE Dendro DMG and causing all Dendro Cores within that AoE to burst. This effect can be triggered once every 3s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,530 @@
+{
+  "id": "lyney",
+  "name": "Lyney",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lyney",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/lyney",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/lyney-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "bow",
+  "releaseVersion": "4.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11021.319632000002,
+      "atk": 318.1072494,
+      "def": 537.988059
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.38786,
+            0.41943,
+            0.451,
+            0.4961,
+            0.52767,
+            0.56375,
+            0.61336,
+            0.66297,
+            0.71258,
+            0.7667,
+            0.82082,
+            0.87494,
+            0.92906,
+            0.98318,
+            1.0373
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 31,
+              "charged": 31,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.38012,
+            0.41106,
+            0.442,
+            0.4862,
+            0.51714,
+            0.5525,
+            0.60112,
+            0.64974,
+            0.69836,
+            0.7514,
+            0.80444,
+            0.85748,
+            0.91052,
+            0.96356,
+            1.0166
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 28,
+              "charged": 28,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.27262,
+            0.29481,
+            0.317,
+            0.3487,
+            0.37089,
+            0.39625,
+            0.43112,
+            0.46599,
+            0.50086,
+            0.5389,
+            0.57694,
+            0.61498,
+            0.65302,
+            0.69106,
+            0.7291
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 38,
+              "charged": 38,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            29
+          ],
+          "extraMv": [
+            [
+              0.27262,
+              0.29481,
+              0.317,
+              0.3487,
+              0.37089,
+              0.39625,
+              0.43112,
+              0.46599,
+              0.50086,
+              0.5389,
+              0.57694,
+              0.61498,
+              0.65302,
+              0.69106,
+              0.7291
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.56932,
+            0.61566,
+            0.662,
+            0.7282,
+            0.77454,
+            0.8275,
+            0.90032,
+            0.97314,
+            1.04596,
+            1.1254,
+            1.20484,
+            1.28428,
+            1.36372,
+            1.44316,
+            1.5226
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 61,
+              "charged": 61,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 61
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.672,
+            1.7974,
+            1.9228,
+            2.09,
+            2.2154,
+            2.3408,
+            2.508,
+            2.6752,
+            2.8424,
+            3.0096,
+            3.1768,
+            3.344,
+            3.553,
+            3.762,
+            3.971
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 42,
+              "aim": 42,
+              "skill": 42,
+              "burst": 42,
+              "jump": 42,
+              "swap": 41,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lyney/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.54,
+            1.6555,
+            1.771,
+            1.925,
+            2.0405,
+            2.156,
+            2.31,
+            2.464,
+            2.618,
+            2.772,
+            2.926,
+            3.08,
+            3.2725,
+            3.465,
+            3.6575
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 100,
+            "cancel": {
+              "normal": 297,
+              "aim": 297,
+              "skill": 101,
+              "dash": 287,
+              "jump": 285,
+              "swap": 283,
+              "default": 321
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lyney/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Explosive Firework",
+          "mv": [
+            4.14,
+            4.4505,
+            4.761,
+            5.175,
+            5.4855,
+            5.796,
+            6.21,
+            6.624,
+            7.038,
+            7.452,
+            7.866,
+            8.28,
+            8.7975,
+            9.315,
+            9.8325
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 103,
+            "cancel": {
+              "normal": 297,
+              "aim": 297,
+              "skill": 101,
+              "dash": 287,
+              "jump": 285,
+              "swap": 283,
+              "default": 321
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lyney/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "lyney.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Perilous Performance: If Lyney consumes HP when firing off a Prop Arrow, the Grin-Malkin hat summoned by the arrow will, upon hitting an opponent, restore 3 Energy to Lyney and increase DMG dealt by 80% of his ATK."
+    },
+    {
+      "id": "lyney.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Conclusive Ovation: The DMG Lyney deals to opponents affected by Pyro will receive the following buffs:\n·Increases the DMG dealt by 60%.\n·Each Pyro party member other than Lyney will cause the DMG dealt to increase by an additional 20%.\nLyney can deal up to 100% increased DMG to opponents affected by Pyro in this way."
+    },
+    {
+      "id": "lyney.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Trivial Observations: Displays the location of nearby resources unique to Fontaine on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Whimsical Wonders: Lyney can have 2 Grin-Malkin Hats present at once.\nAdditionally, Prop Arrows will summon 2 Grin-Malkin Hats and grant Lyney 1 extra stack of Prop Surplus. This effect can occur once every 15s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Loquacious Cajoling: When Lyney is on the field, he will gain a stack of Crisp Focus every 2s. Each stack will increase his CRIT DMG by 20%. Max 3 stacks. This effect will be canceled when Lyney leaves the field."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Prestidigitation: Increases the Level of Normal Attack: Card Force Translocation by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Well-Versed, Well-Rehearsed: After an opponent is hit by Lyney's Pyro Charged Attack, this opponent's Pyro RES will be decreased by 20% for 6s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "To Pierce Enigmas: Increases the Level of Wondrous Trick: Miracle Parade by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Guarded Smile: When Lyney fires a Prop Arrow, he will fire a Pyrotechnic Strike: Reprised that will deal 80% of a Pyrotechnic Strike's DMG. This DMG is considered Charged Attack DMG."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

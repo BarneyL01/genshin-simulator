@@ -1,0 +1,45 @@
+{
+  "id": "vermillion-hereafter",
+  "name": "Vermillion Hereafter",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "4-piece bonus \"After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This further increase can occur this way a maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": [
+        {
+          "id": "vermillion-hereafter.2pc",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "atk%",
+          "value": 0.18,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

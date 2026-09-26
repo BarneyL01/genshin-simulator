@@ -1,0 +1,714 @@
+{
+  "id": "sandrone",
+  "name": "Sandrone",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/sandrone",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/12. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, charged, skill, skill hitmark, burst, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "claymore",
+  "releaseVersion": "6.7",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13225.583558400001,
+      "atk": 342.0250874,
+      "def": 752.41472823
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.762863,
+            0.824957,
+            0.88705,
+            0.975755,
+            1.037848,
+            1.108812,
+            1.206388,
+            1.303964,
+            1.401539,
+            1.507985,
+            1.614431,
+            1.720877,
+            1.827323,
+            1.933769,
+            2.040215
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "charged": 48,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.67197,
+            0.726665,
+            0.78136,
+            0.859496,
+            0.914191,
+            0.9767,
+            1.06265,
+            1.148599,
+            1.234549,
+            1.328312,
+            1.422075,
+            1.515838,
+            1.609602,
+            1.703365,
+            1.797128
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 43,
+              "charged": 75,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.028035,
+            1.111713,
+            1.19539,
+            1.314929,
+            1.398606,
+            1.494237,
+            1.62573,
+            1.757223,
+            1.888716,
+            2.032163,
+            2.17561,
+            2.319057,
+            2.462503,
+            2.60595,
+            2.749397
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 62,
+              "charged": 93,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Prism Shot",
+          "mv": [
+            0.324,
+            0.3483,
+            0.3726,
+            0.405,
+            0.4293,
+            0.4536,
+            0.486,
+            0.5184,
+            0.5508,
+            0.5832,
+            0.6156,
+            0.648,
+            0.6885,
+            0.729,
+            0.7695
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Prism Shot Stellar-Conduct",
+          "mv": [
+            0.216,
+            0.2322,
+            0.2484,
+            0.27,
+            0.2862,
+            0.3024,
+            0.324,
+            0.3456,
+            0.3672,
+            0.3888,
+            0.4104,
+            0.432,
+            0.459,
+            0.486,
+            0.513
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Prism Shot Stellar Swirl",
+          "mv": [
+            0.324,
+            0.3483,
+            0.3726,
+            0.405,
+            0.4293,
+            0.4536,
+            0.486,
+            0.5184,
+            0.5508,
+            0.5832,
+            0.6156,
+            0.648,
+            0.6885,
+            0.729,
+            0.7695
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 240,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Bombardment 1",
+          "mv": [
+            0.88216,
+            0.948322,
+            1.014484,
+            1.1027,
+            1.168862,
+            1.235024,
+            1.32324,
+            1.411456,
+            1.499672,
+            1.587888,
+            1.676104,
+            1.76432,
+            1.87459,
+            1.98486,
+            2.09513
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Bombardment 2",
+          "mv": [
+            0.88216,
+            0.948322,
+            1.014484,
+            1.1027,
+            1.168862,
+            1.235024,
+            1.32324,
+            1.411456,
+            1.499672,
+            1.587888,
+            1.676104,
+            1.76432,
+            1.87459,
+            1.98486,
+            2.09513
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Bombardment 3",
+          "mv": [
+            0.88216,
+            0.948322,
+            1.014484,
+            1.1027,
+            1.168862,
+            1.235024,
+            1.32324,
+            1.411456,
+            1.499672,
+            1.587888,
+            1.676104,
+            1.76432,
+            1.87459,
+            1.98486,
+            2.09513
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Convective Inhibition Ray",
+          "mv": [
+            3.308,
+            3.5561,
+            3.8042,
+            4.135,
+            4.3831,
+            4.6312,
+            4.962,
+            5.2928,
+            5.6236,
+            5.9544,
+            6.2852,
+            6.616,
+            7.0295,
+            7.443,
+            7.8565
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Convective Inhibition Ray Stellar-Conduct",
+          "mv": [
+            2.205333,
+            2.370733,
+            2.536133,
+            2.756667,
+            2.922067,
+            3.087467,
+            3.308,
+            3.528533,
+            3.749067,
+            3.9696,
+            4.190133,
+            4.410667,
+            4.686333,
+            4.962,
+            5.237667
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Convective Inhibition Ray Stellar Swirl",
+          "mv": [
+            3.308,
+            3.5561,
+            3.8042,
+            4.135,
+            4.3831,
+            4.6312,
+            4.962,
+            5.2928,
+            5.6236,
+            5.9544,
+            6.2852,
+            6.616,
+            7.0295,
+            7.443,
+            7.8565
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 39,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "sandrone.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Eternal Speculation Engine: **Radiance: Stellar Glimmer**: When using the Elemental Skill **Formule Phenomenale: Differential Analysis**, if Fagio's **Decoding Power** is greater than 50, the second Prism Shot fired by Fagio at nearby opponents will deal 400% of its original DMG as Fagio's Decoding Power is decreased.\nAdditionally, for every 10 points of Decoding Power Fagio loses, it gains 1 stack of Refined Tactics for 60s (max 10 stacks). When Sandrone uses the Elemental Burst **Formule Phenomenale: Q.E.D.** while in the Radiance: Stellar Glimmer state, all stacks of Refined Tactics are cle"
+    },
+    {
+      "id": "sandrone.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "A Lady's Code of Conduct: Increases Sandrone's Elemental Mastery based on her ATK. Every 100 ATK will increase her Elemental Mastery by 8. The maximum increase she can gain this way is 160."
+    },
+    {
+      "id": "sandrone.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Stellar Jubilee: Light of Rationalisme: Sandrone will enter the Radiance: Stellar-Conduct state when she is inside a **Polestar Field**, or the Radiance: Stellar Swirl state for 8s after a nearby party member triggers a Stellar Swirl reaction.\nWhen a party member triggers a Superconduct or Cryo Swirl reaction, it becomes a Stellar-Conduct or Stellar Swirl reaction instead, and the Base DMG of the aforementioned reaction is also increased by 0.7% for every 100 points of Sandrone's ATK. A maximum increase of 14% can be obtained in this way."
+    },
+    {
+      "id": "sandrone.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "A Caucus Prelude and a Long Tale: When Sandrone is in the party, you will gain additional snack rewards after turning in your Daily Commissions with Katheryne."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Morrow After the Golden Dusk: When in **Decoding** mode, Fagio's **Decoding Power** increases at a 50% lower rate, and all party members deal 30% increased Stellar Glimmer reaction DMG."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "An Heiress Gazed Into the Looking-Glass: Radiance: Stellar Glimmer: Increases CRIT DMG from Charged Attack condensed beams by 40%. Also, each time a beam is fired, CRIT DMG dealt by all condensed beams fired during this **Decoding** mode period will be further increased by 20%. Max 3 stacks."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Refuse the Wake of Dusk, the Moonlit Yoke: Increases the Level of **Formule Phenomenale: Self-Evident Proposition** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "In Knowledge Lies the World's True Ground: When Sandrone deals Stellar-Conduct or Stellar Swirl DMG to an opponent, she will also summon an extra Prismatic Resonance Cannon to fire off a coordinated attack which deals Cryo DMG at 125% or 187.5% of her ATK, respectively. This DMG is considered the corresponding Stellar Glimmer reaction DMG, and the effect can occur once every 4s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Of All Beside, She Takes No Part: Increases the Level of **Formule Phenomenale: Q.E.D.** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Narcissus Wakes, Her Eyes Upon the Dawn: When Fagio fires a condensed beam for the third time while in **Decoding** mode, the beam becomes a more powerful Condensed Cluster Beam that fires continuously. This beam will deal up to 4 additional instances of AoE Cryo DMG at 100% of Sandrone's ATK on top of any subsequent original beam fired.\nRadiance: Stellar Glimmer: The Condensed Cluster Beam attack deals 4 additional instances of AoE Cryo DMG. The DMG dealt with this attack, which is considered the corresponding Stellar Glimmer reaction DMG, is equal to:\nRadiance: Stellar-Conduct: 80% of Sandro"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

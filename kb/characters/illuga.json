@@ -1,0 +1,606 @@
+{
+  "id": "illuga",
+  "name": "Illuga",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/illuga",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "polearm",
+  "releaseVersion": "6.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11962.4064649,
+      "atk": 191.15747280000002,
+      "def": 813.5656577999999
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 96
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.473662,
+            0.512216,
+            0.55077,
+            0.605847,
+            0.644401,
+            0.688462,
+            0.749047,
+            0.809632,
+            0.870217,
+            0.936309,
+            1.002401,
+            1.068494,
+            1.134586,
+            1.200679,
+            1.266771
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 11,
+              "charged": 17,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.485255,
+            0.524753,
+            0.56425,
+            0.620675,
+            0.660172,
+            0.705313,
+            0.76738,
+            0.829448,
+            0.891515,
+            0.959225,
+            1.026935,
+            1.094645,
+            1.162355,
+            1.230065,
+            1.297775
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 21,
+              "charged": 26,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.31433,
+            0.339915,
+            0.3655,
+            0.40205,
+            0.427635,
+            0.456875,
+            0.49708,
+            0.537285,
+            0.57749,
+            0.62135,
+            0.66521,
+            0.70907,
+            0.75293,
+            0.79679,
+            0.84065
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 31,
+              "charged": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ],
+          "extraMv": [
+            [
+              0.31433,
+              0.339915,
+              0.3655,
+              0.40205,
+              0.427635,
+              0.456875,
+              0.49708,
+              0.537285,
+              0.57749,
+              0.62135,
+              0.66521,
+              0.70907,
+              0.75293,
+              0.79679,
+              0.84065
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.762786,
+            0.824873,
+            0.88696,
+            0.975656,
+            1.037743,
+            1.1087,
+            1.206266,
+            1.303831,
+            1.401397,
+            1.507832,
+            1.614267,
+            1.720702,
+            1.827138,
+            1.933573,
+            2.040008
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.11026,
+            1.20063,
+            1.291,
+            1.4201,
+            1.51047,
+            1.61375,
+            1.75576,
+            1.89777,
+            2.03978,
+            2.1947,
+            2.34962,
+            2.50454,
+            2.65946,
+            2.81438,
+            2.9693
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 42,
+              "charged": 53,
+              "skill": 42,
+              "burst": 42,
+              "dash": 37,
+              "jump": 37,
+              "swap": 58,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press 1",
+          "mv": [
+            4.8256,
+            5.18752,
+            5.54944,
+            6.032,
+            6.39392,
+            6.75584,
+            7.2384,
+            7.72096,
+            8.20352,
+            8.68608,
+            9.16864,
+            9.6512,
+            10.2544,
+            10.8576,
+            11.4608
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Press 2",
+          "mv": [
+            2.4128,
+            2.59376,
+            2.77472,
+            3.016,
+            3.19696,
+            3.37792,
+            3.6192,
+            3.86048,
+            4.10176,
+            4.34304,
+            4.58432,
+            4.8256,
+            5.1272,
+            5.4288,
+            5.7304
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            8.272,
+            8.8924,
+            9.5128,
+            10.34,
+            10.9604,
+            11.5808,
+            12.408,
+            13.2352,
+            14.0624,
+            14.8896,
+            15.7168,
+            16.544,
+            17.578,
+            18.612,
+            19.646
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 73,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            4.136,
+            4.4462,
+            4.7564,
+            5.17,
+            5.4802,
+            5.7904,
+            6.204,
+            6.6176,
+            7.0312,
+            7.4448,
+            7.8584,
+            8.272,
+            8.789,
+            9.306,
+            9.823
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 76,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "illuga.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Torchforger's Covenant: After unleashing Elemental Skill **Dawnbearing Songbird** or Elemental Burst **Shadowless Reflection**, other nearby party members will gain the Lightkeeper's Oath effect for 20s: For Geo DMG dealt to opponents, CRIT Rate increases by 5% and CRIT DMG increases by 10%.\n\nMoonsign: Ascendant Gleam \nParty members affected by the Lightkeeper's Oath effect have their Elemental Mastery increased by 50."
+    },
+    {
+      "id": "illuga.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Demonhunter's Dusk: **Nightingale's Song**'s effects are enhanced: When there are 1/2/3 Hydro or Geo characters in the party, Nightingale's Song will further increase DMG. Increase in DMG is equal to 7%/14%/24% of Illuga's Elemental Mastery. If this aforementioned DMG is inflicted by a Lunar-Crystallize reaction, increase in DMG is equal to 48%/96%/160% of Illuga's Elemental Mastery."
+    },
+    {
+      "id": "illuga.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Unwithering in Winter: When Illuga is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "illuga.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Night Warden's Stride: At night (18:00 – 06:00), your party members gain the Swift Stride effect: Movement SPD increased by 10%.\nDoes not take effect in Domains, Trounce Domains, or Spiral Abyss. Swift Stride does not stack.\nAdditionally, Illuga appears to be able to decipher the whispers of the Wild Hunt..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Vigilant Sentinel: After Illuga triggers a Geo-related Reaction on the field, he will regain 12 Elemental Energy. This effect can be triggered at most once every 15s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Elk With Fanged Antlers: When Elemental Burst **Shadowless Reflection**'s Haunted Night's Oriole-Song effect is active, for every 7 stacks of **Nightingale's Song** consumed, Illuga will summon Aedon, dealing a single instance of Geo DMG to 1 nearby opponent. The DMG dealt is based on 400% of Illuga's Elemental Mastery and 200% of his DEF. This DMG is considered Elemental Burst DMG."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Earthshaking Maw: Increases the Level of Elemental Burst **Shadowless Reflection** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Solarhunting Wolf: When Elemental Burst **Shadowless Reflection**'s Haunted Night's Oriole-Song effect is active, nearby active party members will have their DEF increased by 200."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Hurricane Steed: Increases the Level of Elemental Skill **Dawnbearing Songbird** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Nightmare Orioles: Enhances the Lightkeeper's Oath effect of the Ascension Talent **Torchforger's Covenant**: For Geo DMG dealt to opponents, CRIT Rate is increased by 10%, CRIT DMG is increased by 30%.\n\nMoonsign: Ascendant Gleam:\nWhen characters are affected by Lightkeeper's Oath, Elemental Mastery is increased by 80.\nYou must first unlock the Ascension Talent \"Torchforger's Covenant.\""
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,1200 @@
+{
+  "id": "skirk",
+  "name": "Skirk",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/skirk",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/skirk-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 21/21. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "5.7",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12417.353843500001,
+      "atk": 358.76757,
+      "def": 806.21353413
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.54524,
+            0.58962,
+            0.634,
+            0.6974,
+            0.74178,
+            0.7925,
+            0.86224,
+            0.93198,
+            1.00172,
+            1.0778,
+            1.15388,
+            1.22996,
+            1.30604,
+            1.38212,
+            1.4582
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 19,
+              "charged": 20,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.49794,
+            0.53847,
+            0.579,
+            0.6369,
+            0.67743,
+            0.72375,
+            0.78744,
+            0.85113,
+            0.91482,
+            0.9843,
+            1.05378,
+            1.12326,
+            1.19274,
+            1.26222,
+            1.3317
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 7,
+            "cancel": {
+              "normal": 18,
+              "charged": 21,
+              "skill": 7,
+              "burst": 7,
+              "dash": 7,
+              "jump": 7,
+              "swap": 7,
+              "default": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.32422,
+            0.35061,
+            0.377,
+            0.4147,
+            0.44109,
+            0.47125,
+            0.51272,
+            0.55419,
+            0.59566,
+            0.6409,
+            0.68614,
+            0.73138,
+            0.77662,
+            0.82186,
+            0.8671
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 37,
+              "charged": 30,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            22
+          ],
+          "extraMv": [
+            [
+              0.32422,
+              0.35061,
+              0.377,
+              0.4147,
+              0.44109,
+              0.47125,
+              0.51272,
+              0.55419,
+              0.59566,
+              0.6409,
+              0.68614,
+              0.73138,
+              0.77662,
+              0.82186,
+              0.8671
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.60802,
+            0.65751,
+            0.707,
+            0.7777,
+            0.82719,
+            0.88375,
+            0.96152,
+            1.03929,
+            1.11706,
+            1.2019,
+            1.28674,
+            1.37158,
+            1.45642,
+            1.54126,
+            1.6261
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 19,
+              "charged": 20,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.82904,
+            0.89652,
+            0.964,
+            1.0604,
+            1.12788,
+            1.205,
+            1.31104,
+            1.41708,
+            1.52312,
+            1.6388,
+            1.75448,
+            1.87016,
+            1.98584,
+            2.10152,
+            2.2172
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 67,
+              "charged": 48,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 72
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.66822,
+            0.72261,
+            0.777,
+            0.8547,
+            0.90909,
+            0.97125,
+            1.05672,
+            1.14219,
+            1.22766,
+            1.3209,
+            1.41414,
+            1.50738,
+            1.60062,
+            1.69386,
+            1.7871
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 43,
+              "charged": 43,
+              "skill": 43,
+              "burst": 43,
+              "dash": 27,
+              "jump": 28,
+              "swap": 42,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            34
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "1-Hit",
+          "mv": [
+            1.328244,
+            1.436357,
+            1.54447,
+            1.698917,
+            1.80703,
+            1.930588,
+            2.100479,
+            2.270371,
+            2.440263,
+            2.625599,
+            2.810935,
+            2.996272,
+            3.181608,
+            3.366945,
+            3.552281
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Hit",
+          "mv": [
+            1.197997,
+            1.295509,
+            1.39302,
+            1.532322,
+            1.629833,
+            1.741275,
+            1.894507,
+            2.047739,
+            2.200972,
+            2.368134,
+            2.535296,
+            2.702459,
+            2.869621,
+            3.036784,
+            3.203946
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit 1",
+          "mv": [
+            0.75723,
+            0.818865,
+            0.8805,
+            0.96855,
+            1.030185,
+            1.100625,
+            1.19748,
+            1.294335,
+            1.39119,
+            1.49685,
+            1.60251,
+            1.70817,
+            1.81383,
+            1.91949,
+            2.02515
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit 2",
+          "mv": [
+            0.75723,
+            0.818865,
+            0.8805,
+            0.96855,
+            1.030185,
+            1.100625,
+            1.19748,
+            1.294335,
+            1.39119,
+            1.49685,
+            1.60251,
+            1.70817,
+            1.81383,
+            1.91949,
+            2.02515
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "4-Hit 1",
+          "mv": [
+            0.80539,
+            0.870945,
+            0.9365,
+            1.03015,
+            1.095705,
+            1.170625,
+            1.27364,
+            1.376655,
+            1.47967,
+            1.59205,
+            1.70443,
+            1.81681,
+            1.92919,
+            2.04157,
+            2.15395
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "4-Hit 2",
+          "mv": [
+            0.80539,
+            0.870945,
+            0.9365,
+            1.03015,
+            1.095705,
+            1.170625,
+            1.27364,
+            1.376655,
+            1.47967,
+            1.59205,
+            1.70443,
+            1.81681,
+            1.92919,
+            2.04157,
+            2.15395
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "5-Hit",
+          "mv": [
+            1.966244,
+            2.126287,
+            2.28633,
+            2.514963,
+            2.675006,
+            2.857912,
+            3.109409,
+            3.360905,
+            3.612401,
+            3.886761,
+            4.161121,
+            4.43548,
+            4.70984,
+            4.984199,
+            5.258559
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Plunge",
+          "mv": [
+            0.639324,
+            0.691362,
+            0.7434,
+            0.81774,
+            0.869778,
+            0.92925,
+            1.011024,
+            1.092798,
+            1.174572,
+            1.26378,
+            1.352988,
+            1.442196,
+            1.531404,
+            1.620612,
+            1.70982
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Low/High Plunge 1",
+          "mv": [
+            1.278377,
+            1.382431,
+            1.486485,
+            1.635134,
+            1.739187,
+            1.858106,
+            2.02162,
+            2.185133,
+            2.348646,
+            2.527025,
+            2.705403,
+            2.883781,
+            3.062159,
+            3.240537,
+            3.418915
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Low/High Plunge 2",
+          "mv": [
+            1.596762,
+            1.726731,
+            1.8567,
+            2.04237,
+            2.172339,
+            2.320875,
+            2.525112,
+            2.729349,
+            2.933586,
+            3.15639,
+            3.379194,
+            3.601998,
+            3.824802,
+            4.047606,
+            4.27041
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "burst": 31,
+              "dash": 29,
+              "jump": 30,
+              "swap": 29,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 480,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Slash 1",
+          "mv": [
+            1.2276,
+            1.31967,
+            1.41174,
+            1.5345,
+            1.62657,
+            1.71864,
+            1.8414,
+            1.96416,
+            2.08692,
+            2.20968,
+            2.33244,
+            2.4552,
+            2.60865,
+            2.7621,
+            2.91555
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 109,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Slash 2",
+          "mv": [
+            1.2276,
+            1.31967,
+            1.41174,
+            1.5345,
+            1.62657,
+            1.71864,
+            1.8414,
+            1.96416,
+            2.08692,
+            2.20968,
+            2.33244,
+            2.4552,
+            2.60865,
+            2.7621,
+            2.91555
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 112,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Slash 3",
+          "mv": [
+            1.2276,
+            1.31967,
+            1.41174,
+            1.5345,
+            1.62657,
+            1.71864,
+            1.8414,
+            1.96416,
+            2.08692,
+            2.20968,
+            2.33244,
+            2.4552,
+            2.60865,
+            2.7621,
+            2.91555
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 115,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Slash 4",
+          "mv": [
+            1.2276,
+            1.31967,
+            1.41174,
+            1.5345,
+            1.62657,
+            1.71864,
+            1.8414,
+            1.96416,
+            2.08692,
+            2.20968,
+            2.33244,
+            2.4552,
+            2.60865,
+            2.7621,
+            2.91555
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 118,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Slash 5",
+          "mv": [
+            1.2276,
+            1.31967,
+            1.41174,
+            1.5345,
+            1.62657,
+            1.71864,
+            1.8414,
+            1.96416,
+            2.08692,
+            2.20968,
+            2.33244,
+            2.4552,
+            2.60865,
+            2.7621,
+            2.91555
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 121,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Final Slash",
+          "mv": [
+            2.046,
+            2.19945,
+            2.3529,
+            2.5575,
+            2.71095,
+            2.8644,
+            3.069,
+            3.2736,
+            3.4782,
+            3.6828,
+            3.8874,
+            4.092,
+            4.34775,
+            4.6035,
+            4.85925
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 112,
+            "cancel": {
+              "normal": 100,
+              "charged": 102,
+              "skill": 102,
+              "dash": 102,
+              "jump": 102,
+              "swap": 101,
+              "default": 151
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/skirk/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "skirk.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Reason Beyond Reason: When nearby party members trigger Frozen, Superconduct, Stellar-Conduct, Cryo Swirl, Stellar Swirl, or Cryo Crystallize reactions against opponents, a Void Rift will be created near this opponent. This effect can be triggered once every 2.5s. 3 Void Rifts created by Skirk herself can exist on the field at once.\n\nSkirk can use the following methods to absorb nearby Void Rifts:\n· When she hits an opponent with a Charged Attack in her **Seven-Phase Flash** mode.\n· When she uses the special Elemental Burst Havoc: Extinction while in Seven-Phase Flash mode.\n· When she Holds he"
+    },
+    {
+      "id": "skirk.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Return to Oblivion: When nearby Hydro party members' Hydro attacks hit opponents, or when nearby Cryo party members apart from Skirk hit opponents with Cryo attacks, Skirk will gain the \"Death's Crossing\" effect for 20s. Max 3 stacks, each stack's duration is counted independently.\nEach character can grant Skirk at most 1 \"Death's Crossing\" stack by this means.\nEach \"Death's Crossing\" stack increases the Normal Attack DMG dealt by Skirk in **Seven-Phase Flash** mode to 110%/120%/170% of its original DMG and the DMG dealt when using her Elemental Burst Havoc: Ruin to 105%/115%/160% of its origi"
+    },
+    {
+      "id": "skirk.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Mutual Weapons Mentorship: When all party members are either Hydro or Cryo, and if there is at least 1 Hydro and 1 Cryo character, your own party members' Elemental Skill Level is increased by 1."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Far to Fall: Enhances the effects of the Ascension Talent **Reason Beyond Reason**: Every Void Rift absorbed will summon a crystal blade to attack nearby opponents, dealing 500% of Skirk's ATK as Cryo DMG. This DMG is considered Charged Attack DMG.\nYou must first unlock the Ascension Talent Reason Beyond Reason."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Into the Abyss: After unleashing her Elemental Skill Havoc: Warp, Skirk will gain 10 additional **Serpent's Subtlety** points.\nWhen using her Elemental Burst Havoc: Ruin, the DMG of this Elemental Burst instance will be increased by taking up to 10 more Serpent's Subtlety points into account.\nAdditionally, within 12.5s after Skirk unleashes the special Elemental Burst Havoc: Extinction while in her **Seven-Phase Flash** mode, her ATK is increased by 70%. This effect will be canceled when she leaves the Seven-Phase Flash mode."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Serendipitous Sin: Increases the Level of **Havoc: Ruin** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Fractured Flow: Enhances the effects of the Ascension Talent **Return to Oblivion**: Each Death's Crossing stack also increases Skirk's ATK by 10%/20%/40%.\nYou must first unlock the Ascension Talent Return to Oblivion."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "End of Wishes: Increases the Level of **Havoc: Warp** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "To the Source: Each Void Rift Skirk absorbs via the effects of the Ascension Talent **Reason Beyond Reason** will grant her 1 Havoc: Sever stack. She can consume such stacks to initiate coordinated attacks and decrease the DMG she takes while in **Seven-Phase Flash** mode. These stacks last for 15s, and each stack's duration is counted independently (max 3 stacks).\nYou must first unlock the Ascension Talent \"Reason Beyond Reason.\"\n\nHavoc: Sever\n· When Skirk uses the Elemental Burst Havoc: Ruin, she will consume all Havoc: Sever stacks to initiate a coordinated attack in which each Havoc: Sever"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

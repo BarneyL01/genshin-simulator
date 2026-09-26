@@ -1,0 +1,47 @@
+{
+  "id": "everlasting-moonglow",
+  "name": "Everlasting Moonglow",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Byakuya Kougetsu\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Healing Bonus increased by 10%, Normal Attack DMG is increased by 1% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "catalyst",
+  "rarity": 5,
+  "releaseVersion": "2.1",
+  "baseAtk": {
+    "lv90": 608.0745972
+  },
+  "substat": {
+    "stat": "hp%",
+    "lv90": 0.49615200000000004
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Byakuya Kougetsu",
+    "text": "Healing Bonus increased by 10%, Normal Attack DMG is increased by 1% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s.",
+    "effects": []
+  },
+  "needsHook": false
+}

@@ -1,0 +1,479 @@
+{
+  "id": "lauma",
+  "name": "Lauma",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lauma",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/lauma",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "catalyst",
+  "releaseVersion": "6.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10653.9424276,
+      "atk": 254.96415188000003,
+      "def": 668.6423019
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 115.2
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.337024,
+            0.362301,
+            0.387578,
+            0.42128,
+            0.446557,
+            0.471834,
+            0.505536,
+            0.539238,
+            0.572941,
+            0.606643,
+            0.640346,
+            0.674048,
+            0.716176,
+            0.758304,
+            0.800432
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 29,
+              "charged": 17,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lauma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.318048,
+            0.341902,
+            0.365755,
+            0.39756,
+            0.421414,
+            0.445267,
+            0.477072,
+            0.508877,
+            0.540682,
+            0.572486,
+            0.604291,
+            0.636096,
+            0.675852,
+            0.715608,
+            0.755364
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 33,
+              "charged": 19,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lauma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.444968,
+            0.478341,
+            0.511713,
+            0.55621,
+            0.589583,
+            0.622955,
+            0.667452,
+            0.711949,
+            0.756446,
+            0.800942,
+            0.845439,
+            0.889936,
+            0.945557,
+            1.001178,
+            1.056799
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 38,
+              "charged": 33,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lauma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press",
+          "mv": [
+            1.216,
+            1.3072,
+            1.3984,
+            1.52,
+            1.6112,
+            1.7024,
+            1.824,
+            1.9456,
+            2.0672,
+            2.1888,
+            2.3104,
+            2.432,
+            2.584,
+            2.736,
+            2.888
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Frostgrove Sanctuary Attack 1",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Frostgrove Sanctuary Attack 2",
+          "mv": [
+            1.92,
+            2.064,
+            2.208,
+            2.4,
+            2.544,
+            2.688,
+            2.88,
+            3.072,
+            3.264,
+            3.456,
+            3.648,
+            3.84,
+            4.08,
+            4.32,
+            4.56
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "normal": 111,
+          "charged": 110,
+          "skill": 110,
+          "dash": 111,
+          "swap": 109,
+          "default": 115
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lauma/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "lauma.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Light for the Frosty Night: For the next 20s after Lauma uses her Elemental Skill **Runo: Dawnless Rest of Karsikko**, corresponding differing buff effects will be granted depending on the party's Moonsign. The buffs provided by different Moonsign levels cannot stack.\n\nMoonsign: Nascent Gleam\nBloom, Hyperbloom, and Burgeon DMG dealt by all nearby party members can score CRIT Hits, with CRIT Rate fixed at 15%, and CRIT DMG fixed at 100%. CRIT Rate from this effect stacks with CRIT Rate from similar effects that allow these Elemental Reactions to CRIT.\n\nMoonsign: Ascendant Gleam\nAll nearby party"
+    },
+    {
+      "id": "lauma.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Cleansing for the Spring: Each point of Elemental Mastery Lauma has will give her the following bonuses:\n· DMG dealt by her Elemental Skill is increased by 0.04%. The maximum increase obtainable this way is 32%.\n· The cooldown of her Charged Attack Spirit Envoy Metamorphosis is reduced by 0.02%. The maximum reduction obtainable this way is 20%."
+    },
+    {
+      "id": "lauma.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Nature's Chorus: When a Bloom reaction is triggered by a party member, it will be converted into the Lunar-Bloom reaction, with every point of Elemental Mastery that Lauma has increasing Lunar-Bloom's Base DMG by 0.0175%, up to a maximum of 14%.\n\nAdditionally, when Lauma is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "lauma.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Prayers for the Forest: Displays the location of nearby resources unique to Nod-Krai on the mini-map.\nAdditionally, Lauma appears to have a special affinity with some small animals affected by kuuvahki..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"O Lips, Weave Me Songs and Psalms\": After Lauma uses her Elemental Skill **Runo: Dawnless Rest of Karsikko** or her Elemental Burst **Runo: All Hearts Become the Beating Moon**, she will gain Threads of Life for 20s.\nDuring this time, when nearby party members trigger Lunar-Bloom reactions, nearby active characters will recover HP equal to 500% of Lauma's Elemental Mastery. This effect can be triggered once every 1.9s.\nAdditionally, the Stamina cost for Lauma's Spirit Envoy Form will be reduced by 40%, and its Max Duration will be extended by 5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"Twine Warnings and Tales From the North\": The Elemental Burst **Runo: All Hearts Become the Beating Moon** is enhanced:\n· **Pale Hymn** effects are increased: All nearby party members' Bloom, Hyperbloom, and Burgeon DMG is further increased by 500% of Lauma's Elemental Mastery, and their Lunar-Bloom DMG is further increased by 400% of Lauma's Elemental Mastery.\n\nMoonsign: Ascendant Gleam: All nearby party members' Lunar-Bloom DMG is increased by 40%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"Seek Not to Tread the Sly Fox's Path\": Increases the Level of **Runo: All Hearts Become the Beating Moon** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"Nor Yearn for the Great Bear's Might\": When attacks from the **Frostgrove Sanctuary** summoned by her Elemental Skill **Runo: Dawnless Rest of Karsikko** hit opponents, Lauma will regain 4 Elemental Energy. This effect can be triggered once every 5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"If Truth May Be Subject to Witness\": Increases the Level of **Runo: Dawnless Rest of Karsikko** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"I Offer Blood and Tears to the Moonlight\": When the **Frostgrove Sanctuary** attacks opponents, it will deal 1 additional instance of AoE Dendro DMG equal to 185% of Lauma's Elemental Mastery. This DMG is considered Lunar-Bloom DMG. This instance of DMG will not consume any **Pale Hymn** stacks and will provide Lauma with 2 stacks of Pale Hymn, as well as refreshing the duration of Pale Hymn stacks gained in this manner.\nThis effect can occur up to 8 times during each Frostgrove Sanctuary. When using the Elemental Skill **Runo: Dawnless Rest of Karsikko**, all Pale Hymn stacks gained in this "
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,590 @@
+{
+  "id": "shikanoin-heizou",
+  "name": "Shikanoin Heizou",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/shikanoin-heizou",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/heizou-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "2.8",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10657.416864800001,
+      "atk": 225.14102152,
+      "def": 683.88656805
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.anemo",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.374736,
+            0.402841,
+            0.430946,
+            0.46842,
+            0.496525,
+            0.52463,
+            0.562104,
+            0.599578,
+            0.637051,
+            0.674525,
+            0.711998,
+            0.749472,
+            0.796314,
+            0.843156,
+            0.889998
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 20,
+              "charged": 21,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.36852,
+            0.396159,
+            0.423798,
+            0.46065,
+            0.488289,
+            0.515928,
+            0.55278,
+            0.589632,
+            0.626484,
+            0.663336,
+            0.700188,
+            0.73704,
+            0.783105,
+            0.82917,
+            0.875235
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 17,
+              "charged": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.5106,
+            0.548895,
+            0.58719,
+            0.63825,
+            0.676545,
+            0.71484,
+            0.7659,
+            0.81696,
+            0.86802,
+            0.91908,
+            0.97014,
+            1.0212,
+            1.085025,
+            1.14885,
+            1.212675
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 45,
+              "charged": 46,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.147824,
+            0.158911,
+            0.169998,
+            0.18478,
+            0.195867,
+            0.206954,
+            0.221736,
+            0.236518,
+            0.251301,
+            0.266083,
+            0.280866,
+            0.295648,
+            0.314126,
+            0.332604,
+            0.351082
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 36,
+              "charged": 38,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            19,
+            27
+          ],
+          "extraMv": [
+            [
+              0.162608,
+              0.174804,
+              0.186999,
+              0.20326,
+              0.215456,
+              0.227651,
+              0.243912,
+              0.260173,
+              0.276434,
+              0.292694,
+              0.308955,
+              0.325216,
+              0.345542,
+              0.365868,
+              0.386194
+            ],
+            [
+              0.192176,
+              0.206589,
+              0.221002,
+              0.24022,
+              0.254633,
+              0.269046,
+              0.288264,
+              0.307482,
+              0.326699,
+              0.345917,
+              0.365134,
+              0.384352,
+              0.408374,
+              0.432396,
+              0.456418
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.614496,
+            0.660583,
+            0.70667,
+            0.76812,
+            0.814207,
+            0.860294,
+            0.921744,
+            0.983194,
+            1.044643,
+            1.106093,
+            1.167542,
+            1.228992,
+            1.305804,
+            1.382616,
+            1.459428
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 31,
+              "burst": 31,
+              "dash": 31,
+              "jump": 31,
+              "swap": 31,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.2752,
+            2.44584,
+            2.61648,
+            2.844,
+            3.01464,
+            3.18528,
+            3.4128,
+            3.64032,
+            3.86784,
+            4.09536,
+            4.32288,
+            4.5504,
+            4.8348,
+            5.1192,
+            5.4036
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 600,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Fudou Style Vacuum Slugger",
+          "mv": [
+            3.14688,
+            3.382896,
+            3.618912,
+            3.9336,
+            4.169616,
+            4.405632,
+            4.72032,
+            5.035008,
+            5.349696,
+            5.664384,
+            5.979072,
+            6.29376,
+            6.68712,
+            7.08048,
+            7.47384
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 71,
+              "skill": 71,
+              "jump": 70,
+              "swap": 69,
+              "default": 72
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        },
+        {
+          "name": "Windmuster Iris",
+          "mv": [
+            0.21456,
+            0.230652,
+            0.246744,
+            0.2682,
+            0.284292,
+            0.300384,
+            0.32184,
+            0.343296,
+            0.364752,
+            0.386208,
+            0.407664,
+            0.42912,
+            0.45594,
+            0.48276,
+            0.50958
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 71,
+              "skill": 71,
+              "jump": 70,
+              "swap": 69,
+              "default": 72
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/heizou/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "shikanoin-heizou.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Paradoxical Practice: When Shikanoin Heizou activates a Swirl or Stellar Swirl reaction while on the field, he will gain 1 Declension stack for Heartstopper Strike. This effect can be triggered once every 0.1s."
+    },
+    {
+      "id": "shikanoin-heizou.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Penetrative Reasoning: After Shikanoin Heizou's Heartstopper Strike hits an opponent, increases all party members' (excluding Shikanoin Heizou) Elemental Mastery by 80 for 10s."
+    },
+    {
+      "id": "shikanoin-heizou.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Pre-Existing Guilt: Decreases sprinting Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Named Juvenile Casebook: For 5s after Shikanoin Heizou takes the field, his Normal Attack SPD is increased by 15%. He also gains 1 Declension stack for Heartstopper Strike. This effect can be triggered once every 10s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Investigative Collection: The pull effect of the Arresting Windtunnel created by Windmuster Kick is enhanced, and its duration is increased to 1s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Esoteric Puzzle Book: Increases the Level of Heartstopper Strike by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Tome of Lies: The first Windmuster Iris explosion in each Windmuster Kick will regenerate 9 Elemental Energy for Shikanoin Heizou. Every subsequent explosion in that Windmuster Kick will each regenerate an additional 1.5 Energy for Heizou.\nOne Windmuster Kick can regenerate a total of 13.5 Energy for Heizou in this manner."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Secret Archive: Increases the Level of Windmuster Kick by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Curious Casefiles: Each Declension stack will increase the CRIT Rate of the Heartstopper Strike unleashed by 4%. When Heizou possesses Conviction, this Heartstopper Strike's CRIT DMG is increased by 32%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

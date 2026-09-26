@@ -1,0 +1,34 @@
+{
+  "id": "archaic-petra",
+  "name": "Archaic Petra",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "2-piece bonus \"Gain a 15% Geo DMG Bonus.\" is not modelled yet.",
+    "4-piece bonus \"Upon obtaining an Elemental Shard created through Crystallize or triggering a Lunar-Crystallize reaction, all party members gain a 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": []
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

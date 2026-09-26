@@ -1,0 +1,45 @@
+{
+  "id": "scarlet-proof",
+  "name": "Scarlet Proof",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "4-piece bonus \"Increases the equipping character's CRIT Rate by 16%, and their Stellar Swirl reaction DMG dealt by 40%, for 10s after they trigger a Stellar Swirl reaction.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": [
+        {
+          "id": "scarlet-proof.2pc",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "atk%",
+          "value": 0.18,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

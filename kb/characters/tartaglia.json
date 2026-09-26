@@ -1,0 +1,945 @@
+{
+  "id": "tartaglia",
+  "name": "Tartaglia",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/tartaglia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 16/16. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark, burst, burst hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "bow",
+  "releaseVersion": "1.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13103.1246236,
+      "atk": 301.3647568,
+      "def": 814.6676322000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.hydro",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.4128,
+            0.4464,
+            0.48,
+            0.528,
+            0.5616,
+            0.6,
+            0.6528,
+            0.7056,
+            0.7584,
+            0.816,
+            0.8736,
+            0.9312,
+            0.9888,
+            1.0464,
+            1.104
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 26,
+              "charged": 26,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.46268,
+            0.50034,
+            0.538,
+            0.5918,
+            0.62946,
+            0.6725,
+            0.73168,
+            0.79086,
+            0.85004,
+            0.9146,
+            0.97916,
+            1.04372,
+            1.10828,
+            1.17284,
+            1.2374
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 27,
+              "charged": 27,
+              "skill": 8,
+              "burst": 8,
+              "dash": 8,
+              "jump": 8,
+              "swap": 8,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.55384,
+            0.59892,
+            0.644,
+            0.7084,
+            0.75348,
+            0.805,
+            0.87584,
+            0.94668,
+            1.01752,
+            1.0948,
+            1.17208,
+            1.24936,
+            1.32664,
+            1.40392,
+            1.4812
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.57018,
+            0.61659,
+            0.663,
+            0.7293,
+            0.77571,
+            0.82875,
+            0.90168,
+            0.97461,
+            1.04754,
+            1.1271,
+            1.20666,
+            1.28622,
+            1.36578,
+            1.44534,
+            1.5249
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 32,
+              "charged": 32,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.60888,
+            0.65844,
+            0.708,
+            0.7788,
+            0.82836,
+            0.885,
+            0.96288,
+            1.04076,
+            1.11864,
+            1.2036,
+            1.28856,
+            1.37352,
+            1.45848,
+            1.54344,
+            1.6284
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N6",
+          "mv": [
+            0.72756,
+            0.78678,
+            0.846,
+            0.9306,
+            0.98982,
+            1.0575,
+            1.15056,
+            1.24362,
+            1.33668,
+            1.4382,
+            1.53972,
+            1.64124,
+            1.74276,
+            1.84428,
+            1.9458
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24,
+            1.333,
+            1.426,
+            1.55,
+            1.643,
+            1.736,
+            1.86,
+            1.984,
+            2.108,
+            2.232,
+            2.356,
+            2.48,
+            2.635,
+            2.79,
+            2.945
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "skill": 29,
+              "burst": 29,
+              "dash": 14,
+              "jump": 15,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Stance Change",
+          "mv": [
+            0.72,
+            0.774,
+            0.828,
+            0.9,
+            0.954,
+            1.008,
+            1.08,
+            1.152,
+            1.224,
+            1.296,
+            1.368,
+            1.44,
+            1.53,
+            1.62,
+            1.71
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 312,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "1-Hit",
+          "mv": [
+            0.38872,
+            0.42036,
+            0.452,
+            0.4972,
+            0.52884,
+            0.565,
+            0.61472,
+            0.66444,
+            0.71416,
+            0.7684,
+            0.82264,
+            0.87688,
+            0.93112,
+            0.98536,
+            1.0396
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 315,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "2-Hit",
+          "mv": [
+            0.41624,
+            0.45012,
+            0.484,
+            0.5324,
+            0.56628,
+            0.605,
+            0.65824,
+            0.71148,
+            0.76472,
+            0.8228,
+            0.88088,
+            0.93896,
+            0.99704,
+            1.05512,
+            1.1132
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 318,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "3-Hit",
+          "mv": [
+            0.5633,
+            0.60915,
+            0.655,
+            0.7205,
+            0.76635,
+            0.81875,
+            0.8908,
+            0.96285,
+            1.0349,
+            1.1135,
+            1.1921,
+            1.2707,
+            1.3493,
+            1.4279,
+            1.5065
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 321,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "4-Hit",
+          "mv": [
+            0.59942,
+            0.64821,
+            0.697,
+            0.7667,
+            0.81549,
+            0.87125,
+            0.94792,
+            1.02459,
+            1.10126,
+            1.1849,
+            1.26854,
+            1.35218,
+            1.43582,
+            1.51946,
+            1.6031
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 324,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "5-Hit",
+          "mv": [
+            0.55298,
+            0.59799,
+            0.643,
+            0.7073,
+            0.75231,
+            0.80375,
+            0.87448,
+            0.94521,
+            1.01594,
+            1.0931,
+            1.17026,
+            1.24742,
+            1.32458,
+            1.40174,
+            1.4789
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 327,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "6-Hit 1",
+          "mv": [
+            0.35432,
+            0.38316,
+            0.412,
+            0.4532,
+            0.48204,
+            0.515,
+            0.56032,
+            0.60564,
+            0.65096,
+            0.7004,
+            0.74984,
+            0.79928,
+            0.84872,
+            0.89816,
+            0.9476
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 330,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "6-Hit 2",
+          "mv": [
+            0.37668,
+            0.40734,
+            0.438,
+            0.4818,
+            0.51246,
+            0.5475,
+            0.59568,
+            0.64386,
+            0.69204,
+            0.7446,
+            0.79716,
+            0.84972,
+            0.90228,
+            0.95484,
+            1.0074
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 333,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill : Melee",
+          "mv": [
+            4.64,
+            4.988,
+            5.336,
+            5.8,
+            6.148,
+            6.496,
+            6.96,
+            7.424,
+            7.888,
+            8.352,
+            8.816,
+            9.28,
+            9.86,
+            10.44,
+            11.02
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 101,
+              "aim": 101,
+              "skill": 101,
+              "dash": 101,
+              "jump": 100,
+              "default": 117
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Riptide Blast",
+          "mv": [
+            1.2,
+            1.29,
+            1.38,
+            1.5,
+            1.59,
+            1.68,
+            1.8,
+            1.92,
+            2.04,
+            2.16,
+            2.28,
+            2.4,
+            2.55,
+            2.7,
+            2.85
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 62,
+            "cancel": {
+              "normal": 101,
+              "aim": 101,
+              "skill": 101,
+              "dash": 101,
+              "jump": 100,
+              "default": 117
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "tartaglia.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Never Ending: Extends Riptide duration by 8s."
+    },
+    {
+      "id": "tartaglia.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Sword of Torrents: When Tartaglia is in Foul Legacy: Raging Tide's Melee Stance, on dealing a CRIT hit, Normal and Charged Attacks apply the Riptide status effect to opponents."
+    },
+    {
+      "id": "tartaglia.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Master of Weaponry: Increases your own party members' Normal Attack Level by 1."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Foul Legacy: Tide Withholder: Decreases the CD of Foul Legacy: Raging Tide by 20%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Foul Legacy: Understream: When opponents affected by Riptide are defeated, Tartaglia regenerates 4 Elemental Energy."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Abyssal Mayhem: Vortex of Turmoil: Increases the Level of Foul Legacy: Raging Tide by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Abyssal Mayhem: Hydrospout: If Tartaglia is in Foul Legacy: Raging Tide's Melee Stance, triggers Riptide Slash against opponents on the field affected by Riptide every 4s, otherwise, triggers Riptide Flash.\nRiptide Slashes and Riptide Flashes triggered by this Constellation effect are not subject to the time intervals that would typically apply to these two Riptide effects, nor do they have any effect on those time intervals."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Havoc: Formless Blade: Increases the Level of Havoc: Obliteration by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Havoc: Annihilation: When Havoc: Obliteration is cast in Melee Stance, the CD of Foul Legacy: Raging Tide is reset.\nThis effect will only take place once Tartaglia returns to his Ranged Stance."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 6,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

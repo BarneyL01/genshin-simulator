@@ -1,0 +1,573 @@
+{
+  "id": "candace",
+  "name": "Candace",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/candace",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/candace-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "hydro",
+  "weaponType": "polearm",
+  "releaseVersion": "3.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10874.914859,
+      "atk": 212.397192,
+      "def": 682.521525
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.60802,
+            0.65751,
+            0.707,
+            0.7777,
+            0.82719,
+            0.88375,
+            0.96152,
+            1.03929,
+            1.11706,
+            1.2019,
+            1.28674,
+            1.37158,
+            1.45642,
+            1.54126,
+            1.6261
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 20,
+              "charged": 32,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.61146,
+            0.66123,
+            0.711,
+            0.7821,
+            0.83187,
+            0.88875,
+            0.96696,
+            1.04517,
+            1.12338,
+            1.2087,
+            1.29402,
+            1.37934,
+            1.46466,
+            1.54998,
+            1.6353
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.354879,
+            0.383765,
+            0.41265,
+            0.453915,
+            0.4828,
+            0.515813,
+            0.561204,
+            0.606596,
+            0.651987,
+            0.701505,
+            0.751023,
+            0.800541,
+            0.850059,
+            0.899577,
+            0.949095
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 48,
+              "charged": 43,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            39
+          ],
+          "extraMv": [
+            [
+              0.433741,
+              0.469046,
+              0.50435,
+              0.554785,
+              0.59009,
+              0.630438,
+              0.685916,
+              0.741395,
+              0.796873,
+              0.857395,
+              0.917917,
+              0.978439,
+              1.038961,
+              1.099483,
+              1.160005
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.94944,
+            1.02672,
+            1.104,
+            1.2144,
+            1.29168,
+            1.38,
+            1.50144,
+            1.62288,
+            1.74432,
+            1.8768,
+            2.00928,
+            2.14176,
+            2.27424,
+            2.40672,
+            2.5392
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "normal": 69,
+              "charged": 69,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 69
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24184,
+            1.34292,
+            1.444,
+            1.5884,
+            1.68948,
+            1.805,
+            1.96384,
+            2.12268,
+            2.28152,
+            2.4548,
+            2.62808,
+            2.80136,
+            2.97464,
+            3.14792,
+            3.3212
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "skill": 52,
+              "burst": 52,
+              "dash": 29,
+              "jump": 28,
+              "swap": 51,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Basic",
+          "mv": [
+            0.12,
+            0.129,
+            0.138,
+            0.15,
+            0.159,
+            0.168,
+            0.18,
+            0.192,
+            0.204,
+            0.216,
+            0.228,
+            0.24,
+            0.255,
+            0.27,
+            0.285
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.066104,
+            0.071062,
+            0.07602,
+            0.08263,
+            0.087588,
+            0.092546,
+            0.099156,
+            0.105766,
+            0.112377,
+            0.118987,
+            0.125598,
+            0.132208,
+            0.140471,
+            0.148734,
+            0.156997
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 50,
+              "dash": 50,
+              "jump": 50,
+              "swap": 49,
+              "default": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Wave Impact",
+          "mv": [
+            0.066104,
+            0.071062,
+            0.07602,
+            0.08263,
+            0.087588,
+            0.092546,
+            0.099156,
+            0.105766,
+            0.112377,
+            0.118987,
+            0.125598,
+            0.132208,
+            0.140471,
+            0.148734,
+            0.156997
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 50,
+              "dash": 50,
+              "jump": 50,
+              "swap": 49,
+              "default": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/candace/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "candace.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Aegis of Crossed Arrows: If Candace is hit by an attack in the Hold duration of Sacred Rite: Heron's Sanctum, that skill will finish charging instantly."
+    },
+    {
+      "id": "candace.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Celestial Dome of Sand: Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal 0.5% increased DMG to opponents for every 1,000 points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks."
+    },
+    {
+      "id": "candace.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "To Dawn's First Light: Decreases climbing Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Returning Heiress of the Scarlet Sands: The duration of Prayer of the Crimson Crown effect triggered by Sacred Rite: Wagtail's Tide is increased by 3s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Moon-Piercing Brilliance: When Sacred Rite: Heron's Sanctum hits opponents, Candace's Max HP will be increased by 20% for 15s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Hunter's Supplication: Increases the Level of Sacred Rite: Wagtail's Tide by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sentinel Oath: Shortens the Hold CD of Sacred Rite: Heron's Sanctum to be the same as that of the Tapping CD."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Heterochromatic Gaze: Increases the Level of Sacred Rite: Heron's Sanctum by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "The Overflow: When characters (excluding Candace herself) affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals AoE Hydro DMG equal to 15% of Candace's Max HP.\nThis effect can trigger once every 2.3s and is considered Elemental Burst DMG."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "hp%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

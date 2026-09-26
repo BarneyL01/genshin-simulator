@@ -1,0 +1,916 @@
+{
+  "id": "flins",
+  "name": "Flins",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/flins",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 15/15. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "polearm",
+  "releaseVersion": "6.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12490.8290496,
+      "atk": 351.5922196,
+      "def": 808.51919724
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.44726,
+            0.483665,
+            0.52007,
+            0.572077,
+            0.608482,
+            0.650088,
+            0.707295,
+            0.764503,
+            0.821711,
+            0.884119,
+            0.946527,
+            1.008936,
+            1.071344,
+            1.133753,
+            1.196161
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 14,
+              "charged": 25,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.451483,
+            0.488231,
+            0.52498,
+            0.577478,
+            0.614227,
+            0.656225,
+            0.713973,
+            0.771721,
+            0.829468,
+            0.892466,
+            0.955464,
+            1.018461,
+            1.081459,
+            1.144456,
+            1.207454
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 16,
+              "charged": 27,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.559198,
+            0.604714,
+            0.65023,
+            0.715253,
+            0.760769,
+            0.812787,
+            0.884313,
+            0.955838,
+            1.027363,
+            1.105391,
+            1.183419,
+            1.261446,
+            1.339474,
+            1.417501,
+            1.495529
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 23,
+              "charged": 25,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.320389,
+            0.346467,
+            0.372545,
+            0.4098,
+            0.435878,
+            0.465681,
+            0.506661,
+            0.547641,
+            0.588621,
+            0.633327,
+            0.678032,
+            0.722737,
+            0.767443,
+            0.812148,
+            0.856853
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 40,
+              "charged": 67,
+              "skill": 29,
+              "burst": 29,
+              "dash": 29,
+              "jump": 29,
+              "swap": 29,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            29
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.767946,
+            0.830453,
+            0.89296,
+            0.982256,
+            1.044763,
+            1.1162,
+            1.214426,
+            1.312651,
+            1.410877,
+            1.518032,
+            1.625187,
+            1.732342,
+            1.839498,
+            1.946653,
+            2.053808
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 29,
+              "burst": 29,
+              "dash": 29,
+              "jump": 29,
+              "swap": 29,
+              "default": 68
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.03028,
+            1.11414,
+            1.198,
+            1.3178,
+            1.40166,
+            1.4975,
+            1.62928,
+            1.76106,
+            1.89284,
+            2.0366,
+            2.18036,
+            2.32412,
+            2.46788,
+            2.61164,
+            2.7554
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "skill": 28,
+              "burst": 28,
+              "dash": 28,
+              "jump": 28,
+              "swap": 43,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "1-Hit",
+          "mv": [
+            0.58248,
+            0.626166,
+            0.669852,
+            0.7281,
+            0.771786,
+            0.815472,
+            0.87372,
+            0.931968,
+            0.990216,
+            1.048464,
+            1.106712,
+            1.16496,
+            1.23777,
+            1.31058,
+            1.38339
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Hit",
+          "mv": [
+            0.587976,
+            0.632074,
+            0.676172,
+            0.73497,
+            0.779068,
+            0.823166,
+            0.881964,
+            0.940762,
+            0.999559,
+            1.058357,
+            1.117154,
+            1.175952,
+            1.249449,
+            1.322946,
+            1.396443
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit",
+          "mv": [
+            0.728256,
+            0.782875,
+            0.837494,
+            0.91032,
+            0.964939,
+            1.019558,
+            1.092384,
+            1.16521,
+            1.238035,
+            1.310861,
+            1.383686,
+            1.456512,
+            1.547544,
+            1.638576,
+            1.729608
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "4-Hit 1",
+          "mv": [
+            0.417252,
+            0.448546,
+            0.47984,
+            0.521565,
+            0.552859,
+            0.584153,
+            0.625878,
+            0.667603,
+            0.709328,
+            0.751054,
+            0.792779,
+            0.834504,
+            0.88666,
+            0.938817,
+            0.990973
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "4-Hit 2",
+          "mv": [
+            0.417252,
+            0.448546,
+            0.47984,
+            0.521565,
+            0.552859,
+            0.584153,
+            0.625878,
+            0.667603,
+            0.709328,
+            0.751054,
+            0.792779,
+            0.834504,
+            0.88666,
+            0.938817,
+            0.990973
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "5-Hit",
+          "mv": [
+            1.000112,
+            1.07512,
+            1.150129,
+            1.25014,
+            1.325148,
+            1.400157,
+            1.500168,
+            1.600179,
+            1.70019,
+            1.800202,
+            1.900213,
+            2.000224,
+            2.125238,
+            2.250252,
+            2.375266
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Northland Spearstorm",
+          "mv": [
+            1.784,
+            1.9178,
+            2.0516,
+            2.23,
+            2.3638,
+            2.4976,
+            2.676,
+            2.8544,
+            3.0328,
+            3.2112,
+            3.3896,
+            3.568,
+            3.791,
+            4.014,
+            4.237
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 19,
+              "skill": 22,
+              "burst": 19,
+              "dash": 17,
+              "jump": 18,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Initial Skill",
+          "mv": [
+            2.5984,
+            2.79328,
+            2.98816,
+            3.248,
+            3.44288,
+            3.63776,
+            3.8976,
+            4.15744,
+            4.41728,
+            4.67712,
+            4.93696,
+            5.1968,
+            5.5216,
+            5.8464,
+            6.1712
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 65,
+            "cancel": {
+              "normal": 102,
+              "skill": 103,
+              "dash": 103,
+              "jump": 103,
+              "swap": 91,
+              "default": 130
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Thunderous Symphony",
+          "mv": [
+            0.71456,
+            0.768152,
+            0.821744,
+            0.8932,
+            0.946792,
+            1.000384,
+            1.07184,
+            1.143296,
+            1.214752,
+            1.286208,
+            1.357664,
+            1.42912,
+            1.51844,
+            1.60776,
+            1.69708
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 68,
+            "cancel": {
+              "normal": 102,
+              "skill": 103,
+              "dash": 103,
+              "jump": 103,
+              "swap": 91,
+              "default": 130
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Thunderous Symphony Additional",
+          "mv": [
+            1.03936,
+            1.117312,
+            1.195264,
+            1.2992,
+            1.377152,
+            1.455104,
+            1.55904,
+            1.662976,
+            1.766912,
+            1.870848,
+            1.974784,
+            2.07872,
+            2.20864,
+            2.33856,
+            2.46848
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 71,
+            "cancel": {
+              "normal": 102,
+              "skill": 103,
+              "dash": 103,
+              "jump": 103,
+              "swap": 91,
+              "default": 130
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/flins/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "flins.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Symphony of Winter: Flins will gain a corresponding buff effect based on the party's Moonsign.\n\nMoonsign: Ascendant Gleam: Lunar-Charged reactions triggered by Flins will deal an additional 20% DMG."
+    },
+    {
+      "id": "flins.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Whispering Flame: Flins's Elemental Mastery is increased by 8% of his ATK. The maximum increase obtainable this way is 160."
+    },
+    {
+      "id": "flins.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Old World Secrets: When a party member triggers an Electro-Charged reaction, it will be converted into the Lunar-Charged reaction, with every 100 ATK that Flins has increasing Lunar-Charged's Base DMG by 0.7%, up to a maximum of 14%.\n\nAdditionally, when Flins is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "flins.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "A Light in the Dark: Displays the location of nearby resources unique to Nod-Krai on the mini-map.\nAdditionally, Flins appears to be able to decipher the whispers of the Wild Hunt..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Part the Veil of Snow: The basic cooldown of the special Elemental Skill Northland Spearstorm is reduced to 4s.\nAdditionally, when party members trigger Lunar-Charged reactions, Flins will recover 8 Elemental Energy. This effect can occur once every 5.5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The Devil's Wall: For the next 6s after using the special Elemental Skill Northland Spearstorm, when Flins's next Normal Attack hits an opponent, it will deal an additional 50% of Flins's ATK as AoE Electro DMG. This DMG is considered Lunar-Charged DMG.\nMoonsign: Ascendant Gleam: While Flins is on the field, after his Electro attacks hit an opponent, that opponent's Electro RES will be decreased by 25% for 7s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Stranger in the Night: Increases the Level of **Ancient Ritual: Cometh the Night** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Night on Bald Mountain: Flins's ATK is increased by 20%.\nAdditionally, his Ascension Talent **Whispering Flame** is enhanced: Flins's Elemental Mastery is increased by 10% of his ATK. The maximum increase obtainable this way is 220."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Exile's Shadow: Increases the Level of **Ancient Rite: Arcane Light** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Songs and Dances of Death: The DMG dealt to opponents by Flins's Lunar-Charged reactions is **elevated** by 35%.\nMoonsign: Ascendant Gleam: All nearby party members' Lunar-Charged DMG is elevated by 10%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

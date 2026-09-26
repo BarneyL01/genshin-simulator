@@ -1,0 +1,47 @@
+{
+  "id": "beyond-the-chrysalis",
+  "name": "Beyond the Chrysalis",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Dance of Wings Unbound\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Each time the equipping character uses their Elemental Skill or Elemental Burst, they gain one of the following three effects in sequence:\nWinds of Devotion: Increases the equipping character's CRIT DMG by 56% for 10s;\nWinds of Defiance: Increases Stellar Swirl reaction DMG dealt by the equipping character by 36% for 10s; and\nWinds of Plenty: Regenerates 5 Elemental Energy for the equipping character. Up to 5 Elemental Energy can be regenerated in this way every 4s.\nThe aforementioned effects are removed and the sequence is reset when the equipping character leaves the field.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "sword",
+  "rarity": 5,
+  "releaseVersion": "7.1",
+  "baseAtk": {
+    "lv90": 674.3345459999999
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.441024
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Dance of Wings Unbound",
+    "text": "Each time the equipping character uses their Elemental Skill or Elemental Burst, they gain one of the following three effects in sequence:\nWinds of Devotion: Increases the equipping character's CRIT DMG by 56% for 10s;\nWinds of Defiance: Increases Stellar Swirl reaction DMG dealt by the equipping character by 36% for 10s; and\nWinds of Plenty: Regenerates 5 Elemental Energy for the equipping character. Up to 5 Elemental Energy can be regenerated in this way every 4s.\nThe aforementioned effects are removed and the sequence is reset when the equipping character leaves the field.",
+    "effects": []
+  },
+  "needsHook": false
+}

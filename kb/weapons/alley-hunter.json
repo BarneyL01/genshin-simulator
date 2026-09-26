@@ -1,0 +1,47 @@
+{
+  "id": "alley-hunter",
+  "name": "Alley Hunter",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Oppidan Ambush\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: While the character equipped with this weapon is in the party but not on the field, their DMG increases by 2% every second up to a max of 20%. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by 4% per second until it reaches 0%.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "bow",
+  "rarity": 4,
+  "releaseVersion": "1.4",
+  "baseAtk": {
+    "lv90": 564.7837244
+  },
+  "substat": {
+    "stat": "atk%",
+    "lv90": 0.27564
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Oppidan Ambush",
+    "text": "While the character equipped with this weapon is in the party but not on the field, their DMG increases by 2% every second up to a max of 20%. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by 4% per second until it reaches 0%.",
+    "effects": []
+  },
+  "needsHook": false
+}

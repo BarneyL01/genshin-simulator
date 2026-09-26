@@ -1,0 +1,556 @@
+{
+  "id": "prune",
+  "name": "Prune",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/prune",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "6.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9678.674406,
+      "atk": 220.89308168000002,
+      "def": 580.14329625
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.486208,
+            0.522674,
+            0.559139,
+            0.60776,
+            0.644226,
+            0.680691,
+            0.729312,
+            0.777933,
+            0.826554,
+            0.875174,
+            0.923795,
+            0.972416,
+            1.033192,
+            1.093968,
+            1.154744
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 23,
+              "charged": 47,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.482808,
+            0.519019,
+            0.555229,
+            0.60351,
+            0.639721,
+            0.675931,
+            0.724212,
+            0.772493,
+            0.820774,
+            0.869054,
+            0.917335,
+            0.965616,
+            1.025967,
+            1.086318,
+            1.146669
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 50,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 54
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.679768,
+            0.730751,
+            0.781733,
+            0.84971,
+            0.900693,
+            0.951675,
+            1.019652,
+            1.087629,
+            1.155606,
+            1.223582,
+            1.291559,
+            1.359536,
+            1.444507,
+            1.529478,
+            1.614449
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 42,
+            "cancel": {
+              "normal": 63,
+              "charged": 84,
+              "skill": 42,
+              "burst": 42,
+              "dash": 42,
+              "jump": 42,
+              "swap": 42,
+              "default": 84
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.3352,
+            1.43534,
+            1.53548,
+            1.669,
+            1.76914,
+            1.86928,
+            2.0028,
+            2.13632,
+            2.26984,
+            2.40336,
+            2.53688,
+            2.6704,
+            2.8373,
+            3.0042,
+            3.1711
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 46,
+            "cancel": {
+              "normal": 96,
+              "charged": 97,
+              "skill": 97,
+              "burst": 97,
+              "dash": 46,
+              "jump": 46,
+              "swap": 95,
+              "default": 116
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Ring-A-Ding-Ding! Hexhunter Chime",
+          "mv": [
+            1.6744,
+            1.79998,
+            1.92556,
+            2.093,
+            2.21858,
+            2.34416,
+            2.5116,
+            2.67904,
+            2.84648,
+            3.01392,
+            3.18136,
+            3.3488,
+            3.5581,
+            3.7674,
+            3.9767
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 56,
+              "skill": 41,
+              "burst": 28,
+              "dash": 28,
+              "jump": 29,
+              "swap": 27,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Clang Clang! Witch-tribution Comes!",
+          "mv": [
+            2.0456,
+            2.19902,
+            2.35244,
+            2.557,
+            2.71042,
+            2.86384,
+            3.0684,
+            3.27296,
+            3.47752,
+            3.68208,
+            3.88664,
+            4.0912,
+            4.3469,
+            4.6026,
+            4.8583
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 56,
+              "skill": 41,
+              "burst": 28,
+              "dash": 28,
+              "jump": 29,
+              "swap": 27,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.9696,
+            1.04232,
+            1.11504,
+            1.212,
+            1.28472,
+            1.35744,
+            1.4544,
+            1.55136,
+            1.64832,
+            1.74528,
+            1.84224,
+            1.9392,
+            2.0604,
+            2.1816,
+            2.3028
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 73,
+              "skill": 72,
+              "dash": 74,
+              "jump": 73,
+              "swap": 71,
+              "default": 82
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Witchlure Bell",
+          "mv": [
+            0.7044,
+            0.75723,
+            0.81006,
+            0.8805,
+            0.93333,
+            0.98616,
+            1.0566,
+            1.12704,
+            1.19748,
+            1.26792,
+            1.33836,
+            1.4088,
+            1.49685,
+            1.5849,
+            1.67295
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 73,
+              "skill": 72,
+              "dash": 74,
+              "jump": 73,
+              "swap": 71,
+              "default": 82
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/prune/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "prune.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Verdict and Punishment: During the Elemental Burst **The Bell Tolls! The Hunt Is On!**, after the Witchlure Bell in Hunter-Seeker mode deals DMG to an opponent, if this DMG triggers Swirl or Stellar Swirl in an opponent, it will also summon a **Banehunter Oathhammer** that will deal 150% of Prune's ATK as DMG to them, with the DMG Type matching the Elemental Conversion from the Swirl or Stellar Swirl. This DMG is considered Elemental Burst DMG."
+    },
+    {
+      "id": "prune.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Tolling Synchronicity: After Prune hits an opponent with the **Banehunter Oathhammer** that has undergone Elemental Conversion, other nearby party members will gain the Tolling Rally effect for 5s: When Normal, Charged, or Plunging Attacks, or Elemental Skills and Bursts deal DMG to opponents, that attack's DMG will be increased based on the portion of Prune's ATK in excess of 2,000 when they become affected by the Tolling Rally effect. Every excess ATK point increases that instance of DMG by 0.025%, up to a total of 50% max."
+    },
+    {
+      "id": "prune.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Tinker-Tink, Clank, and Bang!: Has a 10% chance to get 1 regional Character Talent Material (base material excluded) when crafting. The rarity is the same as the resulting material."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "With a Vow to Rescue, the Journey Begins: After the **Banehunter Oathhammer** that has undergone Elemental Conversion hits an opponent, Prune will regain 2 Energy. This effect can occur once every 1.8s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Useful for Cleaning Messy Baggage, Elemental Powers Are Indeed: During the Elemental Burst **The Bell Tolls! The Hunt Is On!**, when the Witchlure Bell is in Hunter-Seeker mode, Prune gains the Hunt the Witch effect: Prune's ATK increases by 10%, and when the Witchlure Bell and the **Banehunter Oathhammer** that has undergone Elemental Conversion hits an opponent, it further increases her ATK by 5%. Prune's ATK can be increased by up to 40% in this way.\nThe original instance of the above effect will be removed if \"The Bell Tolls! The Hunt Is On!\" is used again during this time."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Caravan Exits the Mountain Pass, the Scenery Once More Changed: Increases the Level of **The Bell Tolls! The Hunt Is On!** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Looking Back Following the Wind, One's Shadow Still Halved: After the **Banehunter Oathhammer** that has undergone Elemental Conversion hits an opponent, it will ricochet and land on a nearby opponent, dealing 80% ATK as DMG of the corresponding Elemental Type."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "100 Defeats? No Problem, Tomorrow, We Go Again: Increases the Level of **Ring-A-Ding-Ding! Hexhunter Chime** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "And That's the Story! Share It With Your Friends!: The duration of the Witchlure Bell's Hunter-Seeker mode from the Elemental Burst **The Bell Tolls! The Hunt Is On!** is extended by 4s.\nAdditionally, after party members affected by Tolling Rally trigger any Elemental Reaction, they will cause Prune and the other current active character(s) affected by Tolling Rally to gain 350 ATK for 5s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

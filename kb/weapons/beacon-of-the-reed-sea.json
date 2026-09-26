@@ -1,0 +1,47 @@
+{
+  "id": "beacon-of-the-reed-sea",
+  "name": "Beacon of the Reed Sea",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Desert Watch\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: After the character's Elemental Skill hits an opponent, their ATK will be increased by 20% for 8s. After the character takes DMG, their ATK will be increased by 20% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by 32%.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "claymore",
+  "rarity": 5,
+  "releaseVersion": "3.5",
+  "baseAtk": {
+    "lv90": 608.0745972
+  },
+  "substat": {
+    "stat": "critRate",
+    "lv90": 0.330768
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Desert Watch",
+    "text": "After the character's Elemental Skill hits an opponent, their ATK will be increased by 20% for 8s. After the character takes DMG, their ATK will be increased by 20% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by 32%.",
+    "effects": []
+  },
+  "needsHook": false
+}

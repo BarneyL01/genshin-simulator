@@ -1,0 +1,461 @@
+{
+  "id": "gaming",
+  "name": "Gaming",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/gaming",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/gaming-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "pyro",
+  "weaponType": "claymore",
+  "releaseVersion": "4.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11418.66071195,
+      "atk": 301.60400863999996,
+      "def": 702.99717075
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.83856,
+            0.906815,
+            0.97507,
+            1.072577,
+            1.140832,
+            1.218838,
+            1.326095,
+            1.433353,
+            1.540611,
+            1.657619,
+            1.774627,
+            1.891636,
+            2.008644,
+            2.125653,
+            2.242661
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 30,
+              "charged": 39,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.790443,
+            0.854782,
+            0.91912,
+            1.011032,
+            1.07537,
+            1.1489,
+            1.250003,
+            1.351106,
+            1.45221,
+            1.562504,
+            1.672798,
+            1.783093,
+            1.893387,
+            2.003682,
+            2.113976
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 32,
+              "charged": 46,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.06646,
+            1.153265,
+            1.24007,
+            1.364077,
+            1.450882,
+            1.550088,
+            1.686495,
+            1.822903,
+            1.959311,
+            2.108119,
+            2.256927,
+            2.405736,
+            2.554544,
+            2.703353,
+            2.852161
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 79,
+              "charged": 86,
+              "skill": 34,
+              "burst": 34,
+              "dash": 34,
+              "jump": 34,
+              "swap": 34,
+              "default": 86
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.279491,
+            1.383635,
+            1.48778,
+            1.636558,
+            1.740703,
+            1.859725,
+            2.023381,
+            2.187037,
+            2.350692,
+            2.529226,
+            2.70776,
+            2.886293,
+            3.064827,
+            3.24336,
+            3.421894
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 48,
+            "cancel": {
+              "normal": 87,
+              "charged": 89,
+              "skill": 48,
+              "burst": 48,
+              "dash": 48,
+              "jump": 48,
+              "swap": 48,
+              "default": 89
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Plunging Attack: Charmed Cloudstrider",
+          "mv": [
+            2.304,
+            2.4768,
+            2.6496,
+            2.88,
+            3.0528,
+            3.2256,
+            3.456,
+            3.6864,
+            3.9168,
+            4.1472,
+            4.3776,
+            4.608,
+            4.896,
+            5.184,
+            5.472
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "plunge": 23,
+              "jump": 63,
+              "swap": 63,
+              "default": 64
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Suanni Man Chai Smash",
+          "mv": [
+            3.704,
+            3.9818,
+            4.2596,
+            4.63,
+            4.9078,
+            5.1856,
+            5.556,
+            5.9264,
+            6.2968,
+            6.6672,
+            7.0376,
+            7.408,
+            7.871,
+            8.334,
+            8.797
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 60,
+            "cancel": {
+              "normal": 63,
+              "skill": 63,
+              "dash": 66,
+              "jump": 65,
+              "default": 77
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gaming/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "gaming.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Dance of Amity: After Bestial Ascent's Plunging Attack: Charmed Cloudstrider hits an opponent, Gaming will regain 1.5% of his Max HP once every 0.2s for 0.8s."
+    },
+    {
+      "id": "gaming.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Air of Prosperity: When Gaming has less than 50% HP, he will receive a 20% Incoming Healing Bonus. When Gaming has 50% HP or more, Plunging Attack: Charmed Cloudstrider will deal 20% more DMG."
+    },
+    {
+      "id": "gaming.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "The Striding Beast: During the day (06:00 – 18:00), your party members gain the Swift Stride effect: Movement SPD increased by 10%.\nDoes not take effect in Domains, Trounce Domains, or Spiral Abyss. Swift Stride does not stack."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Bringer of Blessing: When the Suanni Man Chai from Suanni's Gilded Dance meets back up with Gaming, it will heal 15% of Gaming's HP."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Plum Blossoms Underfoot: When Gaming receives healing and this instance of healing overflows, his ATK will be increased by 20% for 5s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Awakening Spirit: Increases the Level of Bestial Ascent by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Soar Across Mountains: When Bestial Ascent's Plunging Attack: Charmed Cloudstrider hits an opponent, it will restore 2 Energy to Gaming. This effect can be triggered once every 0.2s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Evil-Daunting Roar: Increases the Level of Suanni's Gilded Dance by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "To Tame All Beasts: Bestial Ascent's Plunging Attack: Charmed Cloudstrider CRIT Rate increased by 20% and CRIT DMG increased by 40%, and its attack radius will be increased."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "er",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

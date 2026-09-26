@@ -1,0 +1,467 @@
+{
+  "id": "chongyun",
+  "name": "Chongyun",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/chongyun",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/chongyun-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "claymore",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10983.66434006,
+      "atk": 223.0170516,
+      "def": 648.39544875
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.70004,
+            0.75702,
+            0.814,
+            0.8954,
+            0.95238,
+            1.0175,
+            1.10704,
+            1.19658,
+            1.28612,
+            1.3838,
+            1.48148,
+            1.57916,
+            1.67684,
+            1.77452,
+            1.8722
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 30,
+              "charged": 30,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.63124,
+            0.68262,
+            0.734,
+            0.8074,
+            0.85878,
+            0.9175,
+            0.99824,
+            1.07898,
+            1.15972,
+            1.2478,
+            1.33588,
+            1.42396,
+            1.51204,
+            1.60012,
+            1.6882
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 36,
+              "charged": 36,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.80324,
+            0.86862,
+            0.934,
+            1.0274,
+            1.09278,
+            1.1675,
+            1.27024,
+            1.37298,
+            1.47572,
+            1.5878,
+            1.69988,
+            1.81196,
+            1.92404,
+            2.03612,
+            2.1482
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 57,
+              "charged": 57,
+              "skill": 41,
+              "burst": 41,
+              "dash": 41,
+              "jump": 41,
+              "swap": 41,
+              "default": 57
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.01222,
+            1.09461,
+            1.177,
+            1.2947,
+            1.37709,
+            1.47125,
+            1.60072,
+            1.73019,
+            1.85966,
+            2.0009,
+            2.14214,
+            2.28338,
+            2.42462,
+            2.56586,
+            2.7071
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 53,
+            "cancel": {
+              "normal": 101,
+              "charged": 101,
+              "skill": 53,
+              "burst": 53,
+              "dash": 53,
+              "jump": 53,
+              "swap": 53,
+              "default": 101
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.7204,
+            1.84943,
+            1.97846,
+            2.1505,
+            2.27953,
+            2.40856,
+            2.5806,
+            2.75264,
+            2.92468,
+            3.09672,
+            3.26876,
+            3.4408,
+            3.65585,
+            3.8709,
+            4.08595
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "burst": 51,
+              "dash": 35,
+              "jump": 35,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.424,
+            1.5308,
+            1.6376,
+            1.78,
+            1.8868,
+            1.9936,
+            2.136,
+            2.2784,
+            2.4208,
+            2.5632,
+            2.7056,
+            2.848,
+            3.026,
+            3.204,
+            3.382
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 50,
+            "cancel": {
+              "normal": 64,
+              "skill": 64,
+              "dash": 64,
+              "jump": 66,
+              "default": 79
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chongyun/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "chongyun.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Steady Breathing: Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by 8%."
+    },
+    {
+      "id": "chongyun.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Rimechaser Blade: When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing 100% of Chonghua's Layered Frost's Skill DMG as AoE Cryo DMG. Opponents hit by this blade will have their Cryo RES decreased by 10% for 8s."
+    },
+    {
+      "id": "chongyun.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Gallant Journey: When dispatched on an expedition in Liyue, time consumed is reduced by 25%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Ice Unleashed: The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals 50% of Chongyun's ATK as Cryo DMG to all opponents in its path."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Atmospheric Revolution: Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by 15%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Cloudburst: Increases the Level of Spirit Blade: Cloud-Parting Star by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Frozen Skies: Chongyun regenerates 1 Energy every time he hits an opponent affected by Cryo.\nThis effect can only occur once every 2s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "The True Path: Increases the Level of Spirit Blade: Chonghua's Layered Frost by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Rally of Four Blades: Spirit Blade: Cloud-Parting Star deals 15% more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.\nThis skill will also summon 1 additional spirit blade."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

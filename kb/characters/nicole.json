@@ -1,0 +1,512 @@
+{
+  "id": "nicole",
+  "name": "Nicole",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/nicole",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "catalyst",
+  "releaseVersion": "6.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10409.023958000002,
+      "atk": 342.0250874,
+      "def": 562.58179884
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.351792,
+            0.378176,
+            0.404561,
+            0.43974,
+            0.466124,
+            0.492509,
+            0.527688,
+            0.562867,
+            0.598046,
+            0.633226,
+            0.668405,
+            0.703584,
+            0.747558,
+            0.791532,
+            0.835506
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.296336,
+            0.318561,
+            0.340786,
+            0.37042,
+            0.392645,
+            0.41487,
+            0.444504,
+            0.474138,
+            0.503771,
+            0.533405,
+            0.563038,
+            0.592672,
+            0.629714,
+            0.666756,
+            0.703798
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 22,
+              "charged": 17,
+              "skill": 8,
+              "burst": 8,
+              "dash": 8,
+              "jump": 8,
+              "swap": 8,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.46188,
+            0.496521,
+            0.531162,
+            0.57735,
+            0.611991,
+            0.646632,
+            0.69282,
+            0.739008,
+            0.785196,
+            0.831384,
+            0.877572,
+            0.92376,
+            0.981495,
+            1.03923,
+            1.096965
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 52,
+              "charged": 52,
+              "skill": 38,
+              "burst": 38,
+              "dash": 38,
+              "jump": 38,
+              "swap": 38,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.1232,
+            1.20744,
+            1.29168,
+            1.404,
+            1.48824,
+            1.57248,
+            1.6848,
+            1.79712,
+            1.90944,
+            2.02176,
+            2.13408,
+            2.2464,
+            2.3868,
+            2.5272,
+            2.6676
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 66,
+            "cancel": {
+              "skill": 66,
+              "burst": 66,
+              "dash": 66,
+              "jump": 66,
+              "swap": 66,
+              "default": 99
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.384,
+            1.4878,
+            1.5916,
+            1.73,
+            1.8338,
+            1.9376,
+            2.076,
+            2.2144,
+            2.3528,
+            2.4912,
+            2.6296,
+            2.768,
+            2.941,
+            3.114,
+            3.287
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 40,
+              "charged": 40,
+              "skill": 33,
+              "burst": 32,
+              "dash": 34,
+              "jump": 32,
+              "swap": 31,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.168,
+            3.4056,
+            3.6432,
+            3.96,
+            4.1976,
+            4.4352,
+            4.752,
+            5.0688,
+            5.3856,
+            5.7024,
+            6.0192,
+            6.336,
+            6.732,
+            7.128,
+            7.524
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 108,
+            "cancel": {
+              "normal": 117,
+              "charged": 120,
+              "skill": 116,
+              "dash": 118,
+              "jump": 117,
+              "swap": 113,
+              "default": 128
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Arcane Projection",
+          "mv": [
+            0.99,
+            1.08,
+            1.17,
+            1.26,
+            1.35,
+            1.44,
+            1.53,
+            1.62,
+            1.71,
+            1.8,
+            1.908,
+            2.016,
+            2.124,
+            2.232,
+            2.34
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 111,
+            "cancel": {
+              "normal": 117,
+              "charged": 120,
+              "skill": 116,
+              "dash": 118,
+              "jump": 117,
+              "swap": 113,
+              "default": 128
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nicole/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "nicole.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Methexis: For 20s after unleashing the Elemental Skill **Revelation: Uncreated Light**, Nicole will continuously \"observe\" the other current active party members. After the observed character has remained on the field for 3s, their **Grace of Kenosis** is upgraded to **Guidance of Theosis**, increasing their ATK by an additional 300. If the observed character is a Hexerei character, Grace of Kenosis is upgraded to Guidance of Theosis straight away.\nWhen characters other than Nicole who have Guidance of Theosis leave the field, their effect reverts to Grace of Kenosis."
+    },
+    {
+      "id": "nicole.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Philokalia: When Elemental DMG from nearby active party members hits an opponent, Nicole's own **Grace of Kenosis** effect is upgraded to **Guidance of Theosis** for 8s."
+    },
+    {
+      "id": "nicole.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Nepsis: When you are in Teyvat and not in combat, Nicole's Charged Attack becomes \"Emissarial Guidance\" if you have already obtained the current region's Treasure Compass. Emissarial Guidance: Calls upon nearby Seelie to show the way, triggering an effect similar to the region's Treasure Compass.\nThis effect has a cooldown time of 5 seconds and does not work in Domains, Trounce Domains, and the Spiral Abyss."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"Do Not Be Afraid, Child Who Is Loved\": When the current active character of your own in the party hits an opponent, an additional special \"Arcane Projection: Unity\" will be summoned to perform a Coordinated Attack against the opponent, dealing AoE Elemental DMG of the character's corresponding Elemental Type at 600% of their ATK. This DMG will be considered as having been dealt by the corresponding character.\nThis effect can trigger once every 6s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"I Will Guide You and Show You the Path You Should Tread\": Enhances the effects of the Elemental Skill **Revelation: Uncreated Light**: **Grace of Kenosis** increases ATK by an additional 300 (which does not count toward this effect's ATK Bonus limit), while **Guidance of Theosis** decreases nearby opponents' Elemental RES based on the corresponding character's Elemental Type by 25%. This effect does not stack for the same Element.\nAdditionally, when Nicole unleashes her Elemental Skill Revelation: Uncreated Light, nearby active party members will also gain a Shield of Blazing Light."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"A Lamp by Your Side, A Light to Shine the Way\": Increases the Level of **Revelation: Uncreated Light** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"Whether Left or Right, No Matter Which Way You Turn\": When nearby party members have their **Grace of Kenosis** upgraded to **Guidance of Theosis**, Nicole also bestows upon them the Pathfinder's Blessing effect for 20s. Each character can gain this effect once every 16s.\nThe Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, and Elemental Burst DMG of characters with Pathfinder's Blessing is increased by 70% of Nicole's ATK. This effect will be removed once it has taken effect 8 times or when its duration is over.\nWhen multiple opponents are hit at once, instances of Pathfinder"
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"You Will Hear My Voice Beside You\": Increases the Level of **Revelation: Ladder of Divine Ascent** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"This Is the Path, Walk It Without Delay\": When Nicole's **Grace of Kenosis** is upgraded to **Guidance of Theosis**, all nearby party members' Grace of Kenosis will also be upgraded to Guidance of Theosis. Once upgraded, Guidance of Theosis will no longer revert to Grace of Kenosis.\nAdditionally, DMG dealt by characters with Guidance of Theosis will ignore 40% of opponents' DEF."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

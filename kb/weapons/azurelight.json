@@ -1,0 +1,47 @@
+{
+  "id": "azurelight",
+  "name": "Azurelight",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Whitehill's Bestowal\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Within 12s after an Elemental Skill is used, ATK is increased by 24%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24%, and CRIT DMG will be increased by 40%.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "sword",
+  "rarity": 5,
+  "releaseVersion": "5.7",
+  "baseAtk": {
+    "lv90": 674.3345459999999
+  },
+  "substat": {
+    "stat": "critRate",
+    "lv90": 0.220512
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Whitehill's Bestowal",
+    "text": "Within 12s after an Elemental Skill is used, ATK is increased by 24%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24%, and CRIT DMG will be increased by 40%.",
+    "effects": []
+  },
+  "needsHook": false
+}

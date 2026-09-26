@@ -1,0 +1,553 @@
+{
+  "id": "navia",
+  "name": "Navia",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/navia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/navia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/navia-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "geo",
+  "weaponType": "claymore",
+  "releaseVersion": "4.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12650.02580006,
+      "atk": 351.5922196,
+      "def": 793.1481098400001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.93519,
+            1.01131,
+            1.08743,
+            1.196173,
+            1.272293,
+            1.359287,
+            1.478905,
+            1.598522,
+            1.718139,
+            1.848631,
+            1.979123,
+            2.109614,
+            2.240106,
+            2.370597,
+            2.501089
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "charged": 48,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.865065,
+            0.935478,
+            1.00589,
+            1.106479,
+            1.176891,
+            1.257362,
+            1.36801,
+            1.478658,
+            1.589306,
+            1.710013,
+            1.83072,
+            1.951427,
+            2.072133,
+            2.19284,
+            2.313547
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 43,
+              "charged": 75,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.348859,
+            0.377255,
+            0.40565,
+            0.446215,
+            0.47461,
+            0.507062,
+            0.551684,
+            0.596306,
+            0.640927,
+            0.689605,
+            0.738283,
+            0.786961,
+            0.835639,
+            0.884317,
+            0.932995
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 62,
+              "charged": 93,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            43,
+            49
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.334316,
+            1.442923,
+            1.55153,
+            1.706683,
+            1.81529,
+            1.939412,
+            2.110081,
+            2.280749,
+            2.451417,
+            2.637601,
+            2.823785,
+            3.009968,
+            3.196152,
+            3.382335,
+            3.568519
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 62,
+              "charged": 93,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Rosula Shardshot Base",
+          "mv": [
+            3.948,
+            4.2441,
+            4.5402,
+            4.935,
+            5.2311,
+            5.5272,
+            5.922,
+            6.3168,
+            6.7116,
+            7.1064,
+            7.5012,
+            7.896,
+            8.3895,
+            8.883,
+            9.3765
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Surging Blade",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 540,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.752,
+            0.8084,
+            0.8648,
+            0.94,
+            0.9964,
+            1.0528,
+            1.128,
+            1.2032,
+            1.2784,
+            1.3536,
+            1.4288,
+            1.504,
+            1.598,
+            1.692,
+            1.786
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 104,
+            "cancel": {
+              "normal": 102,
+              "skill": 102,
+              "dash": 103,
+              "jump": 103,
+              "swap": 93,
+              "default": 127
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/navia/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Cannon Fire Support",
+          "mv": [
+            0.4315,
+            0.463863,
+            0.496225,
+            0.539375,
+            0.571738,
+            0.6041,
+            0.64725,
+            0.6904,
+            0.73355,
+            0.7767,
+            0.81985,
+            0.863,
+            0.916938,
+            0.970875,
+            1.024813
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 107,
+            "cancel": {
+              "normal": 102,
+              "skill": 102,
+              "dash": 103,
+              "jump": 103,
+              "swap": 93,
+              "default": 127
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/navia/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "navia.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Undisclosed Distribution Channels: For 4s after using Ceremonial Crystalshot, the DMG dealt by Navia's Normal Attacks, Charged Attacks, and Plunging Attacks will be converted into Geo DMG which cannot be overridden by other Elemental infusions, and the DMG dealt by Navia's Normal Attacks, Charged Attacks, and Plunging Attacks will be increased by 40%."
+    },
+    {
+      "id": "navia.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Mutual Assistance Network: For each Pyro/Electro/Cryo/Hydro party member, Navia gains 20% increased ATK. This effect can stack up to 2 times."
+    },
+    {
+      "id": "navia.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Painstaking Transaction: Gains 25% more rewards when dispatched on a Fontaine Expedition for 20 hours."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "A Lady's Rules for Keeping a Courteous Distance: Each stack of Crystal Shrapnel consumed when Navia uses Ceremonial Crystalshot will restore 3 Energy to her and decrease the CD of As the Sunlit Sky's Singing Salute by 1s. Up to 9 Energy can be gained this way, and the CD of \"As the Sunlit Sky's Singing Salute\" can be decreased by up to 3s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The President's Pursuit of Victory: Each stack of Crystal Shrapnel consumed will increase the CRIT Rate of this Ceremonial Crystalshot instance by 12%. CRIT Rate can be increased by up to 36% in this way.\nIn addition, when Ceremonial Crystalshot hits an opponent, one Cannon Fire Support shot from As the Sunlit Sky's Singing Salute will strike near the location of the hit. Up to one instance of Cannon Fire Support can be triggered each time Ceremonial Crystalshot is used, and DMG dealt by said Cannon Fire Support this way is considered Elemental Burst DMG."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Businesswoman's Broad Vision: Increases the Level of Ceremonial Crystalshot by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Oathsworn Never Capitulate: When As the Sunlit Sky's Singing Salute hits an opponent, that opponent's Geo RES will be decreased by 20% for 8s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Negotiator's Resolute Negotiations: Increases the Level of As the Sunlit Sky's Singing Salute by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "The Flexible Finesse of the Spina's President: If more than 3 stacks of Crystal Shrapnel are consumed when using Ceremonial Crystalshot, each stack consumed beyond the first 3 increases the CRIT DMG of that Ceremonial Crystalshot by 45%, and any stacks consumed beyond the first 3 are returned to Navia."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

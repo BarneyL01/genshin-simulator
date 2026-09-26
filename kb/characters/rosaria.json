@@ -1,0 +1,663 @@
+{
+  "id": "rosaria",
+  "name": "Rosaria",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/rosaria",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/rosaria-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "polearm",
+  "releaseVersion": "1.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12288.654441100001,
+      "atk": 240.00882496,
+      "def": 709.822386
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.5246,
+            0.5673,
+            0.61,
+            0.671,
+            0.7137,
+            0.7625,
+            0.8296,
+            0.8967,
+            0.9638,
+            1.037,
+            1.1102,
+            1.1834,
+            1.2566,
+            1.3298,
+            1.403
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 19,
+              "charged": 24,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.516,
+            0.558,
+            0.6,
+            0.66,
+            0.702,
+            0.75,
+            0.816,
+            0.882,
+            0.948,
+            1.02,
+            1.092,
+            1.164,
+            1.236,
+            1.308,
+            1.38
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 23,
+              "charged": 27,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.3182,
+            0.3441,
+            0.37,
+            0.407,
+            0.4329,
+            0.4625,
+            0.5032,
+            0.5439,
+            0.5846,
+            0.629,
+            0.6734,
+            0.7178,
+            0.7622,
+            0.8066,
+            0.851
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 31,
+              "charged": 34,
+              "skill": 28,
+              "burst": 28,
+              "dash": 28,
+              "jump": 28,
+              "swap": 28,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            28
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.6966,
+            0.7533,
+            0.81,
+            0.891,
+            0.9477,
+            1.0125,
+            1.1016,
+            1.1907,
+            1.2798,
+            1.377,
+            1.4742,
+            1.5714,
+            1.6686,
+            1.7658,
+            1.863
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 44,
+              "charged": 52,
+              "skill": 32,
+              "burst": 32,
+              "dash": 32,
+              "jump": 32,
+              "swap": 32,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.41624,
+            0.45012,
+            0.484,
+            0.5324,
+            0.56628,
+            0.605,
+            0.65824,
+            0.71148,
+            0.76472,
+            0.8228,
+            0.88088,
+            0.93896,
+            0.99704,
+            1.05512,
+            1.1132
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 40,
+              "burst": 40,
+              "dash": 40,
+              "jump": 40,
+              "swap": 40,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            40
+          ],
+          "extraMv": [
+            [
+              0.43,
+              0.465,
+              0.5,
+              0.55,
+              0.585,
+              0.625,
+              0.68,
+              0.735,
+              0.79,
+              0.85,
+              0.91,
+              0.97,
+              1.03,
+              1.09,
+              1.15
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.3674,
+            1.4787,
+            1.59,
+            1.749,
+            1.8603,
+            1.9875,
+            2.1624,
+            2.3373,
+            2.5122,
+            2.703,
+            2.8938,
+            3.0846,
+            3.2754,
+            3.4662,
+            3.657
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 22,
+              "jump": 22,
+              "swap": 66,
+              "default": 69
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            0.584,
+            0.6278,
+            0.6716,
+            0.73,
+            0.7738,
+            0.8176,
+            0.876,
+            0.9344,
+            0.9928,
+            1.0512,
+            1.1096,
+            1.168,
+            1.241,
+            1.314,
+            1.387
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "dash": 38,
+              "jump": 40,
+              "swap": 50,
+              "default": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            1.36,
+            1.462,
+            1.564,
+            1.7,
+            1.802,
+            1.904,
+            2.04,
+            2.176,
+            2.312,
+            2.448,
+            2.584,
+            2.72,
+            2.89,
+            3.06,
+            3.23
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "dash": 38,
+              "jump": 40,
+              "swap": 50,
+              "default": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            1.04,
+            1.118,
+            1.196,
+            1.3,
+            1.378,
+            1.456,
+            1.56,
+            1.664,
+            1.768,
+            1.872,
+            1.976,
+            2.08,
+            2.21,
+            2.34,
+            2.47
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "dash": 57,
+              "jump": 59,
+              "swap": 69,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            1.52,
+            1.634,
+            1.748,
+            1.9,
+            2.014,
+            2.128,
+            2.28,
+            2.432,
+            2.584,
+            2.736,
+            2.888,
+            3.04,
+            3.23,
+            3.42,
+            3.61
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "dash": 57,
+              "jump": 59,
+              "swap": 69,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/rosaria/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "rosaria.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Regina Probationum: When Rosaria strikes an opponent from behind using Ravaging Confession, Rosaria's CRIT Rate increases by 12% for 5s."
+    },
+    {
+      "id": "rosaria.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Shadow Samaritan: Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by 15% of Rosaria's CRIT Rate for 10s.\nCRIT Rate Bonus gained this way cannot exceed 15%."
+    },
+    {
+      "id": "rosaria.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Walk: At night (18:00 – 06:00), your party members gain the Swift Stride effect: Movement SPD increased by 10%.\nDoes not take effect in Domains, Trounce Domains, or Spiral Abyss. Swift Stride does not stack."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Unholy Revelation: When Rosaria deals a CRIT Hit, her ATK SPD increases by 10% and her Normal Attack DMG increases by 10% for 4s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Land Without Promise: The duration of the Ice Lance created by Rites of Termination is increased by 4s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Wages of Sin: Increases the Level of Ravaging Confession by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Painful Grace: Ravaging Confession's CRIT Hits regenerate 5 Energy for Rosaria.\nCan only be triggered once each time Ravaging Confession is cast."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Last Rites: Increases the Level of Rites of Termination by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Divine Retribution: Rites of Termination's attack decreases opponents' Physical RES by 20% for 10s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "favonius-codex",
+  "name": "Favonius Codex",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Windfall\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: CRIT Hits have a 60% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12s.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "catalyst",
+  "rarity": 4,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 509.605949
+  },
+  "substat": {
+    "stat": "er",
+    "lv90": 0.45940000000000003
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Windfall",
+    "text": "CRIT Hits have a 60% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12s.",
+    "effects": []
+  },
+  "needsHook": false
+}

@@ -1,0 +1,540 @@
+{
+  "id": "vodyanitsa",
+  "name": "Vodyanitsa",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/7. Lv 90 base stats not cross-checked in a second source.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "catalyst",
+  "releaseVersion": "7.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 14817.552110800001,
+      "atk": 107.630271,
+      "def": 484.18925310000003
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.433848,
+            0.466387,
+            0.498925,
+            0.54231,
+            0.574849,
+            0.607387,
+            0.650772,
+            0.694157,
+            0.737542,
+            0.780926,
+            0.824311,
+            0.867696,
+            0.921927,
+            0.976158,
+            1.030389
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 22,
+              "charged": 19,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.40232,
+            0.432494,
+            0.462668,
+            0.5029,
+            0.533074,
+            0.563248,
+            0.60348,
+            0.643712,
+            0.683944,
+            0.724176,
+            0.764408,
+            0.80464,
+            0.85493,
+            0.90522,
+            0.95551
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 33,
+              "charged": 31,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.493016,
+            0.529992,
+            0.566968,
+            0.61627,
+            0.653246,
+            0.690222,
+            0.739524,
+            0.788826,
+            0.838127,
+            0.887429,
+            0.93673,
+            0.986032,
+            1.047659,
+            1.109286,
+            1.170913
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 40,
+              "charged": 39,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.655632,
+            0.704804,
+            0.753977,
+            0.81954,
+            0.868712,
+            0.917885,
+            0.983448,
+            1.049011,
+            1.114574,
+            1.180138,
+            1.245701,
+            1.311264,
+            1.393218,
+            1.475172,
+            1.557126
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 67,
+              "charged": 57,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.2376,
+            1.33042,
+            1.42324,
+            1.547,
+            1.63982,
+            1.73264,
+            1.8564,
+            1.98016,
+            2.10392,
+            2.22768,
+            2.35144,
+            2.4752,
+            2.6299,
+            2.7846,
+            2.9393
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 70,
+              "charged": 70,
+              "skill": 69,
+              "burst": 70,
+              "dash": 53,
+              "jump": 53,
+              "swap": 68,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.03272,
+            0.035174,
+            0.037628,
+            0.0409,
+            0.043354,
+            0.045808,
+            0.04908,
+            0.052352,
+            0.055624,
+            0.058896,
+            0.062168,
+            0.06544,
+            0.06953,
+            0.07362,
+            0.07771
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Horn of Spring's Call",
+          "mv": [
+            0.03272,
+            0.035174,
+            0.037628,
+            0.0409,
+            0.043354,
+            0.045808,
+            0.04908,
+            0.052352,
+            0.055624,
+            0.058896,
+            0.062168,
+            0.06544,
+            0.06953,
+            0.07362,
+            0.07771
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.456768,
+            0.491026,
+            0.525283,
+            0.57096,
+            0.605218,
+            0.639475,
+            0.685152,
+            0.730829,
+            0.776506,
+            0.822182,
+            0.867859,
+            0.913536,
+            0.970632,
+            1.027728,
+            1.084824
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "vodyanitsa.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "The Last Djeguako Songstress: When the Elemental Skill Rechitativ: Sonorous Dawn is used, any Stellar Vortex on the field will turn into a Wandering Vortex instead. While the **Song of Ages Past** effect is active, nearby party members' Stellar Swirl reactions will generate Wandering Vortex instead.\nGenerating or detonating a Wandering Vortex will also reduce nearby opponents' Anemo RES by 35% for 6s. \nAdditionally, nearby party members who enter the Radiance: Stellar Swirl state while Song of Ages Past is in effect will have the Radiance: Stellar Swirl state extended by 4s."
+    },
+    {
+      "id": "vodyanitsa.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Dirge of the Fandyr: When the Elemental Skill Rechitativ: Sonorous Dawn is used, Vodyanitsa will also gain 25 stacks of **Lead Vocal** as well as 10 stacks of **Chorus**.\nThe two effects above last 30s each, and the stack count is refreshed when the Elemental Skill is used."
+    },
+    {
+      "id": "vodyanitsa.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Echoes Over the Frozen Lake: Holding the Elemental Skill outside of combat will cause Vodyanitsa to embody her true Water Imp form and swim for up to 10s at the cost of Stamina. Naturally, as a Water Imp, she can also move across the water's surface. Vodyanitsa will exit her Water Imp form when the Elemental Skill is used again, when the duration ends, or when all Stamina is depleted.\nAdditionally, while Vodyanitsa can swim faster, her Stamina consumption rate is also increased."
+    },
+    {
+      "id": "vodyanitsa.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Heartless Siren Song: As the Prima Donna of the Korolevskiy Troupe, Vodyanitsa sings in person in place of playing an instrument."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Waters in Full Splendor: Each time Vodyanitsa triggers the healing effect of **Song of Ages Past**, it also increases the ATK of all nearby party members by 0.8% of her Max HP for 5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Echoes That Pierce the Snow: When the Horn of Spring's Call from the Elemental Skill Rechitativ: Sonorous Dawn attacks the opponent, Vodyanitsa gains the \"Two Voices in Black and White\" effect which increases the CRIT DMG from Hydro DMG and Cryo DMG dealt by the currently active party member by 50% for 5s.\nIf there is a Wandering Vortex present on the field or in the 5s after a Wandering Vortex explodes, the effect changes to: increases the CRIT DMG from Stellar Swirl reaction DMG caused by the currently active party member by 60% for 5s.\nAdditionally, the Elemental Skill Rechitativ: Sonorous "
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Song Lingering on a Spring Morning: Increases the Level of the Elemental Skill **Rechitativ: Sonorous Dawn** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Melancholic Voice Upon the Gentle Waters: When Vodyanitsa triggers the healing effect of **Song of Ages Past**, an additional effect will be triggered based on the healed character's HP.\n· If the character's HP is below 40%: The healing is increased by 50%; and\n· If the character's HP is 40% or above: Vodyanitsa's Max HP is increased by 20% for 6s. Max 3 stacks, and each stack's duration is counted independently."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Together, Down Into the Deep: Increases the Level of the Elemental Burst **Koda: Sink With Thee** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Neverending Song of Revelry: The Constellation Echoes That Pierce the Snow is enhanced: \"Two Voices in Black and White\" now applies to all nearby party members.\nAdditionally, while the **Song of Ages Past** effect is active, Stellar Swirl reaction DMG dealt by nearby party members is **elevated** by 25% while Hydro DMG and Cryo DMG dealt are increased by 60%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

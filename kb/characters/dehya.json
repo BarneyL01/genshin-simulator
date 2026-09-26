@@ -1,0 +1,637 @@
+{
+  "id": "dehya",
+  "name": "Dehya",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/dehya",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, burst, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "claymore",
+  "releaseVersion": "3.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 15674.765654400002,
+      "atk": 265.4879998,
+      "def": 627.90892029
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.621178,
+            0.671739,
+            0.7223,
+            0.79453,
+            0.845091,
+            0.902875,
+            0.982328,
+            1.061781,
+            1.141234,
+            1.22791,
+            1.314586,
+            1.401262,
+            1.487938,
+            1.574614,
+            1.66129
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 31,
+              "charged": 31,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.617102,
+            0.667331,
+            0.71756,
+            0.789316,
+            0.839545,
+            0.89695,
+            0.975882,
+            1.054813,
+            1.133745,
+            1.219852,
+            1.305959,
+            1.392066,
+            1.478174,
+            1.564281,
+            1.650388
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 34,
+              "charged": 34,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.766312,
+            0.828686,
+            0.89106,
+            0.980166,
+            1.04254,
+            1.113825,
+            1.211842,
+            1.309858,
+            1.407875,
+            1.514802,
+            1.621729,
+            1.728656,
+            1.835584,
+            1.942511,
+            2.049438
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 43,
+              "charged": 43,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.952914,
+            1.030477,
+            1.10804,
+            1.218844,
+            1.296407,
+            1.38505,
+            1.506934,
+            1.628819,
+            1.750703,
+            1.883668,
+            2.016633,
+            2.149598,
+            2.282562,
+            2.415527,
+            2.548492
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 85,
+              "charged": 85,
+              "skill": 41,
+              "burst": 41,
+              "dash": 41,
+              "jump": 41,
+              "swap": 41,
+              "default": 85
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Indomitable Flame",
+          "mv": [
+            1.1288,
+            1.21346,
+            1.29812,
+            1.411,
+            1.49566,
+            1.58032,
+            1.6932,
+            1.80608,
+            1.91896,
+            2.03184,
+            2.14472,
+            2.2576,
+            2.3987,
+            2.5398,
+            2.6809
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "skill": 30,
+              "burst": 29,
+              "dash": 26,
+              "jump": 28,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Ranging Flame",
+          "mv": [
+            1.328,
+            1.4276,
+            1.5272,
+            1.66,
+            1.7596,
+            1.8592,
+            1.992,
+            2.1248,
+            2.2576,
+            2.3904,
+            2.5232,
+            2.656,
+            2.822,
+            2.988,
+            3.154
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "skill": 30,
+              "burst": 29,
+              "dash": 26,
+              "jump": 28,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Field 1",
+          "mv": [
+            0.602,
+            0.64715,
+            0.6923,
+            0.7525,
+            0.79765,
+            0.8428,
+            0.903,
+            0.9632,
+            1.0234,
+            1.0836,
+            1.1438,
+            1.204,
+            1.27925,
+            1.3545,
+            1.42975
+          ],
+          "scaling": "hp",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "skill": 30,
+              "burst": 29,
+              "dash": 26,
+              "jump": 28,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Field 2",
+          "mv": [
+            0.01032,
+            0.011094,
+            0.011868,
+            0.0129,
+            0.013674,
+            0.014448,
+            0.01548,
+            0.016512,
+            0.017544,
+            0.018576,
+            0.019608,
+            0.02064,
+            0.02193,
+            0.02322,
+            0.02451
+          ],
+          "scaling": "hp",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "skill": 30,
+              "burst": 29,
+              "dash": 26,
+              "jump": 28,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dehya/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Flame-Mane's Fist 1",
+          "mv": [
+            0.987,
+            1.061025,
+            1.13505,
+            1.23375,
+            1.307775,
+            1.3818,
+            1.4805,
+            1.5792,
+            1.6779,
+            1.7766,
+            1.8753,
+            1.974,
+            2.097375,
+            2.22075,
+            2.344125
+          ],
+          "scaling": "hp",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flame-Mane's Fist 2",
+          "mv": [
+            0.01692,
+            0.018189,
+            0.019458,
+            0.02115,
+            0.022419,
+            0.023688,
+            0.02538,
+            0.027072,
+            0.028764,
+            0.030456,
+            0.032148,
+            0.03384,
+            0.035955,
+            0.03807,
+            0.040185
+          ],
+          "scaling": "hp",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 55,
+              "dash": 56,
+              "jump": 56,
+              "swap": 54,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "dehya.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Unstinting Succor: Within 6 seconds after Dehya retrieves the Fiery Sanctum field through Molten Inferno: Ranging Flame or Leonine Bite, she will take 60% less DMG when receiving DMG from Redmane's Blood. This effect can be triggered once every 2s.\nAdditionally, within 9s after Dehya unleashes Molten Inferno: Indomitable Flame, she will grant all party members the Gold-Forged Form state. This state will further increase a character's resistance to interruption when they are within the Fiery Sanctum field. Gold-Forged Form can be activated once every 18s."
+    },
+    {
+      "id": "dehya.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Stalwart and True: When her HP is less than 40%, Dehya will recover 20% of her Max HP and will restore 6% of her Max HP every 2s for the next 10s. This effect can be triggered once every 20s."
+    },
+    {
+      "id": "dehya.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "The Sunlit Way: During the day (06:00 – 18:00), your party members gain the Swift Stride effect: Movement SPD increased by 10%.\nDoes not take effect in Domains, Trounce Domains, or Spiral Abyss. Swift Stride does not stack."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "The Flame Incandescent: Dehya's Max HP is increased by 20%, and she deals bonus DMG based on her Max HP when using the following attacks:\n·Molten Inferno's DMG will be increased by 3.6% of her Max HP.\n·Leonine Bite's DMG will be increased by 6% of her Max HP."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The Sand-Blades Glittering: When Dehya uses Molten Inferno: Ranging Flame, the duration of the recreated Fiery Sanctum field will be increased by 6s.\nAdditionally, when a Fiery Sanctum exists on the field, DMG dealt by its next coordinated attack will be increased by 50% when active character(s) within the Fiery Sanctum field are attacked."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "A Rage Swift as Fire: Increases the Level of Leonine Bite by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "An Oath Abiding: When Flame-Mane's Fist and Incineration Drive attacks unleashed during Leonine Bite hit opponents, they will restore 1.5 Energy for Dehya and 2.5% of her Max HP. This effect can be triggered once every 0.2s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "The Alpha Unleashed: Increases the Level of Molten Inferno by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "The Burning Claws Cleaving: The CRIT Rate of Leonine Bite is increased by 10%.\nAdditionally, after a Flame-Mane's Fist attack hits an opponent and deals CRIT Hits during a single Blazing Lioness state, it will cause the CRIT DMG of Leonine Bite to increase by 15% for the rest of Blazing Lioness's duration and extend that duration by 0.5s. This effect can be triggered every 0.2s. The duration can be extended for a maximum of 2s and CRIT DMG can be increased by a maximum of 60% this way."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,582 @@
+{
+  "id": "kaeya",
+  "name": "Kaeya",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/kaeya",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/kaeya-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11636.1591236,
+      "atk": 223.0170516,
+      "def": 791.724969
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.2667
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.5375,
+            0.58125,
+            0.625,
+            0.6875,
+            0.73125,
+            0.78125,
+            0.85,
+            0.91875,
+            0.9875,
+            1.0625,
+            1.148438,
+            1.2495,
+            1.350562,
+            1.451625,
+            1.561875
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 21,
+              "charged": 30,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.51686,
+            0.55893,
+            0.601,
+            0.6611,
+            0.70317,
+            0.75125,
+            0.81736,
+            0.88347,
+            0.94958,
+            1.0217,
+            1.104337,
+            1.201519,
+            1.298701,
+            1.395883,
+            1.501899
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 21,
+              "charged": 25,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "default": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.65274,
+            0.70587,
+            0.759,
+            0.8349,
+            0.88803,
+            0.94875,
+            1.03224,
+            1.11573,
+            1.19922,
+            1.2903,
+            1.394662,
+            1.517393,
+            1.640123,
+            1.762853,
+            1.896741
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 39,
+              "charged": 47,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.70864,
+            0.76632,
+            0.824,
+            0.9064,
+            0.96408,
+            1.03,
+            1.12064,
+            1.21128,
+            1.30192,
+            1.4008,
+            1.5141,
+            1.647341,
+            1.780582,
+            1.913822,
+            2.059176
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 38,
+              "charged": 46,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.88236,
+            0.95418,
+            1.026,
+            1.1286,
+            1.20042,
+            1.2825,
+            1.39536,
+            1.50822,
+            1.62108,
+            1.7442,
+            1.885275,
+            2.051179,
+            2.217083,
+            2.382988,
+            2.563974
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 64,
+              "charged": 64,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 64
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.5504,
+            0.5952,
+            0.64,
+            0.704,
+            0.7488,
+            0.8,
+            0.8704,
+            0.9408,
+            1.0112,
+            1.088,
+            1.176,
+            1.279488,
+            1.382976,
+            1.486464,
+            1.59936
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "skill": 37,
+              "burst": 36,
+              "dash": 25,
+              "jump": 24,
+              "swap": 34,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            16
+          ],
+          "extraMv": [
+            [
+              0.731,
+              0.7905,
+              0.85,
+              0.935,
+              0.9945,
+              1.0625,
+              1.156,
+              1.2495,
+              1.343,
+              1.445,
+              1.561875,
+              1.69932,
+              1.836765,
+              1.97421,
+              2.12415
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.912,
+            2.0554,
+            2.1988,
+            2.39,
+            2.5334,
+            2.6768,
+            2.868,
+            3.0592,
+            3.2504,
+            3.4416,
+            3.6328,
+            3.824,
+            4.063,
+            4.302,
+            4.541
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "burst": 52,
+              "dash": 25,
+              "jump": 26,
+              "swap": 49,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.776,
+            0.8342,
+            0.8924,
+            0.97,
+            1.0282,
+            1.0864,
+            1.164,
+            1.2416,
+            1.3192,
+            1.3968,
+            1.4744,
+            1.552,
+            1.649,
+            1.746,
+            1.843
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 53,
+            "cancel": {
+              "normal": 77,
+              "dash": 62,
+              "jump": 61,
+              "swap": 77,
+              "default": 78
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kaeya/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kaeya.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Cold-Blooded Strike: Every hit with Frostgnaw regenerates HP for Kaeya equal to 15% of his ATK."
+    },
+    {
+      "id": "kaeya.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Glacial Heart: Opponents Frozen by Frostgnaw will drop additional Elemental Particles.\nFrostgnaw may only produce a maximum of 2 additional Elemental Particles per use."
+    },
+    {
+      "id": "kaeya.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Hidden Strength: Decreases sprinting Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Excellent Blood: The CRIT Rate of Kaeya's Normal and Charge Attacks against opponents affected by Cryo is increased by 15%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Never-Ending Performance: While Glacial Waltz is in effect, for each opponent defeated, its duration is increased by 2.5s, up to a maximum of 15s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Dance of Frost: Increases the Level of Frostgnaw by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Frozen Kiss: Triggers automatically when Kaeya's HP falls below 20%:\nCreates a shield that absorbs damage equal to 30% of Kaeya's Max HP. Lasts for 20s.\nThis shield absorbs Cryo DMG with 250% efficiency.\nCan only occur once every 60s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Frostbiting Embrace: Increases the Level of Glacial Waltz by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Glacial Whirlwind: Glacial Waltz will generate 1 additional icicle, and will regenerate 15 Energy when cast."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "er",
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

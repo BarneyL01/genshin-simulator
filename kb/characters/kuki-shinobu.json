@@ -1,0 +1,651 @@
+{
+  "id": "kuki-shinobu",
+  "name": "Kuki Shinobu",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/kuki-shinobu",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "electro",
+  "weaponType": "sword",
+  "releaseVersion": "2.7",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12288.654441100001,
+      "atk": 212.397192,
+      "def": 750.7736775
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.48762,
+            0.52731,
+            0.567,
+            0.6237,
+            0.66339,
+            0.70875,
+            0.77112,
+            0.83349,
+            0.89586,
+            0.9639,
+            1.03194,
+            1.09998,
+            1.16802,
+            1.23606,
+            1.3041
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 19,
+              "charged": 23,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.44548,
+            0.48174,
+            0.518,
+            0.5698,
+            0.60606,
+            0.6475,
+            0.70448,
+            0.76146,
+            0.81844,
+            0.8806,
+            0.94276,
+            1.00492,
+            1.06708,
+            1.12924,
+            1.1914
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 17,
+              "charged": 27,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.5934,
+            0.6417,
+            0.69,
+            0.759,
+            0.8073,
+            0.8625,
+            0.9384,
+            1.0143,
+            1.0902,
+            1.173,
+            1.2558,
+            1.3386,
+            1.4214,
+            1.5042,
+            1.587
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 42,
+              "charged": 50,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 50
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.7611,
+            0.82305,
+            0.885,
+            0.9735,
+            1.03545,
+            1.10625,
+            1.2036,
+            1.30095,
+            1.3983,
+            1.5045,
+            1.6107,
+            1.7169,
+            1.8231,
+            1.9293,
+            2.0355
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 57,
+              "charged": 57,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 57
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.556334,
+            0.601617,
+            0.6469,
+            0.71159,
+            0.756873,
+            0.808625,
+            0.879784,
+            0.950943,
+            1.022102,
+            1.09973,
+            1.177358,
+            1.254986,
+            1.332614,
+            1.410242,
+            1.48787
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "dash": 31,
+              "jump": 31,
+              "swap": 29,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            25
+          ],
+          "extraMv": [
+            [
+              0.667652,
+              0.721996,
+              0.77634,
+              0.853974,
+              0.908318,
+              0.970425,
+              1.055822,
+              1.14122,
+              1.226617,
+              1.319778,
+              1.412939,
+              1.5061,
+              1.59926,
+              1.692421,
+              1.785582
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.75712,
+            0.813904,
+            0.870688,
+            0.9464,
+            1.003184,
+            1.059968,
+            1.13568,
+            1.211392,
+            1.287104,
+            1.362816,
+            1.438528,
+            1.51424,
+            1.60888,
+            1.70352,
+            1.79816
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 50,
+              "dash": 12,
+              "jump": 11,
+              "swap": 50,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Grass Ring of Sanctification",
+          "mv": [
+            0.2524,
+            0.27133,
+            0.29026,
+            0.3155,
+            0.33443,
+            0.35336,
+            0.3786,
+            0.40384,
+            0.42908,
+            0.45432,
+            0.47956,
+            0.5048,
+            0.53635,
+            0.5679,
+            0.59945
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 50,
+              "dash": 12,
+              "jump": 11,
+              "swap": 50,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Single Instance",
+          "mv": [
+            0.036048,
+            0.038752,
+            0.041455,
+            0.04506,
+            0.047764,
+            0.050467,
+            0.054072,
+            0.057677,
+            0.061282,
+            0.064886,
+            0.068491,
+            0.072096,
+            0.076602,
+            0.081108,
+            0.085614
+          ],
+          "scaling": "hp",
+          "element": "electro",
+          "frames": {
+            "hitmark": 50,
+            "cancel": {
+              "normal": 62,
+              "skill": 62,
+              "swap": 62,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Total 1",
+          "mv": [
+            0.252336,
+            0.271261,
+            0.290186,
+            0.31542,
+            0.334345,
+            0.35327,
+            0.378504,
+            0.403738,
+            0.428971,
+            0.454205,
+            0.479438,
+            0.504672,
+            0.536214,
+            0.567756,
+            0.599298
+          ],
+          "scaling": "hp",
+          "element": "electro",
+          "frames": {
+            "hitmark": 53,
+            "cancel": {
+              "normal": 62,
+              "skill": 62,
+              "swap": 62,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Total 2",
+          "mv": [
+            0.432576,
+            0.465019,
+            0.497462,
+            0.54072,
+            0.573163,
+            0.605606,
+            0.648864,
+            0.692122,
+            0.735379,
+            0.778637,
+            0.821894,
+            0.865152,
+            0.919224,
+            0.973296,
+            1.027368
+          ],
+          "scaling": "hp",
+          "element": "electro",
+          "frames": {
+            "hitmark": 56,
+            "cancel": {
+              "normal": 62,
+              "skill": 62,
+              "swap": 62,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kuki/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kuki-shinobu.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Breaking Free: When Shinobu's HP is not higher than 50%, her Healing Bonus is increased by 15%."
+    },
+    {
+      "id": "kuki-shinobu.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Heart's Repose: Sanctifying Ring's abilities will be boosted based on Shinobu's Elemental Mastery:\n·Healing amount will be increased by 75% of Elemental Mastery.\n·DMG dealt is increased by 25% of Elemental Mastery."
+    },
+    {
+      "id": "kuki-shinobu.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Protracted Prayers: Gains 25% more rewards when dispatched on an Inazuma Expedition for 20 hours."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "To Cloister Compassion: Gyoei Narukami Kariyama Rite's AoE is increased by 50%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "To Forsake Fortune: Grass Ring of Sanctification's duration is increased by 3s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "To Sequester Sorrow: Increases the Level of Sanctifying Ring by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "To Sever Sealing: When the Normal, Charged, or Plunging Attacks of the character affected by Shinobu's Grass Ring of Sanctification hit opponents, a Thundergrass Mark will land on the opponent's position and deal AoE Electro DMG based on 9.7% of Shinobu's Max HP.\nThis effect can occur once every 5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "To Cease Courtesies: Increases the Level of Gyoei Narukami Kariyama Rite by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "To Ward Weakness: When Kuki Shinobu takes lethal DMG, this instance of DMG will not take her down. This effect will automatically trigger when her HP reaches 1 and will trigger once every 60s.\nWhen Shinobu's HP drops below 25%, she will gain 150 Elemental Mastery for 15s. This effect will trigger once every 60s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

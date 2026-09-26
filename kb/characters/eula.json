@@ -1,0 +1,640 @@
+{
+  "id": "eula",
+  "name": "Eula",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/eula",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/eula-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "claymore",
+  "releaseVersion": "1.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13225.583558400001,
+      "atk": 342.0250874,
+      "def": 750.87761949
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.897324,
+            0.970362,
+            1.0434,
+            1.14774,
+            1.220778,
+            1.30425,
+            1.419024,
+            1.533798,
+            1.648572,
+            1.77378,
+            1.917248,
+            2.085965,
+            2.254683,
+            2.423401,
+            2.607457
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 34,
+              "charged": 34,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.935508,
+            1.011654,
+            1.0878,
+            1.19658,
+            1.272726,
+            1.35975,
+            1.479408,
+            1.599066,
+            1.718724,
+            1.84926,
+            1.998833,
+            2.17473,
+            2.350627,
+            2.526524,
+            2.718412
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 36,
+              "charged": 36,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.567987,
+            0.614219,
+            0.66045,
+            0.726495,
+            0.772726,
+            0.825562,
+            0.898212,
+            0.970861,
+            1.043511,
+            1.122765,
+            1.213577,
+            1.320372,
+            1.427166,
+            1.533961,
+            1.650465
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 56,
+              "charged": 56,
+              "skill": 42,
+              "burst": 42,
+              "dash": 42,
+              "jump": 42,
+              "swap": 42,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            42
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.126428,
+            1.218114,
+            1.3098,
+            1.44078,
+            1.532466,
+            1.63725,
+            1.781328,
+            1.925406,
+            2.069484,
+            2.22666,
+            2.406758,
+            2.618552,
+            2.830347,
+            3.042141,
+            3.27319
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 44,
+              "charged": 44,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.718336,
+            0.776806,
+            0.835275,
+            0.918803,
+            0.977272,
+            1.044094,
+            1.135974,
+            1.227854,
+            1.319735,
+            1.419968,
+            1.534818,
+            1.669882,
+            1.804946,
+            1.94001,
+            2.087352
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 105,
+              "charged": 105,
+              "skill": 56,
+              "burst": 56,
+              "dash": 56,
+              "jump": 56,
+              "swap": 56,
+              "default": 105
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            56
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press",
+          "mv": [
+            1.464,
+            1.5738,
+            1.6836,
+            1.83,
+            1.9398,
+            2.0496,
+            2.196,
+            2.3424,
+            2.4888,
+            2.6352,
+            2.7816,
+            2.928,
+            3.111,
+            3.294,
+            3.477
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Icewhirl Brand",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 240,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.456,
+            2.6402,
+            2.8244,
+            3.07,
+            3.2542,
+            3.4384,
+            3.684,
+            3.9296,
+            4.1752,
+            4.4208,
+            4.6664,
+            4.912,
+            5.219,
+            5.526,
+            5.833
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 100,
+            "cancel": {
+              "normal": 120,
+              "dash": 122,
+              "jump": 121,
+              "swap": 120,
+              "default": 123
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Lightfall Sword Base",
+          "mv": [
+            3.67048,
+            3.96924,
+            4.268,
+            4.6948,
+            4.99356,
+            5.335,
+            5.80448,
+            6.27396,
+            6.74344,
+            7.2556,
+            7.84245,
+            8.532586,
+            9.222721,
+            9.912857,
+            10.665732
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 103,
+            "cancel": {
+              "normal": 120,
+              "dash": 122,
+              "jump": 121,
+              "swap": 120,
+              "default": 123
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Per Stack",
+          "mv": [
+            0.74992,
+            0.81096,
+            0.872,
+            0.9592,
+            1.02024,
+            1.09,
+            1.18592,
+            1.28184,
+            1.37776,
+            1.4824,
+            1.6023,
+            1.743302,
+            1.884305,
+            2.025307,
+            2.179128
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 106,
+            "cancel": {
+              "normal": 120,
+              "dash": 122,
+              "jump": 121,
+              "swap": 120,
+              "default": 123
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/eula/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "eula.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Roiling Rime: If 2 stacks of Grimheart are consumed upon unleashing the Holding Mode of Icetide Vortex, a Shattered Lightfall Sword will be created that will explode immediately, dealing 50% of the basic Physical DMG dealt by a Lightfall Sword created by Glacial Illumination."
+    },
+    {
+      "id": "eula.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Wellspring of War-Lust: When Glacial Illumination is cast, the CD of Icetide Vortex is reset and Eula gains 1 stack of Grimheart."
+    },
+    {
+      "id": "eula.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Aristocratic Introspection: When Eula crafts Character Talent Materials, she has a 10% chance to receive double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Tidal Illusion: Every time Icetide Vortex's Grimheart stacks are consumed, Eula's Physical DMG is increased by 30% for 6s.\nEach stack consumed will increase the duration of this effect by 6s up to a maximum of 18s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Lady of Seafoam: Decreases the CD of Icetide Vortex's Holding Mode, rendering it identical to Press CD."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Lawrence Pedigree: Increases the Level of Glacial Illumination by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Obstinacy of One's Inferiors: Lightfall Swords deal 25% increased DMG against opponents with less than 50% HP."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Chivalric Quality: Increases the Level of Icetide Vortex by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Noble Obligation: Lightfall Swords created by Glacial Illumination start with 5 stacks of energy. Normal Attacks, Elemental Skills, and Elemental Bursts have a 50% chance to grant the Lightfall Sword an additional stack of energy."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.physical"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

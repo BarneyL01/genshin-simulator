@@ -1,0 +1,47 @@
+{
+  "id": "blackcliff-warbow",
+  "name": "Blackcliff Warbow",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Press the Advantage\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: After defeating an enemy, ATK is increased by 12% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "bow",
+  "rarity": 4,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 564.7837244
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.36752
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Press the Advantage",
+    "text": "After defeating an enemy, ATK is increased by 12% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "effects": []
+  },
+  "needsHook": false
+}

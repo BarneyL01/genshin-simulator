@@ -1,0 +1,510 @@
+{
+  "id": "razor",
+  "name": "Razor",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/razor",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/razor-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "electro",
+  "weaponType": "claymore",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11962.4064649,
+      "atk": 233.6369112,
+      "def": 750.7736775
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.physical",
+    "value": 0.3
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.9592,
+            1.0246,
+            1.09,
+            1.1772,
+            1.2426,
+            1.3189,
+            1.417,
+            1.5151,
+            1.6132,
+            1.7113,
+            1.8094,
+            1.9075,
+            2.0056,
+            2.1037,
+            2.2018
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 45,
+              "charged": 45,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.82632,
+            0.88266,
+            0.939,
+            1.01412,
+            1.07046,
+            1.13619,
+            1.2207,
+            1.30521,
+            1.38972,
+            1.47423,
+            1.55874,
+            1.64325,
+            1.72776,
+            1.81227,
+            1.89678
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.03312,
+            1.10356,
+            1.174,
+            1.26792,
+            1.33836,
+            1.42054,
+            1.5262,
+            1.63186,
+            1.73752,
+            1.84318,
+            1.94884,
+            2.0545,
+            2.16016,
+            2.26582,
+            2.37148
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 47,
+              "charged": 47,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.36048,
+            1.45324,
+            1.546,
+            1.66968,
+            1.76244,
+            1.87066,
+            2.0098,
+            2.14894,
+            2.28808,
+            2.42722,
+            2.56636,
+            2.7055,
+            2.84464,
+            2.98378,
+            3.12292
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 116,
+              "charged": 116,
+              "skill": 38,
+              "burst": 38,
+              "dash": 38,
+              "jump": 38,
+              "swap": 38,
+              "default": 116
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press Skill",
+          "mv": [
+            1.992,
+            2.1414,
+            2.2908,
+            2.49,
+            2.6394,
+            2.7888,
+            2.988,
+            3.1872,
+            3.3864,
+            3.5856,
+            3.7848,
+            3.984,
+            4.233,
+            4.482,
+            4.731
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Burst",
+          "mv": [
+            1.6,
+            1.72,
+            1.84,
+            2,
+            2.12,
+            2.24,
+            2.4,
+            2.56,
+            2.72,
+            2.88,
+            3.04,
+            3.2,
+            3.4,
+            3.6,
+            3.8
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 73,
+              "dash": 58,
+              "jump": 57,
+              "swap": 63,
+              "default": 74
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Soul Companion",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 73,
+              "dash": 58,
+              "jump": 57,
+              "swap": 63,
+              "default": 74
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/razor/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "razor.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Awakening: Decreases Claw and Thunder's CD by 18%.\nUsing Lightning Fang resets the CD of Claw and Thunder."
+    },
+    {
+      "id": "razor.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Hunger: When Razor's Energy is below 50%, increases Energy Recharge by 30%."
+    },
+    {
+      "id": "razor.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Wolvensprint: Decreases sprinting Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Wolf's Instinct: Picking up an Elemental Orb or Particle increases Razor's DMG by 10% for 8s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Suppression: Increases CRIT Rate against opponents with less than 30% HP by 10%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Soul Companion: Increases the Level of Lightning Fang by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Bite: When casting Claw and Thunder (Press), opponents hit will have their DEF decreased by 15% for 7s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Sharpened Claws: Increases the Level of Claw and Thunder by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Lupus Fulguris: Every 10s, Razor's sword charges up, causing the next Normal Attack to release lightning that deals 100% of Razor's ATK as Electro DMG.\nWhen Razor is not using Lightning Fang, a lightning strike on an opponent will grant Razor an Electro Sigil for Claw and Thunder."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.physical"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

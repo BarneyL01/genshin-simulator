@@ -1,0 +1,593 @@
+{
+  "id": "noelle",
+  "name": "Noelle",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/noelle",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/noelle-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "claymore",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12071.155412,
+      "atk": 191.15747280000002,
+      "def": 798.55018425
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "def%",
+    "value": 0.3
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.7912,
+            0.8556,
+            0.92,
+            1.012,
+            1.0764,
+            1.15,
+            1.2512,
+            1.3524,
+            1.4536,
+            1.564,
+            1.6744,
+            1.7848,
+            1.8952,
+            2.0056,
+            2.116
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 38,
+              "charged": 41,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 54
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.73358,
+            0.79329,
+            0.853,
+            0.9383,
+            0.99801,
+            1.06625,
+            1.16008,
+            1.25391,
+            1.34774,
+            1.4501,
+            1.55246,
+            1.65482,
+            1.75718,
+            1.85954,
+            1.9619
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 46,
+              "charged": 48,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.86258,
+            0.93279,
+            1.003,
+            1.1033,
+            1.17351,
+            1.25375,
+            1.36408,
+            1.47441,
+            1.58474,
+            1.7051,
+            1.82546,
+            1.94582,
+            2.06618,
+            2.18654,
+            2.3069
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 31,
+              "charged": 40,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 72
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.13434,
+            1.22667,
+            1.319,
+            1.4509,
+            1.54323,
+            1.64875,
+            1.79384,
+            1.93893,
+            2.08402,
+            2.2423,
+            2.40058,
+            2.55886,
+            2.71714,
+            2.87542,
+            3.0337
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 106,
+              "charged": 109,
+              "skill": 41,
+              "burst": 41,
+              "dash": 41,
+              "jump": 41,
+              "swap": 41,
+              "default": 112
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.2,
+            1.29,
+            1.38,
+            1.5,
+            1.59,
+            1.68,
+            1.8,
+            1.92,
+            2.04,
+            2.16,
+            2.28,
+            2.4,
+            2.55,
+            2.7,
+            2.85
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 12,
+              "charged": 13,
+              "skill": 14,
+              "burst": 14,
+              "dash": 11,
+              "jump": 11,
+              "default": 78
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Absorption 1",
+          "mv": [
+            1.6,
+            1.72,
+            1.84,
+            2,
+            2.12,
+            2.24,
+            2.4,
+            2.56,
+            2.72,
+            2.88,
+            3.04,
+            3.2,
+            3.4,
+            3.6,
+            3.8
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 12,
+              "charged": 13,
+              "skill": 14,
+              "burst": 14,
+              "dash": 11,
+              "jump": 11,
+              "default": 78
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Absorption 2",
+          "mv": [
+            769.7851,
+            846.7743,
+            930.17926,
+            1020,
+            1116.2365,
+            1218.8888,
+            1327.9568,
+            1443.4407,
+            1565.3402,
+            1693.6555,
+            1828.3867,
+            1969.5336,
+            2117.0962,
+            2271.0747,
+            2431.4688
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 12,
+              "charged": 13,
+              "skill": 14,
+              "burst": 14,
+              "dash": 11,
+              "jump": 11,
+              "default": 78
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1440,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Burst",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 80,
+            "cancel": {
+              "normal": 83,
+              "charged": 82,
+              "skill": 82,
+              "dash": 81,
+              "jump": 81,
+              "default": 121
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill",
+          "mv": [
+            0.928,
+            0.9976,
+            1.0672,
+            1.16,
+            1.2296,
+            1.2992,
+            1.392,
+            1.4848,
+            1.5776,
+            1.6704,
+            1.7632,
+            1.856,
+            1.972,
+            2.088,
+            2.204
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 83,
+            "cancel": {
+              "normal": 83,
+              "charged": 82,
+              "skill": 82,
+              "dash": 81,
+              "jump": 81,
+              "default": 121
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "noelle.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Devotion: When Noelle is in the party but not on the field, this ability triggers automatically when your active character's HP falls below 30%:\nCreates a shield for your active character that lasts for 20s and absorbs DMG equal to 400% of Noelle's DEF.\nThe shield has a 150% DMG Absorption effectiveness against all Elemental and Physical DMG.\nThis effect can only occur once every 60s."
+    },
+    {
+      "id": "noelle.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Nice and Clean: Noelle will decrease the CD of Breastplate by 1s for every 4 Normal or Charged Attack hits she scores on opponents.\nOne hit may be counted every 0.1s."
+    },
+    {
+      "id": "noelle.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Maid's Knighthood: When a Perfect Cooking is achieved on a DEF-boosting dish, Noelle has a 12% chance to obtain double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "I Got Your Back: While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to 100%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Combat Maid: Decreases the Stamina Consumption of Noelle's Charged Attacks by 20% and increases her Charged Attack DMG by 15%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Invulnerable Maid: Increases the Level of Breastplate by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "To Be Cleaned: When Breastplate's duration expires or it is destroyed by DMG, it will deal 400% of Noelle's ATK as Geo DMG to surrounding opponents."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Favonius Sweeper Master: Increases the Level of Sweeping Time by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Must Be Spotless: Sweeping Time increases Noelle's ATK by an additional 50% of her DEF.\nAdditionally, every opponent defeated during the skill's duration adds 1s to the duration, up to 10s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

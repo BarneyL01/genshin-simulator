@@ -1,0 +1,593 @@
+{
+  "id": "kinich",
+  "name": "Kinich",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/kinich",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/kinich-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "claymore",
+  "releaseVersion": "5.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12858.206654000001,
+      "atk": 332.4579502,
+      "def": 801.6022079100001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.98986,
+            1.07043,
+            1.151,
+            1.2661,
+            1.34667,
+            1.43875,
+            1.56536,
+            1.69197,
+            1.81858,
+            1.9567,
+            2.09482,
+            2.23294,
+            2.37106,
+            2.50918,
+            2.6473
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 30,
+              "charged": 47,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.82904,
+            0.89652,
+            0.964,
+            1.0604,
+            1.12788,
+            1.205,
+            1.31104,
+            1.41708,
+            1.52312,
+            1.6388,
+            1.75448,
+            1.87016,
+            1.98584,
+            2.10152,
+            2.2172
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 41,
+              "charged": 48,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.23496,
+            1.33548,
+            1.436,
+            1.5796,
+            1.68012,
+            1.795,
+            1.95296,
+            2.11092,
+            2.26888,
+            2.4412,
+            2.61352,
+            2.78584,
+            2.95816,
+            3.13048,
+            3.3028
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 75,
+              "charged": 79,
+              "skill": 44,
+              "burst": 44,
+              "dash": 44,
+              "jump": 44,
+              "swap": 44,
+              "default": 79
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.48418,
+            0.52359,
+            0.563,
+            0.6193,
+            0.65871,
+            0.70375,
+            0.76568,
+            0.82761,
+            0.88954,
+            0.9571,
+            1.02466,
+            1.09222,
+            1.15978,
+            1.22734,
+            1.2949
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 71,
+            "cancel": {
+              "dash": 71,
+              "jump": 71,
+              "swap": 71,
+              "default": 87
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            95,
+            119
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Loop Shot 1",
+          "mv": [
+            0.5728,
+            0.61576,
+            0.65872,
+            0.716,
+            0.75896,
+            0.80192,
+            0.8592,
+            0.91648,
+            0.97376,
+            1.03104,
+            1.08832,
+            1.1456,
+            1.2172,
+            1.2888,
+            1.3604
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 29,
+              "burst": 27,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Loop Shot 2",
+          "mv": [
+            0.5728,
+            0.61576,
+            0.65872,
+            0.716,
+            0.75896,
+            0.80192,
+            0.8592,
+            0.91648,
+            0.97376,
+            1.03104,
+            1.08832,
+            1.1456,
+            1.2172,
+            1.2888,
+            1.3604
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 29,
+              "burst": 27,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Scalespiker Cannon",
+          "mv": [
+            6.8744,
+            7.38998,
+            7.90556,
+            8.593,
+            9.10858,
+            9.62416,
+            10.3116,
+            10.99904,
+            11.68648,
+            12.37392,
+            13.06136,
+            13.7488,
+            14.6081,
+            15.4674,
+            16.3267
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 29,
+              "burst": 27,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.34,
+            1.4405,
+            1.541,
+            1.675,
+            1.7755,
+            1.876,
+            2.01,
+            2.144,
+            2.278,
+            2.412,
+            2.546,
+            2.68,
+            2.8475,
+            3.015,
+            3.1825
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 63,
+            "cancel": {
+              "normal": 125,
+              "dash": 124,
+              "default": 126
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Dragon Breath",
+          "mv": [
+            1.20736,
+            1.297912,
+            1.388464,
+            1.5092,
+            1.599752,
+            1.690304,
+            1.81104,
+            1.931776,
+            2.052512,
+            2.173248,
+            2.293984,
+            2.41472,
+            2.56564,
+            2.71656,
+            2.86748
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 66,
+            "cancel": {
+              "normal": 125,
+              "dash": 124,
+              "default": 126
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kinich/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kinich.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "The Price of Desolation: When Kinich is in Nightsoul's Blessing state, opponents hit by his Elemental Skill will enter the Desolation state, and when affected by Burning or Burgeon reaction DMG, they will restore 7 Nightsoul points to him. Nightsoul points can be gained this way once every 0.8s. The Desolation state will persist until this instance of Kinich's Nightsoul's Blessing state ends."
+    },
+    {
+      "id": "kinich.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Flame Spirit Pact: After a nearby party member triggers a Nightsoul Burst, Kinich will gain 1 stack of Hunter's Experience that lasts 15s. Max 2 stacks. When Kinich uses Canopy Hunter: Riding High's Scalespiker Cannon, all stacks of Hunter's Experience will be consumed, with each stack consumed increasing the DMG dealt by this Cannon shot by 320% of Kinich's ATK."
+    },
+    {
+      "id": "kinich.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Repaid in Full: When Kinich is in the air following Canopy Hunter: Riding High's mid-air swing, he can consume 10 Phlogiston points to perform another mid-air swing.\nWhile in an area with Phlogiston Mechanics within Natlan, he can use Nightsoul Transmission: Kinich. When the current active character is sprinting, in movement states that result from specific Talents, or in the air, when you switch to Kinich: Kinich will perform one of the following actions depending on the conditions met:\n·When facing a Coilgrass Sigil that can be interacted with: He will fire a grappling ho"
+    },
+    {
+      "id": "kinich.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Swift Envoy: While in an area with Phlogiston Mechanics within Natlan, interacting with some harvestable items will increase your own party members' Movement SPD by 15% for 10s. Additionally, the location of nearby resources unique to Natlan will appear on your mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Parrot's Beak: After Kinich lands from Canopy Hunter: Riding High's mid-air swing, his Movement SPD will increase by 30% for 6s.\nAdditionally, Scalespiker Cannon's CRIT DMG is increased by 100%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Tiger Beetle's Palm: When Kinich's Elemental Skill hits an opponent, it will decrease their Dendro RES by 30% for 6s.\nAdditionally, the first Scalespiker Cannon Kinich fires after entering Nightsoul's Blessing has increased AoE, and its DMG increases by 100%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Protosuchian's Claw: Increases the Level of Canopy Hunter: Riding High by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Hummingbird's Feather: When in Nightsoul's Blessing, Kinich will restore 5 Energy after using his Loop Shots or after unleashing the Scalespiker Cannon. Energy can be regenerated this way once every 2.8s.\nAdditionally, Hail to the Almighty Dragonlord deals 70% more DMG."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Howler Monkey's Tail: Increases the Level of Hail to the Almighty Dragonlord by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Auspicious Beast's Shape: After Scalespiker Cannon hits an opponent, it will bounce between opponents once, dealing 700% of Kinich's ATK as Dendro DMG.\nIf this Scalespiker Cannon triggers the buffs that Ascension Talent \"Flame Spirit Pact\" or the Constellation \"Tiger Beetle's Palm\" grant to the Cannon, the bouncing attack will also obtain the relevant buffs."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

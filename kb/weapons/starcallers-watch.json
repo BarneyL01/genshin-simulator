@@ -1,0 +1,47 @@
+{
+  "id": "starcallers-watch",
+  "name": "Starcaller's Watch",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Offering Unto Wind and Sun\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Increases Elemental Mastery by 100. Gain the \"Mirror of Night\" effect within 15s after the equipping character creates a shield: The current active party member deals 28% increased DMG to nearby opponents. You can gain the \"Mirror of Night\" effect once every 14s.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "catalyst",
+  "rarity": 5,
+  "releaseVersion": "5.3",
+  "baseAtk": {
+    "lv90": 541.829758
+  },
+  "substat": {
+    "stat": "em",
+    "lv90": 264.61440000000005
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Offering Unto Wind and Sun",
+    "text": "Increases Elemental Mastery by 100. Gain the \"Mirror of Night\" effect within 15s after the equipping character creates a shield: The current active party member deals 28% increased DMG to nearby opponents. You can gain the \"Mirror of Night\" effect once every 14s.",
+    "effects": []
+  },
+  "needsHook": false
+}

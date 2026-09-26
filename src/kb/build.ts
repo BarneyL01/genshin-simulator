@@ -49,6 +49,14 @@ export function setEffects(kb: KbData, sets: Record<string, number>): Effect[] {
   return out;
 }
 
+/** Highest base ATK weapon of a type, preferring owned ones. */
+export function defaultWeapon(kb: KbData, type: string, owned: (id: string) => boolean): string {
+  const list = [...kb.weapons.values()].filter((w) => w.type === type).sort((a, b) => b.baseAtk.lv90 - a.baseAtk.lv90);
+  const pick = list.find((w) => owned(w.id)) ?? list[0];
+  if (!pick) throw new Error(`no ${type} weapons in the knowledge base`);
+  return pick.id;
+}
+
 export function buildMember(kb: KbData, m: MemberSpec, opts: BuildOptions, notices: string[]): BuiltMember {
   const c = kb.characters.get(m.character);
   if (!c) throw new Error(`unknown character "${m.character}"`);
@@ -57,8 +65,12 @@ export function buildMember(kb: KbData, m: MemberSpec, opts: BuildOptions, notic
   const owned = (id: string) => assumeAll || (roster?.weapons[id]?.owned ?? false);
 
   let weaponId = m.weapons.find(owned);
+  if (!weaponId && m.weapons.length === 0) {
+    weaponId = defaultWeapon(kb, c.weaponType, owned);
+    notices.push(`${c.id}: no recommended weapon in the knowledge base; using ${weaponId} (highest base ATK of the type)`);
+  }
   if (!weaponId) {
-    weaponId = m.weapons[0] ?? c.recommended.weapons[0]?.id;
+    weaponId = m.weapons[0];
     if (!weaponId) throw new Error(`no weapon for ${c.id}`);
     notices.push(`${c.id}: none of the listed weapons is owned; using ${weaponId} anyway`);
   }

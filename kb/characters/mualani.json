@@ -1,0 +1,474 @@
+{
+  "id": "mualani",
+  "name": "Mualani",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/mualani",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/mualani-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 5/5. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "catalyst",
+  "releaseVersion": "5.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 15184.929315200003,
+      "atk": 181.7755668,
+      "def": 570.26734254
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.51396,
+            0.552507,
+            0.591054,
+            0.64245,
+            0.680997,
+            0.719544,
+            0.77094,
+            0.822336,
+            0.873732,
+            0.925128,
+            0.976524,
+            1.02792,
+            1.092165,
+            1.15641,
+            1.220655
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 23,
+              "charged": 22,
+              "skill": 13,
+              "burst": 11,
+              "dash": 12,
+              "jump": 13,
+              "swap": 11,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.446256,
+            0.479725,
+            0.513194,
+            0.55782,
+            0.591289,
+            0.624758,
+            0.669384,
+            0.71401,
+            0.758635,
+            0.803261,
+            0.847886,
+            0.892512,
+            0.948294,
+            1.004076,
+            1.059858
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 22,
+              "charged": 24,
+              "skill": 11,
+              "burst": 11,
+              "dash": 10,
+              "jump": 10,
+              "swap": 8,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.700344,
+            0.75287,
+            0.805396,
+            0.87543,
+            0.927956,
+            0.980482,
+            1.050516,
+            1.12055,
+            1.190585,
+            1.260619,
+            1.330654,
+            1.400688,
+            1.488231,
+            1.575774,
+            1.663317
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 54,
+              "charged": 52,
+              "skill": 32,
+              "burst": 33,
+              "dash": 32,
+              "jump": 34,
+              "swap": 32,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.4288,
+            1.53596,
+            1.64312,
+            1.786,
+            1.89316,
+            2.00032,
+            2.1432,
+            2.28608,
+            2.42896,
+            2.57184,
+            2.71472,
+            2.8576,
+            3.0362,
+            3.2148,
+            3.3934
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 70,
+              "charged": 70,
+              "skill": 69,
+              "burst": 70,
+              "dash": 53,
+              "jump": 53,
+              "swap": 68,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Sharky's Bite Base",
+          "mv": [
+            0.0868,
+            0.09331,
+            0.09982,
+            0.1085,
+            0.11501,
+            0.12152,
+            0.1302,
+            0.13888,
+            0.14756,
+            0.15624,
+            0.16492,
+            0.1736,
+            0.18445,
+            0.1953,
+            0.20615
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 5,
+              "burst": 6,
+              "dash": 15,
+              "jump": 18,
+              "swap": 65,
+              "default": 69
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 4
+        }
+      ],
+      "cooldown": 108,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.584392,
+            0.628221,
+            0.672051,
+            0.73049,
+            0.774319,
+            0.818149,
+            0.876588,
+            0.935027,
+            0.993466,
+            1.051906,
+            1.110345,
+            1.168784,
+            1.241833,
+            1.314882,
+            1.387931
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 108,
+            "cancel": {
+              "normal": 167,
+              "skill": 166,
+              "dash": 167,
+              "jump": 167,
+              "swap": 108,
+              "default": 180
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mualani/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "mualani.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Heat-Resistant Freshwater Floater: When Sharky's Surging Bite hits an opponent, a Puffer will be generated nearby. Mualani will restore 20 Nightsoul points when she picks up a Puffer. Only 2 such Puffers can be created in this way during a single instance of being in Nightsoul's Blessing."
+    },
+    {
+      "id": "mualani.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Natlan's Greatest Guide: After a nearby party member triggers a Nightsoul Burst, Mualani will gain 1 stack of Wavechaser's Exploits, which lasts for 20s. Max 3 stacks. When she uses Boomsharka-laka, Mualani will clear all Wavechaser's Exploits stacks and increase the DMG of this Boomsharka-laka by 15%/30%/45% of her Max HP based on the number of stacks cleared."
+    },
+    {
+      "id": "mualani.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Crests and Troughs: After her Nightsoul points are depleted, Mualani will switch to consuming Phlogiston to maintain her Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, she can use Nightsoul Transmission: Mualani. When the active character is currently sprinting, swimming, in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Mualani: Mualani will enter the Nightsoul's Blessing state and gain 40 Nightsoul points. Nightsoul Transmission can be triggered once every 10s by y"
+    },
+    {
+      "id": "mualani.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "The Trick Is to Keep Smiling!: While in an area with Phlogiston Mechanics within Natlan, 15 Phlogiston will be restored when interacting with some harvestable items. Additionally, the location of nearby resources unique to Natlan will appear on your mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "The Leisurely \"Meztli\"...: The DMG dealt by the first Sharky's Surging Bite after Mualani enters Nightsoul's Blessing and the Shark Missiles it triggers is increased by 66% of Mualani's Max HP. This instance of increased DMG is subject to the diminishing DMG rules of Surfshark Wavebreaker.\nIn addition, while out of combat, Mualani's Nightsoul's Blessing state consumes 30% less Phlogiston and Nightsoul points."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Mualani, Going All Out!: Mualani gains 2 of Surfshark Wavebreaker's Wave Momentum stacks when she enters Nightsoul's Blessing state. She will gain 1 stack when obtaining a Puffer.\nIn addition, whenever Mualani obtains 2 Puffers within a single instance of the Nightsoul's Blessing state, she will recover an additional 12 Nightsoul points over 2s. You must first unlock the Ascension Talent \"Heat-Resistant Freshwater Floater.\""
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Surfing Atop Joyous Seas: Increases the Level of Surfshark Wavebreaker by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sharky Eats Puffies: Mualani regenerates 8 Energy when obtaining a Puffer. You must first unlock the Ascension Talent \"Heat-Resistant Freshwater Floater.\"\nAdditionally, Boomsharka-laka deals 75% increased DMG."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Same Style of Surfboard on Sale!: Increases the Level of Boomsharka-laka by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Spirit of the Springs' People: The DMG increase from the Constellation \"The Leisurely 'Meztli'...\" is no longer limited to being triggered once every Nightsoul's Blessing."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "hp%",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

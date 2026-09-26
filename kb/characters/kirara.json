@@ -1,0 +1,700 @@
+{
+  "id": "kirara",
+  "name": "Kirara",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/kirara",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark, burst hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "dendro",
+  "weaponType": "sword",
+  "releaseVersion": "3.7",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12179.90470957,
+      "atk": 223.0170516,
+      "def": 546.01722
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.47902,
+            0.51801,
+            0.557,
+            0.6127,
+            0.65169,
+            0.69625,
+            0.75752,
+            0.81879,
+            0.88006,
+            0.9469,
+            1.01374,
+            1.08058,
+            1.14742,
+            1.21426,
+            1.2811
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 20,
+              "charged": 24,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.46354,
+            0.50127,
+            0.539,
+            0.5929,
+            0.63063,
+            0.67375,
+            0.73304,
+            0.79233,
+            0.85162,
+            0.9163,
+            0.98098,
+            1.04566,
+            1.11034,
+            1.17502,
+            1.2397
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 28,
+              "charged": 28,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.254216,
+            0.274908,
+            0.2956,
+            0.32516,
+            0.345852,
+            0.3695,
+            0.402016,
+            0.434532,
+            0.467048,
+            0.50252,
+            0.537992,
+            0.573464,
+            0.608936,
+            0.644408,
+            0.67988
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 54,
+              "charged": 40,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 61
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            39
+          ],
+          "extraMv": [
+            [
+              0.381324,
+              0.412362,
+              0.4434,
+              0.48774,
+              0.518778,
+              0.55425,
+              0.603024,
+              0.651798,
+              0.700572,
+              0.75378,
+              0.806988,
+              0.860196,
+              0.913404,
+              0.966612,
+              1.01982
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.73272,
+            0.79236,
+            0.852,
+            0.9372,
+            0.99684,
+            1.065,
+            1.15872,
+            1.25244,
+            1.34616,
+            1.4484,
+            1.55064,
+            1.65288,
+            1.75512,
+            1.85736,
+            1.9596
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 39,
+            "cancel": {
+              "normal": 60,
+              "charged": 63,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.223772,
+            0.241986,
+            0.2602,
+            0.28622,
+            0.304434,
+            0.32525,
+            0.353872,
+            0.382494,
+            0.411116,
+            0.44234,
+            0.473564,
+            0.504788,
+            0.536012,
+            0.567236,
+            0.59846
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 43,
+              "skill": 43,
+              "burst": 43,
+              "dash": 38,
+              "jump": 38,
+              "swap": 37,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            27,
+            37
+          ],
+          "extraMv": [
+            [
+              0.447544,
+              0.483972,
+              0.5204,
+              0.57244,
+              0.608868,
+              0.6505,
+              0.707744,
+              0.764988,
+              0.822232,
+              0.88468,
+              0.947128,
+              1.009576,
+              1.072024,
+              1.134472,
+              1.19692
+            ],
+            [
+              0.447544,
+              0.483972,
+              0.5204,
+              0.57244,
+              0.608868,
+              0.6505,
+              0.707744,
+              0.764988,
+              0.822232,
+              0.88468,
+              0.947128,
+              1.009576,
+              1.072024,
+              1.134472,
+              1.19692
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Tail-Flicking Flying Kick",
+          "mv": [
+            1.04,
+            1.118,
+            1.196,
+            1.3,
+            1.378,
+            1.456,
+            1.56,
+            1.664,
+            1.768,
+            1.872,
+            1.976,
+            2.08,
+            2.21,
+            2.34,
+            2.47
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Urgent Neko Parcel Hit",
+          "mv": [
+            0.336,
+            0.3612,
+            0.3864,
+            0.42,
+            0.4452,
+            0.4704,
+            0.504,
+            0.5376,
+            0.5712,
+            0.6048,
+            0.6384,
+            0.672,
+            0.714,
+            0.756,
+            0.798
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flipclaw Strike",
+          "mv": [
+            1.44,
+            1.548,
+            1.656,
+            1.8,
+            1.908,
+            2.016,
+            2.16,
+            2.304,
+            2.448,
+            2.592,
+            2.736,
+            2.88,
+            3.06,
+            3.24,
+            3.42
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 480,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            5.7024,
+            6.13008,
+            6.55776,
+            7.128,
+            7.55568,
+            7.98336,
+            8.5536,
+            9.12384,
+            9.69408,
+            10.26432,
+            10.83456,
+            11.4048,
+            12.1176,
+            12.8304,
+            13.5432
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 57,
+              "skill": 57,
+              "dash": 52,
+              "jump": 52,
+              "swap": 57,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Cat Grass Cardamom Explosion",
+          "mv": [
+            0.3564,
+            0.38313,
+            0.40986,
+            0.4455,
+            0.47223,
+            0.49896,
+            0.5346,
+            0.57024,
+            0.60588,
+            0.64152,
+            0.67716,
+            0.7128,
+            0.75735,
+            0.8019,
+            0.84645
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 57,
+              "skill": 57,
+              "dash": 52,
+              "jump": 52,
+              "swap": 57,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kirara/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kirara.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Bewitching, Betwitching Tails: When Kirara is in the Urgent Neko Parcel state of Meow-teor Kick, each impact against an opponent will grant her a stack of Reinforced Packaging. This effect can be triggered once for each opponent hit every 0.5s. Max 3 stacks. When the Urgent Neko Parcel state ends, each stack of Reinforced Packaging will create 1 Shield of Safe Transport for Kirara. The shields that are created this way will have 20% of the DMG absorption that the Shield of Safe Transport produced by Meow-teor Kick would have. If Kirara is already protected by a Shield of Safe Transport created"
+    },
+    {
+      "id": "kirara.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Pupillary Variance: Every 1,000 Max HP Kirara possesses will increase the DMG dealt by Meow-teor Kick by 0.4%, and the DMG dealt by Secret Art: Surprise Dispatch by 0.3%."
+    },
+    {
+      "id": "kirara.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Cat's Creeping Carriage: When Kirara is in the party, animals who produce Fowl, Raw Meat, or Chilled Meat will not be startled when party members approach them."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Material Circulation: Every 8,000 Max HP Kirara possesses will cause her to create 1 extra Cat Grass Cardamom when she uses Secret Art: Surprise Dispatch. A maximum of 4 extra can be created this way."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Perfectly Packaged: When Kirara is in the Urgent Neko Parcel state of Meow-teor Kick, she will grant other party members she crashes into Critical Transport Shields.\nThe DMG absorption of Critical Transport Shield is 40% of the maximum absorption Meow-teor Kick's normal Shields of Safe Transport are capable of, and will absorb Dendro DMG with 250% effectiveness.\nCritical Transport Shields last 12s and can be triggered once on each character every 10s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Universal Recognition: Increases the Level of Meow-teor Kick by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Steed of Skanda: After active character(s) protected by Shields of Safe Transport or Critical Transport Shields hit opponents with Normal, Charged, or Plunging Attacks, Kirara will perform a coordinated attack with them using Small Cat Grass Cardamoms, dealing 200% of her ATK as Dendro DMG. DMG dealt this way is considered Elemental Burst DMG. This effect can be triggered once every 3.8s. This CD is shared between all party members."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "A Thousand Miles in a Day: Increases the Level of Secret Art: Surprise Dispatch by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Countless Sights to See: All nearby party members gain a 12% All Elemental DMG Bonus for 15s after Kirara uses her Elemental Skill or Burst."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

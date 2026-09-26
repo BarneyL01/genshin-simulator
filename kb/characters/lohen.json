@@ -1,0 +1,1364 @@
+{
+  "id": "lohen",
+  "name": "Lohen",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/lohen",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/lohen-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/26. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, N5, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "polearm",
+  "releaseVersion": "6.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12858.206654000001,
+      "atk": 344.4168692,
+      "def": 783.9254574000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.539917,
+            0.583863,
+            0.62781,
+            0.690591,
+            0.734538,
+            0.784763,
+            0.853822,
+            0.922881,
+            0.99194,
+            1.067277,
+            1.142614,
+            1.217951,
+            1.293289,
+            1.368626,
+            1.443963
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 11,
+              "charged": 17,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.564427,
+            0.610368,
+            0.65631,
+            0.721941,
+            0.767883,
+            0.820387,
+            0.892582,
+            0.964776,
+            1.03697,
+            1.115727,
+            1.194484,
+            1.273241,
+            1.351999,
+            1.430756,
+            1.509513
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 21,
+              "charged": 26,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.254199,
+            0.274889,
+            0.29558,
+            0.325138,
+            0.345829,
+            0.369475,
+            0.401989,
+            0.434503,
+            0.467016,
+            0.502486,
+            0.537956,
+            0.573425,
+            0.608895,
+            0.644364,
+            0.679834
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 31,
+              "charged": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23,
+            29
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.752259,
+            0.81349,
+            0.87472,
+            0.962192,
+            1.023422,
+            1.0934,
+            1.189619,
+            1.285838,
+            1.382058,
+            1.487024,
+            1.59199,
+            1.696957,
+            1.801923,
+            1.90689,
+            2.011856
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.368579,
+            0.398579,
+            0.42858,
+            0.471438,
+            0.501439,
+            0.535725,
+            0.582869,
+            0.630013,
+            0.677156,
+            0.728586,
+            0.780016,
+            0.831445,
+            0.882875,
+            0.934304,
+            0.985734
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 30,
+              "charged": 33,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            27
+          ],
+          "extraMv": [
+            [
+              0.552868,
+              0.597869,
+              0.64287,
+              0.707157,
+              0.752158,
+              0.803588,
+              0.874303,
+              0.945019,
+              1.015735,
+              1.092879,
+              1.170023,
+              1.247168,
+              1.324312,
+              1.401457,
+              1.478601
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.65876,
+            0.71238,
+            0.766,
+            0.8426,
+            0.89622,
+            0.9575,
+            1.04176,
+            1.12602,
+            1.21028,
+            1.3022,
+            1.39412,
+            1.48604,
+            1.57796,
+            1.66988,
+            1.7618
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 42,
+              "charged": 53,
+              "skill": 42,
+              "burst": 42,
+              "dash": 37,
+              "jump": 37,
+              "swap": 58,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            43
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "1-Hit",
+          "mv": [
+            0.809875,
+            0.875795,
+            0.941715,
+            1.035887,
+            1.101807,
+            1.177144,
+            1.280732,
+            1.384321,
+            1.48791,
+            1.600915,
+            1.713921,
+            1.826927,
+            1.939933,
+            2.052939,
+            2.165944
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Hit",
+          "mv": [
+            0.84664,
+            0.915552,
+            0.984465,
+            1.082912,
+            1.151824,
+            1.230581,
+            1.338872,
+            1.447164,
+            1.555455,
+            1.67359,
+            1.791726,
+            1.909862,
+            2.027998,
+            2.146134,
+            2.264269
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit 1",
+          "mv": [
+            0.381298,
+            0.412334,
+            0.44337,
+            0.487707,
+            0.518743,
+            0.554212,
+            0.602983,
+            0.651754,
+            0.700525,
+            0.753729,
+            0.806933,
+            0.860138,
+            0.913342,
+            0.966547,
+            1.019751
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit 2",
+          "mv": [
+            0.381298,
+            0.412334,
+            0.44337,
+            0.487707,
+            0.518743,
+            0.554212,
+            0.602983,
+            0.651754,
+            0.700525,
+            0.753729,
+            0.806933,
+            0.860138,
+            0.913342,
+            0.966547,
+            1.019751
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Hit 3",
+          "mv": [
+            0.381298,
+            0.412334,
+            0.44337,
+            0.487707,
+            0.518743,
+            0.554212,
+            0.602983,
+            0.651754,
+            0.700525,
+            0.753729,
+            0.806933,
+            0.860138,
+            0.913342,
+            0.966547,
+            1.019751
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "4-Hit",
+          "mv": [
+            1.128389,
+            1.220234,
+            1.31208,
+            1.443288,
+            1.535134,
+            1.6401,
+            1.784429,
+            1.928758,
+            2.073086,
+            2.230536,
+            2.387986,
+            2.545435,
+            2.702885,
+            2.860334,
+            3.017784
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "5-Hit 1",
+          "mv": [
+            0.552868,
+            0.597869,
+            0.64287,
+            0.707157,
+            0.752158,
+            0.803588,
+            0.874303,
+            0.945019,
+            1.015735,
+            1.092879,
+            1.170023,
+            1.247168,
+            1.324312,
+            1.401457,
+            1.478601
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "5-Hit 2",
+          "mv": [
+            0.829302,
+            0.896804,
+            0.964305,
+            1.060736,
+            1.128237,
+            1.205381,
+            1.311455,
+            1.417528,
+            1.523602,
+            1.639319,
+            1.755035,
+            1.870752,
+            1.986468,
+            2.102185,
+            2.217901
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Plunge",
+          "mv": [
+            0.639324,
+            0.691362,
+            0.7434,
+            0.81774,
+            0.869778,
+            0.92925,
+            1.011024,
+            1.092798,
+            1.174572,
+            1.26378,
+            1.352988,
+            1.442196,
+            1.531404,
+            1.620612,
+            1.70982
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Low/High Plunge 1",
+          "mv": [
+            1.278377,
+            1.382431,
+            1.486485,
+            1.635134,
+            1.739187,
+            1.858106,
+            2.02162,
+            2.185133,
+            2.348646,
+            2.527025,
+            2.705403,
+            2.883781,
+            3.062159,
+            3.240537,
+            3.418915
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Low/High Plunge 2",
+          "mv": [
+            1.596762,
+            1.726731,
+            1.8567,
+            2.04237,
+            2.172339,
+            2.320875,
+            2.525112,
+            2.729349,
+            2.933586,
+            3.15639,
+            3.379194,
+            3.601998,
+            3.824802,
+            4.047606,
+            4.27041
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Etched Into Bone and Soul 1",
+          "mv": [
+            0.6,
+            0.645,
+            0.69,
+            0.75,
+            0.795,
+            0.84,
+            0.9,
+            0.96,
+            1.02,
+            1.08,
+            1.14,
+            1.2,
+            1.275,
+            1.35,
+            1.425
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Etched Into Bone and Soul 2",
+          "mv": [
+            0.6,
+            0.645,
+            0.69,
+            0.75,
+            0.795,
+            0.84,
+            0.9,
+            0.96,
+            1.02,
+            1.08,
+            1.14,
+            1.2,
+            1.275,
+            1.35,
+            1.425
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 46,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Etched Into Bone and Soul 3",
+          "mv": [
+            0.6,
+            0.645,
+            0.69,
+            0.75,
+            0.795,
+            0.84,
+            0.9,
+            0.96,
+            1.02,
+            1.08,
+            1.14,
+            1.2,
+            1.275,
+            1.35,
+            1.425
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 49,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Etched Into Bone and Soul 4",
+          "mv": [
+            0.6,
+            0.645,
+            0.69,
+            0.75,
+            0.795,
+            0.84,
+            0.9,
+            0.96,
+            1.02,
+            1.08,
+            1.14,
+            1.2,
+            1.275,
+            1.35,
+            1.425
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 52,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 73,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 76,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 3",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 79,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 4",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 82,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 5",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 85,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 6",
+          "mv": [
+            1.188,
+            1.2771,
+            1.3662,
+            1.485,
+            1.5741,
+            1.6632,
+            1.782,
+            1.9008,
+            2.0196,
+            2.1384,
+            2.2572,
+            2.376,
+            2.5245,
+            2.673,
+            2.8215
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 88,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "lohen.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Moratorium on Questioning: When nearby party members accumulate **Will to Win** for Lohen by dealing DMG while he is in **Masterstroke** mode, if that DMG is not less than 3,000% of Lohen's Base ATK, it will accumulate an extra 60 Will to Win."
+    },
+    {
+      "id": "lohen.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Flippant Masterpiece: While in **Masterstroke** mode, for 8s after another nearby party member triggers a Cryo Reaction, that character's ATK is increased by 15%, while Lohen's ATK is increased by 15%."
+    },
+    {
+      "id": "lohen.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "When the Mood Strikes: Lohen gains \"High Spirits\" for 9s after he unleashes the Elemental Skill Unforeseen Strike: Increases the Skill Level of Unforeseen Strike by 1.\nWhen unleashing an Elemental Skill, if the Level of any other party member's Normal Attack, Elemental Skill, or Elemental Burst is not lower than Lohen's Elemental Skill Level, the duration of this instance of High Spirits will be increased by an additional 6s.\nHigh Spirits can be gained once every 18s."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "O Breezes, That So Oft Bear Sorrowful Lament: Lohen's maximum **Will to Win** limit is increased to 300% of its original value.\nAdditionally, when other nearby party members deal DMG while Lohen is in **Masterstroke** mode, they accumulate 500% as much Will to Win for him as they originally would have."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "In Flight, I Strike Whatever Flies: When in **Masterstroke** mode, after the special Elemental Skill **Etched Into Bone and Soul** hits an opponent or the Elemental Burst Manifest Judgment is unleashed, Lohen gains \"Evilsbane Blade\" for 4s: The next time Lohen hits an opponent with a Normal or Charged Attack while in Masterstroke mode, he will follow up with an additional strike that deals AoE Cryo DMG equal to 500% of his ATK, and increase the Elemental Mastery of other nearby party members by 200 for 8s. Evilsbane Blade can be triggered once every 4s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Only the Spear That Wounds Can Heal: Increases the Level of **Unforeseen Strike** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Radiant Love, Laughing Death: When Lohen unleashes the Elemental Burst Manifest Judgment while in **Masterstroke** mode, his **Will to Win** will be maxed out, causing this instance of his Elemental Burst to gain the maximum possible DMG increase.\n\nAdditionally, when Lohen switches to Masterstroke mode, the following will occur depending on how much Elemental Energy he has:\n· When Elemental Energy is not full: Lohen recovers 15 Elemental Energy.\n· When Elemental Energy is full: If, during the next 15s, Lohen unleashes the Elemental Burst Manifest Judgment, he will recover 15 Elemental Energy."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Never Ask, Nor Trouble You to Know: Increases the Level of **Manifest Judgment** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "To Drown, to Sink, Unconscious — Supreme Joy: Using the special Elemental Skill **Etched Into Bone and Soul** and hitting an opponent with it or, while **Masterstroke** mode is active, unleashing the Elemental Burst Manifest Judgment, will not consume any **Will to Win**. Instead, Lohen's **Joy** will be maxed out, and if he hits an opponent the next time he uses the special Elemental Skill Etched Into Bone and Soul, the duration of this instance of Masterstroke will be extended by 1.25s. This effect can be triggered once every 7s.\nAdditionally, the CRIT DMG of all the DMG described above is i"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "atk%",
+        "critDmg",
+        "critRate"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

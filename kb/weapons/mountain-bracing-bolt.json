@@ -1,0 +1,47 @@
+{
+  "id": "mountain-bracing-bolt",
+  "name": "Mountain-Bracing Bolt",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Hope Beyond the Peaks\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Decreases Climbing Stamina Consumption by 15% and increases Elemental Skill DMG by 12%. Also, after other nearby party members use Elemental Skills, the equipping character's Elemental Skill DMG will also increase by 12% for 8s.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "polearm",
+  "rarity": 4,
+  "releaseVersion": "5.1",
+  "baseAtk": {
+    "lv90": 564.7837244
+  },
+  "substat": {
+    "stat": "er",
+    "lv90": 0.30626819800000005
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Hope Beyond the Peaks",
+    "text": "Decreases Climbing Stamina Consumption by 15% and increases Elemental Skill DMG by 12%. Also, after other nearby party members use Elemental Skills, the equipping character's Elemental Skill DMG will also increase by 12% for 8s.",
+    "effects": []
+  },
+  "needsHook": false
+}

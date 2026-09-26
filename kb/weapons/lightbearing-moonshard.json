@@ -1,0 +1,47 @@
+{
+  "id": "lightbearing-moonshard",
+  "name": "Lightbearing Moonshard",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Legacy of Lang-Gan\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Increases DEF by 20%. DMG inflicted by Lunar-Crystallize reactions increases by 64% for 5s after the equipping character uses an Elemental Skill.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "sword",
+  "rarity": 5,
+  "releaseVersion": "6.3",
+  "baseAtk": {
+    "lv90": 541.829758
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.882048
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Legacy of Lang-Gan",
+    "text": "Increases DEF by 20%. DMG inflicted by Lunar-Crystallize reactions increases by 64% for 5s after the equipping character uses an Elemental Skill.",
+    "effects": []
+  },
+  "needsHook": false
+}

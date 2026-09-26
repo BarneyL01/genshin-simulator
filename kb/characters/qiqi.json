@@ -1,0 +1,688 @@
+{
+  "id": "qiqi",
+  "name": "Qiqi",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/qiqi",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12368.369914800001,
+      "atk": 287.01405600000004,
+      "def": 922.2652440000002
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "healingBonus",
+    "value": 0.2215
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.37754,
+            0.40827,
+            0.439,
+            0.4829,
+            0.51363,
+            0.54875,
+            0.59704,
+            0.64533,
+            0.69362,
+            0.7463,
+            0.79898,
+            0.85166,
+            0.90434,
+            0.95702,
+            1.0097
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 14,
+              "charged": 21,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.38872,
+            0.42036,
+            0.452,
+            0.4972,
+            0.52884,
+            0.565,
+            0.61472,
+            0.66444,
+            0.71416,
+            0.7684,
+            0.82264,
+            0.87688,
+            0.93112,
+            0.98536,
+            1.0396
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 21,
+              "charged": 22,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.24166,
+            0.26133,
+            0.281,
+            0.3091,
+            0.32877,
+            0.35125,
+            0.38216,
+            0.41307,
+            0.44398,
+            0.4777,
+            0.51142,
+            0.54514,
+            0.57886,
+            0.61258,
+            0.6463
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.24682,
+            0.26691,
+            0.287,
+            0.3157,
+            0.33579,
+            0.35875,
+            0.39032,
+            0.42189,
+            0.45346,
+            0.4879,
+            0.52234,
+            0.55678,
+            0.59122,
+            0.62566,
+            0.6601
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 28,
+              "charged": 26,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            18
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.63038,
+            0.68169,
+            0.733,
+            0.8063,
+            0.85761,
+            0.91625,
+            0.99688,
+            1.07751,
+            1.15814,
+            1.2461,
+            1.33406,
+            1.42202,
+            1.50998,
+            1.59794,
+            1.6859
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 53,
+              "charged": 53,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.64328,
+            0.69564,
+            0.748,
+            0.8228,
+            0.87516,
+            0.935,
+            1.01728,
+            1.09956,
+            1.18184,
+            1.2716,
+            1.36136,
+            1.45112,
+            1.54088,
+            1.63064,
+            1.7204
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "skill": 67,
+              "burst": 67,
+              "dash": 32,
+              "jump": 30,
+              "swap": 29,
+              "default": 76
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            29
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 57,
+              "dash": 6,
+              "jump": 5,
+              "swap": 57,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Herald of Frost",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 57,
+              "dash": 6,
+              "jump": 5,
+              "swap": 57,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Herald of Frost Coordinated Attack",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 57,
+              "dash": 6,
+              "jump": 5,
+              "swap": 57,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1800,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.848,
+            3.0616,
+            3.2752,
+            3.56,
+            3.7736,
+            3.9872,
+            4.272,
+            4.5568,
+            4.8416,
+            5.1264,
+            5.4112,
+            5.696,
+            6.052,
+            6.408,
+            6.764
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 82,
+            "cancel": {
+              "normal": 113,
+              "skill": 113,
+              "jump": 114,
+              "swap": 112,
+              "default": 115
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Stellar-Conduct",
+          "mv": [
+            2.973336,
+            3.196336,
+            3.419336,
+            3.71667,
+            3.93967,
+            4.16267,
+            4.460004,
+            4.757338,
+            5.054671,
+            5.352005,
+            5.649338,
+            5.946672,
+            6.318339,
+            6.690006,
+            7.061673
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 85,
+            "cancel": {
+              "normal": 113,
+              "skill": 113,
+              "jump": 114,
+              "swap": 112,
+              "default": 115
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/qiqi/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "qiqi.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Life-Prolonging Methods: When a character under the effects of Adeptus Art: Herald of Frost triggers an Elemental Reaction, their Incoming Healing Bonus is increased by 20% for 8s."
+    },
+    {
+      "id": "qiqi.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "A Glimpse Into Arcanum: When Qiqi hits opponents with her Normal and Charged Attacks, she has a 50% chance to apply a Fortune-Preserving Talisman to them for 6s. This effect can only occur once every 30s."
+    },
+    {
+      "id": "qiqi.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Former Life Memories: Displays the location of nearby resources unique to Liyue on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Ascetics of Frost: When the Herald of Frost hits an opponent marked by a Fortune-Preserving Talisman, Qiqi regenerates 2 Energy."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Frozen to the Bone: Qiqi's Normal and Charged Attack DMG against opponents affected by Cryo is increased by 15%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Ascendant Praise: Increases the Level of Adeptus Art: Preserver of Fortune by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Divine Suppression: Targets marked by the Fortune-Preserving Talisman have their ATK decreased by 20%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Crimson Lotus Bloom: Increases the Level of Adeptus Art: Herald of Frost by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Rite of Resurrection: Using Adeptus Art: Preserver of Fortune revives all fallen party members nearby and regenerates 50% of their HP.\nThis effect can only occur once every 15 mins."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

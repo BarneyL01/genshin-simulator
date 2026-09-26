@@ -1,0 +1,939 @@
+{
+  "id": "alhaitham",
+  "name": "Alhaitham",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/alhaitham",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/alhaitham-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 15/15. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "sword",
+  "releaseVersion": "3.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13348.0427932,
+      "atk": 313.3236758,
+      "def": 781.6197942900001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.dendro",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.495257,
+            0.535568,
+            0.57588,
+            0.633468,
+            0.67378,
+            0.71985,
+            0.783197,
+            0.846544,
+            0.90989,
+            0.978996,
+            1.048102,
+            1.117207,
+            1.186313,
+            1.255418,
+            1.324524
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 15,
+              "charged": 23,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.507495,
+            0.548802,
+            0.59011,
+            0.649121,
+            0.690429,
+            0.737638,
+            0.80255,
+            0.867462,
+            0.932374,
+            1.003187,
+            1.074,
+            1.144813,
+            1.215627,
+            1.28644,
+            1.357253
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 22,
+              "charged": 25,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.341785,
+            0.369605,
+            0.397425,
+            0.437167,
+            0.464987,
+            0.496781,
+            0.540498,
+            0.584215,
+            0.627931,
+            0.675622,
+            0.723313,
+            0.771004,
+            0.818696,
+            0.866387,
+            0.914077
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 44,
+              "charged": 45,
+              "skill": 29,
+              "burst": 29,
+              "dash": 29,
+              "jump": 29,
+              "swap": 29,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            29
+          ],
+          "extraMv": [
+            [
+              0.341785,
+              0.369605,
+              0.397425,
+              0.437167,
+              0.464987,
+              0.496781,
+              0.540498,
+              0.584215,
+              0.627931,
+              0.675622,
+              0.723313,
+              0.771004,
+              0.818696,
+              0.866387,
+              0.914077
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.667678,
+            0.722024,
+            0.77637,
+            0.854007,
+            0.908353,
+            0.970463,
+            1.055863,
+            1.141264,
+            1.226665,
+            1.319829,
+            1.412993,
+            1.506158,
+            1.599322,
+            1.692487,
+            1.785651
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 30,
+              "charged": 37,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.838509,
+            0.906759,
+            0.97501,
+            1.072511,
+            1.140762,
+            1.218762,
+            1.326014,
+            1.433265,
+            1.540516,
+            1.657517,
+            1.774518,
+            1.891519,
+            2.008521,
+            2.125522,
+            2.242523
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 67,
+              "charged": 90,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 90
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.55255,
+            0.597525,
+            0.6425,
+            0.70675,
+            0.751725,
+            0.803125,
+            0.8738,
+            0.944475,
+            1.01515,
+            1.09225,
+            1.16935,
+            1.24645,
+            1.32355,
+            1.40065,
+            1.47775
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 50,
+              "skill": 50,
+              "burst": 50,
+              "swap": 48,
+              "default": 64
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            27
+          ],
+          "extraMv": [
+            [
+              0.55255,
+              0.597525,
+              0.6425,
+              0.70675,
+              0.751725,
+              0.803125,
+              0.8738,
+              0.944475,
+              1.01515,
+              1.09225,
+              1.16935,
+              1.24645,
+              1.32355,
+              1.40065,
+              1.47775
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Rush Attack 1",
+          "mv": [
+            1.936,
+            2.0812,
+            2.2264,
+            2.42,
+            2.5652,
+            2.7104,
+            2.904,
+            3.0976,
+            3.2912,
+            3.4848,
+            3.6784,
+            3.872,
+            4.114,
+            4.356,
+            4.598
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Rush Attack 2",
+          "mv": [
+            1.5488,
+            1.66496,
+            1.78112,
+            1.936,
+            2.05216,
+            2.16832,
+            2.3232,
+            2.47808,
+            2.63296,
+            2.78784,
+            2.94272,
+            3.0976,
+            3.2912,
+            3.4848,
+            3.6784
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "1-Mirror Projection Attack 1",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "1-Mirror Projection Attack 2",
+          "mv": [
+            1.344,
+            1.4448,
+            1.5456,
+            1.68,
+            1.7808,
+            1.8816,
+            2.016,
+            2.1504,
+            2.2848,
+            2.4192,
+            2.5536,
+            2.688,
+            2.856,
+            3.024,
+            3.192
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Mirror Projection Attack 1",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Mirror Projection Attack 2",
+          "mv": [
+            1.344,
+            1.4448,
+            1.5456,
+            1.68,
+            1.7808,
+            1.8816,
+            2.016,
+            2.1504,
+            2.2848,
+            2.4192,
+            2.5536,
+            2.688,
+            2.856,
+            3.024,
+            3.192
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Mirror Projection Attack 1",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "3-Mirror Projection Attack 2",
+          "mv": [
+            1.344,
+            1.4448,
+            1.5456,
+            1.68,
+            1.7808,
+            1.8816,
+            2.016,
+            2.1504,
+            2.2848,
+            2.4192,
+            2.5536,
+            2.688,
+            2.856,
+            3.024,
+            3.192
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Single-Instance 1",
+          "mv": [
+            1.216,
+            1.3072,
+            1.3984,
+            1.52,
+            1.6112,
+            1.7024,
+            1.824,
+            1.9456,
+            2.0672,
+            2.1888,
+            2.3104,
+            2.432,
+            2.584,
+            2.736,
+            2.888
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 94,
+            "cancel": {
+              "normal": 88,
+              "skill": 89,
+              "dash": 89,
+              "swap": 87,
+              "default": 91
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Single-Instance 2",
+          "mv": [
+            0.9728,
+            1.04576,
+            1.11872,
+            1.216,
+            1.28896,
+            1.36192,
+            1.4592,
+            1.55648,
+            1.65376,
+            1.75104,
+            1.84832,
+            1.9456,
+            2.0672,
+            2.1888,
+            2.3104
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 97,
+            "cancel": {
+              "normal": 88,
+              "skill": 89,
+              "dash": 89,
+              "swap": 87,
+              "default": 91
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/alhaitham/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "alhaitham.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Four-Causal Correction: When Alhaitham's Charged or Plunging Attacks hit opponents, they will generate 1 Chisel-Light Mirror. This effect can be triggered once every 12s."
+    },
+    {
+      "id": "alhaitham.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Mysteries Laid Bare: Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and Particular Field: Fetters of Phenomena by 0.1%.\nThe DMG of both aforementioned abilities can be increased by a maximum of 100% this way."
+    },
+    {
+      "id": "alhaitham.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Law of Reductive Overdetermination: When Alhaitham crafts Weapon Ascension Materials, he has a 10% chance to receive double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Intuition: When a Projection Attack hits an opponent, Universality: An Elaboration on Form's CD is decreased by 1.2s. This effect can be triggered once every 1s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Debate: When Alhaitham generates a Chisel-Light Mirror, his Elemental Mastery will be increased by 50 for 8 seconds, max 4 stacks. Each stack's duration is counted independently. This effect can be triggered even when the maximum number of Chisel-Light Mirrors has been reached."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Negation: Increases the Level of Universality: An Elaboration on Form by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Elucidation: When Particular Field: Fetters of Phenomena is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around:\n·Each Mirror consumed will increase the Elemental Mastery of all other nearby party members by 30 for 15s.\n·Each Mirror generated will grant Alhaitham a 10% Dendro DMG Bonus for 15s.\n\nThe pre-existing duration of the aforementioned effects will be cleared if you use Particular Field: Fetters of Phenomena again while they are in effect."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Sagacity: Increases the Level of Particular Field: Fetters of Phenomena by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Structuration: Alhaitham gains the following effects:\n· 2 seconds after Particular Field: Fetters of Phenomena is unleashed, he will generate 3 Chisel-Light Mirrors regardless of the number of mirrors consumed.\n· If Alhaitham generates Chisel-Light Mirrors when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by 10% and 70% respectively for 6s. If this effect is triggered again during its initial duration, the duration remaining will be increased by 6s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

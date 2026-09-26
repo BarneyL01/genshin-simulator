@@ -1,0 +1,568 @@
+{
+  "id": "kachina",
+  "name": "Kachina",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/kachina",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/kachina-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "polearm",
+  "releaseVersion": "5.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11799.2822268,
+      "atk": 216.64513184,
+      "def": 792.4074905250001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.geo",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.493984,
+            0.534192,
+            0.5744,
+            0.63184,
+            0.672048,
+            0.718,
+            0.781184,
+            0.844368,
+            0.907552,
+            0.97648,
+            1.045408,
+            1.114336,
+            1.183264,
+            1.252192,
+            1.32112
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 11,
+              "charged": 17,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.27569,
+            0.29813,
+            0.32057,
+            0.352627,
+            0.375067,
+            0.400713,
+            0.435975,
+            0.471238,
+            0.506501,
+            0.544969,
+            0.583437,
+            0.621906,
+            0.660374,
+            0.698843,
+            0.737311
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 21,
+              "charged": 26,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            22
+          ],
+          "extraMv": [
+            [
+              0.306323,
+              0.331257,
+              0.35619,
+              0.391809,
+              0.416742,
+              0.445238,
+              0.484418,
+              0.523599,
+              0.56278,
+              0.605523,
+              0.648266,
+              0.691009,
+              0.733751,
+              0.776494,
+              0.819237
+            ]
+          ]
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.704271,
+            0.761596,
+            0.81892,
+            0.900812,
+            0.958136,
+            1.02365,
+            1.113731,
+            1.203812,
+            1.293894,
+            1.392164,
+            1.490434,
+            1.588705,
+            1.686975,
+            1.785246,
+            1.883516
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 31,
+              "charged": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.774361,
+            0.837391,
+            0.90042,
+            0.990462,
+            1.053491,
+            1.125525,
+            1.224571,
+            1.323617,
+            1.422664,
+            1.530714,
+            1.638764,
+            1.746815,
+            1.854865,
+            1.962916,
+            2.070966
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.1266,
+            1.2183,
+            1.31,
+            1.441,
+            1.5327,
+            1.6375,
+            1.7816,
+            1.9257,
+            2.0698,
+            2.227,
+            2.3842,
+            2.5414,
+            2.6986,
+            2.8558,
+            3.013
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 42,
+              "charged": 53,
+              "skill": 42,
+              "burst": 42,
+              "dash": 37,
+              "jump": 37,
+              "swap": 58,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Turbo Twirly Mounted",
+          "mv": [
+            0.8776,
+            0.94342,
+            1.00924,
+            1.097,
+            1.16282,
+            1.22864,
+            1.3164,
+            1.40416,
+            1.49192,
+            1.57968,
+            1.66744,
+            1.7552,
+            1.8649,
+            1.9746,
+            2.0843
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Turbo Twirly Independent",
+          "mv": [
+            0.6376,
+            0.68542,
+            0.73324,
+            0.797,
+            0.84482,
+            0.89264,
+            0.9564,
+            1.02016,
+            1.08392,
+            1.14768,
+            1.21144,
+            1.2752,
+            1.3549,
+            1.4346,
+            1.5143
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.805672,
+            4.1366,
+            4.4252,
+            4.81,
+            5.0986,
+            5.3872,
+            5.772,
+            6.1568,
+            6.5416,
+            6.9264,
+            7.3112,
+            7.696,
+            8.177,
+            8.658,
+            9.139
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 73,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kachina.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Mountain Echoes: After nearby party members trigger a Nightsoul Burst, Kachina's Geo DMG Bonus increases by 20% for 12s."
+    },
+    {
+      "id": "kachina.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "The Weight of Stone: Turbo Twirly's DMG is increased by 20% of Kachina's DEF."
+    },
+    {
+      "id": "kachina.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Heart of Unity: After her Nightsoul points are depleted, Kachina will switch to consuming Phlogiston to maintain her Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, she can use Nightsoul Transmission: Kachina. When the active character is currently sprinting, climbing, in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Kachina: Kachina will enter the Nightsoul's Blessing state and ride Turbo Twirly when taking the field while gaining 30 Nightsoul points. Nightsoul Tran"
+    },
+    {
+      "id": "kachina.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Boon of Crystal Flame: While in an area with Phlogiston Mechanics within Natlan, 20 Stamina will be restored when interacting with some harvestable items. Additionally, the location of nearby resources unique to Natlan will appear on your mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Shards Are Gems Too: When Kachina mounts or dismounts Turbo Twirly, she will absorb nearby Elemental Shards created by Crystallize.\nAdditionally, when a party member picks up such a Shard, or triggers Lunar-Crystallize reactions, 3 Energy will be restored to Kachina. Energy can be restored this way once every 5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Never Leave Home Without... Turbo Twirly: When Kachina uses \"Time to Get Serious!\", she will regain 20 Nightsoul points. If there is no Turbo Twirly belonging to her on the field, she will enter Nightsoul's Blessing and summon one."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Improved Stabilizer: Increases the Level of Go, Go Turbo Twirly! by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "More Foes, More Caution: When there are 1/2/3/4 (or more) opponents within the Turbo Drill Field created by \"Time to Get Serious!\", the active character within the field gains 8%/12%/16%/20% increased DEF."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "All I've Collected Till Now: Increases the Level of Time to Get Serious! by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "This Time, I've Gotta Win: When your active character's Shield is replaced or destroyed for any reason, Kachina will deal 200% of her DEF as AoE Geo DMG. This effect can be triggered once every 5s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

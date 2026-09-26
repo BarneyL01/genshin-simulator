@@ -1,0 +1,651 @@
+{
+  "id": "lan-yan",
+  "name": "Lan Yan",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/lan-yan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/lan-yan-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "5.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9243.67751666,
+      "atk": 250.62869056,
+      "def": 580.14329625
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.4144,
+            0.44548,
+            0.47656,
+            0.518,
+            0.54908,
+            0.58016,
+            0.6216,
+            0.66304,
+            0.70448,
+            0.74592,
+            0.78736,
+            0.8288,
+            0.8806,
+            0.9324,
+            0.9842
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 20,
+              "charged": 21,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.20412,
+            0.219429,
+            0.234738,
+            0.25515,
+            0.270459,
+            0.285768,
+            0.30618,
+            0.326592,
+            0.347004,
+            0.367416,
+            0.387828,
+            0.40824,
+            0.433755,
+            0.45927,
+            0.484785
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 46,
+              "charged": 30,
+              "skill": 37,
+              "burst": 37,
+              "dash": 37,
+              "jump": 37,
+              "swap": 37,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            37
+          ],
+          "extraMv": [
+            [
+              0.24948,
+              0.268191,
+              0.286902,
+              0.31185,
+              0.330561,
+              0.349272,
+              0.37422,
+              0.399168,
+              0.424116,
+              0.449064,
+              0.474012,
+              0.49896,
+              0.530145,
+              0.56133,
+              0.592515
+            ]
+          ]
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.2692,
+            0.28939,
+            0.30958,
+            0.3365,
+            0.35669,
+            0.37688,
+            0.4038,
+            0.43072,
+            0.45764,
+            0.48456,
+            0.51148,
+            0.5384,
+            0.57205,
+            0.6057,
+            0.63935
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 53,
+              "charged": 37,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            21
+          ],
+          "extraMv": [
+            [
+              0.2692,
+              0.28939,
+              0.30958,
+              0.3365,
+              0.35669,
+              0.37688,
+              0.4038,
+              0.43072,
+              0.45764,
+              0.48456,
+              0.51148,
+              0.5384,
+              0.57205,
+              0.6057,
+              0.63935
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.6456,
+            0.69402,
+            0.74244,
+            0.807,
+            0.85542,
+            0.90384,
+            0.9684,
+            1.03296,
+            1.09752,
+            1.16208,
+            1.22664,
+            1.2912,
+            1.3719,
+            1.4526,
+            1.5333
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 63,
+              "charged": 50,
+              "skill": 40,
+              "burst": 40,
+              "dash": 40,
+              "jump": 40,
+              "swap": 40,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.3784,
+            0.40678,
+            0.43516,
+            0.473,
+            0.50138,
+            0.52976,
+            0.5676,
+            0.60544,
+            0.64328,
+            0.68112,
+            0.71896,
+            0.7568,
+            0.8041,
+            0.8514,
+            0.8987
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 42,
+            "cancel": {
+              "normal": 41,
+              "skill": 44,
+              "burst": 44,
+              "dash": 59,
+              "swap": 45,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            49,
+            56
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Feathermoon Ring",
+          "mv": [
+            0.96256,
+            1.034752,
+            1.106944,
+            1.2032,
+            1.275392,
+            1.347584,
+            1.44384,
+            1.540096,
+            1.636352,
+            1.732608,
+            1.828864,
+            1.92512,
+            2.04544,
+            2.16576,
+            2.28608
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            2.41064,
+            2.591438,
+            2.772236,
+            3.0133,
+            3.194098,
+            3.374896,
+            3.61596,
+            3.857024,
+            4.098088,
+            4.339152,
+            4.580216,
+            4.82128,
+            5.12261,
+            5.42394,
+            5.72527
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 75,
+              "skill": 75,
+              "dash": 72,
+              "swap": 75,
+              "default": 100
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            2.41064,
+            2.591438,
+            2.772236,
+            3.0133,
+            3.194098,
+            3.374896,
+            3.61596,
+            3.857024,
+            4.098088,
+            4.339152,
+            4.580216,
+            4.82128,
+            5.12261,
+            5.42394,
+            5.72527
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 75,
+              "skill": 75,
+              "dash": 72,
+              "swap": 75,
+              "default": 100
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Skill 3",
+          "mv": [
+            2.41064,
+            2.591438,
+            2.772236,
+            3.0133,
+            3.194098,
+            3.374896,
+            3.61596,
+            3.857024,
+            4.098088,
+            4.339152,
+            4.580216,
+            4.82128,
+            5.12261,
+            5.42394,
+            5.72527
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 75,
+              "skill": 75,
+              "dash": 72,
+              "swap": 75,
+              "default": 100
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/lanyan/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "lan-yan.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Four Sealing Divination Charms: When the dash from the Elemental Skill Swallow-Wisp Pinion Dance hits a target, if it interacts with Hydro/Pyro/Cryo/Electro, the Swallow-Wisp Shield will undergo Elemental Absorption, with the converted shield absorbing DMG from the corresponding element with 250% efficiency.\nAdditionally, if this use of Swallow-Wisp Pinion Dance causes the Swallow-Wisp Shield to undergo Elemental Absorption, the Feathermoon Rings that Lan Yan throws at her foes additionally deal Elemental DMG equal to 50% of the original in the corresponding Elemental Type. This DMG is conside"
+    },
+    {
+      "id": "lan-yan.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Skyfeather Evil-Subduing Charm: The Elemental Skill Swallow-Wisp Pinion Dance and the Elemental Burst Lustrous Moonrise deal increased DMG equal to 309% and 774% of Lan Yan's Elemental Mastery respectively."
+    },
+    {
+      "id": "lan-yan.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Thought and Intent, Like Silken Scent: When Lan Yan is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.\nCheck the \"Other\" sub-category of the \"Living Beings / Wildlife\" section in the Archive for creatures this skill works on."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"As One Might Stride Betwixt the Clouds\": After triggering the Elemental Absorption from the Ascension Talent \"Four Sealing Divination Charms,\" this instance of Lan Yan's Elemental Skill Swallow-Wisp Pinion Dance will produce another Feathermoon Ring when they are thrown at opponents.\nYou must first unlock the Ascension Talent \"Four Sealing Divination Charms.\""
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"Dance Vestments Billow Like Rainbow Jade\": While the Swallow-Wisp Shield is active, when your active party member's Normal Attacks deal DMG, 40% of the Shield's DMG absorption will be restored, up to its original maximum absorption. This effect can occur once every 2s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"On White Wings Pierce Through Cloud and Fog\": Increases the Level of Swallow-Wisp Pinion Dance by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"With Drakefalcon's Blood-Pearls Adorned\": After Lan Yan uses her Elemental Burst Lustrous Moonrise, the Elemental Mastery of all nearby party members increases by 60 for 12s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"Having Met You, My Heart is Gladdened\": Increases the Level of Lustrous Moonrise by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"Let Us Away on Sylphic Wing, the Silvered Ornaments to Ring\": Swallow-Wisp Pinion Dance gains 1 additional charge."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

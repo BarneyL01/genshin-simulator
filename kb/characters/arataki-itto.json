@@ -1,0 +1,433 @@
+{
+  "id": "arataki-itto",
+  "name": "Arataki Itto",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/itto",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/arataki-itto",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/itto-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 5/5. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill hitmark, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "geo",
+  "weaponType": "claymore",
+  "releaseVersion": "2.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12858.206654000001,
+      "atk": 227.21946100000002,
+      "def": 959.15585376
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.792318,
+            0.856809,
+            0.9213,
+            1.01343,
+            1.077921,
+            1.151625,
+            1.252968,
+            1.354311,
+            1.455654,
+            1.56621,
+            1.692889,
+            1.841863,
+            1.990837,
+            2.139811,
+            2.302329
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "charged": 48,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.76368,
+            0.82584,
+            0.888,
+            0.9768,
+            1.03896,
+            1.11,
+            1.20768,
+            1.30536,
+            1.40304,
+            1.5096,
+            1.6317,
+            1.77529,
+            1.918879,
+            2.062469,
+            2.219112
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 43,
+              "charged": 75,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.916416,
+            0.991008,
+            1.0656,
+            1.17216,
+            1.246752,
+            1.332,
+            1.449216,
+            1.566432,
+            1.683648,
+            1.81152,
+            1.95804,
+            2.130348,
+            2.302655,
+            2.474963,
+            2.662934
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 62,
+              "charged": 93,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.172249,
+            1.267664,
+            1.36308,
+            1.499388,
+            1.594804,
+            1.70385,
+            1.853789,
+            2.003728,
+            2.153666,
+            2.317236,
+            2.504659,
+            2.72507,
+            2.94548,
+            3.16589,
+            3.406337
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 62,
+              "charged": 93,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.072,
+            3.3024,
+            3.5328,
+            3.84,
+            4.0704,
+            4.3008,
+            4.608,
+            4.9152,
+            5.2224,
+            5.5296,
+            5.8368,
+            6.144,
+            6.528,
+            6.912,
+            7.296
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "charged": 28,
+              "skill": 28,
+              "dash": 28,
+              "jump": 28,
+              "swap": 41,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/itto/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "dash": 84,
+          "jump": 85,
+          "swap": 90,
+          "default": 91
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/itto/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "arataki-itto.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Arataki Ichiban: When Arataki Itto uses consecutive Arataki Kesagiri, he obtains the following effects:\n· Each slash increases the ATK SPD of the next slash by 10%. Max ATK SPD increase is 30%.\n· Increases his resistance to interruption.\n\nThese effects will be cleared once he stops performing consecutive slashes."
+    },
+    {
+      "id": "arataki-itto.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Bloodline of the Crimson Oni: Arataki Kesagiri DMG is increased by 35% of Arataki Itto's DEF."
+    },
+    {
+      "id": "arataki-itto.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Woodchuck Chucked: When a party member uses attacks to obtain wood from a tree, they have a 25% chance to get an additional log of wood."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Stay a While and Listen Up: After using Royal Descent: Behold, Itto the Evil!, Arataki Itto gains 2 stacks of Superlative Superstrength. After 1s, Itto will gain 1 stack of Superlative Superstrength every 0.5s for 1.5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Gather 'Round, It's a Brawl!: After using Royal Descent: Behold, Itto the Evil!, each party member whose Element is Geo will decrease that skill's CD by 1.5s and restore 6 Energy to Arataki Itto.\nCD can be decreased by up to 4.5s in this manner. Max 18 Energy can be restored in this manner."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Horns Lowered, Coming Through: Increases the Level of Masatsu Zetsugi: Akaushi Burst! by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Jailhouse Bread and Butter: When the Raging Oni King state caused by Royal Descent: Behold, Itto the Evil! ends, all nearby party members gain 20% DEF and 20% ATK for 10s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "10 Years of Hanamizaka Fame: Increases the Level of Royal Descent: Behold, Itto the Evil! by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Arataki Itto, Present!: Arataki Itto's Charged Attacks deal +70% CRIT DMG. Additionally, when he uses Arataki Kesagiri, he has a 50% chance to not consume stacks of Superlative Superstrength."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "def%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

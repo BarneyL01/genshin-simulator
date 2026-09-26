@@ -1,0 +1,701 @@
+{
+  "id": "arlecchino",
+  "name": "Arlecchino",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/arlecchino",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/arlecchino-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "polearm",
+  "releaseVersion": "4.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13103.1246236,
+      "atk": 342.0250874,
+      "def": 764.7115981500001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.475004,
+            0.513667,
+            0.55233,
+            0.607563,
+            0.646226,
+            0.690412,
+            0.751169,
+            0.811925,
+            0.872681,
+            0.938961,
+            1.005241,
+            1.07152,
+            1.1378,
+            1.204079,
+            1.270359
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 11,
+              "charged": 17,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.521057,
+            0.563468,
+            0.60588,
+            0.666468,
+            0.70888,
+            0.75735,
+            0.823997,
+            0.890644,
+            0.95729,
+            1.029996,
+            1.102702,
+            1.175407,
+            1.248113,
+            1.320818,
+            1.393524
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 21,
+              "charged": 26,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.653858,
+            0.707079,
+            0.7603,
+            0.83633,
+            0.889551,
+            0.950375,
+            1.034008,
+            1.117641,
+            1.201274,
+            1.29251,
+            1.383746,
+            1.474982,
+            1.566218,
+            1.657454,
+            1.74869
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 31,
+              "charged": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.371451,
+            0.401686,
+            0.43192,
+            0.475112,
+            0.505346,
+            0.5399,
+            0.587411,
+            0.634922,
+            0.682434,
+            0.734264,
+            0.786094,
+            0.837925,
+            0.889755,
+            0.941586,
+            0.993416
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            35
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.699816,
+            0.756778,
+            0.81374,
+            0.895114,
+            0.952076,
+            1.017175,
+            1.106686,
+            1.196198,
+            1.285709,
+            1.383358,
+            1.481007,
+            1.578656,
+            1.676304,
+            1.773953,
+            1.871602
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 30,
+              "charged": 33,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N6",
+          "mv": [
+            0.853782,
+            0.923276,
+            0.99277,
+            1.092047,
+            1.161541,
+            1.240962,
+            1.350167,
+            1.459372,
+            1.568577,
+            1.687709,
+            1.806841,
+            1.925974,
+            2.045106,
+            2.164239,
+            2.283371
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 58,
+              "charged": 55,
+              "skill": 44,
+              "burst": 44,
+              "dash": 44,
+              "jump": 44,
+              "swap": 44,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.90816,
+            0.98208,
+            1.056,
+            1.1616,
+            1.23552,
+            1.32,
+            1.43616,
+            1.55232,
+            1.66848,
+            1.7952,
+            1.92192,
+            2.04864,
+            2.17536,
+            2.30208,
+            2.4288
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 42,
+              "charged": 53,
+              "skill": 42,
+              "burst": 42,
+              "dash": 37,
+              "jump": 37,
+              "swap": 58,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Spike",
+          "mv": [
+            0.1484,
+            0.15953,
+            0.17066,
+            0.1855,
+            0.19663,
+            0.20776,
+            0.2226,
+            0.23744,
+            0.25228,
+            0.26712,
+            0.28196,
+            0.2968,
+            0.31535,
+            0.3339,
+            0.35245
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 39,
+            "cancel": {
+              "normal": 70,
+              "charged": 65,
+              "burst": 70,
+              "dash": 72,
+              "jump": 73,
+              "swap": 60,
+              "default": 77
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Cleave",
+          "mv": [
+            1.3356,
+            1.43577,
+            1.53594,
+            1.6695,
+            1.76967,
+            1.86984,
+            2.0034,
+            2.13696,
+            2.27052,
+            2.40408,
+            2.53764,
+            2.6712,
+            2.83815,
+            3.0051,
+            3.17205
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 42,
+            "cancel": {
+              "normal": 70,
+              "charged": 65,
+              "burst": 70,
+              "dash": 72,
+              "jump": 73,
+              "swap": 60,
+              "default": 77
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Blood-Debt Directive",
+          "mv": [
+            0.318,
+            0.34185,
+            0.3657,
+            0.3975,
+            0.42135,
+            0.4452,
+            0.477,
+            0.5088,
+            0.5406,
+            0.5724,
+            0.6042,
+            0.636,
+            0.67575,
+            0.7155,
+            0.75525
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 45,
+            "cancel": {
+              "normal": 70,
+              "charged": 65,
+              "burst": 70,
+              "dash": 72,
+              "jump": 73,
+              "swap": 60,
+              "default": 77
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1800,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.704,
+            3.9818,
+            4.2596,
+            4.63,
+            4.9078,
+            5.1856,
+            5.556,
+            5.9264,
+            6.2968,
+            6.6672,
+            7.0376,
+            7.408,
+            7.871,
+            8.334,
+            8.797
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 110,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "arlecchino.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Agony Alone May Be Repaid: Blood-Debt Directives have the following characteristics:\n·Arlecchino will be granted a Bond of Life worth 130% of her Max HP when an opponent to which she herself applied a Directive is defeated.\n·5s after a Directive is applied, it will be upgraded to a Blood-Debt Due. When absorbed, it will instead grant Arlecchino a Bond of Life worth 130%.\nA Bond of Life created in the aforementioned ways cannot exceed the original limit on the value of Bonds of Life obtained through All Is Ash."
+    },
+    {
+      "id": "arlecchino.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Strength Alone Can Defend: Arlecchino gains 1% All Elemental and Physical RES for every 100 ATK she has in excess of 1,000. The maximum RES increase she can gain this way for each is 20%."
+    },
+    {
+      "id": "arlecchino.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "The Balemoon Alone May Know: While in combat, Arlecchino gains a 40% Pyro DMG Bonus and can only be healed through Balemoon Rising."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"All Reprisals and Arrears, Mine to Bear...\": Masque of the Red Death is further enhanced, the value of the increase is 100%. Additionally, Arlecchino's interruption resistance is increased when she performs Normal or Charged Attacks while affected by the Masque of the Red Death."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"All Rewards and Retribution, Mine to Bestow...\": Blood-Debt Directives are now already Blood-Debt Due when first applied.\nWhen Arlecchino absorbs such a Due, she unleashes Balemoon Bloodfire in front of her, dealing 900% of her ATK as AoE Pyro DMG and increasing her All Elemental RES and Physical RES by 20% for 15s. This effect can trigger once every 10s.\nYou must first unlock the Ascension Talent \"Agony Alone May Be Repaid.\""
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"You Shall Become a New Member of Our Family...\": Increases the Level of Normal Attack: Invitation to a Beheading by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"You Shall Love and Protect Each Other Henceforth...\": When Arlecchino successfully absorbs a Blood-Debt Directive, Balemoon Rising's CD will decrease by 2s and 15 Elemental Energy will be restored to her. This effect can occur once every 10s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"For Alone, We Are as Good as Dead...\": Increases the Level of Balemoon Rising by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"From This Day On, We Shall Delight in New Life Together.\": The DMG of Balemoon Rising is increased by Arlecchino's ATK multiplied by 700% of Arlecchino's current Bond of Life percentage.\nFor 20s after Arlecchino uses All Is Ash, both her Normal Attacks and Elemental Burst gain 10% increased CRIT Rate and 70% increased CRIT DMG. This effect can be triggered up to once every 15s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 6,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,575 @@
+{
+  "id": "ineffa",
+  "name": "Ineffa",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/ineffa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "polearm",
+  "releaseVersion": "5.8",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12613.288084400001,
+      "atk": 330.06616240000005,
+      "def": 827.7330564900001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.348352,
+            0.376706,
+            0.40506,
+            0.445566,
+            0.47392,
+            0.506325,
+            0.550882,
+            0.595438,
+            0.639995,
+            0.688602,
+            0.737209,
+            0.785816,
+            0.834424,
+            0.883031,
+            0.931638
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 12,
+              "charged": 27,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.342211,
+            0.370066,
+            0.39792,
+            0.437712,
+            0.465566,
+            0.4974,
+            0.541171,
+            0.584942,
+            0.628714,
+            0.676464,
+            0.724214,
+            0.771965,
+            0.819715,
+            0.867466,
+            0.915216
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 19,
+              "charged": 39,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.227556,
+            0.246078,
+            0.2646,
+            0.29106,
+            0.309582,
+            0.33075,
+            0.359856,
+            0.388962,
+            0.418068,
+            0.44982,
+            0.481572,
+            0.513324,
+            0.545076,
+            0.576828,
+            0.60858
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 33,
+              "charged": 39,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            21
+          ],
+          "extraMv": [
+            [
+              0.227556,
+              0.246078,
+              0.2646,
+              0.29106,
+              0.309582,
+              0.33075,
+              0.359856,
+              0.388962,
+              0.418068,
+              0.44982,
+              0.481572,
+              0.513324,
+              0.545076,
+              0.576828,
+              0.60858
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.560677,
+            0.606314,
+            0.65195,
+            0.717145,
+            0.762782,
+            0.814938,
+            0.886652,
+            0.958367,
+            1.030081,
+            1.108315,
+            1.186549,
+            1.264783,
+            1.343017,
+            1.421251,
+            1.499485
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 52,
+              "charged": 55,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.94944,
+            1.02672,
+            1.104,
+            1.2144,
+            1.29168,
+            1.38,
+            1.50144,
+            1.62288,
+            1.74432,
+            1.8768,
+            2.00928,
+            2.14176,
+            2.27424,
+            2.40672,
+            2.5392
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 45,
+              "skill": 45,
+              "burst": 45,
+              "dash": 23,
+              "jump": 23,
+              "swap": 43,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.864,
+            0.9288,
+            0.9936,
+            1.08,
+            1.1448,
+            1.2096,
+            1.296,
+            1.3824,
+            1.4688,
+            1.5552,
+            1.6416,
+            1.728,
+            1.836,
+            1.944,
+            2.052
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "swap": 31,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Birgitta Discharge",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "swap": 31,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            6.768,
+            7.2756,
+            7.7832,
+            8.46,
+            8.9676,
+            9.4752,
+            10.152,
+            10.8288,
+            11.5056,
+            12.1824,
+            12.8592,
+            13.536,
+            14.382,
+            15.228,
+            16.074
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 65,
+            "cancel": {
+              "normal": 127,
+              "skill": 127,
+              "dash": 105,
+              "jump": 106,
+              "swap": 126,
+              "default": 130
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ineffa/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "ineffa.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Overclocking Circuit: If there are thunderclouds created by Lunar-Charged reactions nearby when **Birgitta** unleashes Discharge attacks, she will initiate an additional attack, dealing AoE Electro DMG equal to 65% of Ineffa's ATK. This DMG is considered Lunar-Charged DMG."
+    },
+    {
+      "id": "ineffa.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Panoramic Permutation Protocol: When using the Elemental Burst **Supreme Instruction: Cyclonic Exterminator**, all your party members will gain the Parameter Permutation effect: Increases Ineffa and your own active party member's Elemental Mastery by 6% of Ineffa's ATK for 20s."
+    },
+    {
+      "id": "ineffa.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Assemblage Hub: When a party member triggers an Electro-Charged reaction, it will be converted into the Lunar-Charged reaction, with every 100 ATK that Ineffa has increasing Lunar-Charged's Base DMG by 0.7%, up to a maximum of 14%.\n\nAdditionally, when Ineffa is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "ineffa.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Flavor Synthesis Unit: When Ineffa uses food, there is a 30% chance of gaining a seasoning ingredient.\n\nAdditionally, in Nod-Krai, it seems you'll be able to change Birgitta's appearance through certain means..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Rectifying Processor: When Ineffa activates her Optical Flow Shield Barrier, all nearby party members will gain the Carrier Flow Composite effect for 20s: Increases Lunar-Charged DMG by 2.5% for every 100 ATK that Ineffa has, up to a maximum of 50%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Support Cleaning Module: After the Elemental Burst **Supreme Instruction: Cyclonic Exterminator** hits opponents, it will inflict the Punishment Edict status on one of those hit opponents: After a brief delay, or when this opponent is defeated, nearby opponents will take AoE Electro DMG equal to 300% of Ineffa's ATK. This DMG is considered Lunar-Charged DMG.\nAdditionally, when the Elemental Burst Supreme Instruction: Cyclonic Exterminator is unleashed, nearby party members will gain Optical Flow Shield Barriers."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Enhanced Emotion Emulator: Increases the Level of **Cleaning Mode: Carrier Frequency** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Edictless Path: When your own party members trigger Lunar-Charged reactions, recover 5 Elemental Energy. This effect can occur once every 4s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Mirror's Dream Transcension: Increases the Level of **Supreme Instruction: Cyclonic Exterminator** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "A Dawning Morn for You: When Ineffa is affected by the Carrier Flow Composite effect, she will deal AoE Electro DMG equal to 135% of her ATK to opponents in the current active character's vicinity after nearby thunderclouds release bursts of lightning at opponents. This DMG is considered Lunar-Charged DMG. The aforementioned effect can trigger once every 3.5s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

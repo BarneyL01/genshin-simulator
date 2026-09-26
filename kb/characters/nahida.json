@@ -1,0 +1,576 @@
+{
+  "id": "nahida",
+  "name": "Nahida",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/nahida",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/nahida-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "catalyst",
+  "releaseVersion": "3.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10360.0405293,
+      "atk": 298.972975,
+      "def": 630.2145834
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 115.2
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.403048,
+            0.433277,
+            0.463505,
+            0.50381,
+            0.534039,
+            0.564267,
+            0.604572,
+            0.644877,
+            0.685182,
+            0.725486,
+            0.765791,
+            0.806096,
+            0.856477,
+            0.906858,
+            0.957239
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 30,
+              "charged": 26,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 23,
+              "swap": 21,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.369744,
+            0.397475,
+            0.425206,
+            0.46218,
+            0.489911,
+            0.517642,
+            0.554616,
+            0.59159,
+            0.628565,
+            0.665539,
+            0.702514,
+            0.739488,
+            0.785706,
+            0.831924,
+            0.878142
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 22,
+              "charged": 23,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.458744,
+            0.49315,
+            0.527556,
+            0.57343,
+            0.607836,
+            0.642242,
+            0.688116,
+            0.73399,
+            0.779865,
+            0.825739,
+            0.871614,
+            0.917488,
+            0.974831,
+            1.032174,
+            1.089517
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 38,
+              "charged": 37,
+              "skill": 24,
+              "burst": 24,
+              "dash": 26,
+              "jump": 25,
+              "swap": 24,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.584064,
+            0.627869,
+            0.671674,
+            0.73008,
+            0.773885,
+            0.81769,
+            0.876096,
+            0.934502,
+            0.992909,
+            1.051315,
+            1.109722,
+            1.168128,
+            1.241136,
+            1.314144,
+            1.387152
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 71,
+              "charged": 69,
+              "skill": 40,
+              "burst": 40,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.32,
+            1.419,
+            1.518,
+            1.65,
+            1.749,
+            1.848,
+            1.98,
+            2.112,
+            2.244,
+            2.376,
+            2.508,
+            2.64,
+            2.805,
+            2.97,
+            3.135
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 65,
+            "cancel": {
+              "normal": 65,
+              "charged": 65,
+              "skill": 65,
+              "burst": 64,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 69
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press",
+          "mv": [
+            0.984,
+            1.0578,
+            1.1316,
+            1.23,
+            1.3038,
+            1.3776,
+            1.476,
+            1.5744,
+            1.6728,
+            1.7712,
+            1.8696,
+            1.968,
+            2.091,
+            2.214,
+            2.337
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tri-Karma Purification 1",
+          "mv": [
+            1.032,
+            1.1094,
+            1.1868,
+            1.29,
+            1.3674,
+            1.4448,
+            1.548,
+            1.6512,
+            1.7544,
+            1.8576,
+            1.9608,
+            2.064,
+            2.193,
+            2.322,
+            2.451
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tri-Karma Purification 2",
+          "mv": [
+            2.064,
+            2.2188,
+            2.3736,
+            2.58,
+            2.7348,
+            2.8896,
+            3.096,
+            3.3024,
+            3.5088,
+            3.7152,
+            3.9216,
+            4.128,
+            4.386,
+            4.644,
+            4.902
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 300,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "swap": 111,
+          "default": 112
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/nahida/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 810,
+      "energyCost": 50,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "nahida.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Compassion Illuminated: When unleashing Illusory Heart, the Shrine of Maya will gain the following effects:\nThe Elemental Mastery of the active character within the field will be increased by 25% of the Elemental Mastery of the party member with the highest Elemental Mastery.\nYou can gain a maximum of 250 Elemental Mastery in this manner."
+    },
+    {
+      "id": "nahida.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Awakening Elucidated: Each point of Nahida's Elemental Mastery beyond 200 will grant 0.1% Bonus DMG and 0.03% CRIT Rate to Tri-Karma Purification from All Schemes to Know.\nA maximum of 80% Bonus DMG and 24% CRIT Rate can be granted to Tri-Karma Purification in this manner."
+    },
+    {
+      "id": "nahida.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "On All Things Meditated: Nahida can use All Schemes to Know to interact with some harvestable items within a fixed AoE.\nThis skill may even have some other effects..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "The Seed of Stored Knowledge: When the Shrine of Maya is unleashed and the Elemental Types of the party members are being tabulated, the count will add 1 to the number of Pyro, Electro, and Hydro characters respectively."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The Root of All Fullness: Opponents that are marked by Seeds of Skandha applied by Nahida herself will be affected by the following effects:\n· Burning, Bloom, Hyperbloom, and Burgeon Reaction DMG they receive can score CRIT Hits. CRIT Rate and CRIT DMG are fixed at 20% and 100% respectively. CRIT Rate from this effect stacks with CRIT Rate from similar effects that allow these Elemental Reactions to CRIT.\n· Within 8s of being affected by Quicken, Aggravate, or Spread, DEF is decreased by 30%.\n· The CRIT Rate and CRIT DMG of Lunar-Bloom DMG received are increased by 10% and 20% respectively."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Shoot of Conscious Attainment: Increases the Level of All Schemes to Know by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Stem of Manifest Inference: When 1/2/3/4 (or more) nearby opponents are affected by All Schemes to Know's Seeds of Skandha, Nahida's Elemental Mastery will be increased by 100/120/140/160."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "The Leaves of Enlightening Speech: Increases the Level of Illusory Heart by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "The Fruit of Reason's Culmination: When Nahida hits an opponent affected by All Schemes to Know's Seeds of Skandha with Normal or Charged Attacks after unleashing Illusory Heart, she will use Tri-Karma Purification: Karmic Oblivion on this opponent and all connected opponents, dealing Dendro DMG based on 200% of Nahida's ATK and 400% of her Elemental Mastery.\nDMG dealt by Tri-Karma Purification: Karmic Oblivion is considered Elemental Skill DMG and can be triggered once every 0.2s.\nThis effect can last up to 10s and will be removed after Nahida has unleashed 6 instances of Tri-Karma Purificati"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "em",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

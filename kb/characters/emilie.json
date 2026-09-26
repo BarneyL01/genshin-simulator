@@ -1,0 +1,600 @@
+{
+  "id": "emilie",
+  "name": "Emilie",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/emilie",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/emilie-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "polearm",
+  "releaseVersion": "4.8",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13568.469685400001,
+      "atk": 334.849732,
+      "def": 730.1266515000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.485608,
+            0.525134,
+            0.56466,
+            0.621126,
+            0.660652,
+            0.705825,
+            0.767938,
+            0.83005,
+            0.892163,
+            0.959922,
+            1.027681,
+            1.09544,
+            1.1632,
+            1.230959,
+            1.298718
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 20,
+              "charged": 20,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.448954,
+            0.485497,
+            0.52204,
+            0.574244,
+            0.610787,
+            0.65255,
+            0.709974,
+            0.767399,
+            0.824823,
+            0.887468,
+            0.950113,
+            1.012758,
+            1.075402,
+            1.138047,
+            1.200692
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 19,
+              "charged": 22,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.593004,
+            0.641272,
+            0.68954,
+            0.758494,
+            0.806762,
+            0.861925,
+            0.937774,
+            1.013624,
+            1.089473,
+            1.172218,
+            1.254963,
+            1.337708,
+            1.420452,
+            1.503197,
+            1.585942
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 40,
+              "charged": 46,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.751029,
+            0.81216,
+            0.87329,
+            0.960619,
+            1.021749,
+            1.091613,
+            1.187674,
+            1.283736,
+            1.379798,
+            1.484593,
+            1.589388,
+            1.694183,
+            1.798977,
+            1.903772,
+            2.008567
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 70,
+              "charged": 71,
+              "skill": 34,
+              "burst": 34,
+              "dash": 34,
+              "jump": 34,
+              "swap": 34,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.91332,
+            0.98766,
+            1.062,
+            1.1682,
+            1.24254,
+            1.3275,
+            1.44432,
+            1.56114,
+            1.67796,
+            1.8054,
+            1.93284,
+            2.06028,
+            2.18772,
+            2.31516,
+            2.4426
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 39,
+              "skill": 42,
+              "burst": 39,
+              "swap": 47,
+              "default": 50
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.4708,
+            0.50611,
+            0.54142,
+            0.5885,
+            0.62381,
+            0.65912,
+            0.7062,
+            0.75328,
+            0.80036,
+            0.84744,
+            0.89452,
+            0.9416,
+            1.00045,
+            1.0593,
+            1.11815
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 28,
+              "burst": 24,
+              "dash": 23,
+              "jump": 24,
+              "swap": 34,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Level 1 Lumidouce Case Attack",
+          "mv": [
+            0.396,
+            0.4257,
+            0.4554,
+            0.495,
+            0.5247,
+            0.5544,
+            0.594,
+            0.6336,
+            0.6732,
+            0.7128,
+            0.7524,
+            0.792,
+            0.8415,
+            0.891,
+            0.9405
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 28,
+              "burst": 24,
+              "dash": 23,
+              "jump": 24,
+              "swap": 34,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Spiritbreath Thorn",
+          "mv": [
+            0.3852,
+            0.41409,
+            0.44298,
+            0.4815,
+            0.51039,
+            0.53928,
+            0.5778,
+            0.61632,
+            0.65484,
+            0.69336,
+            0.73188,
+            0.7704,
+            0.81855,
+            0.8667,
+            0.91485
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 28,
+              "burst": 24,
+              "dash": 23,
+              "jump": 24,
+              "swap": 34,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 840,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "dendro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Level 3 Lumidouce Case Attack",
+          "mv": [
+            2.172,
+            2.3349,
+            2.4978,
+            2.715,
+            2.8779,
+            3.0408,
+            3.258,
+            3.4752,
+            3.6924,
+            3.9096,
+            4.1268,
+            4.344,
+            4.6155,
+            4.887,
+            5.1585
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 108,
+              "dash": 97,
+              "jump": 98,
+              "swap": 105,
+              "default": 111
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/emilie/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 810,
+      "energyCost": 50,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "emilie.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Lingering Fragrance: Each time it collects 2 Scents, the Level 2 Lumidouce Case will consume Scents and release Cleardew Cologne that deals AoE Dendro DMG equal to 600% of Emilie's ATK to opponents. This DMG is not considered Elemental Skill DMG."
+    },
+    {
+      "id": "emilie.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Rectification: Emilie deals increased DMG to Burning opponents based on her ATK, with every 1,000 ATK increasing DMG dealt by 15%. The maximum DMG bonus that can be gained this way is 36%."
+    },
+    {
+      "id": "emilie.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Headspace Capture: When the Lumidouce Case created by Emilie is on the field, all party members gain 85% Pyro RES against Burning DMG."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Light Fragrance Leaching: Increases the DMG dealt by Fragrance Extraction and her Ascension Talent's Cleardew Cologne \"Lingering Fragrance\" by 20%. The latter requires unlocking said Ascension Talent first.\nAdditionally, when nearby party members trigger the Burning reaction on opponents or deal Dendro DMG to Burning opponents, they will generate an additional Scent. This effect can be triggered once every 2.9s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Lakelight Top Note: When Fragrance Extraction, Aromatic Explication, or Cleardew Cologne produced by the Ascension Talent \"Lingering Fragrance\" (the last of which requires Ascension Talent activation) hits opponents, those opponents' Dendro RES is decreased by 30% for 10s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Exquisite Essence: Increases the Level of Fragrance Extraction by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Lumidouce Heart Note: Aromatic Explication's duration is increased by 2s. The interval between opponents being selected as the target for Scented Dew is decreased by 0.3s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Puredew Aroma: Increases the Level of Aromatic Explication by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Marcotte Sillage: When using Fragrance Extraction or Aromatic Explication, Emilie will gain Abiding Fragrance for 5s.\nWhile this is active, after Emilie uses Normal or Charged Attacks, she will generate 1 Scent, and her Normal and Charged Attack DMG will be converted into Dendro DMG that cannot be overridden, and the DMG dealt will be increased by 300% of Emilie's ATK.\n\nThe Abiding Fragrance effect will be removed after 4 Scents are created this way or after its duration expires. Abiding Fragrance can be triggered once every 12s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

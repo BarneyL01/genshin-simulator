@@ -1,0 +1,527 @@
+{
+  "id": "layla",
+  "name": "Layla",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/layla",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/layla-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "3.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11092.4131532,
+      "atk": 216.64513184,
+      "def": 655.2206639999999
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.512173,
+            0.553862,
+            0.59555,
+            0.655105,
+            0.696793,
+            0.744438,
+            0.809948,
+            0.875459,
+            0.940969,
+            1.012435,
+            1.083901,
+            1.155367,
+            1.226833,
+            1.298299,
+            1.369765
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 19,
+              "charged": 31,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.484834,
+            0.524297,
+            0.56376,
+            0.620136,
+            0.659599,
+            0.7047,
+            0.766714,
+            0.828727,
+            0.890741,
+            0.958392,
+            1.026043,
+            1.093694,
+            1.161346,
+            1.228997,
+            1.296648
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 36,
+              "charged": 37,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 50
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.729736,
+            0.789133,
+            0.84853,
+            0.933383,
+            0.99278,
+            1.060663,
+            1.154001,
+            1.247339,
+            1.340677,
+            1.442501,
+            1.544325,
+            1.646148,
+            1.747972,
+            1.849795,
+            1.951619
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 65,
+              "charged": 74,
+              "skill": 31,
+              "burst": 31,
+              "dash": 31,
+              "jump": 31,
+              "swap": 31,
+              "default": 74
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.4773,
+            0.51615,
+            0.555,
+            0.6105,
+            0.64935,
+            0.69375,
+            0.7548,
+            0.81585,
+            0.8769,
+            0.9435,
+            1.0101,
+            1.0767,
+            1.1433,
+            1.2099,
+            1.2765
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "skill": 34,
+              "burst": 34,
+              "dash": 27,
+              "jump": 27,
+              "swap": 29,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            27
+          ],
+          "extraMv": [
+            [
+              0.52546,
+              0.56823,
+              0.611,
+              0.6721,
+              0.71487,
+              0.76375,
+              0.83096,
+              0.89817,
+              0.96538,
+              1.0387,
+              1.11202,
+              1.18534,
+              1.25866,
+              1.33198,
+              1.4053
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.128,
+            0.1376,
+            0.1472,
+            0.16,
+            0.1696,
+            0.1792,
+            0.192,
+            0.2048,
+            0.2176,
+            0.2304,
+            0.2432,
+            0.256,
+            0.272,
+            0.288,
+            0.304
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 41,
+              "skill": 42,
+              "swap": 41,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Shooting Star",
+          "mv": [
+            0.1472,
+            0.15824,
+            0.16928,
+            0.184,
+            0.19504,
+            0.20608,
+            0.2208,
+            0.23552,
+            0.25024,
+            0.26496,
+            0.27968,
+            0.2944,
+            0.3128,
+            0.3312,
+            0.3496
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 41,
+              "skill": 42,
+              "swap": 41,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Starlight Slug",
+          "mv": [
+            0.046488,
+            0.049975,
+            0.053461,
+            0.05811,
+            0.061597,
+            0.065083,
+            0.069732,
+            0.074381,
+            0.07903,
+            0.083678,
+            0.088327,
+            0.092976,
+            0.098787,
+            0.104598,
+            0.110409
+          ],
+          "scaling": "hp",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "normal": 65,
+              "skill": 66,
+              "dash": 67,
+              "jump": 66,
+              "swap": 65,
+              "default": 79
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/layla/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "layla.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Like Nascent Light: While the Curtain of Slumber is active, the Deep Sleep effect will activate each time the Curtain gains 1 Night Star:\n·The Shield Strength of a character under the effect of the Curtain of Slumber increases by 6%.\n·This effect can have a maximum of 4 stacks and persists until the Curtain of Slumber disappears."
+    },
+    {
+      "id": "layla.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Sweet Slumber Undisturbed: The DMG dealt by the Shooting Stars fired by Nights of Formal Focus is increased by 1.5% of Layla's Max HP."
+    },
+    {
+      "id": "layla.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Shadowy Dream-Signs: When Layla crafts Character Talent Materials, she has a 10% chance to receive double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Fortress of Fantasy: The Shield Absorption of the Curtain of Slumber generated by Nights of Formal Focus is increased by 20%.\nAdditionally, when unleashing Nights of Formal Focus, she will generate a shield for any nearby party members who are not being protected by a Curtain of Slumber. This shield will have 35% of the absorption of a Curtain of Slumber, will last for 12s, and will absorb Cryo DMG with 250% effectiveness."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Light's Remit: When Shooting Stars from Nights of Formal Focus strike opponents, they will each restore 1 Energy to Layla. Each Shooting Star can restore Energy to her in this manner once."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Secrets of the Night: Increases the Level of Nights of Formal Focus by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Starry Illumination: When Nights of Formal Focus starts to fire off Shooting Stars, it will grant all nearby party members the Dawn Star effect, causing their Normal and Charged Attack DMG to increase based on 5% of Layla's Max HP.\nDawn Star can last up to 3s and will be removed 0.05s after dealing Normal or Charged Attack DMG."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Stream of Consciousness: Increases the Level of Dream of the Star-Stream Shaker by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Radiant Soulfire: Shooting Stars from Nights of Formal Focus deal 40% increased DMG, and Starlight Slugs from Dream of the Star-Stream Shaker deal 40% increased DMG.\nAdditionally, the interval between the creation of Night Stars via Nights of Formal Focus is decreased by 20%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "hp%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

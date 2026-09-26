@@ -1,0 +1,601 @@
+{
+  "id": "charlotte",
+  "name": "Charlotte",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/charlotte",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/charlotte-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "catalyst",
+  "releaseVersion": "4.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10766.1657119,
+      "atk": 173.10371048,
+      "def": 546.01722
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.498456,
+            0.53584,
+            0.573224,
+            0.62307,
+            0.660454,
+            0.697838,
+            0.747684,
+            0.79753,
+            0.847375,
+            0.897221,
+            0.947066,
+            0.996912,
+            1.059219,
+            1.121526,
+            1.183833
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 23,
+              "charged": 25,
+              "skill": 5,
+              "burst": 5,
+              "dash": 5,
+              "jump": 6,
+              "swap": 12,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.433752,
+            0.466283,
+            0.498815,
+            0.54219,
+            0.574721,
+            0.607253,
+            0.650628,
+            0.694003,
+            0.737378,
+            0.780754,
+            0.824129,
+            0.867504,
+            0.921723,
+            0.975942,
+            1.030161
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 35,
+              "charged": 26,
+              "skill": 15,
+              "burst": 17,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.646008,
+            0.694459,
+            0.742909,
+            0.80751,
+            0.855961,
+            0.904411,
+            0.969012,
+            1.033613,
+            1.098214,
+            1.162814,
+            1.227415,
+            1.292016,
+            1.372767,
+            1.453518,
+            1.534269
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 74,
+              "charged": 66,
+              "skill": 14,
+              "burst": 7,
+              "dash": 8,
+              "jump": 7,
+              "swap": 4,
+              "default": 74
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.00512,
+            1.080504,
+            1.155888,
+            1.2564,
+            1.331784,
+            1.407168,
+            1.50768,
+            1.608192,
+            1.708704,
+            1.809216,
+            1.909728,
+            2.01024,
+            2.13588,
+            2.26152,
+            2.38716
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 67,
+            "cancel": {
+              "normal": 79,
+              "skill": 71,
+              "burst": 71,
+              "dash": 21,
+              "jump": 21,
+              "swap": 60,
+              "default": 84
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Photo  (Press)",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "\"Snappy Silhouette\" Mark",
+          "mv": [
+            0.392,
+            0.4214,
+            0.4508,
+            0.49,
+            0.5194,
+            0.5488,
+            0.588,
+            0.6272,
+            0.6664,
+            0.7056,
+            0.7448,
+            0.784,
+            0.833,
+            0.882,
+            0.931
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "\"Focused Impression\" Mark",
+          "mv": [
+            0.406,
+            0.43645,
+            0.4669,
+            0.5075,
+            0.53795,
+            0.5684,
+            0.609,
+            0.6496,
+            0.6902,
+            0.7308,
+            0.7714,
+            0.812,
+            0.86275,
+            0.9135,
+            0.96425
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.77616,
+            0.834372,
+            0.892584,
+            0.9702,
+            1.028412,
+            1.086624,
+            1.16424,
+            1.241856,
+            1.319472,
+            1.397088,
+            1.474704,
+            1.55232,
+            1.64934,
+            1.74636,
+            1.84338
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 53,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Kamera",
+          "mv": [
+            0.06468,
+            0.069531,
+            0.074382,
+            0.08085,
+            0.085701,
+            0.090552,
+            0.09702,
+            0.103488,
+            0.109956,
+            0.116424,
+            0.122892,
+            0.12936,
+            0.137445,
+            0.14553,
+            0.153615
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 56,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "charlotte.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Moment of Impact: When opponents marked by \"Focused Impression\" are defeated, Framing: Freezing Point Composition's CD will be decreased by 2s. This CD decrease can be triggered 4 times every 12s."
+    },
+    {
+      "id": "charlotte.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Diversified Investigation: When the party contains 1/2/3 Fontainians other than herself, Charlotte gains a 5%/10%/15% Healing Bonus. When the party contains 1/2/3 non-Fontainians, Charlotte gains a 5%/10%/15% Cryo DMG Bonus."
+    },
+    {
+      "id": "charlotte.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "First-Person Shutter: After activating the Special Analysis Zoom Lens, Charlotte's \"Framing: Freezing Point Composition\" Hold Mode cannot trigger its original effects, but instead enables her to take photos in a rather unique manner..."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "A Need to Verify Facts: After Still Photo: Comprehensive Confirmation heals a character, it will mark them with Verification, which will heal them once every 2s for 80% of Charlotte's ATK. This effect lasts 6s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "A Duty to Pursue Truth: When using Framing: Freezing Point Composition, when Monsieur Verite hits 1/2/3 (or more) opponents, Charlotte's own ATK will be increased by 10%/20%/30% for 12s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "An Imperative to Independence: Increases the Level of Still Photo: Comprehensive Confirmation by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "A Responsibility to Oversee: When Still Photo: Comprehensive Confirmation hits an opponent marked by Snappy Silhouette or Focused Impression, it will deal 10% more DMG and restore 2 Energy to Charlotte. This restoration can be triggered 5 times every 20s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "A Principle of Conscience: Increases the Level of Framing: Freezing Point Composition by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "A Summation of Interest: When the active character's Normal and Charged Attacks hit an opponent marked by Framing: Freezing Point Composition's Focused Impression, Monsieur Verite will initiate a coordinated attack that deals 180% of Charlotte's ATK as AoE Cryo DMG and heals active character(s) within the AoE for 42% of Charlotte's ATK. This effect can be triggered once every 6s and both DMG and healing dealt in this way will be considered as having been done by Charlotte's Elemental Burst."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "er",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "healingBonus",
+        "critRate"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

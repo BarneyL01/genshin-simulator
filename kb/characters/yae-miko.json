@@ -1,0 +1,508 @@
+{
+  "id": "yae-miko",
+  "name": "Yae Miko",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/yae-miko",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "catalyst",
+  "releaseVersion": "2.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10372.286467560001,
+      "atk": 339.6332956,
+      "def": 568.7302338000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.396584,
+            0.426328,
+            0.456072,
+            0.49573,
+            0.525474,
+            0.555218,
+            0.594876,
+            0.634534,
+            0.674193,
+            0.713851,
+            0.75351,
+            0.793168,
+            0.842741,
+            0.892314,
+            0.941887
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 16,
+              "charged": 28,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.385192,
+            0.414081,
+            0.442971,
+            0.48149,
+            0.510379,
+            0.539269,
+            0.577788,
+            0.616307,
+            0.654826,
+            0.693346,
+            0.731865,
+            0.770384,
+            0.818533,
+            0.866682,
+            0.914831
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 36,
+              "charged": 40,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 40
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.568888,
+            0.611555,
+            0.654221,
+            0.71111,
+            0.753777,
+            0.796443,
+            0.853332,
+            0.910221,
+            0.96711,
+            1.023998,
+            1.080887,
+            1.137776,
+            1.208887,
+            1.279998,
+            1.351109
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 79,
+              "charged": 74,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 79
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.428948,
+            1.53612,
+            1.643291,
+            1.786185,
+            1.893357,
+            2.000528,
+            2.143423,
+            2.286317,
+            2.429212,
+            2.572107,
+            2.715002,
+            2.857897,
+            3.036515,
+            3.215134,
+            3.393752
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 90,
+            "cancel": {
+              "charged": 95,
+              "dash": 46,
+              "jump": 47,
+              "swap": 94,
+              "default": 96
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Sesshou Sakura : Level 1",
+          "mv": [
+            0.60672,
+            0.652224,
+            0.697728,
+            0.7584,
+            0.803904,
+            0.849408,
+            0.91008,
+            0.970752,
+            1.031424,
+            1.092096,
+            1.152768,
+            1.21344,
+            1.28928,
+            1.36512,
+            1.44096
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "charged": 36,
+              "burst": 36,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 240,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.6,
+            2.795,
+            2.99,
+            3.25,
+            3.445,
+            3.64,
+            3.9,
+            4.16,
+            4.42,
+            4.68,
+            4.94,
+            5.2,
+            5.525,
+            5.85,
+            6.175
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 100,
+            "cancel": {
+              "normal": 112,
+              "skill": 113,
+              "dash": 103,
+              "jump": 104,
+              "swap": 101,
+              "default": 114
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tenko Thunderbolt",
+          "mv": [
+            3.33816,
+            3.588522,
+            3.838884,
+            4.1727,
+            4.423062,
+            4.673424,
+            5.00724,
+            5.341056,
+            5.674872,
+            6.008688,
+            6.342504,
+            6.67632,
+            7.09359,
+            7.51086,
+            7.92813
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 103,
+            "cancel": {
+              "normal": 112,
+              "skill": 113,
+              "dash": 103,
+              "jump": 104,
+              "swap": 101,
+              "default": 114
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yaemiko/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1320,
+      "energyCost": 90,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "yae-miko.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "The Shrine's Sacred Shade: When casting Great Secret Art: Tenko Kenshin, each Sesshou Sakura destroyed resets the cooldown for 1 charge of Yakan Evocation: Sesshou Sakura."
+    },
+    {
+      "id": "yae-miko.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Enlightened Blessing: Every point of Elemental Mastery Yae Miko possesses will increase Sesshou Sakura DMG by 0.15%."
+    },
+    {
+      "id": "yae-miko.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Meditations of a Yako: Has a 25% chance to get 1 regional Character Talent Material (base material excluded) when crafting. The rarity is that of the base material."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Yakan Offering: Each time Great Secret Art: Tenko Kenshin activates a Tenko Thunderbolt, Yae Miko will restore 8 Elemental Energy for herself."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Fox's Mooncall: Sesshou Sakura start at Level 2 when created, their max level is increased to 4, and their attack range is increased by 60%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Seven Glamours: Increases the Level of Yakan Evocation: Sesshou Sakura by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sakura Channeling: When Sesshou Sakura lightning hits opponents, the Electro DMG Bonus of all nearby party members is increased by 20% for 5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Mischievous Teasing: Increases the Level of Great Secret Art: Tenko Kenshin by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Forbidden Art: Daisesshou: The Sesshou Sakura's attacks will ignore 60% of the opponents' DEF."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

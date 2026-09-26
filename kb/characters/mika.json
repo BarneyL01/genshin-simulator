@@ -1,0 +1,629 @@
+{
+  "id": "mika",
+  "name": "Mika",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/mika",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "polearm",
+  "releaseVersion": "3.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12506.152435299999,
+      "atk": 223.0170516,
+      "def": 713.234993625
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.432632,
+            0.467846,
+            0.50306,
+            0.553366,
+            0.58858,
+            0.628825,
+            0.684162,
+            0.739498,
+            0.794835,
+            0.855202,
+            0.915569,
+            0.975936,
+            1.036304,
+            1.096671,
+            1.157038
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 23,
+              "charged": 28,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.415019,
+            0.448799,
+            0.48258,
+            0.530838,
+            0.564619,
+            0.603225,
+            0.656309,
+            0.709393,
+            0.762476,
+            0.820386,
+            0.878296,
+            0.936205,
+            0.994115,
+            1.052024,
+            1.109934
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 19,
+              "charged": 19,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.545034,
+            0.589397,
+            0.63376,
+            0.697136,
+            0.741499,
+            0.7922,
+            0.861914,
+            0.931627,
+            1.001341,
+            1.077392,
+            1.153443,
+            1.229494,
+            1.305546,
+            1.381597,
+            1.457648
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 34,
+              "charged": 39,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.276146,
+            0.298623,
+            0.3211,
+            0.35321,
+            0.375687,
+            0.401375,
+            0.436696,
+            0.472017,
+            0.507338,
+            0.54587,
+            0.584402,
+            0.622934,
+            0.661466,
+            0.699998,
+            0.73853
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 32,
+              "charged": 40,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            24
+          ],
+          "extraMv": [
+            [
+              0.276146,
+              0.298623,
+              0.3211,
+              0.35321,
+              0.375687,
+              0.401375,
+              0.436696,
+              0.472017,
+              0.507338,
+              0.54587,
+              0.584402,
+              0.622934,
+              0.661466,
+              0.699998,
+              0.73853
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.708743,
+            0.766432,
+            0.82412,
+            0.906532,
+            0.96422,
+            1.03015,
+            1.120803,
+            1.211456,
+            1.30211,
+            1.401004,
+            1.499898,
+            1.598793,
+            1.697687,
+            1.796582,
+            1.895476
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 71,
+              "charged": 71,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.12746,
+            1.21923,
+            1.311,
+            1.4421,
+            1.53387,
+            1.63875,
+            1.78296,
+            1.92717,
+            2.07138,
+            2.2287,
+            2.38602,
+            2.54334,
+            2.70066,
+            2.85798,
+            3.0153
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 63,
+              "skill": 62,
+              "burst": 62,
+              "dash": 26,
+              "jump": 26,
+              "swap": 61,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Flowfrost Arrow",
+          "mv": [
+            0.672,
+            0.7224,
+            0.7728,
+            0.84,
+            0.8904,
+            0.9408,
+            1.008,
+            1.0752,
+            1.1424,
+            1.2096,
+            1.2768,
+            1.344,
+            1.428,
+            1.512,
+            1.596
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Rimestar Flare",
+          "mv": [
+            0.84,
+            0.903,
+            0.966,
+            1.05,
+            1.113,
+            1.176,
+            1.26,
+            1.344,
+            1.428,
+            1.512,
+            1.596,
+            1.68,
+            1.785,
+            1.89,
+            1.995
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Rimestar Shard",
+          "mv": [
+            0.252,
+            0.2709,
+            0.2898,
+            0.315,
+            0.3339,
+            0.3528,
+            0.378,
+            0.4032,
+            0.4284,
+            0.4536,
+            0.4788,
+            0.504,
+            0.5355,
+            0.567,
+            0.5985
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "skill": 60,
+          "jump": 60,
+          "swap": 59,
+          "default": 61
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mika/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "mika.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Suppressive Barrage: Per the following circumstances, the Soulwind state caused by Starfrost Swirl will grant characters the Detector effect, increasing their Physical DMG by 10% when they are on the field.\n·If the Flowfrost Arrow hits more than one opponent, each additional opponent hit will generate 1 Detector stack.\n·When a Rimestar Shard hits an opponent, it will generate 1 Detector stack. Each Rimestar Shard can trigger the effect 1 time.\n\nThe Soulwind state can have a maximum of 3 Detector stacks, and if Starfrost Swirl is cast again during this duration, the pre-existing Soulwind state "
+    },
+    {
+      "id": "mika.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Topographical Mapping: When an active character affected by both Skyfeather Song's Eagleplume and Starfrost Swirl's Soulwind at once scores a CRIT Hit with their attacks, Soulwind will grant them 1 stack of Detector from the Ascension Talent Suppressive Barrage. During a single instance of Soulwind, 1 Detector stack can be gained in this manner.\nAdditionally, the maximum number of stacks that can be gained through Soulwind alone is increased by 1.\nYou must first unlock the Ascension Talent \"Suppressive Barrage.\""
+    },
+    {
+      "id": "mika.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Demarcation: Displays the location of nearby resources unique to Mondstadt on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Factor Confluence: The Soulwind state of Starfrost Swirl can decrease the healing interval between instances caused by Skyfeather Song's Eagleplume state. This decrease percentage is equal to the ATK SPD increase provided by Soulwind."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Companion's Ingress: When Starfrost Swirl's Flowfrost Arrow first hits an opponent, or its Rimestar Flare hits an opponent, 1 Detector stack from the Ascension Talent \"Suppressive Barrage\" will be generated.\nYou must first unlock the Ascension Talent \"Suppressive Barrage.\""
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Reconnaissance Experience: Increases the Level of Skyfeather Song by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sunfrost Encomium: When Mika's own Skyfeather Song's Eagleplume state heals party members, this will restore 3 Energy to Mika. This form of Energy restoration can occur 5 times during the Eagleplume state created by 1 use of Skyfeather Song."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Signal Arrow: Increases the Level of Starfrost Swirl by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Companion's Counsel: The maximum number of Detector stacks that Starfrost Swirl's Soulwind can gain is increased by 1. You must first unlock the Ascension Talent \"Suppressive Barrage.\".\nAdditionally, active characters affected by Soulwind will deal 60% more Physical CRIT DMG."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

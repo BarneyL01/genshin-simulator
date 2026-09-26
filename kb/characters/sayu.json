@@ -1,0 +1,651 @@
+{
+  "id": "sayu",
+  "name": "Sayu",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/sayu",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "anemo",
+  "weaponType": "claymore",
+  "releaseVersion": "2.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11853.657417800001,
+      "atk": 244.25677079999997,
+      "def": 744.630992124
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 96
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.7224,
+            0.7812,
+            0.84,
+            0.924,
+            0.9828,
+            1.05,
+            1.1424,
+            1.2348,
+            1.3272,
+            1.428,
+            1.5435,
+            1.679328,
+            1.815156,
+            1.950984,
+            2.09916
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 36,
+              "charged": 36,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.7138,
+            0.7719,
+            0.83,
+            0.913,
+            0.9711,
+            1.0375,
+            1.1288,
+            1.2201,
+            1.3114,
+            1.411,
+            1.525125,
+            1.659336,
+            1.793547,
+            1.927758,
+            2.07417
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 48,
+              "charged": 48,
+              "skill": 29,
+              "burst": 29,
+              "dash": 29,
+              "jump": 29,
+              "swap": 29,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.4343,
+            0.46965,
+            0.505,
+            0.5555,
+            0.59085,
+            0.63125,
+            0.6868,
+            0.74235,
+            0.7979,
+            0.8585,
+            0.927937,
+            1.009596,
+            1.091255,
+            1.172913,
+            1.261995
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 52,
+              "charged": 52,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            26
+          ],
+          "extraMv": [
+            [
+              0.4343,
+              0.46965,
+              0.505,
+              0.5555,
+              0.59085,
+              0.63125,
+              0.6868,
+              0.74235,
+              0.7979,
+              0.8585,
+              0.927937,
+              1.009596,
+              1.091255,
+              1.172913,
+              1.261995
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.98126,
+            1.06113,
+            1.141,
+            1.2551,
+            1.33497,
+            1.42625,
+            1.55176,
+            1.67727,
+            1.80278,
+            1.9397,
+            2.096588,
+            2.281087,
+            2.465587,
+            2.650087,
+            2.851359
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 71,
+              "charged": 71,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Fuufuu Windwheel",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fuufuu Whirlwind Kick Press",
+          "mv": [
+            1.584,
+            1.7028,
+            1.8216,
+            1.98,
+            2.0988,
+            2.2176,
+            2.376,
+            2.5344,
+            2.6928,
+            2.8512,
+            3.0096,
+            3.168,
+            3.366,
+            3.564,
+            3.762
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fuufuu Windwheel Elemental",
+          "mv": [
+            0.168,
+            0.1806,
+            0.1932,
+            0.21,
+            0.2226,
+            0.2352,
+            0.252,
+            0.2688,
+            0.2856,
+            0.3024,
+            0.3192,
+            0.336,
+            0.357,
+            0.378,
+            0.399
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fuufuu Whirlwind Kick Elemental",
+          "mv": [
+            0.7616,
+            0.81872,
+            0.87584,
+            0.952,
+            1.00912,
+            1.06624,
+            1.1424,
+            1.21856,
+            1.29472,
+            1.37088,
+            1.44704,
+            1.5232,
+            1.6184,
+            1.7136,
+            1.8088
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill Activation",
+          "mv": [
+            1.168,
+            1.2556,
+            1.3432,
+            1.46,
+            1.5476,
+            1.6352,
+            1.752,
+            1.8688,
+            1.9856,
+            2.1024,
+            2.2192,
+            2.336,
+            2.482,
+            2.628,
+            2.774
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "dash": 64,
+              "swap": 64,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Muji-Muji Daruma",
+          "mv": [
+            0.52,
+            0.559,
+            0.598,
+            0.65,
+            0.689,
+            0.728,
+            0.78,
+            0.832,
+            0.884,
+            0.936,
+            0.988,
+            1.04,
+            1.105,
+            1.17,
+            1.235
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "dash": 64,
+              "swap": 64,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sayu/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "sayu.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Someone More Capable: When Sayu triggers a Swirl or Stellar Swirl reaction while active, she heals all your characters and nearby allies for 300 HP. She will also heal an additional 1.2 HP for every point of Elemental Mastery she has.\nThis effect can be triggered once every 2s."
+    },
+    {
+      "id": "sayu.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "No Work Today!: The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry gains the following effects:\n·When healing a character, it will also heal characters near that healed character for 20% the amount of HP.\n·Increases the AoE of its attack against opponents."
+    },
+    {
+      "id": "sayu.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Yoohoo Art: Silencer's Secret: When Sayu is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.\nCheck the \"Other\" sub-category of the \"Living Beings / Wildlife\" section in the Archive for creatures this skill works on."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Multi-Task no Jutsu: The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry will ignore HP limits and can simultaneously attack nearby opponents and heal characters."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Egress Prep: Yoohoo Art: Fuuin Dash gains the following effects:\n·DMG of Fuufuu Whirlwind Kick in Press Mode increased by 3.3%.\n·Every 0.5s in the Fuufuu Windwheel state will increase the DMG of this Fuufuu Whirlwind Kick by 3.3%. The maximum DMG increase possible through this method is 66%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Eh, the Bunshin Can Handle It: Increases the Level of Yoohoo Art: Mujina Flurry by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Skiving: New and Improved: Sayu recovers 1.2 Energy when she triggers a Swirl or Stellar Swirl reaction while on-field.\nThis effect occurs once every 2s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Speed Comes First: Increases the Level of Yoohoo Art: Fuuin Dash by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Sleep O'Clock: The Muji-Muji Daruma created by Sayu's Yoohoo Art: Mujina Flurry will now also benefit from her Elemental Mastery. Each point of Sayu's Elemental Mastery will produce the following effects:\n·Increases the damage dealt by the Muji-Muji Daruma's attacks by 0.2% ATK. A maximum DMG increase of 400% ATK can be gained via this method.\n·Increases the HP restored by the Muji-Muji Daruma by 3. A maximum of 6,000 additional HP can be restored in this manner."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

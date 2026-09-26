@@ -1,0 +1,34 @@
+{
+  "id": "tiny-miracle",
+  "name": "Tiny Miracle",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "2-piece bonus \"All Elemental RES increased by 20%.\" is not modelled yet.",
+    "4-piece bonus \"Incoming elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": []
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

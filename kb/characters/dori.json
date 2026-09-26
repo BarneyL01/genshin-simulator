@@ -1,0 +1,483 @@
+{
+  "id": "dori",
+  "name": "Dori",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/dori",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/dori-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "electro",
+  "weaponType": "claymore",
+  "releaseVersion": "3.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12397.4035882,
+      "atk": 223.0170516,
+      "def": 723.4728165
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.90214,
+            0.97557,
+            1.049,
+            1.1539,
+            1.22733,
+            1.31125,
+            1.42664,
+            1.54203,
+            1.65742,
+            1.7833,
+            1.90918,
+            2.03506,
+            2.16094,
+            2.28682,
+            2.4127
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 44,
+              "charged": 44,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.410736,
+            0.444168,
+            0.4776,
+            0.52536,
+            0.558792,
+            0.597,
+            0.649536,
+            0.702072,
+            0.754608,
+            0.81192,
+            0.869232,
+            0.926544,
+            0.983856,
+            1.041168,
+            1.09848
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 46,
+              "charged": 46,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            33
+          ],
+          "extraMv": [
+            [
+              0.431204,
+              0.466302,
+              0.5014,
+              0.55154,
+              0.586638,
+              0.62675,
+              0.681904,
+              0.737058,
+              0.792212,
+              0.85238,
+              0.912548,
+              0.972716,
+              1.032884,
+              1.093052,
+              1.15322
+            ]
+          ]
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.28398,
+            1.38849,
+            1.493,
+            1.6423,
+            1.74681,
+            1.86625,
+            2.03048,
+            2.19471,
+            2.35894,
+            2.5381,
+            2.71726,
+            2.89642,
+            3.07558,
+            3.25474,
+            3.4339
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 60,
+            "cancel": {
+              "normal": 108,
+              "charged": 108,
+              "skill": 60,
+              "burst": 60,
+              "dash": 60,
+              "jump": 60,
+              "swap": 60,
+              "default": 108
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Troubleshooter Shot",
+          "mv": [
+            1.4728,
+            1.58326,
+            1.69372,
+            1.841,
+            1.95146,
+            2.06192,
+            2.2092,
+            2.35648,
+            2.50376,
+            2.65104,
+            2.79832,
+            2.9456,
+            3.1297,
+            3.3138,
+            3.4979
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 43,
+              "swap": 43,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "After-Sales Service Round",
+          "mv": [
+            0.3156,
+            0.33927,
+            0.36294,
+            0.3945,
+            0.41817,
+            0.44184,
+            0.4734,
+            0.50496,
+            0.53652,
+            0.56808,
+            0.59964,
+            0.6312,
+            0.67065,
+            0.7101,
+            0.74955
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "dash": 43,
+              "swap": 43,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 540,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Connector",
+          "mv": [
+            0.158824,
+            0.170736,
+            0.182648,
+            0.19853,
+            0.210442,
+            0.222354,
+            0.238236,
+            0.254118,
+            0.270001,
+            0.285883,
+            0.301766,
+            0.317648,
+            0.337501,
+            0.357354,
+            0.377207
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 57,
+              "skill": 57,
+              "jump": 57,
+              "swap": 56,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dori/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "dori.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "An Eye for Gold: After a character connected to the Jinni triggers an Electro-Charged, Lunar-Charged, Superconduct, Stellar-Conduct, Overloaded, Quicken, Aggravate, Hyperbloom, Electro Swirl, or Electro Crystallize reaction, the CD of Spirit-Warding Lamp: Troubleshooter Cannon is decreased by 1s.\nThis effect can be triggered once every 3s."
+    },
+    {
+      "id": "dori.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Compound Interest: When the Troubleshooter Shots or After-Sales Service Rounds from Spirit-Warding Lamp: Troubleshooter Cannon hit opponents, Dori will restore 5 Elemental Energy for every 100% Energy Recharge possessed.\nPer Spirit-Warding Lamp: Troubleshooter Cannon, only one instance of Energy restoration can be triggered and a maximum of 15 Energy can be restored this way."
+    },
+    {
+      "id": "dori.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Unexpected Order: Has a 25% chance to recover some of the materials used when crafting Character and Weapon Materials."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Additional Investment: The number of After-Sales Service Rounds created by Troubleshooter Shots is increased by 1."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Special Franchise: When you are in combat and the Jinni heals the character it is connected to, it will fire a Jinni Toop from that character's position that deals 50% of Dori's ATK DMG."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Wonders Never Cease: Increases the Level of Alcazarzaray's Exactitude by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Discretionary Supplement: The character connected to the Jinni will obtain the following buffs based on their current HP and Energy:\n·When their HP is lower than 50%, they gain 50% Incoming Healing Bonus.\n·When their Energy is less than 50%, they gain 30% Energy Recharge."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Value for Mora: Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Sprinkling Weight: Dori gains the following effects for 3s after using Spirit-Warding Lamp: Troubleshooter Cannon:\n·Electro Infusion.\n·When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to 4% of Dori's Max HP. This type of healing can occur once every 0.1s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "em",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-25 — M7 baseline: every released character, weapon and set is in the KB
+
+- Milestone: M7 (baseline). The KB now covers everything genshin-db lists through 7.1, but only the 7 hand-written characters, 11 hand-written weapons and 4 sets model their passives; the rest is a damage-only baseline (see `kb/CHANGELOG.md`).
+- Done: `scripts/kb-import/gcsim-frames.ts` (reads hitmarks/cancel frames out of gcsim's Go source; reproduces the hand-written Xiangling exactly), `bulk-character.ts` / `import-bulk-characters.ts`, `bulk-lib.ts` / `import-bulk.ts` (weapons, artifacts), `http.ts` (cached page fetch). Label heuristics: N-Hit DMG → normal steps; skill/burst DMG labels → hits (hold/charge-level variants dropped), CD and Energy Cost labels, `Durability` and `ICDTagNone` from gcsim, first `QueueParticle` for particles. Frames not parsed are borrowed component by component from a same-weapon-type donor and the character is `low`.
+- KB changes: 113 characters, 232 weapons, 55 artifact sets added (see changelog).
+- Tests / validation: `tests/all-characters.test.ts` builds and simulates all 120 characters; `npm test` 104 pass; `kb:validate` ok (424 records).
+- Limits: baseline characters ignore passives/constellations, so their damage is understated and buffers/supports show almost nothing; skill/burst hits sit at one estimated frame; Travelers are not imported; 70 characters are `low`. Upgrading a character means writing a spec in `scripts/kb-import/specs/` (it then replaces the baseline).
+- Next: upgrade popular characters and weapons to hand-written specs (Nahida, Furina, Kazuha, Diluc, ... and weapons with plain passives), read Game8/GameWith for more teams, M8.
+
+---
+
 ## 2026-09-25 — M4 (seed KB, partial), M5 (UI v1), M6 (comparison) built
 
 - Milestones: M4 partial (7 characters, 11 weapons, 4 sets, 2 teams), M5 complete, M6 complete.

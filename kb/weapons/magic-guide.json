@@ -1,0 +1,47 @@
+{
+  "id": "magic-guide",
+  "name": "Magic Guide",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Bane of Storm and Tide\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Increases DMG against opponents affected by Hydro or Electro by 12%.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "catalyst",
+  "rarity": 3,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 354.37940000000003
+  },
+  "substat": {
+    "stat": "em",
+    "lv90": 187.4352
+  },
+  "obtain": {
+    "method": "chest",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Bane of Storm and Tide",
+    "text": "Increases DMG against opponents affected by Hydro or Electro by 12%.",
+    "effects": []
+  },
+  "needsHook": false
+}

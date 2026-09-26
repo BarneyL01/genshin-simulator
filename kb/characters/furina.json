@@ -1,0 +1,644 @@
+{
+  "id": "furina",
+  "name": "Furina",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/furina",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/furina-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "sword",
+  "releaseVersion": "4.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 15307.388350000001,
+      "atk": 243.96194960000003,
+      "def": 695.5417048500001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.483862,
+            0.523246,
+            0.56263,
+            0.618893,
+            0.658277,
+            0.703287,
+            0.765177,
+            0.827066,
+            0.888955,
+            0.956471,
+            1.023987,
+            1.091502,
+            1.159018,
+            1.226533,
+            1.294049
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 31,
+              "charged": 34,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.437293,
+            0.472886,
+            0.50848,
+            0.559328,
+            0.594922,
+            0.6356,
+            0.691533,
+            0.747466,
+            0.803398,
+            0.864416,
+            0.925434,
+            0.986451,
+            1.047469,
+            1.108486,
+            1.169504
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 23,
+              "charged": 28,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.5512,
+            0.596065,
+            0.64093,
+            0.705023,
+            0.749888,
+            0.801162,
+            0.871665,
+            0.942167,
+            1.012669,
+            1.089581,
+            1.166493,
+            1.243404,
+            1.320316,
+            1.397227,
+            1.474139
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 36,
+              "charged": 45,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 48
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.732978,
+            0.792639,
+            0.8523,
+            0.93753,
+            0.997191,
+            1.065375,
+            1.159128,
+            1.252881,
+            1.346634,
+            1.44891,
+            1.551186,
+            1.653462,
+            1.755738,
+            1.858014,
+            1.96029
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 53,
+              "charged": 58,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.74218,
+            0.80259,
+            0.863,
+            0.9493,
+            1.00971,
+            1.07875,
+            1.17368,
+            1.26861,
+            1.36354,
+            1.4671,
+            1.57066,
+            1.67422,
+            1.77778,
+            1.88134,
+            1.9849
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 37,
+              "skill": 47,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 253
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Ousia Bubble",
+          "mv": [
+            0.07864,
+            0.084538,
+            0.090436,
+            0.0983,
+            0.104198,
+            0.110096,
+            0.11796,
+            0.125824,
+            0.133688,
+            0.141552,
+            0.149416,
+            0.15728,
+            0.16711,
+            0.17694,
+            0.18677
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Gentilhomme Usher",
+          "mv": [
+            0.0596,
+            0.06407,
+            0.06854,
+            0.0745,
+            0.07897,
+            0.08344,
+            0.0894,
+            0.09536,
+            0.10132,
+            0.10728,
+            0.11324,
+            0.1192,
+            0.12665,
+            0.1341,
+            0.14155
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Surintendante Chevalmarin",
+          "mv": [
+            0.03232,
+            0.034744,
+            0.037168,
+            0.0404,
+            0.042824,
+            0.045248,
+            0.04848,
+            0.051712,
+            0.054944,
+            0.058176,
+            0.061408,
+            0.06464,
+            0.06868,
+            0.07272,
+            0.07676
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Mademoiselle Crabaletta",
+          "mv": [
+            0.08288,
+            0.089096,
+            0.095312,
+            0.1036,
+            0.109816,
+            0.116032,
+            0.12432,
+            0.132608,
+            0.140896,
+            0.149184,
+            0.157472,
+            0.16576,
+            0.17612,
+            0.18648,
+            0.19684
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.114064,
+            0.122619,
+            0.131174,
+            0.14258,
+            0.151135,
+            0.15969,
+            0.171096,
+            0.182502,
+            0.193909,
+            0.205315,
+            0.216722,
+            0.228128,
+            0.242386,
+            0.256644,
+            0.270902
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 98,
+            "cancel": {
+              "normal": 113,
+              "charged": 113,
+              "skill": 114,
+              "dash": 115,
+              "jump": 115,
+              "swap": 111,
+              "default": 121
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/furina/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "furina.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Endless Waltz: When the active character in your party receives healing, if the source of the healing is not Furina herself and the healing overflows, then Furina will heal nearby party members for 2% of their Max HP once every 2s for the next 4s."
+    },
+    {
+      "id": "furina.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Unheard Confession: Every 1,000 points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:\nWill increase Salon Members' DMG dealt by 0.7%, up to a maximum of 28%.\nWill decrease the Singer of Many Waters' healing interval for nearby active characters by 0.4%, up to a maximum of 16%."
+    },
+    {
+      "id": "furina.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "The Sea Is My Stage: Xenochromatic Fontemer Aberrant ability CD decreased by 30%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"Love Is a Rebellious Bird That None Can Tame\": When using Let the People Rejoice, Furina will gain 150 Fanfare.\nAdditionally, Furina's Fanfare limit is increased by 100."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"A Woman Adapts Like Duckweed in Water\": While Let the People Rejoice lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by 250%. Each point of Fanfare above the limit will increase Furina's Max HP by 0.35%. Her maximum Max HP increase is 140%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"My Secret Is Hidden Within Me, No One Will Know My Name\": Increases the Level of Let the People Rejoice by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"They Know Not Life, Who Dwelt in the Netherworld Not!\": When the Salon Members from Salon Solitaire hit an opponent, or the Singer of Many Waters restores HP to nearby active characters, Furina will restore 4 Energy. This effect can be triggered once every 5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"His Name I Now Know, It Is...!\": Increases the Level of Salon Solitaire by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"Hear Me — Let Us Raise the Chalice of Love!\": When using Salon Solitaire, Furina gains \"Center of Attention\" for 10s.\nThroughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to 18% of Furina's max HP.\nThroughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every 0.1s after hitting opponents dep"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

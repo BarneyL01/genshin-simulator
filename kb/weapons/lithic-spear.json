@@ -1,0 +1,47 @@
+{
+  "id": "lithic-spear",
+  "name": "Lithic Spear",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Lithic Axiom: Unity\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: For every character in the party who hails from Liyue, the character who equips this weapon gains a 7% ATK increase and a 3% CRIT Rate increase. This effect stacks up to 4 times.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "polearm",
+  "rarity": 4,
+  "releaseVersion": "1.3",
+  "baseAtk": {
+    "lv90": 564.7837244
+  },
+  "substat": {
+    "stat": "atk%",
+    "lv90": 0.27564
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Lithic Axiom: Unity",
+    "text": "For every character in the party who hails from Liyue, the character who equips this weapon gains a 7% ATK increase and a 3% CRIT Rate increase. This effect stacks up to 4 times.",
+    "effects": []
+  },
+  "needsHook": false
+}

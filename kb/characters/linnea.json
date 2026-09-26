@@ -1,0 +1,513 @@
+{
+  "id": "linnea",
+  "name": "Linnea",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/linnea",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, charged, skill, skill hitmark, burst, burst hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "geo",
+  "weaponType": "bow",
+  "releaseVersion": "6.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9894.69552967,
+      "atk": 143.50702800000002,
+      "def": 906.8941566000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.589969,
+            0.637989,
+            0.68601,
+            0.754611,
+            0.802632,
+            0.857513,
+            0.932974,
+            1.008435,
+            1.083896,
+            1.166217,
+            1.248538,
+            1.330859,
+            1.413181,
+            1.495502,
+            1.577823
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 31,
+              "charged": 31,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.511519,
+            0.553155,
+            0.59479,
+            0.654269,
+            0.695904,
+            0.743488,
+            0.808914,
+            0.874341,
+            0.939768,
+            1.011143,
+            1.082518,
+            1.153893,
+            1.225267,
+            1.296642,
+            1.368017
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 28,
+              "charged": 28,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.816312,
+            0.882756,
+            0.9492,
+            1.04412,
+            1.110564,
+            1.1865,
+            1.290912,
+            1.395324,
+            1.499736,
+            1.61364,
+            1.727544,
+            1.841448,
+            1.955352,
+            2.069256,
+            2.18316
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 38,
+              "charged": 38,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24,
+            1.333,
+            1.426,
+            1.55,
+            1.643,
+            1.736,
+            1.86,
+            1.984,
+            2.108,
+            2.232,
+            2.356,
+            2.48,
+            2.635,
+            2.79,
+            2.945
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "skill": 29,
+              "burst": 29,
+              "dash": 14,
+              "jump": 15,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Lumi Pound-Pound Pummeler",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 312,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Lumi Heavy Overdrive Hammer",
+          "mv": [
+            1,
+            1.075,
+            1.15,
+            1.25,
+            1.325,
+            1.4,
+            1.5,
+            1.6,
+            1.7,
+            1.8,
+            1.9,
+            2,
+            2.125,
+            2.25,
+            2.375
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 315,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Lumi Million Ton Crush",
+          "mv": [
+            4,
+            4.3,
+            4.6,
+            5,
+            5.3,
+            5.6,
+            6,
+            6.4,
+            6.8,
+            7.2,
+            7.6,
+            8,
+            8.5,
+            9,
+            9.5
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 318,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "normal": 101,
+          "aim": 101,
+          "skill": 101,
+          "dash": 101,
+          "jump": 100,
+          "default": 117
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "linnea.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Field Observation Notes: When Lumi is present on the field, the Geo RES of opponents near Lumi will decrease by 15%.\n\nMoonsign: Ascendant Gleam: Linnea's Elemental Skill **Countermeasure: Lumi's Battle Cry!** and Elemental Burst **Memo: Survival Guide in Extreme Conditions** are enhanced. After summoning Lumi, the Geo RES of opponents near Lumi will be further decreased by 15%."
+    },
+    {
+      "id": "linnea.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Universal Naturalist Archive: Linnea will increase the Elemental Mastery of certain characters in your party according to your current active character. Increase in Elemental Mastery is based on 5% of Linnea's DEF. If your current active character:\n· Is a Moonsign character: Increase this character's Elemental Mastery.\n· Is not a Moonsign character: Increase Linnea's own Elemental Mastery."
+    },
+    {
+      "id": "linnea.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Habitat Survey: When a party member triggers a Hydro Crystallize reaction, it will be converted into the Lunar-Crystallize reaction, with every 100 DEF that Linnea has increasing Lunar-Crystallize's Base DMG by 0.7%, up to a maximum of 14%.\n\nAdditionally, when Linnea is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "linnea.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Master Adventurer: When Linnea is not in combat, the charge time of her Aimed Shot is greatly decreased, and she will shoot an Ultra Convenient Quick Arrow instead. Different effects will occur depending on the targets hit:\n· Specific animals: Ultra Convenient Quick Arrow will be transformed into a special \"Net\" that can capture the essence and form of these animals, using them as a medium to manifest the animal's physical form again. The \"Net\" can only be used for a limited number of times each week. \n· Ore veins used in forging: Linnea will dispatch Lumi, who will quickly strike at the ore m"
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Provisional Classification: When unleashing Elemental Skill **Countermeasure: Lumi's Battle Cry!**, or when triggering Moondrift Harmony, Linnea gains 6 stacks of the Field Catalog effect for 10s. Max 18 stacks. When nearby party members deal Lunar-Crystallize Reaction DMG, consume 1 stack of Field Catalog to increase the DMG dealt. The increase in DMG is equal to 75% of Linnea's DEF.\nAdditionally, when Lumi uses Million Ton Crush in her **Ultimate Power Form**, Linnea can consume up to 5 stacks of Field Catalog. Each stack will increase the DMG dealt by 150% of Linnea's DEF."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Tidings of Joy and Sorrow: Within 8s after triggering Moondrift Harmony, all Hydro and Geo party members have their CRIT DMG increased by 40%. Additionally, when Lumi uses Million Ton Crush in her **Ultimate Power Form**, the CRIT DMG of that attack increases by an additional 150%. \n\nMoonsign: Ascendant Gleam: When Lumi uses Heavy Overdrive Hammer in her **Super Power Form**, or when she uses Million Ton Crush in her Ultimate Power Form, an instance of Moondrift Harmony will be triggered. For this instance of Moondrift Harmony, all Hydro and Geo characters in the party will be considered to ha"
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Eventful Log Page: Increases the Level of **Countermeasure: Lumi's Battle Cry!** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Expert Instinct: Within 5s after Moondrift Harmony is triggered, increase the DEF of Linnea and your current active character by 25% respectively. When Linnea is on field, the DEF-increasing effect can be stacked."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Fairyland's Farewell Gift: Elemental Burst **Memo: Survival Guide in Extreme Conditions** increases by 3 Levels.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Golden Beagle's Dream: The effects of the Constellation, Provisional Classification, are enhanced: When unleashing Elemental Skill **Countermeasure: Lumi's Battle Cry!**, or when triggering Moondrift Harmony, Linnea will directly gain the maximum number of Field Catalog stacks. When consuming Field Catalog, consume twice the original number of stacks, such that the increase in DMG will be boosted to 150% of the original value.\n\nMoonsign: Ascendant Gleam: Lunar-Crystallize Reaction DMG dealt by nearby party members is **elevated** by 25%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

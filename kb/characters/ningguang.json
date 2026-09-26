@@ -1,0 +1,327 @@
+{
+  "id": "ningguang",
+  "name": "Ningguang",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ningguang",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/ningguang",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/ningguang-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 2/2. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "catalyst",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9787.4235531,
+      "atk": 212.397192,
+      "def": 573.3180810000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.geo",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.7408,
+            1.87136,
+            2.00192,
+            2.176,
+            2.30656,
+            2.43712,
+            2.6112,
+            2.78528,
+            2.95936,
+            3.13344,
+            3.314483,
+            3.551232,
+            3.787981,
+            4.02473,
+            4.261478
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 70,
+              "charged": 70,
+              "skill": 69,
+              "burst": 70,
+              "dash": 53,
+              "jump": 53,
+              "swap": 68,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.304,
+            2.4768,
+            2.6496,
+            2.88,
+            3.0528,
+            3.2256,
+            3.456,
+            3.6864,
+            3.9168,
+            4.1472,
+            4.3776,
+            4.608,
+            4.896,
+            5.184,
+            5.472
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "dash": 28,
+              "jump": 29,
+              "swap": 60,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ningguang/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Per Gem",
+          "mv": [
+            0.8696,
+            0.93482,
+            1.00004,
+            1.087,
+            1.15222,
+            1.21744,
+            1.3044,
+            1.39136,
+            1.47832,
+            1.56528,
+            1.65224,
+            1.7392,
+            1.8479,
+            1.9566,
+            2.0653
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 62,
+            "cancel": {
+              "dash": 99,
+              "jump": 100,
+              "swap": 98,
+              "default": 127
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ningguang/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "ningguang.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Backup Plan: When Ningguang is in possession of Star Jades, her Charged Attack does not consume Stamina."
+    },
+    {
+      "id": "ningguang.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Strategic Reserve: A character that passes through the Jade Screen will gain a 12% Geo DMG Bonus for 10s."
+    },
+    {
+      "id": "ningguang.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Trove of Marvelous Treasures: Displays the location of nearby ore veins used in forging on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Piercing Fragments: When a Normal Attack hits, it deals AoE DMG."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Shock Effect: When Jade Screen is shattered, its CD will reset.\nCan occur once every 6s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Majesty Be the Array of Stars: Increases the Level of Starshatter by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Exquisite be the Jade, Outshining All Beneath: Jade Screen increases nearby characters' Elemental RES by 10%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Invincible Be the Jade Screen: Increases the Level of Jade Screen by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Grandeur Be the Seven Stars: When Starshatter is used, Ningguang gains 7 Star Jades."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 1,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,717 @@
+{
+  "id": "chiori",
+  "name": "Chiori",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/chiori",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/chiori-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "geo",
+  "weaponType": "sword",
+  "releaseVersion": "4.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11437.6807651,
+      "atk": 322.89081300000004,
+      "def": 953.0074188000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.494104,
+            0.534322,
+            0.57454,
+            0.631994,
+            0.672212,
+            0.718175,
+            0.781374,
+            0.844574,
+            0.907773,
+            0.976718,
+            1.045663,
+            1.114608,
+            1.183552,
+            1.252497,
+            1.321442
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 19,
+              "charged": 22,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.468339,
+            0.506459,
+            0.54458,
+            0.599038,
+            0.637159,
+            0.680725,
+            0.740629,
+            0.800533,
+            0.860436,
+            0.925786,
+            0.991136,
+            1.056485,
+            1.121835,
+            1.187184,
+            1.252534
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 22,
+              "charged": 33,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.304165,
+            0.328922,
+            0.35368,
+            0.389048,
+            0.413806,
+            0.4421,
+            0.481005,
+            0.51991,
+            0.558814,
+            0.601256,
+            0.643698,
+            0.686139,
+            0.728581,
+            0.771022,
+            0.813464
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 41,
+              "charged": 42,
+              "skill": 32,
+              "burst": 32,
+              "dash": 32,
+              "jump": 32,
+              "swap": 32,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            32
+          ],
+          "extraMv": [
+            [
+              0.304165,
+              0.328922,
+              0.35368,
+              0.389048,
+              0.413806,
+              0.4421,
+              0.481005,
+              0.51991,
+              0.558814,
+              0.601256,
+              0.643698,
+              0.686139,
+              0.728581,
+              0.771022,
+              0.813464
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.751227,
+            0.812374,
+            0.87352,
+            0.960872,
+            1.022018,
+            1.0919,
+            1.187987,
+            1.284074,
+            1.380162,
+            1.484984,
+            1.589806,
+            1.694629,
+            1.799451,
+            1.904274,
+            2.009096
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 59,
+              "charged": 59,
+              "skill": 37,
+              "burst": 37,
+              "dash": 37,
+              "jump": 37,
+              "swap": 37,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.54309,
+            0.587295,
+            0.6315,
+            0.69465,
+            0.738855,
+            0.789375,
+            0.85884,
+            0.928305,
+            0.99777,
+            1.07355,
+            1.14933,
+            1.22511,
+            1.30089,
+            1.37667,
+            1.45245
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 39,
+              "skill": 39,
+              "burst": 39,
+              "default": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            26
+          ],
+          "extraMv": [
+            [
+              0.54309,
+              0.587295,
+              0.6315,
+              0.69465,
+              0.738855,
+              0.789375,
+              0.85884,
+              0.928305,
+              0.99777,
+              1.07355,
+              1.14933,
+              1.22511,
+              1.30089,
+              1.37667,
+              1.45245
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Tamoto 1",
+          "mv": [
+            0.8208,
+            0.88236,
+            0.94392,
+            1.026,
+            1.08756,
+            1.14912,
+            1.2312,
+            1.31328,
+            1.39536,
+            1.47744,
+            1.55952,
+            1.6416,
+            1.7442,
+            1.8468,
+            1.9494
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tamoto 2",
+          "mv": [
+            1.026,
+            1.10295,
+            1.1799,
+            1.2825,
+            1.35945,
+            1.4364,
+            1.539,
+            1.6416,
+            1.7442,
+            1.8468,
+            1.9494,
+            2.052,
+            2.18025,
+            2.3085,
+            2.43675
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Upward Sweep Attack 1",
+          "mv": [
+            1.4928,
+            1.60476,
+            1.71672,
+            1.866,
+            1.97796,
+            2.08992,
+            2.2392,
+            2.38848,
+            2.53776,
+            2.68704,
+            2.83632,
+            2.9856,
+            3.1722,
+            3.3588,
+            3.5454
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Upward Sweep Attack 2",
+          "mv": [
+            1.866,
+            2.00595,
+            2.1459,
+            2.3325,
+            2.47245,
+            2.6124,
+            2.799,
+            2.9856,
+            3.1722,
+            3.3588,
+            3.5454,
+            3.732,
+            3.96525,
+            4.1985,
+            4.43175
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            2.5632,
+            2.75544,
+            2.94768,
+            3.204,
+            3.39624,
+            3.58848,
+            3.8448,
+            4.10112,
+            4.35744,
+            4.61376,
+            4.87008,
+            5.1264,
+            5.4468,
+            5.7672,
+            6.0876
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 92,
+            "cancel": {
+              "skill": 100,
+              "dash": 100,
+              "swap": 99,
+              "default": 101
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            3.204,
+            3.4443,
+            3.6846,
+            4.005,
+            4.2453,
+            4.4856,
+            4.806,
+            5.1264,
+            5.4468,
+            5.7672,
+            6.0876,
+            6.408,
+            6.8085,
+            7.209,
+            7.6095
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 95,
+            "cancel": {
+              "skill": 100,
+              "dash": 100,
+              "swap": 99,
+              "default": 101
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chiori/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 810,
+      "energyCost": 50,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "chiori.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Tailor-Made: Gain different effects depending on the next action you take within a short duration after using Fluttering Hasode's upward sweep. If you Press the Elemental Skill, you will trigger the Tapestry effect. If you Press your Normal Attack, the Tailoring effect will be triggered instead.\n\nTapestry\n· Switches to the next character in your roster.\n· Grants all your party members \"Seize the Moment\": When your active party member's Normal Attacks, Charged Attacks, and Plunging Attacks hit a nearby opponent, \"Tamoto\" will execute a coordinated attack, dealing 100% of Fluttering Hasode's upw"
+    },
+    {
+      "id": "chiori.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "The Finishing Touch: When a nearby party member creates a Geo Construct, Chiori will gain 20% Geo DMG Bonus for 20s."
+    },
+    {
+      "id": "chiori.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Brocaded Collar's Beauteous Silhouette: When any party member is wearing an outfit apart from their default outfit, or is wearing a wind glider other than the Wings of First Flight, your party members will obtain the Swift Stride effect: Movement SPD is increased by 10%.\nThis effect does not take effect in Domains, Trounce Domains, and the Spiral Abyss. Swift Stride does not stack."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Six Paths of Sage Silkcraft: The AoE of the automaton doll \"Tamoto\" summoned by Fluttering Hasode is increased by 50%.\nAdditionally, if there is a Geo party member other than Chiori, Fluttering Hasode will trigger the following after the dash is completed:\n· Summon an additional Tamoto. Only one additional Tamoto can exist at the same time, whether summoned by Chiori this way or through the presence of a Geo Construct.\n· Triggers the Ascension Talent \"The Finishing Touch.\" You must first unlock the Ascension Talent \"The Finishing Touch.\""
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "In Five Colors Dyed: For 10s after using Hiyoku: Twin Blades, a simplified automaton doll, \"Kinu,\" will be summoned next to your active character every 3s. Kinu will attack nearby opponents, dealing AoE Geo DMG equivalent to 170% of Tamoto's DMG. DMG dealt this way is considered Elemental Skill DMG.\nKinu will leave the field after 1 attack or after lasting 3s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Four Brocade Embellishments: Increases the Level of Fluttering Hasode by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "A Tailor's Three Courtesies: For 8s after triggering either follow-up effect of the Ascension Talent \"Tailor-Made,\" when your current active character's Normal, Charged, or Plunging Attacks hit a nearby opponent, a simplified automaton doll, \"Kinu,\" will be summoned near this opponent. You can summon 1 Kinu every 1s in this way, and up to 3 Kinu may be summoned this way during each instance of \"Tailor-Made\"'s Seize the Moment or Tailoring effect. The above effect can be triggered up to once every 15s.\nYou must first unlock the Ascension Talent \"Tailor-Made.\""
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Two Silken Plumules: Increases the Level of Hiyoku: Twin Blades by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Sole Principle Pursuit: After triggering a follow-up effect of the Ascension Talent \"Tailor-Made,\" Chiori's own Fluttering Hasode's CD is decreased by 12s. You must first unlock the Ascension Talent \"Tailor-Made.\".\nIn addition, the DMG dealt by Chiori's own Normal Attacks is increased by an amount equal to 235% of her own DEF."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "def%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

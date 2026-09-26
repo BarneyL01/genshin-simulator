@@ -1,0 +1,761 @@
+{
+  "id": "wanderer",
+  "name": "Wanderer",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/wanderer",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/wanderer",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/wanderer-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 11/11. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, charged, skill, skill hitmark, burst, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "3.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10164.105888400001,
+      "atk": 327.6743806,
+      "def": 607.1579523
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.68714,
+            0.74307,
+            0.799,
+            0.8789,
+            0.93483,
+            0.99875,
+            1.08664,
+            1.17453,
+            1.26242,
+            1.3583,
+            1.45418,
+            1.55006,
+            1.64594,
+            1.74182,
+            1.8377
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 22,
+              "charged": 19,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.65016,
+            0.70308,
+            0.756,
+            0.8316,
+            0.88452,
+            0.945,
+            1.02816,
+            1.11132,
+            1.19448,
+            1.2852,
+            1.37592,
+            1.46664,
+            1.55736,
+            1.64808,
+            1.7388
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 33,
+              "charged": 31,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.47644,
+            0.51522,
+            0.554,
+            0.6094,
+            0.64818,
+            0.6925,
+            0.75344,
+            0.81438,
+            0.87532,
+            0.9418,
+            1.00828,
+            1.07476,
+            1.14124,
+            1.20772,
+            1.2742
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 40,
+              "charged": 39,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            35
+          ],
+          "extraMv": [
+            [
+              0.47644,
+              0.51522,
+              0.554,
+              0.6094,
+              0.64818,
+              0.6925,
+              0.75344,
+              0.81438,
+              0.87532,
+              0.9418,
+              1.00828,
+              1.07476,
+              1.14124,
+              1.20772,
+              1.2742
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.3208,
+            1.41986,
+            1.51892,
+            1.651,
+            1.75006,
+            1.84912,
+            1.9812,
+            2.11328,
+            2.24536,
+            2.37744,
+            2.50952,
+            2.6416,
+            2.8067,
+            2.9718,
+            3.1369
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 70,
+              "charged": 70,
+              "skill": 69,
+              "burst": 70,
+              "dash": 53,
+              "jump": 53,
+              "swap": 68,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.952,
+            1.0234,
+            1.0948,
+            1.19,
+            1.2614,
+            1.3328,
+            1.428,
+            1.5232,
+            1.6184,
+            1.7136,
+            1.8088,
+            1.904,
+            2.023,
+            2.142,
+            2.261
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Kuugo: Fushoudan",
+          "mv": [
+            1.329825,
+            1.349575,
+            1.369325,
+            1.395,
+            1.41475,
+            1.4345,
+            1.460175,
+            1.48585,
+            1.511525,
+            1.5372,
+            1.562875,
+            1.58855,
+            1.614225,
+            1.6399,
+            1.665575
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Kuugo: Toufukai",
+          "mv": [
+            1.26386,
+            1.27966,
+            1.29546,
+            1.316,
+            1.3318,
+            1.3476,
+            1.36814,
+            1.38868,
+            1.40922,
+            1.42976,
+            1.4503,
+            1.47084,
+            1.49138,
+            1.51192,
+            1.53246
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            1.472,
+            1.5824,
+            1.6928,
+            1.84,
+            1.9504,
+            2.0608,
+            2.208,
+            2.3552,
+            2.5024,
+            2.6496,
+            2.7968,
+            2.944,
+            3.128,
+            3.312,
+            3.496
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            1.472,
+            1.5824,
+            1.6928,
+            1.84,
+            1.9504,
+            2.0608,
+            2.208,
+            2.3552,
+            2.5024,
+            2.6496,
+            2.7968,
+            2.944,
+            3.128,
+            3.312,
+            3.496
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 3",
+          "mv": [
+            1.472,
+            1.5824,
+            1.6928,
+            1.84,
+            1.9504,
+            2.0608,
+            2.208,
+            2.3552,
+            2.5024,
+            2.6496,
+            2.7968,
+            2.944,
+            3.128,
+            3.312,
+            3.496
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 4",
+          "mv": [
+            1.472,
+            1.5824,
+            1.6928,
+            1.84,
+            1.9504,
+            2.0608,
+            2.208,
+            2.3552,
+            2.5024,
+            2.6496,
+            2.7968,
+            2.944,
+            3.128,
+            3.312,
+            3.496
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 5",
+          "mv": [
+            1.472,
+            1.5824,
+            1.6928,
+            1.84,
+            1.9504,
+            2.0608,
+            2.208,
+            2.3552,
+            2.5024,
+            2.6496,
+            2.7968,
+            2.944,
+            3.128,
+            3.312,
+            3.496
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 47,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "wanderer.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Jade-Claimed Flower: If Hanega: Song of the Wind comes into contact with Hydro/Pyro/Cryo/Electro when it is unleashed, this instance of the Windfavored state will obtain buffs according to the contacted element(s):\n·Hydro: Kuugoryoku Point cap increases by 20.\n·Pyro: ATK increases by 30%.\n·Cryo: CRIT Rate increases by 20%.\n·Electro: When Normal and Charged Attacks hit an opponent, 0.8 Energy will be restored. Energy can be restored this way once every 0.2s.\n\nYou can have up to 2 different kinds of these buffs simultaneously."
+    },
+    {
+      "id": "wanderer.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Gales of Reverie: When the Wanderer hits opponents with Kuugo: Fushoudan or Kuugo: Toufukai in his Windfavored state, he has a 16% chance to obtain the Descent effect: The next time the Wanderer accelerates in mid-air while in this instance of the Windfavored state, this effect will be removed, this acceleration instance will not consume any Kuugoryoku Points, and he will fire off 4 wind arrows that deal 35% of his ATK as Anemo DMG each.\nFor each Kuugo: Fushoudan and Kuugo: Toufukai that does not produce this effect, the next attack of those types will have a 12% increased chance of producing "
+    },
+    {
+      "id": "wanderer.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Strum the Swirling Winds: Mora expended when ascending Bows and Catalysts is decreased by 50%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Shoban: Ostentatious Plumage: When in the Windfavored state, the Attack SPD of the Wanderer's Kuugo: Fushoudan and Kuugo: Toufukai is increased by 10%.\nAdditionally, the wind arrows fired by the Ascension Talent \"Gales of Reverie\" will deal an additional 25% of his ATK as DMG. You must first unlock the Ascension Talent \"Gales of Reverie.\""
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Niban: Isle Amidst White Waves: When in the Windfavored state, Kyougen: Five Ceremonial Plays will see its DMG increased by 4% per point of difference between the max amount of Kuugoryoku Points contrasted with Kuugoryoku's present capacity when using this skill.\nThrough this method, you can increase Kyougen: Five Ceremonial Plays's DMG by a maximum of 200%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Sanban: Moonflower Kusemai: Increases the Level of Kyougen: Five Ceremonial Plays by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Yonban: Set Adrift into Spring: When casting Hanega: Song of the Wind, should the Ascension Talent \"Jade-Claimed Flower\" be triggered, the character will gain buffs in correspondence to the contacted Elemental Type(s), and also obtain a random untriggered buff. A maximum of 3 such corresponding elemental buffs can exist simultaneously.\nYou must first unlock the Ascension Talent \"Jade-Claimed Flower.\""
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Matsuban: Ancient Illuminator From Abroad: Increases the Level of Hanega: Song of the Wind by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Shugen: The Curtains' Melancholic Sway: When the Wanderer actively hits an opponent with Kuugo: Fushoudan while in the Windfavored state, the following effects will occur:\n·Deals an additional instance of Kuugo: Fushoudan at the position hit, dealing 40% of the attack's original DMG. This DMG will be considered Normal Attack DMG.\n·When the Wanderer falls below 40 Kuugoryoku Points, restores 4 Points to him. Kuugoryoku Points can be restored in this manner once every 0.2s. This restoration can occur up to 5 times within one Windfavored duration."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

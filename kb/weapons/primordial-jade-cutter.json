@@ -1,0 +1,47 @@
+{
+  "id": "primordial-jade-cutter",
+  "name": "Primordial Jade Cutter",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Protector's Virtue\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: HP increased by 20%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "sword",
+  "rarity": 5,
+  "releaseVersion": "1.3",
+  "baseAtk": {
+    "lv90": 541.829758
+  },
+  "substat": {
+    "stat": "critRate",
+    "lv90": 0.441024
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Protector's Virtue",
+    "text": "HP increased by 20%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.",
+    "effects": []
+  },
+  "needsHook": false
+}

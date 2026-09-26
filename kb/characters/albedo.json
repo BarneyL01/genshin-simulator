@@ -1,0 +1,660 @@
+{
+  "id": "albedo",
+  "name": "Albedo",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/albedo",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/albedo-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "geo",
+  "weaponType": "sword",
+  "releaseVersion": "1.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13225.583558400001,
+      "atk": 251.13729899999998,
+      "def": 876.1519817999999
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.geo",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.367392,
+            0.397296,
+            0.4272,
+            0.46992,
+            0.499824,
+            0.534,
+            0.580992,
+            0.627984,
+            0.674976,
+            0.72624,
+            0.78498,
+            0.854058,
+            0.923136,
+            0.992215,
+            1.067573
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 14,
+              "charged": 23,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.367392,
+            0.397296,
+            0.4272,
+            0.46992,
+            0.499824,
+            0.534,
+            0.580992,
+            0.627984,
+            0.674976,
+            0.72624,
+            0.78498,
+            0.854058,
+            0.923136,
+            0.992215,
+            1.067573
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 22,
+              "charged": 21,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.474548,
+            0.513174,
+            0.5518,
+            0.60698,
+            0.645606,
+            0.68975,
+            0.750448,
+            0.811146,
+            0.871844,
+            0.93806,
+            1.013932,
+            1.103159,
+            1.192385,
+            1.281611,
+            1.378948
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "charged": 41,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.49751,
+            0.538005,
+            0.5785,
+            0.63635,
+            0.676845,
+            0.723125,
+            0.78676,
+            0.850395,
+            0.91403,
+            0.98345,
+            1.062994,
+            1.156537,
+            1.250081,
+            1.343624,
+            1.445671
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 34,
+              "charged": 36,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.620739,
+            0.671265,
+            0.72179,
+            0.793969,
+            0.844494,
+            0.902238,
+            0.981634,
+            1.061031,
+            1.140428,
+            1.227043,
+            1.326289,
+            1.443003,
+            1.559716,
+            1.676429,
+            1.803753
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 62,
+              "charged": 62,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.473,
+            0.5115,
+            0.55,
+            0.605,
+            0.6435,
+            0.6875,
+            0.748,
+            0.8085,
+            0.869,
+            0.935,
+            1.010625,
+            1.09956,
+            1.188495,
+            1.27743,
+            1.37445
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "skill": 34,
+              "burst": 34,
+              "swap": 33,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ],
+          "extraMv": [
+            [
+              0.602,
+              0.651,
+              0.7,
+              0.77,
+              0.819,
+              0.875,
+              0.952,
+              1.029,
+              1.106,
+              1.19,
+              1.28625,
+              1.39944,
+              1.51263,
+              1.62582,
+              1.7493
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.304,
+            1.4018,
+            1.4996,
+            1.63,
+            1.7278,
+            1.8256,
+            1.956,
+            2.0864,
+            2.2168,
+            2.3472,
+            2.4776,
+            2.608,
+            2.771,
+            2.934,
+            3.097
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Transient Blossom",
+          "mv": [
+            1.336,
+            1.4362,
+            1.5364,
+            1.67,
+            1.7702,
+            1.8704,
+            2.004,
+            2.1376,
+            2.2712,
+            2.4048,
+            2.5384,
+            2.672,
+            2.839,
+            3.006,
+            3.173
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 240,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "geo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Burst",
+          "mv": [
+            3.672,
+            3.9474,
+            4.2228,
+            4.59,
+            4.8654,
+            5.1408,
+            5.508,
+            5.8752,
+            6.2424,
+            6.6096,
+            6.9768,
+            7.344,
+            7.803,
+            8.262,
+            8.721
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 75,
+            "cancel": {
+              "dash": 95,
+              "jump": 94,
+              "swap": 93,
+              "default": 96
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fatal Blossom",
+          "mv": [
+            0.72,
+            0.774,
+            0.828,
+            0.9,
+            0.954,
+            1.008,
+            1.08,
+            1.152,
+            1.224,
+            1.296,
+            1.368,
+            1.44,
+            1.53,
+            1.62,
+            1.71
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 78,
+            "cancel": {
+              "dash": 95,
+              "jump": 94,
+              "swap": 93,
+              "default": 96
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "albedo.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Calcite Might: Transient Blossoms generated by Abiogenesis: Solar Isotoma deal 25% more DMG to opponents whose HP is below 50%."
+    },
+    {
+      "id": "albedo.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Homuncular Nature: Using Rite of Progeniture: Tectonic Tide increases the Elemental Mastery of nearby party members by 125 for 10s."
+    },
+    {
+      "id": "albedo.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Flash of Genius: When Albedo crafts Weapon Ascension Materials, he has a 10% chance to receive double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Flower of Eden: Transient Blossoms generated by Albedo's Abiogenesis: Solar Isotoma regenerate 1.2 Energy for Albedo."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Opening of Phanerozoic: Transient Blossoms generated by Abiogenesis: Solar Isotoma grant Albedo Fatal Reckoning for 30s:\n·Unleashing Rite of Progeniture: Tectonic Tide consumes all stacks of Fatal Reckoning. Each stack of Fatal Reckoning consumed increases the DMG dealt by Fatal Blossoms and Rite of Progeniture: Tectonic Tide's burst DMG by 30% of Albedo's DEF.\n·This effect stacks up to 4 times."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Grace of Helios: Increases the Level of Abiogenesis: Solar Isotoma by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Descent of Divinity: Active party members within the Solar Isotoma field have their Plunging Attack DMG increased by 30%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Tide of Hadean: Increases the Level of Rite of Progeniture: Tectonic Tide by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Dust of Purification: Active party members within the Solar Isotoma field who are protected by a shield created by Crystallize, or when Moondrifts are present within the Solar Isotoma field, have their DMG increased by 17%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

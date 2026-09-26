@@ -1,0 +1,519 @@
+{
+  "id": "klee",
+  "name": "Klee",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/klee",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/klee-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "catalyst",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10286.5650232,
+      "atk": 310.931894,
+      "def": 614.843496
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.pyro",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.7216,
+            0.77572,
+            0.82984,
+            0.902,
+            0.95612,
+            1.01024,
+            1.0824,
+            1.15456,
+            1.22672,
+            1.29888,
+            1.373926,
+            1.472064,
+            1.570202,
+            1.668339,
+            1.766477
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 31,
+              "charged": 23,
+              "skill": 6,
+              "burst": 6,
+              "dash": 6,
+              "jump": 6,
+              "swap": 16,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.624,
+            0.6708,
+            0.7176,
+            0.78,
+            0.8268,
+            0.8736,
+            0.936,
+            0.9984,
+            1.0608,
+            1.1232,
+            1.188096,
+            1.27296,
+            1.357824,
+            1.442688,
+            1.527552
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 38,
+              "charged": 32,
+              "skill": 2,
+              "burst": 2,
+              "dash": 2,
+              "jump": 2,
+              "swap": 23,
+              "default": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.8992,
+            0.96664,
+            1.03408,
+            1.124,
+            1.19144,
+            1.25888,
+            1.3488,
+            1.43872,
+            1.52864,
+            1.61856,
+            1.712077,
+            1.834368,
+            1.956659,
+            2.07895,
+            2.201242
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 77,
+              "charged": 49,
+              "skill": 37,
+              "burst": 37,
+              "dash": 37,
+              "jump": 37,
+              "swap": 37,
+              "default": 77
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.5736,
+            1.69162,
+            1.80964,
+            1.967,
+            2.08502,
+            2.20304,
+            2.3604,
+            2.51776,
+            2.67512,
+            2.83248,
+            2.996134,
+            3.210144,
+            3.424154,
+            3.638163,
+            3.852173
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 76,
+            "cancel": {
+              "normal": 59,
+              "charged": 59,
+              "skill": 59,
+              "burst": 59,
+              "dash": 31,
+              "jump": 30,
+              "swap": 104,
+              "default": 113
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Jumpy Dumpty",
+          "mv": [
+            0.952,
+            1.0234,
+            1.0948,
+            1.19,
+            1.2614,
+            1.3328,
+            1.428,
+            1.5232,
+            1.6184,
+            1.7136,
+            1.8088,
+            1.904,
+            2.023,
+            2.142,
+            2.261
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 66,
+              "charged": 69,
+              "skill": 68,
+              "burst": 34,
+              "dash": 37,
+              "jump": 35,
+              "swap": 74,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Mine",
+          "mv": [
+            0.328,
+            0.3526,
+            0.3772,
+            0.41,
+            0.4346,
+            0.4592,
+            0.492,
+            0.5248,
+            0.5576,
+            0.5904,
+            0.6232,
+            0.656,
+            0.697,
+            0.738,
+            0.779
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 66,
+              "charged": 69,
+              "skill": 68,
+              "burst": 34,
+              "dash": 37,
+              "jump": 35,
+              "swap": 74,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Sparks 'n' Splash",
+          "mv": [
+            0.4264,
+            0.45838,
+            0.49036,
+            0.533,
+            0.56498,
+            0.59696,
+            0.6396,
+            0.68224,
+            0.72488,
+            0.76752,
+            0.81016,
+            0.8528,
+            0.9061,
+            0.9594,
+            1.0127
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 146,
+            "cancel": {
+              "dash": 103,
+              "jump": 104,
+              "swap": 101,
+              "default": 139
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/klee/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "klee.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Pounding Surprise: When Jumpy Dumpty and Normal Attacks deal DMG, Klee has a 50% chance to obtain an Explosive Spark.\nThis Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals 50% increased DMG."
+    },
+    {
+      "id": "klee.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Sparkling Burst: When Klee's Charged Attack results in a CRIT Hit, all party members gain 2 Elemental Energy."
+    },
+    {
+      "id": "klee.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "All Of My Treasures!: Displays the location of nearby resources unique to Mondstadt on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Chained Reactions: Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to 120% of Sparks 'n' Splash's DMG."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Explosive Frags: Being hit by Jumpy Dumpty's mines decreases opponents' DEF by 23% for 10s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Exquisite Compound: Increases the Level of Jumpy Dumpty by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sparkly Explosion: If Klee leaves the field during the duration of Sparks 'n' Splash, her departure triggers an explosion that deals 555% of her ATK as AoE Pyro DMG."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Nova Burst: Increases the Level of Sparks 'n' Splash by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Blazing Delight: While under the effects of Sparks 'n' Splash, Klee will regenerate 3 Energy for all members of the party (excluding Klee) every 3s.\nWhen Sparks 'n' Splash is used, all party members will gain a 10% Pyro DMG Bonus for 25s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

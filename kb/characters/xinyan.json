@@ -1,0 +1,459 @@
+{
+  "id": "xinyan",
+  "name": "Xinyan",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/xinyan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "pyro",
+  "weaponType": "claymore",
+  "releaseVersion": "1.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11201.1621003,
+      "atk": 248.50471064000004,
+      "def": 798.55018425
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.7654,
+            0.8277,
+            0.89,
+            0.979,
+            1.0413,
+            1.1125,
+            1.2104,
+            1.3083,
+            1.4062,
+            1.513,
+            1.6198,
+            1.7266,
+            1.8334,
+            1.9402,
+            2.047
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 33,
+              "charged": 33,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.7396,
+            0.7998,
+            0.86,
+            0.946,
+            1.0062,
+            1.075,
+            1.1696,
+            1.2642,
+            1.3588,
+            1.462,
+            1.5652,
+            1.6684,
+            1.7716,
+            1.8748,
+            1.978
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 39,
+              "charged": 39,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.9546,
+            1.0323,
+            1.11,
+            1.221,
+            1.2987,
+            1.3875,
+            1.5096,
+            1.6317,
+            1.7538,
+            1.887,
+            2.0202,
+            2.1534,
+            2.2866,
+            2.4198,
+            2.553
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 47,
+            "cancel": {
+              "normal": 64,
+              "charged": 64,
+              "skill": 47,
+              "burst": 47,
+              "dash": 47,
+              "jump": 47,
+              "swap": 47,
+              "default": 64
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.15842,
+            1.25271,
+            1.347,
+            1.4817,
+            1.57599,
+            1.68375,
+            1.83192,
+            1.98009,
+            2.12826,
+            2.2899,
+            2.45154,
+            2.61318,
+            2.77482,
+            2.93646,
+            3.0981
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 94,
+              "charged": 94,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 94
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Swing",
+          "mv": [
+            1.696,
+            1.8232,
+            1.9504,
+            2.12,
+            2.2472,
+            2.3744,
+            2.544,
+            2.7136,
+            2.8832,
+            3.0528,
+            3.2224,
+            3.392,
+            3.604,
+            3.816,
+            4.028
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 53,
+              "burst": 54,
+              "dash": 54,
+              "jump": 53,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.408,
+            3.6636,
+            3.9192,
+            4.26,
+            4.5156,
+            4.7712,
+            5.112,
+            5.4528,
+            5.7936,
+            6.1344,
+            6.4752,
+            6.816,
+            7.242,
+            7.668,
+            8.094
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 86,
+              "swap": 86,
+              "default": 87
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xinyan/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 4
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "xinyan.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "\"The Show Goes On, Even Without an Audience...\": Decreases the number of opponents Sweeping Fervor must hit to trigger each level of shielding.\n·Shield Level 2: Lead-In requirement reduced to 1 opponent hit.\n·Shield Level 3: Rave requirement reduced to 2 opponents hit or more."
+    },
+    {
+      "id": "xinyan.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "\"...Now That's Rock 'N' Roll!\": Characters shielded by Sweeping Fervor deal 15% increased Physical DMG."
+    },
+    {
+      "id": "xinyan.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "A Rad Recipe: When a Perfect Cooking is achieved on a DEF-boosting dish, Xinyan has a 12% chance to obtain double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Fatal Acceleration: Upon scoring a CRIT Hit, increases ATK SPD of Xinyan's Normal and Charged Attacks by 12% for 5s.\nCan only occur once every 5s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Impromptu Opening: Riff Revolution's Physical DMG has its CRIT Rate increased by 100%, and will form a shield at Shield Level 3: Rave when cast."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Double-Stop: Increases the Level of Sweeping Fervor by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Wildfire Rhythm: Sweeping Fervor's swing DMG decreases opponent's Physical RES by 15% for 12s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Screamin' for an Encore: Increases the Level of Riff Revolution by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Rockin' in a Flaming World: Decreases the Stamina Consumption of Xinyan's Charged Attacks by 30%. Additionally, Xinyan's Charged Attacks gain an ATK Bonus equal to 50% of her DEF."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

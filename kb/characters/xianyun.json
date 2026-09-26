@@ -1,0 +1,683 @@
+{
+  "id": "xianyun",
+  "name": "Xianyun",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/xianyun",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "4.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10409.023958000002,
+      "atk": 334.849732,
+      "def": 572.57300565
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.403024,
+            0.433251,
+            0.463478,
+            0.50378,
+            0.534007,
+            0.564234,
+            0.604536,
+            0.644838,
+            0.685141,
+            0.725443,
+            0.765746,
+            0.806048,
+            0.856426,
+            0.906804,
+            0.957182
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 17,
+              "charged": 17,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.388552,
+            0.417693,
+            0.446835,
+            0.48569,
+            0.514831,
+            0.543973,
+            0.582828,
+            0.621683,
+            0.660538,
+            0.699394,
+            0.738249,
+            0.777104,
+            0.825673,
+            0.874242,
+            0.922811
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 24,
+              "charged": 23,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.488776,
+            0.525434,
+            0.562092,
+            0.61097,
+            0.647628,
+            0.684286,
+            0.733164,
+            0.782042,
+            0.830919,
+            0.879797,
+            0.928674,
+            0.977552,
+            1.038649,
+            1.099746,
+            1.160843
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 40,
+              "charged": 40,
+              "skill": 34,
+              "burst": 34,
+              "dash": 34,
+              "jump": 34,
+              "swap": 34,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.649168,
+            0.697856,
+            0.746543,
+            0.81146,
+            0.860148,
+            0.908835,
+            0.973752,
+            1.038669,
+            1.103586,
+            1.168502,
+            1.233419,
+            1.298336,
+            1.379482,
+            1.460628,
+            1.541774
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 91,
+              "charged": 93,
+              "skill": 38,
+              "burst": 38,
+              "dash": 38,
+              "jump": 38,
+              "swap": 38,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.2312,
+            1.32354,
+            1.41588,
+            1.539,
+            1.63134,
+            1.72368,
+            1.8468,
+            1.96992,
+            2.09304,
+            2.21616,
+            2.33928,
+            2.4624,
+            2.6163,
+            2.7702,
+            2.9241
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 56,
+            "cancel": {
+              "normal": 62,
+              "charged": 61,
+              "skill": 62,
+              "burst": 61,
+              "dash": 56,
+              "jump": 56,
+              "swap": 56,
+              "default": 73
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.248,
+            0.2666,
+            0.2852,
+            0.31,
+            0.3286,
+            0.3472,
+            0.372,
+            0.3968,
+            0.4216,
+            0.4464,
+            0.4712,
+            0.496,
+            0.527,
+            0.558,
+            0.589
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        },
+        {
+          "name": "Driftcloud Wave 1",
+          "mv": [
+            1.16,
+            1.247,
+            1.334,
+            1.45,
+            1.537,
+            1.624,
+            1.74,
+            1.856,
+            1.972,
+            2.088,
+            2.204,
+            2.32,
+            2.465,
+            2.61,
+            2.755
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        },
+        {
+          "name": "Driftcloud Wave 2",
+          "mv": [
+            1.48,
+            1.591,
+            1.702,
+            1.85,
+            1.961,
+            2.072,
+            2.22,
+            2.368,
+            2.516,
+            2.664,
+            2.812,
+            2.96,
+            3.145,
+            3.33,
+            3.515
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        },
+        {
+          "name": "Driftcloud Wave 3",
+          "mv": [
+            3.376,
+            3.6292,
+            3.8824,
+            4.22,
+            4.4732,
+            4.7264,
+            5.064,
+            5.4016,
+            5.7392,
+            6.0768,
+            6.4144,
+            6.752,
+            7.174,
+            7.596,
+            8.018
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 0
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.08,
+            1.161,
+            1.242,
+            1.35,
+            1.431,
+            1.512,
+            1.62,
+            1.728,
+            1.836,
+            1.944,
+            2.052,
+            2.16,
+            2.295,
+            2.43,
+            2.565
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 75,
+            "cancel": {
+              "normal": 101,
+              "charged": 102,
+              "skill": 101,
+              "dash": 101,
+              "swap": 99,
+              "default": 103
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Starwicker",
+          "mv": [
+            0.392,
+            0.4214,
+            0.4508,
+            0.49,
+            0.5194,
+            0.5488,
+            0.588,
+            0.6272,
+            0.6664,
+            0.7056,
+            0.7448,
+            0.784,
+            0.833,
+            0.882,
+            0.931
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 78,
+            "cancel": {
+              "normal": 101,
+              "charged": 102,
+              "skill": 101,
+              "dash": 101,
+              "swap": 99,
+              "default": 103
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xianyun/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "xianyun.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Galefeather Pursuit: Each opponent hit by Driftcloud Waves from White Clouds at Dawn will grant all nearby party members 1 stack of Storm Pinion for 20s. Max 4 stacks. These will cause the characters' Plunging Attack CRIT Rate to increase by 4%/6%/8%/10% respectively.\nEach Storm Pinion created by hitting an opponent has an independent duration."
+    },
+    {
+      "id": "xianyun.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Consider, the Adeptus in Her Realm: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by 200% of Xianyun's ATK. The maximum DMG increase that can be achieved this way is 9,000.\nEach Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every 0.4s."
+    },
+    {
+      "id": "xianyun.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Crane Form: Increases gliding SPD for your own party members by 15%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Purifying Wind: White Clouds at Dawn gains 1 additional charge."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Aloof From the World: After using a Skyladder from White Clouds at Dawn, Xianyun's ATK will be increased by 20% for 15s.\nAdditionally, the effects of the Ascension Talent \"Consider, the Adeptus in Her Realm\" will be enhanced: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by 400% of Xianyun's ATK. The maximum DMG increase that can be achieved this way is 18,000.\nEach Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can"
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Creations of Star and Moon: Increases the Level of Stars Gather at Dusk by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Mystery Millet Gourmet: After using Skyladder 1/2/3 times during one White Clouds at Dawn Cloud Transmogrification state, when a Driftcloud Wave unleashed during that instance hits an opponent, it will heal all nearby party members for 50%/80%/150% of Xianyun's ATK. This effect can be triggered once every 5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Astride Rose-Colored Clouds: Increases the Level of White Clouds at Dawn by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "They Call Her Cloud Retainer: After Xianyun uses 1/2/3 Skyladders within one Cloud Transmogrification caused by White Clouds at Dawn, the CRIT DMG of a Driftcloud Wave created in this instance of Cloud Transmogrification will be increased by 15%/35%/70%.\nWithin 16s after Xianyun has used Stars Gather at Dusk, White Clouds at Dawn will not enter CD. This effect will be canceled once she has used White Clouds at Dawn 8 times."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

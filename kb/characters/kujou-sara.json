@@ -1,0 +1,605 @@
+{
+  "id": "kujou-sara",
+  "name": "Kujou Sara",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/kujou-sara",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/sara-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 4,
+  "element": "electro",
+  "weaponType": "bow",
+  "releaseVersion": "2.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9569.925258899999,
+      "atk": 195.40541564,
+      "def": 627.919803
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.36894,
+            0.39897,
+            0.429,
+            0.4719,
+            0.50193,
+            0.53625,
+            0.58344,
+            0.63063,
+            0.67782,
+            0.7293,
+            0.78078,
+            0.83226,
+            0.88374,
+            0.93522,
+            0.9867
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 25,
+              "charged": 25,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.387,
+            0.4185,
+            0.45,
+            0.495,
+            0.5265,
+            0.5625,
+            0.612,
+            0.6615,
+            0.711,
+            0.765,
+            0.819,
+            0.873,
+            0.927,
+            0.981,
+            1.035
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 28,
+              "charged": 28,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.48504,
+            0.52452,
+            0.564,
+            0.6204,
+            0.65988,
+            0.705,
+            0.76704,
+            0.82908,
+            0.89112,
+            0.9588,
+            1.02648,
+            1.09416,
+            1.16184,
+            1.22952,
+            1.2972
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 37,
+              "charged": 37,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.50396,
+            0.54498,
+            0.586,
+            0.6446,
+            0.68562,
+            0.7325,
+            0.79696,
+            0.86142,
+            0.92588,
+            0.9962,
+            1.06652,
+            1.13684,
+            1.20716,
+            1.27748,
+            1.3478
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 38,
+              "charged": 38,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.5805,
+            0.62775,
+            0.675,
+            0.7425,
+            0.78975,
+            0.84375,
+            0.918,
+            0.99225,
+            1.0665,
+            1.1475,
+            1.2285,
+            1.3095,
+            1.3905,
+            1.4715,
+            1.5525
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 45,
+              "charged": 45,
+              "skill": 32,
+              "burst": 32,
+              "dash": 32,
+              "jump": 32,
+              "swap": 32,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24,
+            1.333,
+            1.426,
+            1.55,
+            1.643,
+            1.736,
+            1.86,
+            1.984,
+            2.108,
+            2.232,
+            2.356,
+            2.48,
+            2.635,
+            2.79,
+            2.945
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "skill": 29,
+              "burst": 29,
+              "dash": 14,
+              "jump": 15,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Tengu Juurai: Ambush",
+          "mv": [
+            1.2576,
+            1.35192,
+            1.44624,
+            1.572,
+            1.66632,
+            1.76064,
+            1.8864,
+            2.01216,
+            2.13792,
+            2.26368,
+            2.38944,
+            2.5152,
+            2.6724,
+            2.8296,
+            2.9868
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 29,
+              "aim": 30,
+              "burst": 32,
+              "jump": 51,
+              "swap": 50,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Tengu Juurai: Titanbreaker",
+          "mv": [
+            4.096,
+            4.4032,
+            4.7104,
+            5.12,
+            5.4272,
+            5.7344,
+            6.144,
+            6.5536,
+            6.9632,
+            7.3728,
+            7.7824,
+            8.192,
+            8.704,
+            9.216,
+            9.728
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 47,
+            "cancel": {
+              "normal": 78,
+              "skill": 57,
+              "dash": 58,
+              "jump": 58,
+              "swap": 56,
+              "default": 80
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tengu Juurai: Stormcluster",
+          "mv": [
+            0.3412,
+            0.36679,
+            0.39238,
+            0.4265,
+            0.45209,
+            0.47768,
+            0.5118,
+            0.54592,
+            0.58004,
+            0.61416,
+            0.64828,
+            0.6824,
+            0.72505,
+            0.7677,
+            0.81035
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 50,
+            "cancel": {
+              "normal": 78,
+              "skill": 57,
+              "dash": 58,
+              "jump": 58,
+              "swap": 56,
+              "default": 80
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sara/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kujou-sara.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Immovable Will: While in the Crowfeather Cover state provided by Tengu Stormcall, Aimed Shot charge times are decreased by 60%."
+    },
+    {
+      "id": "kujou-sara.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Decorum: When Tengu Juurai: Ambush hits opponents, Kujou Sara will restore 1.2 Energy to all party members for every 100% Energy Recharge she has. This effect can be triggered once every 3s."
+    },
+    {
+      "id": "kujou-sara.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Land Survey: When dispatched on an expedition in Inazuma, time consumed is reduced by 25%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Crow's Eye: When Tengu Juurai grants characters ATK Bonuses or hits opponents, the CD of Tengu Stormcall is decreased by 1s.\nThis effect can be triggered once every 3s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Dark Wings: Unleashing Tengu Stormcall will leave a weaker Crowfeather at Kujou Sara's original position that will deal 30% of its original DMG."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The War Within: Increases the Level of Subjugation: Koukou Sendou by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Conclusive Proof: The number of Tengu Juurai: Stormcluster released by Subjugation: Koukou Sendou is increased to 6."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Spellsinger: Increases the Level of Tengu Stormcall by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Sin of Pride: The Electro DMG of characters who have had their ATK increased by Tengu Juurai has its CRIT DMG increased by 60%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "er",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

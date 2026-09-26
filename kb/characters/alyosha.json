@@ -1,0 +1,565 @@
+{
+  "id": "alyosha",
+  "name": "Alyosha",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/alyosha",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "electro",
+  "weaponType": "polearm",
+  "releaseVersion": "7.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 11962.4064649,
+      "atk": 265.49649,
+      "def": 702.99717075
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.2667
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.47816,
+            0.51708,
+            0.556,
+            0.6116,
+            0.65052,
+            0.695,
+            0.75616,
+            0.81732,
+            0.87848,
+            0.9452,
+            1.01192,
+            1.07864,
+            1.14536,
+            1.21208,
+            1.2788
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 11,
+              "charged": 17,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.4816,
+            0.5208,
+            0.56,
+            0.616,
+            0.6552,
+            0.7,
+            0.7616,
+            0.8232,
+            0.8848,
+            0.952,
+            1.0192,
+            1.0864,
+            1.1536,
+            1.2208,
+            1.288
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 21,
+              "charged": 26,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.34228,
+            0.37014,
+            0.398,
+            0.4378,
+            0.46566,
+            0.4975,
+            0.54128,
+            0.58506,
+            0.62884,
+            0.6766,
+            0.72436,
+            0.77212,
+            0.81988,
+            0.86764,
+            0.9154
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 31,
+              "charged": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ],
+          "extraMv": [
+            [
+              0.3182,
+              0.3441,
+              0.37,
+              0.407,
+              0.4329,
+              0.4625,
+              0.5032,
+              0.5439,
+              0.5846,
+              0.629,
+              0.6734,
+              0.7178,
+              0.7622,
+              0.8066,
+              0.851
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.75852,
+            0.82026,
+            0.882,
+            0.9702,
+            1.03194,
+            1.1025,
+            1.19952,
+            1.29654,
+            1.39356,
+            1.4994,
+            1.60524,
+            1.71108,
+            1.81692,
+            1.92276,
+            2.0286
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.11026,
+            1.20063,
+            1.291,
+            1.4201,
+            1.51047,
+            1.61375,
+            1.75576,
+            1.89777,
+            2.03978,
+            2.1947,
+            2.34962,
+            2.50454,
+            2.65946,
+            2.81438,
+            2.9693
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 42,
+              "charged": 53,
+              "skill": 42,
+              "burst": 42,
+              "dash": 37,
+              "jump": 37,
+              "swap": 58,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press",
+          "mv": [
+            2.8672,
+            3.08224,
+            3.29728,
+            3.584,
+            3.79904,
+            4.01408,
+            4.3008,
+            4.58752,
+            4.87424,
+            5.16096,
+            5.44768,
+            5.7344,
+            6.0928,
+            6.4512,
+            6.8096
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Fulgurite Hunting Field",
+          "mv": [
+            0.7496,
+            0.80582,
+            0.86204,
+            0.937,
+            0.99322,
+            1.04944,
+            1.1244,
+            1.19936,
+            1.27432,
+            1.34928,
+            1.42424,
+            1.4992,
+            1.5929,
+            1.6866,
+            1.7803
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 73,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Tugarin",
+          "mv": [
+            0.502232,
+            0.539899,
+            0.577567,
+            0.62779,
+            0.665457,
+            0.703125,
+            0.753348,
+            0.803571,
+            0.853794,
+            0.904018,
+            0.954241,
+            1.004464,
+            1.067243,
+            1.130022,
+            1.192801
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 76,
+            "cancel": {
+              "normal": 113,
+              "charged": 124,
+              "dash": 111,
+              "jump": 113,
+              "swap": 145,
+              "default": 146
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "alyosha.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Awakened by the Baying Hounds: When **Tugarin** attacks, it will also restore HP to nearby active characters at 120% of Alyosha's ATK."
+    },
+    {
+      "id": "alyosha.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Suffer the Winter Wheat Will: Increases the DMG Alyosha deals with his Elemental Skill and Elemental Burst by 0.35% for every 1% of his Energy Recharge. Up to a 70% increase can be obtained in this way."
+    },
+    {
+      "id": "alyosha.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Into the Fray: Alyosha will enter the Radiance: Stellar-Conduct state when inside a **Polestar Field**.\nRadiance: Stellar-Conduct: The Hunter's Precision effect obtained when the **Hunter's Mark** is activated will also increase Stellar-Conduct reaction DMG dealt by the character when on the field by 20%."
+    },
+    {
+      "id": "alyosha.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Treetop Watch: Displays the location of nearby resources unique to Snezhnaya on the mini-map, and this effect also applies in the Shadow Realm."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Frostvale Thunderclap: Alyosha regenerates 15 Elemental Energy when nearby party members trigger an Electro-related reaction on an opponent. This effect can trigger once every 18s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Howl From Afar: The duration of the Elemental Burst Hunter's Advance is extended by 6s.\nAdditionally, each time **Tugarin** attacks the opponent, he will also apply the **Hunter's Mark** to a target. This effect does not activate existing Hunter's Marks."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Friendly Call: Increases the Level of the Elemental Skill Thunderbolt Strike by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Harvest the Spoils: When **Tugarin** attacks, he will also restore 60% of Alyosha's ATK as HP to the nearby party member with the lowest HP by percentage."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "When the Nightbird Falls Silent: Increases the Level of the Elemental Burst Hunter's Advance by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Standard Reclaimed: The Hunter's Precision effect obtained from activating a **Hunter's Mark** can now stack, max 2 stacks. When the stack count reaches 2, characters affected by Hunter's Precision will also have their Elemental Mastery increased by 100 if they are on the field."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

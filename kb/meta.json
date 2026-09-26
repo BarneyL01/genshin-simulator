@@ -1,6 +1,6 @@
 {
   "gameVersion": "7.1",
-  "lastSync": null,
+  "lastSync": "2026-09-25",
   "sources": {
     "genshin-db": {
       "status": "ok",
@@ -24,9 +24,9 @@
     }
   },
   "counts": {
-    "characters": 0,
-    "weapons": 0,
-    "artifacts": 0,
-    "teams": 0
+    "characters": 120,
+    "weapons": 243,
+    "artifacts": 59,
+    "teams": 2
   }
 }

@@ -1,0 +1,672 @@
+{
+  "id": "freminet",
+  "name": "Freminet",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/freminet",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 11/11. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill, skill hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "cryo",
+  "weaponType": "claymore",
+  "releaseVersion": "4.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12071.155412,
+      "atk": 254.87663039999998,
+      "def": 708.45734295
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.842379,
+            0.910944,
+            0.97951,
+            1.077461,
+            1.146027,
+            1.224387,
+            1.332134,
+            1.43988,
+            1.547626,
+            1.665167,
+            1.782708,
+            1.900249,
+            2.017791,
+            2.135332,
+            2.252873
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 32,
+              "charged": 47,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.806757,
+            0.872424,
+            0.93809,
+            1.031899,
+            1.097565,
+            1.172613,
+            1.275802,
+            1.378992,
+            1.482182,
+            1.594753,
+            1.707324,
+            1.819895,
+            1.932465,
+            2.045036,
+            2.157607
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 33,
+              "charged": 49,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            1.01904,
+            1.101985,
+            1.18493,
+            1.303423,
+            1.386368,
+            1.481162,
+            1.611505,
+            1.741847,
+            1.872189,
+            2.014381,
+            2.156573,
+            2.298764,
+            2.440956,
+            2.583147,
+            2.725339
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 59,
+              "charged": 65,
+              "skill": 31,
+              "burst": 31,
+              "dash": 31,
+              "jump": 31,
+              "swap": 31,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.238047,
+            1.338819,
+            1.43959,
+            1.583549,
+            1.68432,
+            1.799487,
+            1.957842,
+            2.116197,
+            2.274552,
+            2.447303,
+            2.620054,
+            2.792805,
+            2.965555,
+            3.138306,
+            3.311057
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 42,
+            "cancel": {
+              "normal": 86,
+              "charged": 86,
+              "skill": 42,
+              "burst": 42,
+              "dash": 42,
+              "jump": 42,
+              "swap": 42,
+              "default": 86
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Upward Thrust",
+          "mv": [
+            0.8304,
+            0.89268,
+            0.95496,
+            1.038,
+            1.10028,
+            1.16256,
+            1.2456,
+            1.32864,
+            1.41168,
+            1.49472,
+            1.57776,
+            1.6608,
+            1.7646,
+            1.8684,
+            1.9722
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Frost",
+          "mv": [
+            0.0716,
+            0.07697,
+            0.08234,
+            0.0895,
+            0.09487,
+            0.10024,
+            0.1074,
+            0.11456,
+            0.12172,
+            0.12888,
+            0.13604,
+            0.1432,
+            0.15215,
+            0.1611,
+            0.17005
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 29,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Level 0 Shattering Pressure",
+          "mv": [
+            2.0048,
+            2.15516,
+            2.30552,
+            2.506,
+            2.65636,
+            2.80672,
+            3.0072,
+            3.20768,
+            3.40816,
+            3.60864,
+            3.80912,
+            4.0096,
+            4.2602,
+            4.5108,
+            4.7614
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 32,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Level 1 Shattering Pressure 1",
+          "mv": [
+            1.0024,
+            1.07758,
+            1.15276,
+            1.253,
+            1.32818,
+            1.40336,
+            1.5036,
+            1.60384,
+            1.70408,
+            1.80432,
+            1.90456,
+            2.0048,
+            2.1301,
+            2.2554,
+            2.3807
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Level 1 Shattering Pressure 2",
+          "mv": [
+            0.48688,
+            0.523396,
+            0.559912,
+            0.6086,
+            0.645116,
+            0.681632,
+            0.73032,
+            0.779008,
+            0.827696,
+            0.876384,
+            0.925072,
+            0.97376,
+            1.03462,
+            1.09548,
+            1.15634
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Spiritbreath Thorn",
+          "mv": [
+            0.144,
+            0.1548,
+            0.1656,
+            0.18,
+            0.1908,
+            0.2016,
+            0.216,
+            0.2304,
+            0.2448,
+            0.2592,
+            0.2736,
+            0.288,
+            0.306,
+            0.324,
+            0.342
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 50,
+              "burst": 50,
+              "dash": 39,
+              "jump": 38,
+              "swap": 49,
+              "default": 52
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            3.184,
+            3.4228,
+            3.6616,
+            3.98,
+            4.2188,
+            4.4576,
+            4.776,
+            5.0944,
+            5.4128,
+            5.7312,
+            6.0496,
+            6.368,
+            6.766,
+            7.164,
+            7.562
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 52,
+              "skill": 52,
+              "dash": 53,
+              "jump": 52,
+              "swap": 51,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/freminet/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "freminet.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Saturation Deep Dive: When Freminet unleashes Pressurized Floe: Shattering Pressure, if Pers Timer has yet to reach Pressure Level 4, the CD of Pressurized Floe will be decreased by 1s."
+    },
+    {
+      "id": "freminet.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Parallel Condensers: When Freminet triggers Shatter against opponents, the DMG dealt by Pressurized Floe: Shattering Pressure will be increased by 40% for 5s."
+    },
+    {
+      "id": "freminet.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Deepwater Navigation: Decreases Aquatic Stamina consumption for your own party members by 35%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Dreams of the Foamy Deep: The CRIT Rate of Pressurized Floe: Shattering Pressure will be increased by 15%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Penguins and the Land of Plenty: Unleashing Pressurized Floe: Shattering Pressure will restore 2 Energy to Freminet. If a Pressure Level 4 Shattering Pressure is unleashed, this will restore 3 Energy."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Song of the Eddies and Bleached Sands: Increases the Level of Normal Attack: Flowing Eddies by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Dance of the Snowy Moon and Flute: After Freminet triggers Frozen, Shatter, Superconduct, or Stellar-Conduct against opponents, his ATK will be increased by 9% for 6s. Max 2 stacks. This can be triggered once every 0.3s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Nights of Hearth and Happiness: Increases the Level of Pressurized Floe by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Moment of Waking and Resolve: After Freminet triggers Frozen, Shatter, Superconduct, or Stellar-Conduct against opponents, his CRIT DMG will be increased by 12% for 6s. Max 3 stacks. This can be triggered once every 0.3s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

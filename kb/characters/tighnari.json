@@ -1,0 +1,510 @@
+{
+  "id": "tighnari",
+  "name": "Tighnari",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/tighnari",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/tighnari-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "bow",
+  "releaseVersion": "3.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10849.87711806,
+      "atk": 267.8797916,
+      "def": 630.2145834
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.dendro",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.44634,
+            0.48267,
+            0.519,
+            0.5709,
+            0.60723,
+            0.64875,
+            0.70584,
+            0.76293,
+            0.82002,
+            0.8823,
+            0.94458,
+            1.00686,
+            1.06914,
+            1.13142,
+            1.1937
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 26,
+              "charged": 26,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.41968,
+            0.45384,
+            0.488,
+            0.5368,
+            0.57096,
+            0.61,
+            0.66368,
+            0.71736,
+            0.77104,
+            0.8296,
+            0.88816,
+            0.94672,
+            1.00528,
+            1.06384,
+            1.1224
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 23,
+              "charged": 23,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.26445,
+            0.285975,
+            0.3075,
+            0.33825,
+            0.359775,
+            0.384375,
+            0.4182,
+            0.452025,
+            0.48585,
+            0.52275,
+            0.55965,
+            0.59655,
+            0.63345,
+            0.67035,
+            0.70725
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 37,
+              "charged": 37,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            25
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.68628,
+            0.74214,
+            0.798,
+            0.8778,
+            0.93366,
+            0.9975,
+            1.08528,
+            1.17306,
+            1.26084,
+            1.3566,
+            1.45236,
+            1.54812,
+            1.64388,
+            1.73964,
+            1.8354
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 28,
+              "burst": 28,
+              "dash": 28,
+              "jump": 28,
+              "swap": 28,
+              "default": 68
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.496,
+            1.6082,
+            1.7204,
+            1.87,
+            1.9822,
+            2.0944,
+            2.244,
+            2.3936,
+            2.5432,
+            2.6928,
+            2.8424,
+            2.992,
+            3.179,
+            3.366,
+            3.553
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 20,
+              "aim": 20,
+              "burst": 22,
+              "dash": 23,
+              "jump": 23,
+              "swap": 21,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Tanglevine Shaft",
+          "mv": [
+            0.5562,
+            0.597915,
+            0.63963,
+            0.69525,
+            0.736965,
+            0.77868,
+            0.8343,
+            0.88992,
+            0.94554,
+            1.00116,
+            1.05678,
+            1.1124,
+            1.181925,
+            1.25145,
+            1.320975
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 112,
+            "cancel": {
+              "normal": 114,
+              "aim": 114,
+              "skill": 117,
+              "dash": 117,
+              "swap": 115,
+              "default": 118
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Secondary Tanglevine Shaft",
+          "mv": [
+            0.6798,
+            0.730785,
+            0.78177,
+            0.84975,
+            0.900735,
+            0.95172,
+            1.0197,
+            1.08768,
+            1.15566,
+            1.22364,
+            1.29162,
+            1.3596,
+            1.444575,
+            1.52955,
+            1.614525
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 115,
+            "cancel": {
+              "normal": 114,
+              "aim": 114,
+              "skill": 117,
+              "dash": 117,
+              "swap": 115,
+              "default": 118
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tighnari/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "tighnari.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Keen Sight: After Tighnari fires a Wreath Arrow, his Elemental Mastery is increased by 50 for 4s."
+    },
+    {
+      "id": "tighnari.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Scholarly Blade: For every point of Elemental Mastery Tighnari possesses, his Charged Attack and Fashioner's Tanglevine Shaft DMG are increased by 0.06%.\nThe maximum DMG Bonus obtainable this way is 60%."
+    },
+    {
+      "id": "tighnari.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Encyclopedic Knowledge: Displays the location of nearby resources unique to Sumeru on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Beginnings Determined at the Roots: Tighnari's Charged Attack CRIT Rate is increased by 15%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Origins Known From the Stem: When there are opponents within the Vijnana-Khanda Field created by Vijnana-Phala Mine, Tighnari gains 20% Dendro DMG Bonus.\nThe effect will last up to 6s if the field's duration ends or if it no longer has opponents within it."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Fortunes Read Amongst the Branches: Increases the Level of Fashioner's Tanglevine Shaft by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Withering Glimpsed in the Leaves: When Fashioner's Tanglevine Shaft is unleashed, all nearby party members gain 60 Elemental Mastery for 8s. If the Fashioner's Tanglevine Shaft triggers a Burning, Bloom, Lunar-Bloom, Quicken, or Spread reaction, their Elemental Mastery will be further increased by 60. This latter case will also refresh the buff state's duration."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Comprehension Amidst the Flowers: Increases the Level of Vijnana-Phala Mine by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Karma Adjudged From the Leaden Fruit: Wreath Arrow's charging time is decreased by 0.9s, and will produce 1 additional Clusterbloom Arrow upon hit. This arrow deals 150% of Tighnari's ATK as DMG."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,514 @@
+{
+  "id": "mona",
+  "name": "Mona",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/mona",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/mona-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "catalyst",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10409.023958000002,
+      "atk": 287.01405600000004,
+      "def": 653.2712145
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.32
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.376,
+            0.4042,
+            0.4324,
+            0.47,
+            0.4982,
+            0.5264,
+            0.564,
+            0.6016,
+            0.6392,
+            0.6768,
+            0.7144,
+            0.752,
+            0.799,
+            0.846,
+            0.893
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 18,
+              "charged": 29,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 23,
+              "charged": 30,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.448,
+            0.4816,
+            0.5152,
+            0.56,
+            0.5936,
+            0.6272,
+            0.672,
+            0.7168,
+            0.7616,
+            0.8064,
+            0.8512,
+            0.896,
+            0.952,
+            1.008,
+            1.064
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 39,
+              "charged": 54,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 54
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.5616,
+            0.60372,
+            0.64584,
+            0.702,
+            0.74412,
+            0.78624,
+            0.8424,
+            0.89856,
+            0.95472,
+            1.01088,
+            1.06704,
+            1.1232,
+            1.1934,
+            1.2636,
+            1.3338
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 67,
+              "charged": 67,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.4972,
+            1.60949,
+            1.72178,
+            1.8715,
+            1.98379,
+            2.09608,
+            2.2458,
+            2.39552,
+            2.54524,
+            2.69496,
+            2.850669,
+            3.054288,
+            3.257907,
+            3.461526,
+            3.665146
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 66,
+            "cancel": {
+              "charged": 105,
+              "skill": 92,
+              "burst": 68,
+              "dash": 72,
+              "jump": 64,
+              "swap": 54,
+              "default": 113
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Explosion",
+          "mv": [
+            1.328,
+            1.4276,
+            1.5272,
+            1.66,
+            1.7596,
+            1.8592,
+            1.992,
+            2.1248,
+            2.2576,
+            2.3904,
+            2.5232,
+            2.656,
+            2.822,
+            2.988,
+            3.154
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Illusory Bubble Explosion",
+          "mv": [
+            4.424,
+            4.7558,
+            5.0876,
+            5.53,
+            5.8618,
+            6.1936,
+            6.636,
+            7.0784,
+            7.5208,
+            7.9632,
+            8.4056,
+            8.848,
+            9.401,
+            9.954,
+            10.507
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 107,
+            "cancel": {
+              "normal": 121,
+              "charged": 118,
+              "skill": 115,
+              "dash": 115,
+              "jump": 104,
+              "default": 127
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mona/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "mona.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "\"Come 'n' Get Me, Hag!\": After she has used Illusory Torrent for 2s, if there are any opponents nearby, Mona will automatically create a Phantom.\nA Phantom created in this manner lasts for 2s, and its explosion DMG is equal to 50% of Mirror Reflection of Doom."
+    },
+    {
+      "id": "mona.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Waterborne Destiny: Increases Mona's Hydro DMG Bonus by a degree equivalent to 20% of her Energy Recharge rate."
+    },
+    {
+      "id": "mona.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Principium of Astrology: When Mona crafts Weapon Ascension Materials, she has a 25% chance to refund a portion of the crafting materials used."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Prophecy of Submersion: When any of your own party members hits an opponent affected by an Omen, the effects of Hydro-related Elemental Reactions are enhanced for 8s:\n· Electro-Charged DMG increases by 15%, Lunar-Charged DMG increases by 15%, Vaporize DMG increases by 15%, Hydro Swirl DMG increases by 15%, Lunar-Crystallize DMG increases by 15%.\n· Frozen duration is extended by 15%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Lunar Chain: When a Normal Attack hits, there is a 20% chance that it will be automatically followed by a Charged Attack.\nThis effect can only occur once every 5s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Restless Revolution: Increases the Level of Stellaris Phantasm by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Prophecy of Oblivion: When any party member attacks an opponent affected by an Omen, their CRIT Rate is increased by 15%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Mockery of Fortuna: Increases the Level of Mirror Reflection of Doom by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Rhetorics of Calamitas: Upon entering Illusory Torrent, Mona gains a 60% increase to the DMG of her next Charged Attack per second of movement.\nA maximum DMG Bonus of 180% can be achieved in this manner. The effect lasts for no more than 8s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "er",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

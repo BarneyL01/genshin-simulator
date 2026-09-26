@@ -1,0 +1,599 @@
+{
+  "id": "varesa",
+  "name": "Varesa",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/varesa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/varesa-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "catalyst",
+  "releaseVersion": "5.5",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12699.00924137,
+      "atk": 356.3757822,
+      "def": 781.6197942900001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.467784,
+            0.502868,
+            0.537952,
+            0.58473,
+            0.619814,
+            0.654898,
+            0.701676,
+            0.748454,
+            0.795233,
+            0.842011,
+            0.88879,
+            0.935568,
+            0.994041,
+            1.052514,
+            1.110987
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 33,
+              "charged": 23,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.40028,
+            0.430301,
+            0.460322,
+            0.50035,
+            0.530371,
+            0.560392,
+            0.60042,
+            0.640448,
+            0.680476,
+            0.720504,
+            0.760532,
+            0.80056,
+            0.850595,
+            0.90063,
+            0.950665
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 7,
+            "cancel": {
+              "normal": 30,
+              "charged": 17,
+              "skill": 7,
+              "burst": 7,
+              "dash": 7,
+              "jump": 7,
+              "swap": 7,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.563128,
+            0.605363,
+            0.647597,
+            0.70391,
+            0.746145,
+            0.788379,
+            0.844692,
+            0.901005,
+            0.957318,
+            1.01363,
+            1.069943,
+            1.126256,
+            1.196647,
+            1.267038,
+            1.337429
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "normal": 45,
+              "charged": 32,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.8928,
+            0.95976,
+            1.02672,
+            1.116,
+            1.18296,
+            1.24992,
+            1.3392,
+            1.42848,
+            1.51776,
+            1.60704,
+            1.69632,
+            1.7856,
+            1.8972,
+            2.0088,
+            2.1204
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 69,
+            "cancel": {
+              "normal": 142,
+              "charged": 141,
+              "skill": 142,
+              "swap": 139,
+              "plunge": 77,
+              "default": 143
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Rush",
+          "mv": [
+            0.7448,
+            0.80066,
+            0.85652,
+            0.931,
+            0.98686,
+            1.04272,
+            1.1172,
+            1.19168,
+            1.26616,
+            1.34064,
+            1.41512,
+            1.4896,
+            1.5827,
+            1.6758,
+            1.7689
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 5,
+            "cancel": {
+              "normal": 22,
+              "charged": 22,
+              "burst": 22,
+              "dash": 37,
+              "jump": 37,
+              "swap": 21,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fiery Passion Rush",
+          "mv": [
+            1.064,
+            1.1438,
+            1.2236,
+            1.33,
+            1.4098,
+            1.4896,
+            1.596,
+            1.7024,
+            1.8088,
+            1.9152,
+            2.0216,
+            2.128,
+            2.261,
+            2.394,
+            2.527
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 22,
+              "charged": 22,
+              "burst": 22,
+              "dash": 37,
+              "jump": 37,
+              "swap": 21,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 540,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Flying Kick",
+          "mv": [
+            3.4512,
+            3.71004,
+            3.96888,
+            4.314,
+            4.57284,
+            4.83168,
+            5.1768,
+            5.52192,
+            5.86704,
+            6.21216,
+            6.55728,
+            6.9024,
+            7.3338,
+            7.7652,
+            8.1966
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 88,
+            "cancel": {
+              "normal": 93,
+              "skill": 90,
+              "dash": 93,
+              "swap": 90,
+              "default": 122
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Fiery Passion Flying Kick",
+          "mv": [
+            5.752,
+            6.1834,
+            6.6148,
+            7.19,
+            7.6214,
+            8.0528,
+            8.628,
+            9.2032,
+            9.7784,
+            10.3536,
+            10.9288,
+            11.504,
+            12.223,
+            12.942,
+            13.661
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 91,
+            "cancel": {
+              "normal": 93,
+              "skill": 90,
+              "dash": 93,
+              "swap": 90,
+              "default": 122
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Volcano Kablam",
+          "mv": [
+            4.0264,
+            4.32838,
+            4.63036,
+            5.033,
+            5.33498,
+            5.63696,
+            6.0396,
+            6.44224,
+            6.84488,
+            7.24752,
+            7.65016,
+            8.0528,
+            8.5561,
+            9.0594,
+            9.5627
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 94,
+            "cancel": {
+              "normal": 93,
+              "skill": 90,
+              "dash": 93,
+              "swap": 90,
+              "default": 122
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varesa/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "varesa.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Tag-Team Triple Jump!: After using the Elemental Skill Riding the Night-Rainbow, Varesa gains \"Rainbow Crash\" for 5s.\nDuring this time, when Varesa uses a Plunging Attack, the shockwave DMG dealt when she hits the ground is increased by 50% of her ATK. If Varesa is in the Fiery Passion state, this ground impact DMG is increased by 180% of her ATK instead.\n\nThe Rainbow Crash effect will be canceled once a ground impact hits an opponent, or when its duration expires."
+    },
+    {
+      "id": "varesa.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "The Hero Twice-Returned!: When a nearby party member triggers a Nightsoul Burst, Varesa's ATK increases by 35% for 12s. Max 2 stacks. Each stack's duration is counted independently."
+    },
+    {
+      "id": "varesa.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: A Torch That Incinerates Evil: After Nightsoul points have been fully depleted, Varesa will switch to using Phlogiston to maintain the Sudden Onrush mode from her Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, Nightsoul Transmission: Varesa can be used. When the current active character is sprinting or in movement modes caused by certain Talents, or at a certain height in the air, switching to Varesa will trigger the following: Varesa enters the Nightsoul's Blessing state, switches to Sudden Onrush mode, and obtains 20 Nightsoul points. Nigh"
+    },
+    {
+      "id": "varesa.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Blazing Heart, Singular Advance!: Varesa's Sprint speed is increased. When she is not in combat, her Sprint Stamina consumption will also increase.\nAdditionally, while in an area with Phlogiston Mechanics within Natlan, your party members will restore 20 Phlogiston when consuming food. This effect can occur once every 10s and does not take effect in Domains, Trounce Domains, or the Spiral Abyss."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Undying Passion: The effects of the Ascension Talent \"Tag-Team Triple Jump!\" are enhanced:\nWhen performing the Special Plunging Attack \"Thunderous Tornado Eruption,\" Varesa will also gain \"Rainbow Crash\" for 5s.\nWhen \"Rainbow Crash\" is in effect, Varesa's Plunging Attack ground impact DMG is increased by 180% of her ATK, whether she is in the Fiery Passion state or not. You must first unlock the Ascension Talent \"Tag-Team Triple Jump!\" to access the above effect.\n\nAdditionally, when Varesa is in the Sudden Onrush mode of her Nightsoul's Blessing, she consumes 30% less Nightsoul points or Phlog"
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Beyond the Edge of Light: Varesa will enter Apex Drive after using a Plunging Attack, regardless of whether she is in the Fiery Passion state or not.\nWhen Apex Drive is active, Varesa's interruption resistance will also further increase.\nAdditionally, Varesa will restore 11.5 Energy when her Plunging Attack ground impact hits an opponent."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Unbowed Resolve: Increases the Level of Guardian Vent! by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Courage to Press On: Varesa will receive various buffs based on her state when using her Elemental Burst Guardian Vent! If Varesa:\n· Has neither Fiery Passion nor Apex Drive active, she will gain Diligent Refinement for 15s, which will increase her Plunging Attack ground impact DMG by 500% of her ATK, with a maximum increase of 20,000 DMG. This effect will be canceled once the ground impact hits an opponent, or if its duration ends.\n· If she has either Fiery Passion or Apex Drive active, this instance of her Elemental Burst Guardian Vent! deals 100% increased DMG."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Thoughts Floating on the Warm Breeze: Increases the Level of Normal Attack: By the Horns by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "A Hero of Justice's Triumph: Varesa restores 30 Energy when she enters Apex Drive.\nHer Plunging Attacks and Elemental Burst Guardian Vent! gain 10% CRIT Rate and 100% CRIT DMG.\nAdditionally, when Varesa uses the Hold version of her Elemental Skill Riding the Night-Rainbow, or Taps her Elemental Skill while in the Sudden Onrush mode, she will restore Nightsoul points up to her maximum."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

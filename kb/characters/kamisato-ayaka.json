@@ -1,0 +1,600 @@
+{
+  "id": "kamisato-ayaka",
+  "name": "Kamisato Ayaka",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/kamisato-ayaka",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/ayaka-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "2.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12858.206654000001,
+      "atk": 342.0250874,
+      "def": 783.9254574000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.457253,
+            0.494472,
+            0.53169,
+            0.584859,
+            0.622077,
+            0.664613,
+            0.723098,
+            0.781584,
+            0.84007,
+            0.903873,
+            0.967676,
+            1.031479,
+            1.095281,
+            1.159084,
+            1.222887
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 9,
+              "charged": 22,
+              "skill": 8,
+              "burst": 8,
+              "dash": 8,
+              "jump": 8,
+              "swap": 8,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.486846,
+            0.526473,
+            0.5661,
+            0.62271,
+            0.662337,
+            0.707625,
+            0.769896,
+            0.832167,
+            0.894438,
+            0.96237,
+            1.030302,
+            1.098234,
+            1.166166,
+            1.234098,
+            1.30203
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 19,
+              "charged": 20,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 20
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.626218,
+            0.677189,
+            0.72816,
+            0.800976,
+            0.851947,
+            0.9102,
+            0.990298,
+            1.070395,
+            1.150493,
+            1.237872,
+            1.325251,
+            1.41263,
+            1.50001,
+            1.587389,
+            1.674768
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 32,
+              "charged": 31,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.226464,
+            0.244897,
+            0.26333,
+            0.289663,
+            0.308096,
+            0.329163,
+            0.358129,
+            0.387095,
+            0.416061,
+            0.447661,
+            0.479261,
+            0.51086,
+            0.54246,
+            0.574059,
+            0.605659
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 22,
+              "charged": 23,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            15,
+            22
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.781817,
+            0.845454,
+            0.90909,
+            0.999999,
+            1.063635,
+            1.136363,
+            1.236362,
+            1.336362,
+            1.436362,
+            1.545453,
+            1.654544,
+            1.763635,
+            1.872725,
+            1.981816,
+            2.090907
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.55126,
+            0.59613,
+            0.641,
+            0.7051,
+            0.74997,
+            0.80125,
+            0.87176,
+            0.94227,
+            1.01278,
+            1.0897,
+            1.16662,
+            1.24354,
+            1.32046,
+            1.39738,
+            1.4743
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "skill": 62,
+              "burst": 63,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            33,
+            39
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.392,
+            2.5714,
+            2.7508,
+            2.99,
+            3.1694,
+            3.3488,
+            3.588,
+            3.8272,
+            4.0664,
+            4.3056,
+            4.5448,
+            4.784,
+            5.083,
+            5.382,
+            5.681
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "burst": 48,
+              "dash": 30,
+              "jump": 32,
+              "swap": 48,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 600,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Cutting",
+          "mv": [
+            1.123,
+            1.207225,
+            1.29145,
+            1.40375,
+            1.487975,
+            1.5722,
+            1.6845,
+            1.7968,
+            1.9091,
+            2.0214,
+            2.1337,
+            2.246,
+            2.386375,
+            2.52675,
+            2.667125
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 104,
+            "cancel": {
+              "normal": 124,
+              "skill": 124,
+              "jump": 113,
+              "swap": 123,
+              "default": 125
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Bloom",
+          "mv": [
+            1.6845,
+            1.810837,
+            1.937175,
+            2.105625,
+            2.231962,
+            2.3583,
+            2.52675,
+            2.6952,
+            2.86365,
+            3.0321,
+            3.20055,
+            3.369,
+            3.579562,
+            3.790125,
+            4.000687
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 107,
+            "cancel": {
+              "normal": 124,
+              "skill": 124,
+              "jump": 113,
+              "swap": 123,
+              "default": 125
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayaka/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kamisato-ayaka.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Amatsumi Kunitsumi Sanctification: After using Kamisato Art: Hyouka, Kamisato Ayaka's Normal and Charged Attacks deal 30% increased DMG for 6s."
+    },
+    {
+      "id": "kamisato-ayaka.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Kanten Senmyou Blessing: When the Cryo application at the end of Kamisato Art: Senho hits an opponent, Kamisato Ayaka gains the following effects:\n·Restores 10 Stamina\n·Gains 18% Cryo DMG Bonus for 10s."
+    },
+    {
+      "id": "kamisato-ayaka.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Fruits of Shinsa: When Ayaka crafts Weapon Ascension Materials, she has a 10% chance to receive double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Snowswept Sakura: When Kamisato Ayaka's Normal or Charged Attacks deal Cryo DMG to opponents, it has a 50% chance of decreasing the CD of Kamisato Art: Hyouka by 0.3s. This effect can occur once every 0.1s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Blizzard Blade Seki no To: When casting Kamisato Art: Soumetsu, unleashes 2 smaller additional Frostflake Seki no To, each dealing 20% of the original storm's DMG."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Frostbloom Kamifubuki: Increases the Level of Kamisato Art: Soumetsu by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Ebb and Flow: Opponents damaged by Kamisato Art: Soumetsu's Frostflake Seki no To will have their DEF decreased by 30% for 6s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Blossom Cloud Irutsuki: Increases the Level of Kamisato Art: Hyouka by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Dance of Suigetsu: Kamisato Ayaka gains Usurahi Butou every 10s, increasing her Charged Attack DMG by 298%. This buff will be cleared 0.5s after Ayaka's Charged ATK hits an opponent, after which the timer for this ability will restart."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

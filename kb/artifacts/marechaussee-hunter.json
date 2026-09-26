@@ -1,0 +1,34 @@
+{
+  "id": "marechaussee-hunter",
+  "name": "Marechaussee Hunter",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "2-piece bonus \"Normal and Charged Attack DMG +15%\" is not modelled yet.",
+    "4-piece bonus \"When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": []
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

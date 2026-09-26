@@ -1,0 +1,665 @@
+{
+  "id": "kamisato-ayato",
+  "name": "Kamisato Ayato",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/kamisato-ayato",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/ayato-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 10/10. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "sword",
+  "releaseVersion": "2.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13715.4200976,
+      "atk": 298.972975,
+      "def": 768.5543700000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.449617,
+            0.486213,
+            0.52281,
+            0.575091,
+            0.611688,
+            0.653512,
+            0.711022,
+            0.768531,
+            0.82604,
+            0.888777,
+            0.951514,
+            1.014251,
+            1.076989,
+            1.139726,
+            1.202463
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 15,
+              "charged": 21,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.471572,
+            0.509956,
+            0.54834,
+            0.603174,
+            0.641558,
+            0.685425,
+            0.745742,
+            0.80606,
+            0.866377,
+            0.932178,
+            0.997979,
+            1.06378,
+            1.12958,
+            1.195381,
+            1.261182
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 27,
+              "charged": 27,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.586124,
+            0.633832,
+            0.68154,
+            0.749694,
+            0.797402,
+            0.851925,
+            0.926894,
+            1.001864,
+            1.076833,
+            1.158618,
+            1.240403,
+            1.322188,
+            1.403972,
+            1.485757,
+            1.567542
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 30,
+              "charged": 34,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.294485,
+            0.318455,
+            0.342425,
+            0.376667,
+            0.400637,
+            0.428031,
+            0.465698,
+            0.503365,
+            0.541031,
+            0.582122,
+            0.623213,
+            0.664304,
+            0.705395,
+            0.746487,
+            0.787577
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 27,
+              "charged": 29,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            25
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.756043,
+            0.817582,
+            0.87912,
+            0.967032,
+            1.02857,
+            1.0989,
+            1.195603,
+            1.292306,
+            1.38901,
+            1.494504,
+            1.599998,
+            1.705493,
+            1.810987,
+            1.916482,
+            2.021976
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 63,
+              "charged": 63,
+              "skill": 41,
+              "burst": 41,
+              "dash": 41,
+              "jump": 41,
+              "swap": 41,
+              "default": 63
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.295297,
+            1.400728,
+            1.506159,
+            1.656775,
+            1.762206,
+            1.882699,
+            2.048376,
+            2.214054,
+            2.379731,
+            2.56047,
+            2.741209,
+            2.921948,
+            3.102688,
+            3.283427,
+            3.464166
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "dash": 24,
+              "jump": 24,
+              "swap": 53,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Shunsuiken 1-Hit",
+          "mv": [
+            0.5289,
+            0.57195,
+            0.615,
+            0.6765,
+            0.71955,
+            0.76875,
+            0.8364,
+            0.90405,
+            0.9717,
+            1.0455,
+            1.1193,
+            1.1931,
+            1.2669,
+            1.3407,
+            1.4145
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Shunsuiken 2-Hit",
+          "mv": [
+            0.5891,
+            0.63705,
+            0.685,
+            0.7535,
+            0.80145,
+            0.85625,
+            0.9316,
+            1.00695,
+            1.0823,
+            1.1645,
+            1.2467,
+            1.3289,
+            1.4111,
+            1.4933,
+            1.5755
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Shunsuiken 3-Hit",
+          "mv": [
+            0.6493,
+            0.70215,
+            0.755,
+            0.8305,
+            0.88335,
+            0.94375,
+            1.0268,
+            1.10985,
+            1.1929,
+            1.2835,
+            1.3741,
+            1.4647,
+            1.5553,
+            1.6459,
+            1.7365
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Water Illusion",
+          "mv": [
+            1.0148,
+            1.0974,
+            1.18,
+            1.298,
+            1.3806,
+            1.475,
+            1.6048,
+            1.7346,
+            1.8644,
+            2.006,
+            2.1476,
+            2.2892,
+            2.4308,
+            2.5724,
+            2.714
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Bloomwater Blade",
+          "mv": [
+            0.66456,
+            0.714402,
+            0.764244,
+            0.8307,
+            0.880542,
+            0.930384,
+            0.99684,
+            1.063296,
+            1.129752,
+            1.196208,
+            1.262664,
+            1.32912,
+            1.41219,
+            1.49526,
+            1.57833
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 101,
+            "cancel": {
+              "skill": 122,
+              "dash": 122,
+              "jump": 122,
+              "swap": 120,
+              "default": 123
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ayato/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kamisato-ayato.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Kamisato Art: Mine Wo Matoishi Kiyotaki: Kamisato Art: Kyouka has the following properties:\n·After it is used, Kamisato Ayato will gain 2 Namisen stacks.\n·When the water illusion explodes, Ayato will gain a Namisen effect equal to the maximum number of stacks possible."
+    },
+    {
+      "id": "kamisato-ayato.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Kamisato Art: Michiyuku Hagetsu: If Kamisato Ayato is not on the field and his Energy is less than 40, he will regenerate 2 Energy for himself every second."
+    },
+    {
+      "id": "kamisato-ayato.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Kamisato Art: Daily Cooking: When Ayato cooks a dish perfectly, he has an 18% chance to receive an additional \"Suspicious\" dish of the same type."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Kyouka Fuushi: Shunsuiken DMG is increased by 40% against opponents with 50% HP or less."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "World Source: Namisen's maximum stack count is increased to 5. When Kamisato Ayato has at least 3 Namisen stacks, his Max HP is increased by 50%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "To Admire the Flowers: Increases the Level of Kamisato Art: Kyouka by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Endless Flow: After using Kamisato Art: Suiyuu, all nearby party members will have 15% increased Normal Attack SPD for 15s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Bansui Ichiro: Increases the Level of Kamisato Art: Suiyuu by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Boundless Origin: After using Kamisato Art: Kyouka, Ayato's next Shunsuiken attack will create 2 extra Shunsuiken strikes when they hit opponents, each one dealing 450% of Ayato's ATK as DMG.\nBoth these Shunsuiken attacks will not be affected by Namisen."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

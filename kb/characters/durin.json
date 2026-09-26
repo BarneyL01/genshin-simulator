@@ -1,0 +1,969 @@
+{
+  "id": "durin",
+  "name": "Durin",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/durin",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/durin-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 16/16. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark, burst hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "sword",
+  "releaseVersion": "6.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12429.5994322,
+      "atk": 346.808651,
+      "def": 822.3531759000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.456505,
+            0.493663,
+            0.53082,
+            0.583902,
+            0.621059,
+            0.663525,
+            0.721915,
+            0.780305,
+            0.838696,
+            0.902394,
+            0.966092,
+            1.029791,
+            1.093489,
+            1.157188,
+            1.220886
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 19,
+              "charged": 21,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.410048,
+            0.443424,
+            0.4768,
+            0.52448,
+            0.557856,
+            0.596,
+            0.648448,
+            0.700896,
+            0.753344,
+            0.81056,
+            0.867776,
+            0.924992,
+            0.982208,
+            1.039424,
+            1.09664
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 14,
+              "charged": 21,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.291617,
+            0.315354,
+            0.33909,
+            0.372999,
+            0.396735,
+            0.423863,
+            0.461162,
+            0.498462,
+            0.535762,
+            0.576453,
+            0.617144,
+            0.657835,
+            0.698525,
+            0.739216,
+            0.779907
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 48,
+              "charged": 43,
+              "skill": 37,
+              "burst": 37,
+              "dash": 37,
+              "jump": 37,
+              "swap": 37,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            37
+          ],
+          "extraMv": [
+            [
+              0.291617,
+              0.315354,
+              0.33909,
+              0.372999,
+              0.396735,
+              0.423863,
+              0.461162,
+              0.498462,
+              0.535762,
+              0.576453,
+              0.617144,
+              0.657835,
+              0.698525,
+              0.739216,
+              0.779907
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.711521,
+            0.769436,
+            0.82735,
+            0.910085,
+            0.968,
+            1.034188,
+            1.125196,
+            1.216205,
+            1.307213,
+            1.406495,
+            1.505777,
+            1.605059,
+            1.704341,
+            1.803623,
+            1.902905
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 38,
+              "burst": 38,
+              "dash": 38,
+              "jump": 38,
+              "swap": 38,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.13434,
+            1.22667,
+            1.319,
+            1.4509,
+            1.54323,
+            1.64875,
+            1.79384,
+            1.93893,
+            2.08402,
+            2.2423,
+            2.40058,
+            2.55886,
+            2.71714,
+            2.87542,
+            3.0337
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 53,
+              "skill": 52,
+              "burst": 52,
+              "dash": 17,
+              "jump": 17,
+              "swap": 51,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Transmutation: Confirmation of Purity",
+          "mv": [
+            1.056,
+            1.1352,
+            1.2144,
+            1.32,
+            1.3992,
+            1.4784,
+            1.584,
+            1.6896,
+            1.7952,
+            1.9008,
+            2.0064,
+            2.112,
+            2.244,
+            2.376,
+            2.508
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 16,
+              "skill": 15,
+              "burst": 4,
+              "dash": 14,
+              "jump": 14,
+              "swap": 13,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Transmutation: Denial of Darkness 1",
+          "mv": [
+            0.7224,
+            0.77658,
+            0.83076,
+            0.903,
+            0.95718,
+            1.01136,
+            1.0836,
+            1.15584,
+            1.22808,
+            1.30032,
+            1.37256,
+            1.4448,
+            1.5351,
+            1.6254,
+            1.7157
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 16,
+              "skill": 15,
+              "burst": 4,
+              "dash": 14,
+              "jump": 14,
+              "swap": 13,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Transmutation: Denial of Darkness 2",
+          "mv": [
+            0.532,
+            0.5719,
+            0.6118,
+            0.665,
+            0.7049,
+            0.7448,
+            0.798,
+            0.8512,
+            0.9044,
+            0.9576,
+            1.0108,
+            1.064,
+            1.1305,
+            1.197,
+            1.2635
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 16,
+              "skill": 15,
+              "burst": 4,
+              "dash": 14,
+              "jump": 14,
+              "swap": 13,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Transmutation: Denial of Darkness 3",
+          "mv": [
+            0.6464,
+            0.69488,
+            0.74336,
+            0.808,
+            0.85648,
+            0.90496,
+            0.9696,
+            1.03424,
+            1.09888,
+            1.16352,
+            1.22816,
+            1.2928,
+            1.3736,
+            1.4544,
+            1.5352
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 16,
+              "skill": 15,
+              "burst": 4,
+              "dash": 14,
+              "jump": 14,
+              "swap": 13,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Principle of Purity: As the Light Shifts 1",
+          "mv": [
+            1.1896,
+            1.27882,
+            1.36804,
+            1.487,
+            1.57622,
+            1.66544,
+            1.7844,
+            1.90336,
+            2.02232,
+            2.14128,
+            2.26024,
+            2.3792,
+            2.5279,
+            2.6766,
+            2.8253
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 52,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Principle of Purity: As the Light Shifts 2",
+          "mv": [
+            0.964,
+            1.0363,
+            1.1086,
+            1.205,
+            1.2773,
+            1.3496,
+            1.446,
+            1.5424,
+            1.6388,
+            1.7352,
+            1.8316,
+            1.928,
+            2.0485,
+            2.169,
+            2.2895
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 55,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Principle of Purity: As the Light Shifts 3",
+          "mv": [
+            1.1184,
+            1.20228,
+            1.28616,
+            1.398,
+            1.48188,
+            1.56576,
+            1.6776,
+            1.78944,
+            1.90128,
+            2.01312,
+            2.12496,
+            2.2368,
+            2.3766,
+            2.5164,
+            2.6562
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 58,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Principle of Darkness: As the Stars Smolder 1",
+          "mv": [
+            1.2544,
+            1.34848,
+            1.44256,
+            1.568,
+            1.66208,
+            1.75616,
+            1.8816,
+            2.00704,
+            2.13248,
+            2.25792,
+            2.38336,
+            2.5088,
+            2.6656,
+            2.8224,
+            2.9792
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 55,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Principle of Darkness: As the Stars Smolder 2",
+          "mv": [
+            1.0176,
+            1.09392,
+            1.17024,
+            1.272,
+            1.34832,
+            1.42464,
+            1.5264,
+            1.62816,
+            1.72992,
+            1.83168,
+            1.93344,
+            2.0352,
+            2.1624,
+            2.2896,
+            2.4168
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 58,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Principle of Darkness: As the Stars Smolder 3",
+          "mv": [
+            1.1184,
+            1.20228,
+            1.28616,
+            1.398,
+            1.48188,
+            1.56576,
+            1.6776,
+            1.78944,
+            1.90128,
+            2.01312,
+            2.12496,
+            2.2368,
+            2.3766,
+            2.5164,
+            2.6562
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 61,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Dragon of White Flame",
+          "mv": [
+            0.9464,
+            1.01738,
+            1.08836,
+            1.183,
+            1.25398,
+            1.32496,
+            1.4196,
+            1.51424,
+            1.60888,
+            1.70352,
+            1.79816,
+            1.8928,
+            2.0111,
+            2.1294,
+            2.2477
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 58,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Dragon of Dark Decay",
+          "mv": [
+            1.2984,
+            1.39578,
+            1.49316,
+            1.623,
+            1.72038,
+            1.81776,
+            1.9476,
+            2.07744,
+            2.20728,
+            2.33712,
+            2.46696,
+            2.5968,
+            2.7591,
+            2.9214,
+            3.0837
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 61,
+            "cancel": {
+              "normal": 103,
+              "skill": 103,
+              "dash": 102,
+              "jump": 104,
+              "swap": 102,
+              "default": 104
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/durin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "durin.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Light Manifest of the Divine Calculus: Durin will trigger different buffs depending on the form that his power manifests as when he unleashes his Elemental Burst. When that form is:\n\nDragon of White Flame\nAfter nearby party members trigger Burning, Overloaded, Pyro Swirl, or Pyro Crystallize reactions on an opponent, or deal Pyro DMG or Dendro DMG to an opponent affected by Burning, that opponent's Pyro RES, and the RES for the corresponding Element involved in the reaction, are decreased by 20% for 6s.\n\nDragon of Dark Decay\nDurin's Vaporize DMG is increased by 40% and his Melt DMG is increase"
+    },
+    {
+      "id": "durin.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Chaos Formed Like the Night: After unleashing an Elemental Burst, Durin gains the Primordial Fusion of Forms effect for 20s: Durin gains 10 stacks of Primordial Fusion. When a periodic attack from Dragon of White Flame or Dragon of Dark Decay deals DMG, 1 stack of Primordial Fusion will be consumed to increase the DMG dealt by 3% of the original DMG for every 100 ATK. A maximum of 75% additional DMG can be dealt this way. When a single attack from Dragon of White Flame or Dragon of Dark Decay hits multiple opponents, only one stack of Primordial Fusion is consumed.\nPrimordial Fusion stacks are"
+    },
+    {
+      "id": "durin.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Echoes of the Surging Earth: Gains 25% more rewards when dispatched on a Mondstadt Expedition for 20 hours."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Adamah's Redemption: After casting his Elemental Burst, Durin's effects will vary depending on the form of his Elemental Burst:\n· Principle of Purity: As the Light Shifts: All other nearby party members gain 20 stacks of Cycle of Enlightenment lasting 20s. When nearby active characters deal Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst DMG, 1 stack of Cycle of Enlightenment will be consumed to increase the DMG dealt by 60% of Durin's ATK. Stack counts for characters in the party who have Cycle of Enlightenment are managed individually.\n· Principle of Darkn"
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Unground Visions: For 20s after Durin uses an Elemental Burst, after nearby party members trigger Vaporize, Melt, Burning, Overloaded, Pyro Swirl, or Pyro Crystallize reactions, or deal Pyro DMG or Dendro DMG to an opponent affected by Burning, all nearby party members gain a 50% increase to their Pyro DMG and to the corresponding elemental DMG involved in the reaction for 6s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Flame Mirror's Revelation: Increases the Level of **Principle of Purity: As the Light Shifts** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Emanare's Source: Durin's Elemental Burst DMG is increased by 40%. Additionally, when effects that consume Cycle of Enlightenment stacks are triggered as part of the Constellation **Adamah's Redemption**, there is a 30% chance that no Cycle of Enlightenment stacks will be consumed."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Scouring Flame's Sundering: Increases the Level of **Binary Form: Convergence and Division** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Dual Birth: Durin's Elemental Burst DMG ignores 30% of opponents' DEF.\nAdditionally, Durin's Elemental Bursts Principle of Purity: As the Light Shifts and Principle of Darkness: As the Stars Smolder are each enhanced:\n· After Principle of Purity: As the Light Shifts and Dragon of White Flame hit an opponent, that opponent's DEF is decreased by 30% for 6s.\n· DMG from Principle of Darkness: As the Stars Smolder and Dragon of Dark Decay will ignore an additional 40% of opponents' DEF."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

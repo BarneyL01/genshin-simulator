@@ -1,0 +1,1301 @@
+{
+  "id": "varka",
+  "name": "Varka",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/varka",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/varka-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 21/21. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "claymore",
+  "releaseVersion": "6.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12613.288084400001,
+      "atk": 352.78811550000006,
+      "def": 795.45377295
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.654598,
+            0.707879,
+            0.76116,
+            0.837276,
+            0.890557,
+            0.95145,
+            1.035178,
+            1.118905,
+            1.202633,
+            1.293972,
+            1.385311,
+            1.47665,
+            1.56799,
+            1.659329,
+            1.750668
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 23,
+              "charged": 22,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.239885,
+            0.25941,
+            0.278936,
+            0.30683,
+            0.326355,
+            0.34867,
+            0.379353,
+            0.410036,
+            0.440719,
+            0.474191,
+            0.507664,
+            0.541136,
+            0.574608,
+            0.60808,
+            0.641553
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 29,
+              "charged": 30,
+              "skill": 28,
+              "burst": 28,
+              "dash": 28,
+              "jump": 28,
+              "swap": 28,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            28
+          ],
+          "extraMv": [
+            [
+              0.445501,
+              0.481762,
+              0.518024,
+              0.569826,
+              0.606088,
+              0.64753,
+              0.704513,
+              0.761495,
+              0.818478,
+              0.880641,
+              0.942804,
+              1.004967,
+              1.067129,
+              1.129292,
+              1.191455
+            ]
+          ]
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.324364,
+            0.350765,
+            0.377167,
+            0.414884,
+            0.441285,
+            0.471459,
+            0.512947,
+            0.554435,
+            0.595924,
+            0.641184,
+            0.686444,
+            0.731704,
+            0.776964,
+            0.822224,
+            0.867484
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 55,
+              "charged": 48,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            43
+          ],
+          "extraMv": [
+            [
+              0.60239,
+              0.651421,
+              0.700453,
+              0.770498,
+              0.81953,
+              0.875566,
+              0.952616,
+              1.029666,
+              1.106716,
+              1.19077,
+              1.274824,
+              1.358879,
+              1.442933,
+              1.526988,
+              1.611042
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.554316,
+            0.599434,
+            0.644553,
+            0.709008,
+            0.754127,
+            0.805691,
+            0.876592,
+            0.947493,
+            1.018394,
+            1.09574,
+            1.173086,
+            1.250433,
+            1.327779,
+            1.405126,
+            1.482472
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 40,
+              "charged": 28,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            24
+          ],
+          "extraMv": [
+            [
+              0.298478,
+              0.322772,
+              0.347067,
+              0.381774,
+              0.406068,
+              0.433834,
+              0.472011,
+              0.510188,
+              0.548366,
+              0.590014,
+              0.631662,
+              0.67331,
+              0.714958,
+              0.756606,
+              0.798254
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.697498,
+            0.754271,
+            0.811044,
+            0.892148,
+            0.948921,
+            1.013805,
+            1.10302,
+            1.192235,
+            1.28145,
+            1.378775,
+            1.4761,
+            1.573425,
+            1.670751,
+            1.768076,
+            1.865401
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 44,
+            "cancel": {
+              "normal": 73,
+              "charged": 48,
+              "skill": 45,
+              "burst": 45,
+              "dash": 45,
+              "jump": 45,
+              "swap": 45,
+              "default": 82
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            45
+          ],
+          "extraMv": [
+            [
+              0.375576,
+              0.406146,
+              0.436716,
+              0.480388,
+              0.510958,
+              0.545895,
+              0.593934,
+              0.641973,
+              0.690011,
+              0.742417,
+              0.794823,
+              0.847229,
+              0.899635,
+              0.952041,
+              1.004447
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.856388,
+            0.926094,
+            0.9958,
+            1.09538,
+            1.165086,
+            1.24475,
+            1.354288,
+            1.463826,
+            1.573364,
+            1.69286,
+            1.812356,
+            1.931852,
+            2.051348,
+            2.170844,
+            2.29034
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 58,
+              "burst": 58,
+              "skill": 59,
+              "dash": 41,
+              "jump": 41,
+              "swap": 49,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            41
+          ],
+          "extraMv": [
+            [
+              0.461132,
+              0.498666,
+              0.5362,
+              0.58982,
+              0.627354,
+              0.67025,
+              0.729232,
+              0.788214,
+              0.847196,
+              0.91154,
+              0.975884,
+              1.040228,
+              1.104572,
+              1.168916,
+              1.23326
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.784,
+            2.9928,
+            3.2016,
+            3.48,
+            3.6888,
+            3.8976,
+            4.176,
+            4.4544,
+            4.7328,
+            5.0112,
+            5.2896,
+            5.568,
+            5.916,
+            6.264,
+            6.612
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 1-Hit",
+          "mv": [
+            0.818247,
+            0.884848,
+            0.95145,
+            1.046595,
+            1.113196,
+            1.189312,
+            1.293972,
+            1.398631,
+            1.503291,
+            1.617465,
+            1.731639,
+            1.845813,
+            1.959987,
+            2.074161,
+            2.188335
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 2-Hit 1",
+          "mv": [
+            0.299856,
+            0.324263,
+            0.34867,
+            0.383537,
+            0.407944,
+            0.435837,
+            0.474191,
+            0.512545,
+            0.550899,
+            0.592739,
+            0.634579,
+            0.67642,
+            0.71826,
+            0.760101,
+            0.801941
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 46,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 2-Hit 2",
+          "mv": [
+            0.556876,
+            0.602203,
+            0.64753,
+            0.712283,
+            0.75761,
+            0.809413,
+            0.880641,
+            0.951869,
+            1.023097,
+            1.100801,
+            1.178505,
+            1.256208,
+            1.333912,
+            1.411615,
+            1.489319
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 49,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 3-Hit 1",
+          "mv": [
+            0.405455,
+            0.438457,
+            0.471459,
+            0.518605,
+            0.551607,
+            0.589323,
+            0.641184,
+            0.693044,
+            0.744905,
+            0.80148,
+            0.858055,
+            0.91463,
+            0.971205,
+            1.02778,
+            1.084355
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 49,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 3-Hit 2",
+          "mv": [
+            0.752987,
+            0.814277,
+            0.875566,
+            0.963123,
+            1.024413,
+            1.094458,
+            1.19077,
+            1.287082,
+            1.383395,
+            1.488463,
+            1.593531,
+            1.698599,
+            1.803666,
+            1.908734,
+            2.013802
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 52,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 4-Hit 1",
+          "mv": [
+            0.692894,
+            0.749293,
+            0.805691,
+            0.88626,
+            0.942659,
+            1.007114,
+            1.09574,
+            1.184366,
+            1.272992,
+            1.369675,
+            1.466358,
+            1.563041,
+            1.659724,
+            1.756407,
+            1.85309
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 52,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 4-Hit 2",
+          "mv": [
+            0.373097,
+            0.403465,
+            0.433834,
+            0.477217,
+            0.507585,
+            0.542292,
+            0.590014,
+            0.637736,
+            0.685457,
+            0.737517,
+            0.789577,
+            0.841637,
+            0.893698,
+            0.945758,
+            0.997818
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 55,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 5-Hit 1",
+          "mv": [
+            0.871872,
+            0.942839,
+            1.013805,
+            1.115186,
+            1.186152,
+            1.267256,
+            1.378775,
+            1.490293,
+            1.601812,
+            1.723469,
+            1.845125,
+            1.966782,
+            2.088438,
+            2.210095,
+            2.331751
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 55,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sturm und Drang 5-Hit 2",
+          "mv": [
+            0.46947,
+            0.507682,
+            0.545895,
+            0.600485,
+            0.638697,
+            0.682369,
+            0.742417,
+            0.802466,
+            0.862514,
+            0.928022,
+            0.993529,
+            1.059036,
+            1.124544,
+            1.190051,
+            1.255559
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 58,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Four Winds' Ascension 1",
+          "mv": [
+            1.7576,
+            1.88942,
+            2.02124,
+            2.197,
+            2.32882,
+            2.46064,
+            2.6364,
+            2.81216,
+            2.98792,
+            3.16368,
+            3.33944,
+            3.5152,
+            3.7349,
+            3.9546,
+            4.1743
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 58,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Four Winds' Ascension 2",
+          "mv": [
+            0.9464,
+            1.01738,
+            1.08836,
+            1.183,
+            1.25398,
+            1.32496,
+            1.4196,
+            1.51424,
+            1.60888,
+            1.70352,
+            1.79816,
+            1.8928,
+            2.0111,
+            2.1294,
+            2.2477
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 61,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Azure Devour 1",
+          "mv": [
+            0.936,
+            1.0062,
+            1.0764,
+            1.17,
+            1.2402,
+            1.3104,
+            1.404,
+            1.4976,
+            1.5912,
+            1.6848,
+            1.7784,
+            1.872,
+            1.989,
+            2.106,
+            2.223
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 61,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Azure Devour 2",
+          "mv": [
+            0.504,
+            0.5418,
+            0.5796,
+            0.63,
+            0.6678,
+            0.7056,
+            0.756,
+            0.8064,
+            0.8568,
+            0.9072,
+            0.9576,
+            1.008,
+            1.071,
+            1.134,
+            1.197
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 64,
+            "cancel": {
+              "normal": 49,
+              "charged": 49,
+              "burst": 44,
+              "skill": 44,
+              "dash": 46,
+              "jump": 43,
+              "swap": 49,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 960,
+      "particles": {
+        "count": 6,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill 1-Hit",
+          "mv": [
+            3.3696,
+            3.62232,
+            3.87504,
+            4.212,
+            4.46472,
+            4.71744,
+            5.0544,
+            5.39136,
+            5.72832,
+            6.06528,
+            6.40224,
+            6.7392,
+            7.1604,
+            7.5816,
+            8.0028
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 112,
+            "cancel": {
+              "normal": 137,
+              "skill": 138,
+              "dash": 138,
+              "jump": 137,
+              "swap": 136,
+              "default": 152
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2-Hit",
+          "mv": [
+            1.8144,
+            1.95048,
+            2.08656,
+            2.268,
+            2.40408,
+            2.54016,
+            2.7216,
+            2.90304,
+            3.08448,
+            3.26592,
+            3.44736,
+            3.6288,
+            3.8556,
+            4.0824,
+            4.3092
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 115,
+            "cancel": {
+              "normal": 137,
+              "skill": 138,
+              "dash": 138,
+              "jump": 137,
+              "swap": 136,
+              "default": 152
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/varka/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "varka.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Dawn Wind's March: When there are Pyro, Hydro, Electro or Cryo characters in the party, according to the aforementioned priority order of Elemental Types, every 1,000 points of Varka's ATK will grant Varka a 10% Anemo DMG Bonus and corresponding Elemental DMG Bonus (among the aforementioned Elemental Types, only one element can gain bonus DMG this way). Up to 25% bonus DMG can be gained this way. \n\nAdditionally, if there are at least 2 Anemo characters, or at least 2 characters of the same Element among Pyro, Hydro, Electro or Cryo in the party, the Normal Attacks, Charged Attacks, Special Cha"
+    },
+    {
+      "id": "varka.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Wind's Vanguard: When nearby party members trigger a Swirl or Stellar Swirl reaction, Varka gains 1 stack of Azure Fang's Oath, increasing the DMG dealt by his Normal Attacks, Charged Attacks, special Charged Attack Azure Devour and special Elemental Skill **Four Winds' Ascension** by 7.5% for 8s. Max 4 stacks. Each character can grant Varka with 1 stack of Azure Fang's Oath every second this way."
+    },
+    {
+      "id": "varka.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Homebound Wind's Paean: For every party member from Mondstadt, the Hold version of Varka's Elemental Skill Windbound Execution's CD is decreased by 5%.\nThis effect does not trigger in Domains, Trounce Domains, or the Spiral Abyss."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "\"Come, Friend, Let Us Dance Beneath the Moon's Soft Glow\": When Varka switches to **Sturm und Drang**, he will obtain an additional use of the special Elemental Skill **Four Winds' Ascension**.\nAdditionally, after switching to Sturm und Drang, Varka will gain the Lyrical Libation effect: When unleashing the special Elemental Skill Four Winds' Ascension, or when performing the special Charged Attack Azure Devour, Varka will consume this effect to deal 200% of the original DMG dealt by Four Winds' Ascension or Azure Devour."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "\"When Dawn Breaks, Our Journey Shall Take Flight\": When unleashing the special Elemental Skill **Four Winds' Ascension**, or when performing the special Charged Attack Azure Devour, Varka will perform an additional strike, dealing AoE Anemo DMG equal to 800% of Varka's ATK."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "\"O Friend, Quaff Not the Bitter Wine That Brings Tears of Woe\": Increases Elemental Skill **Windbound Execution** Level by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "\"For None May Take From Us Our Freedom of Song\": When Varka triggers a Swirl or Stellar Swirl reaction, based on the Elemental Types involved in the reaction, all nearby party members gain a 20% Anemo DMG Bonus and the corresponding Elemental DMG Bonus for 10s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "\"Fill High the Cup With Fine Wine, for Tyrants Come and Go\": Increases Elemental Burst **Northwind Avatar** Level by 3.\n Maximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"Beloved Mondstadt, Steadfast You Shall Shine\": **Sturm und Drang** is enhanced:\n· For a short time after unleashing the special Elemental Skill **Four Winds' Ascension**, Tapping on Varka's Elemental Skill or Holding his Normal Attack will not expend any uses of Four Winds' Ascension, and will perform one additional instance of the special Charged Attack, Azure Devour.\n· For a short time after performing the special Charged Attack Azure Devour, tap on Varka's Elemental Skill to unleash an additional instance of Four Winds' Ascension without expending any uses of Four Winds' Ascension.\nWhen tr"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critDmg",
+        "critRate"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,552 @@
+{
+  "id": "dahlia",
+  "name": "Dahlia",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/dahlia",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "hydro",
+  "weaponType": "sword",
+  "releaseVersion": "5.7",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12506.152435299999,
+      "atk": 189.03350088000002,
+      "def": 559.6676505
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "hp%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.43547,
+            0.470915,
+            0.50636,
+            0.556996,
+            0.592441,
+            0.63295,
+            0.68865,
+            0.744349,
+            0.800049,
+            0.860812,
+            0.921575,
+            0.982338,
+            1.043102,
+            1.103865,
+            1.164628
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.401001,
+            0.43364,
+            0.46628,
+            0.512908,
+            0.545548,
+            0.58285,
+            0.634141,
+            0.685432,
+            0.736722,
+            0.792676,
+            0.84863,
+            0.904583,
+            0.960537,
+            1.01649,
+            1.072444
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.237446,
+            0.256773,
+            0.2761,
+            0.30371,
+            0.323037,
+            0.345125,
+            0.375496,
+            0.405867,
+            0.436238,
+            0.46937,
+            0.502502,
+            0.535634,
+            0.568766,
+            0.601898,
+            0.63503
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 39,
+              "charged": 39,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            15
+          ],
+          "extraMv": [
+            [
+              0.290164,
+              0.313782,
+              0.3374,
+              0.37114,
+              0.394758,
+              0.42175,
+              0.458864,
+              0.495978,
+              0.533092,
+              0.57358,
+              0.614068,
+              0.654556,
+              0.695044,
+              0.735532,
+              0.77602
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.656576,
+            0.710018,
+            0.76346,
+            0.839806,
+            0.893248,
+            0.954325,
+            1.038306,
+            1.122286,
+            1.206267,
+            1.297882,
+            1.389497,
+            1.481112,
+            1.572728,
+            1.664343,
+            1.755958
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 71,
+              "charged": 71,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 71
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.398765,
+            0.431222,
+            0.46368,
+            0.510048,
+            0.542506,
+            0.5796,
+            0.630605,
+            0.68161,
+            0.732614,
+            0.788256,
+            0.843898,
+            0.899539,
+            0.955181,
+            1.010822,
+            1.066464
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "skill": 42,
+              "burst": 42,
+              "swap": 42,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            10
+          ],
+          "extraMv": [
+            [
+              0.550675,
+              0.595498,
+              0.64032,
+              0.704352,
+              0.749174,
+              0.8004,
+              0.870835,
+              0.94127,
+              1.011706,
+              1.088544,
+              1.165382,
+              1.242221,
+              1.319059,
+              1.395898,
+              1.472736
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.328,
+            2.5026,
+            2.6772,
+            2.91,
+            3.0846,
+            3.2592,
+            3.492,
+            3.7248,
+            3.9576,
+            4.1904,
+            4.4232,
+            4.656,
+            4.947,
+            5.238,
+            5.529
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 540,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            4.064,
+            4.3688,
+            4.6736,
+            5.08,
+            5.3848,
+            5.6896,
+            6.096,
+            6.5024,
+            6.9088,
+            7.3152,
+            7.7216,
+            8.128,
+            8.636,
+            9.144,
+            9.652
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 53,
+              "skill": 52,
+              "dash": 51,
+              "jump": 51,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/dahlia/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "dahlia.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "The Wind's Gentle Grace: When characters affected by the Favonian Favor effect of the Elemental Burst **Radiant Psalter** trigger Frozen reactions on opponents, they will grant Dahlia 2 Benison stacks. This effect can trigger once every 8s."
+    },
+    {
+      "id": "dahlia.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Prayer of Well-Wrought Joy: When your active party member is affected by the Favonian Favor effect of the Elemental Burst **\"Radiant Psalter,\"** their ATK SPD will increase based on Dahlia's Max HP: Every 1,000 Max HP will cause an increase of 0.5%, up to a maximum of 20%."
+    },
+    {
+      "id": "dahlia.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Pilgrimage Upon Returning Winds: During the day (06:00 – 18:00), your party members gain the Swift Stride effect: Movement SPD increased by 10%.\nDoes not take effect in Domains, Trounce Domains, or the Spiral Abyss. Swift Stride does not stack."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Infallible Procession: Each time Dahlia gains 1 of his Elemental Burst **Radiant Psalter**'s Benison stacks, he will regain 2.5 Elemental Energy."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Revelation of Mercy: After Dahlia consumes his Elemental Burst **Radiant Psalter**'s Benison stacks to summon a Shield of Sacred Favor, the character protected by said Shield will gain 25% increased Shield Strength for 12s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Windblume Offertory: Increases the Level of **Radiant Psalter** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Collect of the Assembly: The Favonian Favor from Dahlia's Elemental Burst **Radiant Psalter** lasts 3 more seconds."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Let It Be Subtly So: Increases the Level of **Immersive Ordinance** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "You Shall Go Out With Joy: The current active character affected by the Elemental Burst **Radiant Psalter**'s Favonian Favor has their ATK SPD increased by 10%.\nAdditionally, when an active character affected by Favonian Favor falls, immediately:\n· Revive them.\n· Restore their HP to 100%.\nThis effect can trigger once every 15 minutes."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

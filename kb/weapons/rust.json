@@ -1,0 +1,47 @@
+{
+  "id": "rust",
+  "name": "Rust",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Rapid Firing\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Increases Normal Attack DMG by 40% but decreases Charged Attack DMG by 10%.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "bow",
+  "rarity": 4,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 509.605949
+  },
+  "substat": {
+    "stat": "atk%",
+    "lv90": 0.41346
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Rapid Firing",
+    "text": "Increases Normal Attack DMG by 40% but decreases Charged Attack DMG by 10%.",
+    "effects": []
+  },
+  "needsHook": false
+}

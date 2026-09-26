@@ -1,0 +1,34 @@
+{
+  "id": "bloodstained-chivalry",
+  "name": "Bloodstained Chivalry",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "2-piece bonus \"Physical DMG +25%\" is not modelled yet.",
+    "4-piece bonus \"After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s.\" is not modelled yet.",
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": []
+    },
+    "4": {
+      "effects": []
+    }
+  },
+  "needsHook": false
+}

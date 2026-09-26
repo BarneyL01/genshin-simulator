@@ -1,0 +1,597 @@
+{
+  "id": "jean",
+  "name": "Jean",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/jean",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/jean-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 14695.093175999998,
+      "atk": 239.17838000000003,
+      "def": 768.5543700000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "healingBonus",
+    "value": 0.2215
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.48332,
+            0.52266,
+            0.562,
+            0.6182,
+            0.65754,
+            0.7025,
+            0.76432,
+            0.82614,
+            0.88796,
+            0.9554,
+            1.032675,
+            1.12355,
+            1.214426,
+            1.305301,
+            1.404438
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 22,
+              "charged": 25,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.4558,
+            0.4929,
+            0.53,
+            0.583,
+            0.6201,
+            0.6625,
+            0.7208,
+            0.7791,
+            0.8374,
+            0.901,
+            0.973875,
+            1.059576,
+            1.145277,
+            1.230978,
+            1.32447
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 6,
+            "cancel": {
+              "normal": 14,
+              "charged": 20,
+              "skill": 6,
+              "burst": 6,
+              "dash": 6,
+              "jump": 6,
+              "swap": 6,
+              "default": 20
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.60286,
+            0.65193,
+            0.701,
+            0.7711,
+            0.82017,
+            0.87625,
+            0.95336,
+            1.03047,
+            1.10758,
+            1.1917,
+            1.288088,
+            1.401439,
+            1.514791,
+            1.628143,
+            1.751799
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 28,
+              "charged": 31,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.65876,
+            0.71238,
+            0.766,
+            0.8426,
+            0.89622,
+            0.9575,
+            1.04176,
+            1.12602,
+            1.21028,
+            1.3022,
+            1.407525,
+            1.531387,
+            1.655249,
+            1.779112,
+            1.914234
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 44,
+              "charged": 49,
+              "skill": 37,
+              "burst": 37,
+              "dash": 37,
+              "jump": 37,
+              "swap": 37,
+              "default": 49
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.79206,
+            0.85653,
+            0.921,
+            1.0131,
+            1.07757,
+            1.15125,
+            1.25256,
+            1.35387,
+            1.45518,
+            1.5657,
+            1.692338,
+            1.841263,
+            1.990189,
+            2.139115,
+            2.301579
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 68
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.62024,
+            1.75212,
+            1.884,
+            2.0724,
+            2.20428,
+            2.355,
+            2.56224,
+            2.76948,
+            2.97672,
+            3.2028,
+            3.46185,
+            3.766493,
+            4.071136,
+            4.375778,
+            4.708116
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 36,
+            "cancel": {
+              "burst": 56,
+              "dash": 36,
+              "jump": 36,
+              "swap": 39,
+              "default": 57
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.92,
+            3.139,
+            3.358,
+            3.65,
+            3.869,
+            4.088,
+            4.38,
+            4.672,
+            4.964,
+            5.256,
+            5.548,
+            5.84,
+            6.205,
+            6.57,
+            6.935
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "dash": 28,
+              "jump": 28,
+              "swap": 45,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 360,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Burst",
+          "mv": [
+            4.248,
+            4.5666,
+            4.8852,
+            5.31,
+            5.6286,
+            5.9472,
+            6.372,
+            6.7968,
+            7.2216,
+            7.6464,
+            8.0712,
+            8.496,
+            9.027,
+            9.558,
+            10.089
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 88,
+              "skill": 89,
+              "swap": 88,
+              "default": 90
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Field Entering/Exiting",
+          "mv": [
+            0.784,
+            0.8428,
+            0.9016,
+            0.98,
+            1.0388,
+            1.0976,
+            1.176,
+            1.2544,
+            1.3328,
+            1.4112,
+            1.4896,
+            1.568,
+            1.666,
+            1.764,
+            1.862
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "normal": 88,
+              "skill": 89,
+              "swap": 88,
+              "default": 90
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/jean/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "jean.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Wind Companion: On hit, Jean's Normal Attacks have a 50% chance to regenerate HP equal to 15% of Jean's ATK for all party members."
+    },
+    {
+      "id": "jean.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Let the Wind Lead: Using Dandelion Breeze will regenerate 20% of its Energy."
+    },
+    {
+      "id": "jean.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Guiding Breeze: When a Perfect Cooking is achieved on a dish with restorative effects, there is a 12% chance to obtain double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Spiraling Tempest: Increases the pulling speed of Gale Blade after holding for more than 1s, and increases the DMG dealt by 40%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "People's Aegis: When Jean picks up an Elemental Orb/Particle, all party members have their Movement SPD and ATK SPD increased by 15% for 15s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "When the West Wind Arises: Increases the Level of Dandelion Breeze by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Lands of Dandelion: Within the Field created by Dandelion Breeze, all opponents have their Anemo RES decreased by 40%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Outbursting Gust: Increases the Level of Gale Blade by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Lion's Fang, Fair Protector of Mondstadt: Incoming DMG is decreased by 35% within the Field created by Dandelion Breeze. Upon leaving the Dandelion Field, this effect lasts for 3 attacks or 10s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

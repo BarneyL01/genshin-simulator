@@ -1,0 +1,638 @@
+{
+  "id": "kaedehara-kazuha",
+  "name": "Kaedehara Kazuha",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/kaedehara-kazuha",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "sword",
+  "releaseVersion": "1.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13348.0427932,
+      "atk": 296.58119320000003,
+      "def": 806.9820885
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 115.2
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.44978,
+            0.48639,
+            0.523,
+            0.5753,
+            0.61191,
+            0.65375,
+            0.71128,
+            0.76881,
+            0.82634,
+            0.8891,
+            0.961013,
+            1.045582,
+            1.130151,
+            1.21472,
+            1.306977
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.45236,
+            0.48918,
+            0.526,
+            0.5786,
+            0.61542,
+            0.6575,
+            0.71536,
+            0.77322,
+            0.83108,
+            0.8942,
+            0.966525,
+            1.051579,
+            1.136633,
+            1.221688,
+            1.314474
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 20,
+              "charged": 20,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 20
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.258,
+            0.279,
+            0.3,
+            0.33,
+            0.351,
+            0.375,
+            0.408,
+            0.441,
+            0.474,
+            0.51,
+            0.55125,
+            0.59976,
+            0.64827,
+            0.69678,
+            0.7497
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 33,
+              "charged": 31,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            25
+          ],
+          "extraMv": [
+            [
+              0.3096,
+              0.3348,
+              0.36,
+              0.396,
+              0.4212,
+              0.45,
+              0.4896,
+              0.5292,
+              0.5688,
+              0.612,
+              0.6615,
+              0.719712,
+              0.777924,
+              0.836136,
+              0.89964
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.60716,
+            0.65658,
+            0.706,
+            0.7766,
+            0.82602,
+            0.8825,
+            0.96016,
+            1.03782,
+            1.11548,
+            1.2002,
+            1.297275,
+            1.411435,
+            1.525595,
+            1.639756,
+            1.764294
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 38,
+              "charged": 35,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.2537,
+            0.27435,
+            0.295,
+            0.3245,
+            0.34515,
+            0.36875,
+            0.4012,
+            0.43365,
+            0.4661,
+            0.5015,
+            0.542063,
+            0.589764,
+            0.637465,
+            0.685167,
+            0.737205
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 72,
+              "charged": 72,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 72
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            19,
+            27
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.43,
+            0.465,
+            0.5,
+            0.55,
+            0.585,
+            0.625,
+            0.68,
+            0.735,
+            0.79,
+            0.85,
+            0.91875,
+            0.9996,
+            1.08045,
+            1.1613,
+            1.2495
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "skill": 30,
+              "burst": 30,
+              "dash": 20,
+              "jump": 20,
+              "swap": 28,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ],
+          "extraMv": [
+            [
+              0.74648,
+              0.80724,
+              0.868,
+              0.9548,
+              1.01556,
+              1.085,
+              1.18048,
+              1.27596,
+              1.37144,
+              1.4756,
+              1.59495,
+              1.735306,
+              1.875661,
+              2.016017,
+              2.169132
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press Skill",
+          "mv": [
+            1.92,
+            2.064,
+            2.208,
+            2.4,
+            2.544,
+            2.688,
+            2.88,
+            3.072,
+            3.264,
+            3.456,
+            3.648,
+            3.84,
+            4.08,
+            4.32,
+            4.56
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 360,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Slashing",
+          "mv": [
+            2.624,
+            2.8208,
+            3.0176,
+            3.28,
+            3.4768,
+            3.6736,
+            3.936,
+            4.1984,
+            4.4608,
+            4.7232,
+            4.9856,
+            5.248,
+            5.576,
+            5.904,
+            6.232
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 82,
+            "cancel": {
+              "normal": 92,
+              "skill": 92,
+              "dash": 92,
+              "swap": 90,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Additional Elemental",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 85,
+            "cancel": {
+              "normal": 92,
+              "skill": 92,
+              "dash": 92,
+              "swap": 90,
+              "default": 93
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kazuha/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "kaedehara-kazuha.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Soumon Swordsmanship: If Chihayaburu comes into contact with Hydro/Pyro/Cryo/Electro when cast, this Chihayaburu will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional 200% ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.\nElemental Absorption may only occur once per use of Chihayaburu."
+    },
+    {
+      "id": "kaedehara-kazuha.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Poetics of Fuubutsu: Upon triggering a Swirl or Stellar Swirl reaction, Kaedehara Kazuha will grant all party members a 0.04% Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist."
+    },
+    {
+      "id": "kaedehara-kazuha.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Cloud Strider: Decreases sprinting Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Scarlet Hills: Decreases Chihayaburu's CD by 10%.\nUsing Kazuha Slash resets the CD of Chihayaburu."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Yamaarashi Tailwind: The Autumn Whirlwind field created by Kazuha Slash has the following effects:\n· Increases Kaedehara Kazuha's own Elemental Mastery by 200 for its duration.\n· Increases the Elemental Mastery of characters within the field by 200.\n\nThe Elemental Mastery-increasing effects of this Constellation do not stack."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Maple Monogatari: Increases the Level of Chihayaburu by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Oozora Genpou: When Kaedehara Kazuha's Energy is lower than 45, he obtains the following effects:\n·Pressing or Holding Chihayaburu regenerates 3 or 4 Energy for Kaedehara Kazuha, respectively.\n·When gliding, Kaedehara Kazuha regenerates 2 Energy per second."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Wisdom of Bansei: Increases the Level of Kazuha Slash by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Crimson Momiji: After using Chihayaburu or Kazuha Slash, Kaedehara Kazuha gains an Anemo Infusion for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by 0.2%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

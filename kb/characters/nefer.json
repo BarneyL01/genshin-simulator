@@ -1,0 +1,991 @@
+{
+  "id": "nefer",
+  "name": "Nefer",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/dendro/nefer",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/17. Lv 90 base stats confirmed by KeqingMains.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "dendro",
+  "weaponType": "catalyst",
+  "releaseVersion": "6.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12703.9082338,
+      "atk": 344.4168692,
+      "def": 799.2965448000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.380712,
+            0.409265,
+            0.437819,
+            0.47589,
+            0.504443,
+            0.532997,
+            0.571068,
+            0.609139,
+            0.64721,
+            0.685282,
+            0.723353,
+            0.761424,
+            0.809013,
+            0.856602,
+            0.904191
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 22,
+              "charged": 19,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.37564,
+            0.403813,
+            0.431986,
+            0.46955,
+            0.497723,
+            0.525896,
+            0.56346,
+            0.601024,
+            0.638588,
+            0.676152,
+            0.713716,
+            0.75128,
+            0.798235,
+            0.84519,
+            0.892145
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 33,
+              "charged": 31,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "default": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.2524,
+            0.27133,
+            0.29026,
+            0.3155,
+            0.33443,
+            0.35336,
+            0.3786,
+            0.40384,
+            0.42908,
+            0.45432,
+            0.47956,
+            0.5048,
+            0.53635,
+            0.5679,
+            0.59945
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 40,
+              "charged": 39,
+              "skill": 35,
+              "burst": 35,
+              "dash": 35,
+              "jump": 35,
+              "swap": 35,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            35
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.609944,
+            0.65569,
+            0.701436,
+            0.76243,
+            0.808176,
+            0.853922,
+            0.914916,
+            0.97591,
+            1.036905,
+            1.097899,
+            1.158894,
+            1.219888,
+            1.296131,
+            1.372374,
+            1.448617
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 67,
+              "charged": 57,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.3088,
+            1.40696,
+            1.50512,
+            1.636,
+            1.73416,
+            1.83232,
+            1.9632,
+            2.09408,
+            2.22496,
+            2.35584,
+            2.48672,
+            2.6176,
+            2.7812,
+            2.9448,
+            3.1084
+          ],
+          "scaling": "atk",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 70,
+              "charged": 70,
+              "skill": 69,
+              "burst": 70,
+              "dash": 53,
+              "jump": 53,
+              "swap": 68,
+              "default": 75
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill 1",
+          "mv": [
+            0.76384,
+            0.821128,
+            0.878416,
+            0.9548,
+            1.012088,
+            1.069376,
+            1.14576,
+            1.222144,
+            1.298528,
+            1.374912,
+            1.451296,
+            1.52768,
+            1.62316,
+            1.71864,
+            1.81412
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Skill 2",
+          "mv": [
+            1.52768,
+            1.642256,
+            1.756832,
+            1.9096,
+            2.024176,
+            2.138752,
+            2.29152,
+            2.444288,
+            2.597056,
+            2.749824,
+            2.902592,
+            3.05536,
+            3.24632,
+            3.43728,
+            3.62824
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 1-Hit  (Nefer) 1",
+          "mv": [
+            0.2464,
+            0.26488,
+            0.28336,
+            0.308,
+            0.32648,
+            0.34496,
+            0.3696,
+            0.39424,
+            0.41888,
+            0.44352,
+            0.46816,
+            0.4928,
+            0.5236,
+            0.5544,
+            0.5852
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 1-Hit  (Nefer) 2",
+          "mv": [
+            0.4928,
+            0.52976,
+            0.56672,
+            0.616,
+            0.65296,
+            0.68992,
+            0.7392,
+            0.78848,
+            0.83776,
+            0.88704,
+            0.93632,
+            0.9856,
+            1.0472,
+            1.1088,
+            1.1704
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 2-Hit  (Nefer) 1",
+          "mv": [
+            0.32032,
+            0.344344,
+            0.368368,
+            0.4004,
+            0.424424,
+            0.448448,
+            0.48048,
+            0.512512,
+            0.544544,
+            0.576576,
+            0.608608,
+            0.64064,
+            0.68068,
+            0.72072,
+            0.76076
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 2-Hit  (Nefer) 2",
+          "mv": [
+            0.64064,
+            0.688688,
+            0.736736,
+            0.8008,
+            0.848848,
+            0.896896,
+            0.96096,
+            1.025024,
+            1.089088,
+            1.153152,
+            1.217216,
+            1.28128,
+            1.36136,
+            1.44144,
+            1.52152
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 1-Hit  (Shades)",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 2-Hit  (Shades)",
+          "mv": [
+            0.96,
+            1.032,
+            1.104,
+            1.2,
+            1.272,
+            1.344,
+            1.44,
+            1.536,
+            1.632,
+            1.728,
+            1.824,
+            1.92,
+            2.04,
+            2.16,
+            2.28
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Phantasm Performance 3-Hit  (Shades)",
+          "mv": [
+            1.28,
+            1.376,
+            1.472,
+            1.6,
+            1.696,
+            1.792,
+            1.92,
+            2.048,
+            2.176,
+            2.304,
+            2.432,
+            2.56,
+            2.72,
+            2.88,
+            3.04
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "dash": 4,
+              "jump": 5,
+              "swap": 53,
+              "skill": 54,
+              "normal": 54,
+              "charged": 54,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 540,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "1-Hit 1",
+          "mv": [
+            2.2464,
+            2.41488,
+            2.58336,
+            2.808,
+            2.97648,
+            3.14496,
+            3.3696,
+            3.59424,
+            3.81888,
+            4.04352,
+            4.26816,
+            4.4928,
+            4.7736,
+            5.0544,
+            5.3352
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "1-Hit 2",
+          "mv": [
+            4.4928,
+            4.82976,
+            5.16672,
+            5.616,
+            5.95296,
+            6.28992,
+            6.7392,
+            7.18848,
+            7.63776,
+            8.08704,
+            8.53632,
+            8.9856,
+            9.5472,
+            10.1088,
+            10.6704
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Hit 1",
+          "mv": [
+            3.3696,
+            3.62232,
+            3.87504,
+            4.212,
+            4.46472,
+            4.71744,
+            5.0544,
+            5.39136,
+            5.72832,
+            6.06528,
+            6.40224,
+            6.7392,
+            7.1604,
+            7.5816,
+            8.0028
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "2-Hit 2",
+          "mv": [
+            6.7392,
+            7.24464,
+            7.75008,
+            8.424,
+            8.92944,
+            9.43488,
+            10.1088,
+            10.78272,
+            11.45664,
+            12.13056,
+            12.80448,
+            13.4784,
+            14.3208,
+            15.1632,
+            16.0056
+          ],
+          "scaling": "em",
+          "element": "dendro",
+          "frames": {
+            "hitmark": 41,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "nefer.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "A Wager of Moonlight: Nefer will be granted the corresponding buff effects based on the party's Moonsign.\n\nMoonsign: Ascendant Gleam: When she unleashes her Elemental Skill **Senet Strategy: Dance of a Thousand Nights**, any Dendro Cores on the field will be converted to Seeds of Deceit, and any Lunar-Bloom reactions triggered by nearby characters in the following 15s that would create Dendro Cores or Bountiful Cores will instead create Seeds of Deceit. Seeds of Deceit cannot trigger Hyperbloom or Burgeon reactions and will not burst.\nWhen Nefer unleashes a Charged Attack or **Phantasm Perform"
+    },
+    {
+      "id": "nefer.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Daughter of the Dust and Sand: When Nefer is in the **Shadow Dance** state, for 5s after a party member triggers a Lunar-Bloom reaction, Nefer's **Slither** state will provide additional **Verdant Dew**. Every 100 points of Nefer's Elemental Mastery beyond 500 will strengthen this additional provision effect by 10%. The maximum increase that can be achieved this way is 50%."
+    },
+    {
+      "id": "nefer.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Moonsign Benediction: Dusklit Eaves: When a party member triggers a Bloom reaction, it will be converted into the Lunar-Bloom reaction, with every point of Elemental Mastery that Nefer has increasing Lunar-Bloom's Base DMG by 0.0175%, up to a maximum of 14%.\n\nAdditionally, when Nefer is in the party, the party's Moonsign will increase by 1 level."
+    },
+    {
+      "id": "nefer.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Conspiracy of the Golden Vault: Gains 25% more rewards when dispatched on a Nod-Krai Expedition for 20 hours."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Planning Breeds Success: The Base DMG for Lunar-Bloom reactions caused by Nefer's **Phantasm Performance** is increased by 60% of her Elemental Mastery. This effect is also boosted by **Veil of Falsehood**."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Observation Feeds Strategy: Enhances the effects of the Ascension Talent **A Wager of Moonlight**: Extends **Veil of Falsehood**'s duration by 5s, and increases its stack limit to 5, as well as causing **Phantasm Performance** to deal up to 140% of its original DMG. When Nefer unleashes her Elemental Skill **Senet Strategy: Dance of a Thousand Nights**, she will instantly gain 2 stacks of Veil of Falsehood. Additionally, when Veil of Falsehood reaches 5 stacks, or when the fifth stack's duration is refreshed, Nefer's Elemental Mastery will be increased by 200 for 8s instead.\nYou must first unl"
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Deceit Cloaks the Truth: Increases the Level of **Senet Strategy: Dance of a Thousand Nights** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Delusion Ensnares Reason: When Nefer is on the field and in the **Shadow Dance** state, you will gain Verdant Dew 25% faster.\nAdditionally, while Nefer is in the Shadow Dance state, nearby opponents will have their Dendro RES decreased by 20%. When Nefer exits the Shadow Dance state or after she strays a certain distance away from the opponents, this effect will be removed after 4.5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Opportunity Hides in the Margins: Increases the Level of **Sacred Vow: True Eye's Phantasm** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Victory Flows from the Turning of Tides: When Nefer unleashes **Phantasm Performance**, the second stage of DMG dealt by herself will be converted to deal AoE Dendro DMG equal to 85% of her Elemental Mastery. Additionally, when the attacks from Phantasm Performance end, an extra instance of AoE Dendro DMG equal to 120% of Nefer's Elemental Mastery will be dealt. All of the aforementioned DMG is considered Lunar-Bloom DMG dealt by Phantasm Performance.\n\nMoonsign: Ascendant Gleam\nNefer's Lunar-Bloom DMG is **elevated** by 15%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "em",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.dendro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,475 @@
+{
+  "id": "sangonomiya-kokomi",
+  "name": "Sangonomiya Kokomi",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/sangonomiya-kokomi",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/kokomi-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 5/5. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "hydro",
+  "weaponType": "catalyst",
+  "releaseVersion": "2.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13470.501828000002,
+      "atk": 234.39481640000002,
+      "def": 657.11398635
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.hydro",
+    "value": 0.288
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.68376,
+            0.735042,
+            0.786324,
+            0.8547,
+            0.905982,
+            0.957264,
+            1.02564,
+            1.094016,
+            1.162392,
+            1.230768,
+            1.299144,
+            1.36752,
+            1.45299,
+            1.53846,
+            1.62393
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 2,
+            "cancel": {
+              "normal": 14,
+              "charged": 19,
+              "skill": 2,
+              "burst": 2,
+              "dash": 2,
+              "jump": 2,
+              "swap": 2,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.615384,
+            0.661538,
+            0.707692,
+            0.76923,
+            0.815384,
+            0.861538,
+            0.923076,
+            0.984614,
+            1.046153,
+            1.107691,
+            1.16923,
+            1.230768,
+            1.307691,
+            1.384614,
+            1.461537
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 30,
+              "charged": 34,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "default": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.943056,
+            1.013785,
+            1.084514,
+            1.17882,
+            1.249549,
+            1.320278,
+            1.414584,
+            1.50889,
+            1.603195,
+            1.697501,
+            1.791806,
+            1.886112,
+            2.003994,
+            2.121876,
+            2.239758
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 26,
+            "cancel": {
+              "normal": 65,
+              "charged": 60,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.4832,
+            1.59444,
+            1.70568,
+            1.854,
+            1.96524,
+            2.07648,
+            2.2248,
+            2.37312,
+            2.52144,
+            2.66976,
+            2.81808,
+            2.9664,
+            3.1518,
+            3.3372,
+            3.5226
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 48,
+            "cancel": {
+              "normal": 62,
+              "charged": 62,
+              "skill": 62,
+              "burst": 62,
+              "dash": 48,
+              "jump": 48,
+              "swap": 62,
+              "default": 76
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Ripple",
+          "mv": [
+            1.091904,
+            1.173797,
+            1.25569,
+            1.36488,
+            1.446773,
+            1.528666,
+            1.637856,
+            1.747046,
+            1.856237,
+            1.965427,
+            2.074618,
+            2.183808,
+            2.320296,
+            2.456784,
+            2.593272
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "dash": 29,
+              "jump": 29,
+              "default": 61
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "particles": {
+        "count": 1,
+        "perHit": false,
+        "icd": 0,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.10416,
+            0.111972,
+            0.119784,
+            0.1302,
+            0.138012,
+            0.145824,
+            0.15624,
+            0.166656,
+            0.177072,
+            0.187488,
+            0.197904,
+            0.20832,
+            0.22134,
+            0.23436,
+            0.24738
+          ],
+          "scaling": "hp",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 49,
+            "cancel": {
+              "normal": 77,
+              "charged": 77,
+              "skill": 77,
+              "swap": 76,
+              "default": 78
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/kokomi/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "sangonomiya-kokomi.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Tamakushi Casket: If Sangonomiya Kokomi's own Bake-Kurage is on the field when she uses Nereid's Ascension, the Bake-Kurage's duration will be refreshed."
+    },
+    {
+      "id": "sangonomiya-kokomi.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Song of Pearls: While donning the Ceremonial Garment created by Nereid's Ascension, the Normal and Charged Attack DMG Bonus Sangonomiya Kokomi gains based on her Max HP will receive a further increase based on 15% of her Healing Bonus."
+    },
+    {
+      "id": "sangonomiya-kokomi.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Princess of Watatsumi: Decreases swimming Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    },
+    {
+      "id": "sangonomiya-kokomi.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Flawless Strategy: Sangonomiya Kokomi has a 25% Healing Bonus, but a 100% decrease in CRIT Rate."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "At Water's Edge: While donning the Ceremonial Garment created by Nereid's Ascension, the final Normal Attack in Sangonomiya Kokomi's combo will unleash a swimming fish to deal 30% of her Max HP as Hydro DMG.\nThis DMG is not considered Normal Attack DMG."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The Clouds Like Waves Rippling: Sangonomiya Kokomi gains the following Healing Bonuses with regard to characters with 50% or less HP via the following methods:\n·Kurage's Oath Bake-Kurage: 4.5% of Kokomi's Max HP.\n·Nereid's Ascension Normal and Charged Attacks: 0.6% of Kokomi's Max HP."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Moon, A Ship O'er the Seas: Increases the Level of Nereid's Ascension by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Moon Overlooks the Waters: While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi's Normal Attack SPD is increased by 10%, and Normal Attacks that hit opponents will restore 0.8 Energy for her.\nThis effect can occur once every 0.2s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "All Streams Flow to the Sea: Increases the Level of Kurage's Oath by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Sango Isshin: While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi gains a 40% Hydro DMG Bonus for 4s when her Normal and Charged Attacks heal, or would heal, any party member with 80% or more HP."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro"
+      ],
+      "circlet": [
+        "hp%",
+        "healingBonus"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

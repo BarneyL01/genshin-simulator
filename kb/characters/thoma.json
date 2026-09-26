@@ -1,0 +1,544 @@
+{
+  "id": "thoma",
+  "name": "Thoma",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/thoma",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "pyro",
+  "weaponType": "polearm",
+  "releaseVersion": "2.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10331.1695235,
+      "atk": 201.77733240000003,
+      "def": 750.7736775
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.443932,
+            0.480066,
+            0.5162,
+            0.56782,
+            0.603954,
+            0.64525,
+            0.702032,
+            0.758814,
+            0.815596,
+            0.87754,
+            0.939484,
+            1.001428,
+            1.063372,
+            1.125316,
+            1.18726
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 20,
+              "charged": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.436278,
+            0.471789,
+            0.5073,
+            0.55803,
+            0.593541,
+            0.634125,
+            0.689928,
+            0.745731,
+            0.801534,
+            0.86241,
+            0.923286,
+            0.984162,
+            1.045038,
+            1.105914,
+            1.16679
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 27,
+              "charged": 25,
+              "skill": 18,
+              "burst": 18,
+              "dash": 18,
+              "jump": 18,
+              "swap": 18,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.26789,
+            0.289695,
+            0.3115,
+            0.34265,
+            0.364455,
+            0.389375,
+            0.42364,
+            0.457905,
+            0.49217,
+            0.52955,
+            0.56693,
+            0.60431,
+            0.64169,
+            0.67907,
+            0.71645
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 31,
+              "charged": 32,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.673552,
+            0.728376,
+            0.7832,
+            0.86152,
+            0.916344,
+            0.979,
+            1.065152,
+            1.151304,
+            1.237456,
+            1.33144,
+            1.425424,
+            1.519408,
+            1.613392,
+            1.707376,
+            1.80136
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 58,
+              "charged": 58,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.12746,
+            1.21923,
+            1.311,
+            1.4421,
+            1.53387,
+            1.63875,
+            1.78296,
+            1.92717,
+            2.07138,
+            2.2287,
+            2.38602,
+            2.54334,
+            2.70066,
+            2.85798,
+            3.0153
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "dash": 34,
+              "jump": 34,
+              "swap": 63,
+              "default": 64
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.464,
+            1.5738,
+            1.6836,
+            1.83,
+            1.9398,
+            2.0496,
+            2.196,
+            2.3424,
+            2.4888,
+            2.6352,
+            2.7816,
+            2.928,
+            3.111,
+            3.294,
+            3.477
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "dash": 32,
+              "jump": 32,
+              "swap": 44,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.88,
+            0.946,
+            1.012,
+            1.1,
+            1.166,
+            1.232,
+            1.32,
+            1.408,
+            1.496,
+            1.584,
+            1.672,
+            1.76,
+            1.87,
+            1.98,
+            2.09
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 57,
+              "skill": 56,
+              "dash": 57,
+              "swap": 56,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        },
+        {
+          "name": "Fiery Collapse",
+          "mv": [
+            0.58,
+            0.6235,
+            0.667,
+            0.725,
+            0.7685,
+            0.812,
+            0.87,
+            0.928,
+            0.986,
+            1.044,
+            1.102,
+            1.16,
+            1.2325,
+            1.305,
+            1.3775
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 43,
+            "cancel": {
+              "normal": 57,
+              "skill": 56,
+              "dash": 57,
+              "swap": 56,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/thoma/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "thoma.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Imbricated Armor: When your current active character obtains or refreshes a Blazing Barrier, this character's Shield Strength will increase by 5% for 6s.\nThis effect can be triggered once every 0.3s seconds. Max 5 stacks."
+    },
+    {
+      "id": "thoma.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Flaming Assault: DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by 2.2% of Thoma's Max HP."
+    },
+    {
+      "id": "thoma.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Snap and Swing: When you fish successfully in Inazuma, Thoma's help grants a 20% chance of scoring a double catch."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "A Comrade's Duty: When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by 3s, while his own Crimson Ooyoroi's CD is decreased by 3s.\nThis effect can be triggered once every 20s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "A Subordinate's Skills: Crimson Ooyoroi's duration is increased by 3s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Fortified Resolve: Increases the Level of Blazing Blessing by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Long-Term Planning: After using Crimson Ooyoroi, 15 Energy will be restored to Thoma."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Raging Wildfire: Increases the Level of Crimson Ooyoroi by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Burning Heart: When a Blazing Barrier is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by 15% for 6s."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

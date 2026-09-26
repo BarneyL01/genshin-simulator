@@ -1,0 +1,873 @@
+{
+  "id": "mavuika",
+  "name": "Mavuika",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/mavuika",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/mavuika-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 14/14. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "claymore",
+  "releaseVersion": "5.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12552.058567,
+      "atk": 358.76757,
+      "def": 791.6110011000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.80035,
+            0.865495,
+            0.93064,
+            1.023704,
+            1.088849,
+            1.1633,
+            1.26567,
+            1.368041,
+            1.470411,
+            1.582088,
+            1.693765,
+            1.805442,
+            1.917118,
+            2.028795,
+            2.140472
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 31,
+              "charged": 31,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 40
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.364799,
+            0.394492,
+            0.424185,
+            0.466604,
+            0.496296,
+            0.530231,
+            0.576892,
+            0.623552,
+            0.670212,
+            0.721114,
+            0.772017,
+            0.822919,
+            0.873821,
+            0.924723,
+            0.975625
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 42,
+              "charged": 42,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "default": 50
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            26
+          ]
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.332232,
+            0.359274,
+            0.386317,
+            0.424948,
+            0.45199,
+            0.482896,
+            0.525391,
+            0.567885,
+            0.61038,
+            0.656738,
+            0.703096,
+            0.749454,
+            0.795812,
+            0.84217,
+            0.888528
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 46,
+              "charged": 47,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 59
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            33,
+            39
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            1.161929,
+            1.256504,
+            1.35108,
+            1.486188,
+            1.580764,
+            1.68885,
+            1.837469,
+            1.986088,
+            2.134706,
+            2.296836,
+            2.458966,
+            2.621095,
+            2.783225,
+            2.945354,
+            3.107484
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "normal": 60,
+              "charged": 61,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "default": 61
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.93844,
+            2.09622,
+            2.254,
+            2.4794,
+            2.63718,
+            2.8175,
+            3.06544,
+            3.31338,
+            3.56132,
+            3.8318,
+            4.10228,
+            4.37276,
+            4.64324,
+            4.91372,
+            5.1842
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 79,
+            "cancel": {
+              "normal": 98,
+              "charged": 98,
+              "dash": 79,
+              "jump": 79,
+              "skill": 98,
+              "default": 99
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.744,
+            0.7998,
+            0.8556,
+            0.93,
+            0.9858,
+            1.0416,
+            1.116,
+            1.1904,
+            1.2648,
+            1.3392,
+            1.4136,
+            1.488,
+            1.581,
+            1.674,
+            1.767
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Ring of Searing Radiance",
+          "mv": [
+            1.28,
+            1.376,
+            1.472,
+            1.6,
+            1.696,
+            1.792,
+            1.92,
+            2.048,
+            2.176,
+            2.304,
+            2.432,
+            2.56,
+            2.72,
+            2.88,
+            3.04
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Normal Attack 1-Hit",
+          "mv": [
+            0.572648,
+            0.619259,
+            0.66587,
+            0.732457,
+            0.779068,
+            0.832337,
+            0.905583,
+            0.978829,
+            1.052075,
+            1.131979,
+            1.211883,
+            1.291788,
+            1.371692,
+            1.451597,
+            1.531501
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Normal Attack 2-Hit",
+          "mv": [
+            0.591327,
+            0.639459,
+            0.68759,
+            0.756349,
+            0.80448,
+            0.859488,
+            0.935122,
+            1.010757,
+            1.086392,
+            1.168903,
+            1.251414,
+            1.333925,
+            1.416435,
+            1.498946,
+            1.581457
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Normal Attack 3-Hit",
+          "mv": [
+            0.699868,
+            0.756834,
+            0.8138,
+            0.89518,
+            0.952146,
+            1.01725,
+            1.106768,
+            1.196286,
+            1.285804,
+            1.38346,
+            1.481116,
+            1.578772,
+            1.676428,
+            1.774084,
+            1.87174
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Normal Attack 4-Hit",
+          "mv": [
+            0.697047,
+            0.753784,
+            0.81052,
+            0.891572,
+            0.948308,
+            1.01315,
+            1.102307,
+            1.191464,
+            1.280622,
+            1.377884,
+            1.475146,
+            1.572409,
+            1.669671,
+            1.766934,
+            1.864196
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Normal Attack 5-Hit",
+          "mv": [
+            0.910035,
+            0.984107,
+            1.05818,
+            1.163998,
+            1.238071,
+            1.322725,
+            1.439125,
+            1.555525,
+            1.671924,
+            1.798906,
+            1.925888,
+            2.052869,
+            2.179851,
+            2.306832,
+            2.433814
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Sprint",
+          "mv": [
+            0.8084,
+            0.8742,
+            0.94,
+            1.034,
+            1.0998,
+            1.175,
+            1.2784,
+            1.3818,
+            1.4852,
+            1.598,
+            1.7108,
+            1.8236,
+            1.9364,
+            2.0492,
+            2.162
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Flamestrider Plunge",
+          "mv": [
+            1.5996,
+            1.7298,
+            1.86,
+            2.046,
+            2.1762,
+            2.325,
+            2.5296,
+            2.7342,
+            2.9388,
+            3.162,
+            3.3852,
+            3.6084,
+            3.8316,
+            4.0548,
+            4.278
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 40,
+            "cancel": {
+              "normal": 18,
+              "charged": 19,
+              "skill": 19,
+              "burst": 18,
+              "swap": 24,
+              "default": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            4.448,
+            4.7816,
+            5.1152,
+            5.56,
+            5.8936,
+            6.2272,
+            6.672,
+            7.1168,
+            7.5616,
+            8.0064,
+            8.4512,
+            8.896,
+            9.452,
+            10.008,
+            10.564
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 106,
+            "cancel": {
+              "swap": 116,
+              "normal": 116,
+              "charged": 116,
+              "skill": 116,
+              "dash": 116,
+              "jump": 116,
+              "default": 141
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/mavuika/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "mavuika.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Gift of Flaming Flowers: When a nearby party member triggers a Nightsoul Burst, Mavuika's ATK increases by 30% for 10s."
+    },
+    {
+      "id": "mavuika.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "\"Kiongozi\": After using her Elemental Burst, Hour of Burning Skies, every point of Fighting Spirit present when it is used increases the DMG that the current active party member deals by 0.2%. The maximum increase obtainable this way is 40%, and this effect lasts 20s, decaying over this duration until it reaches 0."
+    },
+    {
+      "id": "mavuika.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Exhaust Mode: After Nightsoul points have been fully depleted, Mavuika will switch to using Phlogiston to maintain the All-Fire Armaments' Flamestrider form.\nWhile in an area with Phlogiston Mechanics within Natlan, Nightsoul Transmission: Mavuika can be used. When the current active character is sprinting, climbing, swimming, in movement modes caused by certain Talents, or at a certain height in the air, switching to Mavuika will trigger the following: Mavuika enters the Nightsoul's Blessing state and obtains 50% of her maximum Nightsoul points. Nightsoul Transmission can "
+    },
+    {
+      "id": "mavuika.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Night-Shattering Radiance: The party's Nightsoul Transmission CD is decreased by 20%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "The Night-Lord's Explication: Mavuika's maximum Nightsoul points are increased to 120, and she gains Fighting Spirit 25% more efficiently.\nAdditionally, she gains 40% ATK for 8s after gaining Fighting Spirit."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "The Ashen Price: When in the Nightsoul's Blessing State, Mavuika's Base ATK is increased by 200, and she obtains the following effects based on All-Fire Armaments' form:\n· Ring of Searing Radiance: Nearby opponents' DEF is decreased by 20%.\n· Flamestrider: Mavuika's Normal Attacks, Charged Attacks, and her Sunfell Slice from the Elemental Burst Hour of Burning Skies deal 60%, 90%, and 120% of her ATK as increased DMG respectively."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Burning Sun: Increases the Level of Hour of Burning Skies by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "The Leader's Resolve: Enhances the effects of the Ascension Talent \"Kiongozi\":\nThe DMG increase gained after using the Elemental Burst Hour of Burning Skies will not decay over time, and an additional 10% DMG Bonus will be gained.\nYou must first unlock the Ascension Talent \"Kiongozi.\""
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "The Meaning of Truth: Increases the Level of The Named Moment by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "\"Humanity's Name\" Unfettered: The All-Fire Armaments from the Elemental Skill The Named Moment receive all-round improvements:\n· Ring of Searing Radiance: When the Ring's attacks hit opponents, a Flamestrider will crash into the struck opponent, dealing 200% of ATK as Nightsoul-aligned AoE Pyro DMG.\n· Flamestrider: When Mavuika is riding the Flamestrider, she will also summon a Scorching Ring of Searing Radiance to follow her, which will decrease nearby opponents' DEF by 20% and deal 500% of ATK as Nightsoul-aligned AoE Pyro DMG to nearby opponents once every 3s. Mavuika's terrain-crossing abi"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,0 +1,705 @@
+{
+  "id": "vesna",
+  "name": "Vesna",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 0/11. Lv 90 base stats not cross-checked in a second source.",
+    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
+    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, N5, N6, charged, skill, skill hitmark, burst, burst hitmark); taken from albedo or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "sword",
+  "releaseVersion": "7.1",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13262.3220984,
+      "atk": 353.9840004,
+      "def": 730.1266515000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.4042,
+            0.4371,
+            0.47,
+            0.517,
+            0.5499,
+            0.5875,
+            0.6392,
+            0.6909,
+            0.7426,
+            0.799,
+            0.8554,
+            0.9118,
+            0.9682,
+            1.0246,
+            1.081
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 14,
+              "charged": 23,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.48676,
+            0.52638,
+            0.566,
+            0.6226,
+            0.66222,
+            0.7075,
+            0.76976,
+            0.83202,
+            0.89428,
+            0.9622,
+            1.03012,
+            1.09804,
+            1.16596,
+            1.23388,
+            1.3018
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 22,
+              "charged": 21,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.28079,
+            0.303645,
+            0.3265,
+            0.35915,
+            0.382005,
+            0.408125,
+            0.44404,
+            0.479955,
+            0.51587,
+            0.55505,
+            0.59423,
+            0.63341,
+            0.67259,
+            0.71177,
+            0.75095
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "charged": 41,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.59168,
+            0.63984,
+            0.688,
+            0.7568,
+            0.80496,
+            0.86,
+            0.93568,
+            1.01136,
+            1.08704,
+            1.1696,
+            1.25216,
+            1.33472,
+            1.41728,
+            1.49984,
+            1.5824
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 34,
+              "charged": 36,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.62436,
+            0.67518,
+            0.726,
+            0.7986,
+            0.84942,
+            0.9075,
+            0.98736,
+            1.06722,
+            1.14708,
+            1.2342,
+            1.32132,
+            1.40844,
+            1.49556,
+            1.58268,
+            1.6698
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 62,
+              "charged": 62,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N6",
+          "mv": [
+            0.7224,
+            0.7812,
+            0.84,
+            0.924,
+            0.9828,
+            1.05,
+            1.1424,
+            1.2348,
+            1.3272,
+            1.428,
+            1.5288,
+            1.6296,
+            1.7304,
+            1.8312,
+            1.932
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 62,
+              "charged": 62,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.33042,
+            1.43871,
+            1.547,
+            1.7017,
+            1.80999,
+            1.93375,
+            2.10392,
+            2.27409,
+            2.44426,
+            2.6299,
+            2.81554,
+            3.00118,
+            3.18682,
+            3.37246,
+            3.5581
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "skill": 34,
+              "burst": 34,
+              "swap": 33,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.4,
+            0.43,
+            0.46,
+            0.5,
+            0.53,
+            0.56,
+            0.6,
+            0.64,
+            0.68,
+            0.72,
+            0.76,
+            0.8,
+            0.85,
+            0.9,
+            0.95
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Windborne Sword Lv. 1",
+          "mv": [
+            0.4,
+            0.43,
+            0.46,
+            0.5,
+            0.53,
+            0.56,
+            0.6,
+            0.64,
+            0.68,
+            0.72,
+            0.76,
+            0.8,
+            0.85,
+            0.9,
+            0.95
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Wind Pinion",
+          "mv": [
+            0.104,
+            0.1118,
+            0.1196,
+            0.13,
+            0.1378,
+            0.1456,
+            0.156,
+            0.1664,
+            0.1768,
+            0.1872,
+            0.1976,
+            0.208,
+            0.221,
+            0.234,
+            0.247
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "normal": 32,
+              "dash": 29,
+              "jump": 28,
+              "swap": 31,
+              "default": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1080,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Spirit Blade",
+          "mv": [
+            2.632,
+            2.8294,
+            3.0268,
+            3.29,
+            3.4874,
+            3.6848,
+            3.948,
+            4.2112,
+            4.4744,
+            4.7376,
+            5.0008,
+            5.264,
+            5.593,
+            5.922,
+            6.251
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 48,
+            "cancel": {
+              "dash": 95,
+              "jump": 94,
+              "swap": 93,
+              "default": 96
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Spirit Blade Stellar Swirl",
+          "mv": [
+            2.632,
+            2.8294,
+            3.0268,
+            3.29,
+            3.4874,
+            3.6848,
+            3.948,
+            4.2112,
+            4.4744,
+            4.7376,
+            5.0008,
+            5.264,
+            5.593,
+            5.922,
+            6.251
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 51,
+            "cancel": {
+              "dash": 95,
+              "jump": 94,
+              "swap": 93,
+              "default": 96
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/albedo/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "vesna.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Rite of Spring's Procession: After Vesna uses the special Elemental Skill **Windborne Sword** or the Elemental Burst **For the Tsaritsa!**, she also gains 1 stack of Disciplinary Action which lasts 20s. Max 6 stacks, and the duration of each stack is independent of the others'.\nWhen she has Disciplinary Action stacks active, the **Spirit Blades** summoned by Vesna will deal DMG equal to (100% + 10% × Disciplinary Action stack count) of the original DMG instead. All active stacks of Disciplinary Action are cleared when Vesna uses the Elemental Skill The Art of Victory or when she leaves the fie"
+    },
+    {
+      "id": "vesna.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Truth Prevails: Radiance: Stellar Swirl: Vesna will gain the corresponding effect based on the Elemental Type of her party members: \n· For every Cryo or Anemo character in her current party, Vesna's ATK increases by 6%; and\n· For every character of all other Elemental Types in her current party, Vesna's Elemental Mastery increases by 25 instead."
+    },
+    {
+      "id": "vesna.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Stellar Jubilee: Splendid Prelude: When party members trigger Cryo Swirl, it will be changed to a Stellar Swirl reaction, and party members' Base DMG for the Stellar Swirl will be increased based on Vesna's ATK. Every 100 ATK she has increases the Base Stellar Swirl DMG by 0.7%. The maximum DMG increase that can be gained this way is 14%.\nAfter a party member triggers a Stellar Swirl reaction nearby, Vesna enters the Radiance: Stellar Swirl state for 8s."
+    },
+    {
+      "id": "vesna.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "The Grand Circuit: Holding on Sprint or Jump when Vesna is not in combat will cause her to enter the Coursing state.\n\nCoursing\nContinuously consumes Stamina to hover in mid-air. Sprinting or tapping Jump to go higher expends additional Stamina. Including the hold on Jump that triggers Coursing, Vesna can go higher up to 3 times in each instance of the Coursing state.\n\nAdditionally, in Snezhnaya (excluding Nod-Krai), when Vesna is switched onto the field while the currently active party member is in mid-air and not in combat, she will immediately enter the Coursing state and regenerate 50 Stami"
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Winter's Farewell Feast: When in the **Armed for Action** mode, Vesna can unleash **Windborne Sword** at the highest level 4 times instead of 3. Also, each time she enters the Armed for Action mode, she will not consume **Sword Essence** the first time she uses Windborne Sword at the highest level.\nAdditionally, Vesna deals 20% increased Stellar Swirl reaction DMG when in the Armed for Action mode."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Kolo of Spring's Arrival: The Ascension Talent **Rite of Spring's Procession** is enhanced: Vesna gains the maximum number of Disciplinary Action stacks when she enters **Armed for Action** mode. Vesna's ATK is increased by 40% when she has maximum Disciplinary Action stacks.\nYou must unlock the Ascension Talent \"Rite of Spring's Procession\" to gain access to the above effects."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Winter's Last Offering: Increases the Level of the Elemental Skill **The Art of Victory** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Glory to Our Forebears: The Ascension Talent **Truth Prevails** is enhanced: Its ATK and Elemental Mastery bonuses increase to 3 times their original values."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "The Nobleborn's Charge: Increases the Level of the Elemental Burst **For the Tsaritsa!** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Unwavering Ardor: Tapping on Normal Attack or Elemental Skill in the 5s after Vesna uses **Windborne Sword** at its highest level will unleash the secret Vila ability Windborne Sword: Transpose, dealing Anemo DMG at 150% of Vesna's ATK as well as summoning **Spirit Blades** which deal an additional instance of Anemo DMG at 200% of Vesna's ATK. If Vesna is in the **Armed for Action** mode, she will also summon a wind pinion to perform Coordinated Attacks against opponents.\nAdditionally, Vesna's Stellar Swirl reaction DMG dealt is **elevated** by 20%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 6,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

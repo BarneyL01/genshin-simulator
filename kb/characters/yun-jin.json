@@ -1,0 +1,542 @@
+{
+  "id": "yun-jin",
+  "name": "Yun Jin",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/yun-jin",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "polearm",
+  "releaseVersion": "2.4",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10657.416864800001,
+      "atk": 191.15747280000002,
+      "def": 734.3931609000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.2667
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.40506,
+            0.43803,
+            0.471,
+            0.5181,
+            0.55107,
+            0.58875,
+            0.64056,
+            0.69237,
+            0.74418,
+            0.8007,
+            0.85722,
+            0.91374,
+            0.97026,
+            1.02678,
+            1.0833
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 20,
+              "charged": 25,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.40248,
+            0.43524,
+            0.468,
+            0.5148,
+            0.54756,
+            0.585,
+            0.63648,
+            0.68796,
+            0.73944,
+            0.7956,
+            0.85176,
+            0.90792,
+            0.96408,
+            1.02024,
+            1.0764
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 22,
+              "charged": 29,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.22962,
+            0.24831,
+            0.267,
+            0.2937,
+            0.31239,
+            0.33375,
+            0.36312,
+            0.39249,
+            0.42186,
+            0.4539,
+            0.48594,
+            0.51798,
+            0.55002,
+            0.58206,
+            0.6141
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 31,
+              "charged": 32,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ],
+          "extraMv": [
+            [
+              0.2752,
+              0.2976,
+              0.32,
+              0.352,
+              0.3744,
+              0.4,
+              0.4352,
+              0.4704,
+              0.5056,
+              0.544,
+              0.5824,
+              0.6208,
+              0.6592,
+              0.6976,
+              0.736
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.23994,
+            0.25947,
+            0.279,
+            0.3069,
+            0.32643,
+            0.34875,
+            0.37944,
+            0.41013,
+            0.44082,
+            0.4743,
+            0.50778,
+            0.54126,
+            0.57474,
+            0.60822,
+            0.6417
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 45,
+              "charged": 46,
+              "skill": 23,
+              "burst": 23,
+              "dash": 23,
+              "jump": 23,
+              "swap": 23,
+              "default": 46
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            23
+          ],
+          "extraMv": [
+            [
+              0.2881,
+              0.31155,
+              0.335,
+              0.3685,
+              0.39195,
+              0.41875,
+              0.4556,
+              0.49245,
+              0.5293,
+              0.5695,
+              0.6097,
+              0.6499,
+              0.6901,
+              0.7303,
+              0.7705
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.67338,
+            0.72819,
+            0.783,
+            0.8613,
+            0.91611,
+            0.97875,
+            1.06488,
+            1.15101,
+            1.23714,
+            1.3311,
+            1.42506,
+            1.51902,
+            1.61298,
+            1.70694,
+            1.8009
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 67,
+              "charged": 67,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 67
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Press",
+          "mv": [
+            1.4912,
+            1.60304,
+            1.71488,
+            1.864,
+            1.97584,
+            2.08768,
+            2.2368,
+            2.38592,
+            2.53504,
+            2.68416,
+            2.83328,
+            2.9824,
+            3.1688,
+            3.3552,
+            3.5416
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "dash": 31,
+              "jump": 32,
+              "swap": 42,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 540,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.44,
+            2.623,
+            2.806,
+            3.05,
+            3.233,
+            3.416,
+            3.66,
+            3.904,
+            4.148,
+            4.392,
+            4.636,
+            4.88,
+            5.185,
+            5.49,
+            5.795
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "dash": 42,
+              "jump": 41,
+              "swap": 55,
+              "default": 57
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/yunjin/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "yun-jin.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "True to Oneself: Using Opening Flourish at the precise moment when Yun Jin is attacked will unleash its Level 2 Charged (Hold) form."
+    },
+    {
+      "id": "yun-jin.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Breaking Conventions: The Normal Attack DMG Bonus granted by Flying Cloud Flag Formation is further increased by 2.5%/5%/7.5%/11.5% of Yun Jin's DEF when the party contains characters of 1/2/3/4 Elemental Types, respectively."
+    },
+    {
+      "id": "yun-jin.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Light Nourishment: When Perfect Cooking is achieved on Food with Adventure-related effects, there is a 12% chance to obtain double the product."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Thespian Gallop: Opening Flourish's CD is decreased by 18%."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Myriad Mise-En-Scène: After Cliffbreaker's Banner is unleashed, all nearby party members' Normal Attack DMG is increased by 15% for 12s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Seafaring General: Increases the Level of Cliffbreaker's Banner by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Flower and a Fighter: When Yun Jin triggers Crystallize or Lunar-Crystallize reactions, her DEF is increased by 20% for 12s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Famed Throughout the Land: Increases the Level of Opening Flourish by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Decorous Harmony: Characters under the effects of the Flying Cloud Flag Formation have their Normal ATK SPD increased by 12%."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

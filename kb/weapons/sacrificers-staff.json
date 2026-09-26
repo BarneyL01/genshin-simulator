@@ -1,0 +1,47 @@
+{
+  "id": "sacrificers-staff",
+  "name": "Sacrificer's Staff",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Untainted Desire\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: For 6s after an Elemental Skill hits an opponent, ATK is increased by 8% and Energy Recharge is increased by 6%. Max 3 stacks. This effect can be triggered even when the equipping character is off-field.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "polearm",
+  "rarity": 4,
+  "releaseVersion": "6.1",
+  "baseAtk": {
+    "lv90": 620.0329535
+  },
+  "substat": {
+    "stat": "critRate",
+    "lv90": 0.09188
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Untainted Desire",
+    "text": "For 6s after an Elemental Skill hits an opponent, ATK is increased by 8% and Energy Recharge is increased by 6%. Max 3 stacks. This effect can be triggered even when the equipping character is off-field.",
+    "effects": []
+  },
+  "needsHook": false
+}

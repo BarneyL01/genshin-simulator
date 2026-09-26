@@ -1,0 +1,550 @@
+{
+  "id": "gorou",
+  "name": "Gorou",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/gorou",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "geo",
+  "weaponType": "bow",
+  "releaseVersion": "2.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9569.925258899999,
+      "atk": 182.66158612,
+      "def": 648.39544875
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "dmgBonus.geo",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.37754,
+            0.40827,
+            0.439,
+            0.4829,
+            0.51363,
+            0.54875,
+            0.59704,
+            0.64533,
+            0.69362,
+            0.7463,
+            0.79898,
+            0.85166,
+            0.90434,
+            0.95702,
+            1.0097
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "normal": 21,
+              "charged": 21,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 21
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.37152,
+            0.40176,
+            0.432,
+            0.4752,
+            0.50544,
+            0.54,
+            0.58752,
+            0.63504,
+            0.68256,
+            0.7344,
+            0.78624,
+            0.83808,
+            0.88992,
+            0.94176,
+            0.9936
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 26,
+              "charged": 26,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "default": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.4945,
+            0.53475,
+            0.575,
+            0.6325,
+            0.67275,
+            0.71875,
+            0.782,
+            0.84525,
+            0.9085,
+            0.9775,
+            1.0465,
+            1.1155,
+            1.1845,
+            1.2535,
+            1.3225
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 43,
+              "charged": 43,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "default": 43
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.58996,
+            0.63798,
+            0.686,
+            0.7546,
+            0.80262,
+            0.8575,
+            0.93296,
+            1.00842,
+            1.08388,
+            1.1662,
+            1.24852,
+            1.33084,
+            1.41316,
+            1.49548,
+            1.5778
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 55,
+              "charged": 55,
+              "skill": 31,
+              "burst": 31,
+              "dash": 31,
+              "jump": 31,
+              "swap": 31,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24,
+            1.333,
+            1.426,
+            1.55,
+            1.643,
+            1.736,
+            1.86,
+            1.984,
+            2.108,
+            2.232,
+            2.356,
+            2.48,
+            2.635,
+            2.79,
+            2.945
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "skill": 29,
+              "burst": 29,
+              "dash": 14,
+              "jump": 15,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            1.072,
+            1.1524,
+            1.2328,
+            1.34,
+            1.4204,
+            1.5008,
+            1.608,
+            1.7152,
+            1.8224,
+            1.9296,
+            2.0368,
+            2.144,
+            2.278,
+            2.412,
+            2.546
+          ],
+          "scaling": "atk",
+          "element": "geo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "dash": 33,
+              "jump": 33,
+              "swap": 46,
+              "default": 47
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 2,
+        "perHit": false,
+        "icd": 0,
+        "element": "geo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.98216,
+            1.055822,
+            1.129484,
+            1.2277,
+            1.301362,
+            1.375024,
+            1.47324,
+            1.571456,
+            1.669672,
+            1.767888,
+            1.866104,
+            1.96432,
+            2.08709,
+            2.20986,
+            2.33263
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 53,
+              "dash": 42,
+              "jump": 43,
+              "swap": 55,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Crystal Collapse",
+          "mv": [
+            0.613,
+            0.658975,
+            0.70495,
+            0.76625,
+            0.812225,
+            0.8582,
+            0.9195,
+            0.9808,
+            1.0421,
+            1.1034,
+            1.1647,
+            1.226,
+            1.302625,
+            1.37925,
+            1.455875
+          ],
+          "scaling": "def",
+          "element": "geo",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 53,
+              "dash": 42,
+              "jump": 43,
+              "swap": 55,
+              "default": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/gorou/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "gorou.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Heedless of the Wind and Weather: After using Juuga: Forward Unto Victory, all nearby party members' DEF is increased by 25% for 12s."
+    },
+    {
+      "id": "gorou.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "A Favor Repaid: Gorou receives the following DMG Bonuses to his attacks based on his DEF:\n· Inuzaka All-Round Defense: Skill DMG increased by 156% of DEF\n· Juuga: Forward Unto Victory: Skill DMG and Crystal Collapse DMG increased by 15.6% of DEF"
+    },
+    {
+      "id": "gorou.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Seeker of Shinies: Displays the location of nearby resources unique to Inazuma on the mini-map."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Rushing Hound: Swift as the Wind: When characters (other than Gorou) within the AoE of Gorou's General's War Banner or General's Glory deal Geo DMG to opponents, the CD of Gorou's Inuzaka All-Round Defense is decreased by 2s.\nThis effect can occur once every 10s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Sitting Hound: Steady as a Clock: While General's Glory is in effect, its duration is extended by 1s when a nearby active character obtains an Elemental Shard from a Crystallize reaction, or triggers a Lunar-Crystallize reaction. \nThis effect can occur once every 0.1s. Max extension is 3s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Mauling Hound: Fierce as Fire: Increases the Level of Inuzaka All-Round Defense by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Lapping Hound: Warm as Water: When General's Glory is in the \"Impregnable\" or \"Crunch\" states, it will also heal active characters within its AoE by 50% of Gorou's own DEF every 1.5s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Striking Hound: Thunderous Force: Increases the Level of Juuga: Forward Unto Victory by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Valiant Hound: Mountainous Fealty: For 12s after using Inuzaka All-Round Defense or Juuga: Forward Unto Victory, increases the CRIT DMG of all nearby party members' Geo DMG based on the buff level of the skill's field at the time of use:\n· \"Standing Firm\": +10%\n· \"Impregnable\": +20%\n· \"Crunch\": +40%\n\nThis effect cannot stack and will take reference from the last instance of the effect that is triggered."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "def%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.geo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

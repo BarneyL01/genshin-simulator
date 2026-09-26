@@ -1,0 +1,739 @@
+{
+  "id": "chasca",
+  "name": "Chasca",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/chasca",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 11/11. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: charged, burst, burst hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "bow",
+  "releaseVersion": "5.2",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 9796.728784,
+      "atk": 346.808651,
+      "def": 614.843496
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.480078,
+            0.519154,
+            0.55823,
+            0.614053,
+            0.653129,
+            0.697788,
+            0.759193,
+            0.820598,
+            0.882003,
+            0.948991,
+            1.015979,
+            1.082966,
+            1.149954,
+            1.216941,
+            1.283929
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 17,
+              "charged": 27,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.445884,
+            0.482177,
+            0.51847,
+            0.570317,
+            0.60661,
+            0.648087,
+            0.705119,
+            0.762151,
+            0.819183,
+            0.881399,
+            0.943615,
+            1.005832,
+            1.068048,
+            1.130265,
+            1.192481
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "normal": 19,
+              "charged": 29,
+              "skill": 8,
+              "burst": 8,
+              "dash": 8,
+              "jump": 8,
+              "swap": 8,
+              "default": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.296975,
+            0.321148,
+            0.34532,
+            0.379852,
+            0.404024,
+            0.43165,
+            0.469635,
+            0.50762,
+            0.545606,
+            0.587044,
+            0.628482,
+            0.669921,
+            0.711359,
+            0.752798,
+            0.794236
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 36,
+              "charged": 53,
+              "skill": 20,
+              "burst": 20,
+              "dash": 20,
+              "jump": 20,
+              "swap": 20,
+              "default": 53
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.254672,
+            0.275401,
+            0.29613,
+            0.325743,
+            0.346472,
+            0.370163,
+            0.402737,
+            0.435311,
+            0.467885,
+            0.503421,
+            0.538957,
+            0.574492,
+            0.610028,
+            0.645563,
+            0.681099
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 39,
+            "cancel": {
+              "normal": 73,
+              "charged": 73,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 73
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            45,
+            51
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.24,
+            1.333,
+            1.426,
+            1.55,
+            1.643,
+            1.736,
+            1.86,
+            1.984,
+            2.108,
+            2.232,
+            2.356,
+            2.48,
+            2.635,
+            2.79,
+            2.945
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "skill": 29,
+              "burst": 29,
+              "dash": 14,
+              "jump": 15,
+              "swap": 52,
+              "default": 55
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/tartaglia/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Resonance",
+          "mv": [
+            0.6,
+            0.645,
+            0.69,
+            0.75,
+            0.795,
+            0.84,
+            0.9,
+            0.96,
+            1.02,
+            1.08,
+            1.14,
+            1.2,
+            1.275,
+            1.35,
+            1.425
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 3,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Multitarget Fire Tap",
+          "mv": [
+            0.36,
+            0.387,
+            0.414,
+            0.45,
+            0.477,
+            0.504,
+            0.54,
+            0.576,
+            0.612,
+            0.648,
+            0.684,
+            0.72,
+            0.765,
+            0.81,
+            0.855
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 6,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Shadowhunt Shell",
+          "mv": [
+            0.488,
+            0.5246,
+            0.5612,
+            0.61,
+            0.6466,
+            0.6832,
+            0.732,
+            0.7808,
+            0.8296,
+            0.8784,
+            0.9272,
+            0.976,
+            1.037,
+            1.098,
+            1.159
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Shining Shadowhunt Shell",
+          "mv": [
+            1.66572,
+            1.790649,
+            1.915578,
+            2.08215,
+            2.207079,
+            2.332008,
+            2.49858,
+            2.665152,
+            2.831724,
+            2.998296,
+            3.164868,
+            3.33144,
+            3.539655,
+            3.74787,
+            3.956085
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "normal": 6,
+              "aim": 17,
+              "burst": 6,
+              "skill": 27,
+              "dash": 6,
+              "default": 623
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chasca/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 390,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Galesplitting Soulseeker Shell",
+          "mv": [
+            0.88,
+            0.946,
+            1.012,
+            1.1,
+            1.166,
+            1.232,
+            1.32,
+            1.408,
+            1.496,
+            1.584,
+            1.672,
+            1.76,
+            1.87,
+            1.98,
+            2.09
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 101,
+              "aim": 101,
+              "skill": 101,
+              "dash": 101,
+              "jump": 100,
+              "default": 117
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Soulseeker Shell",
+          "mv": [
+            1.034,
+            1.11155,
+            1.1891,
+            1.2925,
+            1.37005,
+            1.4476,
+            1.551,
+            1.6544,
+            1.7578,
+            1.8612,
+            1.9646,
+            2.068,
+            2.19725,
+            2.3265,
+            2.45575
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 62,
+            "cancel": {
+              "normal": 101,
+              "aim": 101,
+              "skill": 101,
+              "dash": 101,
+              "jump": 100,
+              "default": 117
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Radiant Soulseeker Shell",
+          "mv": [
+            2.068,
+            2.2231,
+            2.3782,
+            2.585,
+            2.7401,
+            2.8952,
+            3.102,
+            3.3088,
+            3.5156,
+            3.7224,
+            3.9292,
+            4.136,
+            4.3945,
+            4.653,
+            4.9115
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 65,
+            "cancel": {
+              "normal": 101,
+              "aim": 101,
+              "skill": 101,
+              "dash": 101,
+              "jump": 100,
+              "default": 117
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aloy/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "chasca.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Bullet Trick: When the Elemental Skill Spirit Reins, Shadow Hunt's Multitarget Fire is being charged, if there are party members who meet the Elemental Conversion Type requirements, gain the following effects based on the number of different eligible Elemental Types present:\n·There is a 33.3%/66.7%/100% chance for each Type to trigger \"Spiritbinding Conversion\" and cause the 3rd Shadowhunt Shell loaded into the cylinder to be randomly converted into a Shining Shadowhunt Shell from one of the corresponding Elemental Types.\n·Each Elemental Type will grant Chasca 1 stack of Spirit of the Radiant "
+    },
+    {
+      "id": "chasca.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Intent to Cover: When a nearby party member triggers a Nightsoul Burst, Chasca will fire a \"Burning Shadowhunt Shot\" at a nearby opponent, dealing Nightsoul-aligned Anemo DMG equal to 150% of the Shadowhunt Shell DMG from her Elemental Skill Spirit Reins, Shadow Hunt. If the party has Pyro, Hydro, Cryo, or Electro characters, the Burning Shadowhunt Shot will be converted to deal Nightsoul-aligned Elemental DMG of the corresponding Elemental Type equal to 150% of the DMG dealt by Spirit Reins, Shadow Hunt's Shining Shadowhunt Shells.\nThe DMG done in this way is considered Charged Attack DMG."
+    },
+    {
+      "id": "chasca.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Everburning Heart: After her Nightsoul points are exhausted, Chasca will switch to consuming Phlogiston to maintain her Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, she can use Nightsoul Transmission: Chasca. When the active character is in the air, the following will occur when switching to Chasca: Chasca will enter the Nightsoul's Blessing state and gain 32 Nightsoul points. Nightsoul Transmission can be triggered once every 10s by your own team."
+    },
+    {
+      "id": "chasca.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Mediation's True Meaning: 25 Phlogiston will be restored when your own party members defeat an opponent. This effect can trigger once every 12s.\nThis has no effect in Domains, Trounce Domains, or the Spiral Abyss."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Cylinder, the Restless Roulette: When triggering the Ascension Talent \"Bullet Trick\"'s \"Spiritbinding Conversion,\" the 2nd Shadowhunt Shell loaded into the cylinder will be additionally converted into a Shining Shadowhunt Shell.\nThe chance to trigger \"Spiritbinding Conversion\" is increased: If there are party members who meet the Elemental Conversion Type requirements, the chance to trigger \"Spiritbinding Conversion\" is increased by 33.3%, up to a maximum of 100%.\n\nYou must first unlock the Ascension Talent \"Bullet Trick.\"\nIn addition, Chasca's Nightsoul point and Phlogiston consumption in her"
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Muzzle, the Searing Smoke: When Chasca takes the field, she will obtain 1 stack of \"Spirit of the Radiant Shadow\" from the Ascension Talent \"Bullet Trick.\" You must first unlock the Ascension Talent \"Bullet Trick\" for this effect.\nIn addition, when the Shining Shadowhunt Shells from Spirit Reins, Shadow Hunt's Multitarget Fire hit opponents, they will deal AoE Elemental DMG of the corresponding Elemental Type of the Shining Shadowhunt Shells equal to 400% of Chasca's ATK. This DMG is considered Charged Attack DMG. This effect can be triggered once each time Chasca uses Multitarget Fire."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Reins, Her Careful Control: Increases the Level of Spirit Reins, Shadow Hunt by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Sparks, the Sudden Shot: When the Radiant Soulseeker Shells from Soul Reaper's Fatal Round hit opponents, they will restore 1.5 Elemental Energy to Chasca, and deal AoE Elemental DMG of the corresponding Elemental Type of the Radiant Soulseeker Shells equal to 400% of Chasca's ATK. This DMG is considered Charged Attack DMG.\nThe aforementioned corresponding elemental AoE DMG effect can be triggered once each time Chasca uses Soul Reaper's Fatal Round."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Brim, the Sandshadow's Silhouette: Increases the Level of Soul Reaper's Fatal Round by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Showdown, the Glory of Battle: Chasca's Multitarget Fire charge time is decreased, and after the Ascension Talent \"Bullet Trick\"'s \"Spiritbinding Conversion\" is triggered, Chasca will gain the \"Fatal Rounds\" state: For the next 3s, the next time Chasca uses Spirit Reins, Shadow Hunt's Multitarget Fire, the shots will finish charging instantly, and the CRIT DMG of that instance of Multitarget Fire's Shadowhunt Shells and Shining Shadowhunt Shells increases by 120%. 1 \"Fatal Rounds\" effect can be gained once every 3s.\n\nYou must first unlock the Ascension Talent \"Bullet Trick\" to gain access to t"
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 4,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

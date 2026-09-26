@@ -1,0 +1,573 @@
+{
+  "id": "escoffier",
+  "name": "Escoffier",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/escoffier",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/escoffier-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "polearm",
+  "releaseVersion": "5.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13348.0427932,
+      "atk": 346.808651,
+      "def": 731.66376024
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.51551,
+            0.55747,
+            0.59943,
+            0.659373,
+            0.701333,
+            0.749287,
+            0.815225,
+            0.881162,
+            0.947099,
+            1.019031,
+            1.090963,
+            1.162894,
+            1.234826,
+            1.306757,
+            1.378689
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 7,
+            "cancel": {
+              "normal": 17,
+              "charged": 20,
+              "skill": 7,
+              "burst": 7,
+              "dash": 7,
+              "jump": 7,
+              "swap": 7,
+              "default": 22
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.475933,
+            0.514671,
+            0.55341,
+            0.608751,
+            0.64749,
+            0.691762,
+            0.752638,
+            0.813513,
+            0.874388,
+            0.940797,
+            1.007206,
+            1.073615,
+            1.140025,
+            1.206434,
+            1.272843
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 29,
+              "charged": 21,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.329995,
+            0.356855,
+            0.383715,
+            0.422087,
+            0.448947,
+            0.479644,
+            0.521852,
+            0.564061,
+            0.60627,
+            0.652316,
+            0.698361,
+            0.744407,
+            0.790453,
+            0.836499,
+            0.882544
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "normal": 62,
+              "charged": 62,
+              "skill": 40,
+              "burst": 40,
+              "dash": 40,
+              "jump": 40,
+              "swap": 40,
+              "default": 62
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            40
+          ],
+          "extraMv": [
+            [
+              0.403327,
+              0.436156,
+              0.468985,
+              0.515884,
+              0.548712,
+              0.586231,
+              0.63782,
+              0.689408,
+              0.740996,
+              0.797274,
+              0.853553,
+              0.909831,
+              0.966109,
+              1.022387,
+              1.078666
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.15412,
+            1.24806,
+            1.342,
+            1.4762,
+            1.57014,
+            1.6775,
+            1.82512,
+            1.97274,
+            2.12036,
+            2.2814,
+            2.44244,
+            2.60348,
+            2.76452,
+            2.92556,
+            3.0866
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 20,
+            "cancel": {
+              "normal": 53,
+              "skill": 52,
+              "burst": 52,
+              "dash": 20,
+              "jump": 20,
+              "swap": 52,
+              "default": 65
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.504,
+            0.5418,
+            0.5796,
+            0.63,
+            0.6678,
+            0.7056,
+            0.756,
+            0.8064,
+            0.8568,
+            0.9072,
+            0.9576,
+            1.008,
+            1.071,
+            1.134,
+            1.197
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "normal": 32,
+              "burst": 32,
+              "swap": 31,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Frosty Parfait",
+          "mv": [
+            1.2,
+            1.29,
+            1.38,
+            1.5,
+            1.59,
+            1.68,
+            1.8,
+            1.92,
+            2.04,
+            2.16,
+            2.28,
+            2.4,
+            2.55,
+            2.7,
+            2.85
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "normal": 32,
+              "burst": 32,
+              "swap": 31,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Surging Blade",
+          "mv": [
+            0.336,
+            0.3612,
+            0.3864,
+            0.42,
+            0.4452,
+            0.4704,
+            0.504,
+            0.5376,
+            0.5712,
+            0.6048,
+            0.6384,
+            0.672,
+            0.714,
+            0.756,
+            0.798
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "normal": 32,
+              "burst": 32,
+              "swap": 31,
+              "default": 35
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            5.928,
+            6.3726,
+            6.8172,
+            7.41,
+            7.8546,
+            8.2992,
+            8.892,
+            9.4848,
+            10.0776,
+            10.6704,
+            11.2632,
+            11.856,
+            12.597,
+            13.338,
+            14.079
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 55,
+            "cancel": {
+              "skill": 109,
+              "swap": 108,
+              "default": 110
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/escoffier/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "escoffier.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Better to Salivate Than Medicate: After using the Elemental Burst **Scoring Cuts**, Escoffier will obtain the Rehab Diet effect for 9s: Restores HP for nearby active characters every 1s based on 138.24% of Escoffier's ATK."
+    },
+    {
+      "id": "escoffier.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Inspiration-Immersed Seasoning: When there are 1/2/3/4 Hydro or Cryo characters in the party, Escoffier will decrease the Hydro RES and Cryo RES of any opponents hit by her Elemental Skill, **Low-Temperature Cooking**, or her Elemental Burst, **Scoring Cuts**, by 5%/10%/15%/55% for 12s."
+    },
+    {
+      "id": "escoffier.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Constant Off-the-Cuff Cookery: When using the Hold form of her Elemental Skill **Low-Temperature Cooking**, Escoffier will activate her All-Spectrum Multi-Use Cooking Mek in its Off-the-Cuff Cookery mode.\n\nCooking Mek: Off-the-Cuff Cookery Mode\n· Places the Cooking Mek on the field. The Cooking Mek can absorb elemental attacks. When the absorbed elemental energy hits a certain limit, Escoffier can convert the ingredients placed within it into wonderful food.\n· Escoffier needs time to purchase new ingredients, so she can only make a certain number of dishes like this each week. The number of di"
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Pre-Dinner Dance for Your Taste Buds: When 4 party members are Hydro or Cryo, all nearby party members will have their Cryo DMG CRIT DMG increased by 60% for 15s after Escoffier uses her Elemental Skill **Low-Temperature Cooking** or Elemental Burst **Scoring Cuts**.\nYou must first unlock the Ascension Talent \"Inspiration-Immersed Seasoning.\""
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Fresh, Fragrant Stew Is an Art: When Escoffier activates her Cooking Mek in its **Cold Storage Mode**, she will gain the \"Freshly-Prepped Delicacy\" effect for 15s. During this time, Escoffier will gain 5 Cold Dish stacks. When nearby active characters apart from Escoffier deal Cryo DMG with a Normal, Charged, or Plunging Attack, or an Elemental Skill or Elemental Burst, they will expend 1 Cold Dish stack to increase their DMG dealt by 240% of Escoffier's ATK.\nIf you hit multiple opponents with a single instance of Cryo DMG, Cold Dish stacks will be consumed based on the number of opponents hit"
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "The Bakery Magic of Caramel Browning: Increases the Level of **Low-Temperature Cooking** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Secret Rosemary Recipe: **Rehab Diet** lasts 6 more seconds. While it is active, you have a chance of healing 100% extra HP and restoring 2 Energy to Escoffier when you trigger healing through Rehab Diet. This chance corresponds to Escoffier's CRIT Rate. You can trigger this effect 7 times during any one Rehab Diet's duration.\nYou must first unlock the Ascension Talent \"Better to Salivate Than Medicate.\""
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Symphony of a Thousand Sauces: Increases the Level of **Scoring Cuts** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Tea Parties Bursting With Color: **Cooking Mek: Cold Storage Mode** is enhanced:\n· When your party's active character's Normal, Charged, or Plunging Attacks hit opponents, Cooking Mek: Cold Storage Mode will fire off another Special-Grade Frosty Parfait, dealing 500% of Escoffier's ATK as AoE Cryo DMG. This DMG is considered Elemental Skill DMG.\nThis effect can be triggered once every 0.5s, and this effect can be triggered 6 times within the duration of one Cooking Mek: Cold Storage Mode."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

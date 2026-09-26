@@ -1,0 +1,513 @@
+{
+  "id": "ifa",
+  "name": "Ifa",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/ifa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
+    "Frames estimated (gcsim source not parsed for: skill hitmark, burst, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
+  ],
+  "rarity": 4,
+  "element": "anemo",
+  "weaponType": "catalyst",
+  "releaseVersion": "5.6",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 10081.0465747,
+      "atk": 178.41364328,
+      "def": 605.396592675
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "em",
+    "value": 96
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.536072,
+            0.576277,
+            0.616483,
+            0.67009,
+            0.710295,
+            0.750501,
+            0.804108,
+            0.857715,
+            0.911322,
+            0.96493,
+            1.018537,
+            1.072144,
+            1.139153,
+            1.206162,
+            1.273171
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 15,
+              "charged": 18,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.474672,
+            0.510272,
+            0.545873,
+            0.59334,
+            0.62894,
+            0.664541,
+            0.712008,
+            0.759475,
+            0.806942,
+            0.85441,
+            0.901877,
+            0.949344,
+            1.008678,
+            1.068012,
+            1.127346
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "normal": 20,
+              "charged": 19,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.747584,
+            0.803653,
+            0.859722,
+            0.93448,
+            0.990549,
+            1.046618,
+            1.121376,
+            1.196134,
+            1.270893,
+            1.345651,
+            1.42041,
+            1.495168,
+            1.588616,
+            1.682064,
+            1.775512
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 42,
+            "cancel": {
+              "normal": 90,
+              "charged": 81,
+              "skill": 42,
+              "burst": 42,
+              "dash": 42,
+              "jump": 42,
+              "swap": 42,
+              "default": 90
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.4704,
+            1.58068,
+            1.69096,
+            1.838,
+            1.94828,
+            2.05856,
+            2.2056,
+            2.35264,
+            2.49968,
+            2.64672,
+            2.79376,
+            2.9408,
+            3.1246,
+            3.3084,
+            3.4922
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 45,
+            "cancel": {
+              "normal": 64,
+              "charged": 64,
+              "skill": 64,
+              "burst": 64,
+              "dash": 45,
+              "jump": 45,
+              "swap": 62,
+              "default": 86
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Tonicshot",
+          "mv": [
+            1.3336,
+            1.43362,
+            1.53364,
+            1.667,
+            1.76702,
+            1.86704,
+            2.0004,
+            2.13376,
+            2.26712,
+            2.40048,
+            2.53384,
+            2.6672,
+            2.8339,
+            3.0006,
+            3.1673
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 316,
+            "cancel": {
+              "normal": 31,
+              "charged": 28,
+              "skill": 17,
+              "burst": 5,
+              "dash": 28,
+              "default": 631
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/ifa/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 450,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            5.0848,
+            5.46616,
+            5.84752,
+            6.356,
+            6.73736,
+            7.11872,
+            7.6272,
+            8.13568,
+            8.64416,
+            9.15264,
+            9.66112,
+            10.1696,
+            10.8052,
+            11.4408,
+            12.0764
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 35,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Sedation Mark",
+          "mv": [
+            1.0896,
+            1.17132,
+            1.25304,
+            1.362,
+            1.44372,
+            1.52544,
+            1.6344,
+            1.74336,
+            1.85232,
+            1.96128,
+            2.07024,
+            2.1792,
+            2.3154,
+            2.4516,
+            2.5878
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 38,
+            "cancel": {
+              "normal": 68,
+              "charged": 68,
+              "skill": 69,
+              "dash": 57,
+              "jump": 58,
+              "swap": 68,
+              "default": 70
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "ifa.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Field Medic's Vision: When Ifa is in the Nightsoul's Blessing state, every 1 Nightsoul point out of the current total in his entire party will grant him 1 **Rescue Essentials** point. Rescue Essentials will increase the Swirl, Stellar Swirl, Electro-Charged, and Lunar-Charged reaction DMG dealt by nearby party members."
+    },
+    {
+      "id": "ifa.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Mutual Aid Agreement: When nearby party members trigger Nightsoul Bursts, Ifa's Elemental Mastery increases by 80 for 10s."
+    },
+    {
+      "id": "ifa.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Night Realm's Gift: Focused Emergency Rescue: After his Nightsoul points are exhausted, Ifa will switch to consuming Phlogiston to maintain his Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, he can use Nightsoul Transmission: Ifa. When the active character is a certain height in the air, the following will occur when switching to Ifa: Ifa will enter the Nightsoul's Blessing state and gain 32 Nightsoul points. Nightsoul Transmission can be triggered once every 10s by your own team."
+    },
+    {
+      "id": "ifa.passive4",
+      "unlock": "p4",
+      "effects": [],
+      "text": "Tactical Warm Compress Bandaging: While in an area with Phlogiston Mechanics within Natlan, when the current active party member or indwelt saurian has less than 40% HP, Ifa will consume 10 Phlogiston and restore 40% of their HP. This effect can trigger once every 10s, and does not take effect in Domains, Trounce Domains, or the Spiral Abyss."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Vitiferous Elixir's Concoction: When **Supporting Fire** hits an opponent, it will restore 6 Energy for Ifa. One such Energy restoration can be triggered once every 8s."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Guiding Spirit of Ballistic Prayer: When Ifa is in the Nightsoul's Blessing state, every Nightsoul point the party has above a total of 60 will grant Ifa 4 additional **Rescue Essentials** points.\nAdditionally, Ifa's Rescue Essentials limit is increased by 50.\nYou must first unlock the Ascension Talent **Field Medic's Vision**."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Rebuttal in Negotiations With the Night: Increases the Level of **Airborne Disease Prevention** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Decayed Vessel's Permutation: The restraining wind current created by the Elemental Burst **Compound Sedation Field** has its duration extended to 3s.\nAdditionally, Ifa gains 100 Elemental Mastery for 15s after using his Elemental Burst Compound Sedation Field."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Vow of Universal Coexistence: Increases the Level of **Compound Sedation Field** by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Oath on a Feathered Knot: When Ifa uses the Hold version of his **Supporting Fire**, there is a 50% chance that he will fire an additional Tonicshot that deals 120% of Ifa's ATK as Anemo DMG. This DMG is considered Normal Attack DMG.\nAdditionally, when he is not in combat, Ifa will consume 20% less Nightsoul points and Phlogiston in his Nightsoul's Blessing state."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 3,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

@@ -1,7 +1,2131 @@
 {
-  "characters": [],
-  "weapons": [],
-  "artifacts": [],
-  "teams": [],
+  "characters": [
+    {
+      "id": "aino",
+      "name": "Aino",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "albedo",
+      "name": "Albedo",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "alhaitham",
+      "name": "Alhaitham",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "aloy",
+      "name": "Aloy",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "alyosha",
+      "name": "Alyosha",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "amber",
+      "name": "Amber",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "arataki-itto",
+      "name": "Arataki Itto",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "arlecchino",
+      "name": "Arlecchino",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "baizhu",
+      "name": "Baizhu",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "barbara",
+      "name": "Barbara",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "beidou",
+      "name": "Beidou",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "bennett",
+      "name": "Bennett",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "candace",
+      "name": "Candace",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "charlotte",
+      "name": "Charlotte",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "chasca",
+      "name": "Chasca",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "chevreuse",
+      "name": "Chevreuse",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "chiori",
+      "name": "Chiori",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "chongyun",
+      "name": "Chongyun",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "citlali",
+      "name": "Citlali",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "clorinde",
+      "name": "Clorinde",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "collei",
+      "name": "Collei",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "columbina",
+      "name": "Columbina",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "cyno",
+      "name": "Cyno",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "dahlia",
+      "name": "Dahlia",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dehya",
+      "name": "Dehya",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "diluc",
+      "name": "Diluc",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "diona",
+      "name": "Diona",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dori",
+      "name": "Dori",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "durin",
+      "name": "Durin",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "emilie",
+      "name": "Emilie",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "escoffier",
+      "name": "Escoffier",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "eula",
+      "name": "Eula",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "faruzan",
+      "name": "Faruzan",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fischl",
+      "name": "Fischl",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flins",
+      "name": "Flins",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "freminet",
+      "name": "Freminet",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "furina",
+      "name": "Furina",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gaming",
+      "name": "Gaming",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ganyu",
+      "name": "Ganyu",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gorou",
+      "name": "Gorou",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "hu-tao",
+      "name": "Hu Tao",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "iansan",
+      "name": "Iansan",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "ifa",
+      "name": "Ifa",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "illuga",
+      "name": "Illuga",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ineffa",
+      "name": "Ineffa",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "jahoda",
+      "name": "Jahoda",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "jean",
+      "name": "Jean",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "kachina",
+      "name": "Kachina",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kaedehara-kazuha",
+      "name": "Kaedehara Kazuha",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kaeya",
+      "name": "Kaeya",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "kamisato-ayaka",
+      "name": "Kamisato Ayaka",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "kamisato-ayato",
+      "name": "Kamisato Ayato",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "kaveh",
+      "name": "Kaveh",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "keqing",
+      "name": "Keqing",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "kinich",
+      "name": "Kinich",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "kirara",
+      "name": "Kirara",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "klee",
+      "name": "Klee",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "kujou-sara",
+      "name": "Kujou Sara",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kuki-shinobu",
+      "name": "Kuki Shinobu",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lan-yan",
+      "name": "Lan Yan",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lauma",
+      "name": "Lauma",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "layla",
+      "name": "Layla",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "linnea",
+      "name": "Linnea",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lisa",
+      "name": "Lisa",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lohen",
+      "name": "Lohen",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lynette",
+      "name": "Lynette",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lyney",
+      "name": "Lyney",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mavuika",
+      "name": "Mavuika",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "mika",
+      "name": "Mika",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mona",
+      "name": "Mona",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mualani",
+      "name": "Mualani",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nahida",
+      "name": "Nahida",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "navia",
+      "name": "Navia",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nefer",
+      "name": "Nefer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "neuvillette",
+      "name": "Neuvillette",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nicole",
+      "name": "Nicole",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "nilou",
+      "name": "Nilou",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "ningguang",
+      "name": "Ningguang",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "noelle",
+      "name": "Noelle",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "odette",
+      "name": "Odette",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "ororon",
+      "name": "Ororon",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prune",
+      "name": "Prune",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "qiqi",
+      "name": "Qiqi",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "raiden-shogun",
+      "name": "Raiden Shogun",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "razor",
+      "name": "Razor",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "rosaria",
+      "name": "Rosaria",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "sandrone",
+      "name": "Sandrone",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sangonomiya-kokomi",
+      "name": "Sangonomiya Kokomi",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "sayu",
+      "name": "Sayu",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sethos",
+      "name": "Sethos",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "shenhe",
+      "name": "Shenhe",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "shikanoin-heizou",
+      "name": "Shikanoin Heizou",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sigewinne",
+      "name": "Sigewinne",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skirk",
+      "name": "Skirk",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "sucrose",
+      "name": "Sucrose",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "tartaglia",
+      "name": "Tartaglia",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "thoma",
+      "name": "Thoma",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "tighnari",
+      "name": "Tighnari",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "varesa",
+      "name": "Varesa",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "varka",
+      "name": "Varka",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "venti",
+      "name": "Venti",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vesna",
+      "name": "Vesna",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vodyanitsa",
+      "name": "Vodyanitsa",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wanderer",
+      "name": "Wanderer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wriothesley",
+      "name": "Wriothesley",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "xiangling",
+      "name": "Xiangling",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "xianyun",
+      "name": "Xianyun",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "xiao",
+      "name": "Xiao",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "xilonen",
+      "name": "Xilonen",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "xingqiu",
+      "name": "Xingqiu",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "xinyan",
+      "name": "Xinyan",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "yae-miko",
+      "name": "Yae Miko",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "yanfei",
+      "name": "Yanfei",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "yaoyao",
+      "name": "Yaoyao",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "yelan",
+      "name": "Yelan",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "yoimiya",
+      "name": "Yoimiya",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "yumemizuki-mizuki",
+      "name": "Yumemizuki Mizuki",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "yun-jin",
+      "name": "Yun Jin",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "zhongli",
+      "name": "Zhongli",
+      "dataConfidence": "high"
+    },
+    {
+      "id": "zibai",
+      "name": "Zibai",
+      "dataConfidence": "low"
+    }
+  ],
+  "weapons": [
+    {
+      "id": "a-teaspoon-of-transcendence",
+      "name": "A Teaspoon of Transcendence",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "a-thousand-blazing-suns",
+      "name": "A Thousand Blazing Suns",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "a-thousand-floating-dreams",
+      "name": "A Thousand Floating Dreams",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "absolution",
+      "name": "Absolution",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "akuoumaru",
+      "name": "Akuoumaru",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "alley-hunter",
+      "name": "Alley Hunter",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "amenoma-kageuchi",
+      "name": "Amenoma Kageuchi",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "amos-bow",
+      "name": "Amos' Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "angelos-heptades",
+      "name": "Angelos' Heptades",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "aqua-simulacra",
+      "name": "Aqua Simulacra",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "aquila-favonia",
+      "name": "Aquila Favonia",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "ash-graven-drinking-horn",
+      "name": "Ash-Graven Drinking Horn",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "astral-vultures-crimson-plumage",
+      "name": "Astral Vulture's Crimson Plumage",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "athame-artis",
+      "name": "Athame Artis",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "azurelight",
+      "name": "Azurelight",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ballad-of-the-boundless-blue",
+      "name": "Ballad of the Boundless Blue",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ballad-of-the-fjords",
+      "name": "Ballad of the Fjords",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "beacon-of-the-reed-sea",
+      "name": "Beacon of the Reed Sea",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "beyond-the-chrysalis",
+      "name": "Beyond the Chrysalis",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "black-tassel",
+      "name": "Black Tassel",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "blackcliff-agate",
+      "name": "Blackcliff Agate",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blackcliff-longsword",
+      "name": "Blackcliff Longsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blackcliff-pole",
+      "name": "Blackcliff Pole",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "blackcliff-slasher",
+      "name": "Blackcliff Slasher",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blackcliff-warbow",
+      "name": "Blackcliff Warbow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blackmarrow-lantern",
+      "name": "Blackmarrow Lantern",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blade-of-atonement",
+      "name": "Blade of Atonement",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "bloodsoaked-ruins",
+      "name": "Bloodsoaked Ruins",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "bloodtainted-greatsword",
+      "name": "Bloodtainted Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "breezeborne-refrain",
+      "name": "Breezeborne Refrain",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "calamity-of-eshu",
+      "name": "Calamity of Eshu",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "calamity-queller",
+      "name": "Calamity Queller",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "cashflow-supervision",
+      "name": "Cashflow Supervision",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "chain-breaker",
+      "name": "Chain Breaker",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "cinnabar-spindle",
+      "name": "Cinnabar Spindle",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "clash-of-kings",
+      "name": "Clash of Kings",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "cloudforged",
+      "name": "Cloudforged",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "compound-bow",
+      "name": "Compound Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "cool-steel",
+      "name": "Cool Steel",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "covenant-of-frost-and-snow",
+      "name": "Covenant of Frost and Snow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "cranes-echoing-call",
+      "name": "Crane's Echoing Call",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "crescent-pike",
+      "name": "Crescent Pike",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "crimson-moons-semblance",
+      "name": "Crimson Moon's Semblance",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dark-iron-sword",
+      "name": "Dark Iron Sword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dawning-frost",
+      "name": "Dawning Frost",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "deathmatch",
+      "name": "Deathmatch",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "debate-club",
+      "name": "Debate Club",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dialogues-of-the-desert-sages",
+      "name": "Dialogues of the Desert Sages",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "disaster-and-remorse",
+      "name": "Disaster and Remorse",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dodoco-tales",
+      "name": "Dodoco Tales",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dragons-bane",
+      "name": "Dragon's Bane",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "dragonspine-spear",
+      "name": "Dragonspine Spear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "earth-shaker",
+      "name": "Earth Shaker",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "echoes-of-the-heart",
+      "name": "Echoes of the Heart",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "elegy-for-the-end",
+      "name": "Elegy for the End",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "emberwell",
+      "name": "Emberwell",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "emerald-orb",
+      "name": "Emerald Orb",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "end-of-the-line",
+      "name": "End of the Line",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "engulfing-lightning",
+      "name": "Engulfing Lightning",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "etherlight-spindlelute",
+      "name": "Etherlight Spindlelute",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "everlasting-moonglow",
+      "name": "Everlasting Moonglow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "exaiphanes-blade",
+      "name": "Exaiphanes Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "eye-of-perception",
+      "name": "Eye of Perception",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fading-twilight",
+      "name": "Fading Twilight",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fang-of-the-mountain-king",
+      "name": "Fang of the Mountain King",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "favonius-codex",
+      "name": "Favonius Codex",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "favonius-greatsword",
+      "name": "Favonius Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "favonius-lance",
+      "name": "Favonius Lance",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "favonius-sword",
+      "name": "Favonius Sword",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "favonius-warbow",
+      "name": "Favonius Warbow",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "ferrous-shadow",
+      "name": "Ferrous Shadow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "festering-desire",
+      "name": "Festering Desire",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fillet-blade",
+      "name": "Fillet Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "finale-of-the-deep",
+      "name": "Finale of the Deep",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flame-forged-insight",
+      "name": "Flame-Forged Insight",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fleuve-cendre-ferryman",
+      "name": "Fleuve Cendre Ferryman",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flower-wreathed-feathers",
+      "name": "Flower-Wreathed Feathers",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flowing-purity",
+      "name": "Flowing Purity",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flute-of-ezpitzal",
+      "name": "Flute of Ezpitzal",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "footprint-of-the-rainbow",
+      "name": "Footprint of the Rainbow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "forest-regalia",
+      "name": "Forest Regalia",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "forged-by-the-golden-melody",
+      "name": "Forged by the Golden Melody",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fractured-halo",
+      "name": "Fractured Halo",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "freedom-sworn",
+      "name": "Freedom-Sworn",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "frostbearer",
+      "name": "Frostbearer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "frostbreath",
+      "name": "Frostbreath",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fruit-of-fulfillment",
+      "name": "Fruit of Fulfillment",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fruitful-hook",
+      "name": "Fruitful Hook",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gest-of-the-mighty-wolf",
+      "name": "Gest of the Mighty Wolf",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "golden-frostbound-oath",
+      "name": "Golden Frostbound Oath",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "hakushin-ring",
+      "name": "Hakushin Ring",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "halberd",
+      "name": "Halberd",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "hamayumi",
+      "name": "Hamayumi",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "haran-geppaku-futsu",
+      "name": "Haran Geppaku Futsu",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "harbinger-of-dawn",
+      "name": "Harbinger of Dawn",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "heretics-molten-blade",
+      "name": "Heretic's Molten Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "hunters-path",
+      "name": "Hunter's Path",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "hymn-of-the-maelstrom",
+      "name": "Hymn of the Maelstrom",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ibis-piercer",
+      "name": "Ibis Piercer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "iron-sting",
+      "name": "Iron Sting",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "jade-vista",
+      "name": "Jade Vista",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "jadefalls-splendor",
+      "name": "Jadefall's Splendor",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kagotsurube-isshin",
+      "name": "Kagotsurube Isshin",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kaguras-verity",
+      "name": "Kagura's Verity",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "katsuragikiri-nagamasa",
+      "name": "Katsuragikiri Nagamasa",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "key-of-khaj-nisut",
+      "name": "Key of Khaj-Nisut",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kings-squire",
+      "name": "King's Squire",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "kitain-cross-spear",
+      "name": "Kitain Cross Spear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "light-of-foliar-incision",
+      "name": "Light of Foliar Incision",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lightbearing-moonshard",
+      "name": "Lightbearing Moonshard",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lions-roar",
+      "name": "Lion's Roar",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lithic-blade",
+      "name": "Lithic Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lithic-spear",
+      "name": "Lithic Spear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lost-prayer-to-the-sacred-winds",
+      "name": "Lost Prayer to the Sacred Winds",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lumidouce-elegy",
+      "name": "Lumidouce Elegy",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "luxurious-sea-lord",
+      "name": "Luxurious Sea-Lord",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "magic-guide",
+      "name": "Magic Guide",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mailed-flower",
+      "name": "Mailed Flower",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "makhaira-aquamarine",
+      "name": "Makhaira Aquamarine",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mappa-mare",
+      "name": "Mappa Mare",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "master-key",
+      "name": "Master Key",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "memory-of-dust",
+      "name": "Memory of Dust",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "messenger",
+      "name": "Messenger",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "missive-windspear",
+      "name": "Missive Windspear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mistsplitter-reforged",
+      "name": "Mistsplitter Reforged",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mitternachts-waltz",
+      "name": "Mitternachts Waltz",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "moonpiercer",
+      "name": "Moonpiercer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "moonweavers-dawn",
+      "name": "Moonweaver's Dawn",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mountain-bracing-bolt",
+      "name": "Mountain-Bracing Bolt",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "mouuns-moon",
+      "name": "Mouun's Moon",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "new-bough",
+      "name": "New Bough",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nightweavers-looking-glass",
+      "name": "Nightweaver's Looking Glass",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nocturnes-curtain-call",
+      "name": "Nocturne's Curtain Call",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "oathsworn-eye",
+      "name": "Oathsworn Eye",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "otherworldly-story",
+      "name": "Otherworldly Story",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "peak-patrol-song",
+      "name": "Peak Patrol Song",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "polar-star",
+      "name": "Polar Star",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "portable-power-saw",
+      "name": "Portable Power Saw",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "predator",
+      "name": "Predator",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "primordial-jade-cutter",
+      "name": "Primordial Jade Cutter",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "primordial-jade-winged-spear",
+      "name": "Primordial Jade Winged-Spear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prized-isshin-blade",
+      "name": "Prized Isshin Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prospectors-drill",
+      "name": "Prospector's Drill",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prospectors-shovel",
+      "name": "Prospector's Shovel",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prototype-amber",
+      "name": "Prototype Amber",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prototype-archaic",
+      "name": "Prototype Archaic",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prototype-crescent",
+      "name": "Prototype Crescent",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prototype-rancour",
+      "name": "Prototype Rancour",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "prototype-starglitter",
+      "name": "Prototype Starglitter",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "rainbow-serpents-rain-bow",
+      "name": "Rainbow Serpent's Rain Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "rainslasher",
+      "name": "Rainslasher",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "range-gauge",
+      "name": "Range Gauge",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "raven-bow",
+      "name": "Raven Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "recurve-bow",
+      "name": "Recurve Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "redhorn-stonethresher",
+      "name": "Redhorn Stonethresher",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "reliquary-of-truth",
+      "name": "Reliquary of Truth",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "rightful-reward",
+      "name": "Rightful Reward",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ring-of-yaxche",
+      "name": "Ring of Yaxche",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "royal-bow",
+      "name": "Royal Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "royal-greatsword",
+      "name": "Royal Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "royal-grimoire",
+      "name": "Royal Grimoire",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "royal-longsword",
+      "name": "Royal Longsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "royal-spear",
+      "name": "Royal Spear",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificers-staff",
+      "name": "Sacrificer's Staff",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificial-bow",
+      "name": "Sacrificial Bow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificial-fragments",
+      "name": "Sacrificial Fragments",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificial-greatsword",
+      "name": "Sacrificial Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificial-jade",
+      "name": "Sacrificial Jade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sacrificial-sword",
+      "name": "Sacrificial Sword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sapwood-blade",
+      "name": "Sapwood Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "scion-of-the-blazing-sun",
+      "name": "Scion of the Blazing Sun",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sequence-of-solitude",
+      "name": "Sequence of Solitude",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "serenitys-call",
+      "name": "Serenity's Call",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "serpent-spine",
+      "name": "Serpent Spine",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sharpshooters-oath",
+      "name": "Sharpshooter's Oath",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "silver-light",
+      "name": "Silver Light",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "silvershower-heartstrings",
+      "name": "Silvershower Heartstrings",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyrider-greatsword",
+      "name": "Skyrider Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyrider-sword",
+      "name": "Skyrider Sword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyward-atlas",
+      "name": "Skyward Atlas",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyward-blade",
+      "name": "Skyward Blade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyward-harp",
+      "name": "Skyward Harp",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyward-pride",
+      "name": "Skyward Pride",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "skyward-spine",
+      "name": "Skyward Spine",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "slingshot",
+      "name": "Slingshot",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "snare-hook",
+      "name": "Snare Hook",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "snow-tombed-starsilver",
+      "name": "Snow-Tombed Starsilver",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "solar-pearl",
+      "name": "Solar Pearl",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "song-of-broken-pines",
+      "name": "Song of Broken Pines",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "song-of-stillness",
+      "name": "Song of Stillness",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "song-of-the-vigil",
+      "name": "Song of the Vigil",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "splendor-of-tranquil-waters",
+      "name": "Splendor of Tranquil Waters",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "staff-of-homa",
+      "name": "Staff of Homa",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "staff-of-the-scarlet-sands",
+      "name": "Staff of the Scarlet Sands",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "starcallers-watch",
+      "name": "Starcaller's Watch",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sturdy-bone",
+      "name": "Sturdy Bone",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "summit-shaper",
+      "name": "Summit Shaper",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sunny-morning-sleep-in",
+      "name": "Sunny Morning Sleep-In",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "surfs-up",
+      "name": "Surf's Up",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sword-of-descension",
+      "name": "Sword of Descension",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sword-of-narzissenkreuz",
+      "name": "Sword of Narzissenkreuz",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "symphonist-of-scents",
+      "name": "Symphonist of Scents",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "talking-stick",
+      "name": "Talking Stick",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tamayuratei-no-ohanashi",
+      "name": "Tamayuratei no Ohanashi",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-alley-flash",
+      "name": "The Alley Flash",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-bell",
+      "name": "The Bell",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-black-sword",
+      "name": "The Black Sword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-catch",
+      "name": "\"The Catch\"",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "the-daybreak-chronicles",
+      "name": "The Daybreak Chronicles",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-dockhands-assistant",
+      "name": "The Dockhand's Assistant",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-first-great-magic",
+      "name": "The First Great Magic",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-flute",
+      "name": "The Flute",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-stringless",
+      "name": "The Stringless",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-unforged",
+      "name": "The Unforged",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-viridescent-hunt",
+      "name": "The Viridescent Hunt",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "the-widsith",
+      "name": "The Widsith",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "thrilling-tales-of-dragon-slayers",
+      "name": "Thrilling Tales of Dragon Slayers",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "thundering-pulse",
+      "name": "Thundering Pulse",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tidal-shadow",
+      "name": "Tidal Shadow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tome-of-the-eternal-flow",
+      "name": "Tome of the Eternal Flow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "toukabou-shigure",
+      "name": "Toukabou Shigure",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "travelers-handy-sword",
+      "name": "Traveler's Handy Sword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tulaytullahs-remembrance",
+      "name": "Tulaytullah's Remembrance",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "twin-nephrite",
+      "name": "Twin Nephrite",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ultimate-overlords-mega-magic-sword",
+      "name": "\"Ultimate Overlord's Mega Magic Sword\"",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "uraku-misugiri",
+      "name": "Uraku Misugiri",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "verdict",
+      "name": "Verdict",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vivid-notions",
+      "name": "Vivid Notions",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vortex-vanquisher",
+      "name": "Vortex Vanquisher",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wandering-evenstar",
+      "name": "Wandering Evenstar",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wavebreakers-fin",
+      "name": "Wavebreaker's Fin",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "waveriding-whirl",
+      "name": "Waveriding Whirl",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "white-iron-greatsword",
+      "name": "White Iron Greatsword",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "white-tassel",
+      "name": "White Tassel",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "whiteblind",
+      "name": "Whiteblind",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "whitelake-frostfeather",
+      "name": "Whitelake Frostfeather",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "windblume-ode",
+      "name": "Windblume Ode",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wine-and-song",
+      "name": "Wine and Song",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "winters-heavy-heart",
+      "name": "Winter's Heavy Heart",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wolf-fang",
+      "name": "Wolf-Fang",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wolfs-gravestone",
+      "name": "Wolf's Gravestone",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "xiphos-moonlight",
+      "name": "Xiphos' Moonlight",
+      "dataConfidence": "low"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "a-day-carved-from-rising-winds",
+      "name": "A Day Carved From Rising Winds",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "adventurer",
+      "name": "Adventurer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "archaic-petra",
+      "name": "Archaic Petra",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "aubade-of-morningstar-and-moon",
+      "name": "Aubade of Morningstar and Moon",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "blizzard-strayer",
+      "name": "Blizzard Strayer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "bloodstained-chivalry",
+      "name": "Bloodstained Chivalry",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "brave-heart",
+      "name": "Brave Heart",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "celestial-gift",
+      "name": "Celestial Gift",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "crimson-witch-of-flames",
+      "name": "Crimson Witch of Flames",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "deepwood-memories",
+      "name": "Deepwood Memories",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "defenders-will",
+      "name": "Defender's Will",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "desert-pavilion-chronicle",
+      "name": "Desert Pavilion Chronicle",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "disenchantment-in-deep-shadow",
+      "name": "Disenchantment in Deep Shadow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "echoes-of-an-offering",
+      "name": "Echoes of an Offering",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "emblem-of-severed-fate",
+      "name": "Emblem of Severed Fate",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "finale-of-the-deep-galleries",
+      "name": "Finale of the Deep Galleries",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "flower-of-paradise-lost",
+      "name": "Flower of Paradise Lost",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "fragment-of-harmonic-whimsy",
+      "name": "Fragment of Harmonic Whimsy",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gambler",
+      "name": "Gambler",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gilded-dreams",
+      "name": "Gilded Dreams",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "gladiators-finale",
+      "name": "Gladiator's Finale",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "golden-troupe",
+      "name": "Golden Troupe",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "heart-of-depth",
+      "name": "Heart of Depth",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "heart-of-the-furnace",
+      "name": "Heart of the Furnace",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "husk-of-opulent-dreams",
+      "name": "Husk of Opulent Dreams",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "instructor",
+      "name": "Instructor",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lavawalker",
+      "name": "Lavawalker",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "long-nights-oath",
+      "name": "Long Night's Oath",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "lucky-dog",
+      "name": "Lucky Dog",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "maiden-beloved",
+      "name": "Maiden Beloved",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "marechaussee-hunter",
+      "name": "Marechaussee Hunter",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "martial-artist",
+      "name": "Martial Artist",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "night-of-the-skys-unveiling",
+      "name": "Night of the Sky's Unveiling",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "nighttime-whispers-in-the-echoing-woods",
+      "name": "Nighttime Whispers in the Echoing Woods",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "noblesse-oblige",
+      "name": "Noblesse Oblige",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "nymphs-dream",
+      "name": "Nymph's Dream",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "obsidian-codex",
+      "name": "Obsidian Codex",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "ocean-hued-clam",
+      "name": "Ocean-Hued Clam",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "pale-flame",
+      "name": "Pale Flame",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "resolution-of-sojourner",
+      "name": "Resolution of Sojourner",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "retracing-bolide",
+      "name": "Retracing Bolide",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "scarlet-proof",
+      "name": "Scarlet Proof",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "scholar",
+      "name": "Scholar",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "scroll-of-the-hero-of-cinder-city",
+      "name": "Scroll of the Hero of Cinder City",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "shimenawas-reminiscence",
+      "name": "Shimenawa's Reminiscence",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "silken-moons-serenade",
+      "name": "Silken Moon's Serenade",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "song-of-days-past",
+      "name": "Song of Days Past",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tenacity-of-the-millelith",
+      "name": "Tenacity of the Millelith",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "the-exile",
+      "name": "The Exile",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "thundering-fury",
+      "name": "Thundering Fury",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "thundersoother",
+      "name": "Thundersoother",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tiny-miracle",
+      "name": "Tiny Miracle",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "traveling-doctor",
+      "name": "Traveling Doctor",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "unfinished-reverie",
+      "name": "Unfinished Reverie",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vermillion-hereafter",
+      "name": "Vermillion Hereafter",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "viridescent-venerer",
+      "name": "Viridescent Venerer",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "vourukashas-glow",
+      "name": "Vourukasha's Glow",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "wanderers-troupe",
+      "name": "Wanderer's Troupe",
+      "dataConfidence": "low"
+    }
+  ],
+  "teams": [
+    {
+      "id": "hu-tao-double-hydro-zhongli",
+      "name": "Hu Tao Double Hydro (Zhongli)",
+      "dataConfidence": "medium"
+    },
+    {
+      "id": "raiden-national",
+      "name": "Raiden National",
+      "dataConfidence": "medium"
+    }
+  ],
   "enemies": []
 }

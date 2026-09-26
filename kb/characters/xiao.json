@@ -1,0 +1,620 @@
+{
+  "id": "xiao",
+  "name": "Xiao",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/anemo/xiao",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/xiao-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "anemo",
+  "weaponType": "polearm",
+  "releaseVersion": "1.3",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 12735.747219200002,
+      "atk": 349.20043780000003,
+      "def": 799.2965448000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critRate",
+    "value": 0.242
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.27544,
+            0.29422,
+            0.313,
+            0.33804,
+            0.35682,
+            0.37873,
+            0.4069,
+            0.43507,
+            0.46324,
+            0.49141,
+            0.51958,
+            0.54775,
+            0.57592,
+            0.60409,
+            0.63226
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 4,
+            "cancel": {
+              "normal": 25,
+              "charged": 26,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "default": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            17
+          ],
+          "extraMv": [
+            [
+              0.27544,
+              0.29422,
+              0.313,
+              0.33804,
+              0.35682,
+              0.37873,
+              0.4069,
+              0.43507,
+              0.46324,
+              0.49141,
+              0.51958,
+              0.54775,
+              0.57592,
+              0.60409,
+              0.63226
+            ]
+          ]
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.56936,
+            0.60818,
+            0.647,
+            0.69876,
+            0.73758,
+            0.78287,
+            0.8411,
+            0.89933,
+            0.95756,
+            1.01579,
+            1.07402,
+            1.13225,
+            1.19048,
+            1.24871,
+            1.30694
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 22,
+              "charged": 27,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.68552,
+            0.73226,
+            0.779,
+            0.84132,
+            0.88806,
+            0.94259,
+            1.0127,
+            1.08281,
+            1.15292,
+            1.22303,
+            1.29314,
+            1.36325,
+            1.43336,
+            1.50347,
+            1.57358
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "normal": 26,
+              "charged": 38,
+              "skill": 15,
+              "burst": 15,
+              "dash": 15,
+              "jump": 15,
+              "swap": 15,
+              "default": 38
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.37664,
+            0.40232,
+            0.428,
+            0.46224,
+            0.48792,
+            0.51788,
+            0.5564,
+            0.59492,
+            0.63344,
+            0.67196,
+            0.71048,
+            0.749,
+            0.78752,
+            0.82604,
+            0.86456
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 39,
+              "charged": 42,
+              "skill": 31,
+              "burst": 31,
+              "dash": 31,
+              "jump": 31,
+              "swap": 31,
+              "default": 42
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            31
+          ],
+          "extraMv": [
+            [
+              0.37664,
+              0.40232,
+              0.428,
+              0.46224,
+              0.48792,
+              0.51788,
+              0.5564,
+              0.59492,
+              0.63344,
+              0.67196,
+              0.71048,
+              0.749,
+              0.78752,
+              0.82604,
+              0.86456
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.71544,
+            0.76422,
+            0.813,
+            0.87804,
+            0.92682,
+            0.98373,
+            1.0569,
+            1.13007,
+            1.20324,
+            1.27641,
+            1.34958,
+            1.42275,
+            1.49592,
+            1.56909,
+            1.64226
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "normal": 24,
+              "charged": 30,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "default": 30
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N6",
+          "mv": [
+            0.95832,
+            1.02366,
+            1.089,
+            1.17612,
+            1.24146,
+            1.31769,
+            1.4157,
+            1.51371,
+            1.61172,
+            1.70973,
+            1.80774,
+            1.90575,
+            2.00376,
+            2.10177,
+            2.19978
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 39,
+            "cancel": {
+              "normal": 79,
+              "charged": 79,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39,
+              "default": 79
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.21088,
+            1.29344,
+            1.376,
+            1.48608,
+            1.56864,
+            1.66496,
+            1.7888,
+            1.91264,
+            2.03648,
+            2.16032,
+            2.28416,
+            2.408,
+            2.53184,
+            2.65568,
+            2.77952
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "skill": 38,
+              "burst": 37,
+              "dash": 16,
+              "jump": 16,
+              "swap": 43,
+              "default": 45
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            2.528,
+            2.7176,
+            2.9072,
+            3.16,
+            3.3496,
+            3.5392,
+            3.792,
+            4.0448,
+            4.2976,
+            4.5504,
+            4.8032,
+            5.056,
+            5.372,
+            5.688,
+            6.004
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 4,
+            "cancel": {
+              "normal": 24,
+              "skill": 24,
+              "burst": 24,
+              "dash": 35,
+              "swap": 35,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 0,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "dash": 59,
+          "jump": 60,
+          "swap": 66,
+          "default": 82
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xiao/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 1080,
+      "energyCost": 70,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "xiao.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Conqueror of Evil: Tamer of Demons: While under the effects of Bane of All Evil, all DMG dealt by Xiao increases by 5%. DMG increases by a further 5% for every 3s the ability persists.\nThe maximum DMG Bonus is 25%."
+    },
+    {
+      "id": "xiao.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Dissolution Eon: Heaven Fall: Using Lemniscatic Wind Cycling increases the DMG of subsequent uses of Lemniscatic Wind Cycling by 15%.\nThis effect lasts for 7s, and has a maximum of 3 stacks. Gaining a new stack refreshes the effect's duration."
+    },
+    {
+      "id": "xiao.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Transcension: Gravity Defier: Decreases climbing Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Dissolution Eon: Destroyer of Worlds: Increases Lemniscatic Wind Cycling's charges by 1."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Annihilation Eon: Blossom of Kaleidos: When in the party and not on the field, Xiao's Energy Recharge is increased by 25%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Conqueror of Evil: Wrath Deity: Increases the Level of Lemniscatic Wind Cycling by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Transcension: Extinction of Suffering: When Xiao's HP falls below 50%, he gains a 100% DEF Bonus."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Evolution Eon: Origin of Ignorance: Increases the Level of Bane of All Evil by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Conqueror of Evil: Guardian Yaksha: While under the effects of Bane of All Evil, hitting at least 2 opponents with Xiao's Plunging Attack will immediately grant him 1 charge of Lemniscatic Wind Cycling, and for the next 1s, he may use Lemniscatic Wind Cycling while ignoring its CD."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 6,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.anemo"
+      ],
+      "circlet": [
+        "atk%",
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

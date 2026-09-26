@@ -1,0 +1,1092 @@
+{
+  "id": "keqing",
+  "name": "Keqing",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "passive/constellation text"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/keqing",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/keqing-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended main stats"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
+    "Multiplier tables confirmed by gcsim: 19/19. Lv 90 base stats confirmed by KeqingMains.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [],
+  "baseStats": {
+    "lv90": {
+      "hp": 13103.1246236,
+      "atk": 322.89081300000004,
+      "def": 799.2965448000001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.41022,
+            0.44361,
+            0.477,
+            0.5247,
+            0.55809,
+            0.59625,
+            0.64872,
+            0.70119,
+            0.75366,
+            0.8109,
+            0.86814,
+            0.92538,
+            0.98262,
+            1.03986,
+            1.0971
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 15,
+              "charged": 19,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 19
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.41022,
+            0.44361,
+            0.477,
+            0.5247,
+            0.55809,
+            0.59625,
+            0.64872,
+            0.70119,
+            0.75366,
+            0.8109,
+            0.86814,
+            0.92538,
+            0.98262,
+            1.03986,
+            1.0971
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "normal": 16,
+              "charged": 24,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "default": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.54438,
+            0.58869,
+            0.633,
+            0.6963,
+            0.74061,
+            0.79125,
+            0.86088,
+            0.93051,
+            1.00014,
+            1.0761,
+            1.15206,
+            1.22802,
+            1.30398,
+            1.37994,
+            1.4559
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "normal": 27,
+              "charged": 36,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.31476,
+            0.34038,
+            0.366,
+            0.4026,
+            0.42822,
+            0.4575,
+            0.49776,
+            0.53802,
+            0.57828,
+            0.6222,
+            0.66612,
+            0.71004,
+            0.75396,
+            0.79788,
+            0.8418
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "normal": 31,
+              "charged": 58,
+              "skill": 21,
+              "burst": 21,
+              "dash": 21,
+              "jump": 21,
+              "swap": 21,
+              "default": 58
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            21
+          ],
+          "extraMv": [
+            [
+              0.344,
+              0.372,
+              0.4,
+              0.44,
+              0.468,
+              0.5,
+              0.544,
+              0.588,
+              0.632,
+              0.68,
+              0.728,
+              0.776,
+              0.824,
+              0.872,
+              0.92
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.66994,
+            0.72447,
+            0.779,
+            0.8569,
+            0.91143,
+            0.97375,
+            1.05944,
+            1.14513,
+            1.23082,
+            1.3243,
+            1.41778,
+            1.51126,
+            1.60474,
+            1.69822,
+            1.7917
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "normal": 66,
+              "charged": 66,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "default": 66
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.76798,
+            0.83049,
+            0.893,
+            0.9823,
+            1.04481,
+            1.11625,
+            1.21448,
+            1.31271,
+            1.41094,
+            1.5181,
+            1.62526,
+            1.73242,
+            1.83958,
+            1.94674,
+            2.0539
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 21,
+            "cancel": {
+              "skill": 35,
+              "burst": 35,
+              "default": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            24
+          ],
+          "extraMv": [
+            [
+              0.86,
+              0.93,
+              1,
+              1.1,
+              1.17,
+              1.25,
+              1.36,
+              1.47,
+              1.58,
+              1.7,
+              1.82,
+              1.94,
+              2.06,
+              2.18,
+              2.3
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Lightning Stiletto",
+          "mv": [
+            0.504,
+            0.5418,
+            0.5796,
+            0.63,
+            0.6678,
+            0.7056,
+            0.756,
+            0.8064,
+            0.8568,
+            0.9072,
+            0.9576,
+            1.008,
+            1.071,
+            1.134,
+            1.197
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "normal": 36,
+              "skill": 35,
+              "dash": 21,
+              "jump": 21,
+              "swap": 28,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Slashing",
+          "mv": [
+            1.68,
+            1.806,
+            1.932,
+            2.1,
+            2.226,
+            2.352,
+            2.52,
+            2.688,
+            2.856,
+            3.024,
+            3.192,
+            3.36,
+            3.57,
+            3.78,
+            3.99
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 28,
+            "cancel": {
+              "normal": 36,
+              "skill": 35,
+              "dash": 21,
+              "jump": 21,
+              "swap": 28,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Thunderclap Slash 1",
+          "mv": [
+            0.84,
+            0.903,
+            0.966,
+            1.05,
+            1.113,
+            1.176,
+            1.26,
+            1.344,
+            1.428,
+            1.512,
+            1.596,
+            1.68,
+            1.785,
+            1.89,
+            1.995
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 31,
+            "cancel": {
+              "normal": 36,
+              "skill": 35,
+              "dash": 21,
+              "jump": 21,
+              "swap": 28,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Thunderclap Slash 2",
+          "mv": [
+            0.84,
+            0.903,
+            0.966,
+            1.05,
+            1.113,
+            1.176,
+            1.26,
+            1.344,
+            1.428,
+            1.512,
+            1.596,
+            1.68,
+            1.785,
+            1.89,
+            1.995
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "normal": 36,
+              "skill": 35,
+              "dash": 21,
+              "jump": 21,
+              "swap": 28,
+              "default": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 450,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Skill",
+          "mv": [
+            0.88,
+            0.946,
+            1.012,
+            1.1,
+            1.166,
+            1.232,
+            1.32,
+            1.408,
+            1.496,
+            1.584,
+            1.672,
+            1.76,
+            1.87,
+            1.98,
+            2.09
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 56,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 1",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 59,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 2",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 62,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 3",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 65,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 4",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 68,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 5",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 71,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 6",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 74,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 7",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 77,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Consecutive Slash 8",
+          "mv": [
+            0.24,
+            0.258,
+            0.276,
+            0.3,
+            0.318,
+            0.336,
+            0.36,
+            0.384,
+            0.408,
+            0.432,
+            0.456,
+            0.48,
+            0.51,
+            0.54,
+            0.57
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 80,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "Last Attack",
+          "mv": [
+            1.888,
+            2.0296,
+            2.1712,
+            2.36,
+            2.5016,
+            2.6432,
+            2.832,
+            3.0208,
+            3.2096,
+            3.3984,
+            3.5872,
+            3.776,
+            4.012,
+            4.248,
+            4.484
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 62,
+            "cancel": {
+              "normal": 123,
+              "skill": 123,
+              "swap": 122,
+              "default": 124
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/keqing/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 720,
+      "energyCost": 40,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "keqing.passive1",
+      "unlock": "p1",
+      "effects": [],
+      "text": "Thundering Penance: After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an Electro Infusion for 5s."
+    },
+    {
+      "id": "keqing.passive2",
+      "unlock": "p2",
+      "effects": [],
+      "text": "Aristocratic Dignity: When casting Starward Sword, Keqing's CRIT Rate is increased by 15%, and her Energy Recharge is increased by 15%. This effect lasts for 8s."
+    },
+    {
+      "id": "keqing.passive3",
+      "unlock": "p3",
+      "effects": [],
+      "text": "Land's Overseer: When dispatched on an expedition in Liyue, time consumed is reduced by 25%."
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Thundering Might: Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal 50% of her ATK as AoE Electro DMG at the start point and terminus of her Blink."
+    },
+    {
+      "level": 2,
+      "effects": [],
+      "text": "Keen Extraction: When Keqing's Normal and Charged Attacks hit opponents affected by Electro, they have a 50% chance of producing an Elemental Particle.\nThis effect can only occur once every 5s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Foreseen Reformation: Increases the Level of Starward Sword by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 4,
+      "effects": [],
+      "text": "Attunement: For 10s after Keqing triggers an Electro-related Elemental Reaction, her ATK is increased by 25%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Beckoning Stars: Increases the Level of Stellar Restoration by 3.\nMaximum upgrade level is 15."
+    },
+    {
+      "level": 6,
+      "effects": [],
+      "text": "Tenacious Star: When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a 6% Electro DMG Bonus for 8s.\nEffects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities."
+    }
+  ],
+  "effects": [],
+  "extraActions": {},
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.electro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
+  },
+  "hooks": [],
+  "needsHook": false
+}

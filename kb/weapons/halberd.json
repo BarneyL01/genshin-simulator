@@ -1,0 +1,47 @@
+{
+  "id": "halberd",
+  "name": "Halberd",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive text",
+          "releaseVersion"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "Passive \"Heavy\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Normal Attacks deal an additional 160% ATK as DMG. Can only occur once every 10s.",
+    "Obtain method is a guess from rarity and has not been verified in a source page.",
+    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+  ],
+  "type": "polearm",
+  "rarity": 3,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 448.2215814
+  },
+  "substat": {
+    "stat": "atk%",
+    "lv90": 0.23460179800000003
+  },
+  "obtain": {
+    "method": "chest",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Heavy",
+    "text": "Normal Attacks deal an additional 160% ATK as DMG. Can only occur once every 10s.",
+    "effects": []
+  },
+  "needsHook": false
+}
