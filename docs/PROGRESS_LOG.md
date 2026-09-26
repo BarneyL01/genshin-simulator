@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-26 — Fix talent inputs on mobile
+
+- Milestone: M8 (UI).
+- Done: talent level inputs (and the custom action/swap delay inputs) clamped on every keystroke, so on a phone typing a digit appended to the old value and jumped to 15, and backspacing to empty snapped back to the fallback. New `IntInput` (`src/ui/Common.tsx`, logic in `src/ui/intInput.ts`) keeps the typed text as a draft, commits only in-range values, selects the text on focus (deferred for iOS/Android), and restores the previous value on blur if the draft is empty or out of range. Numeric keypad via `inputMode="numeric"`. `scripts/e2e.ts` gains a phone-viewport check (tap, type, backspace, blur) and an `E2E_EXECUTABLE` option for a specific browser binary.
+- KB changes: none.
+- Tests / validation: `npx vitest run` 121 pass (4 new in `tests/int-input.test.ts`); lint, typecheck, build clean; `E2E_EXECUTABLE=/opt/pw-browsers/chromium npm run e2e` ok. The new mobile check fails against the previous RosterView (typing 8 over 1 → 15; backspace → 1), confirming it reproduces the bug.
+- Blockers: none.
+- Next: unchanged (export/import of saved teams; weapon/set pickers for known teams).
+
+---
+
 ## 2026-09-26 — Default talents 1/1/1; saved custom teams
 
 - Milestone: M8 (UI).

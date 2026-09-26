@@ -4,6 +4,7 @@ import { chromium } from 'playwright';
 /**
  * Browser smoke test: serves the built app (run `npm run build` first) and drives every tab.
  *   npm run e2e            headless run, screenshots in .cache/shots
+ *   E2E_EXECUTABLE=/path/to/chromium npm run e2e   use a specific browser binary
  */
 const PORT = 4179;
 const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
@@ -23,7 +24,9 @@ async function waitForServer() {
 const errors: string[] = [];
 try {
   await waitForServer();
-  const browser = await chromium.launch({ channel: process.env.E2E_CHANNEL ?? 'chrome' });
+  const browser = await chromium.launch(
+    process.env.E2E_EXECUTABLE ? { executablePath: process.env.E2E_EXECUTABLE } : { channel: process.env.E2E_CHANNEL ?? 'chrome' },
+  );
   const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
   page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });
@@ -35,6 +38,33 @@ try {
   // Roster
   await page.getByRole('button', { name: 'Own everything' }).click();
   await page.screenshot({ path: `${shots}/1-roster.png`, fullPage: true });
+
+  // Talent input on a phone: tap, type over the old value, and backspace to empty.
+  {
+    const errorsBefore = errors.length;
+    const phone = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+    const m = await phone.newPage();
+    m.on('pageerror', (e) => errors.push(`mobile pageerror: ${e.message}`));
+    await m.goto(url);
+    const talent = m.getByLabel('talent 1').first();
+    const before = await talent.inputValue();
+    await talent.tap();
+    await m.waitForTimeout(50);
+    await m.keyboard.type('8');
+    if (await talent.inputValue() !== '8') errors.push(`mobile talent: typing 8 over ${before} gave ${await talent.inputValue()}`);
+    await m.keyboard.press('Backspace');
+    if (await talent.inputValue() !== '') errors.push(`mobile talent: backspace gave ${await talent.inputValue()}, expected empty`);
+    await m.keyboard.type('12');
+    await m.getByRole('heading', { name: 'Genshin Team Simulator' }).tap();
+    if (await talent.inputValue() !== '12') errors.push(`mobile talent: typed 12 then blurred, got ${await talent.inputValue()}`);
+    await talent.tap();
+    await m.waitForTimeout(50);
+    await m.keyboard.press('Backspace');
+    await m.getByRole('heading', { name: 'Genshin Team Simulator' }).tap();
+    if (await talent.inputValue() !== '12') errors.push(`mobile talent: empty then blurred should restore 12, got ${await talent.inputValue()}`);
+    if (errors.length === errorsBefore) console.log('mobile talent input: ok');
+    await phone.close();
+  }
 
   // Known teams
   await page.getByRole('tab', { name: 'Team comparison' }).click();

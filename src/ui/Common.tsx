@@ -1,4 +1,51 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { blurValue, draftValue, sanitizeInt } from './intInput';
+
+/**
+ * Integer input that works with mobile keyboards: the typed text is kept as a draft,
+ * in-range values are committed immediately, and an empty or out-of-range draft is restored on blur.
+ * Focusing selects the text so a new number replaces the old one instead of appending to it
+ * (deferred, because iOS Safari and Android Chrome drop a selection made inside the focus event).
+ */
+export function IntInput({ value, min, max, onChange, className = '', ...rest }: {
+  value: number;
+  min: number;
+  max: number;
+  onChange: (n: number) => void;
+  className?: string;
+  'aria-label'?: string;
+}) {
+  const [draft, setDraft] = useState<string | null>(null);
+  return (
+    <input
+      {...rest}
+      type="text"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      className={className}
+      value={draft ?? String(value)}
+      onFocus={(e) => {
+        setDraft(String(value));
+        const el = e.currentTarget;
+        setTimeout(() => el.select(), 0);
+      }}
+      onChange={(e) => {
+        const text = sanitizeInt(e.target.value);
+        setDraft(text);
+        const n = draftValue(text, min, max);
+        if (n !== null && n !== value) onChange(n);
+      }}
+      onBlur={() => {
+        const n = blurValue(draft ?? '', min, max, value);
+        if (n !== value) onChange(n);
+        setDraft(null);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') e.currentTarget.blur();
+      }}
+    />
+  );
+}
 
 export function Section({ title, children, right }: { title: string; children: ReactNode; right?: ReactNode }) {
   return (

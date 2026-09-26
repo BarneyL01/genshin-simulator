@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { KbData } from '../kb';
 import type { Roster } from '../schema/roster';
-import { Badge, Button, Section, confidenceTone } from './Common';
+import { Badge, Button, IntInput, Section, confidenceTone } from './Common';
 import { nameOf } from './format';
 import { parseRoster } from './store';
 
@@ -11,11 +11,6 @@ interface Props {
   update: (fn: (r: Roster) => Roster) => void;
   setRoster: (r: Roster) => void;
 }
-
-const num = (v: string, lo: number, hi: number, fallback: number) => {
-  const n = Number.parseInt(v, 10);
-  return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : fallback;
-};
 
 export function RosterView({ kb, roster, update, setRoster }: Props) {
   const [io, setIo] = useState('');
@@ -65,12 +60,12 @@ export function RosterView({ kb, roster, update, setRoster }: Props) {
                   </label>
                   <span className="text-slate-500">Talents</span>
                   {([0, 1, 2] as const).map((i) => (
-                    <input
-                      key={i} aria-label={`talent ${i + 1}`} type="number" min={1} max={15} className="w-12 rounded border px-1"
+                    <IntInput
+                      key={i} aria-label={`talent ${i + 1}`} min={1} max={15} className="w-12 rounded border px-1"
                       value={rc.talents[i]}
-                      onChange={(e) => {
+                      onChange={(n) => {
                         const t = [...rc.talents] as [number, number, number];
-                        t[i] = num(e.target.value, 1, 15, 9);
+                        t[i] = n;
                         setChar(c.id, { talents: t });
                       }}
                     />
@@ -130,8 +125,8 @@ export function RosterView({ kb, roster, update, setRoster }: Props) {
           </select>
           {roster.settings.executionProfile === 'custom' && (
             <>
-              <label>Action delay (frames) <input type="number" min={0} className="w-16 rounded border px-1" value={roster.settings.actionDelay} onChange={(e) => update((r) => ({ ...r, settings: { ...r.settings, actionDelay: num(e.target.value, 0, 120, 18) } }))} /></label>
-              <label>Swap delay (frames) <input type="number" min={0} className="w-16 rounded border px-1" value={roster.settings.swapDelay} onChange={(e) => update((r) => ({ ...r, settings: { ...r.settings, swapDelay: num(e.target.value, 0, 120, 18) } }))} /></label>
+              <label>Action delay (frames) <IntInput min={0} max={120} className="w-16 rounded border px-1" value={roster.settings.actionDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, actionDelay: n } }))} /></label>
+              <label>Swap delay (frames) <IntInput min={0} max={120} className="w-16 rounded border px-1" value={roster.settings.swapDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, swapDelay: n } }))} /></label>
             </>
           )}
           <span className="text-slate-500">Results always show Frame-perfect alongside.</span>
