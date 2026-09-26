@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { loadKb } from '../scripts/kb-node';
-import { buildCustomRotation, customRunInput, rankTeams, runTeam, teamInput } from '../src/kb';
+import { buildCustomRotation, compareWeapons, customRunInput, rankTeams, runTeam, teamInput } from '../src/kb';
 import type { Roster } from '../src/schema';
 
 const kb = loadKb();
@@ -86,5 +86,24 @@ describe('Mode B custom teams', () => {
     const run = runTeam(kb, input, { cycles: 2 });
     expect(run.relaxed.dps).toBeGreaterThan(1000);
     expect(run.label).toContain('custom rotation');
+  });
+});
+
+describe('Weapon comparer', () => {
+  it('ranks weapons by team DPS, reports deltas, ER change and a worst case', () => {
+    const input = teamInput(kb.teams.get('hu-tao-double-hydro-zhongli')!);
+    const res = compareWeapons(
+      kb, input, 'hu-tao',
+      [{ weaponId: 'staff-of-homa', refinement: 1 }, { weaponId: 'staff-of-homa', refinement: 5 }, { weaponId: 'black-tassel', refinement: 5 }, { weaponId: 'white-tassel', refinement: 5 }],
+      { weaponId: 'staff-of-homa', refinement: 1 }, { cycles: 3 },
+    );
+    expect(res.map((r) => `${r.weaponId}:${r.refinement}`)).toEqual(['staff-of-homa:5', 'staff-of-homa:1', 'white-tassel:5', 'black-tassel:5']);
+    const base = res.find((r) => r.isBaseline)!;
+    expect(base.teamDelta).toBeCloseTo(0);
+    expect(res[0]!.teamDelta).toBeGreaterThan(0);
+    expect(res[3]!.charDelta).toBeLessThan(-0.2);
+    // Homa's low-HP bonus rests on an assumed condition: the worst case must be lower
+    expect(base.worst.charDps).toBeLessThan(base.charDps);
+    expect(base.assumptions.some((a) => a.includes('HP'))).toBe(true);
   });
 });

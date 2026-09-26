@@ -29,6 +29,11 @@ export interface SimInput {
    * Reactions consume it but it comes back for the next hit.
    */
   enemyAura?: { element: 'pyro' | 'hydro' | 'electro' | 'cryo' | 'dendro'; gauge?: number };
+  /**
+   * Sensitivity switch. `true` (default): effects with a `condition` (HP thresholds, stacks, ...) are assumed met.
+   * `false`: they are skipped, giving the worst case for uncertain passives.
+   */
+  conditionsMet?: boolean;
   /** Attach the stats and modifiers behind every hit to the result (for the hit log and debugging). */
   trace?: boolean;
 }
@@ -151,6 +156,10 @@ export function simulate(input: SimInput): SimResult {
 
   function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number, action?: HookApi['action'], actor?: CharacterInput): void {
     const frame = triggerFrame + (e.delay ?? 0);
+    if (e.condition && input.conditionsMet === false) {
+      assumptions.add(`${e.id}: skipped (worst case: its condition is assumed not met)`);
+      return;
+    }
     if (e.hook) {
       runHook(owner, e, frame, action, { actor });
       return;
@@ -484,7 +493,7 @@ export function simulate(input: SimInput): SimResult {
   return {
     actions, hits, buffs: bm.records,
     totalDamage: hits.reduce((s, h) => s + h.damage, 0),
-    windowFrames, cycleFrames: windowFrames / windowCycles.length, windowDamage, dps: windowDamage / seconds, perCharacterDps,
+    windowFrames, cycleFrames: windowFrames / windowCycles.length, cycleStarts: cycleStart, windowDamage, dps: windowDamage / seconds, perCharacterDps,
     energy: energyReport,
     assumptions: [...assumptions].sort(),
   };

@@ -166,6 +166,8 @@ export interface SimResult {
   windowFrames: number;
   /** Average length of one measured cycle, in frames. */
   cycleFrames: number;
+  /** Start frame of each cycle's first action (index 0 = cycle 1). */
+  cycleStarts: number[];
   windowDamage: number;
   dps: number;
   perCharacterDps: Record<string, number>;

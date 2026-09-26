@@ -61,6 +61,7 @@ export interface KqmsProblem {
   profile: ExecutionProfile;
   lunarCharged?: boolean;
   enemyAura?: { element: 'pyro' | 'hydro' | 'electro' | 'cryo' | 'dendro'; gauge?: number };
+  conditionsMet?: boolean;
   /** Cycles simulated per evaluation (default 2). */
   cycles?: number;
   /** Theorycrafting mode ("100% ER requirement"): no Energy Recharge rolls, bursts are assumed available. */
@@ -111,7 +112,7 @@ export function optimizeKqms(p: KqmsProblem): KqmsResult {
     p.characters.map((c) => ({ ...c, baseMods: [...c.baseMods, ...artifactMods(mains[c.id]!, liquid[c.id]!)] }));
   const run = (n = cycles) => {
     sims++;
-    return simulate({ characters: build(), enemy: p.enemy, rotation: p.rotation, cycles: n, profile: p.profile, lunarCharged: p.lunarCharged, enemyAura: p.enemyAura, startEnergy: 'full' });
+    return simulate({ characters: build(), enemy: p.enemy, rotation: p.rotation, cycles: n, profile: p.profile, lunarCharged: p.lunarCharged, enemyAura: p.enemyAura, conditionsMet: p.conditionsMet, startEnergy: 'full' });
   };
 
   // 1. Energy Recharge
