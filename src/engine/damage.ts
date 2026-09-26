@@ -40,7 +40,7 @@ export function calcHitDamage(c: DamageContext): number {
   const { hit, stats } = c;
   const t = hit.talent;
   const scalingValue = stats[hit.scaling];
-  const mv = hit.mv + m(`mvBonus.${t}`);
+  const mv = hit.mv + m(`mvBonus.${t}`) + (hit.name ? m(`mvBonus.hit.${hit.name}`) : 0);
   const flat = (hit.flat ?? 0) + m(`flatDmg.${t}`) + m('flatDmg.all') + (c.catalyzeFlat ?? 0);
   const baseMult = 1 + m(`baseDmgMultiplier.${t}`);
   const dmgBonus = 1 + m('dmgBonus.all') + m(`dmgBonus.${hit.element}`) + m(`dmgBonus.${t}`);

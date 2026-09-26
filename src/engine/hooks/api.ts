@@ -1,5 +1,5 @@
 import type { Effect } from '../../schema/effect';
-import type { CharacterInput, Element, FinalStats, Talent } from '../types';
+import type { CharacterInput, Element, FinalStats, HitDef, Talent } from '../types';
 
 /** What a hook can see and do. Hooks run in the schedule pass, at the frame their trigger fires. */
 export interface HookApi {
@@ -10,6 +10,12 @@ export interface HookApi {
   characters: CharacterInput[];
   /** The action that fired the trigger (undefined for `always`, swap and other non-action triggers). */
   action?: { name: string; talent: Talent; start: number; end: number; hitFrames: number[] };
+  /** The character that acted, for `onAnyNormal` / `onAnyBurst` triggers. */
+  actor?: CharacterInput;
+  /** The hit that fired an `onHit` trigger (resolve pass). `action` is the action name, or the hook-hit id. */
+  hitInfo?: { actor: CharacterInput; action: string; hit: HitDef; damage: number; frame: number };
+  /** The effect's `value` resolved for the owner (refinement / talent level tables applied). */
+  value: number;
   stats(c: CharacterInput, frame?: number): FinalStats;
   /** Queue one of the owner's `hookHits` at an absolute frame. */
   hit(id: string, frame: number): void;

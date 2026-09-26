@@ -1,0 +1,1240 @@
+{
+  "id": "raiden-shogun",
+  "name": "Raiden Shogun",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Musou Isshin sword attacks are the extra actions sword-n1..sword-n5 and sword-charged; rotations must use them after the burst (they count as normal/charged attacks for triggers but deal burst DMG).",
+    "Resolve, energy restoration and the Eye run through hook \"raiden\" (src/engine/hooks/raiden.ts, tested in tests/hooks.test.ts). A1 (Resolve per particle) and C6 are not modelled.",
+    "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
+  ],
+  "rarity": 5,
+  "element": "electro",
+  "weaponType": "polearm",
+  "releaseVersion": "2.1",
+  "roles": [
+    "driver",
+    "battery",
+    "sub-dps"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 12907.189733140001,
+      "atk": 337.2415138,
+      "def": 789.30533799
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.32
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.39646,
+            0.42873,
+            0.461,
+            0.5071,
+            0.53937,
+            0.57625,
+            0.62696,
+            0.67767,
+            0.72838,
+            0.7837,
+            0.847087,
+            0.921631,
+            0.996175,
+            1.070719,
+            1.152039
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "default": 24,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "normal": 18
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.39732,
+            0.42966,
+            0.462,
+            0.5082,
+            0.54054,
+            0.5775,
+            0.62832,
+            0.67914,
+            0.72996,
+            0.7854,
+            0.848925,
+            0.92363,
+            0.998336,
+            1.073041,
+            1.154538
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "default": 26,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "normal": 13
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.4988,
+            0.5394,
+            0.58,
+            0.638,
+            0.6786,
+            0.725,
+            0.7888,
+            0.8526,
+            0.9164,
+            0.986,
+            1.06575,
+            1.159536,
+            1.253322,
+            1.347108,
+            1.44942
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "default": 36,
+              "skill": 14,
+              "burst": 14,
+              "dash": 14,
+              "jump": 14,
+              "swap": 14,
+              "normal": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.28982,
+            0.31341,
+            0.337,
+            0.3707,
+            0.39429,
+            0.42125,
+            0.45832,
+            0.49539,
+            0.53246,
+            0.5729,
+            0.619237,
+            0.67373,
+            0.728223,
+            0.782716,
+            0.842163
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 14,
+            "cancel": {
+              "default": 57,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27,
+              "normal": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            27
+          ],
+          "extraMv": [
+            [
+              0.28982,
+              0.31341,
+              0.337,
+              0.3707,
+              0.39429,
+              0.42125,
+              0.45832,
+              0.49539,
+              0.53246,
+              0.5729,
+              0.619237,
+              0.67373,
+              0.728223,
+              0.782716,
+              0.842163
+            ]
+          ]
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.65446,
+            0.70773,
+            0.761,
+            0.8371,
+            0.89037,
+            0.95125,
+            1.03496,
+            1.11867,
+            1.20238,
+            1.2937,
+            1.398338,
+            1.521391,
+            1.644445,
+            1.767499,
+            1.901739
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 34,
+            "cancel": {
+              "default": 50,
+              "skill": 34,
+              "burst": 34,
+              "dash": 34,
+              "jump": 34,
+              "swap": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Eye of Stormy Judgement",
+          "mv": [
+            1.172,
+            1.2599,
+            1.3478,
+            1.465,
+            1.5529,
+            1.6408,
+            1.758,
+            1.8752,
+            1.9924,
+            2.1096,
+            2.2268,
+            2.344,
+            2.4905,
+            2.637,
+            2.7835
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 51,
+            "cancel": {
+              "default": 37,
+              "dash": 17,
+              "jump": 17,
+              "swap": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 600,
+      "particles": {
+        "count": 0.5,
+        "perHit": false,
+        "icd": 48,
+        "element": "electro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Musou Shinsetsu",
+          "mv": [
+            4.008,
+            4.3086,
+            4.6092,
+            5.01,
+            5.3106,
+            5.6112,
+            6.012,
+            6.4128,
+            6.8136,
+            7.2144,
+            7.6152,
+            8.016,
+            8.517,
+            9.018,
+            9.519
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 98,
+            "cancel": {
+              "default": 112,
+              "normal": 111,
+              "skill": 111,
+              "dash": 111,
+              "swap": 110
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 1080,
+      "energyCost": 90,
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.99588,
+            1.07694,
+            1.158,
+            1.2738,
+            1.35486,
+            1.4475,
+            1.57488,
+            1.70226,
+            1.82964,
+            1.9686,
+            2.127825,
+            2.315074,
+            2.502322,
+            2.689571,
+            2.893842
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "default": 37,
+              "dash": 22,
+              "jump": 22,
+              "swap": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "stamina": 25,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "raiden.a4",
+      "unlock": "a4",
+      "effects": [
+        {
+          "id": "raiden.a4.electro",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "dmgBonus.electro",
+          "value": 0,
+          "scaling": {
+            "from": "self.er",
+            "ratio": 0.4,
+            "base": -0.4
+          },
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "0.4% Electro DMG per 1% ER over 100%, evaluated at hit time. The energy restoration part of A4 is in the Musou restore hook."
+        }
+      ]
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [
+        {
+          "id": "raiden.c1",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "raiden"
+        }
+      ],
+      "text": "Chakra Desiderata gathers Resolve faster: +80% from Electro characters bursts, +20% from others."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "raiden.c2.def-ignore",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "self",
+          "stat": "defIgnore",
+          "value": 0.6,
+          "delay": 98,
+          "duration": 420,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ],
+      "text": "While using Musou no Hitotachi and in Musou Isshin, attacks ignore 60% of opponents' DEF."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Secret Art: Musou Shinsetsu by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "raiden.c4.atk",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "teamExceptSelf",
+          "stat": "atk%",
+          "value": 0.3,
+          "delay": 518,
+          "duration": 600,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Musou Isshin is assumed to last its full 7 s (Raiden does not swap out early)."
+        }
+      ],
+      "text": "When Musou Isshin expires, all nearby party members (excluding Raiden) gain 30% ATK for 10 s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Transcendence: Baleful Omen by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "raiden.c6.cd",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "teamExceptSelf",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "raiden.c6",
+          "assumption": "Needs a hook that shortens other characters burst cooldowns; not implemented."
+        }
+      ],
+      "text": "Musou Isshin burst attacks reduce other party members' burst CD by 1 s (max once per second, 5 times)."
+    }
+  ],
+  "effects": [
+    {
+      "id": "raiden.eye.burst-bonus",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "team",
+      "stat": "dmgBonus.burst",
+      "value": 0,
+      "scaling": {
+        "from": "target.energyMax",
+        "ratio": {
+          "perTalentLevel": [
+            0.0022,
+            0.0023,
+            0.0024,
+            0.0025,
+            0.0026,
+            0.0027,
+            0.0028,
+            0.0029,
+            0.003,
+            0.003,
+            0.003,
+            0.003,
+            0.003,
+            0.003,
+            0.003
+          ],
+          "talent": "skill"
+        }
+      },
+      "delay": 66,
+      "duration": 1500,
+      "maxStacks": 1,
+      "snapshot": false
+    },
+    {
+      "id": "raiden.eye",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "delay": 66,
+      "duration": 1500,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden"
+    },
+    {
+      "id": "raiden.eye.strike",
+      "trigger": {
+        "on": "onHit"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden",
+      "assumption": "Coordinated attacks fire on every team hit that deals damage during the Eye (max one per 0.9 s); they are treated as Electro skill damage with the standard ICD."
+    },
+    {
+      "id": "raiden.resolve.gain",
+      "trigger": {
+        "on": "onAnyBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.15,
+          0.16,
+          0.16,
+          0.17,
+          0.17,
+          0.18,
+          0.18,
+          0.19,
+          0.19,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden",
+      "assumption": "Resolve stacks come only from other characters' bursts (energy cost × stacks per energy, cap 60). Particle pickups (A1) are not counted, so stacks are slightly low."
+    },
+    {
+      "id": "raiden.resolve.base",
+      "trigger": {
+        "on": "onBurst",
+        "filter": {
+          "hit": "Musou Shinsetsu"
+        }
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.03888,
+          0.041796,
+          0.044712,
+          0.0486,
+          0.051516,
+          0.054432,
+          0.05832,
+          0.062208,
+          0.066096,
+          0.069984,
+          0.073872,
+          0.07776,
+          0.08262,
+          0.08748,
+          0.09234
+        ],
+        "talent": "burst"
+      },
+      "delay": 98,
+      "duration": 1,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden"
+    },
+    {
+      "id": "raiden.resolve.sword",
+      "trigger": {
+        "on": "onBurst",
+        "filter": {
+          "hits": "Musou Isshin 1,Musou Isshin 2,Musou Isshin 3,Musou Isshin 4,Musou Isshin 5,Musou Isshin Charged"
+        }
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.007262,
+          0.007806,
+          0.008351,
+          0.009077,
+          0.009622,
+          0.010166,
+          0.010892,
+          0.011619,
+          0.012345,
+          0.013071,
+          0.013797,
+          0.014523,
+          0.015431,
+          0.016339,
+          0.017246
+        ],
+        "talent": "burst"
+      },
+      "delay": 98,
+      "duration": 420,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden"
+    },
+    {
+      "id": "raiden.musou.restore.normal",
+      "trigger": {
+        "on": "onNormal"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          1.6,
+          1.7,
+          1.8,
+          1.9,
+          2,
+          2.1,
+          2.2,
+          2.3,
+          2.4,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden",
+      "assumption": "Sword attack hits restore energy to the whole team, once per second, max 5 per Musou Isshin; sword hits are assumed to land on the enemy."
+    },
+    {
+      "id": "raiden.musou.restore.charged",
+      "trigger": {
+        "on": "onCharged"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          1.6,
+          1.7,
+          1.8,
+          1.9,
+          2,
+          2.1,
+          2.2,
+          2.3,
+          2.4,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "raiden"
+    }
+  ],
+  "extraActions": {
+    "sword-n1": {
+      "as": "normal",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin 1",
+          "mv": [
+            0.447374,
+            0.477877,
+            0.50838,
+            0.54905,
+            0.579553,
+            0.61514,
+            0.660894,
+            0.706648,
+            0.752402,
+            0.798157,
+            0.843911,
+            0.889665,
+            0.935419,
+            0.981173,
+            1.026928
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "default": 21,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "normal": 19
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ]
+    },
+    "sword-n2": {
+      "as": "normal",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin 2",
+          "mv": [
+            0.43956,
+            0.46953,
+            0.4995,
+            0.53946,
+            0.56943,
+            0.604395,
+            0.64935,
+            0.694305,
+            0.73926,
+            0.784215,
+            0.82917,
+            0.874125,
+            0.91908,
+            0.964035,
+            1.00899
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 26,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 16
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ]
+    },
+    "sword-n3": {
+      "as": "normal",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin 3",
+          "mv": [
+            0.538217,
+            0.574913,
+            0.61161,
+            0.660539,
+            0.697235,
+            0.740048,
+            0.795093,
+            0.850138,
+            0.905183,
+            0.960228,
+            1.015273,
+            1.070318,
+            1.125362,
+            1.180407,
+            1.235452
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "default": 34,
+              "skill": 11,
+              "burst": 11,
+              "dash": 11,
+              "jump": 11,
+              "swap": 11,
+              "normal": 16
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ]
+    },
+    "sword-n4": {
+      "as": "normal",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin 4",
+          "mv": [
+            0.30888,
+            0.32994,
+            0.351,
+            0.37908,
+            0.40014,
+            0.42471,
+            0.4563,
+            0.48789,
+            0.51948,
+            0.55107,
+            0.58266,
+            0.61425,
+            0.64584,
+            0.67743,
+            0.70902
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "default": 67,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33,
+              "normal": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            33
+          ],
+          "extraMv": [
+            [
+              0.30976,
+              0.33088,
+              0.352,
+              0.38016,
+              0.40128,
+              0.42592,
+              0.4576,
+              0.48928,
+              0.52096,
+              0.55264,
+              0.58432,
+              0.616,
+              0.64768,
+              0.67936,
+              0.71104
+            ]
+          ]
+        }
+      ]
+    },
+    "sword-n5": {
+      "as": "normal",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin 5",
+          "mv": [
+            0.739438,
+            0.789854,
+            0.84027,
+            0.907492,
+            0.957908,
+            1.016727,
+            1.092351,
+            1.167975,
+            1.2436,
+            1.319224,
+            1.394848,
+            1.470473,
+            1.546097,
+            1.621721,
+            1.697345
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 33,
+            "cancel": {
+              "default": 59,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 33
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ]
+    },
+    "sword-charged": {
+      "as": "charged",
+      "damageTalent": "burst",
+      "hits": [
+        {
+          "name": "Musou Isshin Charged",
+          "mv": [
+            0.616,
+            0.658,
+            0.7,
+            0.756,
+            0.798,
+            0.847,
+            0.91,
+            0.973,
+            1.036,
+            1.099,
+            1.162,
+            1.225,
+            1.288,
+            1.351,
+            1.414
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "default": 56,
+              "dash": 32,
+              "jump": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            32
+          ],
+          "extraMv": [
+            [
+              0.7436,
+              0.7943,
+              0.845,
+              0.9126,
+              0.9633,
+              1.02245,
+              1.0985,
+              1.17455,
+              1.2506,
+              1.32665,
+              1.4027,
+              1.47875,
+              1.5548,
+              1.63085,
+              1.7069
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "hookHits": {
+    "eye-strike": {
+      "name": "Eye of Stormy Judgement (coordinated attack)",
+      "mv": [
+        0.42,
+        0.4515,
+        0.483,
+        0.525,
+        0.5565,
+        0.588,
+        0.63,
+        0.672,
+        0.714,
+        0.756,
+        0.798,
+        0.84,
+        0.8925,
+        0.945,
+        0.9975
+      ],
+      "scaling": "atk",
+      "element": "electro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/raiden/skill.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "skill",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    }
+  },
+  "usualCombo": [
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "sword-n1"
+        },
+        {
+          "action": "sword-n2"
+        },
+        {
+          "action": "sword-n3"
+        },
+        {
+          "action": "sword-n4"
+        },
+        {
+          "action": "sword-n5"
+        }
+      ]
+    },
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": []
+  },
+  "hooks": [
+    "raiden",
+    "raiden.c6"
+  ],
+  "needsHook": true
+}

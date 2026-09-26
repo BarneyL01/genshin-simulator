@@ -152,6 +152,7 @@ export interface CharacterSpec {
   constellations: Character['constellations'];
   effects?: Effect[];
   hookHits?: Record<string, HookHitSpec>;
+  extraActions?: Record<string, { as: 'normal' | 'charged' | 'plunge' | 'skill' | 'burst'; damageTalent: 'normal' | 'skill' | 'burst'; frameFile: string; hits: HitSpec[] }>;
   usualCombo: Character['usualCombo'];
   recommended?: Character['recommended'];
   assumptions?: string[];
@@ -180,15 +181,14 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
   let mvChecked = 0;
   let mvMatched = 0;
 
-  const block = (kind: keyof typeof TALENT_KEY, t: TalentSpec) => {
-    const talentKey = TALENT_KEY[kind];
-    const gPath = `internal/characters/${spec.gcsimDir}/${t.frameFile}`;
+  const block2 = (talentKey: 'combat1' | 'combat2' | 'combat3', frameFile: string, hitSpecs: HitSpec[]) => {
+    const gPath = `internal/characters/${spec.gcsimDir}/${frameFile}`;
     const source = { site: 'gcsim', url: gcsimUrl(gPath), commit: gcsimCommit() };
-    const hits = t.hits.map((h) => {
+    return hitSpecs.map((h) => {
       const mv = param(spec.dbName, talentKey, h.param);
       mvChecked++;
       if (hasMatchingArray(dmArrays, mv)) mvMatched++;
-      else conflicts.push({ field: `talents.${kind}.${h.name}.mv`, values: { 'genshin-db': `${talentKey}.${h.param}`, gcsim: 'no matching table found' }, chosen: 'genshin-db', note: 'not confirmed by gcsim tables' });
+      else conflicts.push({ field: `${h.name}.mv`, values: { 'genshin-db': `${talentKey}.${h.param}`, gcsim: 'no matching table found' }, chosen: 'genshin-db', note: 'not confirmed by gcsim tables' });
       const extraMv = h.extraParams?.map((p) => {
         const table = param(spec.dbName, talentKey, p);
         mvChecked++;
@@ -201,6 +201,13 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
         icd: h.icd, gauge: h.gauge, strike: h.strike, extraHitmarks: h.extraHitmarks, extraMv,
       };
     });
+  };
+
+  const block = (kind: keyof typeof TALENT_KEY, t: TalentSpec) => {
+    const talentKey = TALENT_KEY[kind];
+    const gPath = `internal/characters/${spec.gcsimDir}/${t.frameFile}`;
+    const source = { site: 'gcsim', url: gcsimUrl(gPath), commit: gcsimCommit() };
+    const hits = block2(talentKey, t.frameFile, t.hits);
     const cd = t.cooldown && ('param' in t.cooldown ? Math.round(param(spec.dbName, talentKey, t.cooldown.param)[0]! * 60) : t.cooldown.frames);
     const cost = t.energyCost === undefined ? undefined : typeof t.energyCost === 'number' ? t.energyCost : param(spec.dbName, talentKey, t.energyCost.param)[0];
     return {
@@ -213,6 +220,15 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
   const talents: Character['talents'] = { normal: block('normal', spec.normal), skill: block('skill', spec.skill), burst: block('burst', spec.burst) };
   if (spec.charged) talents.charged = block('charged', spec.charged);
   if (spec.plunge) talents.plunge = block('plunge', spec.plunge);
+
+  const buildHits = (talentKey: 'combat1' | 'combat2' | 'combat3', frameFile: string, hitSpecs: HitSpec[]) =>
+    block2(talentKey, frameFile, hitSpecs);
+  const extraActions = Object.fromEntries(
+    Object.entries(spec.extraActions ?? {}).map(([name, ea]) => [
+      name,
+      { as: ea.as, damageTalent: ea.damageTalent, hits: buildHits(TALENT_KEY[ea.damageTalent], ea.frameFile, ea.hits) },
+    ]),
+  );
 
   const hookHits = Object.fromEntries(
     Object.entries(spec.hookHits ?? {}).map(([id, h]) => {
@@ -256,6 +272,7 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     passives: spec.passives,
     constellations: spec.constellations,
     effects: spec.effects ?? [],
+    extraActions,
     hookHits,
     usualCombo: spec.usualCombo,
     recommended: spec.recommended ?? { weapons: [], artifacts: [] },

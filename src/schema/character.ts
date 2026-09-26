@@ -47,11 +47,22 @@ const talentBlock = z.object({
 });
 
 const comboAction = z.object({
-  action: z.enum(['normal', 'charged', 'plunge', 'skill', 'burst', 'dash', 'wait', 'swap']),
+  /** A standard action (normal, charged, plunge, skill, burst, dash, wait, swap) or one of the character's `extraActions`. */
+  action: z.string().min(1),
   variant: z.string().optional(),
   hits: z.number().int().positive().optional(),
   then: z.string().optional(),
   repeat: z.union([z.number().int().positive(), z.literal('untilRotationEnd'), z.literal('untilBurstEnd')]).optional(),
+});
+
+/** An action that is not one of the standard talents (e.g. Raiden's Musou Isshin sword attacks). */
+const extraAction = z.object({
+  /** What the action counts as for triggers (onNormal, onCharged, ...). */
+  as: z.enum(['normal', 'charged', 'plunge', 'skill', 'burst']),
+  /** Damage type and talent level source of its hits. */
+  damageTalent: talentKind,
+  hits: z.array(hit).min(1),
+  cooldown: frames.optional(),
 });
 
 export const character = z.object({
@@ -76,6 +87,8 @@ export const character = z.object({
     .max(6)
     .default([]),
   effects: z.array(effect).default([]),
+  /** Named actions beyond n1..nN / charged / plunge / skill / burst, usable in rotations. */
+  extraActions: z.record(z.string(), extraAction).default({}),
   /** Hits fired only by hooks, keyed by id (e.g. "xingqiu.rain-sword"). */
   hookHits: z.record(z.string(), hookHit).default({}),
   usualCombo: z.array(z.object({ variant: z.string(), actions: z.array(comboAction).min(1) })).min(1),
@@ -87,5 +100,14 @@ export const character = z.object({
     .default({ weapons: [], artifacts: [] }),
   hooks: z.array(z.string()).default([]),
   needsHook: z.boolean().default(false),
+}).superRefine((c, ctx) => {
+  const standard = new Set(['normal', 'charged', 'plunge', 'skill', 'burst', 'dash', 'wait', 'swap']);
+  c.usualCombo.forEach((v, vi) =>
+    v.actions.forEach((a, ai) => {
+      if (!standard.has(a.action) && !(a.action in c.extraActions)) {
+        ctx.addIssue({ code: 'custom', path: ['usualCombo', vi, 'actions', ai, 'action'], message: `unknown action "${a.action}" (not standard and not in extraActions)` });
+      }
+    }),
+  );
 });
 export type Character = z.infer<typeof character>;

@@ -42,6 +42,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
     if (needsFrames && !h.frames) throw new Error(`${c.id} ${talent} hit "${h.name}" has no frame data`);
     const lvl = levels[TALENT_LEVEL_INDEX[talent]];
     const base: HitDef = {
+      name: h.name,
       frame: h.frames?.hitmark ?? 0,
       mv: h.mv[Math.min(lvl, h.mv.length) - 1]!,
       scaling: h.scaling,
@@ -89,6 +90,11 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
         },
       };
     }
+  }
+
+  for (const [name, ea] of Object.entries(c.extraActions)) {
+    const last = ea.hits.reduce((a, b) => (Math.max(b.frames?.hitmark ?? 0, ...(b.extraHitmarks ?? [])) >= Math.max(a.frames?.hitmark ?? 0, ...(a.extraHitmarks ?? [])) ? b : a));
+    actions[name] = { talent: ea.as, hits: ea.hits.flatMap((h) => toHits(h, ea.damageTalent)), cancel: cancelOf(last), cooldown: ea.cooldown };
   }
 
   const hookHits: Record<string, HitDef> = {};

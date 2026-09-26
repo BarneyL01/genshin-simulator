@@ -11,6 +11,8 @@ export interface StatMod {
 }
 
 export interface HitDef {
+  /** Hit name (KB), targetable by `mvBonus.hit.<name>` effects. */
+  name?: string;
   /** Frames after the action starts. */
   frame: number;
   mv: number;

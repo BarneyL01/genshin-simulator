@@ -77,3 +77,87 @@ describe('xingqiu hook', () => {
     expect(r.buffs.some((b) => b.effectId === 'xingqiu.c2.hydro-res' && b.value === -0.15)).toBe(true);
   });
 });
+
+describe('raiden hook', () => {
+  const R = (id: string, trigger: string, extra: Record<string, unknown> = {}) =>
+    effect.parse({ id, trigger: { on: trigger }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'raiden', ...extra });
+  const raiden = (extra: CharacterInput['effects'] = []) =>
+    mk('raiden', {
+      element: 'electro',
+      actions: {
+        skill: act('skill', [hit(5, 'electro', 'skill')], 30),
+        burst: act('burst', [hit(20, 'electro', 'burst', 3)], 40, { energyCost: 90 }),
+        'sword-n1': act('normal', [hit(5, 'electro', 'burst', 2)], 20),
+      },
+      hookHits: { 'eye-strike': { frame: 0, mv: 1, scaling: 'atk', element: 'electro', talent: 'skill', gauge: 1, icd: { tag: 'skill', group: 'standard' } } },
+      effects: [
+        R('raiden.resolve.gain', 'onAnyBurst', { value: 0.5 }),
+        R('raiden.resolve.base', 'onBurst', { value: 0.1, trigger: { on: 'onBurst', filter: { hit: 'BurstHit' } }, delay: 20 }),
+        R('raiden.resolve.sword', 'onBurst', { value: 0.05, trigger: { on: 'onBurst', filter: { hits: 'SwordHit' } }, delay: 20, duration: 100 }),
+        R('raiden.musou.restore.normal', 'onNormal', { value: 2 }),
+        R('raiden.eye', 'onSkill', { delay: 6, duration: 300 }),
+        R('raiden.eye.strike', 'onHit'),
+        ...extra,
+      ],
+    });
+  const named = (c: CharacterInput, action: string, name: string) => {
+    c.actions[action]!.hits = c.actions[action]!.hits.map((h) => ({ ...h, name }));
+    return c;
+  };
+  const other = mk('other', { element: 'pyro', actions: { burst: act('burst', [hit(5, 'pyro', 'burst')], 30, { energyCost: 60 }), n1: act('normal', [hit(5)], 20) } });
+
+  it('other characters bursts add Resolve, consumed by Raiden as extra MV on the named hits', () => {
+    const r = raiden();
+    named(r, 'burst', 'BurstHit');
+    named(r, 'sword-n1', 'SwordHit');
+    const res = simulate({
+      characters: [r, other], enemy, cycles: 1, profile: fp, startEnergy: 'full',
+      rotation: [{ char: 'other', action: 'burst' }, { char: 'raiden', action: 'burst' }, { char: 'raiden', action: 'sword-n1' }],
+    });
+    // stacks = 60 energy × 0.5 = 30. Base hit MV 3 + 0.1 × 30 = 6, sword hit MV 2 + 0.05 × 30 = 3.5
+    const burstHit = res.hits.find((h) => h.action === 'burst' && h.char === 'raiden')!;
+    const sword = res.hits.find((h) => h.action === 'sword-n1')!;
+    expect(sword.damage / burstHit.damage).toBeCloseTo(3.5 / 6, 6);
+  });
+
+  it('caps Resolve at 60', () => {
+    const r = raiden();
+    named(r, 'burst', 'BurstHit');
+    other.actions.burst!.energyCost = 1000;
+    const res = simulate({
+      characters: [r, other], enemy, cycles: 1, profile: fp, startEnergy: 'full',
+      rotation: [{ char: 'other', action: 'burst' }, { char: 'raiden', action: 'burst' }],
+    });
+    other.actions.burst!.energyCost = 60;
+    const burstHit = res.hits.find((h) => h.action === 'burst' && h.char === 'raiden')!;
+    const noStack = simulate({
+      characters: [named(raiden(), 'burst', 'BurstHit'), other], enemy, cycles: 1, profile: fp, startEnergy: 'full',
+      rotation: [{ char: 'raiden', action: 'burst' }],
+    }).hits.find((h) => h.action === 'burst')!;
+    expect(burstHit.damage / noStack.damage).toBeCloseTo((3 + 0.1 * 60) / 3, 6);
+  });
+
+  it('eye strikes: once per 54 frames on team hits during the eye, ignoring Raiden skill hit and itself', () => {
+    const res = simulate({
+      characters: [raiden(), other], enemy, cycles: 1, profile: fp, startEnergy: 'full',
+      rotation: [{ char: 'raiden', action: 'skill' }, ...Array.from({ length: 8 }, () => ({ char: 'other', action: 'n1' }))],
+    });
+    const strikes = res.hits.filter((h) => h.action === 'eye-strike').map((h) => h.frame);
+    // raiden.skill at 0 (hit 5, ignored). other.n1 starts 30: hits at 35, 55, 75, ...; eye starts at 6.
+    // first trigger 35 → strike 40, next allowed at 35 + 54 = 89 → first hit ≥ 89 is 95 → strike 100, then 155 → 160...
+    expect(strikes.slice(0, 3)).toEqual([40, 100, 160]);
+  });
+
+  it('musou isshin restores energy to the team at most once per second and five times', () => {
+    const r = raiden();
+    r.actions['sword-n1']!.hits = [hit(5, 'electro', 'burst'), hit(10, 'electro', 'burst')];
+    const chars = [r, mk('ally', { actions: { burst: act('burst', [], 30, { energyCost: 80 }) } })];
+    const res = simulate({
+      characters: chars, enemy, cycles: 1, profile: fp, startEnergy: 'empty',
+      rotation: [{ char: 'raiden', action: 'burst' }, ...Array.from({ length: 12 }, () => ({ char: 'raiden', action: 'sword-n1' }))],
+    });
+    // Each restore gives 2 energy (ER 1). Musou window is 100 frames from the base hit, so at most 2 restores (60 frame ICD).
+    expect(res.energy.ally!.flatEnergy).toBeGreaterThan(0);
+    expect(res.energy.ally!.flatEnergy).toBeLessThanOrEqual(2 * 5 + 1e-9);
+  });
+});

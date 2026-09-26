@@ -1,4 +1,4 @@
-import { SCALING_SOURCES, type Effect, type EffectValue } from '../schema/effect';
+import { SCALING_SOURCES, TARGET_SCALING_SOURCES, type Effect, type EffectValue } from '../schema/effect';
 import { BuffManager } from './buffs';
 import { calcHitDamage } from './damage';
 import { EnergyTracker } from './energy';
@@ -64,6 +64,9 @@ export function simulate(input: SimInput): SimResult {
   const actions: ActionRecord[] = [];
   const pending: PendingHit[] = [];
   let cycle = 1;
+  /** True during the resolve pass: hooks then queue hits directly on the event queue. */
+  let resolving = false;
+  let queueHit: (p: PendingHit) => void = () => undefined;
 
   /**
    * Stat modifiers for `c` at `frame`: base mods + static buffs, then dynamic-scaling buffs in
@@ -79,7 +82,7 @@ export function simulate(input: SimInput): SimResult {
       let src: Record<string, number> | undefined = owner === c ? mods : depth < 2 ? modsAt(owner, frame, depth + 1) : undefined;
       src ??= sumMods(owner.baseMods);
       const stats = resolveStats(owner.base, owner.weaponAtk, src);
-      const s = stats[d.from as keyof typeof stats];
+      const s = d.from === 'energyMax' ? (c.actions.burst?.energyCost ?? 0) : stats[d.from as keyof typeof stats];
       let v = d.base + d.ratio * s;
       if (d.cap !== undefined) v = Math.min(v, d.cap);
       mods[r.stat] = (mods[r.stat] ?? 0) + v * r.stacks;
@@ -98,7 +101,7 @@ export function simulate(input: SimInput): SimResult {
   const energy = new EnergyTracker(characters, activeAt, (c, f) => statsFor(c, f).stats.er, (input.startEnergy ?? 'full') === 'full');
 
   const hookState = new Map<string, Record<string, unknown>>();
-  function runHook(owner: CharacterInput, e: Effect, frame: number, action?: HookApi['action']): void {
+  function runHook(owner: CharacterInput, e: Effect, frame: number, action?: HookApi['action'], ctx: { actor?: CharacterInput; hitInfo?: HookApi['hitInfo']; cycle?: number } = {}): void {
     const hook = HOOKS[e.hook!];
     if (!hook) {
       assumptions.add(`${e.id}: hook "${e.hook}" not implemented, effect skipped`);
@@ -107,41 +110,48 @@ export function simulate(input: SimInput): SimResult {
     if (e.condition) assumptions.add(`${e.id}: condition ignored (assumed met)${e.assumption ? ` — ${e.assumption}` : ''}`);
     const key = `${owner.id}|${e.hook}`;
     if (!hookState.has(key)) hookState.set(key, {});
+    const hookCycle = ctx.cycle ?? cycle;
     hook({
-      frame, cycle, owner, effect: e, characters, action,
+      frame, cycle: hookCycle, owner, effect: e, characters, action, actor: ctx.actor, hitInfo: ctx.hitInfo,
+      value: e.value === undefined ? 0 : resolveScalar(owner, e.value),
       stats: (c, f = frame) => statsFor(c, f).stats,
       hit: (id, f) => {
         const h = owner.hookHits[id];
         if (!h) throw new Error(`${owner.id}: no hookHit "${id}"`);
-        pending.push({ cycle, frame: f, char: owner, action: id, hit: { ...h, frame: f } });
+        const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, hit: { ...h, frame: f } };
+        if (resolving) queueHit(p);
+        else pending.push(p);
       },
       buff: (b, f = frame) =>
         bm.apply({ effectId: b.effectId, source: owner.id, target: b.target, stat: b.stat, value: b.value, duration: b.duration, maxStacks: b.maxStacks ?? 1, stackMode: b.stackMode ?? 'refresh' }, f),
-      particles: (d) => energy.addDrop({ frame: d.frame ?? frame + CONSTANTS.particleDelayFrames, count: d.count, element: d.element, cycle }),
-      energy: (id, amount, f = frame) => energy.addFlat(id, amount, f, cycle),
+      particles: (d) => energy.addDrop({ frame: d.frame ?? frame + CONSTANTS.particleDelayFrames, count: d.count, element: d.element, cycle: hookCycle }),
+      energy: (id, amount, f = frame) => energy.addFlat(id, amount, f, hookCycle),
       state: hookState.get(key)!,
       assume: (t) => assumptions.add(t),
     });
   }
 
-  function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number, action?: HookApi['action']): void {
+  const resolveScalar = (owner: CharacterInput, v: EffectValue): number => {
+    if (typeof v === 'number') return v;
+    if ('perRefinement' in v) return v.perRefinement[owner.refinement - 1] ?? 0;
+    const lvl = owner.talentLevels[{ normal: 0, skill: 1, burst: 2 }[v.talent ?? 'burst']];
+    return v.perTalentLevel[Math.min(lvl ?? 9, v.perTalentLevel.length) - 1] ?? 0;
+  };
+
+  function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number, action?: HookApi['action'], actor?: CharacterInput): void {
     const frame = triggerFrame + (e.delay ?? 0);
     if (e.hook) {
-      runHook(owner, e, frame, action);
+      runHook(owner, e, frame, action, { actor });
       return;
     }
     if (e.condition) assumptions.add(`${e.id}: condition ignored (assumed met)${e.assumption ? ` — ${e.assumption}` : ''}`);
-    const scalar = (v: EffectValue): number => {
-      if (typeof v === 'number') return v;
-      if ('perRefinement' in v) return v.perRefinement[owner.refinement - 1] ?? 0;
-      const lvl = owner.talentLevels[{ normal: 0, skill: 1, burst: 2 }[v.talent ?? 'burst']];
-      return v.perTalentLevel[Math.min(lvl ?? 9, v.perTalentLevel.length) - 1] ?? 0;
-    };
+    const scalar = (v: EffectValue) => resolveScalar(owner, v);
     let value = 0;
     let dynamic: DynamicScaling | undefined;
     if (e.scaling) {
       const [who, stat] = e.scaling.from.split('.');
-      if (who !== 'self' || !(SCALING_SOURCES as readonly string[]).includes(stat ?? '')) {
+      const okSource = who === 'self' ? (SCALING_SOURCES as readonly string[]).includes(stat ?? '') : who === 'target' && (TARGET_SCALING_SOURCES as readonly string[]).includes(stat ?? '');
+      if (!okSource) {
         assumptions.add(`${e.id}: unsupported scaling source "${e.scaling.from}", effect skipped`);
         return;
       }
@@ -149,7 +159,9 @@ export function simulate(input: SimInput): SimResult {
         from: stat!, ratio: scalar(e.scaling.ratio), base: e.scaling.base === undefined ? 0 : scalar(e.scaling.base),
         cap: e.scaling.cap === undefined ? undefined : scalar(e.scaling.cap),
       };
-      if (e.snapshot) {
+      if (who === 'target' && e.snapshot) {
+        assumptions.add(`${e.id}: snapshot is not supported for target-scaled effects; evaluated at hit time`);
+      } else if (e.snapshot) {
         const st = statsFor(owner, frame).stats;
         value = Math.min(dynamic.base + dynamic.ratio * st[dynamic.from as keyof typeof st], dynamic.cap ?? Infinity);
         dynamic = undefined;
@@ -182,14 +194,14 @@ export function simulate(input: SimInput): SimResult {
     }
   }
 
-  const fire = (owner: CharacterInput, trigger: string, frame: number, action?: HookApi['action']) => {
-    for (const e of owner.effects) if (e.trigger.on === trigger) applyEffect(owner, e, frame, action);
+  const fire = (owner: CharacterInput, trigger: string, frame: number, action?: HookApi['action'], actor?: CharacterInput) => {
+    for (const e of owner.effects) if (e.trigger.on === trigger) applyEffect(owner, e, frame, action, actor);
   };
 
   for (const c of characters) {
     for (const e of c.effects) {
       if (e.trigger.on === 'always') applyEffect(c, e, 0);
-      else if ((e.trigger.on === 'onHit' || e.trigger.on === 'onReaction' || e.trigger.on === 'custom') && !e.hook) {
+      else if ((e.trigger.on === 'onHit' || e.trigger.on === 'onReaction' || e.trigger.on === 'custom') && !(e.hook && e.trigger.on !== 'custom')) {
         assumptions.add(`${e.id}: trigger "${e.trigger.on}" not modelled yet, effect skipped`);
       }
     }
@@ -254,7 +266,8 @@ export function simulate(input: SimInput): SimResult {
       first = false;
       const actionInfo = { name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame) };
       fire(char, TALENT_TRIGGER[def.talent], start, actionInfo);
-      if (def.talent === 'normal') for (const c of characters) fire(c, 'onAnyNormal', start, actionInfo);
+      if (def.talent === 'normal') for (const c of characters) fire(c, 'onAnyNormal', start, actionInfo, char);
+      if (def.talent === 'burst') for (const c of characters) fire(c, 'onAnyBurst', start, actionInfo, char);
       actions.push({ cycle, char: char.id, action: step.action, start, end: start + def.cancel.default });
 
       for (const hit of def.hits) pending.push({ cycle, frame: start + hit.frame, char, action: step.action, hit });
@@ -322,8 +335,8 @@ export function simulate(input: SimInput): SimResult {
     return ok;
   };
 
-  for (const p of pending.sort((a, b) => a.frame - b.frame)) {
-    schedule(p.frame, () => {
+  const processHit = (p: PendingHit): void => {
+    {
       const { stats, mods: own } = statsFor(p.char, p.frame);
       const mods = addMods(own, bm.enemyMods(p.frame));
       // Elemental infusion: physical normal/charged/plunge hits take the element of an active infusion.
@@ -346,8 +359,21 @@ export function simulate(input: SimInput): SimResult {
         cycle: p.cycle, frame: p.frame, char: p.char.id, action: p.action, element: hit.element,
         talent: hit.talent, damage, reactions: r.reactions,
       });
-    });
-  }
+      // onHit hooks (e.g. Raiden's coordinated attacks) see every hit that dealt damage.
+      if (damage > 0) {
+        for (const owner of characters) {
+          for (const e of owner.effects) {
+            if (e.trigger.on === 'onHit' && e.hook) {
+              runHook(owner, e, p.frame, undefined, { cycle: p.cycle, hitInfo: { actor: p.char, action: p.action, hit, damage, frame: p.frame } });
+            }
+          }
+        }
+      }
+    }
+  };
+  queueHit = (p) => schedule(p.frame, () => processHit(p));
+  resolving = true;
+  for (const p of pending.sort((a, b) => a.frame - b.frame)) queueHit(p);
   while (head < queue.length) queue[head++]!.run();
   hits.sort((a, b) => a.frame - b.frame);
 

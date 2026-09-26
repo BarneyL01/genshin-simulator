@@ -3,7 +3,7 @@ import { frames } from './common';
 
 export const TRIGGERS = [
   'always', 'onHit', 'onSkill', 'onBurst', 'onNormal', 'onCharged', 'onPlunge', 'onReaction',
-  'onAnyNormal', 'onSwapIn', 'onSwapOut', 'onHeal', 'onShield', 'onEnergy', 'custom',
+  'onAnyNormal', 'onAnyBurst', 'onSwapIn', 'onSwapOut', 'onHeal', 'onShield', 'onEnergy', 'custom',
 ] as const;
 
 export const EFFECT_TARGETS = ['self', 'active', 'team', 'teamExceptSelf', 'enemy', 'enemiesHit'] as const;
@@ -17,7 +17,7 @@ const STAT_KEY = new RegExp(
       'dmgBonus\\.all', `dmgBonus\\.${ELEMENTS}`, `dmgBonus\\.${TALENTS}`,
       `critRate\\.${TALENTS}`, `critDmg\\.${TALENTS}`, `flatDmg\\.${TALENTS}`, 'flatDmg\\.all',
       'reactionBonus\\.[a-zA-Z]+', `res\\.enemy\\.${ELEMENTS}`, 'def\\.enemy\\.shred', 'defIgnore',
-      `mvBonus\\.${TALENTS}`, `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', 'cooldown\\.(skill|burst)', `infusion\\.${ELEMENTS}`,
+      `mvBonus\\.${TALENTS}`, 'mvBonus\\.hit\\..+', `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', 'cooldown\\.(skill|burst)', `infusion\\.${ELEMENTS}`,
     ].join('|') +
     ')$',
 );
@@ -31,8 +31,10 @@ const value = z.union([
 
 export type EffectValue = z.infer<typeof value>;
 
-/** Stats an effect may scale from: `self.<key>` (the effect owner's stat at hit time). */
+/** Stats an effect may scale from: `self.<key>` (the effect owner's stat at hit time), or `target.<key>`. */
 export const SCALING_SOURCES = ['atk', 'hp', 'def', 'em', 'er', 'critRate', 'critDmg', 'baseAtk', 'baseHp', 'baseDef'] as const;
+/** `target.<key>` scales from the stat of the character the effect is being applied to (currently only `energyMax`). */
+export const TARGET_SCALING_SOURCES = ['energyMax'] as const;
 
 export const effect = z.object({
   id: z.string().min(1),
