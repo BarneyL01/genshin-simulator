@@ -40,3 +40,7 @@ Output: `kb/characters/<id>.json` matching `docs/KB_SCHEMA.md` → Character.
 - Numbers only from sources; do not estimate multipliers. Missing → `null` + assumption.
 - Do not copy guide prose. Short passive/constellation text is fine as `text`.
 - Travelers: one file per element (`traveler-<element>`).
+
+## Tooling in this repo
+
+The steps above can be run with the importers: write `scripts/kb-import/specs/<id>.ts` (frames and effects transcribed from gcsim/KQM, numbers pulled from genshin-db by parameter key) and run `npm run kb:import:<kind> -- <id>`. The importer cross-checks multiplier tables against gcsim and Lv 90 base stats against KeqingMains, and sets `dataConfidence: high` only when both agree. Use `npm run kb:inspect -- "<name>"` to see genshin-db's labels and text. After importing, run `npm run kb:validate && npm test`.

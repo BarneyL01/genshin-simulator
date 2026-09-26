@@ -4,7 +4,10 @@ Answer inline (edit the "Answer" column) or tell the agent. Resolved items move 
 
 | # | Question | Default if unanswered | Answer |
 |---|---|---|---|
-| — | (none open) | | |
+| 12 | Black Tassel R5 in KeqingMains' Hu Tao weapon table is 92% of Blackcliff Pole; our engine gives ~82%. Black Tassel is the only listed weapon whose Paramita ATK bonus hits the "400% of Base ATK" cap. Does KQM's calc apply the cap the way gcsim does (Base ATK = character + weapon)? | Keep the in-game/gcsim rule; deviation is asserted in `tests/kqm-weapon-check.test.ts`. | |
+| 13 | KQM Standards: KeqingMains' own KQMS page was not found. Numbers are taken from gcsim's substat optimizer (20 liquid, cap 10, 2 fixed, per-roll values). Is that the definition you want? | Use gcsim's implementation. | |
+| 14 | M4 planned ~15 characters; 7 are in (Raiden, Xiangling, Xingqiu, Bennett, Hu Tao, Yelan, Zhongli) with 2 teams. Which characters/teams next? (`/kb-add-character` now has importer tooling in `scripts/kb-import/`.) | Extend from the KeqingMains quick-guide example teams. | |
+| 15 | Game8 / GameWith team ranks are not recorded (`sourceRank` empty). Read those pages too? | Later, via `/kb-update-teams`. | |
 
 ## Resolved
 

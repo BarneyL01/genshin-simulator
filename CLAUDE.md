@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestone **M3 (elements) complete**; next is **M4 (seed KB via the skills)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
+Milestones **M0–M3, M5, M6 complete; M4 partial** (7 characters, 11 weapons, 4 sets, 2 teams); next is **M7 (full KB)**. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
 
 ## Commands
 
@@ -26,6 +26,11 @@ npm run build          # static build to dist/
 npm test               # Vitest: engine unit + golden tests
 npm run kb:validate    # zod schema + cross-reference + provenance checks on kb/
 npm run kb:index       # regenerate kb/index.json and kb/meta.json counts
+npm run kb:inspect -- "Name"          # what genshin-db knows (authoring aid)
+npm run kb:fetch-gcsim               # clone gcsim into .cache (reference only)
+npm run kb:import:character -- <id>  # build kb/characters/<id>.json from scripts/kb-import/specs/<id>.ts (also import:weapon/artifact/team)
+npm run sim:team -- <team-id>        # simulate a KB team in the terminal
+npm run e2e                          # drive the built app in Chrome (needs npm run build)
 npm run lint && npm run typecheck
 ```
 

@@ -1,6 +1,6 @@
 # Genshin Team Simulator — Project Plan
 
-Status: **Planning** (no application code yet). See `docs/PROGRESS_LOG.md` for current state.
+Status: M0–M3, M5, M6 done; M4 partial (7 characters). See `docs/PROGRESS_LOG.md` for current state.
 
 ## 1. Goal
 

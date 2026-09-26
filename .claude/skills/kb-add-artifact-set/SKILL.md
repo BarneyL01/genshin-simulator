@@ -15,3 +15,7 @@ Output: `kb/artifacts/<id>.json` matching `docs/KB_SCHEMA.md` → Artifact set.
 4. **KeqingMains** → practical behaviour (stack rate, whether off-field triggers count, snapshot, team-wide buffs not stacking with same set).
 5. Convert both bonuses to Effect DSL. Team-wide buffs that do not stack with another copy of the same set: set `"stackGroup": "<set-id>"`.
 6. Provenance, confidence, `/kb-validate`, `kb/CHANGELOG.md`, and (if standalone) progress log + `kb:` commit.
+
+## Tooling in this repo
+
+The steps above can be run with the importers: write `scripts/kb-import/specs/<id>.ts` (frames and effects transcribed from gcsim/KQM, numbers pulled from genshin-db by parameter key) and run `npm run kb:import:<kind> -- <id>`. The importer cross-checks multiplier tables against gcsim and Lv 90 base stats against KeqingMains, and sets `dataConfidence: high` only when both agree. Use `npm run kb:inspect -- "<name>"` to see genshin-db's labels and text. After importing, run `npm run kb:validate && npm test`.

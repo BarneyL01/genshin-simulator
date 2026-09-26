@@ -22,3 +22,7 @@ Output: `kb/weapons/<id>.json` matching `docs/KB_SCHEMA.md` → Weapon.
    - `low`: numbers from one source or partially missing.
 9. Provenance per page. `gameVersion` = live version.
 10. Run `/kb-validate`. Append to `kb/CHANGELOG.md`. If standalone, add a progress-log entry and commit with prefix `kb:`.
+
+## Tooling in this repo
+
+The steps above can be run with the importers: write `scripts/kb-import/specs/<id>.ts` (frames and effects transcribed from gcsim/KQM, numbers pulled from genshin-db by parameter key) and run `npm run kb:import:<kind> -- <id>`. The importer cross-checks multiplier tables against gcsim and Lv 90 base stats against KeqingMains, and sets `dataConfidence: high` only when both agree. Use `npm run kb:inspect -- "<name>"` to see genshin-db's labels and text. After importing, run `npm run kb:validate && npm test`.

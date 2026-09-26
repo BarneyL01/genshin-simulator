@@ -16,6 +16,22 @@ Entry format:
 
 ---
 
+## 2026-09-25 — M4 (seed KB, partial), M5 (UI v1), M6 (comparison) built
+
+- Milestones: M4 partial (7 characters, 11 weapons, 4 sets, 2 teams), M5 complete, M6 complete.
+- Done:
+  - **Importers** (`scripts/kb-import/`): genshin-db numbers + gcsim frames/ICD/particles via spec files; talent tables cross-checked against gcsim tables (all 78 tables match) and Lv 90 base stats against KeqingMains library pages (all 7 match) → characters are `high` confidence. `import-icd.ts` generates 65 ICD groups from gcsim. `npm run kb:inspect`, `kb:fetch-gcsim`.
+  - **KB**: Raiden Shogun, Xiangling, Xingqiu, Bennett, Hu Tao, Yelan, Zhongli; weapons The Catch, Engulfing Lightning, Staff of Homa, Aqua Simulacra, Aquila Favonia, Favonius Sword/Warbow/Lance, Black Tassel, Blackcliff Pole, White Tassel; sets Emblem of Severed Fate, Noblesse Oblige, Crimson Witch of Flames, Tenacity of the Millelith; teams Raiden National and Hu Tao Double Hydro (Zhongli) with KeqingMains rotations; `kqms.json`.
+  - **Engine**: hooks (xingqiu, raiden, hutao, yelan, zhongli, favonius), dynamic scaling, `onHit`/`onAnyNormal`/`onAnyBurst`, infusion, cooldown mods, extra actions, rotation repeat groups (`times`, `untilBuffEnds`, `untilCycleTime`, `every`, `firstCycleOnly`), KQMS optimizer, theorycrafting switches (`enemyAura`, `conditionsMet`, `trace`).
+  - **App layer** (`src/kb/`): Mode A ranking, Mode B custom rotations from `usualCombo`, weapon comparer with worst case. **UI** (`src/ui/`): roster (tick boxes, C/R/talents, export/import, execution profile), known teams, custom team (order, variants, editable script), weapon comparer, results (summary, action and buff timelines, hit log, assumptions). Simulation runs in a Web Worker.
+- KB changes: see `kb/CHANGELOG.md`.
+- Tests / validation: lint, typecheck clean; `npm test` 104 tests (engine, reactions, hooks, KQMS, team runs, golden regression, KQM weapon table check); `npm run e2e` drives the built app in Chrome (roster → ranking → details → custom → comparer) with screenshots in `.cache/shots`.
+- Published-figure check: Hu Tao weapon table from KeqingMains reproduced within 3 points for Homa R1/R5 and White Tassel R5 (Black Tassel: −10 points, OPEN_QUESTIONS #12). No published team-level DPS figures were found, so team numbers are regression-tested only (`tests/golden/teams.json`).
+- Blockers / limits: OPEN_QUESTIONS #12–15. Raiden National shows Raiden cannot burst every rotation even with maximum ER rolls (energy model follows gcsim; rotation from KQM). Yelan's A4 ramp shows as 15 rows in the buff timeline.
+- Next: M7 (full KB via `/kb-sync-patch` and the importers, needs many more specs and hooks), M8 (patch-day dry run).
+
+---
+
 ## 2026-09-25 — M3 elements complete
 
 - Milestone: M3 (Elements) — complete
