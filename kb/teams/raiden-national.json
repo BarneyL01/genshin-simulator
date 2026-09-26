@@ -1,0 +1,258 @@
+{
+  "id": "raiden-national",
+  "name": "Raiden National",
+  "provenance": {
+    "sources": [
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/raiden-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "team composition",
+          "sample rotation",
+          "roles"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Rotation translated from KeqingMains: \"(Raiden E)¹ > Xingqiu EDQ N1 > Bennett Q N1 E > Xiangling N1 Q N1 ED > Bennett E N1 > Raiden Q combo E > Bennett E > (Xiangling)²\" (¹ first rotation only). Dash cancels are not modelled; \"combo\" is the sword-attack chain N1-N4 + charged, repeated for as long as Musou Isshin lasts.",
+    "Xiangling's optional catch of Bennett particles at the end is left out.",
+    "Weapons and artifact sets are the top choices from each character's KeqingMains quick guide that exist in the KB; Bennett uses Favonius Sword (KQM: best when the team has very high ER requirements).",
+    "Game8 / GameWith ranks are not recorded yet."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "raiden-shogun",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [
+        "engulfing-lightning",
+        "the-catch"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "emblem-of-severed-fate": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "er",
+          "em"
+        ],
+        "goblet": [
+          "dmgBonus.electro",
+          "atk%"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "xiangling",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [
+        "the-catch",
+        "favonius-lance"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "emblem-of-severed-fate": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "er",
+          "em",
+          "atk%"
+        ],
+        "goblet": [
+          "dmgBonus.pyro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "xingqiu",
+      "role": "hydro-applicator",
+      "substitutes": [],
+      "weapons": [
+        "favonius-sword"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "emblem-of-severed-fate": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "er",
+          "atk%"
+        ],
+        "goblet": [
+          "dmgBonus.hydro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "bennett",
+      "role": "buffer",
+      "substitutes": [],
+      "weapons": [
+        "favonius-sword",
+        "aquila-favonia"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "noblesse-oblige": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "er",
+          "hp%"
+        ],
+        "goblet": [
+          "hp%"
+        ],
+        "circlet": [
+          "healingBonus",
+          "hp%"
+        ]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      {
+        "char": "raiden-shogun",
+        "action": "skill",
+        "firstCycleOnly": true
+      },
+      {
+        "char": "xingqiu",
+        "action": "skill"
+      },
+      {
+        "char": "xingqiu",
+        "action": "burst"
+      },
+      {
+        "char": "xingqiu",
+        "action": "n1"
+      },
+      {
+        "char": "bennett",
+        "action": "burst"
+      },
+      {
+        "char": "bennett",
+        "action": "n1"
+      },
+      {
+        "char": "bennett",
+        "action": "skill"
+      },
+      {
+        "char": "xiangling",
+        "action": "n1"
+      },
+      {
+        "char": "xiangling",
+        "action": "burst"
+      },
+      {
+        "char": "xiangling",
+        "action": "n1"
+      },
+      {
+        "char": "xiangling",
+        "action": "skill"
+      },
+      {
+        "char": "bennett",
+        "action": "skill"
+      },
+      {
+        "char": "bennett",
+        "action": "n1"
+      },
+      {
+        "char": "raiden-shogun",
+        "action": "burst"
+      },
+      {
+        "repeat": {
+          "untilBuffEnds": {
+            "effect": "raiden.musou",
+            "source": "raiden-shogun"
+          }
+        },
+        "steps": [
+          {
+            "char": "raiden-shogun",
+            "action": "sword-n1"
+          },
+          {
+            "char": "raiden-shogun",
+            "action": "sword-n2"
+          },
+          {
+            "char": "raiden-shogun",
+            "action": "sword-n3"
+          },
+          {
+            "char": "raiden-shogun",
+            "action": "sword-n4"
+          },
+          {
+            "char": "raiden-shogun",
+            "action": "sword-charged"
+          }
+        ]
+      },
+      {
+        "char": "raiden-shogun",
+        "action": "skill"
+      },
+      {
+        "char": "bennett",
+        "action": "skill"
+      }
+    ],
+    "source": "keqingmains",
+    "sourceUrl": "https://keqingmains.com/q/raiden-quickguide/",
+    "original": "(Raiden E)¹ > Xingqiu EDQ N1 > Bennett Q N1 E > Xiangling N1 Q N1 ED > Bennett E N1 > Raiden Q combo E > Bennett E > (Xiangling)²  ¹First rotation only"
+  },
+  "sourceRank": {
+    "keqingmains": null
+  },
+  "notes": "Xiangling vaporizes from off-field, Xingqiu supplies Hydro, Bennett buffs, Raiden batteries and adds Electro.",
+  "status": "active"
+}

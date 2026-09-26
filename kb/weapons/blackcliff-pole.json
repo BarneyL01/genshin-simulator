@@ -1,0 +1,65 @@
+{
+  "id": "blackcliff-pole",
+  "name": "Blackcliff Pole",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/blackcliff",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/hu-tao/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "obtain: Starglitter shop",
+          "used as the 100% baseline of its weapon table"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Passive (ATK +12–24% for 30 s per defeated enemy, max 3 stacks) is not modelled: the sim has no enemy defeats. KeqingMains uses the \"No Stacks\" case as its 100% baseline.",
+    "Obtain method (Starglitter exchange) is from KeqingMains' Hu Tao guide."
+  ],
+  "type": "polearm",
+  "rarity": 4,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 509.605949
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.55128
+  },
+  "obtain": {
+    "method": "shop",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Press the Advantage",
+    "text": "After defeating an enemy, ATK is increased by 12% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "effects": []
+  },
+  "needsHook": false
+}

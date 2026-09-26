@@ -1,0 +1,83 @@
+{
+  "id": "white-tassel",
+  "name": "White Tassel",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/whitetassel",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/hu-tao/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "obtain: chests in Liyue"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Charged attacks are not Normal Attacks, so only N1..N6 benefit."
+  ],
+  "type": "polearm",
+  "rarity": 3,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 401.2935898
+  },
+  "substat": {
+    "stat": "critRate",
+    "lv90": 0.234294
+  },
+  "obtain": {
+    "method": "chest",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Sharp",
+    "text": "Increases Normal Attack DMG by 24%.",
+    "effects": [
+      {
+        "id": "white-tassel.normal-dmg",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "dmgBonus.normal",
+        "value": {
+          "perRefinement": [
+            0.24,
+            0.3,
+            0.36,
+            0.42,
+            0.48
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      }
+    ]
+  },
+  "needsHook": false
+}

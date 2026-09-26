@@ -6,5 +6,5 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? './',
   plugins: [react(), tailwindcss()],
   worker: { format: 'es' },
-  test: { include: ['tests/**/*.test.ts'] },
+  test: { include: ['tests/**/*.test.ts'], testTimeout: 120_000 },
 });

@@ -82,15 +82,18 @@ export interface RotationStep {
   frames?: number;
   /** Only performed in the first cycle (e.g. the opening skill of a rotation that is otherwise cast at the end of the previous one). */
   firstCycleOnly?: boolean;
+  /** Only every N-th cycle (cycles 1, N+1, ...), e.g. a burst used every other rotation. Measure with cycles = 1 + k × N. */
+  every?: number;
 }
 
 /**
  * A group of steps repeated a number of times, or for as long as a buff lasts: with `untilBuffEnds`
  * every action is checked before it starts, and the repeat stops at the first one that would start
- * after the buff has ended.
+ * after the buff has ended. With `untilCycleTime` it stops once an action would start that many frames
+ * or more after the first action of the cycle.
  */
 export interface RepeatStep {
-  repeat: { times: number } | { untilBuffEnds: { effect: string; source: string } };
+  repeat: { times: number } | { untilBuffEnds: { effect: string; source: string } } | { untilCycleTime: number };
   steps: RotationStep[];
 }
 
@@ -129,6 +132,8 @@ export interface HitRecord {
   damage: number;
   /** Reactions triggered by this hit (for reaction damage: the reaction itself). */
   reactions: string[];
+  /** Present when the simulation ran with `trace: true`: the numbers the damage was computed from. */
+  trace?: { stats: FinalStats; mods: Record<string, number>; reactionFactor: number; catalyzeFlat: number; mv: number };
 }
 
 export interface BuffRecord {
@@ -159,6 +164,8 @@ export interface SimResult {
   totalDamage: number;
   /** Frames of the measured window (cycles 2..N, or cycle 1 when cycles = 1). */
   windowFrames: number;
+  /** Average length of one measured cycle, in frames. */
+  cycleFrames: number;
   windowDamage: number;
   dps: number;
   perCharacterDps: Record<string, number>;

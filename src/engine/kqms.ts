@@ -50,14 +50,27 @@ export function artifactMods(mains: MainStats, liquid: Liquid): StatMod[] {
 export interface KqmsProblem {
   /** Engine inputs with weapon and set effects but without artifact stats. */
   characters: CharacterInput[];
-  /** Main stat alternatives per character; the first is preferred, Circlet alternatives are compared. */
+  /**
+   * Main stat combinations per character, most preferred first. When a character cannot reach its burst
+   * with the first, alternatives with a different Sands are tried; among alternatives with the chosen
+   * Sands and Goblet, the Circlet is picked by damage.
+   */
   mains: Record<string, MainStats[]>;
   enemy: EnemyInput;
   rotation: RotationItem[];
   profile: ExecutionProfile;
   lunarCharged?: boolean;
+  enemyAura?: { element: 'pyro' | 'hydro' | 'electro' | 'cryo' | 'dendro'; gauge?: number };
   /** Cycles simulated per evaluation (default 2). */
   cycles?: number;
+  /** Theorycrafting mode ("100% ER requirement"): no Energy Recharge rolls, bursts are assumed available. */
+  ignoreEnergy?: boolean;
+  /**
+   * Only optimise these characters; the others keep the main stats and liquid rolls given in `fixed`
+   * (used to re-optimise a single character after a weapon change).
+   */
+  only?: string[];
+  fixed?: { mains: Record<string, MainStats>; liquid: Record<string, Liquid> };
 }
 
 export interface KqmsResult {
@@ -86,30 +99,47 @@ export function optimizeKqms(p: KqmsProblem): KqmsResult {
   const cycles = p.cycles ?? 2;
   const mains: Record<string, MainStats> = {};
   const liquid: Record<string, Liquid> = {};
+  const active = (c: CharacterInput) => !p.only || p.only.includes(c.id);
   for (const c of p.characters) {
     const alts = p.mains[c.id];
     if (!alts?.length) throw new Error(`no main stats given for ${c.id}`);
-    mains[c.id] = alts[0]!;
-    liquid[c.id] = {};
+    mains[c.id] = active(c) ? alts[0]! : (p.fixed?.mains[c.id] ?? alts[0]!);
+    liquid[c.id] = active(c) ? {} : { ...(p.fixed?.liquid[c.id] ?? {}) };
   }
 
   const build = (): CharacterInput[] =>
     p.characters.map((c) => ({ ...c, baseMods: [...c.baseMods, ...artifactMods(mains[c.id]!, liquid[c.id]!)] }));
   const run = (n = cycles) => {
     sims++;
-    return simulate({ characters: build(), enemy: p.enemy, rotation: p.rotation, cycles: n, profile: p.profile, lunarCharged: p.lunarCharged, startEnergy: 'full' });
+    return simulate({ characters: build(), enemy: p.enemy, rotation: p.rotation, cycles: n, profile: p.profile, lunarCharged: p.lunarCharged, enemyAura: p.enemyAura, startEnergy: 'full' });
   };
 
   // 1. Energy Recharge
   const erCap = (c: CharacterInput) => liquidLimit(mains[c.id]!, 'er');
-  for (const c of p.characters) liquid[c.id]!.er = erCap(c);
-  const needsBurst = p.characters.filter((c) => c.actions.burst?.energyCost);
+  for (const c of p.characters) if (active(c)) liquid[c.id]!.er = p.ignoreEnergy ? 0 : erCap(c);
+  const needsBurst = p.ignoreEnergy ? [] : p.characters.filter((c) => c.actions.burst?.energyCost);
   const erShort: string[] = [];
-  for (const c of needsBurst) {
+  for (const c of needsBurst.filter(active)) {
+    liquid[c.id]!.er = erCap(c);
+    let ok = (run(3).energy[c.id]?.shortfalls ?? 0) === 0;
+    if (!ok) {
+      // Try a Sands that carries more Energy Recharge (KeqingMains often lists ER as an alternative)
+      const first = mains[c.id]!;
+      for (const alt of p.mains[c.id]!.filter((m) => m.sands !== first.sands)) {
+        mains[c.id] = alt;
+        liquid[c.id]!.er = erCap(c);
+        if ((run(3).energy[c.id]?.shortfalls ?? 0) === 0) {
+          ok = true;
+          notes.push(`${c.id}: ${alt.sands} Sands instead of ${first.sands} to reach the burst every rotation.`);
+          break;
+        }
+      }
+      if (!ok) mains[c.id] = first;
+    }
     let lo = 0;
     let hi = erCap(c);
     liquid[c.id]!.er = hi;
-    if ((run(3).energy[c.id]?.shortfalls ?? 0) > 0) {
+    if (!ok) {
       erShort.push(c.id);
       continue;
     }
@@ -121,18 +151,19 @@ export function optimizeKqms(p: KqmsProblem): KqmsResult {
     }
     liquid[c.id]!.er = lo;
   }
-  for (const c of p.characters) if (!c.actions.burst?.energyCost) liquid[c.id]!.er = 0;
+  for (const c of p.characters) if (active(c) && (p.ignoreEnergy || !c.actions.burst?.energyCost)) liquid[c.id]!.er = 0;
   if (erShort.length) notes.push(`Energy: ${erShort.join(', ')} cannot burst every rotation even at maximum ER rolls.`);
 
   // 2. Damage substats, character by character in order of DPS
   const base = run();
-  const order = [...p.characters].sort((a, b) => (base.perCharacterDps[b.id] ?? 0) - (base.perCharacterDps[a.id] ?? 0));
+  const order = p.characters.filter(active).sort((a, b) => (base.perCharacterDps[b.id] ?? 0) - (base.perCharacterDps[a.id] ?? 0));
   for (const c of order) {
-    const alts = p.mains[c.id]!;
+    const chosen = mains[c.id]!;
+    const alts = p.mains[c.id]!.filter((m) => m.sands === chosen.sands && m.goblet === chosen.goblet);
     const circlets = [...new Set(alts.map((m) => m.circlet))];
     let best: { liquid: Liquid; mains: MainStats; dps: number } | undefined;
-    for (const circlet of circlets.length > 1 ? circlets : [alts[0]!.circlet]) {
-      const m = { ...alts[0]!, circlet };
+    for (const circlet of circlets.length > 1 ? circlets : [chosen.circlet]) {
+      const m = { ...chosen, circlet };
       mains[c.id] = m;
       const l: Liquid = { er: liquid[c.id]!.er ?? 0 };
       liquid[c.id] = l;

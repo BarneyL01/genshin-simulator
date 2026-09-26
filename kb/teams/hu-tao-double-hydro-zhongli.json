@@ -1,0 +1,210 @@
+{
+  "id": "hu-tao-double-hydro-zhongli",
+  "name": "Hu Tao Double Hydro (Zhongli)",
+  "provenance": {
+    "sources": [
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/hu-tao/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "team composition",
+          "sample rotation",
+          "roles"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Rotation translated from KeqingMains (Double Hydro, Zhongli variant, \"Yelan 1E\"): \"Xingqiu QE (catch particles) > Yelan EQ > Zhongli hE > Hu Tao combo\". NA weaves after Xingqiu and Yelan are added because KQM says to weave when none are specified.",
+    "\"Hu Tao combo\" is E, then Q (placement not specified by KQM; assumed right after E), then N1C repeated for as long as Paramita Papilio lasts. KQM says Hu Tao should burst every other rotation (low ER, stay under 50% HP), so her burst has every: 2 and the team should be measured over an even number of cycles. Dash and jump cancels are not modelled.",
+    "The sim does not track HP: Hu Tao is assumed at or below 50% HP (Homa low-HP bonus, A4, low-HP burst).",
+    "Zhongli holds his skill (Jade Shield: −20% RES to all elements and physical). Favonius Lance is not used on Zhongli, so no particles from his weapon.",
+    "Yelan carries Favonius Warbow: KeqingMains says her ER needs are very high in this team and Warbow is her general best option there; Aqua Simulacra is the personal-damage alternative.",
+    "Game8 / GameWith ranks are not recorded yet."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "hu-tao",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [
+        "staff-of-homa"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "crimson-witch-of-flames": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "em",
+          "hp%"
+        ],
+        "goblet": [
+          "dmgBonus.pyro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "xingqiu",
+      "role": "hydro-applicator",
+      "substitutes": [],
+      "weapons": [
+        "favonius-sword"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "emblem-of-severed-fate": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "er",
+          "atk%"
+        ],
+        "goblet": [
+          "dmgBonus.hydro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "yelan",
+      "role": "hydro-applicator",
+      "substitutes": [],
+      "weapons": [
+        "favonius-warbow",
+        "aqua-simulacra"
+      ],
+      "artifacts": [
+        {
+          "sets": {
+            "emblem-of-severed-fate": 4
+          }
+        }
+      ],
+      "mainStats": {
+        "sands": [
+          "hp%",
+          "er"
+        ],
+        "goblet": [
+          "dmgBonus.hydro",
+          "hp%"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg",
+          "hp%"
+        ]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "zhongli",
+      "role": "shielder",
+      "substitutes": [],
+      "weapons": [
+        "black-tassel"
+      ],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "hp%"
+        ],
+        "goblet": [
+          "hp%"
+        ],
+        "circlet": [
+          "hp%",
+          "critRate"
+        ]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      {
+        "char": "xingqiu",
+        "action": "burst"
+      },
+      {
+        "char": "xingqiu",
+        "action": "skill"
+      },
+      {
+        "char": "xingqiu",
+        "action": "n1"
+      },
+      {
+        "char": "yelan",
+        "action": "skill"
+      },
+      {
+        "char": "yelan",
+        "action": "burst"
+      },
+      {
+        "char": "yelan",
+        "action": "n1"
+      },
+      {
+        "char": "zhongli",
+        "action": "skill"
+      },
+      {
+        "char": "hu-tao",
+        "action": "skill"
+      },
+      {
+        "char": "hu-tao",
+        "action": "burst",
+        "every": 2
+      },
+      {
+        "repeat": {
+          "untilBuffEnds": {
+            "effect": "hutao.paramita.infusion",
+            "source": "hu-tao"
+          }
+        },
+        "steps": [
+          {
+            "char": "hu-tao",
+            "action": "n1"
+          },
+          {
+            "char": "hu-tao",
+            "action": "charged"
+          }
+        ]
+      }
+    ],
+    "source": "keqingmains",
+    "sourceUrl": "https://keqingmains.com/hu-tao/",
+    "original": "Xingqiu QE (catch particles) > Yelan EQ > Zhongli hE > Hu Tao combo"
+  },
+  "sourceRank": {
+    "keqingmains": null
+  },
+  "notes": "Double Hydro supplies Vaporize and Hydro resonance; Zhongli shreds resistance with Jade Shield.",
+  "status": "active"
+}

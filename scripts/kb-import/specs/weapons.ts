@@ -98,4 +98,21 @@ export const specs: WeaponSpec[] = [
     assumptions: ['The passive only affects DMG against slimes, so it has no effect in the default enemy setup.'],
     dataConfidence: 'medium',
   },
+  {
+    id: 'blackcliff-pole', dbName: 'Blackcliff Pole', gcsimDir: 'spear/blackcliff', obtain: { method: 'shop', freeRefinement: null },
+    effects: [],
+    assumptions: [
+      'Passive (ATK +12–24% for 30 s per defeated enemy, max 3 stacks) is not modelled: the sim has no enemy defeats. KeqingMains uses the "No Stacks" case as its 100% baseline.',
+      'Obtain method (Starglitter exchange) is from KeqingMains\' Hu Tao guide.',
+    ],
+    obtainVerified: true,
+    extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/hu-tao/', fields: ['obtain: Starglitter shop', 'used as the 100% baseline of its weapon table'] }],
+  },
+  {
+    id: 'white-tassel', dbName: 'White Tassel', gcsimDir: 'spear/whitetassel', obtain: { method: 'chest', freeRefinement: null },
+    effects: [E({ id: 'white-tassel.normal-dmg', stat: 'dmgBonus.normal', value: per('White Tassel', 0) })],
+    assumptions: ['Charged attacks are not Normal Attacks, so only N1..N6 benefit.'],
+    obtainVerified: true,
+    extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/hu-tao/', fields: ['obtain: chests in Liyue'] }],
+  },
 ];

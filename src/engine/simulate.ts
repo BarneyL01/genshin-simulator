@@ -24,6 +24,13 @@ export interface SimInput {
   lunarCharged?: boolean;
   /** Burst energy at the start of cycle 1. Default 'full'. */
   startEnergy?: 'full' | 'empty';
+  /**
+   * Theorycrafting mode: the enemy always carries this aura (refilled before every hit), e.g. "every hit is Vaporized".
+   * Reactions consume it but it comes back for the next hit.
+   */
+  enemyAura?: { element: 'pyro' | 'hydro' | 'electro' | 'cryo' | 'dendro'; gauge?: number };
+  /** Attach the stats and modifiers behind every hit to the result (for the hit log and debugging). */
+  trace?: boolean;
 }
 
 const TALENT_TRIGGER: Record<Talent, string> = {
@@ -222,6 +229,7 @@ export function simulate(input: SimInput): SimResult {
   let endFrame = 0;
 
   let cycleFirst = true;
+  let cycleOrigin = 0;
 
   /** When the next action would start (before cooldown waits). */
   const computeStart = (char: CharacterInput, kind: string): { start: number; swapped: boolean } => {
@@ -273,7 +281,10 @@ export function simulate(input: SimInput): SimResult {
       if (!ok) assumptions.add(`${char.id} burst used with insufficient energy (${had.toFixed(1)}/${def.energyCost}); it fires anyway. Raise ER or add a battery.`);
     }
 
-    if (cycleFirst) cycleStart.push(start);
+    if (cycleFirst) {
+      cycleStart.push(start);
+      cycleOrigin = start;
+    }
     cycleFirst = false;
     const actionInfo = { name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame) };
     fire(char, TALENT_TRIGGER[def.talent], start, actionInfo);
@@ -313,10 +324,12 @@ export function simulate(input: SimInput): SimResult {
     for (const item of steps) {
       if (!('steps' in item)) {
         if (item.firstCycleOnly && cycle > 1) continue;
+        if (item.every && (cycle - 1) % item.every !== 0) continue;
         runAction(item);
         continue;
       }
       const until = 'untilBuffEnds' in item.repeat ? item.repeat.untilBuffEnds : undefined;
+      const untilTime = 'untilCycleTime' in item.repeat ? item.repeat.untilCycleTime : undefined;
       const times = 'times' in item.repeat ? item.repeat.times : MAX_REPEATS;
       let stopped = false;
       for (let n = 0; n < times && !stopped; n++) {
@@ -326,6 +339,13 @@ export function simulate(input: SimInput): SimResult {
             const end = buffEnd(until.effect, until.source);
             const char = byId.get(step.char);
             if (step.action !== 'wait' && char && (end === undefined || computeStart(char, actionKind(step.action)).start >= end)) {
+              stopped = true;
+              break;
+            }
+          }
+          if (untilTime !== undefined) {
+            const char = byId.get(step.char);
+            if (step.action !== 'wait' && char && computeStart(char, actionKind(step.action)).start - cycleOrigin >= untilTime) {
               stopped = true;
               break;
             }
@@ -405,6 +425,7 @@ export function simulate(input: SimInput): SimResult {
         const g = hit.gauge ?? 1;
         if (g > 0 && icdAllows(p.char, hit, p.frame)) gauge = g;
       }
+      if (input.enemyAura) engine.auras.set(input.enemyAura.element, input.enemyAura.gauge ?? 2, 1e9, p.frame);
       const r = engine.react({ frame: p.frame, char: p.char, hit, gauge, cycle: p.cycle });
       const damage = calcHitDamage({
         hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
@@ -413,6 +434,7 @@ export function simulate(input: SimInput): SimResult {
       hits.push({
         cycle: p.cycle, frame: p.frame, char: p.char.id, action: p.action, element: hit.element,
         talent: hit.talent, damage, reactions: r.reactions,
+        ...(input.trace ? { trace: { stats, mods, reactionFactor: r.reactionFactor, catalyzeFlat: r.catalyzeFlat, mv: hit.mv } } : {}),
       });
       // onHit hooks (e.g. Raiden's coordinated attacks) see every hit that dealt damage.
       if (damage > 0) {
@@ -462,7 +484,7 @@ export function simulate(input: SimInput): SimResult {
   return {
     actions, hits, buffs: bm.records,
     totalDamage: hits.reduce((s, h) => s + h.damage, 0),
-    windowFrames, windowDamage, dps: windowDamage / seconds, perCharacterDps,
+    windowFrames, cycleFrames: windowFrames / windowCycles.length, windowDamage, dps: windowDamage / seconds, perCharacterDps,
     energy: energyReport,
     assumptions: [...assumptions].sort(),
   };

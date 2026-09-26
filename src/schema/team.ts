@@ -13,12 +13,15 @@ export const rotationStep = z.object({
   action: z.string().min(1),
   frames: z.number().int().positive().optional(),
   firstCycleOnly: z.boolean().optional(),
+  /** Only every N-th cycle (e.g. a burst used every other rotation). */
+  every: z.number().int().min(2).optional(),
 });
 
 export const repeatStep = z.object({
   repeat: z.union([
     z.object({ times: z.number().int().positive() }),
     z.object({ untilBuffEnds: z.object({ effect: z.string(), source: kebabId }) }),
+    z.object({ untilCycleTime: z.number().int().positive() }),
   ]),
   steps: z.array(rotationStep).min(1),
 });

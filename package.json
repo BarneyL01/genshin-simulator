@@ -17,7 +17,9 @@
     "kb:import:weapon": "tsx scripts/kb-import/import-weapon.ts",
     "kb:import:artifact": "tsx scripts/kb-import/import-artifact.ts",
     "kb:inspect": "tsx scripts/kb-import/inspect.ts",
-    "sim": "tsx scripts/sim.ts"
+    "sim": "tsx scripts/sim.ts",
+    "kb:import:team": "tsx scripts/kb-import/import-team.ts",
+    "sim:team": "tsx scripts/sim-team.ts"
   },
   "dependencies": {
     "react": "^19.3.0",
