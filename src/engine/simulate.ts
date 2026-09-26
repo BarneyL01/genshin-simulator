@@ -228,12 +228,15 @@ export function simulate(input: SimInput): SimResult {
       waitFrames = 0;
 
       if (def.cooldown) {
+        // `cooldown.skill` / `cooldown.burst` mods are fractional changes (−0.5 halves the cooldown).
+        const cdMod = statsFor(char, start).mods[`cooldown.${def.talent}`] ?? 0;
+        const cooldown = Math.max(0, Math.round(def.cooldown * (1 + cdMod)));
         const ready = cooldownReady.get(`${char.id}:${step.action}`) ?? 0;
         if (start < ready) {
           assumptions.add(`${char.id} ${step.action} waited for cooldown (rotation is faster than the cooldown)`);
           start = ready;
         }
-        cooldownReady.set(`${char.id}:${step.action}`, start + def.cooldown);
+        cooldownReady.set(`${char.id}:${step.action}`, start + cooldown);
       }
 
       if (swapped) {
@@ -249,9 +252,9 @@ export function simulate(input: SimInput): SimResult {
 
       if (first) cycleStart.push(start);
       first = false;
-      fire(char, TALENT_TRIGGER[def.talent], start, {
-        name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame),
-      });
+      const actionInfo = { name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame) };
+      fire(char, TALENT_TRIGGER[def.talent], start, actionInfo);
+      if (def.talent === 'normal') for (const c of characters) fire(c, 'onAnyNormal', start, actionInfo);
       actions.push({ cycle, char: char.id, action: step.action, start, end: start + def.cancel.default });
 
       for (const hit of def.hits) pending.push({ cycle, frame: start + hit.frame, char, action: step.action, hit });

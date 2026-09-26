@@ -99,6 +99,8 @@ export interface HitSpec {
   scaling?: 'atk' | 'hp' | 'def' | 'em';
   hitmark: number;
   extraHitmarks?: number[];
+  /** Parameter keys for extra hits whose multiplier differs from `param` (parallel to extraHitmarks). */
+  extraParams?: string[];
   cancel: Cancel;
   icd?: { tag: string; group: string };
   gauge?: number;
@@ -109,7 +111,9 @@ export interface HitSpec {
 export interface HookHitSpec {
   name: string;
   talent: 'normal' | 'skill' | 'burst';
-  param: string;
+  /** Talent parameter key; omit with `constantMv` for hits that deal no damage (element application only). */
+  param?: string;
+  constantMv?: number;
   element: Ele;
   scaling?: 'atk' | 'hp' | 'def' | 'em';
   icd?: { tag: string; group: string };
@@ -119,6 +123,8 @@ export interface HookHitSpec {
 }
 
 export interface TalentSpec {
+  /** For blocks without hits: hitmark 0 and the cancel map. */
+  noHitCancel?: Cancel;
   /** Talent parameter key of a cooldown value in seconds, or a frame count. */
   cooldown?: { param: string } | { frames: number };
   energyCost?: { param: string } | number;
@@ -183,16 +189,22 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
       mvChecked++;
       if (hasMatchingArray(dmArrays, mv)) mvMatched++;
       else conflicts.push({ field: `talents.${kind}.${h.name}.mv`, values: { 'genshin-db': `${talentKey}.${h.param}`, gcsim: 'no matching table found' }, chosen: 'genshin-db', note: 'not confirmed by gcsim tables' });
+      const extraMv = h.extraParams?.map((p) => {
+        const table = param(spec.dbName, talentKey, p);
+        mvChecked++;
+        if (hasMatchingArray(dmArrays, table)) mvMatched++;
+        return table;
+      });
       return {
         name: h.name, mv, scaling: h.scaling ?? 'atk', element: h.element === 'physical' ? ('physical' as const) : h.element,
         frames: { hitmark: h.hitmark, cancel: h.cancel, source },
-        icd: h.icd, gauge: h.gauge, strike: h.strike, extraHitmarks: h.extraHitmarks,
+        icd: h.icd, gauge: h.gauge, strike: h.strike, extraHitmarks: h.extraHitmarks, extraMv,
       };
     });
     const cd = t.cooldown && ('param' in t.cooldown ? Math.round(param(spec.dbName, talentKey, t.cooldown.param)[0]! * 60) : t.cooldown.frames);
     const cost = t.energyCost === undefined ? undefined : typeof t.energyCost === 'number' ? t.energyCost : param(spec.dbName, talentKey, t.energyCost.param)[0];
     return {
-      hits, variants: t.variants, cooldown: cd, energyCost: cost,
+      hits, frames: t.noHitCancel ? { hitmark: 0, cancel: t.noHitCancel, source } : undefined, variants: t.variants, cooldown: cd, energyCost: cost,
       stamina: t.stamina ? param(spec.dbName, talentKey, t.stamina.param)[0] : undefined,
       particles: t.particles, effects: t.effects ?? [],
     };
@@ -204,9 +216,11 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
 
   const hookHits = Object.fromEntries(
     Object.entries(spec.hookHits ?? {}).map(([id, h]) => {
-      const mv = param(spec.dbName, TALENT_KEY[h.talent], h.param);
-      mvChecked++;
-      if (hasMatchingArray(dmArrays, mv)) mvMatched++;
+      const mv = h.param ? param(spec.dbName, TALENT_KEY[h.talent], h.param) : [h.constantMv ?? 0];
+      if (h.param) {
+        mvChecked++;
+        if (hasMatchingArray(dmArrays, mv)) mvMatched++;
+      }
       return [id, {
         name: h.name, mv, scaling: h.scaling ?? 'atk', element: h.element, talent: h.talent, icd: h.icd, gauge: h.gauge,
         frames: { hitmark: 0, cancel: {}, source: { site: 'gcsim', url: gcsimUrl(`internal/characters/${spec.gcsimDir}/${h.frameFile}`), commit: gcsimCommit() } },

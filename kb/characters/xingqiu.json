@@ -1,0 +1,738 @@
+{
+  "id": "xingqiu",
+  "name": "Xingqiu",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Orbitals, Rain Sword waves and the C2/C6 effects run through hook \"xingqiu\" (src/engine/hooks/xingqiu.ts, tested in tests/hooks.test.ts).",
+    "Plunge attacks and the Rain Sword shield (damage reduction, A1 healing) are not in the KB.",
+    "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
+  ],
+  "rarity": 4,
+  "element": "hydro",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [
+    "sub-dps",
+    "hydro-applicator",
+    "off-field-dps"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 10222.420242440001,
+      "atk": 201.77733240000003,
+      "def": 757.5988927500001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.46612,
+            0.50406,
+            0.542,
+            0.5962,
+            0.63414,
+            0.6775,
+            0.73712,
+            0.79674,
+            0.85636,
+            0.9214,
+            0.995925,
+            1.083566,
+            1.171208,
+            1.258849,
+            1.354458
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 10,
+            "cancel": {
+              "default": 35,
+              "skill": 10,
+              "burst": 10,
+              "dash": 10,
+              "jump": 10,
+              "swap": 10,
+              "normal": 18
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.47644,
+            0.51522,
+            0.554,
+            0.6094,
+            0.64818,
+            0.6925,
+            0.75344,
+            0.81438,
+            0.87532,
+            0.9418,
+            1.017975,
+            1.107557,
+            1.197139,
+            1.28672,
+            1.384446
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 29,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 24
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.28552,
+            0.30876,
+            0.332,
+            0.3652,
+            0.38844,
+            0.415,
+            0.45152,
+            0.48804,
+            0.52456,
+            0.5644,
+            0.61005,
+            0.663734,
+            0.717419,
+            0.771103,
+            0.829668
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "default": 35,
+              "skill": 19,
+              "burst": 19,
+              "dash": 19,
+              "jump": 19,
+              "swap": 19,
+              "normal": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            19
+          ],
+          "extraMv": [
+            [
+              0.28552,
+              0.30876,
+              0.332,
+              0.3652,
+              0.38844,
+              0.415,
+              0.45152,
+              0.48804,
+              0.52456,
+              0.5644,
+              0.61005,
+              0.663734,
+              0.717419,
+              0.771103,
+              0.829668
+            ]
+          ]
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.55986,
+            0.60543,
+            0.651,
+            0.7161,
+            0.76167,
+            0.81375,
+            0.88536,
+            0.95697,
+            1.02858,
+            1.1067,
+            1.196212,
+            1.301479,
+            1.406746,
+            1.512013,
+            1.626849
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "default": 33,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "normal": 28
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.35862,
+            0.38781,
+            0.417,
+            0.4587,
+            0.48789,
+            0.52125,
+            0.56712,
+            0.61299,
+            0.65886,
+            0.7089,
+            0.766237,
+            0.833666,
+            0.901095,
+            0.968524,
+            1.042083
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 18,
+            "cancel": {
+              "default": 66,
+              "skill": 39,
+              "burst": 39,
+              "dash": 39,
+              "jump": 39,
+              "swap": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            39
+          ],
+          "extraMv": [
+            [
+              0.35862,
+              0.38781,
+              0.417,
+              0.4587,
+              0.48789,
+              0.52125,
+              0.56712,
+              0.61299,
+              0.65886,
+              0.7089,
+              0.766237,
+              0.833666,
+              0.901095,
+              0.968524,
+              1.042083
+            ]
+          ]
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Fatal Rainscreen",
+          "mv": [
+            1.68,
+            1.806,
+            1.932,
+            2.1,
+            2.226,
+            2.352,
+            2.52,
+            2.688,
+            2.856,
+            3.024,
+            3.192,
+            3.36,
+            3.57,
+            3.78,
+            3.99
+          ],
+          "scaling": "atk",
+          "element": "hydro",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "default": 67,
+              "skill": 65,
+              "dash": 31,
+              "jump": 34
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            31
+          ],
+          "extraMv": [
+            [
+              1.912,
+              2.0554,
+              2.1988,
+              2.39,
+              2.5334,
+              2.6768,
+              2.868,
+              3.0592,
+              3.2504,
+              3.4416,
+              3.6328,
+              3.824,
+              4.063,
+              4.302,
+              4.541
+            ]
+          ]
+        }
+      ],
+      "cooldown": 1260,
+      "particles": {
+        "count": 5,
+        "perHit": false,
+        "icd": 60,
+        "element": "hydro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "default": 40,
+          "normal": 33,
+          "skill": 33,
+          "dash": 33,
+          "jump": 33
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 1200,
+      "energyCost": 80,
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.473,
+            0.5115,
+            0.55,
+            0.605,
+            0.6435,
+            0.6875,
+            0.748,
+            0.8085,
+            0.869,
+            0.935,
+            1.010625,
+            1.09956,
+            1.188495,
+            1.27743,
+            1.37445
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 8,
+            "cancel": {
+              "default": 58,
+              "skill": 32,
+              "burst": 32,
+              "dash": 20,
+              "jump": 20,
+              "swap": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ],
+          "extraMv": [
+            [
+              0.56158,
+              0.60729,
+              0.653,
+              0.7183,
+              0.76401,
+              0.81625,
+              0.88808,
+              0.95991,
+              1.03174,
+              1.1101,
+              1.199887,
+              1.305478,
+              1.411068,
+              1.516658,
+              1.631847
+            ]
+          ]
+        }
+      ],
+      "stamina": 20,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "xingqiu.a4",
+      "unlock": "a4",
+      "effects": [
+        {
+          "id": "xingqiu.a4.hydro",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "dmgBonus.hydro",
+          "value": 0.2,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "Increases the maximum number of Rain Swords by 1."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "xingqiu.c2",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "duration": 180,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "xingqiu"
+        }
+      ],
+      "text": "Extends the duration of Raincutter by 3s. Decreases the Hydro RES of opponents hit by sword rain attacks by 15% for 4s."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Guhua Sword: Raincutter by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "xingqiu.c4.skill",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "self",
+          "stat": "baseDmgMultiplier.skill",
+          "value": 0.5,
+          "duration": 933,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Lasts the base 15 s of Raincutter plus animation; the C2 extension is not added here."
+        }
+      ],
+      "text": "Throughout Raincutter, the DMG of Fatal Rainscreen is increased by 50%."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Guhua Sword: Fatal Rainscreen by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "xingqiu.c6",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "xingqiu"
+        }
+      ],
+      "text": "Activating 2 of Raincutter's sword rain attacks greatly enhances the third sword rain attack: it also regenerates 3 Energy."
+    }
+  ],
+  "effects": [
+    {
+      "id": "xingqiu.orbital.skill",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "delay": 43,
+      "duration": 900,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "xingqiu"
+    },
+    {
+      "id": "xingqiu.orbital.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "delay": 18,
+      "duration": 900,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "xingqiu"
+    },
+    {
+      "id": "xingqiu.burst.state",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "duration": 900,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "xingqiu"
+    },
+    {
+      "id": "xingqiu.burst.wave",
+      "trigger": {
+        "on": "onAnyNormal"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "xingqiu",
+      "assumption": "Any team member starting a normal attack while Raincutter is up summons a wave (max one per 60 frames); swords land 20 frames later."
+    }
+  ],
+  "hookHits": {
+    "orbital": {
+      "name": "Orbital (Hydro application)",
+      "mv": [
+        0
+      ],
+      "scaling": "atk",
+      "element": "hydro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/orbital.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    },
+    "sword-rain": {
+      "name": "Sword Rain",
+      "mv": [
+        0.54272,
+        0.583424,
+        0.624128,
+        0.6784,
+        0.719104,
+        0.759808,
+        0.81408,
+        0.868352,
+        0.922624,
+        0.976896,
+        1.031168,
+        1.08544,
+        1.15328,
+        1.22112,
+        1.28896
+      ],
+      "scaling": "atk",
+      "element": "hydro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/xingqiu/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "burst",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    }
+  },
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": []
+  },
+  "hooks": [
+    "xingqiu"
+  ],
+  "needsHook": true
+}

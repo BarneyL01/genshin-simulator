@@ -3,7 +3,7 @@ import { frames } from './common';
 
 export const TRIGGERS = [
   'always', 'onHit', 'onSkill', 'onBurst', 'onNormal', 'onCharged', 'onPlunge', 'onReaction',
-  'onSwapIn', 'onSwapOut', 'onHeal', 'onShield', 'onEnergy', 'custom',
+  'onAnyNormal', 'onSwapIn', 'onSwapOut', 'onHeal', 'onShield', 'onEnergy', 'custom',
 ] as const;
 
 export const EFFECT_TARGETS = ['self', 'active', 'team', 'teamExceptSelf', 'enemy', 'enemiesHit'] as const;
@@ -17,7 +17,7 @@ const STAT_KEY = new RegExp(
       'dmgBonus\\.all', `dmgBonus\\.${ELEMENTS}`, `dmgBonus\\.${TALENTS}`,
       `critRate\\.${TALENTS}`, `critDmg\\.${TALENTS}`, `flatDmg\\.${TALENTS}`, 'flatDmg\\.all',
       'reactionBonus\\.[a-zA-Z]+', `res\\.enemy\\.${ELEMENTS}`, 'def\\.enemy\\.shred', 'defIgnore',
-      `mvBonus\\.${TALENTS}`, `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', `infusion\\.${ELEMENTS}`,
+      `mvBonus\\.${TALENTS}`, `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', 'cooldown\\.(skill|burst)', `infusion\\.${ELEMENTS}`,
     ].join('|') +
     ')$',
 );

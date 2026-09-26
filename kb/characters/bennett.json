@@ -1,0 +1,594 @@
+{
+  "id": "bennett",
+  "name": "Bennett",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Only the press variant of the skill is modelled; the hold variants (Charge Level 1/2) and the charged attack are not in the KB.",
+    "Frames are gcsim. The Fantastic Voyage ATK buff is applied 34 frames after the cast and lasts 846 frames (12 s of ticks plus 126 frames of the last tick).",
+    "C4 needs a hook and the hold skill; inactive at the default C0.",
+    "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
+  ],
+  "rarity": 4,
+  "element": "pyro",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [
+    "buffer",
+    "battery",
+    "off-field-pyro"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 12397.4035882,
+      "atk": 191.15747280000002,
+      "def": 771.2493232500001
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "er",
+    "value": 0.2667
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.44548,
+            0.48174,
+            0.518,
+            0.5698,
+            0.60606,
+            0.6475,
+            0.70448,
+            0.76146,
+            0.81844,
+            0.8806,
+            0.94276,
+            1.00492,
+            1.06708,
+            1.12924,
+            1.1914
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 33,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 20
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.42742,
+            0.46221,
+            0.497,
+            0.5467,
+            0.58149,
+            0.62125,
+            0.67592,
+            0.73059,
+            0.78526,
+            0.8449,
+            0.90454,
+            0.96418,
+            1.02382,
+            1.08346,
+            1.1431
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "default": 27,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "normal": 17
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.5461,
+            0.59055,
+            0.635,
+            0.6985,
+            0.74295,
+            0.79375,
+            0.8636,
+            0.93345,
+            1.0033,
+            1.0795,
+            1.1557,
+            1.2319,
+            1.3081,
+            1.3843,
+            1.4605
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 46,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 37
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.59684,
+            0.64542,
+            0.694,
+            0.7634,
+            0.81198,
+            0.8675,
+            0.94384,
+            1.02018,
+            1.09652,
+            1.1798,
+            1.26308,
+            1.34636,
+            1.42964,
+            1.51292,
+            1.5962
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "default": 48,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25,
+              "normal": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.71896,
+            0.77748,
+            0.836,
+            0.9196,
+            0.97812,
+            1.045,
+            1.13696,
+            1.22892,
+            1.32088,
+            1.4212,
+            1.52152,
+            1.62184,
+            1.72216,
+            1.82248,
+            1.9228
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 24,
+            "cancel": {
+              "default": 60,
+              "skill": 24,
+              "burst": 24,
+              "dash": 24,
+              "jump": 24,
+              "swap": 24,
+              "normal": 60
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Passion Overload (press)",
+          "mv": [
+            1.376,
+            1.4792,
+            1.5824,
+            1.72,
+            1.8232,
+            1.9264,
+            2.064,
+            2.2016,
+            2.3392,
+            2.4768,
+            2.6144,
+            2.752,
+            2.924,
+            3.096,
+            3.268
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "default": 42,
+              "dash": 22,
+              "jump": 23,
+              "swap": 41
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "variants": [
+        "press"
+      ],
+      "cooldown": 240,
+      "particles": {
+        "count": 2.25,
+        "perHit": false,
+        "icd": 18,
+        "element": "pyro"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Fantastic Voyage",
+          "mv": [
+            2.328,
+            2.5026,
+            2.6772,
+            2.91,
+            3.0846,
+            3.2592,
+            3.492,
+            3.7248,
+            3.9576,
+            4.1904,
+            4.4232,
+            4.656,
+            4.947,
+            5.238,
+            5.529
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 37,
+            "cancel": {
+              "default": 53,
+              "dash": 49,
+              "jump": 50,
+              "swap": 51
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/bennett/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "bennett.a4",
+      "unlock": "a4",
+      "effects": [
+        {
+          "id": "bennett.a4.press-cd",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "self",
+          "stat": "cooldown.skill",
+          "value": -0.5,
+          "delay": 34,
+          "duration": 846,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Passion Overload cooldown is halved while the Bennett field is up (Bennett must be inside it)."
+        }
+      ]
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [
+        {
+          "id": "bennett.c1.atk",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "active",
+          "stat": "atk",
+          "value": 0,
+          "scaling": {
+            "from": "self.baseAtk",
+            "ratio": 0.2
+          },
+          "delay": 34,
+          "duration": 846,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ],
+      "text": "Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "bennett.c2.er",
+          "trigger": {
+            "on": "always"
+          },
+          "condition": {
+            "hpBelow": 0.7
+          },
+          "target": "self",
+          "stat": "er",
+          "value": 0.3,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Assumed active (Bennett below 70% HP). The sim does not track HP."
+        }
+      ],
+      "text": "When Bennett's HP falls below 70%, his Energy Recharge is increased by 30%."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Passion Overload by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "bennett.c4.followup",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "bennett.c4",
+          "assumption": "Needs a hook and the hold variant of the skill, which is not modelled."
+        }
+      ],
+      "text": "A Normal Attack as the second attack of Passion Overload's Charge Level 1 performs a follow-up attack (135% of the second attack's DMG)."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Fantastic Voyage by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "bennett.c6.pyro",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "active",
+          "stat": "dmgBonus.pyro",
+          "value": 0.15,
+          "delay": 34,
+          "duration": 846,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Applies to whoever is attacking; the sword/claymore/polearm restriction is not checked."
+        },
+        {
+          "id": "bennett.c6.infusion",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "active",
+          "stat": "infusion.pyro",
+          "value": 1,
+          "delay": 34,
+          "duration": 846,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Pyro infusion for normal/charged/plunge attacks of whoever is attacking (melee restriction not checked)."
+        }
+      ],
+      "text": "Sword, Claymore, or Polearm characters inside the field gain 15% Pyro DMG Bonus and Pyro infusion."
+    }
+  ],
+  "effects": [
+    {
+      "id": "bennett.burst.atk",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "active",
+      "stat": "atk",
+      "value": 0,
+      "scaling": {
+        "from": "self.baseAtk",
+        "ratio": {
+          "perTalentLevel": [
+            0.56,
+            0.602,
+            0.644,
+            0.7,
+            0.742,
+            0.784,
+            0.84,
+            0.896,
+            0.952,
+            1.008,
+            1.064,
+            1.12,
+            1.19,
+            1.26,
+            1.33
+          ],
+          "talent": "burst"
+        }
+      },
+      "delay": 34,
+      "duration": 846,
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "The field buffs whoever is on the field (assumed inside the field radius and above 70% HP, so the ATK bonus applies)."
+    }
+  ],
+  "hookHits": {},
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "burst"
+        },
+        {
+          "action": "skill"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": []
+  },
+  "hooks": [
+    "bennett.c4"
+  ],
+  "needsHook": true
+}

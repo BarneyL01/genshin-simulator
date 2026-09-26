@@ -51,7 +51,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
       icd: h.icd,
       strike: h.strike,
     };
-    return [base, ...(h.extraHitmarks ?? []).map((frame) => ({ ...base, frame }))];
+    return [base, ...(h.extraHitmarks ?? []).map((frame, i) => ({ ...base, frame, mv: h.extraMv?.[i] ? h.extraMv[i]![Math.min(lvl, h.extraMv[i]!.length) - 1]! : base.mv }))];
   };
   const cancelOf = (h: { frames?: { hitmark: number; cancel: Record<string, number> } }): ActionDef['cancel'] => {
     const cancel: Record<string, number> = { ...h.frames?.cancel };
@@ -61,11 +61,16 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
 
   for (const talent of ['normal', 'charged', 'plunge', 'skill', 'burst'] as const) {
     const block = c.talents[talent];
-    if (!block || block.hits.length === 0) continue;
+    if (!block || (block.hits.length === 0 && !block.frames)) continue;
     if (talent === 'normal') {
       block.hits.forEach((h, i) => {
         actions[`n${i + 1}`] = { talent, hits: toHits(h, talent), cancel: cancelOf(h) };
       });
+    } else if (block.hits.length === 0) {
+      actions[talent] = {
+        talent, hits: [], cancel: cancelOf({ frames: block.frames }), cooldown: block.cooldown,
+        energyCost: talent === 'burst' ? block.energyCost : undefined,
+      };
     } else {
       const lastFrame = (h: KbHit) => Math.max(h.frames?.hitmark ?? 0, ...(h.extraHitmarks ?? []));
       const last = block.hits.reduce((a, b) => (lastFrame(b) >= lastFrame(a) ? b : a));

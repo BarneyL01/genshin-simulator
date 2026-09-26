@@ -14,6 +14,8 @@ const hit = z.object({
   gauge: z.number().nonnegative().optional(),
   /** Extra identical hits (same MV, element, ICD tag) at these frames after the action starts; `frames.hitmark` is the first. */
   extraHitmarks: z.array(frames).optional(),
+  /** Multiplier tables for the extra hits, when they differ from `mv` (parallel to `extraHitmarks`). */
+  extraMv: z.array(z.array(z.number()).min(1)).optional(),
   /** 'blunt' hits can shatter Frozen enemies. */
   strike: z.enum(['default', 'blunt']).optional(),
 });
@@ -23,6 +25,8 @@ const hookHit = hit.extend({ talent: talentKind });
 
 const talentBlock = z.object({
   hits: z.array(hit).default([]),
+  /** Frame data for blocks without hits (e.g. a burst that only starts an effect). */
+  frames: frameData.optional(),
   variants: z.array(z.string()).optional(),
   cooldown: frames.optional(),
   energyCost: z.number().optional(),
