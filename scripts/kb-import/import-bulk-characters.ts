@@ -1,4 +1,6 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { character as characterSchema } from '../../src/schema/character';
 import { join } from 'node:path';
 import { KB_DIR } from '../kb-lib';
 import { allNames } from './bulk-lib';
@@ -11,7 +13,7 @@ import { db, kebab, weaponTypeOf } from './lib';
  *   tsx scripts/kb-import/import-bulk-characters.ts [name...]   (no names: all)
  * Hand-written specs (scripts/kb-import/specs/<id>.ts) are never overwritten.
  */
-const HAND = new Set(['xiangling', 'bennett', 'xingqiu', 'raiden-shogun', 'hu-tao', 'yelan', 'zhongli']);
+const HAND = new Set(['traveler-cryo', 'xiangling', 'bennett', 'xingqiu', 'raiden-shogun', 'hu-tao', 'yelan', 'zhongli']);
 const SKIP = /^(Aether|Lumine|Manekin|Manekina)$/;
 const dirs = gcsimDirs();
 const squash = (s: string) => s.toLowerCase().replace(/[^a-z]/g, '');
@@ -44,7 +46,13 @@ const failed: string[] = [];
 for (const name of names) {
   if (HAND.has(kebab(name)) || SKIP.test(name)) continue;
   try {
-    const { record, notes } = buildAuto(name, dirOf(name), donors);
+    let { record, notes } = buildAuto(name, dirOf(name), donors);
+    const patchFile = new URL(`./patches/${record.id}.ts`, import.meta.url);
+    if (existsSync(fileURLToPath(patchFile))) {
+      const { patch } = (await import(`./patches/${record.id}.ts`)) as { patch: (c: typeof record) => typeof record };
+      record = characterSchema.parse(patch(record));
+      notes = [`${notes[0]} (+patch)`];
+    }
     writeFileSync(join(KB_DIR, 'characters', `${record.id}.json`), JSON.stringify(record, null, 2) + '\n');
     summary[record.dataConfidence]!++;
     console.log(notes[0]);

@@ -100,4 +100,80 @@ export const specs: Array<Omit<Team, 'members'> & { members: Array<{ character: 
     notes: 'Double Hydro supplies Vaporize and Hydro resonance; Zhongli shreds resistance with Jade Shield.',
     status: 'active',
   },
+  {
+    id: 'sandrone-stellar-conduct-traveler',
+    name: 'Sandrone / Fischl / Alyosha + Cryo Traveler',
+    provenance: {
+      sources: [
+        { site: 'keqingmains', url: 'https://keqingmains.com/q/sandrone-quickguide/', retrieved: RETRIEVED, fields: ['roles: Sandrone on-field Stellar-Conduct carry, Alyosha support, Cryo Traveler quickswap'] },
+        { site: 'keqingmains', url: 'https://keqingmains.com/q/alyosha-quickguide/', retrieved: RETRIEVED, fields: ['Alyosha acts before the on-field unit'] },
+      ],
+      conflicts: [],
+      gameVersion: GAME_VERSION,
+    },
+    dataConfidence: 'low',
+    assumptions: [
+      'No published rotation for this team: the rotation is ours. Following KeqingMains ("Alyosha uses his Skill and Burst before the on-field unit takes the field"), Alyosha, Fischl and the Cryo Traveler cast their skill and burst first, then Sandrone (on-field) casts skill and burst and attacks with her normal chain until the rotation ends (length = Fischl\'s 25 s skill cooldown).',
+      'Sandrone, Alyosha and Fischl are partly baseline: Sandrone and Alyosha have no gcsim source (frames estimated; Fagio/Decoding, Tugarin, Stellar-Conduct damage variants, constellations not modelled); only their Stellar-Conduct enabling passive (Sandrone) and Hunter\'s Precision ATK% (Alyosha) are. Fischl\'s Oz and A4 follow gcsim.',
+      'Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses.',
+      'Stellar-Conduct follows gcsim; the team is assumed to stand inside the Polestar Field.',
+    ],
+    members: [
+      { character: 'alyosha', role: 'buffer', weapons: [], sets: {} },
+      { character: 'fischl', role: 'off-field-dps', weapons: [], sets: {} },
+      { character: 'traveler-cryo', role: 'stellar-conduct-flex', weapons: [], sets: {} },
+      { character: 'sandrone', role: 'driver', weapons: [], sets: {} },
+    ] as never,
+    rotation: {
+      source: 'own',
+      script: [
+        ...s('alyosha', 'skill', 'burst'),
+        ...s('fischl', 'skill', 'burst'),
+        ...s('traveler-cryo', 'skill', 'burst'),
+        ...s('sandrone', 'skill', 'burst'),
+        { repeat: { untilCycleTime: 1518 }, steps: s('sandrone', 'n1', 'n2', 'n3') },
+      ],
+    },
+    sourceRank: {},
+    notes: 'Stellar-Conduct team: Superconduct becomes Stellar-Conduct because Sandrone (and the Traveler) carry the Stellar passive.',
+    status: 'active',
+  },
+  {
+    id: 'sandrone-stellar-conduct-kaeya',
+    name: 'Sandrone / Fischl / Alyosha + Kaeya',
+    provenance: {
+      sources: [
+        { site: 'keqingmains', url: 'https://keqingmains.com/q/sandrone-quickguide/', retrieved: RETRIEVED, fields: ['roles: Sandrone on-field Stellar-Conduct carry, Alyosha support, Cryo Traveler quickswap'] },
+        { site: 'keqingmains', url: 'https://keqingmains.com/q/alyosha-quickguide/', retrieved: RETRIEVED, fields: ['Alyosha acts before the on-field unit'] },
+      ],
+      conflicts: [],
+      gameVersion: GAME_VERSION,
+    },
+    dataConfidence: 'low',
+    assumptions: [
+      'No published rotation for this team: the rotation is ours. Following KeqingMains ("Alyosha uses his Skill and Burst before the on-field unit takes the field"), Alyosha, Fischl and Kaeya cast their skill and burst first, then Sandrone (on-field) casts skill and burst and attacks with her normal chain until the rotation ends (length = Fischl\'s 25 s skill cooldown).',
+      'Sandrone, Alyosha and Fischl are partly baseline: Sandrone and Alyosha have no gcsim source (frames estimated; Fagio/Decoding, Tugarin, Stellar-Conduct damage variants, constellations not modelled); only their Stellar-Conduct enabling passive (Sandrone) and Hunter\'s Precision ATK% (Alyosha) are. Fischl\'s Oz and A4 follow gcsim.',
+      'Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses.',
+      'Stellar-Conduct follows gcsim; the team is assumed to stand inside the Polestar Field.',
+    ],
+    members: [
+      { character: 'alyosha', role: 'buffer', weapons: [], sets: {} },
+      { character: 'fischl', role: 'off-field-dps', weapons: [], sets: {} },
+      { character: 'kaeya', role: 'stellar-conduct-flex', weapons: [], sets: {} },
+      { character: 'sandrone', role: 'driver', weapons: [], sets: {} },
+    ] as never,
+    rotation: {
+      source: 'own',
+      script: [
+        ...s('alyosha', 'skill', 'burst'),
+        ...s('fischl', 'skill', 'burst'),
+        ...s('kaeya', 'skill', 'burst'),
+        ...s('sandrone', 'skill', 'burst'),
+        { repeat: { untilCycleTime: 1518 }, steps: s('sandrone', 'n1', 'n2', 'n3') },
+      ],
+    },
+    sourceRank: {},
+    notes: 'Stellar-Conduct team: Superconduct becomes Stellar-Conduct because Sandrone (and the Traveler) carry the Stellar passive.',
+    status: 'active',
+  },
 ];

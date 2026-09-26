@@ -34,7 +34,8 @@
     "Frames estimated (gcsim source not parsed for: N1, N2, N3, charged, skill, skill hitmark, burst, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "main stats are a generic template (KQM quick guide row not parsed)",
+    "Patched: only the Stellar-Conduct enabling passive and the Elemental Mastery passive are modelled. No gcsim source exists for Sandrone, so all frames are estimated. Fagio's Decoding Power, Stellar-Conduct/Stellar Swirl damage variants of her attacks and constellations are NOT modelled."
   ],
   "rarity": 5,
   "element": "cryo",
@@ -611,13 +612,45 @@
     {
       "id": "sandrone.passive2",
       "unlock": "p2",
-      "effects": [],
+      "effects": [
+        {
+          "id": "sandrone.a2-em",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "em",
+          "value": 0,
+          "scaling": {
+            "from": "self.atk",
+            "ratio": 0.08,
+            "cap": 160
+          },
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "8 Elemental Mastery per 100 ATK, at most 160."
+        }
+      ],
       "text": "A Lady's Code of Conduct: Increases Sandrone's Elemental Mastery based on her ATK. Every 100 ATK will increase her Elemental Mastery by 8. The maximum increase she can gain this way is 160."
     },
     {
       "id": "sandrone.passive3",
       "unlock": "p3",
-      "effects": [],
+      "effects": [
+        {
+          "id": "sandrone.stellar-conduct",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "stellar-conduct",
+          "assumption": "Stellar Jubilee: Superconduct becomes Stellar-Conduct while Sandrone is in the team (Polestar Field: team Cryo/Electro DMG%, −40% physical RES). The team is assumed to stand inside the field."
+        }
+      ],
       "text": "Stellar Jubilee: Light of Rationalisme: Sandrone will enter the Radiance: Stellar-Conduct state when she is inside a **Polestar Field**, or the Radiance: Stellar Swirl state for 8s after a nearby party member triggers a Stellar Swirl reaction.\nWhen a party member triggers a Superconduct or Cryo Swirl reaction, it becomes a Stellar-Conduct or Stellar Swirl reaction instead, and the Base DMG of the aforementioned reaction is also increased by 0.7% for every 100 points of Sandrone's ATK. A maximum increase of 14% can be obtained in this way."
     },
     {
@@ -709,6 +742,8 @@
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "stellar-conduct"
+  ],
+  "needsHook": true
 }

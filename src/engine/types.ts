@@ -26,6 +26,12 @@ export interface HitDef {
   icd?: { tag: string; group: string };
   /** 'blunt' hits shatter Frozen enemies. */
   strike?: 'default' | 'blunt';
+  /** Fraction of enemy DEF ignored by this hit (added to `defIgnore` effects). */
+  defIgnore?: number;
+  /** Extra base-damage multiplier (like `baseDmgMultiplier.<talent>`) for this hit only. */
+  baseMult?: number;
+  /** Infusions do not change this hit's element. */
+  ignoreInfusion?: boolean;
 }
 
 export interface ParticleDef {

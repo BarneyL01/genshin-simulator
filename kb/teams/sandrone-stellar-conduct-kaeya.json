@@ -1,0 +1,182 @@
+{
+  "id": "sandrone-stellar-conduct-kaeya",
+  "name": "Sandrone / Fischl / Alyosha + Kaeya",
+  "provenance": {
+    "sources": [
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/sandrone-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "roles: Sandrone on-field Stellar-Conduct carry, Alyosha support, Cryo Traveler quickswap"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/alyosha-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "Alyosha acts before the on-field unit"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "No published rotation for this team: the rotation is ours. Following KeqingMains (\"Alyosha uses his Skill and Burst before the on-field unit takes the field\"), Alyosha, Fischl and Kaeya cast their skill and burst first, then Sandrone (on-field) casts skill and burst and attacks with her normal chain until the rotation ends (length = Fischl's 25 s skill cooldown).",
+    "Sandrone, Alyosha and Fischl are partly baseline: Sandrone and Alyosha have no gcsim source (frames estimated; Fagio/Decoding, Tugarin, Stellar-Conduct damage variants, constellations not modelled); only their Stellar-Conduct enabling passive (Sandrone) and Hunter's Precision ATK% (Alyosha) are. Fischl's Oz and A4 follow gcsim.",
+    "Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses.",
+    "Stellar-Conduct follows gcsim; the team is assumed to stand inside the Polestar Field."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "alyosha",
+      "role": "buffer",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "er"
+        ],
+        "goblet": [
+          "dmgBonus.electro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "fischl",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "em"
+        ],
+        "goblet": [
+          "dmgBonus.electro"
+        ],
+        "circlet": [
+          "dmgBonus.physical",
+          "critRate",
+          "critDmg",
+          "atk%",
+          "em"
+        ]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "kaeya",
+      "role": "stellar-conduct-flex",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "er",
+          "atk%",
+          "em"
+        ],
+        "goblet": [
+          "dmgBonus.cryo"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "sandrone",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "er"
+        ],
+        "goblet": [
+          "dmgBonus.cryo"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      {
+        "char": "alyosha",
+        "action": "skill"
+      },
+      {
+        "char": "alyosha",
+        "action": "burst"
+      },
+      {
+        "char": "fischl",
+        "action": "skill"
+      },
+      {
+        "char": "fischl",
+        "action": "burst"
+      },
+      {
+        "char": "kaeya",
+        "action": "skill"
+      },
+      {
+        "char": "kaeya",
+        "action": "burst"
+      },
+      {
+        "char": "sandrone",
+        "action": "skill"
+      },
+      {
+        "char": "sandrone",
+        "action": "burst"
+      },
+      {
+        "repeat": {
+          "untilCycleTime": 1518
+        },
+        "steps": [
+          {
+            "char": "sandrone",
+            "action": "n1"
+          },
+          {
+            "char": "sandrone",
+            "action": "n2"
+          },
+          {
+            "char": "sandrone",
+            "action": "n3"
+          }
+        ]
+      }
+    ],
+    "source": "own"
+  },
+  "sourceRank": {},
+  "notes": "Stellar-Conduct team: Superconduct becomes Stellar-Conduct because Sandrone (and the Traveler) carry the Stellar passive.",
+  "status": "active"
+}

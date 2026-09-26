@@ -59,7 +59,7 @@ export function runTeam(kb: KbData, input: RunInput, opts: BuildOptions = {}): T
   const kqms = optimizeKqms({ characters, mains, enemy, rotation: input.rotation, profile, lunarCharged: opts.lunarCharged, cycles: Math.max(3, period + 1) });
   notices.push(...kqms.notes);
 
-  const both = simulateBoth({ characters: kqms.characters, enemy, rotation: input.rotation, cycles, lunarCharged: opts.lunarCharged });
+  const both = simulateBoth({ characters: kqms.characters, enemy, rotation: input.rotation, cycles, lunarCharged: opts.lunarCharged, burstPolicy: opts.burstPolicy });
   return {
     label: input.label,
     members: built.map((b) => ({

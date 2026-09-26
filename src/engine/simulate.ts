@@ -25,6 +25,12 @@ export interface SimInput {
   /** Burst energy at the start of cycle 1. Default 'full'. */
   startEnergy?: 'full' | 'empty';
   /**
+   * What a burst does when the character lacks the energy. `always` (default): it fires anyway and the shortfall is
+   * reported. `requireEnergy`: it is skipped (no damage, no cooldown) and counted as a shortfall, which shows the
+   * steady state of an energy-starved team.
+   */
+  burstPolicy?: 'always' | 'requireEnergy';
+  /**
    * Theorycrafting mode: the enemy always carries this aura (refilled before every hit), e.g. "every hit is Vaporized".
    * Reactions consume it but it comes back for the next hit.
    */
@@ -53,6 +59,7 @@ const addMods = (a: Record<string, number>, b: Record<string, number>) => {
 
 interface PendingHit {
   cancelled?: boolean;
+  skipIf?: () => boolean;
   cycle: number;
   frame: number;
   char: CharacterInput;
@@ -80,6 +87,8 @@ export function simulate(input: SimInput): SimResult {
   /** True during the resolve pass: hooks then queue hits directly on the event queue. */
   let resolving = false;
   let queueHit: (p: PendingHit) => void = () => undefined;
+  const deferred: Array<{ frame: number; fn: () => void }> = [];
+  const hitTransforms: Array<NonNullable<Parameters<HookApi['transformHit']>[0]>> = [];
 
   const activeAt = (frame: number): string | undefined => {
     for (let i = actions.length - 1; i >= 0; i--) if (actions[i]!.start <= frame) return actions[i]!.char;
@@ -116,7 +125,7 @@ export function simulate(input: SimInput): SimResult {
   const energy = new EnergyTracker(characters, activeAt, (c, f) => statsFor(c, f).stats.er, (input.startEnergy ?? 'full') === 'full');
 
   const hookState = new Map<string, Record<string, unknown>>();
-  function runHook(owner: CharacterInput, e: Effect, frame: number, action?: HookApi['action'], ctx: { actor?: CharacterInput; hitInfo?: HookApi['hitInfo']; cycle?: number } = {}): void {
+  function runHook(owner: CharacterInput, e: Effect, frame: number, action?: HookApi['action'], ctx: { actor?: CharacterInput; hitInfo?: HookApi['hitInfo']; reaction?: HookApi['reaction']; cycle?: number } = {}): void {
     const hook = HOOKS[e.hook!];
     if (!hook) {
       assumptions.add(`${e.id}: hook "${e.hook}" not implemented, effect skipped`);
@@ -127,13 +136,19 @@ export function simulate(input: SimInput): SimResult {
     if (!hookState.has(key)) hookState.set(key, {});
     const hookCycle = ctx.cycle ?? cycle;
     hook({
-      frame, cycle: hookCycle, owner, effect: e, characters, action, actor: ctx.actor, hitInfo: ctx.hitInfo,
+      frame, cycle: hookCycle, owner, effect: e, characters, action, actor: ctx.actor, hitInfo: ctx.hitInfo, reaction: ctx.reaction,
+      polestarActive: (f = frame) => engine.polestarActive(f),
+      later: (f, fn) => (resolving ? schedule(f, fn) : deferred.push({ frame: f, fn })),
+      transformHit: (fn) => { hitTransforms.push(fn); },
       value: e.value === undefined ? 0 : resolveScalar(owner, e.value),
+      activeAt: (f = frame) => activeAt(f),
+      hitMv: (id) => owner.hookHits[id]?.mv ?? 0,
+      valueOf: (id) => { const ef = owner.effects.find((x) => x.id === id); return ef ? resolveScalar(owner, ef.value) : 0; },
       stats: (c, f = frame) => statsFor(c, f).stats,
       hit: (id, f, opts) => {
         const h = owner.hookHits[id];
         if (!h) throw new Error(`${owner.id}: no hookHit "${id}"`);
-        const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, hit: { ...h, frame: f, flat: (h.flat ?? 0) + (opts?.flat ?? 0) } };
+        const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, skipIf: opts?.skipIf, hit: { ...h, ...opts?.override, frame: f, flat: (h.flat ?? 0) + (opts?.flat ?? 0) } };
         if (resolving) queueHit(p);
         else pending.push(p);
         return { cancel: () => { p.cancelled = true; } };
@@ -262,6 +277,14 @@ export function simulate(input: SimInput): SimResult {
     const def = char.actions[step.action];
     if (!def) throw new Error(`${char.id} has no action "${step.action}"`);
     const kind = actionKind(step.action);
+    if (def.energyCost && input.burstPolicy === 'requireEnergy') {
+      const at = computeStart(char, kind).start;
+      if (!energy.has(char.id, def.energyCost, at)) {
+        energy.skip(char.id);
+        assumptions.add(`${char.id} burst skipped: not enough energy (energy-limited run)`);
+        return;
+      }
+    }
     const planned = computeStart(char, kind);
     let start = planned.start;
     const swapped = planned.swapped;
@@ -394,12 +417,15 @@ export function simulate(input: SimInput): SimResult {
   const engine = new ReactionEngine({
     characters,
     lunarCharged: input.lunarCharged ?? false,
+    stellarConduct: characters.some((c) => c.effects.some((e) => e.hook === 'stellar-conduct')),
     schedule,
     statsFor,
     enemyRes: (el, frame) => (enemy.res[el] ?? 0) + (bm.enemyMods(frame)[`res.enemy.${el}`] ?? 0),
     record: (h) => hits.push(h),
     applyEnemyBuff: (effectId, source, stat, value, duration, frame) =>
       bm.apply({ effectId, source, target: 'enemy', stat, value, duration, maxStacks: 1, stackMode: 'refresh' }, frame),
+    applyBuff: (effectId, source, target, stat, value, duration, frame) =>
+      bm.apply({ effectId, source, target, stat, value, duration, maxStacks: 1, stackMode: 'refresh' }, frame),
     assume: (t) => assumptions.add(t),
   });
 
@@ -419,13 +445,14 @@ export function simulate(input: SimInput): SimResult {
   };
 
   const processHit = (p: PendingHit): void => {
-    if (p.cancelled) return;
+    if (p.cancelled || p.skipIf?.()) return;
     {
       const { stats, mods: own } = statsFor(p.char, p.frame);
       const mods = addMods(own, bm.enemyMods(p.frame));
       // Elemental infusion: physical normal/charged/plunge hits take the element of an active infusion.
       let hit = p.hit;
-      if (hit.element === 'physical' && (hit.talent === 'normal' || hit.talent === 'charged' || hit.talent === 'plunge')) {
+      for (const tf of hitTransforms) hit = tf({ char: p.char, hit, action: p.action, frame: p.frame }) ?? hit;
+      if (!hit.ignoreInfusion && hit.element === 'physical' && (hit.talent === 'normal' || hit.talent === 'charged' || hit.talent === 'plunge')) {
         const inf = INFUSIONS.find((e) => (mods[`infusion.${e}`] ?? 0) > 0);
         if (inf) hit = { ...hit, element: inf };
       }
@@ -436,6 +463,13 @@ export function simulate(input: SimInput): SimResult {
       }
       if (input.enemyAura) engine.auras.set(input.enemyAura.element, input.enemyAura.gauge ?? 2, 1e9, p.frame);
       const r = engine.react({ frame: p.frame, char: p.char, hit, gauge, cycle: p.cycle });
+      for (const name of r.reactions) {
+        for (const owner of characters) {
+          for (const e of owner.effects) {
+            if (e.trigger.on === 'onReaction' && e.hook) runHook(owner, e, p.frame, undefined, { cycle: p.cycle, reaction: { name, actor: p.char, frame: p.frame } });
+          }
+        }
+      }
       const damage = calcHitDamage({
         hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
         reactionFactor: r.reactionFactor, catalyzeFlat: r.catalyzeFlat,
@@ -450,7 +484,7 @@ export function simulate(input: SimInput): SimResult {
         for (const owner of characters) {
           for (const e of owner.effects) {
             if (e.trigger.on === 'onHit' && e.hook) {
-              runHook(owner, e, p.frame, undefined, { cycle: p.cycle, hitInfo: { actor: p.char, action: p.action, hit, damage, frame: p.frame } });
+              runHook(owner, e, p.frame, undefined, { cycle: p.cycle, hitInfo: { actor: p.char, action: p.action, hit, damage, frame: p.frame, applied: gauge > 0 } });
             }
           }
         }
@@ -459,6 +493,7 @@ export function simulate(input: SimInput): SimResult {
   };
   queueHit = (p) => schedule(p.frame, () => processHit(p));
   resolving = true;
+  for (const d of deferred) schedule(d.frame, d.fn);
   for (const p of pending.sort((a, b) => a.frame - b.frame)) queueHit(p);
   while (head < queue.length) queue[head++]!.run();
   hits.sort((a, b) => a.frame - b.frame);

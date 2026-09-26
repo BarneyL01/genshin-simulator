@@ -34,7 +34,8 @@
     "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "main stats are a generic template (KQM quick guide row not parsed)",
+    "Patched: only the Hunter's Precision ATK% buff is added. No gcsim source exists for Alyosha (frames estimated). Tugarin's periodic attacks, healing, the Stellar-Conduct DMG% buff (he cannot enable Stellar-Conduct himself) and the constellations are NOT modelled."
   ],
   "rarity": 4,
   "element": "electro",
@@ -510,7 +511,41 @@
       "text": "Standard Reclaimed: The Hunter's Precision effect obtained from activating a **Hunter's Mark** can now stack, max 2 stacks. When the stack count reaches 2, characters affected by Hunter's Precision will also have their Elemental Mastery increased by 100 if they are on the field."
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "id": "alyosha.hunters-precision",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "active",
+      "stat": "atk%",
+      "value": {
+        "perTalentLevel": [
+          0.1166,
+          0.1272,
+          0.1378,
+          0.1484,
+          0.159,
+          0.1696,
+          0.1802,
+          0.1908,
+          0.2014,
+          0.212,
+          0.22472,
+          0.23744,
+          0.25016,
+          0.26288,
+          0.2756
+        ],
+        "talent": "skill"
+      },
+      "delay": 30,
+      "duration": 900,
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "Hunter's Precision ATK% for the on-field character, starting 30 frames after the cast, for an assumed 15 s; the Hunter's Mark is assumed to be activated by the on-field character's first hit."
+    }
+  ],
   "extraActions": {},
   "hookHits": {},
   "usualCombo": [

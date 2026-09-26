@@ -303,3 +303,70 @@ describe('zhongli hook', () => {
     expect(two.hits.filter((h) => h.action === 'stele-initial')).toHaveLength(1);
   });
 });
+
+describe('cryo traveler hook + Stellar-Conduct', () => {
+  const TC = (id: string, trigger: string, extra: Record<string, unknown> = {}) =>
+    effect.parse({ id, trigger: { on: trigger }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'travelercryo', ...extra });
+  const hh = (mv: number, gauge = 1, talent: HitDef['talent'] = 'skill') => ({ frame: 0, mv, scaling: 'atk' as const, element: 'cryo' as const, talent, gauge, icd: { tag: 'x', group: 'none' } });
+  const traveler = (extra: CharacterInput['effects'] = []) =>
+    mk('t', {
+      element: 'cryo',
+      actions: {
+        n1: act('normal', [hit(5, 'physical', 'normal')], 20),
+        skill: act('skill', [hit(19, 'cryo', 'skill')], 40, { cooldown: 900 }),
+        burst: act('burst', [], 40, { energyCost: 0 }),
+      },
+      hookHits: { frostpierce: hh(1), javelin: hh(2, 1, 'burst'), 'javelin-stellar': hh(5, 0, 'burst') },
+      effects: [
+        effect.parse({ id: 't.marker', trigger: { on: 'always' }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'stellar-conduct' }),
+        TC('traveler-cryo.a1', 'always'),
+        TC('traveler-cryo.skill', 'onSkill', { duration: 720 }),
+        TC('traveler-cryo.stellar-hit', 'onHit'),
+        TC('traveler-cryo.burst', 'onBurst', { value: 0.5 }),
+        TC('traveler-cryo.burst.stellar', 'custom', { value: 1 }),
+        ...extra,
+      ],
+    });
+  const idle = mk('x', { actions: { n1: act('normal', [hit(5, 'physical', 'normal', 0)], 20) } });
+  const electro = mk('e', { element: 'electro', actions: { skill: act('skill', [hit(5, 'electro', 'skill')], 20) } });
+  const run = (chars: CharacterInput[], rotation: Array<[string, string]>, aura?: 'cryo') =>
+    simulate({ characters: chars, enemy, cycles: 1, profile: fp, startEnergy: 'empty', enemyAura: aura ? { element: aura } : undefined, rotation: rotation.map(([char, action]) => ({ char, action })) });
+
+  it('Frostpierce Star: two crystals at 178 + 0/13 (+9 travel), then every 176 frames, for the skill window', () => {
+    const r = run([traveler(), idle], [['t', 'skill'], ['x', 'n1']]);
+    const c = r.hits.filter((h) => h.action === 'frostpierce').map((h) => h.frame);
+    expect(c.slice(0, 4)).toEqual([187, 200, 363, 376]);
+    expect(c.every((f) => f <= 19 + 720 + 13 + 9)).toBe(true);
+  });
+
+  it('Frostglow from landed crystals raises the burst; the burst throws 3 javelins (5 at 8 stacks)', () => {
+    const r = simulate({
+      characters: [traveler(), idle], enemy, cycles: 1, profile: fp, startEnergy: 'empty',
+      rotation: [{ char: 't', action: 'skill' }, { repeat: { times: 40 }, steps: [{ char: 'x', action: 'n1' }] }, { char: 't', action: 'burst' }],
+    });
+    const crystals = r.hits.filter((h) => h.action === 'frostpierce' && h.frame < r.actions.find((a) => a.action === 'burst')!.start).length;
+    const jav = r.hits.filter((h) => h.action === 'javelin');
+    expect(crystals).toBe(8);
+    expect(jav.length).toBe(5);
+  });
+
+  it('inside a Polestar Field the periodic crystals stop and the burst uses the Stellar-Conduct form (no element, ignores DEF)', () => {
+    const chars = [traveler(), electro];
+    const r = run(chars, [['t', 'skill'], ['e', 'skill'], ['t', 'burst']], 'cryo');
+    // electro skill hits the cryo aura → Stellar-Conduct → field: the burst that follows is the Stellar-Conduct form
+    expect(r.hits.some((h) => h.reactions.includes('stellarConduct'))).toBe(true);
+    expect(r.hits.filter((h) => h.action === 'javelin-stellar').length).toBeGreaterThan(0);
+    expect(r.hits.filter((h) => h.action === 'javelin')).toHaveLength(0);
+    expect(r.buffs.some((b) => b.effectId === 'polestar.shred' && b.value === -0.4)).toBe(true);
+  });
+
+  it('A1: in the field with the Frostpierce Star up, normal attacks become Cryo and gain +80% ATK', () => {
+    const chars = [traveler(), electro];
+    const r = run(chars, [['t', 'skill'], ['e', 'skill'], ['t', 'n1']], 'cryo');
+    const n1 = r.hits.find((h) => h.action === 'n1')!;
+    expect(n1.element).toBe('cryo');
+    const noField = run([traveler()], [['t', 'skill'], ['t', 'n1']]).hits.find((h) => h.action === 'n1')!;
+    expect(noField.element).toBe('physical');
+    expect(n1.damage).toBeGreaterThan(noField.damage * 1.5);
+  });
+});

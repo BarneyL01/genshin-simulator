@@ -42,7 +42,7 @@ export function calcHitDamage(c: DamageContext): number {
   const scalingValue = stats[hit.scaling];
   const mv = hit.mv + m(`mvBonus.${t}`) + (hit.name ? m(`mvBonus.hit.${hit.name}`) : 0);
   const flat = (hit.flat ?? 0) + m(`flatDmg.${t}`) + m('flatDmg.all') + (c.catalyzeFlat ?? 0);
-  const baseMult = 1 + m(`baseDmgMultiplier.${t}`);
+  const baseMult = 1 + m(`baseDmgMultiplier.${t}`) + (hit.baseMult ?? 0);
   const dmgBonus = 1 + m('dmgBonus.all') + m(`dmgBonus.${hit.element}`) + m(`dmgBonus.${t}`);
   const cr = stats.critRate + m(`critRate.${t}`);
   const cd = stats.critDmg + m(`critDmg.${t}`);
@@ -52,7 +52,7 @@ export function calcHitDamage(c: DamageContext): number {
     baseMult *
     dmgBonus *
     critFactor(cr, cd) *
-    defMultiplier(c.charLevel, c.enemyLevel, -m('def.enemy.shred'), m('defIgnore')) *
+    defMultiplier(c.charLevel, c.enemyLevel, -m('def.enemy.shred'), Math.min(1, m('defIgnore') + (hit.defIgnore ?? 0))) *
     resMultiplier(res) *
     (c.reactionFactor ?? 1)
   );

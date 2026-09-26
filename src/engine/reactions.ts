@@ -8,12 +8,16 @@ export interface ReactionHost {
   characters: CharacterInput[];
   /** Lunar-Charged replaces Electro-Charged (team Moonsign condition). */
   lunarCharged: boolean;
+  /** A Stellar-Conduct passive is in the team: Superconduct becomes Stellar-Conduct. */
+  stellarConduct: boolean;
   schedule(frame: number, run: () => void): void;
   statsFor(char: CharacterInput, frame: number): { stats: FinalStats; mods: Record<string, number> };
   /** Enemy RES for an element at a frame: base + active debuffs. */
   enemyRes(element: Element, frame: number): number;
   record(hit: HitRecord): void;
   applyEnemyBuff(effectId: string, source: string, stat: string, value: number, duration: number, frame: number): void;
+  /** Timed buff on any target (character id or "enemy"). */
+  applyBuff(effectId: string, source: string, target: string, stat: string, value: number, duration: number, frame: number): void;
   assume(text: string): void;
 }
 
@@ -71,10 +75,18 @@ export class ReactionEngine {
   private lcOwner?: { char: CharacterInput; cycle: number };
   private lcCloudEnd = -1;
   private lcSources = { hydro: new Set<CharacterInput>(), electro: new Set<CharacterInput>() };
+  private polestar = { end: -1, recorded: 0, chain: 0 };
+  private lastRecord = new Map<string, number>();
 
   constructor(private host: ReactionHost) {}
 
+  /** Whether a Polestar Field (from Stellar-Conduct) covers `frame`. */
+  polestarActive(frame: number): boolean {
+    return frame < this.polestar.end;
+  }
+
   react(ctx: ReactCtx): ReactResult {
+    this.recordPolestarStack(ctx);
     const st: State = { ctx, gauge: ctx.gauge, amp: 1, catalyzeFlat: 0, reactions: [], after: [] };
     const el = ctx.hit.element;
 
@@ -83,7 +95,8 @@ export class ReactionEngine {
     if (st.gauge > EPS) {
       for (const name of ORDER[el] ?? []) {
         if (st.gauge <= EPS) break;
-        this.tryReaction(name === 'electroCharged' && this.host.lunarCharged ? 'lunarCharged' : name, st);
+        const swapped = name === 'electroCharged' && this.host.lunarCharged ? 'lunarCharged' : name === 'superconduct' && this.host.stellarConduct ? 'stellarConduct' : name;
+        this.tryReaction(swapped, st);
       }
       if (st.gauge > EPS && ATTACHABLE.has(el)) {
         this.auras.attach(el as 'pyro', st.gauge, ctx.frame);
@@ -148,6 +161,13 @@ export class ReactionEngine {
         this.auras.attachQuicken(consumed, frame);
         s.reactions.push(name);
         if (this.auras.get('hydro', frame) > EPS) this.quickenBloom(s);
+        return;
+      }
+      case 'stellarConduct': {
+        if (frozen) return;
+        this.consume(pair.aura as AuraKey, pair.consume, s);
+        s.reactions.push(name);
+        this.startField(def, s.ctx.char, frame);
         return;
       }
       case 'overloaded':
@@ -236,6 +256,39 @@ export class ReactionEngine {
       (1 + em(REACTIONS.em.transformative, stats.em) + (mods[`reactionBonus.${name}`] ?? 0)) *
       resMultiplier(this.host.enemyRes(el, frame));
     this.host.record({ cycle, frame, char: owner.id, action: name, element: el, talent: 'reaction', damage: dmg, reactions: [name] });
+  }
+
+  // --- Stellar-Conduct: Polestar Field ---
+  /** Electro/Cryo applications inside the field are recorded (max `maxStacks`, one per character per `recordIcd` frames). */
+  private recordPolestarStack(ctx: ReactCtx): void {
+    const def = REACTIONS.reactions.stellarConduct;
+    if (!def || !this.host.stellarConduct || !this.polestarActive(ctx.frame)) return;
+    if (ctx.gauge <= EPS || (ctx.hit.element !== 'electro' && ctx.hit.element !== 'cryo')) return;
+    if (ctx.frame - (this.lastRecord.get(ctx.char.id) ?? -Infinity) < def.recordIcd!) return;
+    this.lastRecord.set(ctx.char.id, ctx.frame);
+    this.polestar.recorded = Math.min(def.maxStacks!, this.polestar.recorded + 1);
+  }
+
+  private startField(def: NonNullable<(typeof REACTIONS.reactions)[string]>, owner: CharacterInput, frame: number): void {
+    const wasActive = this.polestarActive(frame);
+    this.polestar.end = frame + def.fieldFrames!;
+    if (wasActive) return;
+    this.polestar.recorded = 0;
+    const chain = ++this.polestar.chain;
+    const think = (t: number) => {
+      if (this.polestar.chain !== chain || !this.polestarActive(t)) return;
+      const stacks = this.polestar.recorded;
+      this.polestar.recorded = 0;
+      const value = def.buffTable![Math.min(stacks, def.buffTable!.length - 1)]!;
+      for (const c of this.host.characters) {
+        this.host.applyBuff('polestar.cryo', owner.id, c.id, 'dmgBonus.cryo', value, def.thinkFrames! + 1, t);
+        this.host.applyBuff('polestar.electro', owner.id, c.id, 'dmgBonus.electro', value, def.thinkFrames! + 1, t);
+      }
+      this.host.applyEnemyBuff('polestar.shred', owner.id, def.effect!.stat, def.effect!.value, def.effect!.duration, t);
+      const next = t + def.thinkFrames!;
+      this.host.schedule(next, () => think(next));
+    };
+    think(frame);
   }
 
   // --- Bloom family ---

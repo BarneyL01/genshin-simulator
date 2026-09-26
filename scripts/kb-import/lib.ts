@@ -2,7 +2,8 @@ import { execSync } from 'node:child_process';
 import gdb from 'genshin-db';
 import { character as characterSchema, type Character } from '../../src/schema/character';
 import type { Effect } from '../../src/schema/effect';
-import { GCSIM_DIR, dmFile, gcsimCommit, gcsimUrl, goNumberArrays, hasMatchingArray } from './gcsim';
+import { join } from 'node:path';
+import { GCSIM_DIR, characterDir, dmFile, gcsimCommit, gcsimUrl, goNumberArrays, hasMatchingArray } from './gcsim';
 
 export const RETRIEVED = '2026-09-25';
 export const GAME_VERSION = '7.1';
@@ -141,6 +142,13 @@ export interface TalentSpec {
 export interface CharacterSpec {
   id: string;
   dbName: string;
+  /** genshin-db name for talents, constellations and parameters, when it differs from `dbName` (the Traveler). */
+  talentsName?: string;
+  /** Display name and element when genshin-db's character entry has none (the Traveler). */
+  displayName?: string;
+  element?: string;
+  /** gcsim files (relative to the character directory) holding multiplier tables, when there is no zz_*.dm.go. */
+  gcsimTables?: string[];
   /** Directory under gcsim `internal/characters/`. */
   gcsimDir: string;
   roles: string[];
@@ -192,7 +200,9 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
   const report: string[] = [];
   const conflicts: Character['provenance']['conflicts'] = [];
 
+  const tn = spec.talentsName ?? spec.dbName;
   const dmArrays = (() => {
+    if (spec.gcsimTables) return spec.gcsimTables.flatMap((f) => goNumberArrays(join(characterDir(spec.gcsimDir), f)));
     const f = dmFile(spec.gcsimDir);
     return f ? goNumberArrays(f) : [];
   })();
@@ -203,12 +213,12 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     const gPath = `internal/characters/${spec.gcsimDir}/${frameFile}`;
     const source = { site: 'gcsim', url: gcsimUrl(gPath), commit: gcsimCommit() };
     return hitSpecs.map((h) => {
-      const mv = param(spec.dbName, talentKey, h.param);
+      const mv = param(tn, talentKey, h.param);
       mvChecked++;
       if (hasMatchingArray(dmArrays, mv)) mvMatched++;
       else conflicts.push({ field: `${h.name}.mv`, values: { 'genshin-db': `${talentKey}.${h.param}`, gcsim: 'no matching table found' }, chosen: 'genshin-db', note: 'not confirmed by gcsim tables' });
       const extraMv = h.extraParams?.map((p) => {
-        const table = param(spec.dbName, talentKey, p);
+        const table = param(tn, talentKey, p);
         mvChecked++;
         if (hasMatchingArray(dmArrays, table)) mvMatched++;
         return table;
@@ -226,11 +236,11 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     const gPath = `internal/characters/${spec.gcsimDir}/${t.frameFile}`;
     const source = { site: 'gcsim', url: gcsimUrl(gPath), commit: gcsimCommit() };
     const hits = block2(talentKey, t.frameFile, t.hits);
-    const cd = t.cooldown && ('param' in t.cooldown ? Math.round(param(spec.dbName, talentKey, t.cooldown.param)[0]! * 60) : t.cooldown.frames);
-    const cost = t.energyCost === undefined ? undefined : typeof t.energyCost === 'number' ? t.energyCost : param(spec.dbName, talentKey, t.energyCost.param)[0];
+    const cd = t.cooldown && ('param' in t.cooldown ? Math.round(param(tn, talentKey, t.cooldown.param)[0]! * 60) : t.cooldown.frames);
+    const cost = t.energyCost === undefined ? undefined : typeof t.energyCost === 'number' ? t.energyCost : param(tn, talentKey, t.energyCost.param)[0];
     return {
       hits, frames: t.noHitCancel ? { hitmark: 0, cancel: t.noHitCancel, source } : undefined, variants: t.variants, cooldown: cd, energyCost: cost,
-      stamina: t.stamina ? param(spec.dbName, talentKey, t.stamina.param)[0] : undefined,
+      stamina: t.stamina ? param(tn, talentKey, t.stamina.param)[0] : undefined,
       particles: t.particles, effects: t.effects ?? [],
     };
   };
@@ -246,14 +256,14 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
       name,
       {
         as: ea.as, damageTalent: ea.damageTalent, hits: buildHits(TALENT_KEY[ea.damageTalent], ea.frameFile, ea.hits), particles: ea.particles,
-        cooldown: ea.cooldown && ('param' in ea.cooldown ? Math.round(param(spec.dbName, TALENT_KEY[ea.damageTalent], ea.cooldown.param)[0]! * 60) : ea.cooldown.frames),
+        cooldown: ea.cooldown && ('param' in ea.cooldown ? Math.round(param(tn, TALENT_KEY[ea.damageTalent], ea.cooldown.param)[0]! * 60) : ea.cooldown.frames),
       },
     ]),
   );
 
   const hookHits = Object.fromEntries(
     Object.entries(spec.hookHits ?? {}).map(([id, h]) => {
-      const mv = h.param ? param(spec.dbName, TALENT_KEY[h.talent], h.param) : [h.constantMv ?? 0];
+      const mv = h.param ? param(tn, TALENT_KEY[h.talent], h.param) : [h.constantMv ?? 0];
       if (h.param) {
         mvChecked++;
         if (hasMatchingArray(dmArrays, mv)) mvMatched++;
@@ -280,7 +290,7 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
   };
 
   // Second source for base stats: KeqingMains library
-  const kqmUrl = `https://library.keqingmains.com/characters/${c.elementText.toLowerCase()}/${spec.id}`;
+  const kqmUrl = `https://library.keqingmains.com/characters/${(spec.element ?? c.elementText).toLowerCase()}/${spec.id.replace(/^traveler-/, 'traveler-')}`;
   const kqm = kqmBaseStats(kqmUrl);
   let baseStatsConfirmed = false;
   if (kqm) {
@@ -298,9 +308,9 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
 
   const record = characterSchema.parse({
     id: spec.id,
-    name: c.name,
+    name: spec.displayName ?? c.name,
     rarity: c.rarity,
-    element: c.elementText.toLowerCase(),
+    element: (spec.element ?? c.elementText).toLowerCase(),
     weaponType: weaponTypeOf(c.weaponText),
     releaseVersion: c.version,
     roles: spec.roles,

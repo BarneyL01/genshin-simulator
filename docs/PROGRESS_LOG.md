@@ -16,6 +16,14 @@ Entry format:
 
 ---
 
+## 2026-09-25 — Cryo Traveler imported; Sandrone/Fischl/Alyosha team compared with Traveler vs Kaeya
+
+- Done: Stellar-Conduct in the reaction engine; hook API extensions; Cryo Traveler kit (`scripts/kb-import/specs/traveler-cryo.ts`, hook `travelercryo`); Fischl's Oz hook; patches for Fischl, Sandrone, Alyosha; energy-limited runs (`burstPolicy`); two team archetypes; `npm run compare` (`scripts/compare-teams.ts`); tests for the reaction, the Traveler hook and the comparison (113 pass).
+- Result (relaxed, energy-limited, default weapons, KQMS stats): Traveler team about 5.1k–5.4k DPS vs Kaeya team about 4.4k–4.7k, roughly +15%; also +17% when unaffordable bursts fire anyway. Sources of the gap: the Polestar Field is up about 69% of the time with the Traveler vs 36% with Kaeya (more Cryo/Electro applications and Stellar-Conduct triggers), Fischl's A4 fires more, the Traveler deals about 2.4× Kaeya's own damage.
+- Limits: Sandrone and Alyosha have no gcsim source and are mostly baseline; no published rotation for the team (ours); weapons default to highest base ATK; Fischl's A4 is assumed to count Stellar-Conduct as an Electro-related reaction.
+
+---
+
 ## 2026-09-25 — M7 baseline: every released character, weapon and set is in the KB
 
 - Milestone: M7 (baseline). The KB now covers everything genshin-db lists through 7.1, but only the 7 hand-written characters, 11 hand-written weapons and 4 sets model their passives; the rest is a damage-only baseline (see `kb/CHANGELOG.md`).

@@ -48,10 +48,10 @@
   },
   "dataConfidence": "low",
   "assumptions": [
-    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
     "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
     "Frames estimated (gcsim source not parsed for: charged, skill hitmark); taken from aloy or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Hand-upgraded on top of the baseline: skill, burst, Oz (ticks every 59 frames for 10 s; burst re-spawns Oz after the swap) and the A4 Thundering Retribution follow gcsim, through hook \"fischl\" (src/engine/hooks/fischl.ts). Normal/charged frames come from the baseline import. Not modelled: A1, C1, C2 extra hit, C4, C6, aimed shots."
   ],
   "rarity": 4,
   "element": "electro",
@@ -352,48 +352,7 @@
     "skill": {
       "hits": [
         {
-          "name": "Oz's ATK",
-          "mv": [
-            0.888,
-            0.9546,
-            1.0212,
-            1.11,
-            1.1766,
-            1.2432,
-            1.332,
-            1.4208,
-            1.5096,
-            1.5984,
-            1.6872,
-            1.776,
-            1.887,
-            1.998,
-            2.109
-          ],
-          "scaling": "atk",
-          "element": "electro",
-          "frames": {
-            "hitmark": 22,
-            "cancel": {
-              "dash": 14,
-              "jump": 16,
-              "swap": 42,
-              "default": 43
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/fischl/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Summoning",
+          "name": "Oz summon",
           "mv": [
             1.1544,
             1.24098,
@@ -414,12 +373,12 @@
           "scaling": "atk",
           "element": "electro",
           "frames": {
-            "hitmark": 25,
+            "hitmark": 38,
             "cancel": {
+              "default": 43,
               "dash": 14,
               "jump": 16,
-              "swap": 42,
-              "default": 43
+              "swap": 42
             },
             "source": {
               "site": "gcsim",
@@ -429,16 +388,16 @@
           },
           "icd": {
             "tag": "none",
-            "group": "none"
+            "group": "fischl"
           },
           "gauge": 1
         }
       ],
-      "cooldown": 1500,
+      "cooldown": 1518,
       "particles": {
-        "count": 1,
+        "count": 0.67,
         "perHit": false,
-        "icd": 0,
+        "icd": 6,
         "element": "electro"
       },
       "effects": []
@@ -469,10 +428,10 @@
           "frames": {
             "hitmark": 18,
             "cancel": {
+              "default": 148,
               "dash": 115,
               "jump": 115,
-              "swap": 24,
-              "default": 148
+              "swap": 24
             },
             "source": {
               "site": "gcsim",
@@ -482,7 +441,7 @@
           },
           "icd": {
             "tag": "burst",
-            "group": "standard"
+            "group": "fischl"
           },
           "gauge": 1
         }
@@ -544,9 +503,109 @@
       "text": "Evernight Raven: Extends the duration of Oz's presence on the field by 2s. Additionally, Oz performs coordinated attacks with your active character when present, dealing 30% of Fischl's ATK as Electro DMG."
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "id": "fischl.oz.skill",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "duration": 600,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "fischl"
+    },
+    {
+      "id": "fischl.oz.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "duration": 600,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "fischl"
+    },
+    {
+      "id": "fischl.a4",
+      "trigger": {
+        "on": "onReaction"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "fischl"
+    }
+  ],
   "extraActions": {},
-  "hookHits": {},
+  "hookHits": {
+    "oz": {
+      "name": "Oz's attack",
+      "mv": [
+        0.888,
+        0.9546,
+        1.0212,
+        1.11,
+        1.1766,
+        1.2432,
+        1.332,
+        1.4208,
+        1.5096,
+        1.5984,
+        1.6872,
+        1.776,
+        1.887,
+        1.998,
+        2.109
+      ],
+      "scaling": "atk",
+      "element": "electro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/fischl/skill.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "skill",
+        "group": "fischl"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    },
+    "thundering": {
+      "name": "Thundering Retribution (A4)",
+      "mv": [
+        0.8
+      ],
+      "scaling": "atk",
+      "element": "electro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/fischl/asc.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "fischl"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    }
+  },
   "usualCombo": [
     {
       "variant": "off-field",
@@ -597,6 +656,8 @@
       "source": "keqingmains"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "fischl"
+  ],
+  "needsHook": true
 }

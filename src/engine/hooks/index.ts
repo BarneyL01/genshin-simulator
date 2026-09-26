@@ -6,3 +6,6 @@ import './raiden';
 import './hutao';
 import './yelan';
 import './zhongli';
+import './stellar';
+import './travelercryo';
+import './fischl';

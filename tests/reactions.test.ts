@@ -21,7 +21,7 @@ interface Harness {
   runTo(frame: number): void;
 }
 
-function harness(opts: { em?: number; res?: number; lunar?: boolean; chars?: CharacterInput[]; stats?: Partial<FinalStats>; mods?: Record<string, number> } = {}): Harness {
+function harness(opts: { em?: number; res?: number; lunar?: boolean; stellar?: boolean; chars?: CharacterInput[]; stats?: Partial<FinalStats>; mods?: Record<string, number> } = {}): Harness {
   const queue: Array<{ frame: number; seq: number; run: () => void }> = [];
   let seq = 0;
   const records: HitRecord[] = [];
@@ -30,11 +30,13 @@ function harness(opts: { em?: number; res?: number; lunar?: boolean; chars?: Cha
   const host: ReactionHost = {
     characters: opts.chars ?? [],
     lunarCharged: opts.lunar ?? false,
+    stellarConduct: (opts as { stellar?: boolean }).stellar ?? false,
     schedule: (frame, run) => { queue.push({ frame, seq: seq++, run }); },
     statsFor: () => ({ stats, mods: opts.mods ?? {} }),
     enemyRes: () => opts.res ?? 0,
     record: (h) => records.push(h),
     applyEnemyBuff: (_id, _src, stat, value, _dur, frame) => buffs.push({ stat, value, frame }),
+    applyBuff: (_id, _src, target, stat, value, _dur, frame) => buffs.push({ stat: `${target}:${stat}`, value, frame }),
     assume: () => undefined,
   };
   const engine = new ReactionEngine(host);
@@ -268,7 +270,7 @@ describe('lunar-charged', () => {
 describe('KB mechanics', () => {
   it('lists unimplemented reactions explicitly', () => {
     const missing = Object.entries(REACTIONS.reactions).filter(([, r]) => !r.implemented).map(([k]) => k).sort();
-    expect(missing).toEqual(['crystallize', 'lunarBloom', 'lunarCrystallize', 'stellarConduct', 'stellarSwirl']);
+    expect(missing).toEqual(['crystallize', 'lunarBloom', 'lunarCrystallize', 'stellarSwirl']);
   });
 });
 
@@ -341,5 +343,43 @@ describe('energy', () => {
     const base = r.energy.b!.particleEnergyBase;
     expect(base).toBeCloseTo(3 * 3 * 0.8);
     expect(r.energy.b!.gainedPerCycle).toBeCloseTo(base * 1.5);
+  });
+});
+
+describe('Stellar-Conduct (Polestar Field)', () => {
+  it('replaces Superconduct: no damage, a 6 s field, −40% physical RES and team Cryo/Electro DMG% from recorded applications', () => {
+    const b = mkChar('b');
+    const h = harness({ stellar: true, chars: [a, b] });
+    h.hit(a, 'cryo', 0);
+    const r = h.hit(b, 'electro', 3);
+    expect(r.reactions).toEqual(['stellarConduct']);
+    expect(h.records).toHaveLength(0);
+    // the first think fires immediately with no recorded stacks: 20% for everyone, shred on the enemy
+    expect(h.buffs).toContainEqual({ stat: 'res.enemy.physical', value: -0.4, frame: 3 });
+    expect(h.buffs.filter((x) => x.stat === 'a:dmgBonus.cryo' || x.stat === 'b:dmgBonus.electro').map((x) => x.value)).toEqual([0.2, 0.2]);
+    // three applications inside the field (a's electro, b's cryo, a's cryo) are recorded for the next window
+    h.hit(a, 'electro', 20);
+    h.hit(b, 'cryo', 40);
+    h.hit(a, 'cryo', 60);
+    h.runTo(243);
+    const second = h.buffs.filter((x) => x.stat === 'a:dmgBonus.cryo').map((x) => x.value);
+    expect(second).toEqual([0.2, 0.31]); // 3 recorded stacks → table[3] = 0.31
+  });
+
+  it('is Superconduct without the flag', () => {
+    const h = harness({ stellar: false });
+    h.hit(a, 'cryo', 0);
+    expect(h.hit(a, 'electro', 3).reactions).toEqual(['superconduct']);
+  });
+
+  it('the field ends 360 frames after the last reaction and reactions refresh it', () => {
+    const h = harness({ stellar: true, chars: [a] });
+    h.hit(a, 'cryo', 0);
+    h.hit(a, 'electro', 1);
+    expect(h.engine.polestarActive(300)).toBe(true);
+    expect(h.engine.polestarActive(361)).toBe(false);
+    h.hit(a, 'cryo', 200);
+    h.hit(a, 'electro', 201);
+    expect(h.engine.polestarActive(500)).toBe(true);
   });
 });

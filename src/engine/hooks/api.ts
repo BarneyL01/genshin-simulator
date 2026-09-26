@@ -13,12 +13,26 @@ export interface HookApi {
   /** The character that acted, for `onAnyNormal` / `onAnyBurst` triggers. */
   actor?: CharacterInput;
   /** The hit that fired an `onHit` trigger (resolve pass). `action` is the action name, or the hook-hit id. */
-  hitInfo?: { actor: CharacterInput; action: string; hit: HitDef; damage: number; frame: number };
+  hitInfo?: { actor: CharacterInput; action: string; hit: HitDef; damage: number; frame: number; /** The hit applied its element (passed ICD, gauge > 0). */ applied: boolean };
+  /** The reaction that fired an `onReaction` trigger (resolve pass). */
+  reaction?: { name: string; actor: CharacterInput; frame: number };
+  /** Whether a Polestar Field (Stellar-Conduct) is up at `frame` (resolve pass state; before it, always false). */
+  polestarActive(frame?: number): boolean;
+  /** Run `fn` at `frame` in the resolve pass, in frame order with hits and reactions. Available from any pass. */
+  later(frame: number, fn: () => void): void;
+  /** Register a function that may rewrite every hit right before it is resolved (e.g. Radiance conversions). */
+  transformHit(fn: (h: { char: CharacterInput; hit: HitDef; action: string; frame: number }) => HitDef | undefined): void;
   /** The effect's `value` resolved for the owner (refinement / talent level tables applied). */
   value: number;
+  /** The on-field character at `frame` (the one whose action started last). */
+  activeAt(frame?: number): string | undefined;
+  /** Multiplier of one of the owner's hook hits (at the owner's talent levels). */
+  hitMv(hookHitId: string): number;
+  /** Resolved `value` of another effect of the owner (refinement / talent level tables applied). */
+  valueOf(effectId: string): number;
   stats(c: CharacterInput, frame?: number): FinalStats;
   /** Queue one of the owner's `hookHits` at an absolute frame, optionally with extra flat base damage. The returned handle cancels the hit if it has not happened yet (e.g. a construct being replaced). */
-  hit(id: string, frame: number, opts?: { flat?: number }): { cancel(): void };
+  hit(id: string, frame: number, opts?: { flat?: number; override?: Partial<HitDef>; skipIf?: () => boolean }): { cancel(): void };
   /** Apply a timed stat buff/debuff (target: character id, "enemy" or "active"). */
   buff(spec: { effectId: string; target: string; stat: string; value: number; duration: number | null; maxStacks?: number; stackMode?: 'refresh' | 'independent' }, frame?: number): void;
   /** Drop particles that the whole team can collect (same rules as skill particles). */

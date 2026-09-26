@@ -107,3 +107,24 @@ describe('Weapon comparer', () => {
     expect(base.assumptions.some((a) => a.includes('HP'))).toBe(true);
   });
 });
+
+describe('Stellar-Conduct team: Cryo Traveler vs Kaeya', () => {
+  const run = (id: string) => runTeam(kb, teamInput(kb.teams.get(id)!), { cycles: 4, burstPolicy: 'requireEnergy' });
+  const traveler = run('sandrone-stellar-conduct-traveler');
+  const kaeya = run('sandrone-stellar-conduct-kaeya');
+
+  it('both teams turn Superconduct into Stellar-Conduct (Sandrone enables it) and create Polestar Fields', () => {
+    for (const r of [traveler, kaeya]) {
+      expect(r.relaxed.hits.some((h) => h.reactions.includes('stellarConduct'))).toBe(true);
+      expect(r.relaxed.hits.some((h) => h.reactions.includes('superconduct'))).toBe(false);
+      expect(r.relaxed.buffs.some((b) => b.effectId === 'polestar.shred')).toBe(true);
+    }
+  });
+
+  it('the Traveler team does more damage and keeps the field up more often', () => {
+    const fields = (r: typeof traveler) => r.relaxed.buffs.filter((b) => b.effectId === 'polestar.shred').length;
+    expect(traveler.relaxed.dps).toBeGreaterThan(kaeya.relaxed.dps);
+    expect(fields(traveler)).toBeGreaterThan(fields(kaeya));
+    expect(traveler.relaxed.perCharacterDps['traveler-cryo']!).toBeGreaterThan(kaeya.relaxed.perCharacterDps['kaeya']!);
+  });
+});

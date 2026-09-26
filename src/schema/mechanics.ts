@@ -28,6 +28,11 @@ export const reactionDef = z.object({
   coreDuration: frames.optional(),
   cloudDuration: frames.optional(),
   contributorWeights: z.array(z.number()).optional(),
+  fieldFrames: frames.optional(),
+  thinkFrames: frames.optional(),
+  maxStacks: z.number().int().optional(),
+  recordIcd: frames.optional(),
+  buffTable: z.array(z.number()).optional(),
   notes: z.string().optional(),
 });
 

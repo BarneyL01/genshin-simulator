@@ -28,6 +28,8 @@ export interface BuildOptions {
   cycles?: number;
   /** Team has the Lunar-Charged (Moonsign) condition. */
   lunarCharged?: boolean;
+  /** Bursts the character cannot afford are skipped (steady-state view) instead of firing anyway. */
+  burstPolicy?: 'always' | 'requireEnergy';
 }
 
 export interface BuiltMember {

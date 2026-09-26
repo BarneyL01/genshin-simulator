@@ -78,6 +78,17 @@ export class EnergyTracker {
     add(this.stats.get(charId)!.flat, cycle, amount);
   }
 
+  /** Whether `charId` has `cost` energy at `frame` (without spending it). */
+  has(charId: string, cost: number, frame: number): boolean {
+    this.advance(frame);
+    return (this.energy.get(charId) ?? 0) + 1e-9 >= cost;
+  }
+
+  /** Count a skipped burst as a shortfall. */
+  skip(charId: string): void {
+    this.shortfalls.set(charId, (this.shortfalls.get(charId) ?? 0) + 1);
+  }
+
   /** Spend burst energy. Returns false (and records a shortfall) when there was not enough. */
   spend(charId: string, cost: number, frame: number): { ok: boolean; had: number } {
     this.advance(frame);

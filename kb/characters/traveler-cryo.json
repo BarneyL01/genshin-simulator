@@ -1,0 +1,855 @@
+{
+  "id": "traveler-cryo",
+  "name": "Traveler (Cryo)",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/reactable",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "Stellar-Conduct field"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/sandrone-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "role in Stellar-Conduct teams"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/cryo/traveler-cryo",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "high",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
+    "Male Traveler frames (gcsim); the female Traveler differs by a few frames.",
+    "Stellar Swirl (the Anemo counterpart of Stellar-Conduct), the True Moon effects and C1/C6 are not modelled.",
+    "Recommended main stats are a generic template (no KeqingMains row parsed for this character).",
+    "usualCombo is generic; no source rotation."
+  ],
+  "rarity": 5,
+  "element": "cryo",
+  "weaponType": "sword",
+  "releaseVersion": "1.0",
+  "roles": [
+    "sub-dps",
+    "stellar-conduct-enabler",
+    "off-field-dps"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 10874.914859,
+      "atk": 212.397192,
+      "def": 682.521525
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "atk%",
+    "value": 0.24
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.44462,
+            0.48081,
+            0.517,
+            0.5687,
+            0.60489,
+            0.64625,
+            0.70312,
+            0.75999,
+            0.81686,
+            0.8789,
+            0.94094,
+            1.00298,
+            1.06502,
+            1.12706,
+            1.1891
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 28,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 17
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.4343,
+            0.46965,
+            0.505,
+            0.5555,
+            0.59085,
+            0.63125,
+            0.6868,
+            0.74235,
+            0.7979,
+            0.8585,
+            0.9191,
+            0.9797,
+            1.0403,
+            1.1009,
+            1.1615
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 13,
+            "cancel": {
+              "default": 28,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "normal": 26
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.52976,
+            0.57288,
+            0.616,
+            0.6776,
+            0.72072,
+            0.77,
+            0.83776,
+            0.90552,
+            0.97328,
+            1.0472,
+            1.12112,
+            1.19504,
+            1.26896,
+            1.34288,
+            1.4168
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 16,
+            "cancel": {
+              "default": 36,
+              "skill": 16,
+              "burst": 16,
+              "dash": 16,
+              "jump": 16,
+              "swap": 16,
+              "normal": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.58308,
+            0.63054,
+            0.678,
+            0.7458,
+            0.79326,
+            0.8475,
+            0.92208,
+            0.99666,
+            1.07124,
+            1.1526,
+            1.23396,
+            1.31532,
+            1.39668,
+            1.47804,
+            1.5594
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 30,
+            "cancel": {
+              "default": 45,
+              "skill": 30,
+              "burst": 30,
+              "dash": 30,
+              "jump": 30,
+              "swap": 30,
+              "normal": 39
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.70778,
+            0.76539,
+            0.823,
+            0.9053,
+            0.96291,
+            1.02875,
+            1.11928,
+            1.20981,
+            1.30034,
+            1.3991,
+            1.49786,
+            1.59662,
+            1.69538,
+            1.79414,
+            1.8929
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "default": 69,
+              "skill": 25,
+              "burst": 25,
+              "dash": 25,
+              "jump": 25,
+              "swap": 25
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Ice Fog Piercer",
+          "mv": [
+            0.9168,
+            0.98556,
+            1.05432,
+            1.146,
+            1.21476,
+            1.28352,
+            1.3752,
+            1.46688,
+            1.55856,
+            1.65024,
+            1.74192,
+            1.8336,
+            1.9482,
+            2.0628,
+            2.1774
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 19,
+            "cancel": {
+              "default": 66,
+              "normal": 32,
+              "skill": 33,
+              "burst": 33,
+              "dash": 33,
+              "jump": 33,
+              "swap": 32
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/skill.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "skill",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 3,
+        "perHit": false,
+        "icd": 18,
+        "element": "cryo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "default": 75,
+          "skill": 74,
+          "jump": 74,
+          "swap": 73
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            0.559,
+            0.6045,
+            0.65,
+            0.715,
+            0.7605,
+            0.8125,
+            0.884,
+            0.9555,
+            1.027,
+            1.105,
+            1.183,
+            1.261,
+            1.339,
+            1.417,
+            1.495
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "default": 55,
+              "skill": 37,
+              "burst": 36,
+              "dash": 20,
+              "jump": 20,
+              "swap": 44
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20
+          ],
+          "extraMv": [
+            [
+              0.7224,
+              0.7812,
+              0.84,
+              0.924,
+              0.9828,
+              1.05,
+              1.1424,
+              1.2348,
+              1.3272,
+              1.428,
+              1.5288,
+              1.6296,
+              1.7304,
+              1.8312,
+              1.932
+            ]
+          ]
+        }
+      ],
+      "stamina": 20,
+      "effects": []
+    }
+  },
+  "passives": [],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [
+        {
+          "id": "traveler-cryo.c1",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "traveler-cryo.c1",
+          "assumption": "Not modelled (needs Stellar Glimmer damage events)."
+        }
+      ],
+      "text": "Regenerates 5 Elemental Energy when dealing Stellar Glimmer DMG (once per 0.5 s)."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "traveler-cryo.c2",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "travelercryo"
+        }
+      ],
+      "text": "The active character's Elemental Mastery +60 for 5 s when an ice crystal hits (120 with a Stellar Glimmer reaction)."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Frostbound Javelin by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "traveler-cryo.c4",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "travelercryo"
+        }
+      ],
+      "text": "The Frostpierce Star lasts 25% longer."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Ice Fog Piercer by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "traveler-cryo.c6",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "teamExceptSelf",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "traveler-cryo.c6",
+          "assumption": "Not modelled."
+        }
+      ],
+      "text": "Each Frostglow stack consumed by the burst raises other party members' Stellar Glimmer reaction DMG by 5% for 15 s (max 40%)."
+    }
+  ],
+  "effects": [
+    {
+      "id": "traveler-cryo.stellar-conduct",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "stellar-conduct",
+      "assumption": "Stellar Jubilee: with this character in the team, Superconduct becomes Stellar-Conduct (Polestar Field: team Cryo/Electro DMG%, −40% physical RES). The team is assumed to stand inside the field."
+    },
+    {
+      "id": "traveler-cryo.a4",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "em",
+      "value": 0,
+      "scaling": {
+        "from": "self.atk",
+        "ratio": 0.08,
+        "cap": 160
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "Elemental Mastery = 8% of ATK, at most 160, evaluated at hit time."
+    },
+    {
+      "id": "traveler-cryo.a1",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "travelercryo",
+      "assumption": "Radiance: Stellar-Conduct conversion needs a Polestar Field (from a Superconduct-type reaction) and the Frostpierce Star up."
+    },
+    {
+      "id": "traveler-cryo.skill",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "duration": 720,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "travelercryo"
+    },
+    {
+      "id": "traveler-cryo.stellar-hit",
+      "trigger": {
+        "on": "onHit"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "travelercryo"
+    },
+    {
+      "id": "traveler-cryo.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.027565,
+          0.029633,
+          0.0317,
+          0.034457,
+          0.036524,
+          0.038592,
+          0.041348,
+          0.044105,
+          0.046861,
+          0.049618,
+          0.052374,
+          0.055131,
+          0.058577,
+          0.062022,
+          0.065468
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "travelercryo"
+    },
+    {
+      "id": "traveler-cryo.burst.stellar",
+      "trigger": {
+        "on": "custom"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.018377,
+          0.019755,
+          0.021134,
+          0.022971,
+          0.02435,
+          0.025728,
+          0.027565,
+          0.029403,
+          0.031241,
+          0.033079,
+          0.034916,
+          0.036754,
+          0.039051,
+          0.041348,
+          0.043645
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "travelercryo"
+    }
+  ],
+  "extraActions": {},
+  "hookHits": {
+    "frostpierce": {
+      "name": "Frostpierce Star crystal",
+      "mv": [
+        0.21392,
+        0.229964,
+        0.246008,
+        0.2674,
+        0.283444,
+        0.299488,
+        0.32088,
+        0.342272,
+        0.363664,
+        0.385056,
+        0.406448,
+        0.42784,
+        0.45458,
+        0.48132,
+        0.50806
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/skill.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "icicle",
+        "group": "travelerCryoIcicle"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    },
+    "javelin": {
+      "name": "Ice Javelin",
+      "mv": [
+        0.55131,
+        0.592658,
+        0.634007,
+        0.689137,
+        0.730486,
+        0.771834,
+        0.826965,
+        0.882096,
+        0.937227,
+        0.992358,
+        1.047489,
+        1.10262,
+        1.171534,
+        1.240447,
+        1.309361
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "burst",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    },
+    "javelin-stellar": {
+      "name": "Ice Javelin (Stellar-Conduct)",
+      "mv": [
+        0.36754,
+        0.395105,
+        0.422671,
+        0.459425,
+        0.48699,
+        0.514556,
+        0.55131,
+        0.588064,
+        0.624818,
+        0.661572,
+        0.698326,
+        0.73508,
+        0.781022,
+        0.826965,
+        0.872907
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/traveler/common/cryo/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "burst",
+        "group": "standard"
+      },
+      "gauge": 0,
+      "talent": "burst"
+    }
+  },
+  "usualCombo": [
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        }
+      ]
+    },
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 5,
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": [],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.cryo"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "template"
+    }
+  },
+  "hooks": [
+    "travelercryo",
+    "stellar-conduct",
+    "traveler-cryo.c1",
+    "traveler-cryo.c6"
+  ],
+  "needsHook": true
+}

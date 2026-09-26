@@ -59,7 +59,8 @@
   "dataConfidence": "medium",
   "assumptions": [
     "Values are read from gcsim (numbers only, no code copied) and cross-checked against KeqingMains where a page exists. KeqingMains has no page for Lunar reactions, so lunarCharged is gcsim-only.",
-    "Freeze, burning and dendro cores are simplified (see notes on each reaction); the engine does not model per-source aura tracking or hitlag."
+    "Freeze, burning and dendro cores are simplified (see notes on each reaction); the engine does not model per-source aura tracking or hitlag.",
+    "Stellar-Conduct (added with the 7.x Traveler/Sandrone kits) follows gcsim's implementation; there is no KeqingMains page for it. The team is assumed to stand inside the field."
   ],
   "levelBase": {
     "lv90": 1446.8535
@@ -398,9 +399,45 @@
       "notes": "Not implemented."
     },
     "stellarConduct": {
-      "type": "other",
-      "implemented": false,
-      "notes": "Not implemented."
+      "type": "lunar",
+      "implemented": true,
+      "pairs": [
+        {
+          "trigger": "electro",
+          "aura": "cryo",
+          "consume": 1
+        },
+        {
+          "trigger": "cryo",
+          "aura": "electro",
+          "consume": 1
+        }
+      ],
+      "fieldFrames": 360,
+      "thinkFrames": 240,
+      "maxStacks": 12,
+      "recordIcd": 6,
+      "effect": {
+        "stat": "res.enemy.physical",
+        "value": -0.4,
+        "duration": 241
+      },
+      "buffTable": [
+        0.2,
+        0.29,
+        0.3,
+        0.31,
+        0.32,
+        0.33,
+        0.34,
+        0.35,
+        0.36,
+        0.37,
+        0.38,
+        0.39,
+        0.4
+      ],
+      "notes": "Replaces Superconduct while a character with the Stellar-Conduct passive is in the team (hook `stellar-conduct`). It makes no damage of its own: it creates or refreshes a Polestar Field (360 frames). Every 240 frames the field gives the whole team Cryo and Electro DMG% from the number of Electro/Cryo applications recorded in the previous window (0-12, at most one per character per 6 frames) and \u221240% physical RES on the enemy. Direct Stellar-Conduct damage comes from character kits. gcsim only."
     }
   }
 }
