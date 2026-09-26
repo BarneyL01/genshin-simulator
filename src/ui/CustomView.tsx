@@ -12,6 +12,9 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
   const owned = useMemo(() => [...kb.characters.values()].filter((c) => roster.characters[c.id]?.owned).sort((a, b) => a.name.localeCompare(b.name)), [kb, roster]);
   const [order, setOrder] = useState<string[]>([]);
   const [variants, setVariants] = useState<Record<string, string>>({});
+  const [builds, setBuilds] = useState<Record<string, { weapon?: string; refinement?: number; set?: string }>>({});
+  const setBuild = (id: string, patch: { weapon?: string; refinement?: number; set?: string }) => setBuilds((b) => ({ ...b, [id]: { ...b[id], ...patch } }));
+  const sets = useMemo(() => [...kb.artifacts.values()].sort((a, b) => a.name.localeCompare(b.name)), [kb]);
   const [length, setLength] = useState('');
   const [json, setJson] = useState('');
   const [busy, setBusy] = useState(false);
@@ -19,7 +22,7 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
   const [run, setRun] = useState<TeamRun>();
   const [notes, setNotes] = useState<string[]>([]);
 
-  const team = { order, variants, lengthSeconds: length ? Number(length) : undefined };
+  const team = { order, variants, lengthSeconds: length ? Number(length) : undefined, builds };
   const ready = order.length === 4;
   const preview = useMemo(() => {
     if (!ready) return undefined;
@@ -28,7 +31,7 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
     } catch {
       return undefined;
     }
-  }, [kb, ready, order, variants, length]);
+  }, [kb, ready, order, variants, length, builds]);
 
   const toggle = (id: string) => setOrder((o) => (o.includes(id) ? o.filter((x) => x !== id) : o.length < 4 ? [...o, id] : o));
   const move = (i: number, d: -1 | 1) => setOrder((o) => {
@@ -60,7 +63,7 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
     <div>
       <p className="text-sm text-slate-600">
         Pick any four owned characters and the order they act in. Each performs its usual combo; the app chains them into one rotation.
-        Results are approximate and labelled "custom rotation". Weapons, sets and stats follow each character's recommended build.
+        Results are approximate and labelled "custom rotation". Choose each character's weapon and artifact set below, or leave them on the recommended build.
       </p>
 
       <Section title={`1. Choose four owned characters (${order.length}/4)`}>
@@ -89,6 +92,19 @@ export function CustomView({ kb, roster }: { kb: KbData; roster: Roster }) {
                   <select className="rounded border px-1" value={variants[id] ?? c.usualCombo[0]!.variant} onChange={(e) => setVariants((v) => ({ ...v, [id]: e.target.value }))}>
                     {c.usualCombo.map((v) => <option key={v.variant} value={v.variant}>{v.variant}</option>)}
                   </select>
+                  <label className="text-xs">Weapon <select className="max-w-40 rounded border px-1" value={builds[id]?.weapon ?? ''} onChange={(e) => setBuild(id, { weapon: e.target.value || undefined })}>
+                    <option value="">recommended</option>
+                    {[...kb.weapons.values()].filter((w) => w.type === c.weaponType).sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)).map((w) => <option key={w.id} value={w.id}>{w.name} ({w.rarity}★)</option>)}
+                  </select></label>
+                  {builds[id]?.weapon && (
+                    <select className="rounded border px-1 text-xs" aria-label="refinement" value={builds[id]?.refinement ?? roster.weapons[builds[id]!.weapon!]?.refinement ?? 1} onChange={(e) => setBuild(id, { refinement: Number(e.target.value) })}>
+                      {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>R{n}</option>)}
+                    </select>
+                  )}
+                  <label className="text-xs">Set (4pc) <select className="max-w-40 rounded border px-1" value={builds[id]?.set ?? ''} onChange={(e) => setBuild(id, { set: e.target.value || undefined })}>
+                    <option value="">recommended</option>
+                    {sets.map((a) => <option key={a.id} value={a.id}>{a.name}</option>)}
+                  </select></label>
                   <span className="text-xs text-slate-500">{c.usualCombo.find((v) => v.variant === (variants[id] ?? c.usualCombo[0]!.variant))?.actions.map((a) => a.action + (a.then ? `→${a.then}` : '')).join(', ')}</span>
                 </li>
               );

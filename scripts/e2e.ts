@@ -58,7 +58,6 @@ try {
 
   // Weapon comparer
   await page.getByRole('tab', { name: 'Weapon comparer' }).click();
-  await page.getByRole('button', { name: 'Pick all' }).click();
   await page.getByRole('button', { name: 'Compare' }).click();
   await page.getByText('Results (sorted by team DPS)').waitFor({ timeout: 180_000 });
   await page.screenshot({ path: `${shots}/8-compare.png`, fullPage: true });

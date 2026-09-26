@@ -16,6 +16,8 @@ export interface MemberSpec {
   weapons: string[];
   /** Artifact sets worn (set id → pieces). */
   sets: Record<string, number>;
+  /** The user picked this weapon: skip the ownership check and use this refinement (default: the roster's). */
+  pinned?: { refinement?: number };
   /** Main stat alternatives per slot, best first. Falls back to the character's recommended main stats. */
   mainStats?: { sands: string[]; goblet: string[]; circlet: string[] };
 }
@@ -66,7 +68,7 @@ export function buildMember(kb: KbData, m: MemberSpec, opts: BuildOptions, notic
   const assumeAll = roster?.settings.assumeAllWeapons ?? true;
   const owned = (id: string) => assumeAll || (roster?.weapons[id]?.owned ?? false);
 
-  let weaponId = m.weapons.find(owned);
+  let weaponId = m.pinned ? m.weapons[0] : m.weapons.find(owned);
   if (!weaponId && m.weapons.length === 0) {
     weaponId = defaultWeapon(kb, c.weaponType, owned);
     notices.push(`${c.id}: no recommended weapon in the knowledge base; using ${weaponId} (highest base ATK of the type)`);
@@ -78,7 +80,7 @@ export function buildMember(kb: KbData, m: MemberSpec, opts: BuildOptions, notic
   }
   const weapon = kb.weapons.get(weaponId);
   if (!weapon) throw new Error(`unknown weapon "${weaponId}"`);
-  const refinement = roster?.weapons[weaponId]?.refinement ?? 1;
+  const refinement = m.pinned?.refinement ?? roster?.weapons[weaponId]?.refinement ?? 1;
 
   const rc = roster?.characters[c.id];
   const input = buildCharacterInput(c, {

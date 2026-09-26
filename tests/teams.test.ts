@@ -128,3 +128,15 @@ describe('Stellar-Conduct team: Cryo Traveler vs Kaeya', () => {
     expect(traveler.relaxed.perCharacterDps['traveler-cryo']!).toBeGreaterThan(kaeya.relaxed.perCharacterDps['kaeya']!);
   });
 });
+
+describe('custom team builds', () => {
+  it('uses the chosen weapon, refinement and 4pc set instead of the recommended build', () => {
+    const team = { order: ['xiangling', 'bennett', 'xingqiu', 'zhongli'], builds: { xiangling: { weapon: 'the-catch', refinement: 5, set: 'emblem-of-severed-fate' } } };
+    const input = customRunInput(kb, team);
+    const run = runTeam(kb, input);
+    const m = run.members.find((x) => x.character === 'xiangling')!;
+    expect(m.weaponId).toBe('the-catch');
+    expect(m.refinement).toBe(5);
+    expect(input.members[0]!.sets).toEqual({ 'emblem-of-severed-fate': 4 });
+  });
+});

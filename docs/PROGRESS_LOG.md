@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-26 — Per-character weapon/set choice; two-weapon comparer
+
+- Milestone: M8 (UI).
+- Done: Custom team lets each selected character pick a weapon (with refinement) and a 4pc artifact set (`CustomTeam.builds`, `MemberSpec.pinned`). Weapon comparer now compares Weapon A against Weapon B (each with refinement) instead of a baseline plus a list; deltas are B vs A.
+- KB changes: none.
+- Tests / validation: `npx vitest run` 115 pass; lint, tsc clean; `npm run e2e` ok.
+- Blockers: none.
+- Next: same weapon/set pickers for known-team mode; 2pc+2pc set mixes.
+
+---
+
 ## 2026-09-26 — Sandrone and Alyosha written from in-game text
 
 - Milestone: M7.

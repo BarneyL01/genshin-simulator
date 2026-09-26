@@ -12,6 +12,8 @@ export interface CustomTeam {
   variants?: Record<string, string>;
   /** Rotation length in seconds; default = the longest skill/burst cooldown used by the chosen combos. */
   lengthSeconds?: number;
+  /** Per-character choices; anything missing follows the character's recommended build. */
+  builds?: Record<string, { weapon?: string; refinement?: number; set?: string }>;
 }
 
 export interface CustomRotation {
@@ -76,10 +78,12 @@ export function customRunInput(kb: KbData, team: CustomTeam): RunInput & { notes
   const rot = buildCustomRotation(kb, team);
   const members: MemberSpec[] = team.order.map((id) => {
     const c = kb.characters.get(id)!;
+    const b = team.builds?.[id];
     return {
       character: id,
-      weapons: c.recommended.weapons.map((w) => w.id),
-      sets: c.recommended.artifacts[0]?.sets ?? {},
+      weapons: b?.weapon ? [b.weapon] : c.recommended.weapons.map((w) => w.id),
+      pinned: b?.weapon ? { refinement: b.refinement } : undefined,
+      sets: b?.set ? { [b.set]: 4 } : c.recommended.artifacts[0]?.sets ?? {},
     };
   });
   return { label: 'Custom team (custom rotation)', members, rotation: rot.script, notes: rot.notes };
