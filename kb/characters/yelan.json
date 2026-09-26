@@ -28,14 +28,32 @@
           "multiplier cross-check"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/yelan-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/hydro/yelan",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "Skill and burst damage scale with Max HP (hits use scaling \"hp\").",
     "Exquisite Throw, the A4 damage ramp and the A1 Max HP bonus run through hook \"yelan\" (src/engine/hooks/yelan.ts, tested in tests/hooks.test.ts). A4 applies only while the attacker is on the field.",
     "Only the skill press is modelled (no hold, no Breakthrough Barb / aimed shots, no plunge). C1 extra charge is not modelled.",
@@ -596,8 +614,46 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "aqua-simulacra",
+        "source": "keqingmains"
+      },
+      {
+        "id": "favonius-warbow",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "emblem-of-severed-fate": 4
+        },
+        "source": "keqingmains"
+      },
+      {
+        "sets": {
+          "noblesse-oblige": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "hp%",
+        "er"
+      ],
+      "goblet": [
+        "dmgBonus.hydro",
+        "hp%"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg",
+        "hp%"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "yelan",

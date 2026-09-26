@@ -28,14 +28,32 @@
           "multiplier cross-check"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/raiden-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/electro/raiden-shogun",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "Musou Isshin sword attacks are the extra actions sword-n1..sword-n5 and sword-charged; rotations must use them after the burst (they count as normal/charged attacks for triggers but deal burst DMG).",
     "Resolve, energy restoration and the Eye run through hook \"raiden\" (src/engine/hooks/raiden.ts, tested in tests/hooks.test.ts). A1 (Resolve per particle) and C6 are not modelled.",
     "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
@@ -1229,8 +1247,40 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "engulfing-lightning",
+        "source": "keqingmains"
+      },
+      {
+        "id": "the-catch",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "emblem-of-severed-fate": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "atk%",
+        "er",
+        "em"
+      ],
+      "goblet": [
+        "dmgBonus.electro",
+        "atk%"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "raiden",

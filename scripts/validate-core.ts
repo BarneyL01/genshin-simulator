@@ -17,6 +17,18 @@ export interface Issue {
   message: string;
 }
 
+/** Action names a rotation may use for a character: n1..nK, charged, plunge, skill, burst and extra actions. */
+export function actionNames(c: Character): Set<string> {
+  const names = new Set<string>(Object.keys(c.extraActions));
+  const t = c.talents;
+  (t.normal?.hits ?? []).forEach((_, i) => names.add(`n${i + 1}`));
+  for (const k of ['charged', 'plunge', 'skill', 'burst'] as const) {
+    const b = t[k];
+    if (b && (b.hits.length > 0 || b.frames)) names.add(k);
+  }
+  return names;
+}
+
 /** Schema, filename/id, cross-reference and hook checks over loaded records. */
 export function validateRecords(records: LoadedRecord[]): { issues: Issue[]; parsed: Parsed } {
   const issues: Issue[] = [];
@@ -56,8 +68,21 @@ export function validateRecords(records: LoadedRecord[]): { issues: Issue[]; par
       for (const w of m.weapons) ref(file, 'weapons', w, `members[${m.slot}].weapons`);
       for (const a of m.artifacts) for (const s of Object.keys(a.sets)) ref(file, 'artifacts', s, `members[${m.slot}].artifacts`);
     }
-    for (const step of t.rotation.script) {
-      if (!members.has(step.char)) issues.push({ file, message: `rotation.script: "${step.char}" is not a team member` });
+    const steps = t.rotation.script.flatMap((item) => ('steps' in item ? item.steps : [item]));
+    for (const step of steps) {
+      if (!members.has(step.char)) {
+        issues.push({ file, message: `rotation.script: "${step.char}" is not a team member` });
+        continue;
+      }
+      const c = parsed.characters.get(step.char);
+      if (c && step.action !== 'wait' && !actionNames(c).has(step.action)) {
+        issues.push({ file, message: `rotation.script: ${step.char} has no action "${step.action}"` });
+      }
+    }
+    for (const item of t.rotation.script) {
+      if ('steps' in item && 'untilBuffEnds' in item.repeat && !members.has(item.repeat.untilBuffEnds.source)) {
+        issues.push({ file, message: `rotation.script: untilBuffEnds source "${item.repeat.untilBuffEnds.source}" is not a team member` });
+      }
     }
   }
   return { issues, parsed };

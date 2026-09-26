@@ -93,6 +93,11 @@ export const spec: CharacterSpec = {
       assumption: 'Duration is the 10 s Pyronado (C4 duration extension not modelled).',
     }] },
   ],
+  recommended: {
+    weapons: [{ id: 'the-catch', source: 'keqingmains' }, { id: 'favonius-lance', source: 'keqingmains' }, { id: 'staff-of-homa', source: 'keqingmains' }, { id: 'engulfing-lightning', source: 'keqingmains' }],
+    artifacts: [{ sets: {"emblem-of-severed-fate": 4}, source: 'keqingmains' }, { sets: {"crimson-witch-of-flames": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["er", "em", "atk%"], goblet: ["dmgBonus.pyro"], circlet: ["critRate", "critDmg"], source: 'keqingmains' },
+  },
   usualCombo: [
     { variant: 'off-field', actions: [{ action: 'burst' }, { action: 'skill' }] },
   ],
@@ -109,6 +114,7 @@ export const spec: CharacterSpec = {
     { field: 'talents.normal.frames.cancel.normal', values: { gcsim: [20, 17, 28, 37, 70], keqingmains: [26, 22, 37, 54, 80] }, chosen: 'gcsim', note: 'N1..N5 to next normal attack' },
   ],
   extraSources: [
+    { site: 'keqingmains', url: 'https://keqingmains.com/q/xiangling-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] },
     { site: 'keqingmains', url: 'https://library.keqingmains.com/characters/pyro/xiangling', fields: ['frames cross-check', 'ICD', 'particles', 'passive/constellation notes'] },
   ],
 };

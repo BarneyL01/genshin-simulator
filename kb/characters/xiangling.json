@@ -31,6 +31,16 @@
       },
       {
         "site": "keqingmains",
+        "url": "https://keqingmains.com/q/xiangling-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
         "url": "https://library.keqingmains.com/characters/pyro/xiangling",
         "retrieved": "2026-09-25",
         "fields": [
@@ -38,6 +48,14 @@
           "ICD",
           "particles",
           "passive/constellation notes"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/xiangling",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
         ]
       }
     ],
@@ -83,9 +101,9 @@
     ],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "Constellations C2 and C4 need hooks; both are inactive at the default C0.",
     "Frame conflict: KeqingMains lists longer animation lengths than gcsim (burst 97 vs 80 frames to any next action, 96 vs 79 to swap; N1..N5 to next NA 26/22/37/54/80 vs 20/17/28/37/70). gcsim is used per docs/DATA_SOURCES.md; hitmarks agree exactly.",
     "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
@@ -736,6 +754,8 @@
     }
   ],
   "effects": [],
+  "extraActions": {},
+  "hookHits": {},
   "usualCombo": [
     {
       "variant": "off-field",
@@ -750,8 +770,53 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "the-catch",
+        "source": "keqingmains"
+      },
+      {
+        "id": "favonius-lance",
+        "source": "keqingmains"
+      },
+      {
+        "id": "staff-of-homa",
+        "source": "keqingmains"
+      },
+      {
+        "id": "engulfing-lightning",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "emblem-of-severed-fate": 4
+        },
+        "source": "keqingmains"
+      },
+      {
+        "sets": {
+          "crimson-witch-of-flames": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "er",
+        "em",
+        "atk%"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "xiangling.c2",

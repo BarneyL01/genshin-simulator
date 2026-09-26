@@ -109,6 +109,12 @@ export const spec: CharacterSpec = {
       }),
     ] },
   ],
+  recommended: {
+    weapons: [{ id: 'staff-of-homa', source: 'keqingmains' }],
+    artifacts: [{ sets: {"crimson-witch-of-flames": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["em", "hp%"], goblet: ["dmgBonus.pyro"], circlet: ["critRate", "critDmg"], source: 'keqingmains' },
+  },
+  extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/hu-tao-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] }],
   usualCombo: [
     { variant: 'on-field', actions: [
       { action: 'skill' }, { action: 'burst' },

@@ -87,6 +87,11 @@ export const spec: CharacterSpec = {
       }),
     ] },
   ],
+  recommended: {
+    weapons: [{ id: 'favonius-sword', source: 'keqingmains' }, { id: 'aquila-favonia', source: 'keqingmains' }],
+    artifacts: [{ sets: {"noblesse-oblige": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["er", "hp%"], goblet: ["hp%"], circlet: ["healingBonus", "hp%"], source: 'keqingmains' },
+  },
   usualCombo: [{ variant: 'off-field', actions: [{ action: 'burst' }, { action: 'skill' }] }],
   hooks: ['bennett.c4'],
   needsHook: true,
@@ -96,5 +101,6 @@ export const spec: CharacterSpec = {
     'C4 needs a hook and the hold skill; inactive at the default C0.',
     'usualCombo is provisional pending /kb-update-teams (KeqingMains rotation).',
   ],
-  extraSources: [],
+  extraSources: [
+    { site: 'keqingmains', url: 'https://keqingmains.com/q/bennett-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] },],
 };

@@ -92,6 +92,12 @@ export const spec: CharacterSpec = {
       H('xingqiu.c6', 'always'),
     ] },
   ],
+  recommended: {
+    weapons: [{ id: 'favonius-sword', source: 'keqingmains' }],
+    artifacts: [{ sets: {"emblem-of-severed-fate": 4}, source: 'keqingmains' }, { sets: {"noblesse-oblige": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["er", "atk%"], goblet: ["dmgBonus.hydro"], circlet: ["critRate", "critDmg"], source: 'keqingmains' },
+  },
+  extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/xingqiu-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] }],
   usualCombo: [{ variant: 'off-field', actions: [{ action: 'skill' }, { action: 'burst' }] }],
   hooks: ['xingqiu'],
   needsHook: true,

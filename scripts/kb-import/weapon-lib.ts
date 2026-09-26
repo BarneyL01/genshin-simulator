@@ -13,6 +13,9 @@ export interface WeaponSpec {
   /** gcsim directory under internal/weapons (e.g. "spear/catch") whose formulas were compared with genshin-db. */
   gcsimDir?: string;
   assumptions?: string[];
+  /** Set when the obtain method was read from a source page listed in `extraSources`. */
+  obtainVerified?: boolean;
+  extraSources?: Array<{ site: string; url: string; fields: string[] }>;
   dataConfidence?: 'high' | 'medium' | 'low';
   conflicts?: Weapon['provenance']['conflicts'];
 }
@@ -30,6 +33,7 @@ export function buildWeapon(spec: WeaponSpec): Weapon {
       fields: ['passive formula cross-check', 'passive behaviour (triggers, cooldowns)'],
     });
   }
+  for (const e of spec.extraSources ?? []) sources.push({ ...e, retrieved: RETRIEVED });
   return weaponSchema.parse({
     id: spec.id,
     name: w.name,
@@ -42,7 +46,7 @@ export function buildWeapon(spec: WeaponSpec): Weapon {
     passive: { name: w.effectName, text: w.r1.description, effects: spec.effects },
     assumptions: [
       ...(spec.gcsimDir ? [] : ['Passive values are from genshin-db only (no gcsim cross-check).']),
-      'Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the "R5 obtainable" hint.',
+      ...(spec.obtainVerified ? [] : ['Obtain method comes from community knowledge; it has not been verified in a source page. It only drives the "R5 obtainable" hint.']),
       ...(spec.assumptions ?? []),
     ],
     needsHook: spec.needsHook ?? false,

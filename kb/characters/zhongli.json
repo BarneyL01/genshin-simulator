@@ -28,14 +28,32 @@
           "multiplier cross-check"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/zhongli-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/geo/zhongli",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "The default skill action is the hold variant (damage, Jade Shield, stele if below the limit); the press variant is the extra action skill-press. Steles resonate every 120 frames for 1860 frames through hook \"zhongli\" (src/engine/hooks/zhongli.ts, tested in tests/hooks.test.ts).",
     "Shield strength, healing, Fortify (A1) and petrification are not modelled; only the RES reduction matters here. The Jade Shield RES reduction is a value from gcsim (not in genshin-db labels).",
     "Resonance with other constructs (extra hits per nearby construct) is not modelled.",
@@ -805,8 +823,37 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "favonius-lance",
+        "source": "keqingmains"
+      },
+      {
+        "id": "black-tassel",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "tenacity-of-the-millelith": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "hp%"
+      ],
+      "goblet": [
+        "hp%"
+      ],
+      "circlet": [
+        "hp%",
+        "critRate"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "zhongli"

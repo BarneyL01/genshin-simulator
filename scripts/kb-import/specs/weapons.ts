@@ -21,7 +21,8 @@ const favonius = (id: string, name: string): Effect[] =>
 
 export const specs: WeaponSpec[] = [
   {
-    id: 'the-catch', dbName: 'The Catch', gcsimDir: 'spear/catch', obtain: { method: 'shop', freeRefinement: null },
+    id: 'the-catch', dbName: 'The Catch', gcsimDir: 'spear/catch', obtain: { method: 'shop', freeRefinement: 5 }, obtainVerified: true,
+    extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/raiden-quickguide/', fields: ['obtain: free from the Inazuma Fishing Association; R5 attainable by fishing'] }],
     effects: [
       E({ id: 'the-catch.burst-dmg', stat: 'dmgBonus.burst', value: per('The Catch', 0) }),
       E({ id: 'the-catch.burst-cr', stat: 'critRate.burst', value: per('The Catch', 1) }),

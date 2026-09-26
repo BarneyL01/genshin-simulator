@@ -308,6 +308,7 @@ export function simulate(input: SimInput): SimResult {
   };
 
   const MAX_REPEATS = 60;
+  /** Returns false when a duration-bound repeat has to stop (the next action would start after the buff ended). */
   const runSteps = (steps: RotationItem[]): void => {
     for (const item of steps) {
       if (!('steps' in item)) {
@@ -315,17 +316,22 @@ export function simulate(input: SimInput): SimResult {
         runAction(item);
         continue;
       }
-      for (let n = 0; n < MAX_REPEATS; n++) {
-        if ('times' in item.repeat) {
-          if (n >= item.repeat.times) break;
-        } else {
-          const end = buffEnd(item.repeat.untilBuffEnds.effect, item.repeat.untilBuffEnds.source);
-          const head = item.steps.find((s) => s.action !== 'wait');
-          const char = head && byId.get(head.char);
-          if (end === undefined || !head || !char) break;
-          if (computeStart(char, actionKind(head.action)).start >= end) break;
+      const until = 'untilBuffEnds' in item.repeat ? item.repeat.untilBuffEnds : undefined;
+      const times = 'times' in item.repeat ? item.repeat.times : MAX_REPEATS;
+      let stopped = false;
+      for (let n = 0; n < times && !stopped; n++) {
+        for (const step of item.steps) {
+          if (until) {
+            // Clip to the buff: stop as soon as an action would start after it ended (or if it never started).
+            const end = buffEnd(until.effect, until.source);
+            const char = byId.get(step.char);
+            if (step.action !== 'wait' && char && (end === undefined || computeStart(char, actionKind(step.action)).start >= end)) {
+              stopped = true;
+              break;
+            }
+          }
+          runAction(step);
         }
-        runSteps(item.steps);
       }
     }
   };

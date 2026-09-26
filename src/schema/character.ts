@@ -105,6 +105,10 @@ export const character = z.object({
     .object({
       weapons: z.array(z.object({ id: z.string(), source: z.string() })).default([]),
       artifacts: z.array(z.object({ sets: z.record(z.string(), z.number()), source: z.string() })).default([]),
+      /** Preferred main stats per slot, best first (stat keys). Used by KQMS for teams without their own main stats. */
+      mainStats: z
+        .object({ sands: z.array(z.string()).min(1), goblet: z.array(z.string()).min(1), circlet: z.array(z.string()).min(1), source: z.string() })
+        .optional(),
     })
     .default({ weapons: [], artifacts: [] }),
   hooks: z.array(z.string()).default([]),

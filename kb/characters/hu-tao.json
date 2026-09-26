@@ -28,14 +28,32 @@
           "multiplier cross-check"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/hu-tao-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/hu-tao",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "Normal and charged attack frames are the Paramita Papilio versions (gcsim ppAttack / ppCharge); the plain versions differ slightly and are not in the KB. Normal attacks become Pyro through the skill's infusion.",
     "The burst is the Low HP version (Hu Tao at or below 50% HP), as are A4 and the Staff of Homa bonus. The sim does not track HP.",
     "Blood Blossom runs through hook \"hutao\" (src/engine/hooks/hutao.ts, tested in tests/hooks.test.ts).",
@@ -735,8 +753,34 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "staff-of-homa",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "crimson-witch-of-flames": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "em",
+        "hp%"
+      ],
+      "goblet": [
+        "dmgBonus.pyro"
+      ],
+      "circlet": [
+        "critRate",
+        "critDmg"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "hutao",

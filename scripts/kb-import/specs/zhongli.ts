@@ -98,6 +98,12 @@ export const spec: CharacterSpec = {
     { level: 5, text: 'Increases the Level of Planet Befall by 3 (max 15).', talentLevelBonus: { burst: 3 }, effects: [] },
     { level: 6, text: 'When the Jade Shield takes DMG, 40% of it is converted to HP (max 8% Max HP).', effects: [] },
   ],
+  recommended: {
+    weapons: [{ id: 'favonius-lance', source: 'keqingmains' }, { id: 'black-tassel', source: 'keqingmains' }],
+    artifacts: [{ sets: {"tenacity-of-the-millelith": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["hp%"], goblet: ["hp%"], circlet: ["hp%", "critRate"], source: 'keqingmains' },
+  },
+  extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/zhongli-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] }],
   usualCombo: [
     { variant: 'off-field', actions: [{ action: 'skill' }] },
     { variant: 'off-field-burst', actions: [{ action: 'skill' }, { action: 'burst' }] },

@@ -142,6 +142,12 @@ export const spec: CharacterSpec = {
       }),
     ] },
   ],
+  recommended: {
+    weapons: [{ id: 'engulfing-lightning', source: 'keqingmains' }, { id: 'the-catch', source: 'keqingmains' }],
+    artifacts: [{ sets: {"emblem-of-severed-fate": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["atk%", "er", "em"], goblet: ["dmgBonus.electro", "atk%"], circlet: ["critRate", "critDmg"], source: 'keqingmains' },
+  },
+  extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/raiden-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] }],
   usualCombo: [
     { variant: 'on-field', actions: [
       { action: 'skill' }, { action: 'burst' },

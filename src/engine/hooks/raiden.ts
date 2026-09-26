@@ -81,6 +81,10 @@ registerHook('raiden', (api) => {
     case 'raiden.musou.restore.charged': {
       const a = api.action;
       if (!a || !a.name.startsWith('sword-') || st.musouEnd === undefined) return;
+      if (a.start > st.musouEnd) {
+        api.assume(`${api.owner.id}: ${a.name} starts after Musou Isshin ended, so it would be an ordinary normal attack; shorten the combo.`);
+        return;
+      }
       const er = Math.max(api.stats(api.owner).er - 1, 0);
       const amount = api.value * (1 + A4_ENERGY_PER_ER * er);
       for (const f of a.hitFrames) {

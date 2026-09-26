@@ -85,8 +85,9 @@ export interface RotationStep {
 }
 
 /**
- * A group of steps repeated a number of times, or for as long as a buff lasts (checked before each
- * repetition: the group runs again while its first action would start before the buff ends).
+ * A group of steps repeated a number of times, or for as long as a buff lasts: with `untilBuffEnds`
+ * every action is checked before it starts, and the repeat stops at the first one that would start
+ * after the buff has ended.
  */
 export interface RepeatStep {
   repeat: { times: number } | { untilBuffEnds: { effect: string; source: string } };

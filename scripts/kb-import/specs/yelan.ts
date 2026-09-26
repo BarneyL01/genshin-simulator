@@ -90,6 +90,12 @@ export const spec: CharacterSpec = {
       }),
     ] },
   ],
+  recommended: {
+    weapons: [{ id: 'aqua-simulacra', source: 'keqingmains' }, { id: 'favonius-warbow', source: 'keqingmains' }],
+    artifacts: [{ sets: {"emblem-of-severed-fate": 4}, source: 'keqingmains' }, { sets: {"noblesse-oblige": 4}, source: 'keqingmains' }],
+    mainStats: { sands: ["hp%", "er"], goblet: ["dmgBonus.hydro", "hp%"], circlet: ["critRate", "critDmg", "hp%"], source: 'keqingmains' },
+  },
+  extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/q/yelan-quickguide/', fields: ['recommended weapons', 'recommended artifact sets', 'recommended main stats'] }],
   usualCombo: [
     { variant: 'off-field', actions: [{ action: 'burst' }, { action: 'skill' }] },
   ],

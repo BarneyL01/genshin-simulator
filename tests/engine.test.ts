@@ -254,10 +254,19 @@ describe('rotation script features', () => {
     expect(r.actions.filter((a) => a.action === 'n1')).toHaveLength(3);
   });
 
-  it('repeats until a buff ends: the group runs while its first action would start before the buff ends', () => {
+  it('repeats until a buff ends: stops at the first action that would start after the buff ended', () => {
     // skill at 0 (cancel 40) opens the window [0, 100); n1 starts at 40, 60, 80 — a start at 100 is too late
     const r = run([{ char: 'a', action: 'skill' }, { repeat: { untilBuffEnds: { effect: 'a.window', source: 'a' } }, steps: [{ char: 'a', action: 'n1' }] }]);
     expect(r.actions.filter((a) => a.action === 'n1').map((a) => a.start)).toEqual([40, 60, 80]);
+  });
+
+  it('clips inside a group: a two-step group is cut after its first step', () => {
+    // window [0, 100): n1 at 40 (cancel 20), n2 at 60 (cancel 30), n1 at 90, n2 would start at 110 → stop
+    const r = run([
+      { char: 'a', action: 'skill' },
+      { repeat: { untilBuffEnds: { effect: 'a.window', source: 'a' } }, steps: [{ char: 'a', action: 'n1' }, { char: 'a', action: 'n2' }] },
+    ]);
+    expect(r.actions.filter((a) => a.action !== 'skill').map((a) => `${a.action}@${a.start}`)).toEqual(['n1@40', 'n2@60', 'n1@90']);
   });
 
   it('does not repeat when the buff was never applied', () => {

@@ -23,6 +23,14 @@
           "passive behaviour (triggers, cooldowns)"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/raiden-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "obtain: free from the Inazuma Fishing Association; R5 attainable by fishing"
+        ]
       }
     ],
     "conflicts": [],
@@ -30,7 +38,6 @@
   },
   "dataConfidence": "medium",
   "assumptions": [
-    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
     "gcsim formulas (DMG 0.12 + 0.04 R, CRIT 0.045 + 0.015 R) match genshin-db at every refinement."
   ],
   "type": "polearm",
@@ -45,7 +52,7 @@
   },
   "obtain": {
     "method": "shop",
-    "freeRefinement": null
+    "freeRefinement": 5
   },
   "passive": {
     "name": "Shanty",

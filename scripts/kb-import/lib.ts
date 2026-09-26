@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process';
 import gdb from 'genshin-db';
 import { character as characterSchema, type Character } from '../../src/schema/character';
 import type { Effect } from '../../src/schema/effect';
@@ -167,6 +168,23 @@ export interface CharacterSpec {
 
 const TALENT_KEY = { normal: 'combat1', charged: 'combat1', plunge: 'combat1', skill: 'combat2', burst: 'combat3' } as const;
 
+/** Fetch a page as plain text (curl; returns undefined when offline or blocked). */
+export function fetchText(url: string): string | undefined {
+  try {
+    const html = execSync(`curl -sL -m 40 -A "Mozilla/5.0" "${url}"`, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    return html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
+  } catch {
+    return undefined;
+  }
+}
+
+/** Cross-check Lv 90 base stats against a KeqingMains library character page ("A 6 90 <HP> <ATK> <DEF>"). */
+export function kqmBaseStats(url: string): { hp: number; atk: number; def: number } | undefined {
+  const text = fetchText(url);
+  const m = text && /A\s*6\s+90\s+(\d+)\s+(\d+)\s+(\d+)/.exec(text);
+  return m ? { hp: Number(m[1]), atk: Number(m[2]), def: Number(m[3]) } : undefined;
+}
+
 export function buildCharacter(spec: CharacterSpec): { record: Character; report: string[] } {
   const c = db.characters(spec.dbName);
   if (!c) throw new Error(`genshin-db has no character "${spec.dbName}"`);
@@ -261,6 +279,23 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     gameVersion: GAME_VERSION,
   };
 
+  // Second source for base stats: KeqingMains library
+  const kqmUrl = `https://library.keqingmains.com/characters/${c.elementText.toLowerCase()}/${spec.id}`;
+  const kqm = kqmBaseStats(kqmUrl);
+  let baseStatsConfirmed = false;
+  if (kqm) {
+    const close = (a: number, b: number) => Math.abs(a - b) <= 1;
+    if (close(kqm.hp, s90.hp) && close(kqm.atk, s90.attack) && close(kqm.def, s90.defense)) {
+      baseStatsConfirmed = true;
+      provenance.sources.push({ site: 'keqingmains', url: kqmUrl, retrieved: RETRIEVED, fields: ['baseStats (Lv 90 cross-check)'] });
+    } else {
+      conflicts.push({ field: 'baseStats.lv90', values: { 'genshin-db': `${s90.hp}/${s90.attack}/${s90.defense}`, keqingmains: `${kqm.hp}/${kqm.atk}/${kqm.def}` }, chosen: 'genshin-db', note: 'differs by more than rounding' });
+    }
+  }
+  report.push(`${spec.id}: base stats ${baseStatsConfirmed ? 'confirmed by KeqingMains' : kqm ? 'DIFFER from KeqingMains' : 'not cross-checked (page unavailable)'}`);
+  const allMultipliersConfirmed = mvChecked > 0 && mvChecked === mvMatched;
+  const confidence = spec.dataConfidence ?? (baseStatsConfirmed && allMultipliersConfirmed ? 'high' : 'medium');
+
   const record = characterSchema.parse({
     id: spec.id,
     name: c.name,
@@ -280,13 +315,13 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     usualCombo: spec.usualCombo,
     recommended: spec.recommended ?? { weapons: [], artifacts: [] },
     assumptions: [
-      'Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.',
+      `Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables${baseStatsConfirmed ? ' and Lv 90 base stats against KeqingMains' : ' (base stats could not be cross-checked in a second source)'}.`,
       ...(spec.assumptions ?? []),
     ],
     hooks: spec.hooks ?? [],
     needsHook: spec.needsHook ?? false,
     provenance,
-    dataConfidence: spec.dataConfidence ?? 'medium',
+    dataConfidence: confidence,
   });
 
   report.push(`${spec.id}: multiplier tables confirmed by gcsim ${mvMatched}/${mvChecked}`);

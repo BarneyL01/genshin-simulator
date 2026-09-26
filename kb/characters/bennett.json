@@ -28,14 +28,32 @@
           "multiplier cross-check"
         ],
         "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/bennett-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "recommended weapons",
+          "recommended artifact sets",
+          "recommended main stats"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://library.keqingmains.com/characters/pyro/bennett",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats (Lv 90 cross-check)"
+        ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "medium",
+  "dataConfidence": "high",
   "assumptions": [
-    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables and Lv 90 base stats against KeqingMains.",
     "Only the press variant of the skill is modelled; the hold variants (Charge Level 1/2) and the charged attack are not in the KB.",
     "Frames are gcsim. The Fantastic Voyage ATK buff is applied 34 frames after the cast and lasts 846 frames (12 s of ticks plus 126 frames of the last tick).",
     "C4 needs a hook and the hold skill; inactive at the default C0.",
@@ -569,6 +587,7 @@
       "assumption": "The field buffs whoever is on the field (assumed inside the field radius and above 70% HP, so the ATK bonus applies)."
     }
   ],
+  "extraActions": {},
   "hookHits": {},
   "usualCombo": [
     {
@@ -584,8 +603,38 @@
     }
   ],
   "recommended": {
-    "weapons": [],
-    "artifacts": []
+    "weapons": [
+      {
+        "id": "favonius-sword",
+        "source": "keqingmains"
+      },
+      {
+        "id": "aquila-favonia",
+        "source": "keqingmains"
+      }
+    ],
+    "artifacts": [
+      {
+        "sets": {
+          "noblesse-oblige": 4
+        },
+        "source": "keqingmains"
+      }
+    ],
+    "mainStats": {
+      "sands": [
+        "er",
+        "hp%"
+      ],
+      "goblet": [
+        "hp%"
+      ],
+      "circlet": [
+        "healingBonus",
+        "hp%"
+      ],
+      "source": "keqingmains"
+    }
   },
   "hooks": [
     "bennett.c4"
