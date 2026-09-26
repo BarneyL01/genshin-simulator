@@ -51,6 +51,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
       gauge: h.gauge,
       icd: h.icd,
       strike: h.strike,
+      stellar: h.stellar && { mv: h.stellar.mv[Math.min(lvl, h.stellar.mv.length) - 1]!, basePer100Atk: h.stellar.basePer100Atk, baseMax: h.stellar.baseMax },
     };
     return [base, ...(h.extraHitmarks ?? []).map((frame, i) => ({ ...base, frame, mv: h.extraMv?.[i] ? h.extraMv[i]![Math.min(lvl, h.extraMv[i]!.length) - 1]! : base.mv }))];
   };

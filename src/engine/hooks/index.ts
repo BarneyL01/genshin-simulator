@@ -8,4 +8,5 @@ import './yelan';
 import './zhongli';
 import './stellar';
 import './travelercryo';
+import './alyosha';
 import './fischl';

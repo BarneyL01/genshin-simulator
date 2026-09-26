@@ -452,6 +452,10 @@ export function simulate(input: SimInput): SimResult {
       // Elemental infusion: physical normal/charged/plunge hits take the element of an active infusion.
       let hit = p.hit;
       for (const tf of hitTransforms) hit = tf({ char: p.char, hit, action: p.action, frame: p.frame }) ?? hit;
+      if (hit.stellar && engine.polestarActive(p.frame)) {
+        // Radiance: Stellar-Conduct form: own multiplier, no element application, ignores DEF, base damage grows with ATK
+        hit = { ...hit, mv: hit.stellar.mv, gauge: 0, defIgnore: 1, stellar: undefined, baseMult: (hit.baseMult ?? 0) + Math.min((stats.atk / 100) * hit.stellar.basePer100Atk, hit.stellar.baseMax) };
+      }
       if (!hit.ignoreInfusion && hit.element === 'physical' && (hit.talent === 'normal' || hit.talent === 'charged' || hit.talent === 'plunge')) {
         const inf = INFUSIONS.find((e) => (mods[`infusion.${e}`] ?? 0) > 0);
         if (inf) hit = { ...hit, element: inf };

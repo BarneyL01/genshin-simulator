@@ -35,7 +35,7 @@
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
     "main stats are a generic template (KQM quick guide row not parsed)",
-    "Patched: only the Hunter's Precision ATK% buff is added. No gcsim source exists for Alyosha (frames estimated). Tugarin's periodic attacks, healing, the Stellar-Conduct DMG% buff (he cannot enable Stellar-Conduct himself) and the constellations are NOT modelled."
+    "Patched from in-game text: Hunter's Precision ATK%, burst ticks every 2 s for 14 s, A2 ER-based DMG bonus. Frames are estimated. Not modelled: Hunter's Mark state, healing, Stellar-Conduct DMG% buff, constellations."
   ],
   "rarity": 4,
   "element": "electro",
@@ -543,11 +543,134 @@
       "duration": 900,
       "maxStacks": 1,
       "snapshot": false,
-      "assumption": "Hunter's Precision ATK% for the on-field character, starting 30 frames after the cast, for an assumed 15 s; the Hunter's Mark is assumed to be activated by the on-field character's first hit."
+      "assumption": "Hunter's Precision ATK% for the on-field character, starting 30 frames after the cast for 15 s; the Hunter's Mark is assumed to be activated by the on-field character's first hit."
+    },
+    {
+      "id": "alyosha.burst-field",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "duration": 840,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "alyosha",
+      "assumption": "Field and Tugarin strike every 2 s for 14 s; first strike at the burst hitmark. Tick timing is estimated."
+    },
+    {
+      "id": "alyosha.a2-er",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "dmgBonus.skill",
+      "value": 0,
+      "scaling": {
+        "from": "self.er",
+        "ratio": 0.35,
+        "cap": 0.7
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "A2: +0.35% skill DMG per 1% ER, max 70%; ER read as the total ER multiplier (200% ER = max)."
+    },
+    {
+      "id": "alyosha.a2-er-burst",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "dmgBonus.burst",
+      "value": 0,
+      "scaling": {
+        "from": "self.er",
+        "ratio": 0.35,
+        "cap": 0.7
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "A2, burst part."
     }
   ],
   "extraActions": {},
-  "hookHits": {},
+  "hookHits": {
+    "field": {
+      "name": "Fulgurite Hunting Field (tick)",
+      "mv": [
+        0.7496,
+        0.80582,
+        0.86204,
+        0.937,
+        0.99322,
+        1.04944,
+        1.1244,
+        1.19936,
+        1.27432,
+        1.34928,
+        1.42424,
+        1.4992,
+        1.5929,
+        1.6866,
+        1.7803
+      ],
+      "scaling": "atk",
+      "element": "electro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "burst",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    },
+    "tugarin": {
+      "name": "Tugarin (tick)",
+      "mv": [
+        0.502232,
+        0.539899,
+        0.577567,
+        0.62779,
+        0.665457,
+        0.703125,
+        0.753348,
+        0.803571,
+        0.853794,
+        0.904018,
+        0.954241,
+        1.004464,
+        1.067243,
+        1.130022,
+        1.192801
+      ],
+      "scaling": "atk",
+      "element": "electro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "burst",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    }
+  },
   "usualCombo": [
     {
       "variant": "off-field",
@@ -595,6 +718,8 @@
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "alyosha"
+  ],
+  "needsHook": true
 }

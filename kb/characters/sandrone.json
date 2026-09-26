@@ -35,7 +35,7 @@
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
     "main stats are a generic template (KQM quick guide row not parsed)",
-    "Patched: only the Stellar-Conduct enabling passive and the Elemental Mastery passive are modelled. No gcsim source exists for Sandrone, so all frames are estimated. Fagio's Decoding Power, Stellar-Conduct/Stellar Swirl damage variants of her attacks and constellations are NOT modelled."
+    "Patched from in-game text: Prism Shot x2 and burst (Bombardment x3 + Ray). Inside a Polestar Field the 2nd Prism Shot and the Ray use their Stellar-Conduct multipliers, apply no element, ignore DEF and gain 0.7% base DMG per 100 ATK (max 14%, A3). Frames are estimated (borrowed from another character). Not modelled: Fagio / Decoding Power, Stellar Swirl, constellations."
   ],
   "rarity": 5,
   "element": "cryo",
@@ -198,7 +198,7 @@
     "skill": {
       "hits": [
         {
-          "name": "Prism Shot",
+          "name": "Prism Shot 1",
           "mv": [
             0.324,
             0.3483,
@@ -241,23 +241,23 @@
           "gauge": 1
         },
         {
-          "name": "Prism Shot Stellar-Conduct",
+          "name": "Prism Shot 2",
           "mv": [
-            0.216,
-            0.2322,
-            0.2484,
-            0.27,
-            0.2862,
-            0.3024,
             0.324,
-            0.3456,
-            0.3672,
-            0.3888,
-            0.4104,
-            0.432,
-            0.459,
+            0.3483,
+            0.3726,
+            0.405,
+            0.4293,
+            0.4536,
             0.486,
-            0.513
+            0.5184,
+            0.5508,
+            0.5832,
+            0.6156,
+            0.648,
+            0.6885,
+            0.729,
+            0.7695
           ],
           "scaling": "atk",
           "element": "cryo",
@@ -281,50 +281,28 @@
             "tag": "skill",
             "group": "standard"
           },
-          "gauge": 1
-        },
-        {
-          "name": "Prism Shot Stellar Swirl",
-          "mv": [
-            0.324,
-            0.3483,
-            0.3726,
-            0.405,
-            0.4293,
-            0.4536,
-            0.486,
-            0.5184,
-            0.5508,
-            0.5832,
-            0.6156,
-            0.648,
-            0.6885,
-            0.729,
-            0.7695
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 32,
-            "cancel": {
-              "normal": 50,
-              "burst": 50,
-              "dash": 39,
-              "jump": 38,
-              "swap": 49,
-              "default": 52
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "skill",
-            "group": "standard"
-          },
-          "gauge": 1
+          "gauge": 1,
+          "stellar": {
+            "mv": [
+              0.216,
+              0.2322,
+              0.2484,
+              0.27,
+              0.2862,
+              0.3024,
+              0.324,
+              0.3456,
+              0.3672,
+              0.3888,
+              0.4104,
+              0.432,
+              0.459,
+              0.486,
+              0.513
+            ],
+            "basePer100Atk": 0.007,
+            "baseMax": 0.14
+          }
         }
       ],
       "cooldown": 240,
@@ -506,95 +484,28 @@
             "tag": "burst",
             "group": "standard"
           },
-          "gauge": 1
-        },
-        {
-          "name": "Convective Inhibition Ray Stellar-Conduct",
-          "mv": [
-            2.205333,
-            2.370733,
-            2.536133,
-            2.756667,
-            2.922067,
-            3.087467,
-            3.308,
-            3.528533,
-            3.749067,
-            3.9696,
-            4.190133,
-            4.410667,
-            4.686333,
-            4.962,
-            5.237667
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 36,
-            "cancel": {
-              "normal": 55,
-              "charged": 55,
-              "skill": 55,
-              "dash": 56,
-              "jump": 56,
-              "swap": 54,
-              "default": 60
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Convective Inhibition Ray Stellar Swirl",
-          "mv": [
-            3.308,
-            3.5561,
-            3.8042,
-            4.135,
-            4.3831,
-            4.6312,
-            4.962,
-            5.2928,
-            5.6236,
-            5.9544,
-            6.2852,
-            6.616,
-            7.0295,
-            7.443,
-            7.8565
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 39,
-            "cancel": {
-              "normal": 55,
-              "charged": 55,
-              "skill": 55,
-              "dash": 56,
-              "jump": 56,
-              "swap": 54,
-              "default": 60
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
+          "gauge": 1,
+          "stellar": {
+            "mv": [
+              2.205333,
+              2.370733,
+              2.536133,
+              2.756667,
+              2.922067,
+              3.087467,
+              3.308,
+              3.528533,
+              3.749067,
+              3.9696,
+              4.190133,
+              4.410667,
+              4.686333,
+              4.962,
+              5.237667
+            ],
+            "basePer100Atk": 0.007,
+            "baseMax": 0.14
+          }
         }
       ],
       "cooldown": 900,

@@ -280,3 +280,24 @@ describe('rotation script features', () => {
     expect(r.actions.filter((a) => a.action === 'n2')).toHaveLength(3);
   });
 });
+
+describe('Radiance: Stellar-Conduct hit form', () => {
+  it('uses its own multiplier, ignores DEF and adds ATK-scaled base damage only inside a Polestar Field', () => {
+    const marker = effect.parse({ id: 'm', trigger: { on: 'always' }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'stellar-conduct' });
+    const stellarHit: HitDef = { frame: 5, mv: 1, scaling: 'atk', element: 'cryo', talent: 'skill', gauge: 1, stellar: { mv: 4, basePer100Atk: 0.007, baseMax: 0.14 } };
+    const mk2 = (id: string, extra: Partial<CharacterInput> = {}) => mkChar(id, { effects: [marker], ...extra });
+    const a = mk2('a', { actions: { skill: act('skill', [stellarHit], 20) } });
+    const outside = simulate({ characters: [a], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect, rotation: [{ char: 'a', action: 'skill' }] });
+    expect(outside.hits[0]!.damage).toBeCloseTo(PER_MV); // ordinary form
+    // create a field first: a cryo aura on the enemy and an electro hit
+    const zap = mkChar('z', { element: 'electro', actions: { skill: act('skill', [{ frame: 1, mv: 0, scaling: 'atk', element: 'electro', talent: 'skill', gauge: 1 }], 10) } });
+    const inside = simulate({
+      characters: [a, zap], enemy, cycles: 1, profile: EXECUTION_PROFILES.framePerfect, enemyAura: { element: 'cryo' },
+      rotation: [{ char: 'z', action: 'skill' }, { char: 'a', action: 'skill' }],
+    });
+    const h = inside.hits.find((x) => x.char === 'a')!;
+    // 4× multiplier, DEF ignored (×2), +7% base damage (1000 ATK), plus the Polestar buff: strictly above that floor
+    expect(h.damage).toBeGreaterThan(PER_MV * 4 * 2 * 1.07);
+    expect(h.reactions).toEqual([]);
+  });
+});

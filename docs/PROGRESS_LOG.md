@@ -16,6 +16,18 @@ Entry format:
 
 ---
 
+## 2026-09-26 — Sandrone and Alyosha written from in-game text
+
+- Milestone: M7.
+- Done: hit field `stellar` (schema, engine `processHit`, builder), hook `alyosha`, rewritten patches, a test for the Stellar-Conduct hit form. No frame tables exist for either character (gcsim lacks them, KQM pages are empty), so frames stay estimates.
+- KB changes: sandrone, alyosha (see kb/CHANGELOG.md).
+- Tests: `npx vitest run` 114 pass; `tsc --noEmit` clean.
+- Result (relaxed, energy-limited): Traveler team 5,935 DPS vs Kaeya team 5,233 (+13%); frame-perfect 6,861 vs 6,499.
+- Blockers: frames for both characters; ER interpretation of Alyosha's A2 (total ER multiplier assumed).
+- Next: constellations, Hunter's Mark state, Fagio.
+
+---
+
 ## 2026-09-25 — Cryo Traveler imported; Sandrone/Fischl/Alyosha team compared with Traveler vs Kaeya
 
 - Done: Stellar-Conduct in the reaction engine; hook API extensions; Cryo Traveler kit (`scripts/kb-import/specs/traveler-cryo.ts`, hook `travelercryo`); Fischl's Oz hook; patches for Fischl, Sandrone, Alyosha; energy-limited runs (`burstPolicy`); two team archetypes; `npm run compare` (`scripts/compare-teams.ts`); tests for the reaction, the Traveler hook and the comparison (113 pass).

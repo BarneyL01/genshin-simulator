@@ -2,6 +2,11 @@
 
 Newest first. One entry per KB change or sync.
 
+## 2026-09-26 — Sandrone and Alyosha rewritten from in-game text
+- sandrone: skill = 2 Prism Shots, burst = 3 Bombardments + Ray; Radiance Stellar-Conduct forms as new hit field `stellar` (2nd Prism Shot, Ray). Not modelled: Fagio/Decoding, Stellar Swirl, constellations.
+- alyosha: burst ticks (Field + Tugarin every 2 s for 14 s, hook `alyosha`), A2 ER-based skill/burst DMG%, Hunter's Precision. Not modelled: Hunter's Mark state, healing, constellations.
+- Both: no gcsim/KQM frame data exists, frames remain estimates, `low`.
+
 ## 2026-09-25 — Cryo Traveler, Stellar-Conduct, Fischl/Sandrone/Alyosha upgrades
 - traveler-cryo (hand-written, `high`: 11/11 multiplier tables match gcsim, Lv 90 base stats match KeqingMains; male frames; hook `travelercryo`). Not modelled: Stellar Swirl, True Moon, C1, C6.
 - reactions.json: stellarConduct implemented (gcsim numbers). fischl: skill, burst, Oz and A4 rewritten from gcsim (hook `fischl`, patch). sandrone: Stellar-Conduct enabling passive and EM passive only. alyosha: Hunter's Precision ATK% only.

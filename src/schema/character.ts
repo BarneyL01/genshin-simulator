@@ -16,6 +16,11 @@ const hit = z.object({
   extraHitmarks: z.array(frames).optional(),
   /** Multiplier tables for the extra hits, when they differ from `mv` (parallel to `extraHitmarks`). */
   extraMv: z.array(z.array(z.number()).min(1)).optional(),
+  /**
+   * Radiance: Stellar-Conduct form. Inside a Polestar Field the hit uses these multipliers instead, applies no
+   * element, ignores enemy DEF, and gets `min(ATK / 100 × basePer100Atk, baseMax)` extra base damage (the character's Stellar passive).
+   */
+  stellar: z.object({ mv: z.array(z.number()).min(1), basePer100Atk: z.number(), baseMax: z.number() }).optional(),
   /** 'blunt' hits can shatter Frozen enemies. */
   strike: z.enum(['default', 'blunt']).optional(),
 });
