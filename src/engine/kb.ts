@@ -94,7 +94,13 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
 
   for (const [name, ea] of Object.entries(c.extraActions)) {
     const last = ea.hits.reduce((a, b) => (Math.max(b.frames?.hitmark ?? 0, ...(b.extraHitmarks ?? [])) >= Math.max(a.frames?.hitmark ?? 0, ...(a.extraHitmarks ?? [])) ? b : a));
-    actions[name] = { talent: ea.as, hits: ea.hits.flatMap((h) => toHits(h, ea.damageTalent)), cancel: cancelOf(last), cooldown: ea.cooldown };
+    actions[name] = {
+      talent: ea.as, hits: ea.hits.flatMap((h) => toHits(h, ea.damageTalent)), cancel: cancelOf(last), cooldown: ea.cooldown,
+      particles: ea.particles && {
+        count: ea.particles.count, perHit: ea.particles.perHit ?? false, icd: ea.particles.icd ?? 0,
+        delay: ea.particles.delay ?? CONSTANTS.particleDelayFrames, element: ea.particles.element ?? c.element,
+      },
+    };
   }
 
   const hookHits: Record<string, HitDef> = {};

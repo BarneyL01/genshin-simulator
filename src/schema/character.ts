@@ -63,6 +63,15 @@ const extraAction = z.object({
   damageTalent: talentKind,
   hits: z.array(hit).min(1),
   cooldown: frames.optional(),
+  particles: z
+    .object({
+      count: z.number(),
+      perHit: z.boolean().optional(),
+      icd: frames.optional(),
+      delay: frames.optional(),
+      element: z.enum(['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro', 'none']).optional(),
+    })
+    .optional(),
 });
 
 export const character = z.object({

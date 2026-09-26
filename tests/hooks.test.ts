@@ -254,3 +254,52 @@ describe('yelan hook', () => {
     expect(extras.every((f, i) => i === 0 || f - extras[i - 1]! >= 108)).toBe(true);
   });
 });
+
+describe('zhongli hook', () => {
+  const Zh = (id: string, trigger: string, extra: Record<string, unknown> = {}) =>
+    effect.parse({ id, trigger: { on: trigger }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'zhongli', ...extra });
+  const zhongli = (extra: CharacterInput['effects'] = []) =>
+    mk('zhongli', {
+      element: 'geo',
+      actions: {
+        skill: act('skill', [hit(48, 'geo', 'skill')], 96, { cooldown: 720 }),
+        'skill-press': act('skill', [hit(24, 'geo', 'skill')], 38, { cooldown: 240 }),
+      },
+      hookHits: {
+        'stele-initial': { frame: 0, mv: 1, scaling: 'atk', element: 'geo', talent: 'skill', gauge: 2, icd: { tag: 'skill', group: 'standard' } },
+        'stele-tick': { frame: 0, mv: 1, scaling: 'atk', element: 'geo', talent: 'skill', gauge: 1, icd: { tag: 'skill', group: 'standard' } },
+      },
+      effects: [Zh('zhongli.stele', 'onSkill', { duration: 1860 }), Zh('zhongli.shield', 'onSkill', { value: -0.2, duration: 1200 }), ...extra],
+    });
+  const run = (c: CharacterInput, rotation: string[]) =>
+    simulate({ characters: [c], enemy, cycles: 1, profile: fp, startEnergy: 'empty', rotation: rotation.map((action) => ({ char: 'zhongli', action })) });
+
+  it('hold: shield shreds all eight RES for 1200 frames from the hit; the stele resonates every 120 frames', () => {
+    const r = run(zhongli(), ['skill']);
+    const shred = r.buffs.filter((b) => b.effectId.startsWith('zhongli.jade-shield.'));
+    expect(shred).toHaveLength(8);
+    expect(shred.every((b) => b.value === -0.2 && b.start === 48 && b.end === 1248 && b.target === 'enemy')).toBe(true);
+    const ticks = r.hits.filter((h) => h.action === 'stele-tick').map((h) => h.frame);
+    expect(ticks[0]).toBe(168); // stele at 48 + 120
+    expect(ticks.every((t, i) => i === 0 || t - ticks[i - 1]! === 120)).toBe(true);
+    expect(ticks[ticks.length - 1]!).toBeLessThan(48 + 1860);
+    expect(r.hits.filter((h) => h.action === 'stele-initial')).toHaveLength(1);
+  });
+
+  it('press creates a stele but no shield; a new stele replaces the old one at the limit', () => {
+    const r = run(zhongli(), ['skill-press', 'skill-press']);
+    expect(r.buffs.filter((b) => b.effectId.startsWith('zhongli.jade-shield.'))).toHaveLength(0);
+    // second press waits for the 240-frame cooldown: stele 1 at 24, stele 2 at 240 + 24 = 264; stele 1 stops ticking at 264
+    const ticks = r.hits.filter((h) => h.action === 'stele-tick').map((h) => h.frame);
+    expect(ticks.filter((t) => t < 264 && t > 24).every((t) => (t - 24) % 120 === 0)).toBe(true);
+    const after = ticks.filter((t) => t > 264);
+    expect(after.every((t) => (t - 264) % 120 === 0)).toBe(true);
+  });
+
+  it('hold does not create a second stele at the limit; C1 allows two', () => {
+    const one = run(zhongli(), ['skill-press', 'skill']);
+    expect(one.hits.filter((h) => h.action === 'stele-initial')).toHaveLength(0);
+    const two = run(zhongli([Zh('zhongli.c1', 'always')]), ['skill-press', 'skill']);
+    expect(two.hits.filter((h) => h.action === 'stele-initial')).toHaveLength(1);
+  });
+});

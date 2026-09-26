@@ -5,3 +5,4 @@ import './xingqiu';
 import './raiden';
 import './hutao';
 import './yelan';
+import './zhongli';

@@ -17,8 +17,8 @@ export interface HookApi {
   /** The effect's `value` resolved for the owner (refinement / talent level tables applied). */
   value: number;
   stats(c: CharacterInput, frame?: number): FinalStats;
-  /** Queue one of the owner's `hookHits` at an absolute frame, optionally with extra flat base damage. */
-  hit(id: string, frame: number, opts?: { flat?: number }): void;
+  /** Queue one of the owner's `hookHits` at an absolute frame, optionally with extra flat base damage. The returned handle cancels the hit if it has not happened yet (e.g. a construct being replaced). */
+  hit(id: string, frame: number, opts?: { flat?: number }): { cancel(): void };
   /** Apply a timed stat buff/debuff (target: character id, "enemy" or "active"). */
   buff(spec: { effectId: string; target: string; stat: string; value: number; duration: number | null; maxStacks?: number; stackMode?: 'refresh' | 'independent' }, frame?: number): void;
   /** Drop particles that the whole team can collect (same rules as skill particles). */

@@ -40,6 +40,7 @@ const addMods = (a: Record<string, number>, b: Record<string, number>) => {
 };
 
 interface PendingHit {
+  cancelled?: boolean;
   cycle: number;
   frame: number;
   char: CharacterInput;
@@ -123,6 +124,7 @@ export function simulate(input: SimInput): SimResult {
         const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, hit: { ...h, frame: f, flat: (h.flat ?? 0) + (opts?.flat ?? 0) } };
         if (resolving) queueHit(p);
         else pending.push(p);
+        return { cancel: () => { p.cancelled = true; } };
       },
       buff: (b, f = frame) =>
         bm.apply({ effectId: b.effectId, source: owner.id, target: b.target, stat: b.stat, value: b.value, duration: b.duration, maxStacks: b.maxStacks ?? 1, stackMode: b.stackMode ?? 'refresh' }, f),
@@ -339,6 +341,7 @@ export function simulate(input: SimInput): SimResult {
   };
 
   const processHit = (p: PendingHit): void => {
+    if (p.cancelled) return;
     {
       const { stats, mods: own } = statsFor(p.char, p.frame);
       const mods = addMods(own, bm.enemyMods(p.frame));
