@@ -97,7 +97,7 @@ Mechanics constants live in `kb/mechanics/*.json` and are parsed with zod when t
 
 **Resolve pass.** After scheduling, every hit and every reaction follow-up (EC ticks, bloom cores, burning ticks, Lunar-Charged ticks) is processed from one frame-ordered queue.
 
-**ICD.** Per (character, ICD tag): the first hit starts a counter; the group `pattern` says which hits apply (standard `[1,0,0]`: hits 1, 4, 7...); the counter resets `resetFrames` (150) after its first hit. Hits without ICD data use tag `default`, group `standard`. A hit that does not apply neither attaches an element nor reacts, but still deals its damage.
+**ICD.** Per (character, ICD tag): the first hit starts a counter; the group `pattern` (generated from gcsim into `kb/mechanics/icd.json`, 65 groups) says which hits apply by hit index, and the last value repeats past the end (standard: hits 1, 4, 7...); the counter resets `resetFrames` (150 for standard) after its first hit. Hits without ICD data use tag `default`, group `standard`. A hit that does not apply neither attaches an element nor reacts, but still deals its damage.
 
 **Auras.** Gauge units (U) with lazy decay. Applying `g` units attaches `0.8 g` and lasts `60 × (7 + 2.5 g)` frames. Pyro refreshes when the new aura is at least the old one; other elements only refill. A trigger consumes `trigger gauge × consume` of the aura (see `pairs` in `reactions.json`); leftover trigger gauge attaches. Shatter is checked first on `strike: blunt` hits.
 
@@ -117,3 +117,27 @@ Mechanics constants live in `kb/mechanics/*.json` and are parsed with zod when t
 - Lunar-Charged only when `lunarCharged: true` is passed (team Moonsign condition); contributors are characters who applied Hydro/Electro while the aura lasts. gcsim is the only source.
 - Not implemented: Crystallize (shield), Stellar Swirl, Lunar-Crystallize, Lunar-Bloom, Stellar Conduct. Listed in `reactions.json` with `implemented: false`.
 - Swirl does not spread and adds no RES shred (shred is a character effect).
+
+## Implemented in M4–M6
+
+**Hooks.** Mechanics the Effect DSL cannot express run as named hooks in `src/engine/hooks/` (`xingqiu`, `raiden`, `hutao`, `yelan`, `zhongli`, `weapon.favonius`). A KB effect with `hook: "<id>"` is passed to the hook instead of being applied as a stat. Hooks see the trigger frame, the acting character, the action (name, start, hit frames), the owner's `hookHits` (hits no action lists), team stats, and can queue hook hits (cancellable), timed buffs, particles and flat energy. Hooks that are missing are skipped and listed in the result's `assumptions`. Each hook has tests in `tests/hooks.test.ts`.
+
+**Triggers.** `always`, `onNormal/onCharged/onPlunge/onSkill/onBurst` (the owner's own action, at its start), `onAnyNormal/onAnyBurst` (any team member's action), `onSwapIn/onSwapOut`, and `onHit` (hooks only, in the resolve pass, for every hit that deals damage). `onReaction` and `custom` are not modelled unless a hook handles them.
+
+**Effect values.** A number, `perRefinement`, or `perTalentLevel` (with `talent`: which talent's level, default burst). `scaling` replaces `value`: `base + ratio × stat` with an optional `cap` and `capFrom` (multiple of another stat), evaluated at hit time unless `snapshot: true`. Sources are `self.<atk|hp|def|em|er|critRate|critDmg|baseAtk|baseHp|baseDef>` and `target.energyMax`. `delay` starts the effect that many frames after its trigger.
+
+**Targets.** `active` applies only while the attacker is the on-field character at that frame (the on-field character is the one whose action started last). Off-field damage (Guoba, orbitals, Yelan's arrows) therefore does not receive field buffs or A4-style bonuses, as in the game.
+
+**Stat keys added:** `infusion.<element>` (physical normal/charged/plunge hits take that element), `cooldown.skill/burst` (fractional change of the cooldown), `mvBonus.hit.<hit name>` (extra multiplier on one named hit), `energyGain` (instant flat energy).
+
+**Rotation scripts.** Steps `{char, action}`, `wait`, `firstCycleOnly`, `every: N` (only every N-th cycle; measure over 1 + k × N cycles), and repeat groups: `times`, `untilBuffEnds { effect, source }` (each action is checked before it starts and the repeat stops at the first one that would start after the buff ended), `untilCycleTime` (frames after the cycle's first action). Actions are `n1..nK`, `charged`, `plunge`, `skill`, `burst` and a character's `extraActions`.
+
+**KQM Standards artifact stats** (`src/engine/kqms.ts`, `kb/mechanics/kqms.json`, values as implemented by gcsim): five 5★ level-20 pieces, fixed flower HP and feather ATK, two fixed rolls of every substat, 20 liquid rolls with at most 10 per stat (minus 2 per piece whose main stat is that stat). The simulator places the liquid rolls deterministically: first the fewest Energy Recharge rolls with which the character bursts every rotation (everyone else at maximum ER; an alternative Sands is tried when the first cannot get there), then greedily one roll at a time on the stat that raises the character's own DPS most, characters in order of DPS; a Circlet with alternatives is picked by damage. It costs about 500 simulations per team.
+
+**Team runs** (`src/kb/`): Mode A simulates a known team with its rotation; Mode B chains each character's `usualCombo` in the chosen order (rotation length defaults to the longest skill/burst cooldown used; combos that repeat "until the rotation ends" fill the rest); the weapon comparer swaps one weapon and re-optimises only that character. Results carry Relaxed and Frame-perfect numbers with identical stats.
+
+**Theorycrafting switches** (`SimInput`): `enemyAura` (an aura that comes back before every hit, e.g. "always Vaporized"), `conditionsMet: false` (skip effects with a `condition`: worst case for uncertain passives), `trace` (attach stats and modifiers to every hit), `startEnergy`, `lunarCharged`.
+
+**Validation against a published figure.** `tests/kqm-weapon-check.test.ts` reproduces KeqingMains' Hu Tao weapon table (KQMS, 4pc Crimson Witch, HP Sands, 7 N2C, burst, all hits Vaporized, no ER requirement): Staff of Homa R5 / R1 and White Tassel R5 come out within 3 points of the published percentages of a Blackcliff Pole; Black Tassel R5 is 10 points low (see `docs/OPEN_QUESTIONS.md`).
+
+**Known simplifications added in M4–M6.** No enemy defeats (Blackcliff-type stacks, Hu Tao C4), no HP tracking (HP-conditional effects are assumed met and listed), no dash or jump cancel actions (cancel frames only), hold variants of skills are modelled only where a KB character defines them (Zhongli hold, Bennett press only), summons and constructs are hooks (Guoba, orbitals, steles), particle pickups by Raiden's A1 are not counted, Yelan's recast does not remove the earlier A4 ramp.

@@ -19,7 +19,8 @@
     "kb:inspect": "tsx scripts/kb-import/inspect.ts",
     "sim": "tsx scripts/sim.ts",
     "kb:import:team": "tsx scripts/kb-import/import-team.ts",
-    "sim:team": "tsx scripts/sim-team.ts"
+    "sim:team": "tsx scripts/sim-team.ts",
+    "e2e": "tsx scripts/e2e.ts"
   },
   "dependencies": {
     "react": "^19.3.0",
@@ -35,6 +36,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "eslint": "^10.11.0",
     "genshin-db": "^5.2.14",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
