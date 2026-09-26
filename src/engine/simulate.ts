@@ -8,7 +8,7 @@ import { EXECUTION_PROFILES, FPS, type ExecutionProfile } from './profiles';
 import { ReactionEngine } from './reactions';
 import { resolveStats, sumMods } from './stats';
 import type {
-  DynamicScaling, ActionDef, ActionRecord, CharacterInput, EnemyInput, EnergyReport, HitDef, HitRecord, RotationStep, SimResult, Talent,
+  DynamicScaling, ActionDef, ActionRecord, CharacterInput, EnemyInput, EnergyReport, HitDef, HitRecord, RotationItem, RotationStep, SimResult, Talent,
 } from './types';
 
 export const SWAP_COOLDOWN = CONSTANTS.swapCooldownFrames;
@@ -16,7 +16,7 @@ export const SWAP_COOLDOWN = CONSTANTS.swapCooldownFrames;
 export interface SimInput {
   characters: CharacterInput[];
   enemy: EnemyInput;
-  rotation: RotationStep[];
+  rotation: RotationItem[];
   /** Rotation repetitions. Cycle 1 is warm-up; DPS is measured over cycles 2..N (cycle 1 if N = 1). */
   cycles: number;
   profile: ExecutionProfile;
@@ -221,75 +221,118 @@ export function simulate(input: SimInput): SimResult {
   const lastParticle = new Map<string, number>();
   let endFrame = 0;
 
-  for (cycle = 1; cycle <= cycles; cycle++) {
-    let first = true;
-    for (const step of rotation) {
-      if (step.action === 'wait') {
-        waitFrames += step.frames ?? 0;
+  let cycleFirst = true;
+
+  /** When the next action would start (before cooldown waits). */
+  const computeStart = (char: CharacterInput, kind: string): { start: number; swapped: boolean } => {
+    const swapped = prev !== null && prev.char !== char;
+    let start = 0;
+    if (prev) {
+      const key = swapped ? 'swap' : kind;
+      start = prev.start + (prev.def.cancel[key] ?? prev.def.cancel.default) + profile.actionDelay;
+      if (swapped) start = Math.max(start + profile.swapDelay, lastSwap + SWAP_COOLDOWN);
+    }
+    return { start: start + waitFrames, swapped };
+  };
+
+  const runAction = (step: RotationStep): void => {
+    if (step.action === 'wait') {
+      waitFrames += step.frames ?? 0;
+      return;
+    }
+    const char = byId.get(step.char);
+    if (!char) throw new Error(`rotation references unknown character "${step.char}"`);
+    const def = char.actions[step.action];
+    if (!def) throw new Error(`${char.id} has no action "${step.action}"`);
+    const kind = actionKind(step.action);
+    const planned = computeStart(char, kind);
+    let start = planned.start;
+    const swapped = planned.swapped;
+    waitFrames = 0;
+
+    if (def.cooldown) {
+      // `cooldown.skill` / `cooldown.burst` mods are fractional changes (−0.5 halves the cooldown).
+      const cdMod = statsFor(char, start).mods[`cooldown.${def.talent}`] ?? 0;
+      const cooldown = Math.max(0, Math.round(def.cooldown * (1 + cdMod)));
+      const ready = cooldownReady.get(`${char.id}:${step.action}`) ?? 0;
+      if (start < ready) {
+        assumptions.add(`${char.id} ${step.action} waited for cooldown (rotation is faster than the cooldown)`);
+        start = ready;
+      }
+      cooldownReady.set(`${char.id}:${step.action}`, start + cooldown);
+    }
+
+    if (swapped) {
+      lastSwap = start;
+      fire(prev!.char, 'onSwapOut', start);
+      fire(char, 'onSwapIn', start);
+    } else if (!prev) fire(char, 'onSwapIn', start);
+
+    if (def.energyCost) {
+      const { ok, had } = energy.spend(char.id, def.energyCost, start);
+      if (!ok) assumptions.add(`${char.id} burst used with insufficient energy (${had.toFixed(1)}/${def.energyCost}); it fires anyway. Raise ER or add a battery.`);
+    }
+
+    if (cycleFirst) cycleStart.push(start);
+    cycleFirst = false;
+    const actionInfo = { name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame) };
+    fire(char, TALENT_TRIGGER[def.talent], start, actionInfo);
+    if (def.talent === 'normal') for (const c of characters) fire(c, 'onAnyNormal', start, actionInfo, char);
+    if (def.talent === 'burst') for (const c of characters) fire(c, 'onAnyBurst', start, actionInfo, char);
+    actions.push({ cycle, char: char.id, action: step.action, start, end: start + def.cancel.default });
+
+    for (const hit of def.hits) pending.push({ cycle, frame: start + hit.frame, char, action: step.action, hit });
+    if (def.particles) {
+      const p = def.particles;
+      const dropHits = p.perHit ? def.hits : def.hits.slice(0, 1);
+      for (const h of dropHits) {
+        const frame = start + h.frame + p.delay;
+        const key = `${char.id}:${step.action}`;
+        if (frame - (lastParticle.get(key) ?? -Infinity) < p.icd) continue;
+        lastParticle.set(key, frame);
+        energy.addDrop({ frame, count: p.count, element: p.element, cycle });
+      }
+    }
+    prev = { char, def, start };
+    endFrame = start + def.cancel.default + profile.actionDelay;
+  };
+
+  /** End frame of the latest application of a buff, or undefined if it was never applied. */
+  const buffEnd = (effect: string, source: string): number | undefined => {
+    let end: number | undefined;
+    for (const r of bm.records) {
+      if (r.effectId !== effect || r.source !== source) continue;
+      end = Math.max(end ?? -Infinity, r.end ?? Infinity);
+    }
+    return end;
+  };
+
+  const MAX_REPEATS = 60;
+  const runSteps = (steps: RotationItem[]): void => {
+    for (const item of steps) {
+      if (!('steps' in item)) {
+        if (item.firstCycleOnly && cycle > 1) continue;
+        runAction(item);
         continue;
       }
-      const char = byId.get(step.char);
-      if (!char) throw new Error(`rotation references unknown character "${step.char}"`);
-      const def = char.actions[step.action];
-      if (!def) throw new Error(`${char.id} has no action "${step.action}"`);
-      const kind = actionKind(step.action);
-      const swapped = prev !== null && prev.char !== char;
-
-      let start = 0;
-      if (prev) {
-        const key = swapped ? 'swap' : kind;
-        start = prev.start + (prev.def.cancel[key] ?? prev.def.cancel.default) + profile.actionDelay;
-        if (swapped) start = Math.max(start + profile.swapDelay, lastSwap + SWAP_COOLDOWN);
-      }
-      start += waitFrames;
-      waitFrames = 0;
-
-      if (def.cooldown) {
-        // `cooldown.skill` / `cooldown.burst` mods are fractional changes (−0.5 halves the cooldown).
-        const cdMod = statsFor(char, start).mods[`cooldown.${def.talent}`] ?? 0;
-        const cooldown = Math.max(0, Math.round(def.cooldown * (1 + cdMod)));
-        const ready = cooldownReady.get(`${char.id}:${step.action}`) ?? 0;
-        if (start < ready) {
-          assumptions.add(`${char.id} ${step.action} waited for cooldown (rotation is faster than the cooldown)`);
-          start = ready;
+      for (let n = 0; n < MAX_REPEATS; n++) {
+        if ('times' in item.repeat) {
+          if (n >= item.repeat.times) break;
+        } else {
+          const end = buffEnd(item.repeat.untilBuffEnds.effect, item.repeat.untilBuffEnds.source);
+          const head = item.steps.find((s) => s.action !== 'wait');
+          const char = head && byId.get(head.char);
+          if (end === undefined || !head || !char) break;
+          if (computeStart(char, actionKind(head.action)).start >= end) break;
         }
-        cooldownReady.set(`${char.id}:${step.action}`, start + cooldown);
+        runSteps(item.steps);
       }
-
-      if (swapped) {
-        lastSwap = start;
-        fire(prev!.char, 'onSwapOut', start);
-        fire(char, 'onSwapIn', start);
-      } else if (!prev) fire(char, 'onSwapIn', start);
-
-      if (def.energyCost) {
-        const { ok, had } = energy.spend(char.id, def.energyCost, start);
-        if (!ok) assumptions.add(`${char.id} burst used with insufficient energy (${had.toFixed(1)}/${def.energyCost}); it fires anyway. Raise ER or add a battery.`);
-      }
-
-      if (first) cycleStart.push(start);
-      first = false;
-      const actionInfo = { name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame) };
-      fire(char, TALENT_TRIGGER[def.talent], start, actionInfo);
-      if (def.talent === 'normal') for (const c of characters) fire(c, 'onAnyNormal', start, actionInfo, char);
-      if (def.talent === 'burst') for (const c of characters) fire(c, 'onAnyBurst', start, actionInfo, char);
-      actions.push({ cycle, char: char.id, action: step.action, start, end: start + def.cancel.default });
-
-      for (const hit of def.hits) pending.push({ cycle, frame: start + hit.frame, char, action: step.action, hit });
-      if (def.particles) {
-        const p = def.particles;
-        const dropHits = p.perHit ? def.hits : def.hits.slice(0, 1);
-        for (const h of dropHits) {
-          const frame = start + h.frame + p.delay;
-          const key = `${char.id}:${step.action}`;
-          if (frame - (lastParticle.get(key) ?? -Infinity) < p.icd) continue;
-          lastParticle.set(key, frame);
-          energy.addDrop({ frame, count: p.count, element: p.element, cycle });
-        }
-      }
-      prev = { char, def, start };
-      endFrame = start + def.cancel.default + profile.actionDelay;
     }
+  };
+
+  for (cycle = 1; cycle <= cycles; cycle++) {
+    cycleFirst = true;
+    runSteps(rotation);
   }
 
   const windowStartCycle = cycles >= 2 ? 2 : 1;

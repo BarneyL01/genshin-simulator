@@ -1,0 +1,29 @@
+{
+  "id": "kqms",
+  "provenance": {
+    "sources": [
+      { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/pkg/optimization/substats.go", "retrieved": "2026-09-25", "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d", "fields": ["substat roll values", "main stat values", "liquid substat counts"] },
+      { "site": "gcsim", "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/cmd/gcsim/main.go", "retrieved": "2026-09-25", "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d", "fields": ["total_liquid_substats=20", "indiv_liquid_cap=10", "fixed_substats_count=2"] }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "This is the KQM Standard as implemented by gcsim's substat optimizer (its docs say the optimizer 'adheres to the KQM Standard'). KeqingMains' own KQMS page was not found, so the numbers are not cross-checked against it.",
+    "All values are for 5-star artifacts at level 20. Substat roll values are the averages used by gcsim."
+  ],
+  "totalLiquidSubstats": 20,
+  "individualLiquidCap": 10,
+  "fixedSubstatCount": 2,
+  "substatValues": {
+    "atk%": 0.0496, "critRate": 0.0331, "critDmg": 0.0662, "em": 19.82, "er": 0.0551,
+    "hp%": 0.0496, "def%": 0.062, "atk": 16.54, "def": 19.68, "hp": 253.94
+  },
+  "mainStatValues": {
+    "hp": 4780, "atk": 311, "atk%": 0.466, "critRate": 0.311, "critDmg": 0.622, "em": 186.5, "er": 0.518,
+    "hp%": 0.466, "def%": 0.583, "healingBonus": 0.359,
+    "dmgBonus.pyro": 0.466, "dmgBonus.hydro": 0.466, "dmgBonus.cryo": 0.466, "dmgBonus.electro": 0.466,
+    "dmgBonus.anemo": 0.466, "dmgBonus.geo": 0.466, "dmgBonus.dendro": 0.466, "dmgBonus.physical": 0.583
+  }
+}

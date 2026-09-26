@@ -8,7 +8,7 @@ import { registerHook } from './api';
  *  raiden.resolve.gain       onAnyBurst   other characters' bursts add Resolve: energy cost × `value` (cap 60)
  *  raiden.resolve.base       onBurst      consumes stacks; adds `value` × stacks MV to the hit named by trigger.filter.hit
  *  raiden.resolve.sword      onBurst      adds `value` × stacks MV to the sword hits listed in trigger.filter.hits (comma
- *                                          separated) and opens the Musou Isshin window (`duration` frames)
+ *                                          separated) and opens the Musou Isshin window (`duration` frames; buff `raiden.musou`)
  *  raiden.musou.restore.*    onNormal / onCharged   in the window, sword hits restore `value` energy (× (1 + 0.6 ER over 100%))
  *                                          to the whole team, at most once per second and 5 times per burst
  *  raiden.eye                onSkill      opens the Eye window (`duration` frames)
@@ -69,6 +69,8 @@ registerHook('raiden', (api) => {
       st.musouEnd = api.frame + dur;
       st.restoreReady = -Infinity;
       st.restoreCount = 0;
+      // State marker for the buff timeline and for rotations that repeat "until Musou Isshin ends".
+      api.buff({ effectId: 'raiden.musou', target: api.owner.id, stat: 'flatDmg.all', value: 0, duration: dur });
       for (const hit of (e.trigger.filter?.hits ?? '').split(',').filter(Boolean)) {
         api.buff({ effectId: `${e.id}.${hit}`, target: api.owner.id, stat: `mvBonus.hit.${hit}`, value: api.value * (st.consumed ?? 0), duration: dur });
       }

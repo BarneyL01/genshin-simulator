@@ -242,3 +242,32 @@ describe('dynamic scaling effects', () => {
     expect(r.hits[2]!.damage).toBeCloseTo(r.hits[0]!.damage); // still ATK% 0.5
   });
 });
+
+describe('rotation script features', () => {
+  const buff = effect.parse({ id: 'a.window', trigger: { on: 'onSkill' }, target: 'self', stat: 'flatDmg.all', value: 0, duration: 100 });
+  const chars = () => [mkChar('a', { effects: [buff] })];
+  const run = (rotation: import('../src/engine').RotationItem[], cycles = 1) =>
+    simulate({ characters: chars(), enemy, cycles, profile: EXECUTION_PROFILES.framePerfect, rotation });
+
+  it('repeats a group a fixed number of times', () => {
+    const r = run([{ char: 'a', action: 'skill' }, { repeat: { times: 3 }, steps: [{ char: 'a', action: 'n1' }] }]);
+    expect(r.actions.filter((a) => a.action === 'n1')).toHaveLength(3);
+  });
+
+  it('repeats until a buff ends: the group runs while its first action would start before the buff ends', () => {
+    // skill at 0 (cancel 40) opens the window [0, 100); n1 starts at 40, 60, 80 — a start at 100 is too late
+    const r = run([{ char: 'a', action: 'skill' }, { repeat: { untilBuffEnds: { effect: 'a.window', source: 'a' } }, steps: [{ char: 'a', action: 'n1' }] }]);
+    expect(r.actions.filter((a) => a.action === 'n1').map((a) => a.start)).toEqual([40, 60, 80]);
+  });
+
+  it('does not repeat when the buff was never applied', () => {
+    const r = run([{ repeat: { untilBuffEnds: { effect: 'a.window', source: 'a' } }, steps: [{ char: 'a', action: 'n1' }] }]);
+    expect(r.actions).toHaveLength(0);
+  });
+
+  it('firstCycleOnly steps run in cycle 1 only', () => {
+    const r = run([{ char: 'a', action: 'n1', firstCycleOnly: true }, { char: 'a', action: 'n2' }], 3);
+    expect(r.actions.filter((a) => a.action === 'n1')).toHaveLength(1);
+    expect(r.actions.filter((a) => a.action === 'n2')).toHaveLength(3);
+  });
+});

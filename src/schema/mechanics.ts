@@ -58,4 +58,16 @@ export const constantsFile = z.object({
 });
 export type ConstantsFile = z.infer<typeof constantsFile>;
 
-export const MECHANICS_FILES = { reactions: reactionsFile, icd: icdFile, constants: constantsFile } as const;
+export const kqmsFile = z.object({
+  ...base,
+  totalLiquidSubstats: z.number().int().positive(),
+  individualLiquidCap: z.number().int().positive(),
+  fixedSubstatCount: z.number().int().nonnegative(),
+  /** Value of one substat roll, by stat key (fractions; flat for em/atk/def/hp). */
+  substatValues: z.record(z.string(), z.number()),
+  /** Main stat values at 5★ level 20, by stat key. */
+  mainStatValues: z.record(z.string(), z.number()),
+});
+export type KqmsFile = z.infer<typeof kqmsFile>;
+
+export const MECHANICS_FILES = { reactions: reactionsFile, icd: icdFile, constants: constantsFile, kqms: kqmsFile } as const;

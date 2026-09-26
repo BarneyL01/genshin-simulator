@@ -80,7 +80,20 @@ export interface RotationStep {
   action: string;
   /** Frames to idle, for `wait`. */
   frames?: number;
+  /** Only performed in the first cycle (e.g. the opening skill of a rotation that is otherwise cast at the end of the previous one). */
+  firstCycleOnly?: boolean;
 }
+
+/**
+ * A group of steps repeated a number of times, or for as long as a buff lasts (checked before each
+ * repetition: the group runs again while its first action would start before the buff ends).
+ */
+export interface RepeatStep {
+  repeat: { times: number } | { untilBuffEnds: { effect: string; source: string } };
+  steps: RotationStep[];
+}
+
+export type RotationItem = RotationStep | RepeatStep;
 
 export interface FinalStats {
   hp: number;
