@@ -1,0 +1,63 @@
+{
+  "id": "emblem-of-severed-fate",
+  "name": "Emblem of Severed Fate",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": [
+        {
+          "id": "emblem.2pc.er",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "er",
+          "value": 0.2,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    },
+    "4": {
+      "effects": [
+        {
+          "id": "emblem.4pc.burst-dmg",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "dmgBonus.burst",
+          "value": 0,
+          "scaling": {
+            "from": "self.er",
+            "ratio": 0.25,
+            "cap": 0.75,
+            "base": -0.25
+          },
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "ER is read at hit time, including the 2-piece bonus."
+        }
+      ]
+    }
+  },
+  "needsHook": false
+}

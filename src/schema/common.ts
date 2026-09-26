@@ -51,3 +51,16 @@ export const recordBase = {
   dataConfidence,
   assumptions: z.array(z.string()).default([]),
 };
+
+const PERCENT_MSG = 'percentages must be stored as fractions (0.466, not 46.6)';
+const flatOk = (stat: string, n: number) => stat === 'em' || n <= 20;
+
+/** Ascension stat: a fraction, except flat Elemental Mastery. */
+export const ascensionStat = z
+  .object({ stat: z.string(), value: z.number() })
+  .refine((v) => flatOk(v.stat, v.value), { message: PERCENT_MSG, path: ['value'] });
+
+/** Weapon substat at Lv 90: a fraction, except flat Elemental Mastery. */
+export const weaponSubstat = z
+  .object({ stat: z.string(), lv90: z.number() })
+  .refine((v) => flatOk(v.stat, v.lv90), { message: PERCENT_MSG, path: ['lv90'] });

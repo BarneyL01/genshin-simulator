@@ -1,0 +1,96 @@
+{
+  "id": "aqua-simulacra",
+  "name": "Aqua Simulacra",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/bow/aqua",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "gcsim formulas (HP 0.12 + 0.04 R, DMG 0.15 + 0.05 R) match genshin-db at every refinement."
+  ],
+  "type": "bow",
+  "rarity": 5,
+  "releaseVersion": "2.7",
+  "baseAtk": {
+    "lv90": 541.829758
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.882048
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "The Cleansing Form",
+    "text": "HP is increased by 16%. When there are opponents nearby, the DMG dealt by the wielder of this weapon is increased by 20%. This will take effect whether the character is on-field or not.",
+    "effects": [
+      {
+        "id": "aqua-simulacra.hp",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "hp%",
+        "value": {
+          "perRefinement": [
+            0.16,
+            0.2,
+            0.24,
+            0.28,
+            0.32
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      },
+      {
+        "id": "aqua-simulacra.dmg",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "dmgBonus.all",
+        "value": {
+          "perRefinement": [
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false,
+        "assumption": "Enemies are always nearby, on-field or off-field (single-target sim)."
+      }
+    ]
+  },
+  "needsHook": false
+}

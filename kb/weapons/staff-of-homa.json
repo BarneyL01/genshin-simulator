@@ -1,0 +1,126 @@
+{
+  "id": "staff-of-homa",
+  "name": "Staff of Homa",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/homa",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "gcsim formulas (HP 0.15 + 0.05 R, ATK 0.006 + 0.002 R, low-HP extra 0.008 + 0.002 R) match genshin-db at every refinement."
+  ],
+  "type": "polearm",
+  "rarity": 5,
+  "releaseVersion": "1.3",
+  "baseAtk": {
+    "lv90": 608.0745972
+  },
+  "substat": {
+    "stat": "critDmg",
+    "lv90": 0.661536
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Reckless Cinnabar",
+    "text": "HP increased by 20%. Additionally, provides an ATK Bonus based on 0.8% of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK Bonus is increased by an additional 1% of Max HP.",
+    "effects": [
+      {
+        "id": "staff-of-homa.hp",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "hp%",
+        "value": {
+          "perRefinement": [
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      },
+      {
+        "id": "staff-of-homa.atk",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "atk",
+        "value": 0,
+        "scaling": {
+          "from": "self.hp",
+          "ratio": {
+            "perRefinement": [
+              0.008,
+              0.01,
+              0.012,
+              0.013999999999999999,
+              0.016
+            ]
+          }
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      },
+      {
+        "id": "staff-of-homa.atk-low-hp",
+        "trigger": {
+          "on": "always"
+        },
+        "condition": {
+          "hpBelow": 0.5
+        },
+        "target": "self",
+        "stat": "atk",
+        "value": 0,
+        "scaling": {
+          "from": "self.hp",
+          "ratio": {
+            "perRefinement": [
+              0.01,
+              0.012,
+              0.013999999999999999,
+              0.016,
+              0.018000000000000002
+            ]
+          }
+        },
+        "maxStacks": 1,
+        "snapshot": false,
+        "assumption": "Wielder HP is assumed to be below 50% (the extra ATK bonus is always on). Hu Tao rotations usually sit near or below 50% HP, but the sim does not track HP."
+      }
+    ]
+  },
+  "needsHook": false
+}

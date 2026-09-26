@@ -1,0 +1,56 @@
+{
+  "id": "black-tassel",
+  "name": "Black Tassel",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/blacktassel",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "The passive only affects DMG against slimes, so it has no effect in the default enemy setup."
+  ],
+  "type": "polearm",
+  "rarity": 3,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 354.37940000000003
+  },
+  "substat": {
+    "stat": "hp%",
+    "lv90": 0.46919900200000003
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Bane of the Soft",
+    "text": "Increases DMG against slimes by 40%.",
+    "effects": []
+  },
+  "needsHook": false
+}

@@ -57,6 +57,8 @@ export interface CharacterInput {
   baseMods: StatMod[];
   /** Action name → definition. Names: n1..nN, charged, plunge, skill, burst. */
   actions: Record<string, ActionDef>;
+  /** Hits fired only by hooks, keyed by id. */
+  hookHits: Record<string, HitDef>;
   /** Passives, constellations, weapon passive, set bonuses owned by this character. */
   effects: Effect[];
   refinement: number;

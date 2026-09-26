@@ -38,11 +38,11 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
   for (let i = 0; i < 3; i++) levels[i] = Math.min(levels[i]!, 15);
   const actions: Record<string, ActionDef> = {};
 
-  const toHits = (h: KbHit, talent: Talent): HitDef[] => {
-    if (!h.frames) throw new Error(`${c.id} ${talent} hit "${h.name}" has no frame data`);
+  const toHits = (h: KbHit, talent: Talent, needsFrames = true): HitDef[] => {
+    if (needsFrames && !h.frames) throw new Error(`${c.id} ${talent} hit "${h.name}" has no frame data`);
     const lvl = levels[TALENT_LEVEL_INDEX[talent]];
     const base: HitDef = {
-      frame: h.frames.hitmark,
+      frame: h.frames?.hitmark ?? 0,
       mv: h.mv[Math.min(lvl, h.mv.length) - 1]!,
       scaling: h.scaling,
       element: h.element,
@@ -86,6 +86,9 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
     }
   }
 
+  const hookHits: Record<string, HitDef> = {};
+  for (const [id, h] of Object.entries(c.hookHits)) hookHits[id] = toHits(h, h.talent, false)[0]!;
+
   const refinement = o.refinement ?? 1;
   const effects: Effect[] = [
     ...c.effects,
@@ -107,6 +110,7 @@ export function buildCharacterInput(c: Character, o: BuildOptions): CharacterInp
       ...(o.artifactMods ?? []),
     ],
     actions,
+    hookHits,
     effects,
     refinement,
     talentLevels: levels,

@@ -1,0 +1,112 @@
+{
+  "id": "crimson-witch-of-flames",
+  "name": "Crimson Witch of Flames",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": [
+        {
+          "id": "crimson.2pc.pyro",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "dmgBonus.pyro",
+          "value": 0.15,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    },
+    "4": {
+      "effects": [
+        {
+          "id": "crimson.4pc.overloaded",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "reactionBonus.overloaded",
+          "value": 0.4,
+          "maxStacks": 1,
+          "snapshot": false
+        },
+        {
+          "id": "crimson.4pc.burning",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "reactionBonus.burning",
+          "value": 0.4,
+          "maxStacks": 1,
+          "snapshot": false
+        },
+        {
+          "id": "crimson.4pc.burgeon",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "reactionBonus.burgeon",
+          "value": 0.4,
+          "maxStacks": 1,
+          "snapshot": false
+        },
+        {
+          "id": "crimson.4pc.vaporize",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "reactionBonus.vaporize",
+          "value": 0.15,
+          "maxStacks": 1,
+          "snapshot": false
+        },
+        {
+          "id": "crimson.4pc.melt",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "reactionBonus.melt",
+          "value": 0.15,
+          "maxStacks": 1,
+          "snapshot": false
+        },
+        {
+          "id": "crimson.4pc.skill",
+          "trigger": {
+            "on": "onSkill"
+          },
+          "target": "self",
+          "stat": "dmgBonus.pyro",
+          "value": 0.075,
+          "duration": 600,
+          "maxStacks": 3,
+          "snapshot": false
+        }
+      ]
+    }
+  },
+  "needsHook": false
+}

@@ -11,7 +11,13 @@
     "kb:validate": "tsx scripts/kb-validate.ts",
     "kb:index": "tsx scripts/kb-index.ts",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "kb:fetch-gcsim": "mkdir -p .cache && (test -d .cache/gcsim || git clone --depth 1 https://github.com/genshinsim/gcsim.git .cache/gcsim)",
+    "kb:import:character": "tsx scripts/kb-import/import-character.ts",
+    "kb:import:weapon": "tsx scripts/kb-import/import-weapon.ts",
+    "kb:import:artifact": "tsx scripts/kb-import/import-artifact.ts",
+    "kb:inspect": "tsx scripts/kb-import/inspect.ts",
+    "sim": "tsx scripts/sim.ts"
   },
   "dependencies": {
     "react": "^19.3.0",

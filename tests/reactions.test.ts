@@ -9,7 +9,7 @@ const LB = 1446.8535; // Lv90 reaction base (KB kb/mechanics/reactions.json)
 
 const mkChar = (id: string, over: Partial<CharacterInput> = {}): CharacterInput => ({
   id, element: 'pyro', level: 90, base: { hp: 10000, atk: 1000, def: 500 }, weaponAtk: 0, baseMods: [],
-  refinement: 1, talentLevels: [9, 9, 9], effects: [], actions: {}, ...over,
+  refinement: 1, talentLevels: [9, 9, 9], hookHits: {}, effects: [], actions: {}, ...over,
 });
 
 interface Harness {

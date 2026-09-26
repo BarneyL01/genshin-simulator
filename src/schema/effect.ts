@@ -17,7 +17,7 @@ const STAT_KEY = new RegExp(
       'dmgBonus\\.all', `dmgBonus\\.${ELEMENTS}`, `dmgBonus\\.${TALENTS}`,
       `critRate\\.${TALENTS}`, `critDmg\\.${TALENTS}`, `flatDmg\\.${TALENTS}`, 'flatDmg\\.all',
       'reactionBonus\\.[a-zA-Z]+', `res\\.enemy\\.${ELEMENTS}`, 'def\\.enemy\\.shred', 'defIgnore',
-      `mvBonus\\.${TALENTS}`, `baseDmgMultiplier\\.${TALENTS}`, 'energyGain',
+      `mvBonus\\.${TALENTS}`, `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', `infusion\\.${ELEMENTS}`,
     ].join('|') +
     ')$',
 );
@@ -56,7 +56,8 @@ export const effect = z.object({
   maxStacks: z.number().int().positive().default(1),
   stackMode: z.enum(['refresh', 'independent']).optional(),
   stackGain: z.object({ on: z.string(), icd: frames.optional() }).optional(),
-  icd: frames.nullish(),
+  /** Internal cooldown in frames (a number or per refinement). */
+  icd: z.union([frames, z.object({ perRefinement: z.array(frames).length(5) })]).nullish(),
   snapshot: z.boolean().default(false),
   stackGroup: z.string().nullish(),
   hook: z.string().optional(),

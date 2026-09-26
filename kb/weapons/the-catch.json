@@ -1,0 +1,95 @@
+{
+  "id": "the-catch",
+  "name": "\"The Catch\"",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/catch",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "gcsim formulas (DMG 0.12 + 0.04 R, CRIT 0.045 + 0.015 R) match genshin-db at every refinement."
+  ],
+  "type": "polearm",
+  "rarity": 4,
+  "releaseVersion": "2.1",
+  "baseAtk": {
+    "lv90": 509.605949
+  },
+  "substat": {
+    "stat": "er",
+    "lv90": 0.45940000000000003
+  },
+  "obtain": {
+    "method": "shop",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Shanty",
+    "text": "Increases Elemental Burst DMG by 16% and Elemental Burst CRIT Rate by 6%.",
+    "effects": [
+      {
+        "id": "the-catch.burst-dmg",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "dmgBonus.burst",
+        "value": {
+          "perRefinement": [
+            0.16,
+            0.2,
+            0.24,
+            0.28,
+            0.32
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      },
+      {
+        "id": "the-catch.burst-cr",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "critRate.burst",
+        "value": {
+          "perRefinement": [
+            0.06,
+            0.075,
+            0.09,
+            0.105,
+            0.12
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      }
+    ]
+  },
+  "needsHook": false
+}

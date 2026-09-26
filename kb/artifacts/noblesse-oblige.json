@@ -1,0 +1,59 @@
+{
+  "id": "noblesse-oblige",
+  "name": "Noblesse Oblige",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "2pc text",
+          "4pc text"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Bonuses are read from the genshin-db set text; not cross-checked in a second source."
+  ],
+  "pieces": {
+    "2": {
+      "effects": [
+        {
+          "id": "noblesse.2pc.burst-dmg",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "dmgBonus.burst",
+          "value": 0.2,
+          "maxStacks": 1,
+          "snapshot": false
+        }
+      ]
+    },
+    "4": {
+      "effects": [
+        {
+          "id": "noblesse.4pc.atk",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "team",
+          "stat": "atk%",
+          "value": 0.2,
+          "duration": 720,
+          "maxStacks": 1,
+          "snapshot": false,
+          "stackGroup": "noblesse-oblige",
+          "assumption": "Applies when the wearer bursts; a second wearer does not stack (same stackGroup, not enforced yet)."
+        }
+      ]
+    }
+  },
+  "needsHook": false
+}

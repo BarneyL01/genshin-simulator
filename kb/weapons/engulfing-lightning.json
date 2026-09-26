@@ -1,0 +1,120 @@
+{
+  "id": "engulfing-lightning",
+  "name": "Engulfing Lightning",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/spear/engulfing",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "gcsim formulas (ATK 0.21 + 0.07 R, cap 0.7 + 0.1 R, ER 0.25 + 0.05 R, 720 frames) match genshin-db at every refinement."
+  ],
+  "type": "polearm",
+  "rarity": 5,
+  "releaseVersion": "2.1",
+  "baseAtk": {
+    "lv90": 608.0745972
+  },
+  "substat": {
+    "stat": "er",
+    "lv90": 0.55128
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Timeless Dream: Eternal Stove",
+    "text": "ATK increased by 28% of Energy Recharge over the base 100%. You can gain a maximum bonus of 80% ATK. Gain 30% Energy Recharge for 12s after using an Elemental Burst.",
+    "effects": [
+      {
+        "id": "engulfing-lightning.atk",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "atk%",
+        "value": 0,
+        "scaling": {
+          "from": "self.er",
+          "ratio": {
+            "perRefinement": [
+              0.28,
+              0.35,
+              0.42,
+              0.49,
+              0.56
+            ]
+          },
+          "cap": {
+            "perRefinement": [
+              0.8,
+              0.9,
+              1,
+              1.1,
+              1.2
+            ]
+          },
+          "base": {
+            "perRefinement": [
+              -0.28,
+              -0.35,
+              -0.42,
+              -0.49,
+              -0.56
+            ]
+          }
+        },
+        "maxStacks": 1,
+        "snapshot": false,
+        "assumption": "Evaluated at hit time, so the ER buff from the burst raises the ATK bonus too."
+      },
+      {
+        "id": "engulfing-lightning.er",
+        "trigger": {
+          "on": "onBurst"
+        },
+        "target": "self",
+        "stat": "er",
+        "value": {
+          "perRefinement": [
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        "duration": 720,
+        "maxStacks": 1,
+        "snapshot": false,
+        "assumption": "Applies when the wielder uses their burst (gcsim requires the wielder to be on the field)."
+      }
+    ]
+  },
+  "needsHook": false
+}

@@ -1,0 +1,77 @@
+{
+  "id": "aquila-favonia",
+  "name": "Aquila Favonia",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseAtk",
+          "substat",
+          "passive R1-R5 values",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/weapons/sword/aquila",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "passive formula cross-check",
+          "passive behaviour (triggers, cooldowns)"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Obtain method comes from community knowledge; it has not been verified in a source page (Game8 weapon page not located). It only drives the \"R5 obtainable\" hint.",
+    "gcsim formula (ATK 0.15 + 0.05 R) matches genshin-db.",
+    "The heal and 200% ATK physical AoE proc need the wielder to take damage; the sim has no enemy attacks, so the proc is not modelled."
+  ],
+  "type": "sword",
+  "rarity": 5,
+  "releaseVersion": "1.0",
+  "baseAtk": {
+    "lv90": 674.3345459999999
+  },
+  "substat": {
+    "stat": "dmgBonus.physical",
+    "lv90": 0.41346
+  },
+  "obtain": {
+    "method": "gacha",
+    "freeRefinement": null
+  },
+  "passive": {
+    "name": "Falcon's Defiance",
+    "text": "ATK is increased by 20%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of resistance aloft, regenerating HP equal to 100% of ATK and dealing 200% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s.",
+    "effects": [
+      {
+        "id": "aquila-favonia.atk",
+        "trigger": {
+          "on": "always"
+        },
+        "target": "self",
+        "stat": "atk%",
+        "value": {
+          "perRefinement": [
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4
+          ]
+        },
+        "maxStacks": 1,
+        "snapshot": false
+      }
+    ]
+  },
+  "needsHook": false
+}

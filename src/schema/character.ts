@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { element, fraction, frameData, frames, recordBase, talentKind, weaponType } from './common';
+import { ascensionStat, element, frameData, frames, recordBase, talentKind, weaponType } from './common';
 import { effect } from './effect';
 
 const stats = z.object({ hp: z.number(), atk: z.number(), def: z.number() });
@@ -17,6 +17,9 @@ const hit = z.object({
   /** 'blunt' hits can shatter Frozen enemies. */
   strike: z.enum(['default', 'blunt']).optional(),
 });
+
+/** A hit that no action lists: fired by a hook (e.g. Xingqiu's sword rain). `talent` sets the damage type and which talent level applies. */
+const hookHit = hit.extend({ talent: talentKind });
 
 const talentBlock = z.object({
   hits: z.array(hit).default([]),
@@ -55,7 +58,7 @@ export const character = z.object({
   releaseVersion: z.string(),
   roles: z.array(z.string()).default([]),
   baseStats: z.object({ lv90: stats, lv100: stats.nullable().default(null) }),
-  ascensionStat: z.object({ stat: z.string(), value: fraction }),
+  ascensionStat,
   talents: z.partialRecord(talentKind, talentBlock),
   passives: z.array(z.object({ id: z.string(), unlock: z.string(), effects: z.array(effect) })).default([]),
   constellations: z
@@ -69,6 +72,8 @@ export const character = z.object({
     .max(6)
     .default([]),
   effects: z.array(effect).default([]),
+  /** Hits fired only by hooks, keyed by id (e.g. "xingqiu.rain-sword"). */
+  hookHits: z.record(z.string(), hookHit).default({}),
   usualCombo: z.array(z.object({ variant: z.string(), actions: z.array(comboAction).min(1) })).min(1),
   recommended: z
     .object({

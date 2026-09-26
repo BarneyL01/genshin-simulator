@@ -2,6 +2,7 @@ import { SCALING_SOURCES, type Effect, type EffectValue } from '../schema/effect
 import { BuffManager } from './buffs';
 import { calcHitDamage } from './damage';
 import { EnergyTracker } from './energy';
+import { HOOKS, type HookApi } from './hooks';
 import { CONSTANTS, ICD } from './mechanics';
 import { EXECUTION_PROFILES, FPS, type ExecutionProfile } from './profiles';
 import { ReactionEngine } from './reactions';
@@ -29,6 +30,7 @@ const TALENT_TRIGGER: Record<Talent, string> = {
   normal: 'onNormal', charged: 'onCharged', plunge: 'onPlunge', skill: 'onSkill', burst: 'onBurst',
 };
 
+const INFUSIONS = ['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro'] as const;
 const actionKind = (name: string): string => (/^n\d+$/.test(name) ? 'normal' : name);
 
 const addMods = (a: Record<string, number>, b: Record<string, number>) => {
@@ -95,10 +97,37 @@ export function simulate(input: SimInput): SimResult {
   };
   const energy = new EnergyTracker(characters, activeAt, (c, f) => statsFor(c, f).stats.er, (input.startEnergy ?? 'full') === 'full');
 
-  function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number): void {
+  const hookState = new Map<string, Record<string, unknown>>();
+  function runHook(owner: CharacterInput, e: Effect, frame: number, action?: HookApi['action']): void {
+    const hook = HOOKS[e.hook!];
+    if (!hook) {
+      assumptions.add(`${e.id}: hook "${e.hook}" not implemented, effect skipped`);
+      return;
+    }
+    if (e.condition) assumptions.add(`${e.id}: condition ignored (assumed met)${e.assumption ? ` — ${e.assumption}` : ''}`);
+    const key = `${owner.id}|${e.hook}`;
+    if (!hookState.has(key)) hookState.set(key, {});
+    hook({
+      frame, cycle, owner, effect: e, characters, action,
+      stats: (c, f = frame) => statsFor(c, f).stats,
+      hit: (id, f) => {
+        const h = owner.hookHits[id];
+        if (!h) throw new Error(`${owner.id}: no hookHit "${id}"`);
+        pending.push({ cycle, frame: f, char: owner, action: id, hit: { ...h, frame: f } });
+      },
+      buff: (b, f = frame) =>
+        bm.apply({ effectId: b.effectId, source: owner.id, target: b.target, stat: b.stat, value: b.value, duration: b.duration, maxStacks: b.maxStacks ?? 1, stackMode: b.stackMode ?? 'refresh' }, f),
+      particles: (d) => energy.addDrop({ frame: d.frame ?? frame + CONSTANTS.particleDelayFrames, count: d.count, element: d.element, cycle }),
+      energy: (id, amount, f = frame) => energy.addFlat(id, amount, f, cycle),
+      state: hookState.get(key)!,
+      assume: (t) => assumptions.add(t),
+    });
+  }
+
+  function applyEffect(owner: CharacterInput, e: Effect, triggerFrame: number, action?: HookApi['action']): void {
     const frame = triggerFrame + (e.delay ?? 0);
     if (e.hook) {
-      assumptions.add(`${e.id}: hook "${e.hook}" not implemented, effect skipped`);
+      runHook(owner, e, frame, action);
       return;
     }
     if (e.condition) assumptions.add(`${e.id}: condition ignored (assumed met)${e.assumption ? ` — ${e.assumption}` : ''}`);
@@ -153,14 +182,14 @@ export function simulate(input: SimInput): SimResult {
     }
   }
 
-  const fire = (owner: CharacterInput, trigger: string, frame: number) => {
-    for (const e of owner.effects) if (e.trigger.on === trigger) applyEffect(owner, e, frame);
+  const fire = (owner: CharacterInput, trigger: string, frame: number, action?: HookApi['action']) => {
+    for (const e of owner.effects) if (e.trigger.on === trigger) applyEffect(owner, e, frame, action);
   };
 
   for (const c of characters) {
     for (const e of c.effects) {
       if (e.trigger.on === 'always') applyEffect(c, e, 0);
-      else if (e.trigger.on === 'onHit' || e.trigger.on === 'onReaction' || e.trigger.on === 'custom') {
+      else if ((e.trigger.on === 'onHit' || e.trigger.on === 'onReaction' || e.trigger.on === 'custom') && !e.hook) {
         assumptions.add(`${e.id}: trigger "${e.trigger.on}" not modelled yet, effect skipped`);
       }
     }
@@ -220,7 +249,9 @@ export function simulate(input: SimInput): SimResult {
 
       if (first) cycleStart.push(start);
       first = false;
-      fire(char, TALENT_TRIGGER[def.talent], start);
+      fire(char, TALENT_TRIGGER[def.talent], start, {
+        name: step.action, talent: def.talent, start, end: start + def.cancel.default, hitFrames: def.hits.map((h) => start + h.frame),
+      });
       actions.push({ cycle, char: char.id, action: step.action, start, end: start + def.cancel.default });
 
       for (const hit of def.hits) pending.push({ cycle, frame: start + hit.frame, char, action: step.action, hit });
@@ -292,19 +323,25 @@ export function simulate(input: SimInput): SimResult {
     schedule(p.frame, () => {
       const { stats, mods: own } = statsFor(p.char, p.frame);
       const mods = addMods(own, bm.enemyMods(p.frame));
-      let gauge = 0;
-      if (p.hit.element !== 'physical') {
-        const g = p.hit.gauge ?? 1;
-        if (g > 0 && icdAllows(p.char, p.hit, p.frame)) gauge = g;
+      // Elemental infusion: physical normal/charged/plunge hits take the element of an active infusion.
+      let hit = p.hit;
+      if (hit.element === 'physical' && (hit.talent === 'normal' || hit.talent === 'charged' || hit.talent === 'plunge')) {
+        const inf = INFUSIONS.find((e) => (mods[`infusion.${e}`] ?? 0) > 0);
+        if (inf) hit = { ...hit, element: inf };
       }
-      const r = engine.react({ frame: p.frame, char: p.char, hit: p.hit, gauge, cycle: p.cycle });
+      let gauge = 0;
+      if (hit.element !== 'physical') {
+        const g = hit.gauge ?? 1;
+        if (g > 0 && icdAllows(p.char, hit, p.frame)) gauge = g;
+      }
+      const r = engine.react({ frame: p.frame, char: p.char, hit, gauge, cycle: p.cycle });
       const damage = calcHitDamage({
-        hit: p.hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
+        hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
         reactionFactor: r.reactionFactor, catalyzeFlat: r.catalyzeFlat,
       });
       hits.push({
-        cycle: p.cycle, frame: p.frame, char: p.char.id, action: p.action, element: p.hit.element,
-        talent: p.hit.talent, damage, reactions: r.reactions,
+        cycle: p.cycle, frame: p.frame, char: p.char.id, action: p.action, element: hit.element,
+        talent: hit.talent, damage, reactions: r.reactions,
       });
     });
   }
