@@ -161,3 +161,34 @@ describe('raiden hook', () => {
     expect(res.energy.ally!.flatEnergy).toBeLessThanOrEqual(2 * 5 + 1e-9);
   });
 });
+
+describe('hutao hook', () => {
+  const HT = (id: string, trigger: string) => effect.parse({ id, trigger: { on: trigger }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'hutao' });
+  const hutao = (extra: CharacterInput['effects'] = []) =>
+    mk('hutao', {
+      element: 'pyro',
+      actions: { charged: act('charged', [hit(3, 'physical', 'charged')], 40) },
+      hookHits: { 'blood-blossom': { frame: 0, mv: 1, scaling: 'atk', element: 'pyro', talent: 'skill', gauge: 1, icd: { tag: 'none', group: 'none' } } },
+      effects: [HT('hutao.bb', 'onCharged'), ...extra],
+    });
+  const run = (c: CharacterInput, n: number) =>
+    simulate({ characters: [c], enemy, cycles: 1, profile: fp, startEnergy: 'empty', rotation: Array.from({ length: n }, () => ({ char: 'hutao', action: 'charged' })) });
+
+  it('ticks every 240 frames for 570 frames after a charged hit; refreshing extends but keeps the cadence', () => {
+    const one = run(hutao(), 1).hits.filter((h) => h.action === 'blood-blossom').map((h) => h.frame);
+    expect(one).toEqual([243, 483]); // hit at 3
+    const two = run(hutao(), 2).hits.filter((h) => h.action === 'blood-blossom').map((h) => h.frame);
+    expect(two).toEqual([243, 483]); // second charged hit (frame 43) refreshes to 613; the next tick (723) is past it
+    const many = run(hutao(), 12).hits.filter((h) => h.action === 'blood-blossom').map((h) => h.frame);
+    expect(many.every((f, i) => i === 0 || f - many[i - 1]! === 240)).toBe(true);
+    expect(many.length).toBeGreaterThan(2);
+  });
+
+  it('C2 adds 10% of max HP as flat damage to each tick', () => {
+    const c2 = HT('hutao.c2', 'always');
+    const base = run(hutao(), 1).hits.find((h) => h.action === 'blood-blossom')!;
+    const withC2 = run(hutao([c2]), 1).hits.find((h) => h.action === 'blood-blossom')!;
+    // (mv 1 × ATK 1000 + 0.1 × HP 10000) / (1 × ATK 1000) = 2
+    expect(withC2.damage / base.damage).toBeCloseTo(2, 6);
+  });
+});

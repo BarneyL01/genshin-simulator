@@ -85,6 +85,7 @@ export function simulate(input: SimInput): SimResult {
       const s = d.from === 'energyMax' ? (c.actions.burst?.energyCost ?? 0) : stats[d.from as keyof typeof stats];
       let v = d.base + d.ratio * s;
       if (d.cap !== undefined) v = Math.min(v, d.cap);
+      if (d.capFrom) v = Math.min(v, d.capFrom.ratio * stats[d.capFrom.from as keyof typeof stats]);
       mods[r.stat] = (mods[r.stat] ?? 0) + v * r.stacks;
     }
     return mods;
@@ -115,10 +116,10 @@ export function simulate(input: SimInput): SimResult {
       frame, cycle: hookCycle, owner, effect: e, characters, action, actor: ctx.actor, hitInfo: ctx.hitInfo,
       value: e.value === undefined ? 0 : resolveScalar(owner, e.value),
       stats: (c, f = frame) => statsFor(c, f).stats,
-      hit: (id, f) => {
+      hit: (id, f, opts) => {
         const h = owner.hookHits[id];
         if (!h) throw new Error(`${owner.id}: no hookHit "${id}"`);
-        const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, hit: { ...h, frame: f } };
+        const p: PendingHit = { cycle: hookCycle, frame: f, char: owner, action: id, hit: { ...h, frame: f, flat: (h.flat ?? 0) + (opts?.flat ?? 0) } };
         if (resolving) queueHit(p);
         else pending.push(p);
       },
@@ -158,12 +159,13 @@ export function simulate(input: SimInput): SimResult {
       dynamic = {
         from: stat!, ratio: scalar(e.scaling.ratio), base: e.scaling.base === undefined ? 0 : scalar(e.scaling.base),
         cap: e.scaling.cap === undefined ? undefined : scalar(e.scaling.cap),
+        capFrom: e.scaling.capFrom && (SCALING_SOURCES as readonly string[]).includes(e.scaling.capFrom.from) ? e.scaling.capFrom : undefined,
       };
       if (who === 'target' && e.snapshot) {
         assumptions.add(`${e.id}: snapshot is not supported for target-scaled effects; evaluated at hit time`);
       } else if (e.snapshot) {
         const st = statsFor(owner, frame).stats;
-        value = Math.min(dynamic.base + dynamic.ratio * st[dynamic.from as keyof typeof st], dynamic.cap ?? Infinity);
+        value = Math.min(dynamic.base + dynamic.ratio * st[dynamic.from as keyof typeof st], dynamic.cap ?? Infinity, dynamic.capFrom ? dynamic.capFrom.ratio * st[dynamic.capFrom.from as keyof typeof st] : Infinity);
         dynamic = undefined;
       }
     } else value = scalar(e.value);
@@ -330,7 +332,7 @@ export function simulate(input: SimInput): SimResult {
       st = { count: 0, start: frame };
       icdState.set(key, st);
     }
-    const ok = group.pattern[st.count % group.pattern.length] === 1;
+    const ok = group.pattern[Math.min(st.count, group.pattern.length - 1)] === 1;
     st.count++;
     return ok;
   };

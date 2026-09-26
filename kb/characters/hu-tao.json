@@ -1,0 +1,747 @@
+{
+  "id": "hu-tao",
+  "name": "Hu Tao",
+  "provenance": {
+    "sources": [
+      {
+        "site": "genshin-db",
+        "url": "https://github.com/theBowja/genshin-db",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "baseStats",
+          "ascensionStat",
+          "talent multipliers",
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "frames",
+          "ICD",
+          "gauge",
+          "particles",
+          "multiplier cross-check"
+        ],
+        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "medium",
+  "assumptions": [
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables, base stats are not yet cross-checked in a second source.",
+    "Normal and charged attack frames are the Paramita Papilio versions (gcsim ppAttack / ppCharge); the plain versions differ slightly and are not in the KB. Normal attacks become Pyro through the skill's infusion.",
+    "The burst is the Low HP version (Hu Tao at or below 50% HP), as are A4 and the Staff of Homa bonus. The sim does not track HP.",
+    "Blood Blossom runs through hook \"hutao\" (src/engine/hooks/hutao.ts, tested in tests/hooks.test.ts).",
+    "usualCombo is provisional pending /kb-update-teams (KeqingMains rotation)."
+  ],
+  "rarity": 5,
+  "element": "pyro",
+  "weaponType": "polearm",
+  "releaseVersion": "1.3",
+  "roles": [
+    "driver",
+    "main-dps"
+  ],
+  "baseStats": {
+    "lv90": {
+      "hp": 15552.3066196,
+      "atk": 106.4343801,
+      "def": 876.1519817999999
+    },
+    "lv100": null
+  },
+  "ascensionStat": {
+    "stat": "critDmg",
+    "value": 0.884
+  },
+  "talents": {
+    "normal": {
+      "hits": [
+        {
+          "name": "N1",
+          "mv": [
+            0.468864,
+            0.500832,
+            0.5328,
+            0.575424,
+            0.607392,
+            0.644688,
+            0.69264,
+            0.740592,
+            0.788544,
+            0.836496,
+            0.884448,
+            0.9324,
+            0.980352,
+            1.028304,
+            1.076256
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 12,
+            "cancel": {
+              "default": 20,
+              "skill": 12,
+              "burst": 12,
+              "dash": 12,
+              "jump": 12,
+              "swap": 12,
+              "normal": 14
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N2",
+          "mv": [
+            0.482539,
+            0.51544,
+            0.54834,
+            0.592207,
+            0.625108,
+            0.663491,
+            0.712842,
+            0.762193,
+            0.811543,
+            0.860894,
+            0.910244,
+            0.959595,
+            1.008946,
+            1.058296,
+            1.107647
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 9,
+            "cancel": {
+              "default": 16,
+              "skill": 9,
+              "burst": 9,
+              "dash": 9,
+              "jump": 9,
+              "swap": 9,
+              "normal": 12
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N3",
+          "mv": [
+            0.6105,
+            0.652125,
+            0.69375,
+            0.74925,
+            0.790875,
+            0.839438,
+            0.901875,
+            0.964313,
+            1.02675,
+            1.089188,
+            1.151625,
+            1.214063,
+            1.2765,
+            1.338938,
+            1.401375
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 17,
+            "cancel": {
+              "default": 26,
+              "skill": 17,
+              "burst": 17,
+              "dash": 17,
+              "jump": 17,
+              "swap": 17,
+              "charged": 23
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N4",
+          "mv": [
+            0.65641,
+            0.701165,
+            0.74592,
+            0.805594,
+            0.850349,
+            0.902563,
+            0.969696,
+            1.036829,
+            1.103962,
+            1.171094,
+            1.238227,
+            1.30536,
+            1.372493,
+            1.439626,
+            1.506758
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 22,
+            "cancel": {
+              "default": 31,
+              "skill": 22,
+              "burst": 22,
+              "dash": 22,
+              "jump": 22,
+              "swap": 22,
+              "normal": 29
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        },
+        {
+          "name": "N5",
+          "mv": [
+            0.332737,
+            0.355423,
+            0.37811,
+            0.408359,
+            0.431045,
+            0.457513,
+            0.491543,
+            0.525573,
+            0.559603,
+            0.593633,
+            0.627663,
+            0.661693,
+            0.695722,
+            0.729752,
+            0.763782
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 15,
+            "cancel": {
+              "default": 48,
+              "skill": 26,
+              "burst": 26,
+              "dash": 26,
+              "jump": 26,
+              "swap": 26,
+              "normal": 36
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            26
+          ],
+          "extraMv": [
+            [
+              0.352,
+              0.376,
+              0.4,
+              0.432,
+              0.456,
+              0.484,
+              0.52,
+              0.556,
+              0.592,
+              0.628,
+              0.664,
+              0.7,
+              0.736,
+              0.772,
+              0.808
+            ]
+          ]
+        },
+        {
+          "name": "N6",
+          "mv": [
+            0.859584,
+            0.918192,
+            0.9768,
+            1.054944,
+            1.113552,
+            1.181928,
+            1.26984,
+            1.357752,
+            1.445664,
+            1.533576,
+            1.621488,
+            1.7094,
+            1.797312,
+            1.885224,
+            1.973136
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "default": 72,
+              "skill": 27,
+              "burst": 27,
+              "dash": 27,
+              "jump": 27,
+              "swap": 27
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/attack.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "default": 52,
+          "normal": 29,
+          "burst": 28,
+          "dash": 37,
+          "jump": 37
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/skill.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "cooldown": 960,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Spirit Soother (Low HP)",
+          "mv": [
+            3.7909,
+            4.0179,
+            4.2449,
+            4.54,
+            4.767,
+            4.994,
+            5.2891,
+            5.5842,
+            5.8793,
+            6.1744,
+            6.4695,
+            6.7646,
+            7.0597,
+            7.3548,
+            7.6499
+          ],
+          "scaling": "atk",
+          "element": "pyro",
+          "frames": {
+            "hitmark": 66,
+            "cancel": {
+              "default": 98,
+              "normal": 97,
+              "skill": 97,
+              "swap": 95
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/burst.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 2
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
+      "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged (Paramita)",
+          "mv": [
+            1.3596,
+            1.4523,
+            1.545,
+            1.6686,
+            1.7613,
+            1.86945,
+            2.0085,
+            2.14755,
+            2.2866,
+            2.42565,
+            2.5647,
+            2.70375,
+            2.8428,
+            2.98185,
+            3.1209
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 3,
+            "cancel": {
+              "default": 42,
+              "burst": 33,
+              "dash": 3,
+              "jump": 3
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/charge.go",
+              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+            }
+          },
+          "icd": {
+            "tag": "extra",
+            "group": "poleExtraAttack"
+          },
+          "gauge": 1
+        }
+      ],
+      "stamina": 25,
+      "particles": {
+        "count": 2.5,
+        "perHit": false,
+        "icd": 300,
+        "element": "pyro"
+      },
+      "effects": []
+    }
+  },
+  "passives": [
+    {
+      "id": "hutao.a1",
+      "unlock": "a1",
+      "effects": [
+        {
+          "id": "hutao.a1.crit",
+          "trigger": {
+            "on": "onSkill"
+          },
+          "target": "teamExceptSelf",
+          "stat": "critRate",
+          "value": 0.12,
+          "delay": 554,
+          "duration": 480,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Applies when Paramita Papilio ends (assumed to run its full 9 s)."
+        }
+      ]
+    },
+    {
+      "id": "hutao.a4",
+      "unlock": "a4",
+      "effects": [
+        {
+          "id": "hutao.a4.pyro",
+          "trigger": {
+            "on": "always"
+          },
+          "condition": {
+            "hpBelow": 0.5
+          },
+          "target": "self",
+          "stat": "dmgBonus.pyro",
+          "value": 0.33,
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Hu Tao is assumed to be at or below 50% HP (the sim does not track HP)."
+        }
+      ]
+    }
+  ],
+  "constellations": [
+    {
+      "level": 1,
+      "effects": [],
+      "text": "In Paramita Papilio, charged attacks do not consume Stamina."
+    },
+    {
+      "level": 2,
+      "effects": [
+        {
+          "id": "hutao.c2",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "hutao"
+        }
+      ],
+      "text": "Blood Blossom DMG +10% of Hu Tao's Max HP; the burst also applies Blood Blossom."
+    },
+    {
+      "level": 3,
+      "effects": [],
+      "text": "Increases the Level of Guide to Afterlife by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
+    },
+    {
+      "level": 4,
+      "effects": [
+        {
+          "id": "hutao.c4",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "teamExceptSelf",
+          "stat": "critRate",
+          "value": 0.12,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "hutao.c4",
+          "assumption": "Needs enemy defeat events, which the sim does not have; not modelled."
+        }
+      ],
+      "text": "On defeating an enemy with Blood Blossom, allies gain 12% CRIT Rate for 15 s."
+    },
+    {
+      "level": 5,
+      "effects": [],
+      "text": "Increases the Level of Spirit Soother by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
+    },
+    {
+      "level": 6,
+      "effects": [
+        {
+          "id": "hutao.c6.crit",
+          "trigger": {
+            "on": "custom"
+          },
+          "target": "self",
+          "stat": "critRate",
+          "value": 1,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "hutao.c6",
+          "assumption": "Needs low-HP state tracking; not modelled."
+        }
+      ],
+      "text": "Below 25% HP: +200% RES and +100% CRIT Rate for 10 s."
+    }
+  ],
+  "effects": [
+    {
+      "id": "hutao.paramita.atk",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "atk",
+      "value": 0,
+      "scaling": {
+        "from": "self.hp",
+        "ratio": {
+          "perTalentLevel": [
+            0.03841,
+            0.04071,
+            0.04301,
+            0.046,
+            0.0483,
+            0.0506,
+            0.05359,
+            0.05658,
+            0.05957,
+            0.06256,
+            0.06555,
+            0.06854,
+            0.07153,
+            0.07452,
+            0.07751
+          ],
+          "talent": "skill"
+        },
+        "capFrom": {
+          "from": "baseAtk",
+          "ratio": 4
+        }
+      },
+      "duration": 554,
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "Paramita Papilio ATK bonus = Max HP × ratio, capped at 400% of base ATK (character + weapon). HP cost of the skill is not tracked."
+    },
+    {
+      "id": "hutao.paramita.infusion",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "infusion.pyro",
+      "value": 1,
+      "duration": 554,
+      "maxStacks": 1,
+      "snapshot": false
+    },
+    {
+      "id": "hutao.bb",
+      "trigger": {
+        "on": "onCharged"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "hutao",
+      "assumption": "Charged attacks are assumed to be Paramita charged attacks, which apply Blood Blossom (on every charged hit)."
+    },
+    {
+      "id": "hutao.bb.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "hutao"
+    }
+  ],
+  "extraActions": {},
+  "hookHits": {
+    "blood-blossom": {
+      "name": "Blood Blossom",
+      "mv": [
+        0.64,
+        0.688,
+        0.736,
+        0.8,
+        0.848,
+        0.896,
+        0.96,
+        1.024,
+        1.088,
+        1.152,
+        1.216,
+        1.28,
+        1.36,
+        1.44,
+        1.52
+      ],
+      "scaling": "atk",
+      "element": "pyro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/hutao/skill.go",
+          "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    }
+  },
+  "usualCombo": [
+    {
+      "variant": "on-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "burst"
+        },
+        {
+          "action": "normal",
+          "hits": 1,
+          "then": "charged",
+          "repeat": "untilRotationEnd"
+        }
+      ]
+    }
+  ],
+  "recommended": {
+    "weapons": [],
+    "artifacts": []
+  },
+  "hooks": [
+    "hutao",
+    "hutao.c4",
+    "hutao.c6"
+  ],
+  "needsHook": true
+}

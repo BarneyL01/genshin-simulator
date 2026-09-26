@@ -135,6 +135,7 @@ export interface DynamicScaling {
   ratio: number;
   base: number;
   cap?: number;
+  capFrom?: { from: string; ratio: number };
 }
 
 export interface SimResult {

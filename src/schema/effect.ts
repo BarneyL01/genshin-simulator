@@ -51,7 +51,16 @@ export const effect = z.object({
    * unless `snapshot` is true. Numbers or per-refinement / per-talent-level tables.
    * `er` is the multiplier (1 + bonus), so "28% of ER over 100%" is ratio 0.28, base −0.28.
    */
-  scaling: z.object({ from: z.string(), ratio: value, cap: value.optional(), base: value.optional() }).nullish(),
+  scaling: z
+    .object({
+      from: z.string(),
+      ratio: value,
+      cap: value.optional(),
+      /** Cap as a multiple of another self stat (e.g. 4 × base ATK); the lower of `cap` and this applies. */
+      capFrom: z.object({ from: z.string(), ratio: z.number() }).optional(),
+      base: value.optional(),
+    })
+    .nullish(),
   /** Frames between the trigger and the effect starting. */
   delay: frames.optional(),
   duration: frames.nullish(),

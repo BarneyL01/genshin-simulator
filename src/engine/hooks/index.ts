@@ -3,3 +3,4 @@ export * from './api';
 import './favonius';
 import './xingqiu';
 import './raiden';
+import './hutao';
