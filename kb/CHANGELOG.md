@@ -2,6 +2,10 @@
 
 Newest first. One entry per KB change or sync.
 
+## 2026-09-27 — Ascension CRIT stats no longer include the base CRIT
+- 42 characters with a CRIT Rate or CRIT DMG ascension stat were stored with genshin-db's `specialized` value, which includes the base 5% CRIT Rate / 50% CRIT DMG that the engine adds itself. Stored values corrected: CRIT Rate 0.242 → 0.192, CRIT DMG 0.884 → 0.384 (e.g. Hu Tao, Yelan, Ayaka, Neuvillette, Furina, Odette). Importers now subtract the base (`ascensionValue` in scripts/kb-import/lib.ts).
+- Effect: those characters' CRIT was overstated by 5 pts CR or 50 pts CD. Golden value for hu-tao-double-hydro-zhongli re-recorded (Relaxed 31,063 → 28,086 DPS). raiden-national unchanged.
+
 ## 2026-09-26 — Sandrone and Alyosha rewritten from in-game text
 - sandrone: skill = 2 Prism Shots, burst = 3 Bombardments + Ray; Radiance Stellar-Conduct forms as new hit field `stellar` (2nd Prism Shot, Ray). Not modelled: Fagio/Decoding, Stellar Swirl, constellations.
 - alyosha: burst ticks (Field + Tugarin every 2 s for 14 s, hook `alyosha`), A2 ER-based skill/burst DMG%, Hunter's Precision. Not modelled: Hunter's Mark state, healing, constellations.

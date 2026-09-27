@@ -4,7 +4,7 @@ import { character as characterSchema, type Character } from '../../src/schema/c
 import { characterDir, dmFile, gcsimCommit, gcsimUrl, goNumberArrays, hasMatchingArray, GCSIM_DIR } from './gcsim';
 import { extractFrames, type CharFrames } from './gcsim-frames';
 import { pageText } from './http';
-import { GAME_VERSION, GENSHIN_DB_URL, RETRIEVED, db, kebab, param, substatKey, weaponTypeOf } from './lib';
+import { GAME_VERSION, ascensionValue, GENSHIN_DB_URL, RETRIEVED, db, kebab, param, substatKey, weaponTypeOf } from './lib';
 
 type Cancel = Record<string, number> & { default: number };
 const ELEMENTS = ['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro'];
@@ -253,7 +253,7 @@ export function buildAuto(name: string, dir: string | undefined, donors: Record<
     id, name: c.name, rarity: c.rarity, element, weaponType, releaseVersion: c.version,
     roles: [],
     baseStats: { lv90: { hp: s90.hp, atk: s90.attack, def: s90.defense }, lv100: null },
-    ascensionStat: { stat: ascStat, value: s90.specialized },
+    ascensionStat: { stat: ascStat, value: ascensionValue(ascStat, s90.specialized) },
     talents: {
       normal: { hits: normalBlock },
       ...(chargedBlock ? { charged: chargedBlock } : {}),

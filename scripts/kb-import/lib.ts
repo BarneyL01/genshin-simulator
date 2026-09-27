@@ -74,6 +74,16 @@ export function refineValues(weaponName: string, valueIndex: number): number[] {
   return [1, 2, 3, 4, 5].map((r) => parseValue(w[`r${r}`].values[valueIndex]));
 }
 
+/**
+ * genshin-db's `specialized` for CRIT Rate / CRIT DMG ascension stats includes the base 5% / 50% every character
+ * has; the engine adds those bases itself, so they are removed here (Hu Tao: 0.884 → 0.384).
+ */
+export function ascensionValue(stat: string, specialized: number): number {
+  if (stat === 'critRate') return Math.round((specialized - 0.05) * 1e6) / 1e6;
+  if (stat === 'critDmg') return Math.round((specialized - 0.5) * 1e6) / 1e6;
+  return specialized;
+}
+
 // ---- frame helpers (mirror gcsim's InitNormalCancelSlice / InitAbilSlice) ------------------
 
 export type Cancel = Record<string, number> & { default: number };
@@ -275,7 +285,7 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     }),
   );
 
-  const asc = { stat: substatKey(c.substatText), value: s90.specialized };
+  const asc = { stat: substatKey(c.substatText), value: ascensionValue(substatKey(c.substatText), s90.specialized) };
   const provenance: Character['provenance'] = {
     sources: [
       { site: 'genshin-db', url: GENSHIN_DB_URL, retrieved: RETRIEVED, fields: ['baseStats', 'ascensionStat', 'talent multipliers', 'talent params', 'passive/constellation text', 'releaseVersion'] },
