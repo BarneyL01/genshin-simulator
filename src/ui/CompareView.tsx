@@ -5,22 +5,27 @@ import type { Response } from '../worker/protocol';
 import { sim } from './client';
 import { Badge, Button, Section, Table, confidenceTone } from './Common';
 import { fmt, nameOf, pct, signedPct } from './format';
+import { usePersistentState } from './store';
+
+type Pick = { weaponId: string; refinement: number };
+const isString = (v: unknown): v is string => typeof v === 'string';
+const isPick = (v: unknown): v is Pick => typeof v === 'object' && v !== null && isString((v as Pick).weaponId) && Number.isInteger((v as Pick).refinement);
 
 export function CompareView({ kb, roster, saved }: { kb: KbData; roster: Roster; saved: SavedTeam[] }) {
   const teams = [...kb.teams.values()].filter((t) => t.status === 'active');
-  const [teamId, setTeamId] = useState(teams[0]?.id ?? '');
+  const [storedTeamId, setTeamId] = usePersistentState('compare-team', teams[0]?.id ?? '', isString);
+  const teamId = saved.some((t) => `saved:${t.id}` === storedTeamId) || kb.teams.has(storedTeamId) ? storedTeamId : teams[0]?.id ?? '';
   const savedTeam = saved.find((t) => `saved:${t.id}` === teamId);
   const knownTeam = kb.teams.get(teamId);
   const team = savedTeam
     ? { members: savedTeam.team.order.map((id) => ({ character: id, weapons: savedTeam.team.builds?.[id]?.weapon ? [savedTeam.team.builds[id]!.weapon!] : kb.characters.get(id)?.recommended.weapons.map((w) => w.id) ?? [] })) }
     : knownTeam;
-  const [charId, setCharId] = useState('');
+  const [charId, setCharId] = usePersistentState('compare-character', '', isString);
   const activeChar = team?.members.find((m) => m.character === charId)?.character ?? team?.members[0]?.character ?? '';
   const character = kb.characters.get(activeChar);
   const candidates = useMemo(() => [...kb.weapons.values()].filter((w) => w.type === character?.weaponType).sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)), [kb, character]);
-  type Pick = { weaponId: string; refinement: number };
-  const [pickA, setPickA] = useState<Pick>();
-  const [pickB, setPickB] = useState<Pick>();
+  const [pickA, setPickA] = usePersistentState<Pick | undefined>('compare-weapon-a', undefined, isPick);
+  const [pickB, setPickB] = usePersistentState<Pick | undefined>('compare-weapon-b', undefined, isPick);
   const recommended = team?.members.find((m) => m.character === activeChar)?.weapons[0] ?? candidates[0]?.id ?? '';
   const a: Pick = pickA && candidates.some((w) => w.id === pickA.weaponId) ? pickA : { weaponId: recommended, refinement: 1 };
   const b: Pick = pickB && candidates.some((w) => w.id === pickB.weaponId) ? pickB : { weaponId: candidates.find((w) => w.id !== a.weaponId)?.id ?? a.weaponId, refinement: 1 };

@@ -7,6 +7,12 @@ import { sim } from './client';
 import { Button, Section } from './Common';
 import { nameOf } from './format';
 import { ResultView } from './ResultView';
+import { usePersistentState } from './store';
+
+type Builds = Record<string, { weapon?: string; refinement?: number; set?: string }>;
+const isString = (v: unknown): v is string => typeof v === 'string';
+const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(isString);
+const isRecord = <T,>(v: unknown): v is Record<string, T> => typeof v === 'object' && v !== null && !Array.isArray(v);
 
 interface SavedApi {
   teams: SavedTeam[];
@@ -15,16 +21,17 @@ interface SavedApi {
 }
 
 export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; saved: SavedApi }) {
-  const [name, setName] = useState('');
-  const [currentId, setCurrentId] = useState('');
+  const [name, setName] = usePersistentState('custom-name', '', isString);
+  const [currentId, setCurrentId] = usePersistentState('custom-saved-id', '', isString);
   const owned = useMemo(() => [...kb.characters.values()].filter((c) => roster.characters[c.id]?.owned).sort((a, b) => a.name.localeCompare(b.name)), [kb, roster]);
-  const [order, setOrder] = useState<string[]>([]);
-  const [variants, setVariants] = useState<Record<string, string>>({});
-  const [builds, setBuilds] = useState<Record<string, { weapon?: string; refinement?: number; set?: string }>>({});
+  const [storedOrder, setOrder] = usePersistentState<string[]>('custom-order', [], isStringArray);
+  const order = useMemo(() => storedOrder.filter((id) => kb.characters.has(id)), [kb, storedOrder]);
+  const [variants, setVariants] = usePersistentState<Record<string, string>>('custom-variants', {}, isRecord);
+  const [builds, setBuilds] = usePersistentState<Builds>('custom-builds', {}, isRecord);
   const setBuild = (id: string, patch: { weapon?: string; refinement?: number; set?: string }) => setBuilds((b) => ({ ...b, [id]: { ...b[id], ...patch } }));
   const sets = useMemo(() => [...kb.artifacts.values()].sort((a, b) => a.name.localeCompare(b.name)), [kb]);
-  const [length, setLength] = useState('');
-  const [json, setJson] = useState('');
+  const [length, setLength] = usePersistentState('custom-length', '', isString);
+  const [json, setJson] = usePersistentState('custom-rotation-json', '', isString);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [run, setRun] = useState<TeamRun>();

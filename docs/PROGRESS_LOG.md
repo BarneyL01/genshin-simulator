@@ -16,6 +16,22 @@ Entry format:
 
 ---
 
+## 2026-09-27 — Backup tab (export/import) and safer browser storage
+
+- Milestone: M8 (UI).
+- Done:
+  - New Backup tab (`src/ui/BackupView.tsx`, format in `src/ui/backup.ts`): export roster + settings + saved teams as JSON text (copy button, .json download; only non-default entries so it is short enough to paste on a phone); import by paste or file (roster replaced, saved teams merged by id, "Undo import"). Accepts the old roster-only export and a bare saved-team list. The roster-only text box on the Roster tab is replaced by a pointer to the Backup tab.
+  - Loading is lenient: roster and saved-team entries are validated one by one; an invalid entry is skipped instead of the whole roster being replaced by an empty one and saved over (previous behaviour of `loadRoster`). A raw copy of any stored data that could not be fully read is kept (`*-unreadable`, `*-before-repair` keys) and offered under "Recovered data".
+  - Working selections are remembered in the browser (`usePersistentState`): current tab, Custom team (characters, order, variants, builds, length, name, rotation JSON), Weapon comparer (team, character, weapons A/B). Previously these reset on every tab switch or reload.
+  - `navigator.storage.persist()` requested on start so the browser is less likely to evict the site's storage.
+  - Investigated the reported loss: storage key and roster format are unchanged since the first UI commit and no KB ids were renamed or removed, so an app update alone should not have cleared it. The one code path that could discard a saved roster (failed validation → empty roster saved over it) is fixed above. Other causes outside the app: a different browser/profile or in-app browser, a different origin (e.g. local `npm run dev` vs GitHub Pages), or site data cleared.
+- KB changes: none.
+- Tests / validation: `npx vitest run` 129 pass (8 new in `tests/backup.test.ts`); lint, typecheck, build clean; `E2E_EXECUTABLE=/opt/pw-browsers/chromium npm run e2e` ok, with a new step: tick characters → reload (roster, tab and custom-team selection remembered) → export → import into a fresh browser context → owned characters restored; a stored roster with one invalid entry keeps the rest and shows the recovered copy.
+- Blockers: none.
+- Next: unchanged.
+
+---
+
 ## 2026-09-26 — Fix talent inputs on mobile
 
 - Milestone: M8 (UI).

@@ -1,19 +1,22 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { bundledKb } from '../kb/bundle';
+import { BackupView } from './BackupView';
 import { CompareView } from './CompareView';
 import { CustomView } from './CustomView';
 import { RosterView } from './RosterView';
 import { TeamsView } from './TeamsView';
-import { useRoster, useSavedTeams } from './store';
+import { requestPersistentStorage, usePersistentState, useRoster, useSavedTeams } from './store';
 
-type Tab = 'roster' | 'teams' | 'custom' | 'compare';
-const TABS: Array<[Tab, string]> = [['roster', 'Roster'], ['teams', 'Team comparison'], ['custom', 'Custom team'], ['compare', 'Weapon comparer']];
+type Tab = 'roster' | 'teams' | 'custom' | 'compare' | 'backup';
+const TABS: Array<[Tab, string]> = [['roster', 'Roster'], ['teams', 'Team comparison'], ['custom', 'Custom team'], ['compare', 'Weapon comparer'], ['backup', 'Backup']];
+const isTab = (v: unknown): v is Tab => TABS.some(([id]) => id === v);
 
 export function App() {
   const kb = useMemo(() => bundledKb(), []);
   const { roster, setRoster, update } = useRoster(kb);
   const saved = useSavedTeams();
-  const [tab, setTab] = useState<Tab>('roster');
+  const [tab, setTab] = usePersistentState<Tab>('tab', 'roster', isTab);
+  useEffect(requestPersistentStorage, []);
 
   return (
     <main className="mx-auto max-w-6xl p-4 sm:p-6">
@@ -33,10 +36,11 @@ export function App() {
         ))}
       </nav>
       <div className="mt-4">
-        {tab === 'roster' && <RosterView kb={kb} roster={roster} update={update} setRoster={setRoster} />}
+        {tab === 'roster' && <RosterView kb={kb} roster={roster} update={update} />}
         {tab === 'teams' && <TeamsView kb={kb} roster={roster} saved={saved.teams} />}
         {tab === 'custom' && <CustomView kb={kb} roster={roster} saved={saved} />}
         {tab === 'compare' && <CompareView kb={kb} roster={roster} saved={saved.teams} />}
+        {tab === 'backup' && <BackupView kb={kb} roster={roster} setRoster={setRoster} saved={saved} />}
       </div>
       <footer className="mt-10 border-t border-slate-200 pt-3 text-xs text-slate-500">
         Numbers come from genshin-db, gcsim (reference only) and KeqingMains; see each result's Assumptions tab for what it rests on.

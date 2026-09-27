@@ -153,7 +153,8 @@ Details: `docs/SIMULATION.md`. Summary:
 - Character grid: tick box "owned", constellation dropdown (C0 default), talent levels (1/1/1 default).
 - Weapon grid: filtered by type; tick box "owned", refinement dropdown (R1 default). Event weapons show "R5 free via event" hint from KB `obtain` data.
 - "Assume I own every weapon" toggle for theory-crafting.
-- Stored in `localStorage`; JSON export/import for backup.
+- Stored in `localStorage` (roster, saved teams, and each tab's working selections). Invalid stored entries are skipped individually; a raw copy of anything that could not be read is kept and offered on the Backup tab.
+- Backup tab: export roster + settings + saved teams as JSON text (copy or download; only non-default entries) and import it back (paste or file; roster replaced, saved teams merged by id; undo available). Also accepts the older roster-only export.
 
 ## 6. Team modes and weapon comparison
 

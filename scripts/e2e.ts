@@ -97,6 +97,62 @@ try {
   await page.screenshot({ path: `${shots}/8-compare.png`, fullPage: true });
   console.log('compare rows:', (await page.locator('table tbody tr').allInnerTexts()).slice(0, 3).map((t) => t.replace(/\s+/g, ' ')).join(' || '));
 
+  // Persistence and backup: state survives a reload; a backup restores it in a fresh browser.
+  {
+    const errorsBefore = errors.length;
+    const check = (ok: boolean, msg: string) => { if (!ok) errors.push(`backup: ${msg}`); };
+    const ownBox = (p: typeof page, name: string) => p.locator('label', { hasText: name }).locator('input[type=checkbox]').first();
+
+    const ctxA = await browser.newContext();
+    const a = await ctxA.newPage();
+    a.on('pageerror', (e) => errors.push(`backup pageerror: ${e.message}`));
+    await a.goto(url);
+    await ownBox(a, 'Hu Tao').check();
+    await ownBox(a, 'Xingqiu').check();
+    await a.getByLabel('talent 1').first().fill('7');
+    await a.getByRole('tab', { name: 'Custom team' }).click();
+    for (const n of ['Hu Tao', 'Xingqiu']) await a.getByLabel(n, { exact: true }).check();
+    await a.reload();
+    check(await a.getByRole('tab', { name: 'Custom team' }).getAttribute('aria-selected') === 'true', 'selected tab not remembered after reload');
+    check(await a.getByLabel('Hu Tao', { exact: true }).isChecked(), 'custom team selection not remembered after reload');
+    await a.getByRole('tab', { name: 'Roster' }).click();
+    check(await ownBox(a, 'Hu Tao').isChecked(), 'owned character not remembered after reload');
+
+    await a.getByRole('tab', { name: 'Backup' }).click();
+    const backup = await a.getByLabel('backup text').inputValue();
+    check(backup.includes('"hu-tao"') && backup.includes('genshin-team-simulator-backup'), 'export text missing roster');
+
+    const ctxB = await browser.newContext();
+    const b = await ctxB.newPage();
+    b.on('pageerror', (e) => errors.push(`backup pageerror: ${e.message}`));
+    await b.goto(url);
+    check(!(await ownBox(b, 'Hu Tao').isChecked()), 'fresh browser should start empty');
+    await b.getByRole('tab', { name: 'Backup' }).click();
+    await b.getByLabel('import text').fill(backup);
+    await b.getByRole('button', { name: 'Import', exact: true }).click();
+    const msg = await b.getByRole('status').first().innerText();
+    check(/2 owned characters/.test(msg), `import message: ${msg}`);
+    await b.getByRole('tab', { name: 'Roster' }).click();
+    check(await ownBox(b, 'Hu Tao').isChecked() && await ownBox(b, 'Xingqiu').isChecked(), 'import did not restore owned characters');
+
+    // A stored roster with one invalid entry keeps the valid ones and a recoverable copy.
+    await b.evaluate(() => {
+      const r = JSON.parse(localStorage.getItem('genshin-sim-roster-v1')!);
+      r.characters.keqing = { owned: true, constellation: 99, talents: [1, 1, 1], level: 90 };
+      localStorage.setItem('genshin-sim-roster-v1', JSON.stringify(r));
+    });
+    await b.reload();
+    await b.getByRole('tab', { name: 'Roster' }).click();
+    check(await ownBox(b, 'Hu Tao').isChecked(), 'one bad entry discarded the whole roster');
+    await b.getByRole('tab', { name: 'Backup' }).click();
+    check(await b.getByRole('heading', { name: 'Recovered data' }).isVisible(), 'recovered copy not offered');
+    await b.screenshot({ path: `${shots}/9-backup.png`, fullPage: true });
+
+    await ctxA.close();
+    await ctxB.close();
+    if (errors.length === errorsBefore) console.log('persistence and backup: ok');
+  }
+
   await browser.close();
 } finally {
   server.kill();

@@ -161,6 +161,13 @@ Frame blocks (`frames`) carry their own source because they often come from gcsi
 }
 ```
 
+Backup file (Backup tab) wraps the roster, listing only non-default entries:
+
+```jsonc
+{ "format": "genshin-team-simulator-backup", "version": 1, "exportedAt": "2026-09-27T02:04:30Z",
+  "roster": { /* as above */ }, "savedTeams": [ { "id": "t1", "name": "...", "team": { "order": ["..."] } } ] }
+```
+
 ## Artifact set
 
 ```jsonc

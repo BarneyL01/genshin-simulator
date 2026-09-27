@@ -1,20 +1,14 @@
-import { useState } from 'react';
 import type { KbData } from '../kb';
 import type { Roster } from '../schema/roster';
 import { Badge, Button, IntInput, Section, confidenceTone } from './Common';
-import { nameOf } from './format';
-import { parseRoster } from './store';
 
 interface Props {
   kb: KbData;
   roster: Roster;
   update: (fn: (r: Roster) => Roster) => void;
-  setRoster: (r: Roster) => void;
 }
 
-export function RosterView({ kb, roster, update, setRoster }: Props) {
-  const [io, setIo] = useState('');
-  const [ioError, setIoError] = useState('');
+export function RosterView({ kb, roster, update }: Props) {
   const chars = [...kb.characters.values()].sort((a, b) => a.name.localeCompare(b.name));
   const types = [...new Set([...kb.weapons.values()].map((w) => w.type))].sort();
 
@@ -133,16 +127,9 @@ export function RosterView({ kb, roster, update, setRoster }: Props) {
         </div>
       </Section>
 
-      <Section title="Backup">
-        <div className="flex flex-wrap gap-2">
-          <Button onClick={() => setIo(JSON.stringify(roster, null, 2))}>Export to text</Button>
-          <Button onClick={() => { try { setRoster(parseRoster(io)); setIoError(''); } catch (e) { setIoError(e instanceof Error ? e.message : String(e)); } }}>Import from text</Button>
-        </div>
-        <textarea className="mt-2 h-32 w-full rounded border p-2 font-mono text-xs" value={io} onChange={(e) => setIo(e.target.value)} placeholder="Roster JSON" />
-        {ioError && <p className="text-sm text-red-700">{ioError}</p>}
-        <p className="mt-1 text-xs text-slate-500">Characters and weapons that are not in the knowledge base yet are kept but ignored.</p>
-        <p className="text-xs text-slate-500">{nameOf('roster')} is stored in this browser only.</p>
-      </Section>
+      <p className="mt-6 text-xs text-slate-500">
+        Your roster is remembered in this browser automatically. To copy it to another browser or keep a backup, use the Backup tab.
+      </p>
     </div>
   );
 }
