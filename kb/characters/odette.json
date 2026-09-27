@@ -11,46 +11,64 @@
           "baseStats",
           "ascensionStat",
           "talent multipliers",
-          "passive/constellation text"
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
         ]
       },
       {
         "site": "gcsim",
-        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette",
         "retrieved": "2026-09-25",
         "fields": [
-          "frames (where parsed)",
-          "multiplier cross-check",
+          "frames",
+          "ICD",
+          "gauge",
           "particles",
-          "ICD"
+          "multiplier cross-check"
         ],
-        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       },
       {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/cryo/odette",
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette",
         "retrieved": "2026-09-25",
         "fields": [
-          "baseStats (Lv 90 cross-check)"
+          "frames",
+          "Dance Double timing",
+          "Marvelous Splendor ticks",
+          "Stellar Glimmer formulas"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/pkg/enemy/damage.go",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "direct reaction damage formula"
         ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "high",
+  "dataConfidence": "medium",
   "assumptions": [
-    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 18/18. Lv 90 base stats confirmed by KeqingMains.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
-    "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables (base stats could not be cross-checked in a second source).",
+    "Constellations C1, C2, C4 and C6 are not modelled (text kept); C3/C5 talent levels are.",
+    "The first burst slash is blunt in gcsim (can shatter Frozen); here no burst hit is blunt.",
+    "Radiance: Stellar Swirl (Cryo Swirl → Stellar Swirl, and its Stellar Glimmer forms) is not modelled: only Stellar-Conduct.",
+    "Main stats are reasoned from the damage formula (Stellar Glimmer ignores DMG%, scales with ATK and EM), not from a guide.",
+    "usualCombo (Skill → Burst → Coda) follows the kit text: Coda is only available for 6 s after the Skill or Burst. No guide rotation was available."
   ],
   "rarity": 5,
   "element": "cryo",
   "weaponType": "sword",
   "releaseVersion": "7.0",
-  "roles": [],
+  "roles": [
+    "off-field-dps",
+    "stellar-conduct-enabler"
+  ],
   "baseStats": {
     "lv90": {
       "hp": 12980.665588799999,
@@ -61,7 +79,7 @@
   },
   "ascensionStat": {
     "stat": "critDmg",
-    "value": 0.884
+    "value": 0.384
   },
   "talents": {
     "normal": {
@@ -90,19 +108,18 @@
           "frames": {
             "hitmark": 9,
             "cancel": {
-              "normal": 17,
-              "charged": 25,
+              "default": 25,
               "skill": 9,
               "burst": 9,
               "dash": 9,
               "jump": 9,
               "swap": 9,
-              "default": 25
+              "normal": 17
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -135,19 +152,19 @@
           "frames": {
             "hitmark": 9,
             "cancel": {
-              "normal": 19,
-              "charged": 21,
+              "default": 23,
               "skill": 9,
               "burst": 9,
               "dash": 9,
               "jump": 9,
               "swap": 9,
-              "default": 23
+              "normal": 19,
+              "charged": 21
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -180,19 +197,18 @@
           "frames": {
             "hitmark": 16,
             "cancel": {
-              "normal": 54,
-              "charged": 69,
+              "default": 69,
               "skill": 31,
               "burst": 31,
               "dash": 31,
               "jump": 31,
               "swap": 31,
-              "default": 69
+              "normal": 54
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -247,19 +263,19 @@
           "frames": {
             "hitmark": 15,
             "cancel": {
-              "normal": 53,
-              "charged": 73,
+              "default": 85,
               "skill": 15,
               "burst": 15,
               "dash": 15,
               "jump": 15,
               "swap": 15,
-              "default": 85
+              "normal": 53,
+              "charged": 73
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -292,19 +308,18 @@
           "frames": {
             "hitmark": 15,
             "cancel": {
-              "normal": 62,
-              "charged": 70,
+              "default": 70,
               "skill": 15,
               "burst": 15,
               "dash": 15,
               "jump": 15,
               "swap": 15,
-              "default": 70
+              "normal": 62
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -314,6 +329,153 @@
           "gauge": 1
         }
       ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Adagio: Phantom Night Dancers",
+          "mv": [
+            1.0808,
+            1.16186,
+            1.24292,
+            1.351,
+            1.43206,
+            1.51312,
+            1.6212,
+            1.72928,
+            1.83736,
+            1.94544,
+            2.05352,
+            2.1616,
+            2.2967,
+            2.4318,
+            2.5669
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 23,
+            "cancel": {
+              "default": 42,
+              "normal": 41,
+              "skill": 41,
+              "burst": 41,
+              "dash": 40,
+              "walk": 41,
+              "swap": 40
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "effects": []
+    },
+    "burst": {
+      "hits": [
+        {
+          "name": "Slash",
+          "mv": [
+            1.10176,
+            1.184392,
+            1.267024,
+            1.3772,
+            1.459832,
+            1.542464,
+            1.65264,
+            1.762816,
+            1.872992,
+            1.983168,
+            2.093344,
+            2.20352,
+            2.34124,
+            2.47896,
+            2.61668
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 112,
+            "cancel": {
+              "default": 126,
+              "normal": 108,
+              "skill": 107,
+              "dash": 108,
+              "jump": 109,
+              "swap": 106
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            128,
+            140
+          ]
+        },
+        {
+          "name": "Final Slash",
+          "mv": [
+            1.70272,
+            1.830424,
+            1.958128,
+            2.1284,
+            2.256104,
+            2.383808,
+            2.55408,
+            2.724352,
+            2.894624,
+            3.064896,
+            3.235168,
+            3.40544,
+            3.61828,
+            3.83112,
+            4.04396
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 144,
+            "cancel": {
+              "default": 126,
+              "normal": 108,
+              "skill": 107,
+              "dash": 108,
+              "jump": 109,
+              "swap": 106
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "burst",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "energyCost": 60,
       "effects": []
     },
     "charged": {
@@ -342,669 +504,417 @@
           "frames": {
             "hitmark": 30,
             "cancel": {
+              "default": 83,
               "normal": 83,
               "skill": 57,
               "burst": 58,
               "dash": 30,
               "jump": 30,
-              "swap": 30,
-              "default": 83
+              "swap": 30
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "extra",
+            "tag": "normal",
             "group": "standard"
           },
           "gauge": 1
         }
       ],
-      "effects": []
-    },
-    "skill": {
-      "hits": [
-        {
-          "name": "Skill",
-          "mv": [
-            1.0808,
-            1.16186,
-            1.24292,
-            1.351,
-            1.43206,
-            1.51312,
-            1.6212,
-            1.72928,
-            1.83736,
-            1.94544,
-            2.05352,
-            2.1616,
-            2.2967,
-            2.4318,
-            2.5669
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 23,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Coda at Dawn's Tolling Stellar-Conduct/Stellar Swirl 1",
-          "mv": [
-            3.0576,
-            3.28692,
-            3.51624,
-            3.822,
-            4.05132,
-            4.28064,
-            4.5864,
-            4.89216,
-            5.19792,
-            5.50368,
-            5.80944,
-            6.1152,
-            6.4974,
-            6.8796,
-            7.2618
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 26,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Coda at Dawn's Tolling Stellar-Conduct/Stellar Swirl 2",
-          "mv": [
-            4.5864,
-            4.93038,
-            5.27436,
-            5.733,
-            6.07698,
-            6.42096,
-            6.8796,
-            7.33824,
-            7.79688,
-            8.25552,
-            8.71416,
-            9.1728,
-            9.7461,
-            10.3194,
-            10.8927
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 29,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Plume\" Dance Move",
-          "mv": [
-            0.4304,
-            0.46268,
-            0.49496,
-            0.538,
-            0.57028,
-            0.60256,
-            0.6456,
-            0.68864,
-            0.73168,
-            0.77472,
-            0.81776,
-            0.8608,
-            0.9146,
-            0.9684,
-            1.0222
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 29,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Plume\" Dance Move Stellar-Conduct/Stellar Swirl 1",
-          "mv": [
-            0.27024,
-            0.290508,
-            0.310776,
-            0.3378,
-            0.358068,
-            0.378336,
-            0.40536,
-            0.432384,
-            0.459408,
-            0.486432,
-            0.513456,
-            0.54048,
-            0.57426,
-            0.60804,
-            0.64182
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 32,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Plume\" Dance Move Stellar-Conduct/Stellar Swirl 2",
-          "mv": [
-            0.40528,
-            0.435676,
-            0.466072,
-            0.5066,
-            0.536996,
-            0.567392,
-            0.60792,
-            0.648448,
-            0.688976,
-            0.729504,
-            0.770032,
-            0.81056,
-            0.86122,
-            0.91188,
-            0.96254
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 35,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Wing\" Dance Move",
-          "mv": [
-            0.51464,
-            0.553238,
-            0.591836,
-            0.6433,
-            0.681898,
-            0.720496,
-            0.77196,
-            0.823424,
-            0.874888,
-            0.926352,
-            0.977816,
-            1.02928,
-            1.09361,
-            1.15794,
-            1.22227
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 35,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Wing\" Dance Move Stellar-Conduct/Stellar Swirl 1",
-          "mv": [
-            0.32312,
-            0.347354,
-            0.371588,
-            0.4039,
-            0.428134,
-            0.452368,
-            0.48468,
-            0.516992,
-            0.549304,
-            0.581616,
-            0.613928,
-            0.64624,
-            0.68663,
-            0.72702,
-            0.76741
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 38,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "\"Wing\" Dance Move Stellar-Conduct/Stellar Swirl 2",
-          "mv": [
-            0.48464,
-            0.520988,
-            0.557336,
-            0.6058,
-            0.642148,
-            0.678496,
-            0.72696,
-            0.775424,
-            0.823888,
-            0.872352,
-            0.920816,
-            0.96928,
-            1.02986,
-            1.09044,
-            1.15102
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 41,
-            "cancel": {
-              "normal": 41,
-              "skill": 41,
-              "burst": 41,
-              "dash": 40,
-              "swap": 40,
-              "default": 42
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        }
-      ],
-      "cooldown": 900,
-      "particles": {
-        "count": 5,
-        "perHit": false,
-        "icd": 0,
-        "element": "cryo"
-      },
-      "effects": []
-    },
-    "burst": {
-      "hits": [
-        {
-          "name": "Slash 1",
-          "mv": [
-            1.10176,
-            1.184392,
-            1.267024,
-            1.3772,
-            1.459832,
-            1.542464,
-            1.65264,
-            1.762816,
-            1.872992,
-            1.983168,
-            2.093344,
-            2.20352,
-            2.34124,
-            2.47896,
-            2.61668
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 112,
-            "cancel": {
-              "normal": 108,
-              "skill": 107,
-              "dash": 108,
-              "jump": 109,
-              "swap": 106,
-              "default": 126
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Slash 2",
-          "mv": [
-            1.10176,
-            1.184392,
-            1.267024,
-            1.3772,
-            1.459832,
-            1.542464,
-            1.65264,
-            1.762816,
-            1.872992,
-            1.983168,
-            2.093344,
-            2.20352,
-            2.34124,
-            2.47896,
-            2.61668
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 115,
-            "cancel": {
-              "normal": 108,
-              "skill": 107,
-              "dash": 108,
-              "jump": 109,
-              "swap": 106,
-              "default": 126
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Slash 3",
-          "mv": [
-            1.10176,
-            1.184392,
-            1.267024,
-            1.3772,
-            1.459832,
-            1.542464,
-            1.65264,
-            1.762816,
-            1.872992,
-            1.983168,
-            2.093344,
-            2.20352,
-            2.34124,
-            2.47896,
-            2.61668
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 118,
-            "cancel": {
-              "normal": 108,
-              "skill": 107,
-              "dash": 108,
-              "jump": 109,
-              "swap": 106,
-              "default": 126
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
-        },
-        {
-          "name": "Final Slash",
-          "mv": [
-            1.70272,
-            1.830424,
-            1.958128,
-            2.1284,
-            2.256104,
-            2.383808,
-            2.55408,
-            2.724352,
-            2.894624,
-            3.064896,
-            3.235168,
-            3.40544,
-            3.61828,
-            3.83112,
-            4.04396
-          ],
-          "scaling": "atk",
-          "element": "cryo",
-          "frames": {
-            "hitmark": 115,
-            "cancel": {
-              "normal": 108,
-              "skill": 107,
-              "dash": 108,
-              "jump": 109,
-              "swap": 106,
-              "default": 126
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/odette/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "burst",
-            "group": "standard"
-          },
-          "gauge": 1
-        }
-      ],
-      "cooldown": 900,
-      "energyCost": 60,
+      "stamina": 20,
       "effects": []
     }
   },
-  "passives": [
-    {
-      "id": "odette.passive1",
-      "unlock": "p1",
-      "effects": [],
-      "text": "Spring Rite of the Chosen One: When Odette summons her **Solo Dance Double**, she also obtains 4 stacks of **Marvelous Splendor**."
-    },
-    {
-      "id": "odette.passive2",
-      "unlock": "p2",
-      "effects": [],
-      "text": "Pathetique of Pateticheskaya: For every 100 ATK Odette has over 1,000, her Stellar Glimmer DMG is additionally increased by 1.5% of the original DMG. She can deal up to 30% more additional DMG in this way."
-    },
-    {
-      "id": "odette.passive3",
-      "unlock": "p3",
-      "effects": [],
-      "text": "Stellar Jubilee: Dance of Aurore: Odette will enter the Radiance: Stellar-Conduct state when she is inside a **Polestar Field**, or the Radiance: Stellar Swirl state for 8s after a nearby party member triggers a Stellar Swirl reaction.\nWhen a party member triggers a Superconduct or Cryo Swirl reaction, it becomes a Stellar-Conduct or Stellar Swirl reaction instead, and the Base DMG of said reaction is also increased by 0.7% for every 100 points of Odette's ATK. A maximum increase of 14% can be obtained in this way."
-    },
-    {
-      "id": "odette.passive4",
-      "unlock": "p4",
-      "effects": [],
-      "text": "Echo of Winter Daydreams: Shows the locations of Snezhnaya's Local Specialties on the mini-map, and this effect also applies in the Shadow Realm.\nPracticing dance in one's spare time might even trigger other effects..."
-    }
-  ],
+  "passives": [],
   "constellations": [
     {
       "level": 1,
       "effects": [],
-      "text": "\"On This Danceless Morn, She Gazes at Her Reflection\": After unleashing the special Elemental Skill **Adagio: Coda at Dawn's Tolling**, at the dance duet's end Odette will deal an additional instance of Cryo AoE DMG to nearby opponents that is considered:\nRadiance: Stellar-Conduct or when not in a Radiance state: Stellar-Conduct reaction DMG at 300% of Odette's ATK;\nRadiance: Stellar Swirl: Stellar Swirl reaction DMG at 450% of Odette's ATK.\n\nAdditionally, the Ascension Talent \"Spring Rite of the Chosen One\" is also enhanced: now, when the **Solo Dance Double** is summoned, Odette also gains 2"
+      "text": "Coda at Dawn's Tolling deals an extra Stellar Glimmer hit (300%/450% ATK); Marvelous Splendor +2 stacks and moves 2 per second."
     },
     {
       "level": 2,
       "effects": [],
-      "text": "\"I Must See the Snow Swan's Unseen Dream for Myself, She Thought\": The Ascension Talent \"Spring Rite of the Chosen One\" is enhanced as follows: every stack of **Marvelous Splendor** active also increases the character's ATK by 7%.\nAdditionally, if Odette is in the **Radiance: Stellar Glimmer** state when there is a **Solo Dance Double** on the field, opponents near the Dance Double will also have their corresponding Elemental RES lowered by 20%.\n·Radiance: Stellar-Conduct: Cryo and Electro.\n·Radiance: Stellar Swirl: Cryo and Anemo."
+      "text": "Each Marvelous Splendor stack also gives +7% ATK; in Radiance, enemies near the Double lose 20% RES to the matching elements."
     },
     {
       "level": 3,
       "effects": [],
-      "text": "\"I'll Chase the Shouting Wind Along, Climbing Alone As I Go\": Increases the Level of **Adagio: Phantom Night Dancers** by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Adagio: Phantom Night Dancers by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
     },
     {
       "level": 4,
       "effects": [],
-      "text": "\"Up, Up the Long, Delirious, Burning Blue\": The Elemental Burst Presto: Bluebird Finale is enhanced as follows: when Odette obtains Snow Swan's Dream, Stellar Glimmer reaction DMG dealt by other nearby party members is increased by 50% of Snow Swan Dream's effects.\n\nAdditionally, when a party member deals Stellar Glimmer reaction DMG to an opponent, Odette will also join in with a coordinated attack, dealing an instance of AoE Cryo DMG. This effect, which can trigger once every 3.5s, will be considered:\n·Radiance: Stellar-Conduct or when not in a Radiance state: Stellar-Conduct reaction DMG at"
+      "text": "Snow Swan's Dream also gives other party members 50% of its bonus; Odette joins other members' Stellar Glimmer hits with a coordinated attack (66%/99% ATK, every 3.5 s)."
     },
     {
       "level": 5,
       "effects": [],
-      "text": "\"Oh! I Have Slipped the Surly Bonds of Earth\": Increases the Level of **Presto: Bluebird Finale**  by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Presto: Bluebird Finale by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
     },
     {
       "level": 6,
       "effects": [],
-      "text": "\"Put Out My Hand, and Touched the Face of the Divine\": The Ascension Talent \"Spring Rite of the Chosen One\" is enhanced as follows: When Odette grants **Marvelous Splendor** to all nearby party members, her own Marvelous Splendor stacks will no longer decrease.\nAdditionally, characters affected by Marvelous Splendor have their Stellar Glimmer reaction DMG dealt to opponents **elevated** by 25%, and Stellar Glimmer reaction DMG dealt by Odette is elevated by an additional 20%."
+      "text": "Odette keeps her Marvelous Splendor stacks when granting them; Stellar Glimmer DMG of affected characters elevated by 25% (Odette +20% more)."
     }
   ],
-  "effects": [],
-  "extraActions": {},
-  "hookHits": {},
+  "effects": [
+    {
+      "id": "odette.stellar-conduct",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "stellar-conduct",
+      "assumption": "Stellar Jubilee: with Odette in the team, Superconduct becomes Stellar-Conduct (Polestar Field). The team is assumed to stand inside the field. Cryo Swirl → Stellar Swirl is not modelled."
+    },
+    {
+      "id": "odette.jubilee-base",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "team",
+      "stat": "baseDmgMultiplier.stellarGlimmer",
+      "value": 0,
+      "scaling": {
+        "from": "self.atk",
+        "ratio": 0.00007,
+        "cap": 0.14
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "assumption": "Stellar Jubilee: Stellar Glimmer (direct Stellar-Conduct) Base DMG of every party member +0.7% per 100 of Odette's ATK, max 14%, evaluated at hit time."
+    },
+    {
+      "id": "odette.skill",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "odette",
+      "assumption": "Skill summons the Solo Dance Double (21 s); Coda at Dawn's Tolling (action \"coda\") is available for 6 s after the Skill or Burst and upgrades the Double for 20 s."
+    },
+    {
+      "id": "odette.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          0.14,
+          0.18,
+          0.22,
+          0.26,
+          0.3,
+          0.34,
+          0.38,
+          0.42,
+          0.46,
+          0.5,
+          0.54,
+          0.58,
+          0.62,
+          0.66,
+          0.7
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "odette",
+      "assumption": "Snow Swan's Dream: Odette's Stellar Glimmer reaction DMG bonus for 20 s from the final slash."
+    },
+    {
+      "id": "odette.a1",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "odette",
+      "assumption": "Marvelous Splendor: 4 stacks on summoning the Double, +15% Stellar Glimmer reaction DMG each; while Odette is off-field one stack moves to the other party members every ~1 s (59.25 frames)."
+    },
+    {
+      "id": "odette.a4",
+      "trigger": {
+        "on": "always"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "odette",
+      "assumption": "Pathetique: Odette's Stellar Glimmer multipliers ×(1 + 1.5% per 100 ATK above 1,000), at most ×1.3, evaluated at hit time."
+    }
+  ],
+  "extraActions": {
+    "coda": {
+      "as": "skill",
+      "damageTalent": "skill",
+      "hits": [
+        {
+          "name": "Coda at Dawn's Tolling DoT",
+          "mv": [
+            0.9584,
+            1.03028,
+            1.10216,
+            1.198,
+            1.26988,
+            1.34176,
+            1.4376,
+            1.53344,
+            1.62928,
+            1.72512,
+            1.82096,
+            1.9168,
+            2.0366,
+            2.1564,
+            2.2762
+          ],
+          "scaling": "atk",
+          "element": "cryo",
+          "frames": {
+            "hitmark": 11,
+            "cancel": {
+              "default": 76,
+              "normal": 75,
+              "burst": 76,
+              "dash": 74,
+              "jump": 75,
+              "walk": 75,
+              "swap": 74
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "odetteDanceDuo",
+            "group": "odetteDanceDuo"
+          },
+          "gauge": 1,
+          "extraHitmarks": [
+            20,
+            28
+          ]
+        }
+      ],
+      "cooldown": 900
+    }
+  },
+  "hookHits": {
+    "plume": {
+      "name": "\"Plume\" Dance Move",
+      "mv": [
+        0.4304,
+        0.46268,
+        0.49496,
+        0.538,
+        0.57028,
+        0.60256,
+        0.6456,
+        0.68864,
+        0.73168,
+        0.77472,
+        0.81776,
+        0.8608,
+        0.9146,
+        0.9684,
+        1.0222
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    },
+    "wing": {
+      "name": "\"Wing\" Dance Move",
+      "mv": [
+        0.51464,
+        0.553238,
+        0.591836,
+        0.6433,
+        0.681898,
+        0.720496,
+        0.77196,
+        0.823424,
+        0.874888,
+        0.926352,
+        0.977816,
+        1.02928,
+        1.09361,
+        1.15794,
+        1.22227
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    },
+    "plume-ssc": {
+      "name": "\"Plume\" Dance Move (Stellar-Conduct)",
+      "mv": [
+        0.27024,
+        0.290508,
+        0.310776,
+        0.3378,
+        0.358068,
+        0.378336,
+        0.40536,
+        0.432384,
+        0.459408,
+        0.486432,
+        0.513456,
+        0.54048,
+        0.57426,
+        0.60804,
+        0.64182
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 0,
+      "talent": "skill"
+    },
+    "wing-ssc": {
+      "name": "\"Wing\" Dance Move (Stellar-Conduct)",
+      "mv": [
+        0.32312,
+        0.347354,
+        0.371588,
+        0.4039,
+        0.428134,
+        0.452368,
+        0.48468,
+        0.516992,
+        0.549304,
+        0.581616,
+        0.613928,
+        0.64624,
+        0.68663,
+        0.72702,
+        0.76741
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 0,
+      "talent": "skill"
+    },
+    "coda-ssc": {
+      "name": "Coda at Dawn's Tolling (Stellar-Conduct)",
+      "mv": [
+        3.0576,
+        3.28692,
+        3.51624,
+        3.822,
+        4.05132,
+        4.28064,
+        4.5864,
+        4.89216,
+        5.19792,
+        5.50368,
+        5.80944,
+        6.1152,
+        6.4974,
+        6.8796,
+        7.2618
+      ],
+      "scaling": "atk",
+      "element": "cryo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette/skill.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 0,
+      "talent": "skill"
+    }
+  },
   "usualCombo": [
     {
       "variant": "off-field",
@@ -1014,6 +924,9 @@
         },
         {
           "action": "burst"
+        },
+        {
+          "action": "coda"
         }
       ]
     },
@@ -1025,6 +938,9 @@
         },
         {
           "action": "burst"
+        },
+        {
+          "action": "coda"
         },
         {
           "action": "normal",
@@ -1040,9 +956,11 @@
     "mainStats": {
       "sands": [
         "atk%",
-        "er"
+        "em"
       ],
       "goblet": [
+        "atk%",
+        "em",
         "dmgBonus.cryo"
       ],
       "circlet": [
@@ -1052,6 +970,9 @@
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "odette",
+    "stellar-conduct"
+  ],
+  "needsHook": true
 }

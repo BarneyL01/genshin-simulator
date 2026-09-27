@@ -21,7 +21,8 @@
     "kb:import:team": "tsx scripts/kb-import/import-team.ts",
     "sim:team": "tsx scripts/sim-team.ts",
     "e2e": "tsx scripts/e2e.ts",
-    "compare": "tsx scripts/compare-teams.ts"
+    "compare": "tsx scripts/compare-teams.ts",
+    "compare:weapons": "tsx scripts/compare-weapons.ts"
   },
   "dependencies": {
     "react": "^19.3.0",

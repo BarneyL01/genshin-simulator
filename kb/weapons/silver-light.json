@@ -10,19 +10,45 @@
         "fields": [
           "baseAtk",
           "substat",
-          "passive text",
+          "passive R1-R5 values",
           "releaseVersion"
+        ]
+      },
+      {
+        "site": "game8",
+        "url": "https://game8.co/games/Genshin-Impact/archives/622051",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "obtain: Silverwing in Pursuit of the Moon event reward"
+        ]
+      },
+      {
+        "site": "game8",
+        "url": "https://game8.co/games/Genshin-Impact/archives/625542",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "refinement: Tea-Scented Tassel from the event (R5 free)"
+        ]
+      },
+      {
+        "site": "allthings.how",
+        "url": "https://allthings.how/how-to-get-silver-light-sword-in-genshin-impact-silverwing-in-pursuit-of-the-moon/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "obtain",
+          "event end date"
         ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "low",
+  "dataConfidence": "medium",
   "assumptions": [
-    "Passive \"Radiance on the Water\" is not modelled yet: the weapon contributes only its base ATK and secondary stat. R1 text: Increases Elemental Mastery by 52 for 12s after Elemental Skill use. Max 2 stacks, and each stack's duration is independent of the others.",
-    "Obtain method is a guess from rarity and has not been verified in a source page.",
-    "Base ATK and secondary stat are from genshin-db only (not cross-checked in a second source)."
+    "Passive values are from genshin-db only (no gcsim cross-check).",
+    "Obtain method comes from community knowledge; it has not been verified in a source page. It only drives the \"R5 obtainable\" hint.",
+    "No gcsim implementation yet (gcsim has no Silver Light); the passive is transcribed from the genshin-db text: Elemental Mastery +52/65/78/91/104 for 12 s after Elemental Skill use, max 2 stacks, independent durations.",
+    "Obtain: event weapon; 4 Tea-Scented Tassels from the same event take it to R5. Read from web-search summaries of the Game8 and allthings.how pages (the pages themselves are blocked in the cloud session)."
   ],
   "type": "sword",
   "rarity": 4,
@@ -35,13 +61,37 @@
     "lv90": 0.41346
   },
   "obtain": {
-    "method": "gacha",
-    "freeRefinement": null
+    "method": "event",
+    "freeRefinement": 5,
+    "event": "Silverwing in Pursuit of the Moon (7.1, until 2026-10-12)"
   },
   "passive": {
     "name": "Radiance on the Water",
     "text": "Increases Elemental Mastery by 52 for 12s after Elemental Skill use. Max 2 stacks, and each stack's duration is independent of the others.",
-    "effects": []
+    "effects": [
+      {
+        "id": "silver-light.em",
+        "trigger": {
+          "on": "onSkill"
+        },
+        "target": "self",
+        "stat": "em",
+        "value": {
+          "perRefinement": [
+            52,
+            65,
+            78,
+            91,
+            104
+          ]
+        },
+        "duration": 720,
+        "maxStacks": 2,
+        "stackMode": "independent",
+        "snapshot": false,
+        "assumption": "Each Elemental Skill use (including special skills such as Odette's Coda at Dawn's Tolling) adds one stack for 12 s; stacks expire independently. Applies whether or not the wielder is on the field."
+      }
+    ]
   },
   "needsHook": false
 }

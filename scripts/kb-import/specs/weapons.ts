@@ -115,4 +115,25 @@ export const specs: WeaponSpec[] = [
     obtainVerified: true,
     extraSources: [{ site: 'keqingmains', url: 'https://keqingmains.com/hu-tao/', fields: ['obtain: chests in Liyue'] }],
   },
+  {
+    id: 'silver-light', dbName: 'Silver Light',
+    obtain: { method: 'event', freeRefinement: 5, event: 'Silverwing in Pursuit of the Moon (7.1, until 2026-10-12)' },
+    effects: [
+      E({
+        id: 'silver-light.em', trigger: { on: 'onSkill' }, stat: 'em', value: per('Silver Light', 0),
+        duration: 720, maxStacks: 2, stackMode: 'independent',
+        assumption: 'Each Elemental Skill use (including special skills such as Odette\'s Coda at Dawn\'s Tolling) adds one stack for 12 s; stacks expire independently. Applies whether or not the wielder is on the field.',
+      }),
+    ],
+    assumptions: [
+      'No gcsim implementation yet (gcsim has no Silver Light); the passive is transcribed from the genshin-db text: Elemental Mastery +52/65/78/91/104 for 12 s after Elemental Skill use, max 2 stacks, independent durations.',
+      'Obtain: event weapon; 4 Tea-Scented Tassels from the same event take it to R5. Read from web-search summaries of the Game8 and allthings.how pages (the pages themselves are blocked in the cloud session).',
+    ],
+    extraSources: [
+      { site: 'game8', url: 'https://game8.co/games/Genshin-Impact/archives/622051', fields: ['obtain: Silverwing in Pursuit of the Moon event reward'] },
+      { site: 'game8', url: 'https://game8.co/games/Genshin-Impact/archives/625542', fields: ['refinement: Tea-Scented Tassel from the event (R5 free)'] },
+      { site: 'allthings.how', url: 'https://allthings.how/how-to-get-silver-light-sword-in-genshin-impact-silverwing-in-pursuit-of-the-moon/', fields: ['obtain', 'event end date'] },
+    ],
+    dataConfidence: 'medium',
+  },
 ];

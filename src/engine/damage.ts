@@ -38,7 +38,8 @@ export interface DirectDamageContext {
 /**
  * Direct reaction damage (gcsim calcDirectReaction; Stellar Glimmer):
  * (MV × stat × (1 + base bonus) × field mult × (1 + EM bonus + reaction bonus) + flat) × crit × def × res.
- * DMG% bonuses do not apply. Reaction bonus = `reactionBonus.<direct>` + `reactionBonus.stellarGlimmer`.
+ * DMG% bonuses do not apply. Base bonus = hit.baseMult + `baseDmgMultiplier.stellarGlimmer`;
+ * reaction bonus = `reactionBonus.<direct>` + `reactionBonus.stellarGlimmer`.
  */
 export function calcDirectDamage(c: DirectDamageContext): number {
   const m = (k: string) => c.mods[k] ?? 0;
@@ -46,7 +47,7 @@ export function calcDirectDamage(c: DirectDamageContext): number {
   const t = hit.talent;
   const kind = hit.direct!;
   const scalingValue = stats[hit.scaling];
-  const base = hit.mv * scalingValue * (1 + (hit.baseMult ?? 0)) * c.fieldMult;
+  const base = hit.mv * scalingValue * (1 + (hit.baseMult ?? 0) + m('baseDmgMultiplier.stellarGlimmer')) * c.fieldMult;
   const react = 1 + directEmBonus(stats.em, c.emCurve) + m(`reactionBonus.${kind}`) + m('reactionBonus.stellarGlimmer');
   const flat = hit.flat ?? 0;
   const cr = stats.critRate + m(`critRate.${t}`);

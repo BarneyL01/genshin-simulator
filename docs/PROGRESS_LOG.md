@@ -16,6 +16,23 @@ Entry format:
 
 ---
 
+## 2026-09-27 — Silver Light + Odette simulation; Stellar Glimmer formula; CRIT ascension fix
+
+- Milestone: M8 (KB upgrades).
+- Done:
+  - Engine: direct Stellar Glimmer damage as gcsim (`calcDirectDamage`): no DMG%, EM bonus 6·EM/(2000+EM) plus Stellar reaction bonuses, Polestar Field stack multiplier (1.0–2.0), ignores DEF. Before, these hits used the normal formula (DMG% incl. the field's Cryo/Electro bonus, no EM). Existing Sandrone teams: Relaxed DPS +5.8% (Kaeya) / +4.5% (Traveler).
+  - Silver Light: passive modelled; obtain = event, R5 free (see kb/CHANGELOG.md).
+  - Odette: hand-written spec (`scripts/kb-import/specs/odette.ts`) and hook (`src/engine/hooks/odette.ts`): Dance Double, Coda (action `coda`, only within 6 s of Skill/Burst), Stellar-Conduct forms, A1/A4, Stellar Jubilee, Swan's Dream.
+  - New team `odette-stellar-conduct`; new CLI `npm run compare:weapons`.
+  - Found and fixed a KB-wide bug: CRIT Rate/CRIT DMG ascension stats included the base 5%/50% (42 characters overrated). Hu Tao golden re-recorded.
+- Result (Odette in odette-stellar-conduct, talents 1/1/1, C0, KQMS, Relaxed): Silver Light R1 4,629 Odette DPS; R5 5,043 (+8.9%); Absolution/Mistsplitter R1 4,880 (stats only, passives not modelled); Aquila Favonia R1 4,583; Favonius Sword R5 3,824.
+- KB changes: see kb/CHANGELOG.md (2026-09-27 entries).
+- Tests / validation: `npx vitest run` 138 pass (6 new in `tests/odette.test.ts`, 3 new direct-damage tests); lint, typecheck, build clean; `npm run kb:validate` ok (428 records); e2e ok.
+- Blockers: KQM/Game8/GameWith still blocked in the cloud session: no guide rotation or recommended weapons for Odette; team and rotation are ours (`low`).
+- Next: Stellar Swirl (Odette's other Radiance); Odette C1/C2/C4/C6; model passives of the other top swords (Mistsplitter, Absolution…) so the comparer is fair against them.
+
+---
+
 ## 2026-09-27 — Backup tab (export/import) and safer browser storage
 
 - Milestone: M8 (UI).

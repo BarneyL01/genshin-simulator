@@ -398,7 +398,7 @@
     {
       "id": "odette",
       "name": "Odette",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "ororon",
@@ -489,6 +489,11 @@
       "id": "tighnari",
       "name": "Tighnari",
       "dataConfidence": "low"
+    },
+    {
+      "id": "traveler-cryo",
+      "name": "Traveler (Cryo)",
+      "dataConfidence": "high"
     },
     {
       "id": "varesa",
@@ -1485,7 +1490,7 @@
     {
       "id": "silver-light",
       "name": "Silver Light",
-      "dataConfidence": "low"
+      "dataConfidence": "medium"
     },
     {
       "id": "silvershower-heartstrings",
@@ -2122,9 +2127,24 @@
       "dataConfidence": "medium"
     },
     {
+      "id": "odette-stellar-conduct",
+      "name": "Sandrone / Fischl / Alyosha + Odette",
+      "dataConfidence": "low"
+    },
+    {
       "id": "raiden-national",
       "name": "Raiden National",
       "dataConfidence": "medium"
+    },
+    {
+      "id": "sandrone-stellar-conduct-kaeya",
+      "name": "Sandrone / Fischl / Alyosha + Kaeya",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sandrone-stellar-conduct-traveler",
+      "name": "Sandrone / Fischl / Alyosha + Cryo Traveler",
+      "dataConfidence": "low"
     }
   ],
   "enemies": []

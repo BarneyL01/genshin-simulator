@@ -2,6 +2,12 @@
 
 Newest first. One entry per KB change or sync.
 
+## 2026-09-27 — Silver Light passive, Odette hand-written, Odette team
+- silver-light (`medium`): passive modelled (Elemental Mastery +52/65/78/91/104 per Elemental Skill use, 12 s, 2 independent stacks; Coda counts as a skill use). Obtain corrected from `gacha` (guess) to `event` with R5 free (Silverwing in Pursuit of the Moon, 7.1, until 2026-10-12; 4 Tea-Scented Tassels), read from web-search summaries of Game8 / allthings.how. No gcsim implementation exists yet.
+- odette (`medium`, hand-written, hook `odette`): skill, Coda at Dawn's Tolling (extra action `coda`), Solo Dance Double (Plume/Wing moves), upgraded Stellar-Conduct moves, Marvelous Splendor (A1), Pathetique (A4), Stellar Jubilee base bonus (team), Snow Swan's Dream. Frames/timings from gcsim @ 488e223; 16/16 multiplier tables match gcsim. Not modelled: Stellar Swirl radiance, C1/C2/C4/C6. Replaces the baseline record (which put every skill label into one skill action).
+- reactions.json: `stellarConduct.directMultTable` (gcsim StellarconductMult).
+- Team `odette-stellar-conduct` (Alyosha, Fischl, Odette, Sandrone; own rotation, `low`).
+
 ## 2026-09-27 — Ascension CRIT stats no longer include the base CRIT
 - 42 characters with a CRIT Rate or CRIT DMG ascension stat were stored with genshin-db's `specialized` value, which includes the base 5% CRIT Rate / 50% CRIT DMG that the engine adds itself. Stored values corrected: CRIT Rate 0.242 → 0.192, CRIT DMG 0.884 → 0.384 (e.g. Hu Tao, Yelan, Ayaka, Neuvillette, Furina, Odette). Importers now subtract the base (`ascensionValue` in scripts/kb-import/lib.ts).
 - Effect: those characters' CRIT was overstated by 5 pts CR or 50 pts CD. Golden value for hu-tao-double-hydro-zhongli re-recorded (Relaxed 31,063 → 28,086 DPS). raiden-national unchanged.

@@ -17,7 +17,7 @@ const STAT_KEY = new RegExp(
       'dmgBonus\\.all', `dmgBonus\\.${ELEMENTS}`, `dmgBonus\\.${TALENTS}`,
       `critRate\\.${TALENTS}`, `critDmg\\.${TALENTS}`, `flatDmg\\.${TALENTS}`, 'flatDmg\\.all',
       'reactionBonus\\.[a-zA-Z]+', `res\\.enemy\\.${ELEMENTS}`, 'def\\.enemy\\.shred', 'defIgnore',
-      `mvBonus\\.${TALENTS}`, 'mvBonus\\.hit\\..+', `baseDmgMultiplier\\.${TALENTS}`, 'energyGain', 'cooldown\\.(skill|burst)', `infusion\\.${ELEMENTS}`,
+      `mvBonus\\.${TALENTS}`, 'mvBonus\\.hit\\..+', `baseDmgMultiplier\\.${TALENTS}`, 'baseDmgMultiplier\\.stellarGlimmer', 'energyGain', 'cooldown\\.(skill|burst)', `infusion\\.${ELEMENTS}`,
     ].join('|') +
     ')$',
 );

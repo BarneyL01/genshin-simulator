@@ -57,6 +57,9 @@ dmg = (MV × scalingStat + flatDmg) × baseDmgMultiplier
 - Amplifying reactions: multiplier × (1 + EM bonus + reactionBonus).
 - Additive (Aggravate/Spread): flat bonus from level base × multiplier × (1 + EM bonus + bonus).
 - Transformative and newer reaction families: formula defined in `kb/mechanics/reactions.json`; engine has one implementation per formula id.
+- Direct Stellar Glimmer damage (hits with `direct: "stellarConduct"`: Odette's Coda and upgraded dance moves, the Radiance forms of Sandrone and the Cryo Traveler), as gcsim's `calcDirectReaction`:
+  `(MV × ATK × (1 + base bonus) × fieldMult[stacks] × (1 + 6·EM/(2000+EM) + reactionBonus.stellarConduct + reactionBonus.stellarGlimmer) + flat) × crit × def × res`.
+  No DMG% applies; `fieldMult` = 1.0–2.0 from the Electro/Cryo applications recorded in the Polestar Field's last 4 s window; these hits ignore DEF. EM therefore raises this damage directly (why Silver Light's EM matters for Odette).
 
 ## Elements
 

@@ -237,7 +237,8 @@ Backup file (Backup tab) wraps the roster, listing only non-default entries:
 `dmgBonus.all`, `dmgBonus.<element>`, `dmgBonus.<talent>` (normal|charged|plunge|skill|burst),
 `critRate.<talent>`, `critDmg.<talent>`, `flatDmg.<talent>`, `flatDmg.all`,
 `reactionBonus.<reaction>`, `res.enemy.<element>`, `def.enemy.shred`, `defIgnore`,
-`mvBonus.<talent>`, `baseDmgMultiplier.<talent>`, `energyGain`.
+`mvBonus.<talent>`, `baseDmgMultiplier.<talent>`, `energyGain`,
+`reactionBonus.stellarGlimmer` and `baseDmgMultiplier.stellarGlimmer` (direct Stellar Glimmer damage only; see `docs/SIMULATION.md`).
 
 New stat keys require a schema change (code) and an entry in `docs/PROGRESS_LOG.md`.
 
@@ -274,7 +275,7 @@ Character talent blocks gained optional fields: `hits[].strike` (`'blunt'` shatt
 
 ## Effect: fields added after M2
 
-`delay` (frames after the trigger), `hook` (name of a hook in `src/engine/hooks/`; `trigger.filter` is free-form data for the hook), `scaling { from, ratio, base, cap, capFrom }` (numbers or per-refinement/per-talent-level tables; sources `self.<stat>` and `target.energyMax`), `icd` (number or per refinement), `condition` (assumed met; skipped in the worst-case sensitivity run). New stat keys: `infusion.<element>`, `cooldown.skill|burst`, `mvBonus.hit.<name>`, `energyGain`, `reactionBonus.<reaction>` (ids: vaporize, melt, overloaded, superconduct, electroCharged, swirl, shatter, bloom, hyperbloom, burgeon, burning, aggravate, spread, lunarCharged).
+`delay` (frames after the trigger), `hook` (name of a hook in `src/engine/hooks/`; `trigger.filter` is free-form data for the hook), `scaling { from, ratio, base, cap, capFrom }` (numbers or per-refinement/per-talent-level tables; sources `self.<stat>` and `target.energyMax`), `icd` (number or per refinement), `condition` (assumed met; skipped in the worst-case sensitivity run). New stat keys: `infusion.<element>`, `cooldown.skill|burst`, `mvBonus.hit.<name>`, `energyGain`, `reactionBonus.<reaction>` (ids: vaporize, melt, overloaded, superconduct, electroCharged, swirl, shatter, bloom, hyperbloom, burgeon, burning, aggravate, spread, lunarCharged, stellarConduct, stellarGlimmer). Hook hits may carry `direct: "stellarConduct"` (direct reaction damage, see `docs/SIMULATION.md`).
 
 ## Team archetype (current shape)
 

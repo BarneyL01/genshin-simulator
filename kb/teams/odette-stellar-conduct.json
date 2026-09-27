@@ -1,0 +1,195 @@
+{
+  "id": "odette-stellar-conduct",
+  "name": "Sandrone / Fischl / Alyosha + Odette",
+  "provenance": {
+    "sources": [
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/sandrone-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "roles: Sandrone on-field Stellar-Conduct carry, Alyosha support"
+        ]
+      },
+      {
+        "site": "keqingmains",
+        "url": "https://keqingmains.com/q/alyosha-quickguide/",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "Alyosha acts before the on-field unit"
+        ]
+      },
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/odette",
+        "retrieved": "2026-09-25",
+        "fields": [
+          "Odette's Skill → Burst → Coda sequence (Coda only within 6 s)"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "No published team or rotation: this is the Sandrone Stellar-Conduct team with Odette in the Cryo Traveler's slot, and the rotation is ours. Odette casts Skill, Burst and Coda at Dawn's Tolling (inside the 6 s window) and stays off-field; her Solo Dance Double keeps applying Cryo and, after the Coda, deals Stellar Glimmer damage inside the Polestar Field.",
+    "Sandrone and Alyosha are partly baseline (frames estimated; see their records). Fischl's Oz and A4 follow gcsim.",
+    "Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses. Use the Weapon comparer to try Silver Light on Odette.",
+    "Stellar-Conduct follows gcsim; the team is assumed to stand inside the Polestar Field."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "alyosha",
+      "role": "buffer",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "er"
+        ],
+        "goblet": [
+          "dmgBonus.electro"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "fischl",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "em"
+        ],
+        "goblet": [
+          "dmgBonus.electro"
+        ],
+        "circlet": [
+          "dmgBonus.physical",
+          "critRate",
+          "critDmg",
+          "atk%",
+          "em"
+        ]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "odette",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "em"
+        ],
+        "goblet": [
+          "atk%",
+          "em",
+          "dmgBonus.cryo"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "sandrone",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": [
+          "atk%",
+          "er"
+        ],
+        "goblet": [
+          "dmgBonus.cryo"
+        ],
+        "circlet": [
+          "critRate",
+          "critDmg"
+        ]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      {
+        "char": "alyosha",
+        "action": "skill"
+      },
+      {
+        "char": "alyosha",
+        "action": "burst"
+      },
+      {
+        "char": "fischl",
+        "action": "skill"
+      },
+      {
+        "char": "fischl",
+        "action": "burst"
+      },
+      {
+        "char": "odette",
+        "action": "skill"
+      },
+      {
+        "char": "odette",
+        "action": "burst"
+      },
+      {
+        "char": "odette",
+        "action": "coda"
+      },
+      {
+        "char": "sandrone",
+        "action": "skill"
+      },
+      {
+        "char": "sandrone",
+        "action": "burst"
+      },
+      {
+        "repeat": {
+          "untilCycleTime": 1518
+        },
+        "steps": [
+          {
+            "char": "sandrone",
+            "action": "n1"
+          },
+          {
+            "char": "sandrone",
+            "action": "n2"
+          },
+          {
+            "char": "sandrone",
+            "action": "n3"
+          }
+        ]
+      }
+    ],
+    "source": "own"
+  },
+  "sourceRank": {},
+  "notes": "Stellar-Conduct team with Odette off-field: Superconduct becomes Stellar-Conduct (Odette and Sandrone carry the Stellar passive).",
+  "status": "active"
+}

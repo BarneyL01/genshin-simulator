@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestones **M0–M3, M5, M6 complete**. KB: 120 characters, 243 weapons, 59 sets, 2 teams. Only 7 characters / 11 weapons / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Next: upgrade more characters and weapons to hand-written specs, then M8. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
+Milestones **M0–M3, M5, M6 complete**. KB: 121 characters, 243 weapons, 59 sets, 5 teams. Only 9 characters (incl. Cryo Traveler, Odette) / 12 weapons (incl. Silver Light) / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Next: upgrade more characters and weapons to hand-written specs, then M8. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
 
 ## Commands
 
@@ -30,6 +30,7 @@ npm run kb:inspect -- "Name"          # what genshin-db knows (authoring aid)
 npm run kb:fetch-gcsim               # clone gcsim into .cache (reference only)
 npm run kb:import:character -- <id>  # build kb/characters/<id>.json from scripts/kb-import/specs/<id>.ts (also import:weapon/artifact/team)
 npm run sim:team -- <team-id>        # simulate a KB team in the terminal
+npm run compare:weapons -- <team-id> <char-id> <weapon>:<R> ...   # weapon comparer in the terminal (first = baseline)
 npm run e2e                          # drive the built app in Chrome (needs npm run build)
 npm run lint && npm run typecheck
 ```

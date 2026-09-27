@@ -10,3 +10,4 @@ import './stellar';
 import './travelercryo';
 import './alyosha';
 import './fischl';
+import './odette';
