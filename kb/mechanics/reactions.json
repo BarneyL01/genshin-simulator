@@ -188,7 +188,7 @@
       "tickFrames": 60,
       "firstHitDelay": 10,
       "waneUnits": 0.4,
-      "notes": "Both auras coexist. Immediate hit, then a tick every 60 frames; each tick wanes both auras by 0.4U. Multiplier is per tick; the game's multi-trigger stacking (2 \u00d7 ECTriggers) is not modelled."
+      "notes": "Both auras coexist. Immediate hit, then a tick every 60 frames; each tick wanes both auras by 0.4U. Multiplier is per tick; the game's multi-trigger stacking (2 × ECTriggers) is not modelled."
     },
     "swirl": {
       "type": "transformative",
@@ -265,7 +265,7 @@
           "consume": 1
         }
       ],
-      "notes": "Creates a Quicken aura with the consumed gauge. Decay 12 \u00d7 durability + 360 frames in gcsim units (25 = 1U)."
+      "notes": "Creates a Quicken aura with the consumed gauge. Decay 12 × durability + 360 frames in gcsim units (25 = 1U)."
     },
     "bloom": {
       "type": "transformative",
@@ -349,7 +349,7 @@
           "consume": 1
         }
       ],
-      "notes": "Simplified: Frozen aura = 2 \u00d7 consumed gauge, lasting 150 frames per unit with no decay ramp and no freeze resistance."
+      "notes": "Simplified: Frozen aura = 2 × consumed gauge, lasting 150 frames per unit with no decay ramp and no freeze resistance."
     },
     "lunarCharged": {
       "type": "lunar",
@@ -437,7 +437,22 @@
         0.39,
         0.4
       ],
-      "notes": "Replaces Superconduct while a character with the Stellar-Conduct passive is in the team (hook `stellar-conduct`). It makes no damage of its own: it creates or refreshes a Polestar Field (360 frames). Every 240 frames the field gives the whole team Cryo and Electro DMG% from the number of Electro/Cryo applications recorded in the previous window (0-12, at most one per character per 6 frames) and \u221240% physical RES on the enemy. Direct Stellar-Conduct damage comes from character kits. gcsim only."
+      "notes": "Replaces Superconduct while a character with the Stellar-Conduct passive is in the team (hook `stellar-conduct`). It makes no damage of its own: it creates or refreshes a Polestar Field (360 frames). Every 240 frames the field gives the whole team Cryo and Electro DMG% from the number of Electro/Cryo applications recorded in the previous window (0-12, at most one per character per 6 frames) and −40% physical RES on the enemy. Direct Stellar-Conduct damage (\"Stellar Glimmer\") comes from character kits and is computed like gcsim's direct reactions: ATK × multiplier × (1 + base bonus) × directMultTable[stacks recorded at the last field update] × (1 + 6·EM/(2000+EM) + Stellar reaction bonus), no DMG%, ignores DEF, crits. gcsim only (pkg/enemy/damage.go calcDirectReaction, pkg/reactable/stellarconduct.go).",
+      "directMultTable": [
+        1,
+        1.45,
+        1.5,
+        1.55,
+        1.6,
+        1.65,
+        1.7,
+        1.75,
+        1.8,
+        1.85,
+        1.9,
+        1.95,
+        2
+      ]
     }
   }
 }

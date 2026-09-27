@@ -96,7 +96,7 @@ registerHook('travelercryo', (api) => {
         const n = stacks >= FROSTGLOW_MAX ? 5 : 3;
         const atk = api.stats(api.owner, spawn).atk;
         const override = stellar
-          ? { mv: api.hitMv('javelin-stellar') + api.valueOf('traveler-cryo.burst.stellar') * stacks, gauge: 0, defIgnore: 1, baseMult: Math.min((atk / 100) * STELLAR_BASE_PER_100_ATK, STELLAR_BASE_MAX) }
+          ? { mv: api.hitMv('javelin-stellar') + api.valueOf('traveler-cryo.burst.stellar') * stacks, gauge: 0, defIgnore: 1, direct: 'stellarConduct' as const, baseMult: Math.min((atk / 100) * STELLAR_BASE_PER_100_ATK, STELLAR_BASE_MAX) }
           : { mv: api.hitMv('javelin') + api.value * stacks };
         for (const d of BURST_DELAYS.slice(0, n)) api.hit(stellar ? 'javelin-stellar' : 'javelin', spawn + BURST_TRAVEL + d, { override });
         st.frostglow = 0;

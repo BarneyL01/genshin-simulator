@@ -26,6 +26,11 @@ export interface HitDef {
   icd?: { tag: string; group: string };
   /** 'blunt' hits shatter Frozen enemies. */
   strike?: 'default' | 'blunt';
+  /**
+   * Direct reaction damage ("Stellar Glimmer"): no DMG%, EM/reaction bonus instead, Polestar Field stack multiplier
+   * for Stellar-Conduct. See calcDirectDamage.
+   */
+  direct?: 'stellarConduct' | 'stellarSwirl';
   /** Radiance: Stellar-Conduct form of this hit (see the KB schema). */
   stellar?: { mv: number; basePer100Atk: number; baseMax: number };
   /** Fraction of enemy DEF ignored by this hit (added to `defIgnore` effects). */

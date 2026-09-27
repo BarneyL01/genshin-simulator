@@ -75,7 +75,7 @@ export class ReactionEngine {
   private lcOwner?: { char: CharacterInput; cycle: number };
   private lcCloudEnd = -1;
   private lcSources = { hydro: new Set<CharacterInput>(), electro: new Set<CharacterInput>() };
-  private polestar = { end: -1, recorded: 0, chain: 0 };
+  private polestar = { end: -1, recorded: 0, chain: 0, stacks: 0 };
   private lastRecord = new Map<string, number>();
 
   constructor(private host: ReactionHost) {}
@@ -83,6 +83,11 @@ export class ReactionEngine {
   /** Whether a Polestar Field (from Stellar-Conduct) covers `frame`. */
   polestarActive(frame: number): boolean {
     return frame < this.polestar.end;
+  }
+
+  /** Stacks recorded in the field's last update window (0-12); 0 when no field is up. */
+  polestarStacks(frame: number): number {
+    return this.polestarActive(frame) ? this.polestar.stacks : 0;
   }
 
   react(ctx: ReactCtx): ReactResult {
@@ -274,11 +279,13 @@ export class ReactionEngine {
     this.polestar.end = frame + def.fieldFrames!;
     if (wasActive) return;
     this.polestar.recorded = 0;
+    this.polestar.stacks = 0;
     const chain = ++this.polestar.chain;
     const think = (t: number) => {
       if (this.polestar.chain !== chain || !this.polestarActive(t)) return;
       const stacks = this.polestar.recorded;
       this.polestar.recorded = 0;
+      this.polestar.stacks = stacks;
       const value = def.buffTable![Math.min(stacks, def.buffTable!.length - 1)]!;
       for (const c of this.host.characters) {
         this.host.applyBuff('polestar.cryo', owner.id, c.id, 'dmgBonus.cryo', value, def.thinkFrames! + 1, t);

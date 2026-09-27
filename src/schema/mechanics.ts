@@ -33,6 +33,8 @@ export const reactionDef = z.object({
   maxStacks: z.number().int().optional(),
   recordIcd: frames.optional(),
   buffTable: z.array(z.number()).optional(),
+  /** Direct (Stellar Glimmer) damage multiplier by recorded field stacks (index = stacks). */
+  directMultTable: z.array(z.number()).optional(),
   notes: z.string().optional(),
 });
 

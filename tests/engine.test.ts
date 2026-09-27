@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  BuffManager, EXECUTION_PROFILES, type ExecutionProfile, calcHitDamage, critFactor, defMultiplier, resMultiplier,
+  BuffManager, EXECUTION_PROFILES, type ExecutionProfile, calcDirectDamage, calcHitDamage, critFactor, defMultiplier, resMultiplier,
   resolveStats, simulate, simulateBoth, sumMods,
   type ActionDef, type CharacterInput, type EnemyInput, type HitDef,
 } from '../src/engine';
@@ -296,8 +296,27 @@ describe('Radiance: Stellar-Conduct hit form', () => {
       rotation: [{ char: 'z', action: 'skill' }, { char: 'a', action: 'skill' }],
     });
     const h = inside.hits.find((x) => x.char === 'a')!;
-    // 4× multiplier, DEF ignored (×2), +7% base damage (1000 ATK), plus the Polestar buff: strictly above that floor
-    expect(h.damage).toBeGreaterThan(PER_MV * 4 * 2 * 1.07);
+    // 4× multiplier, DEF ignored (×2), +7% base damage (1000 ATK). Direct damage: the Polestar Cryo DMG% does not apply,
+    // EM is 0 and no stacks were recorded in the field's first window (field multiplier 1).
+    expect(h.damage).toBeCloseTo(PER_MV * 4 * 2 * 1.07);
     expect(h.reactions).toEqual([]);
+  });
+});
+
+describe('direct Stellar Glimmer damage (gcsim calcDirectReaction)', () => {
+  const stats = { hp: 0, atk: 2000, def: 0, em: 0, er: 1, critRate: 0, critDmg: 0.5, baseAtk: 1000, baseHp: 0, baseDef: 0 };
+  const hit: HitDef = { frame: 0, mv: 1, scaling: 'atk', element: 'cryo', talent: 'skill', direct: 'stellarConduct', defIgnore: 1 };
+  const base = { hit, stats, mods: {}, charLevel: 90, enemyLevel: 100, enemyRes: { cryo: 0.1 }, fieldMult: 1, emCurve: { k: 6, c: 2000 } };
+  it('ignores DMG% and applies RES', () => {
+    expect(calcDirectDamage({ ...base, mods: { 'dmgBonus.cryo': 0.5, 'dmgBonus.all': 0.2 } })).toBeCloseTo(2000 * 0.9);
+  });
+  it('scales with EM as 6·EM/(2000+EM) plus Stellar reaction bonuses', () => {
+    const em = 208; // Silver Light R5, two stacks
+    const d = calcDirectDamage({ ...base, stats: { ...stats, em }, mods: { 'reactionBonus.stellarGlimmer': 0.3 } });
+    expect(d).toBeCloseTo(2000 * (1 + (6 * em) / (2000 + em) + 0.3) * 0.9);
+  });
+  it('multiplies by the field stack table and crits', () => {
+    const d = calcDirectDamage({ ...base, fieldMult: 2, stats: { ...stats, critRate: 0.5 } });
+    expect(d).toBeCloseTo(2000 * 2 * 1.25 * 0.9);
   });
 });

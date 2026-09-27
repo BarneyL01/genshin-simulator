@@ -1,9 +1,9 @@
 import { SCALING_SOURCES, TARGET_SCALING_SOURCES, type Effect, type EffectValue } from '../schema/effect';
 import { BuffManager } from './buffs';
-import { calcHitDamage } from './damage';
+import { calcDirectDamage, calcHitDamage } from './damage';
 import { EnergyTracker } from './energy';
 import { HOOKS, type HookApi } from './hooks';
-import { CONSTANTS, ICD } from './mechanics';
+import { CONSTANTS, ICD, REACTIONS } from './mechanics';
 import { EXECUTION_PROFILES, FPS, type ExecutionProfile } from './profiles';
 import { ReactionEngine } from './reactions';
 import { resolveStats, sumMods } from './stats';
@@ -454,7 +454,7 @@ export function simulate(input: SimInput): SimResult {
       for (const tf of hitTransforms) hit = tf({ char: p.char, hit, action: p.action, frame: p.frame }) ?? hit;
       if (hit.stellar && engine.polestarActive(p.frame)) {
         // Radiance: Stellar-Conduct form: own multiplier, no element application, ignores DEF, base damage grows with ATK
-        hit = { ...hit, mv: hit.stellar.mv, gauge: 0, defIgnore: 1, stellar: undefined, baseMult: (hit.baseMult ?? 0) + Math.min((stats.atk / 100) * hit.stellar.basePer100Atk, hit.stellar.baseMax) };
+        hit = { ...hit, mv: hit.stellar.mv, gauge: 0, defIgnore: 1, stellar: undefined, direct: 'stellarConduct', baseMult: (hit.baseMult ?? 0) + Math.min((stats.atk / 100) * hit.stellar.basePer100Atk, hit.stellar.baseMax) };
       }
       if (!hit.ignoreInfusion && hit.element === 'physical' && (hit.talent === 'normal' || hit.talent === 'charged' || hit.talent === 'plunge')) {
         const inf = INFUSIONS.find((e) => (mods[`infusion.${e}`] ?? 0) > 0);
@@ -474,10 +474,15 @@ export function simulate(input: SimInput): SimResult {
           }
         }
       }
-      const damage = calcHitDamage({
-        hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
-        reactionFactor: r.reactionFactor, catalyzeFlat: r.catalyzeFlat,
-      });
+      const damage = hit.direct
+        ? calcDirectDamage({
+          hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res, emCurve: REACTIONS.em.lunar,
+          fieldMult: hit.direct === 'stellarConduct' ? (REACTIONS.reactions.stellarConduct?.directMultTable?.[engine.polestarStacks(p.frame)] ?? 1) : 1,
+        })
+        : calcHitDamage({
+          hit, stats, mods, charLevel: p.char.level, enemyLevel: enemy.level, enemyRes: enemy.res,
+          reactionFactor: r.reactionFactor, catalyzeFlat: r.catalyzeFlat,
+        });
       hits.push({
         cycle: p.cycle, frame: p.frame, char: p.char.id, action: p.action, element: hit.element,
         talent: hit.talent, damage, reactions: r.reactions,

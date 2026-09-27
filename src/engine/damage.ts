@@ -18,6 +18,48 @@ export function critFactor(critRate: number, critDmg: number): number {
   return 1 + Math.min(Math.max(critRate, 0), 1) * critDmg;
 }
 
+/** EM bonus of direct/lunar reaction damage: 6·EM / (2000 + EM) (kb/mechanics/reactions.json em.lunar). */
+export function directEmBonus(em: number, curve: { k: number; c: number }): number {
+  return (curve.k * em) / (em + curve.c);
+}
+
+export interface DirectDamageContext {
+  hit: HitDef;
+  stats: FinalStats;
+  mods: Record<string, number>;
+  charLevel: number;
+  enemyLevel: number;
+  enemyRes: Partial<Record<Element, number>>;
+  /** Stellar-Conduct field multiplier (directMultTable[stacks]); 1 otherwise. */
+  fieldMult: number;
+  emCurve: { k: number; c: number };
+}
+
+/**
+ * Direct reaction damage (gcsim calcDirectReaction; Stellar Glimmer):
+ * (MV × stat × (1 + base bonus) × field mult × (1 + EM bonus + reaction bonus) + flat) × crit × def × res.
+ * DMG% bonuses do not apply. Reaction bonus = `reactionBonus.<direct>` + `reactionBonus.stellarGlimmer`.
+ */
+export function calcDirectDamage(c: DirectDamageContext): number {
+  const m = (k: string) => c.mods[k] ?? 0;
+  const { hit, stats } = c;
+  const t = hit.talent;
+  const kind = hit.direct!;
+  const scalingValue = stats[hit.scaling];
+  const base = hit.mv * scalingValue * (1 + (hit.baseMult ?? 0)) * c.fieldMult;
+  const react = 1 + directEmBonus(stats.em, c.emCurve) + m(`reactionBonus.${kind}`) + m('reactionBonus.stellarGlimmer');
+  const flat = hit.flat ?? 0;
+  const cr = stats.critRate + m(`critRate.${t}`);
+  const cd = stats.critDmg + m(`critDmg.${t}`);
+  const res = (c.enemyRes[hit.element] ?? 0) + m(`res.enemy.${hit.element}`);
+  return (
+    (base * react + flat) *
+    critFactor(cr, cd) *
+    defMultiplier(c.charLevel, c.enemyLevel, -m('def.enemy.shred'), Math.min(1, m('defIgnore') + (hit.defIgnore ?? 0))) *
+    resMultiplier(res)
+  );
+}
+
 export interface DamageContext {
   hit: HitDef;
   stats: FinalStats;
