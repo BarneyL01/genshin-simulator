@@ -11,27 +11,33 @@
           "baseStats",
           "ascensionStat",
           "talent multipliers",
-          "passive/constellation text"
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
         ]
       },
       {
         "site": "gcsim",
-        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose",
         "retrieved": "2026-09-25",
         "fields": [
-          "frames (where parsed)",
-          "multiplier cross-check",
+          "frames",
+          "ICD",
+          "gauge",
           "particles",
-          "ICD"
+          "multiplier cross-check"
         ],
-        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       },
       {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/anemo/sucrose",
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose",
         "retrieved": "2026-09-25",
         "fields": [
-          "baseStats (Lv 90 cross-check)"
+          "frames",
+          "burst DoT/absorb timing",
+          "A1/A4 formulas",
+          "constellations"
         ]
       }
     ],
@@ -40,18 +46,18 @@
   },
   "dataConfidence": "medium",
   "assumptions": [
-    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 6/6. Lv 90 base stats confirmed by KeqingMains.",
-    "Frames estimated (gcsim source not parsed for: skill hitmark, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
-    "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables (base stats could not be cross-checked in a second source).",
+    "The burst's Elemental Absorption is not dynamically checked against the simulated enemy's actual applied aura; it is assumed to succeed, absorbing the team's conversion element (first of Pyro/Hydro/Electro/Cryo present in the party, same priority Varka uses), whenever such a party member exists. No absorb tick fires in an all-Anemo/Physical/Dendro/Geo party.",
+    "C1's extra Skill charge and C4's CD-reduction proc counter are not modelled (action-economy/multi-cycle effects that do not change this sim's single fixed rotation script).",
+    "A4 (Mollis Favonius) is approximated as firing on every Skill/Burst hit rather than gating on a per-cast `done` flag; since the EM buff value barely changes between re-triggers in one rotation, this has no material effect."
   ],
   "rarity": 4,
   "element": "anemo",
   "weaponType": "catalyst",
   "releaseVersion": "1.0",
-  "roles": [],
+  "roles": [
+    "support"
+  ],
   "baseStats": {
     "lv90": {
       "hp": 9243.67751666,
@@ -91,19 +97,19 @@
           "frames": {
             "hitmark": 17,
             "cancel": {
-              "normal": 17,
-              "charged": 20,
+              "default": 28,
               "skill": 17,
               "burst": 17,
               "dash": 17,
               "jump": 17,
               "swap": 17,
-              "default": 28
+              "normal": 17,
+              "charged": 20
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -136,19 +142,19 @@
           "frames": {
             "hitmark": 18,
             "cancel": {
-              "normal": 26,
-              "charged": 18,
+              "default": 38,
               "skill": 18,
               "burst": 18,
               "dash": 18,
               "jump": 18,
               "swap": 18,
-              "default": 38
+              "normal": 26,
+              "charged": 18
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -181,19 +187,19 @@
           "frames": {
             "hitmark": 28,
             "cancel": {
-              "normal": 33,
-              "charged": 28,
+              "default": 46,
               "skill": 28,
               "burst": 28,
               "dash": 28,
               "jump": 28,
               "swap": 28,
-              "default": 46
+              "normal": 33,
+              "charged": 28
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -226,19 +232,19 @@
           "frames": {
             "hitmark": 28,
             "cancel": {
-              "normal": 51,
-              "charged": 54,
+              "default": 65,
               "skill": 28,
               "burst": 28,
               "dash": 28,
               "jump": 28,
               "swap": 28,
-              "default": 65
+              "normal": 51,
+              "charged": 54
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -248,6 +254,85 @@
           "gauge": 1
         }
       ],
+      "effects": []
+    },
+    "skill": {
+      "hits": [
+        {
+          "name": "Astable Anemohypostasis Creation-6308",
+          "mv": [
+            2.112,
+            2.2704,
+            2.4288,
+            2.64,
+            2.7984,
+            2.9568,
+            3.168,
+            3.3792,
+            3.5904,
+            3.8016,
+            4.0128,
+            4.224,
+            4.488,
+            4.752,
+            5.016
+          ],
+          "scaling": "atk",
+          "element": "anemo",
+          "frames": {
+            "hitmark": 0,
+            "cancel": {
+              "default": 68,
+              "attack": 57,
+              "charge": 56,
+              "skill": 56,
+              "burst": 57,
+              "dash": 11,
+              "jump": 11,
+              "swap": 56
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1
+        }
+      ],
+      "cooldown": 900,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 24,
+        "element": "anemo"
+      },
+      "effects": []
+    },
+    "burst": {
+      "hits": [],
+      "frames": {
+        "hitmark": 0,
+        "cancel": {
+          "default": 65,
+          "attack": 49,
+          "charge": 48,
+          "skill": 48,
+          "dash": 47,
+          "jump": 47
+        },
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/burst.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "cooldown": 1200,
+      "energyCost": 80,
       "effects": []
     },
     "charged": {
@@ -276,69 +361,19 @@
           "frames": {
             "hitmark": 54,
             "cancel": {
-              "normal": 69,
-              "charged": 66,
+              "default": 71,
+              "attack": 69,
+              "charge": 66,
               "skill": 60,
               "burst": 61,
               "dash": 54,
               "jump": 54,
-              "swap": 54,
-              "default": 71
+              "swap": 54
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "extra",
-            "group": "standard"
-          },
-          "gauge": 1
-        }
-      ],
-      "effects": []
-    },
-    "skill": {
-      "hits": [
-        {
-          "name": "Skill",
-          "mv": [
-            2.112,
-            2.2704,
-            2.4288,
-            2.64,
-            2.7984,
-            2.9568,
-            3.168,
-            3.3792,
-            3.5904,
-            3.8016,
-            4.0128,
-            4.224,
-            4.488,
-            4.752,
-            5.016
-          ],
-          "scaling": "atk",
-          "element": "anemo",
-          "frames": {
-            "hitmark": 34,
-            "cancel": {
-              "normal": 57,
-              "charged": 56,
-              "skill": 56,
-              "burst": 57,
-              "dash": 11,
-              "jump": 11,
-              "swap": 56,
-              "default": 68
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -348,122 +383,221 @@
           "gauge": 1
         }
       ],
-      "cooldown": 900,
-      "particles": {
-        "count": 4,
-        "perHit": false,
-        "icd": 0,
-        "element": "anemo"
-      },
-      "effects": []
-    },
-    "burst": {
-      "hits": [
-        {
-          "name": "Additional Elemental",
-          "mv": [
-            0.44,
-            0.473,
-            0.506,
-            0.55,
-            0.583,
-            0.616,
-            0.66,
-            0.704,
-            0.748,
-            0.792,
-            0.836,
-            0.88,
-            0.935,
-            0.99,
-            1.045
-          ],
-          "scaling": "atk",
-          "element": "anemo",
-          "frames": {
-            "hitmark": 33,
-            "cancel": {
-              "normal": 49,
-              "charged": 48,
-              "skill": 48,
-              "dash": 47,
-              "jump": 47,
-              "swap": 47,
-              "default": 65
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/sucrose/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "none",
-            "group": "none"
-          },
-          "gauge": 1
-        }
-      ],
-      "cooldown": 1200,
-      "energyCost": 80,
       "effects": []
     }
   },
-  "passives": [
-    {
-      "id": "sucrose.passive1",
-      "unlock": "p1",
-      "effects": [],
-      "text": "Catalyst Conversion: When Sucrose triggers a Swirl or Stellar Swirl reaction, all characters in the party with the matching element (excluding Sucrose) have their Elemental Mastery increased by 50 for 8s."
-    },
-    {
-      "id": "sucrose.passive2",
-      "unlock": "p2",
-      "effects": [],
-      "text": "Mollis Favonius: When Astable Anemohypostasis Creation - 6308 or Forbidden Creation - Isomer 75 / Type II hits an opponent, increases all party members' (excluding Sucrose) Elemental Mastery by an amount equal to 20% of Sucrose's Elemental Mastery for 8s."
-    },
-    {
-      "id": "sucrose.passive3",
-      "unlock": "p3",
-      "effects": [],
-      "text": "Astable Invention: When Sucrose crafts Character and Weapon Enhancement Materials, she has a 10% chance to obtain double the product."
-    }
-  ],
+  "passives": [],
   "constellations": [
     {
       "level": 1,
-      "effects": [],
-      "text": "Clustered Vacuum Field: Astable Anemohypostasis Creation - 6308 gains 1 additional charge."
+      "effects": [
+        {
+          "id": "sucrose.c1",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "sucrose",
+          "assumption": "Extra charge is an action-economy change (2 skill casts available back-to-back); this sim does not model charge counts, so this only matters if the rotation script itself casts Skill twice in a row, which it does not."
+        }
+      ],
+      "text": "Astable Anemohypostasis Creation-6308 gains 1 additional charge."
     },
     {
       "level": 2,
-      "effects": [],
-      "text": "Beth: Unbound Form: The duration of Forbidden Creation - Isomer 75 / Type II is increased by 2s."
+      "effects": [
+        {
+          "id": "sucrose.c2",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "sucrose"
+        }
+      ],
+      "text": "The duration of Forbidden Creation-Isomer 75/Type II is increased by 2s."
     },
     {
       "level": 3,
       "effects": [],
-      "text": "Flawless Alchemistress: Increases the Level of Astable Anemohypostasis Creation - 6308 by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Astable Anemohypostasis Creation-6308 by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
     },
     {
       "level": 4,
-      "effects": [],
-      "text": "Alchemania: Sucrose will reduce the CD of Astable Anemohypostasis Creation - 6308 by 1-7s for every 7 Normal or Charged Attack hits she scores against opponents.\nOne hit may be counted every 0.1s."
+      "effects": [
+        {
+          "id": "sucrose.c4",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "sucrose",
+          "assumption": "Not modelled: a CD-reduction proc-counter that would only matter across a multi-cycle sim with heavy auto-attacking, which this rotation script does not do."
+        }
+      ],
+      "text": "Sucrose reduces the CD of Astable Anemohypostasis Creation-6308 by 1-7s for every 7 Normal/Charged Attack hits."
     },
     {
       "level": 5,
       "effects": [],
-      "text": "Caution: Standard Flask: Increases the Level of Forbidden Creation - Isomer 75 / Type II by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Forbidden Creation-Isomer 75/Type II by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
     },
     {
       "level": 6,
-      "effects": [],
-      "text": "Chaotic Entropy: If Forbidden Creation - Isomer 75 / Type II triggers an Elemental Absorption, all party members gain a 20% Elemental DMG Bonus for the corresponding absorbed element during its duration."
+      "effects": [
+        {
+          "id": "sucrose.c6",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "sucrose",
+          "assumption": "Applied to the whole party for the burst DoT duration whenever the absorb tick (see sucrose.burst) is assumed to have primed."
+        }
+      ],
+      "text": "If Forbidden Creation-Isomer 75/Type II triggers an Elemental Absorption, all party members gain +20% DMG Bonus for the absorbed element for its duration."
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "id": "sucrose.a1",
+      "trigger": {
+        "on": "onReaction"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "sucrose",
+      "assumption": "Catalyst Conversion: on Sucrose's own Swirl (or Stellar Swirl), +50 EM for 8s to party members (excluding Sucrose) whose element matches the swirled element."
+    },
+    {
+      "id": "sucrose.a4",
+      "trigger": {
+        "on": "onHit"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "sucrose",
+      "assumption": "Mollis Favonius: landing a Skill or Burst hit gives the rest of the party +20% of Sucrose's own (base) EM for 8s."
+    },
+    {
+      "id": "sucrose.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "sucrose",
+      "assumption": "Forbidden Creation-Isomer 75/Type II: periodic Anemo DoT ticks (every 113 frames from 137, for 360 frames — 480 with C2) plus an absorbed-element tick of the same timing once the team is assumed to have primed an absorbable aura (see extraSources/assumptions)."
+    }
+  ],
   "extraActions": {},
-  "hookHits": {},
+  "hookHits": {
+    "burst-dot": {
+      "name": "Forbidden Creation-Isomer 75/Type II",
+      "mv": [
+        1.48,
+        1.591,
+        1.702,
+        1.85,
+        1.961,
+        2.072,
+        2.22,
+        2.368,
+        2.516,
+        2.664,
+        2.812,
+        2.96,
+        3.145,
+        3.33,
+        3.515
+      ],
+      "scaling": "atk",
+      "element": "anemo",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/burst.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 1,
+      "talent": "burst"
+    },
+    "burst-absorb": {
+      "name": "Forbidden Creation-Isomer 75/Type II (Absorb)",
+      "mv": [
+        0.44,
+        0.473,
+        0.506,
+        0.55,
+        0.583,
+        0.616,
+        0.66,
+        0.704,
+        0.748,
+        0.792,
+        0.836,
+        0.88,
+        0.935,
+        0.99,
+        1.045
+      ],
+      "scaling": "atk",
+      "element": "pyro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/sucrose/burst.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "none",
+        "group": "none"
+      },
+      "gauge": 0,
+      "talent": "burst"
+    }
+  },
   "usualCombo": [
     {
       "variant": "off-field",
@@ -498,19 +632,22 @@
     "artifacts": [],
     "mainStats": {
       "sands": [
-        "atk%",
+        "em",
         "er"
       ],
       "goblet": [
+        "em",
         "dmgBonus.anemo"
       ],
       "circlet": [
-        "critRate",
-        "critDmg"
+        "em",
+        "critRate"
       ],
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "sucrose"
+  ],
+  "needsHook": true
 }

@@ -16,6 +16,23 @@ Entry format:
 
 ---
 
+## 2026-09-28 — Varka/Jean/Sucrose hand-written kits (user's real roster + saved teams)
+
+- Milestone: M8 (KB upgrades).
+- Context: user pasted their actual browser backup (39 owned characters, 4 saved custom teams: "Sandrone main", "Varka pyro", "Varka electro", "Varesa overload") and asked to confirm all of them are properly implemented. Audit found only 9/39 owned characters hand-written; Varka, Jean and Sucrose — the on-field driver and two supports across the "Varka pyro"/"Varka electro" teams — were the highest-value baseline gaps with gcsim source available, so this session upgraded those three.
+- Done:
+  - varka, jean, sucrose: hand-written specs + hooks, from gcsim (frames/mechanics) and genshin-db (numbers). Multiplier tables confirmed against gcsim: Varka 16/16, Jean 9/9, Sucrose 8/8.
+  - Fixed a serious pre-existing bug in the Varka baseline: all 14 of combat2's conditional-state hit labels (the plain Skill, upgraded Sturm-und-Drang Normals, both Four Winds hits, both Azure Devour hits) were bundled into one `skill` action firing together within ~24 frames of any Skill press. Now `skill` is only the plain tap; `fourWinds` is its own action.
+  - Modelled Varka's team-composition mechanics (conversion element priority Pyro>Hydro>Electro>Cryo, falling back to Physical; the 140%/220% Four Winds team-comp multiplier) and reused the same priority-list approach for Sucrose's A1 (the engine doesn't expose which element a Swirl actually used, so this assumes it is the team's fixed conversion element — same simplification Varka's own kit already relies on).
+  - New tests: `tests/varka-team.test.ts` (6 cases), `tests/jean-team.test.ts` (4 cases), `tests/sucrose-team.test.ts` (4 cases) — 14 new, all passing.
+  - Re-simulated the user's 4 actual saved teams end-to-end (default C0/R1/Lv90/KQM Standard, since exact constellations/weapons weren't re-entered from the pasted backup into a KB team): Sandrone main 12,774 relaxed DPS, Varka pyro 6,138, Varka electro 5,658, Varesa overload 18,011 (already upgraded in the prior session). All 4 now run without the Varka overcount bug or missing-mechanic gaps.
+- KB changes: see kb/CHANGELOG.md (2026-09-28 entry, "Varka, Jean, Sucrose hand-written kits").
+- Tests / validation: `npm test` 165 pass (14 new); `npm run lint` clean; `npx tsc --noEmit` clean; `npm run kb:validate` ok (429 records); `npm run build` ok.
+- Blockers: none.
+- Next: the remaining ~27 owned characters not in any of the user's 4 saved teams are still on the bulk-import baseline (deprioritized — see docs/OPEN_QUESTIONS.md); Sandrone and Alyosha (both in "Sandrone main") remain `low`/patched-from-text since neither has gcsim source.
+
+---
+
 ## 2026-09-28 — Chevreuse/Durin/Varesa/Iansan hand-written kits; Varesa Overloaded team fixed
 
 - Milestone: M8 (KB upgrades).

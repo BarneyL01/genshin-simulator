@@ -15,3 +15,6 @@ import './chevreuse';
 import './durin';
 import './varesa';
 import './iansan';
+import './varka';
+import './jean';
+import './sucrose';
