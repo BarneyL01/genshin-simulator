@@ -11,3 +11,7 @@ import './travelercryo';
 import './alyosha';
 import './fischl';
 import './odette';
+import './chevreuse';
+import './durin';
+import './varesa';
+import './iansan';

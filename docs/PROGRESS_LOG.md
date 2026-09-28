@@ -16,6 +16,23 @@ Entry format:
 
 ---
 
+## 2026-09-28 — Chevreuse/Durin/Varesa/Iansan hand-written kits; Varesa Overloaded team fixed
+
+- Milestone: M8 (KB upgrades).
+- Context: user reported the Varesa/Chevreuse/Durin/Iansan team scored far below where a "top tier" team should, even below a plainer Varka-pyro comparison team. Diagnosis: all four characters were still on the bulk-import baseline (plain talent hits only) — none of their passives, constellations or off-field mechanics were modelled, and this exact team's value is ALMOST ENTIRELY in those mechanics (Chevreuse's team ATK buff and RES shred, Durin's periodic Dragon-of-White-Flame ticks and RES shred, Varesa's ATK-scaled plunge "ground impact" bonus, Iansan's on-field ATK buff). User asked for full kits (incl. constellations) for all four.
+- Done:
+  - Chevreuse, Durin (Dragon of White Flame form only), Varesa, Iansan: hand-written specs + hooks, from gcsim (frames/mechanics) and genshin-db (numbers). Multiplier tables confirmed against gcsim: Chevreuse 10/10, Durin 11/11, Varesa 9/9, Iansan 6/6.
+  - Engine addition: `extraActions[name].hitTalent` — needed so Varesa's Fiery Passion Plunge (an extraAction whose multiplier scales with the Normal Attack talent level, like all Plunge attacks) still tags its hits `talent: 'plunge'` for `dmgBonus.plunge`/`critRate.plunge`-style effects, instead of inheriting the level-lookup talent. Existing extraActions (e.g. Raiden's Musou Isshin) are unaffected (field is optional, defaults to the old behaviour).
+  - New team `varesa-overloaded`. New tests `tests/varesa-team.test.ts` (13 cases: each character's headline mechanic, plus an end-to-end check that this team now outparses the Varka-pyro comparison team).
+  - Full kits per the user's choice: constellations C1–C6 are modelled where the engine reasonably supports them; a few pieces remain unmodelled per character where they need a resource this simulator doesn't track (Nightsoul point economy for Varesa/Iansan) or an engine capability it doesn't have (bypassing a scheduled cooldown for Chevreuse's C4) — each is called out in that character's own `assumptions`.
+- Result: Relaxed team DPS 11,426 (was 7,582 on the baseline data), now clearly ahead of the Varka-pyro comparison team (7,744), matching the user's expectation that this is a top-tier team.
+- KB changes: see kb/CHANGELOG.md (2026-09-28 entry, "Chevreuse, Durin, Varesa, Iansan hand-written").
+- Tests / validation: `npx vitest run` 151 pass (13 new); lint, typecheck, build clean; `npm run kb:validate` ok (429 records); e2e ok.
+- Blockers: KQM/Game8/GameWith still blocked in the cloud session — no guide rotation exists for this team; the rotation and its `low` confidence are ours.
+- Next: Durin's Dragon of Dark Decay form (a separate Vaporize/Melt-team kit); Nightsoul point-economy tracking (would unlock Iansan/Varesa's remaining constellations and a more accurate Fiery Passion uptime); the other Sandrone-team characters' remaining gaps.
+
+---
+
 ## 2026-09-28 — Team comparison: pick teams instead of ranking all
 
 - Milestone: M8 (UI).

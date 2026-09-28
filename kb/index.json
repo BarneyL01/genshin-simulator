@@ -78,7 +78,7 @@
     {
       "id": "chevreuse",
       "name": "Chevreuse",
-      "dataConfidence": "low"
+      "dataConfidence": "medium"
     },
     {
       "id": "chiori",
@@ -208,7 +208,7 @@
     {
       "id": "iansan",
       "name": "Iansan",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "ifa",
@@ -498,7 +498,7 @@
     {
       "id": "varesa",
       "name": "Varesa",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "varka",
@@ -2144,6 +2144,11 @@
     {
       "id": "sandrone-stellar-conduct-traveler",
       "name": "Sandrone / Fischl / Alyosha + Cryo Traveler",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "varesa-overloaded",
+      "name": "Chevreuse / Iansan / Durin / Varesa (Overloaded)",
       "dataConfidence": "low"
     }
   ],

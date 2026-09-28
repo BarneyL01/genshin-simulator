@@ -11,47 +11,58 @@
           "baseStats",
           "ascensionStat",
           "talent multipliers",
-          "passive/constellation text"
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
         ]
       },
       {
         "site": "gcsim",
-        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse",
         "retrieved": "2026-09-25",
         "fields": [
-          "frames (where parsed)",
-          "multiplier cross-check",
+          "frames",
+          "ICD",
+          "gauge",
           "particles",
-          "ICD"
+          "multiplier cross-check"
         ],
-        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       },
       {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/pyro/chevreuse",
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse",
         "retrieved": "2026-09-25",
         "fields": [
-          "baseStats (Lv 90 cross-check)"
+          "frames",
+          "Overcharged Ball trigger",
+          "A1/A4 formulas",
+          "burst mine delays",
+          "constellations"
         ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "low",
+  "dataConfidence": "medium",
   "assumptions": [
-    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats confirmed by KeqingMains.",
-    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
-    "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables (base stats could not be cross-checked in a second source).",
+    "Skill is modelled as always the Overcharged Ball (Hold) hit at minimal hold time; the plain Press/Hold multipliers (used when Overloaded is not up) are not modelled as a separate option.",
+    "Arkhe (Surging Blade) is included as a fixed extra hit on every Skill cast (its 10s ICD is shorter than the 15s Skill cooldown, so it is always up); Ousia/Pneuma-specific enemy interactions are not modelled.",
+    "C4 (no cooldown on the Hold skill after Burst) is not modelled as an automatic cooldown bypass; add an extra \"skill\" rotation step after \"burst\" to represent it.",
+    "C6 (heal-triggered DMG% and team heal) is not modelled: healing is not tracked.",
+    "Passive \"Double Time March\" (party sprint stamina) is movement-only; not applicable to damage.",
+    "Recommended main stats are reasoned from her healer/support kit (HP scales her A4 team buff and healing), not from a guide."
   ],
   "rarity": 4,
   "element": "pyro",
   "weaponType": "polearm",
   "releaseVersion": "4.3",
-  "roles": [],
+  "roles": [
+    "buffer",
+    "off-field-pyro"
+  ],
   "baseStats": {
     "lv90": {
       "hp": 11962.4064649,
@@ -91,19 +102,19 @@
           "frames": {
             "hitmark": 11,
             "cancel": {
-              "normal": 23,
-              "charged": 27,
+              "default": 33,
               "skill": 11,
               "burst": 11,
               "dash": 11,
               "jump": 11,
               "swap": 11,
-              "default": 33
+              "normal": 23,
+              "charged": 27
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -136,19 +147,19 @@
           "frames": {
             "hitmark": 12,
             "cancel": {
-              "normal": 26,
-              "charged": 28,
+              "default": 33,
               "skill": 12,
               "burst": 12,
               "dash": 12,
               "jump": 12,
               "swap": 12,
-              "default": 33
+              "normal": 26,
+              "charged": 28
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -181,19 +192,19 @@
           "frames": {
             "hitmark": 15,
             "cancel": {
-              "normal": 33,
-              "charged": 36,
+              "default": 46,
               "skill": 25,
               "burst": 25,
               "dash": 25,
               "jump": 25,
               "swap": 25,
-              "default": 46
+              "normal": 33,
+              "charged": 36
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -248,19 +259,18 @@
           "frames": {
             "hitmark": 33,
             "cancel": {
-              "normal": 64,
-              "charged": 67,
+              "default": 67,
               "skill": 33,
               "burst": 33,
               "dash": 33,
               "jump": 33,
               "swap": 33,
-              "default": 67
+              "normal": 64
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -272,90 +282,43 @@
       ],
       "effects": []
     },
-    "charged": {
-      "hits": [
-        {
-          "name": "Charged",
-          "mv": [
-            1.2169,
-            1.31595,
-            1.415,
-            1.5565,
-            1.65555,
-            1.76875,
-            1.9244,
-            2.08005,
-            2.2357,
-            2.4055,
-            2.5753,
-            2.7451,
-            2.9149,
-            3.0847,
-            3.2545
-          ],
-          "scaling": "atk",
-          "element": "physical",
-          "frames": {
-            "hitmark": 27,
-            "cancel": {
-              "normal": 58,
-              "skill": 58,
-              "burst": 58,
-              "dash": 27,
-              "jump": 27,
-              "swap": 57,
-              "default": 65
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "extra",
-            "group": "standard"
-          },
-          "gauge": 1
-        }
-      ],
-      "effects": []
-    },
     "skill": {
       "hits": [
         {
-          "name": "Press",
+          "name": "Overcharged Ball",
           "mv": [
-            1.152,
-            1.2384,
-            1.3248,
-            1.44,
-            1.5264,
-            1.6128,
-            1.728,
-            1.8432,
-            1.9584,
-            2.0736,
-            2.1888,
-            2.304,
-            2.448,
-            2.592,
-            2.736
+            2.824,
+            3.0358,
+            3.2476,
+            3.53,
+            3.7418,
+            3.9536,
+            4.236,
+            4.5184,
+            4.8008,
+            5.0832,
+            5.3656,
+            5.648,
+            6.001,
+            6.354,
+            6.707
           ],
           "scaling": "atk",
           "element": "pyro",
           "frames": {
-            "hitmark": 22,
+            "hitmark": 19,
             "cancel": {
-              "dash": 31,
-              "jump": 32,
-              "swap": 42,
-              "default": 43
+              "default": 26,
+              "attack": 25,
+              "dash": 21,
+              "jump": 23,
+              "walk": 24,
+              "swap": 23
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -386,17 +349,19 @@
           "scaling": "atk",
           "element": "pyro",
           "frames": {
-            "hitmark": 25,
+            "hitmark": 55,
             "cancel": {
-              "dash": 31,
-              "jump": 32,
-              "swap": 42,
-              "default": 43
+              "default": 26,
+              "attack": 25,
+              "dash": 21,
+              "jump": 23,
+              "walk": 24,
+              "swap": 23
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -410,7 +375,7 @@
       "particles": {
         "count": 4,
         "perHit": false,
-        "icd": 0,
+        "icd": 600,
         "element": "pyro"
       },
       "effects": []
@@ -441,24 +406,25 @@
           "frames": {
             "hitmark": 59,
             "cancel": {
-              "normal": 57,
+              "default": 61,
+              "attack": 57,
               "skill": 59,
               "dash": 57,
               "jump": 57,
-              "swap": 56,
-              "default": 61
+              "swap": 56
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
             "tag": "none",
             "group": "none"
           },
-          "gauge": 2
+          "gauge": 1,
+          "strike": "blunt"
         },
         {
           "name": "Secondary Explosive Shell",
@@ -482,88 +448,239 @@
           "scaling": "atk",
           "element": "pyro",
           "frames": {
-            "hitmark": 62,
+            "hitmark": 83,
             "cancel": {
-              "normal": 57,
+              "default": 61,
+              "attack": 57,
               "skill": 59,
               "dash": 57,
               "jump": 57,
-              "swap": 56,
-              "default": 61
+              "swap": 56
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/chevreuse/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "none",
-            "group": "none"
+            "tag": "burst",
+            "group": "chevreuseBurstMines"
           },
-          "gauge": 2
+          "gauge": 1,
+          "extraHitmarks": [
+            92,
+            92,
+            101,
+            101,
+            110,
+            110,
+            119
+          ],
+          "strike": "blunt"
         }
       ],
       "cooldown": 900,
       "energyCost": 60,
       "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Charged",
+          "mv": [
+            1.2169,
+            1.31595,
+            1.415,
+            1.5565,
+            1.65555,
+            1.76875,
+            1.9244,
+            2.08005,
+            2.2357,
+            2.4055,
+            2.5753,
+            2.7451,
+            2.9149,
+            3.0847,
+            3.2545
+          ],
+          "scaling": "atk",
+          "element": "physical",
+          "frames": {
+            "hitmark": 27,
+            "cancel": {
+              "default": 65,
+              "normal": 58,
+              "skill": 58,
+              "burst": 58,
+              "dash": 27,
+              "jump": 27,
+              "swap": 57
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "normal",
+            "group": "standard"
+          },
+          "gauge": 1
+        }
+      ],
+      "effects": []
     }
   },
-  "passives": [
-    {
-      "id": "chevreuse.passive1",
-      "unlock": "p1",
-      "effects": [],
-      "text": "Vanguard's Coordinated Tactics: When all party members are Pyro and Electro characters and there is at least one Pyro and one Electro character each in the party:\nChevreuse grants \"Coordinated Tactics\" to nearby party members: After a character triggers the Overloaded reaction, the Pyro and Electro RES of the opponent(s) affected by this Overloaded reaction will be decreased by 40% for 6s.\nThe \"Coordinated Tactics\" effect will be removed when the Elemental Types of the characters in the party do not meet the basic requirements for the Ascension Talent."
-    },
-    {
-      "id": "chevreuse.passive2",
-      "unlock": "p2",
-      "effects": [],
-      "text": "Vertical Force Coordination: After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby Pyro and Electro characters in the party gain 1% increased ATK for every 1,000 Max HP Chevreuse has for 30s. ATK can be increased by up to 40% in this way."
-    },
-    {
-      "id": "chevreuse.passive3",
-      "unlock": "p3",
-      "effects": [],
-      "text": "Double Time March: Decreases sprinting Stamina consumption for your own party members by 20%.\nNot stackable with Passive Talents that provide the exact same effects."
-    }
-  ],
+  "passives": [],
   "constellations": [
     {
       "level": 1,
-      "effects": [],
-      "text": "Stable Front Line's Resolve: When the active character with the \"Coordinated Tactics\" status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover 6 Energy. This effect can be triggered once every 10s.\nYou must first unlock the Ascension Talent \"Vanguard's Coordinated Tactics.\""
+      "effects": [
+        {
+          "id": "chevreuse.c1",
+          "trigger": {
+            "on": "onReaction"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "chevreuse"
+        }
+      ],
+      "text": "When the active character with Coordinated Tactics (not Chevreuse) triggers Overloaded, they recover 6 Energy (once per 10s)."
     },
     {
       "level": 2,
-      "effects": [],
-      "text": "Sniper Induced Explosion: After Holding Short-Range Rapid Interdiction Fire and hitting a target, 2 chain explosions will be triggered near the location where said target is hit. Each explosion deals Pyro DMG equal to 120% of Chevreuse's ATK. This effect can be triggered up to once every 10s, and DMG dealt this way is considered Elemental Skill DMG."
+      "effects": [
+        {
+          "id": "chevreuse.c2",
+          "trigger": {
+            "on": "onSkill"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "chevreuse"
+        }
+      ],
+      "text": "After Holding Short-Range Rapid Interdiction Fire and hitting a target, 2 chain explosions each deal Pyro DMG equal to 120% of Chevreuse's ATK (once per 10s), counted as Skill DMG."
     },
     {
       "level": 3,
       "effects": [],
-      "text": "Practiced Field Stripping Technique: Increases the Level of Short-Range Rapid Interdiction Fire by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Short-Range Rapid Interdiction Fire by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
     },
     {
       "level": 4,
-      "effects": [],
-      "text": "The Secret to Rapid-Fire Multishots: After using Ring of Bursting Grenades, the Hold mode of Short-Range Rapid Interdiction Fire will not go on cooldown when Chevreuse uses it. This effect is removed after Short-Range Rapid Interdiction Fire has been fired twice using Hold or after 6s."
+      "effects": [
+        {
+          "id": "chevreuse.c4",
+          "trigger": {
+            "on": "onBurst"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "chevreuse",
+          "assumption": "Not modelled: the engine has no way for a hook to bypass a scheduled action's cooldown check. To use it, add an extra \"skill\" step right after \"burst\" in the rotation script; it will otherwise wait for the 15s cooldown like normal."
+        }
+      ],
+      "text": "After using Ring of Bursting Grenades, the Hold mode of Short-Range Rapid Interdiction Fire won't go on cooldown (twice, or 6s)."
     },
     {
       "level": 5,
       "effects": [],
-      "text": "Enhanced Incendiary Firepower: Increases the Level of Ring of Bursting Grenades by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Ring of Bursting Grenades by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
     },
     {
       "level": 6,
-      "effects": [],
-      "text": "In Pursuit of Ending Evil: After 12s of the healing effect from Short-Range Rapid Interdiction Fire, all nearby party members recover HP equivalent to 10% of Chevreuse's Max HP once.\nAfter a party member is healed by Short-Range Rapid Interdiction Fire, they gain a 20% Pyro DMG Bonus and Electro DMG Bonus for 8s. Max 3 stacks. Each stack's duration is counted independently."
+      "effects": [
+        {
+          "id": "chevreuse.c6",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "chevreuse",
+          "assumption": "Not modelled: healing amounts and heal events are not tracked by the engine, so this heal-triggered DMG% cannot fire."
+        }
+      ],
+      "text": "After 12s of the Skill's healing, all nearby party members heal for 10% of Chevreuse's Max HP once; a party member healed by it gains 20% Pyro and Electro DMG Bonus for 8s (max 3 stacks)."
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "id": "chevreuse.a1",
+      "trigger": {
+        "on": "onReaction"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "chevreuse",
+      "assumption": "Vanguard's Coordinated Tactics: only active when every party member is Pyro or Electro with at least one of each (checked against the team passed to the simulator). After any Overloaded reaction, −40% Pyro and Electro RES on the enemy for 6s."
+    },
+    {
+      "id": "chevreuse.a4",
+      "trigger": {
+        "on": "onSkill"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "chevreuse",
+      "assumption": "Vertical Force Coordination: modelled on every Skill cast (Overcharged Ball is assumed). Team ATK +1% per 1,000 of Chevreuse's Max HP (snapshot at cast), capped at +40%, for 30s, to Pyro/Electro party members."
+    }
+  ],
   "extraActions": {},
-  "hookHits": {},
+  "hookHits": {
+    "c2bomb": {
+      "name": "Sniper Induced Explosion (C2)",
+      "mv": [
+        1.2
+      ],
+      "scaling": "atk",
+      "element": "pyro",
+      "frames": {
+        "hitmark": 0,
+        "cancel": {},
+        "source": {
+          "site": "gcsim",
+          "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/chevreuse/cons.go",
+          "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+        }
+      },
+      "icd": {
+        "tag": "skill",
+        "group": "standard"
+      },
+      "gauge": 1,
+      "talent": "skill"
+    }
+  },
   "usualCombo": [
     {
       "variant": "off-field",
@@ -598,19 +715,21 @@
     "artifacts": [],
     "mainStats": {
       "sands": [
-        "atk%",
+        "hp%",
         "er"
       ],
       "goblet": [
-        "dmgBonus.pyro"
+        "hp%"
       ],
       "circlet": [
-        "critRate",
-        "critDmg"
+        "healingBonus",
+        "hp%"
       ],
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "chevreuse"
+  ],
+  "needsHook": true
 }

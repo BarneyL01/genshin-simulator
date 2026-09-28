@@ -171,7 +171,7 @@ export interface CharacterSpec {
   constellations: Character['constellations'];
   effects?: Effect[];
   hookHits?: Record<string, HookHitSpec>;
-  extraActions?: Record<string, { as: 'normal' | 'charged' | 'plunge' | 'skill' | 'burst'; damageTalent: 'normal' | 'skill' | 'burst'; frameFile: string; hits: HitSpec[]; cooldown?: { param: string } | { frames: number }; particles?: TalentSpec['particles'] }>;
+  extraActions?: Record<string, { as: 'normal' | 'charged' | 'plunge' | 'skill' | 'burst'; damageTalent: 'normal' | 'skill' | 'burst'; hitTalent?: 'normal' | 'charged' | 'plunge' | 'skill' | 'burst'; frameFile: string; hits: HitSpec[]; cooldown?: { param: string } | { frames: number }; particles?: TalentSpec['particles'] }>;
   usualCombo: Character['usualCombo'];
   recommended?: Character['recommended'];
   assumptions?: string[];
@@ -265,7 +265,7 @@ export function buildCharacter(spec: CharacterSpec): { record: Character; report
     Object.entries(spec.extraActions ?? {}).map(([name, ea]) => [
       name,
       {
-        as: ea.as, damageTalent: ea.damageTalent, hits: buildHits(TALENT_KEY[ea.damageTalent], ea.frameFile, ea.hits), particles: ea.particles,
+        as: ea.as, damageTalent: ea.damageTalent, hitTalent: ea.hitTalent, hits: buildHits(TALENT_KEY[ea.damageTalent], ea.frameFile, ea.hits), particles: ea.particles,
         cooldown: ea.cooldown && ('param' in ea.cooldown ? Math.round(param(tn, TALENT_KEY[ea.damageTalent], ea.cooldown.param)[0]! * 60) : ea.cooldown.frames),
       },
     ]),

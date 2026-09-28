@@ -139,6 +139,47 @@ export const specs: Array<Omit<Team, 'members'> & { members: Array<{ character: 
     status: 'active',
   },
   {
+    id: 'varesa-overloaded',
+    name: 'Chevreuse / Iansan / Durin / Varesa (Overloaded)',
+    provenance: {
+      sources: [
+        { site: 'gcsim', url: 'https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661', retrieved: RETRIEVED, fields: ['all four kits: frames, mechanics, constellations'] },
+      ],
+      conflicts: [],
+      gameVersion: GAME_VERSION,
+    },
+    dataConfidence: 'low',
+    assumptions: [
+      "No published rotation for this exact team: the rotation is ours. All four members are Pyro or Electro, so Chevreuse's and Durin's Overloaded-RES-shred and team-ATK/DMG% passives are always active. Iansan drives on-field (autoattacking, benefiting from the buffs and RES shred); Chevreuse, Durin and Varesa are off-field, each casting their own combo once per rotation.",
+      'Each character is partly baseline outside the pieces described in their own record\'s assumptions (see kb/characters/chevreuse.json, durin.json, varesa.json, iansan.json).',
+      'Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses. Try Silver Light or other EM/ATK swords on Varesa in the Weapon comparer.',
+    ],
+    members: [
+      { character: 'chevreuse', role: 'buffer', weapons: [], sets: {} },
+      { character: 'iansan', role: 'driver', weapons: [], sets: {} },
+      { character: 'durin', role: 'buffer', weapons: [], sets: {} },
+      { character: 'varesa', role: 'off-field-dps', weapons: [], sets: {} },
+    ] as never,
+    rotation: {
+      source: 'own',
+      script: [
+        ...s('chevreuse', 'skill'),
+        ...s('iansan', 'skill', 'charged'),
+        ...s('durin', 'skill', 'skillWhite'),
+        ...s('varesa', 'skill', 'plunge', 'skillFiery'),
+        { char: 'varesa', action: 'charged' } as Step,
+        ...s('varesa', 'plungeFiery'),
+        ...s('durin', 'burst'),
+        ...s('iansan', 'burst'),
+        ...s('varesa', 'burst'),
+        { repeat: { untilCycleTime: 1800 }, steps: s('iansan', 'n1', 'n2', 'n3') },
+      ],
+    },
+    sourceRank: {},
+    notes: 'All-Pyro/Electro Overloaded team: Chevreuse and Durin both shred Pyro/Electro RES and buff the team on every Overloaded trigger; Iansan carries on-field.',
+    status: 'active',
+  },
+  {
     id: 'odette-stellar-conduct',
     name: 'Sandrone / Fischl / Alyosha + Odette',
     provenance: {

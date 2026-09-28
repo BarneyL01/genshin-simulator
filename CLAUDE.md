@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestones **M0–M3, M5, M6 complete**. KB: 121 characters, 243 weapons, 59 sets, 5 teams. Only 9 characters (incl. Cryo Traveler, Odette) / 12 weapons (incl. Silver Light) / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Next: upgrade more characters and weapons to hand-written specs, then M8. The app builds, schemas and KB scripts work, the KB is empty (seeded in M4). Commands below all work.
+Milestones **M0–M3, M5, M6 complete**. KB: 121 characters, 243 weapons, 59 sets, 6 teams. 13 characters (incl. Cryo Traveler, Odette, Chevreuse, Durin, Varesa, Iansan) / 12 weapons (incl. Silver Light) / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Next: upgrade more characters and weapons to hand-written specs, then M8. Commands below all work.
 
 ## Commands
 

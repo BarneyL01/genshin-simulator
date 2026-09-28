@@ -11,46 +11,53 @@
           "baseStats",
           "ascensionStat",
           "talent multipliers",
-          "passive/constellation text"
+          "talent params",
+          "passive/constellation text",
+          "releaseVersion"
         ]
       },
       {
         "site": "gcsim",
-        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan",
         "retrieved": "2026-09-25",
         "fields": [
-          "frames (where parsed)",
-          "multiplier cross-check",
+          "frames",
+          "ICD",
+          "gauge",
           "particles",
-          "ICD"
+          "multiplier cross-check"
         ],
-        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       },
       {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/electro/iansan",
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan",
         "retrieved": "2026-09-25",
         "fields": [
-          "baseStats (Lv 90 cross-check)"
+          "frames",
+          "Kinetic Energy Scale ATK formula",
+          "A1/C2 formulas"
         ]
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "high",
+  "dataConfidence": "medium",
   "assumptions": [
-    "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 5/5. Lv 90 base stats confirmed by KeqingMains.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
-    "Main stats are a generic template, not from a source.",
-    "main stats are a generic template (KQM quick guide row not parsed)"
+    "Base stats and multipliers are read from genshin-db; multipliers are cross-checked against gcsim tables (base stats could not be cross-checked in a second source).",
+    "The Nightsoul point economy (movement-based regeneration, 6/s decay, the 54-point cap) is not tracked as a resource; Skill → Swift Stormflight is assumed to always be available, and the Burst ATK buff assumes high points throughout.",
+    "The plain (non-Nightsoul) Charged Attack is not modelled, since off the back of Skill she always gets Swift Stormflight instead.",
+    "C1, C4 and C6 are not modelled (all need the Nightsoul point economy)."
   ],
   "rarity": 4,
   "element": "electro",
   "weaponType": "polearm",
   "releaseVersion": "5.5",
-  "roles": [],
+  "roles": [
+    "driver",
+    "buffer"
+  ],
   "baseStats": {
     "lv90": {
       "hp": 10657.416864800001,
@@ -90,19 +97,19 @@
           "frames": {
             "hitmark": 14,
             "cancel": {
-              "normal": 21,
-              "charged": 21,
+              "default": 27,
               "skill": 14,
               "burst": 14,
               "dash": 14,
               "jump": 14,
               "swap": 14,
-              "default": 27
+              "normal": 21,
+              "charged": 21
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -135,19 +142,19 @@
           "frames": {
             "hitmark": 7,
             "cancel": {
-              "normal": 25,
-              "charged": 25,
+              "default": 31,
               "skill": 7,
               "burst": 7,
               "dash": 7,
               "jump": 7,
               "swap": 7,
-              "default": 31
+              "normal": 25,
+              "charged": 25
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -180,19 +187,18 @@
           "frames": {
             "hitmark": 22,
             "cancel": {
-              "normal": 53,
-              "charged": 55,
+              "default": 55,
               "skill": 22,
               "burst": 22,
               "dash": 22,
               "jump": 22,
               "swap": 22,
-              "default": 55
+              "normal": 53
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -204,59 +210,10 @@
       ],
       "effects": []
     },
-    "charged": {
-      "hits": [
-        {
-          "name": "Charged",
-          "mv": [
-            1.00276,
-            1.08438,
-            1.166,
-            1.2826,
-            1.36422,
-            1.4575,
-            1.58576,
-            1.71402,
-            1.84228,
-            1.9822,
-            2.12212,
-            2.26204,
-            2.40196,
-            2.54188,
-            2.6818
-          ],
-          "scaling": "atk",
-          "element": "physical",
-          "frames": {
-            "hitmark": 21,
-            "cancel": {
-              "normal": 52,
-              "skill": 51,
-              "burst": 50,
-              "dash": 21,
-              "jump": 21,
-              "swap": 49,
-              "default": 55
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "extra",
-            "group": "standard"
-          },
-          "gauge": 1
-        }
-      ],
-      "effects": []
-    },
     "skill": {
       "hits": [
         {
-          "name": "Skill",
+          "name": "Thunderbolt Rush",
           "mv": [
             2.864,
             3.0788,
@@ -279,33 +236,40 @@
           "frames": {
             "hitmark": 9,
             "cancel": {
-              "normal": 32,
+              "default": 137,
+              "attack": 32,
               "burst": 31,
               "dash": 27,
               "jump": 32,
-              "swap": 33,
-              "default": 137
+              "walk": 38,
+              "swap": 33
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "none",
-            "group": "none"
+            "tag": "skill",
+            "group": "standard"
           },
           "gauge": 1
         }
       ],
       "cooldown": 960,
+      "particles": {
+        "count": 4,
+        "perHit": false,
+        "icd": 0,
+        "element": "electro"
+      },
       "effects": []
     },
     "burst": {
       "hits": [
         {
-          "name": "Skill",
+          "name": "The Three Principles of Power",
           "mv": [
             4.304,
             4.6268,
@@ -328,109 +292,233 @@
           "frames": {
             "hitmark": 38,
             "cancel": {
-              "normal": 43,
+              "default": 45,
+              "attack": 43,
               "skill": 42,
               "dash": 44,
               "jump": 43,
-              "swap": 41,
-              "default": 45
+              "swap": 41
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/iansan/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
             "tag": "none",
             "group": "none"
           },
-          "gauge": 1
+          "gauge": 1,
+          "strike": "blunt"
         }
       ],
       "cooldown": 1080,
       "energyCost": 70,
       "effects": []
+    },
+    "charged": {
+      "hits": [
+        {
+          "name": "Swift Stormflight",
+          "mv": [
+            0.84194,
+            0.91047,
+            0.979,
+            1.0769,
+            1.14543,
+            1.22375,
+            1.33144,
+            1.43913,
+            1.54682,
+            1.6643,
+            1.78178,
+            1.89926,
+            2.01674,
+            2.13422,
+            2.2517
+          ],
+          "scaling": "atk",
+          "element": "electro",
+          "frames": {
+            "hitmark": 25,
+            "cancel": {
+              "default": 33,
+              "attack": 32,
+              "burst": 24,
+              "dash": 30,
+              "jump": 27,
+              "swap": 31
+            },
+            "source": {
+              "site": "gcsim",
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/iansan/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
+            }
+          },
+          "icd": {
+            "tag": "none",
+            "group": "none"
+          },
+          "gauge": 1,
+          "strike": "blunt"
+        }
+      ],
+      "effects": []
     }
   },
-  "passives": [
-    {
-      "id": "iansan.passive1",
-      "unlock": "p1",
-      "effects": [],
-      "text": "Enhanced Resistance Training: After Swift Stormflight hits opponents, Iansan will gain the Precise Movement effect for 15s.\nDuring this time, her ATK is increased by 20%, and whenever she regains Nightsoul points through the Kinetic Energy Scale in her Elemental Burst, The Three Principles of Power, she will gain 1 extra Nightsoul point. Additionally, when your current active party member consumes or restores Nightsoul points, the extra Nightsoul points Iansan gains the next time she restores Nightsoul points via the Scale will be increased to 4. This effect can occur once every 2.8s.\n\"Precise"
-    },
-    {
-      "id": "iansan.passive2",
-      "unlock": "p2",
-      "effects": [],
-      "text": "Kinetic Energy Gradient Test: When a nearby party member triggers a Nightsoul Burst, Iansan will obtain the Warming Up effect for 10s.\nDuring this time, when Iansan restores at least 1 Nightsoul point, she will heal your current active character for 60% of her ATK. This effect can be triggered once every 2.8s."
-    },
-    {
-      "id": "iansan.passive3",
-      "unlock": "p3",
-      "effects": [],
-      "text": "Night Realm's Gift: Hard Work and Drive: After Nightsoul points have been fully depleted and Iansan is on the field, she will switch to using Phlogiston to maintain her Nightsoul's Blessing.\nWhile in an area with Phlogiston Mechanics within Natlan, Nightsoul Transmission: Iansan can be used. When the current active character is sprinting or in movement modes caused by certain Talents, or at a certain height in the air, switching to Iansan will trigger the following: Iansan enters the Nightsoul's Blessing state and obtains 25 Nightsoul points. Nightsoul Transmission can be triggered once every "
-    },
-    {
-      "id": "iansan.passive4",
-      "unlock": "p4",
-      "effects": [],
-      "text": "Caloric Balancing Plan: While in an area with Phlogiston Mechanics within Natlan, regain 10 Phlogiston when Phlogiston levels drop below 50%. This can occur once every 10s."
-    }
-  ],
+  "passives": [],
   "constellations": [
     {
       "level": 1,
-      "effects": [],
-      "text": "Starting's Never Easy: When Iansan is in combat and is in the Nightsoul's Blessing state, she will restore 15 Elemental Energy for every 6 Nightsoul points she consumes. This effect can trigger once every 18s."
+      "effects": [
+        {
+          "id": "iansan.c1",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "iansan",
+          "assumption": "Not modelled: needs the Nightsoul point-restoration economy, which is not tracked."
+        }
+      ],
+      "text": "While in Nightsoul, restoring 6+ Nightsoul points (accumulated) refunds 15 Energy, at most once per 18s."
     },
     {
       "level": 2,
-      "effects": [],
-      "text": "Laziness is the Enemy!: When using the Elemental Burst The Three Principles of Power, Iansan will also gain the Precise Movement effect from her Ascension Talent \"Enhanced Resistance Training\" for 15s. Additionally, if Iansan is off-field while Precise Movement is active, she will also increase your current active character's ATK by 30%. You must first unlock the Ascension Talent \"Enhanced Resistance Training\" to access the above effect."
+      "effects": [
+        {
+          "id": "iansan.c2",
+          "trigger": {
+            "on": "onCharged"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "iansan"
+        }
+      ],
+      "text": "When Enhanced Resistance Training's Precise Movement is active, the rest of the party also gains +30% ATK."
     },
     {
       "level": 3,
       "effects": [],
-      "text": "Scientific Diet Planning: Increases the Level of Thunderbolt Rush by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of Thunderbolt Rush by 3 (max 15).",
+      "talentLevelBonus": {
+        "skill": 3
+      }
     },
     {
       "level": 4,
-      "effects": [],
-      "text": "Slow and Steady Wins the Race: When the Kinetic Energy Scale is present, Iansan will gain 2 stacks of Surging Force after your current active character (excluding herself) uses their Elemental Burst. The stacks last until the Scale leaves the field, and Surging Force can be gained once per Scale summoning. Whenever Iansan restores Nightsoul points via the Scale, she will consume 1 Surging Force stack and restore 4 additional Nightsoul points.\nAdditionally, if her Nightsoul restoration from the Scale overflows, Iansan will gain 50% of the overflow the next time she restores Nightsoul points via"
+      "effects": [
+        {
+          "id": "iansan.c4",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "iansan",
+          "assumption": "Not modelled: needs the Nightsoul point-restoration economy, which is not tracked."
+        }
+      ],
+      "text": "The Kinetic Energy Scale gains 2 stacks of Surging Force after an ally bursts, worth extra Nightsoul point restoration."
     },
     {
       "level": 5,
       "effects": [],
-      "text": "We Can Push It Further!: Increases the Level of The Three Principles of Power by 3.\nMaximum upgrade level is 15."
+      "text": "Increases the Level of The Three Principles of Power by 3 (max 15).",
+      "talentLevelBonus": {
+        "burst": 3
+      }
     },
     {
       "level": 6,
-      "effects": [],
-      "text": "Teachings of the Collective of Plenty: The Kinetic Energy Scale's duration is increased by 3s.\nAdditionally, when Iansan triggers Nightsoul point restoration, if there is any overflow, she will gain the Extreme Force effect, which increases the DMG dealt by your current active character by 25% for 3s."
+      "effects": [
+        {
+          "id": "iansan.c6",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "self",
+          "stat": "flatDmg.all",
+          "value": 0,
+          "maxStacks": 1,
+          "snapshot": false,
+          "hook": "iansan",
+          "assumption": "Not modelled: needs the Nightsoul point-restoration economy, which is not tracked."
+        }
+      ],
+      "text": "The Scale lasts 3s longer; on Nightsoul point overflow, the active character gains +25% DMG for 3s."
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "id": "iansan.a1",
+      "trigger": {
+        "on": "onCharged"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": 0,
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "iansan",
+      "assumption": "Enhanced Resistance Training: Swift Stormflight hitting an opponent gives Iansan +20% ATK for 15s (900 frames)."
+    },
+    {
+      "id": "iansan.burst",
+      "trigger": {
+        "on": "onBurst"
+      },
+      "target": "self",
+      "stat": "flatDmg.all",
+      "value": {
+        "perTalentLevel": [
+          330,
+          370,
+          410,
+          450,
+          490,
+          530,
+          570,
+          610,
+          650,
+          690,
+          730,
+          770,
+          810,
+          850,
+          890
+        ],
+        "talent": "burst"
+      },
+      "maxStacks": 1,
+      "snapshot": false,
+      "hook": "iansan",
+      "assumption": "The Three Principles of Power's Kinetic Energy Scale gives a flat ATK buff to whoever is on-field for 12s (720 frames), computed from Iansan's own ATK at the 'High Nightsoul Points' rate (27%, capped per Burst talent level) — assumes she keeps her Nightsoul points topped up, which needs movement/consumption this sim does not track."
+    }
+  ],
   "extraActions": {},
   "hookHits": {},
   "usualCombo": [
-    {
-      "variant": "off-field",
-      "actions": [
-        {
-          "action": "skill"
-        },
-        {
-          "action": "burst"
-        }
-      ]
-    },
     {
       "variant": "on-field",
       "actions": [
         {
           "action": "skill"
+        },
+        {
+          "action": "charged"
         },
         {
           "action": "burst"
@@ -439,6 +527,20 @@
           "action": "normal",
           "hits": 3,
           "repeat": "untilRotationEnd"
+        }
+      ]
+    },
+    {
+      "variant": "off-field",
+      "actions": [
+        {
+          "action": "skill"
+        },
+        {
+          "action": "charged"
+        },
+        {
+          "action": "burst"
         }
       ]
     }
@@ -461,6 +563,8 @@
       "source": "template"
     }
   },
-  "hooks": [],
-  "needsHook": false
+  "hooks": [
+    "iansan"
+  ],
+  "needsHook": true
 }

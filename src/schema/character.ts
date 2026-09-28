@@ -66,6 +66,9 @@ const extraAction = z.object({
   as: z.enum(['normal', 'charged', 'plunge', 'skill', 'burst']),
   /** Damage type and talent level source of its hits. */
   damageTalent: talentKind,
+  /** Overrides the hits' `talent` tag (used for `dmgBonus.<talent>` etc.) when it differs from `damageTalent`
+   *  (e.g. a Plunge-type action whose multipliers scale with the Normal Attack talent level). Defaults to `damageTalent`. */
+  hitTalent: talentKind.optional(),
   hits: z.array(hit).min(1),
   cooldown: frames.optional(),
   particles: z

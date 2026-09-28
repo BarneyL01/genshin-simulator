@@ -96,7 +96,7 @@ The zod schemas in `src/schema/` (created in M1) are the source of truth. This d
 - `talents.<kind>.hits[]`: `extraHitmarks` (identical extra hits at these frames), `extraMv` (their own multiplier tables), `strike: "blunt"` (shatters Frozen), `icd { tag, group }` (group ids in `kb/mechanics/icd.json`), `gauge` (units, 1 = 1U).
 - `talents.<kind>.frames`: cancel frames for blocks without hits (a burst that only starts an effect).
 - `talents.<kind>.particles`: `count` (expected value), `perHit`, `icd`, `delay`, `element`.
-- `extraActions.<name>`: `{ as, damageTalent, hits[], cooldown?, particles? }` — actions beyond n1..nN/charged/plunge/skill/burst (Raiden's `sword-n1`, Zhongli's `skill-press`). `as` is what triggers see; `damageTalent` is the damage type and talent-level source of its hits.
+- `extraActions.<name>`: `{ as, damageTalent, hitTalent?, hits[], cooldown?, particles? }` — actions beyond n1..nN/charged/plunge/skill/burst (Raiden's `sword-n1`, Zhongli's `skill-press`, Varesa's `plungeFiery`). `as` is what triggers see; `damageTalent` is the talent-level table the hits' multipliers come from; `hitTalent` (optional, defaults to `damageTalent`) is the `talent` tag put on the resulting hits, for `dmgBonus.<talent>`/`critRate.<talent>`-style effects — set it when the two differ, e.g. a Plunge-type extraAction whose multiplier scales with the Normal Attack talent level but should still count as Plunge DMG.
 - `hookHits.<id>`: hits that only a hook fires (`{ ...hit, talent }`).
 - `constellations[].talentLevelBonus`: `{ normal?, skill?, burst? }`, applied when the roster's constellation reaches that level.
 - `recommended.mainStats`: `{ sands[], goblet[], circlet[], source }` — preferred main stats, best first (stat keys).
