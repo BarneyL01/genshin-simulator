@@ -158,7 +158,7 @@ Details: `docs/SIMULATION.md`. Summary:
 
 ## 6. Team modes and weapon comparison
 
-- **Mode A — Known teams (default)**: list every KB team archetype whose members (or listed substitutes) the user owns. Simulate each with its published rotation; rank by team DPS.
+- **Mode A — Known teams (default)**: the user ticks which KB team archetypes (and saved custom teams) to compare from a list — the app does not simulate or rank every known team automatically. Each ticked team is simulated with its published rotation and the picks are ranked by team DPS against each other.
 - **Mode B — Custom team**: the user picks any 4 owned characters and sets the order they act in (drag to reorder). Each character performs its usual combo from the KB (`usualCombo`, e.g. "E → Q" for a buffer, "Q → E → N3C × until burst ends" for a driver). The engine chains the combos in the chosen order into one rotation and simulates it:
   - Characters marked as on-field in their combo fill the time left until the rotation repeats. Rotation length defaults to the longest cooldown that the team's combos wait on (typically a burst), and can be changed.
   - The user can switch a character between its combo variants (e.g. "on-field" / "off-field") and edit individual actions in the rotation editor afterwards.

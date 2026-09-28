@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-28 — Team comparison: pick teams instead of ranking all
+
+- Milestone: M8 (UI).
+- Done: Team comparison tab (`src/ui/TeamsView.tsx`) replaced the "Rank teams (N)" button (which simulated and ranked every known team plus every saved team) with tick boxes per known team archetype and per saved custom team, a selection count, and a "Compare selected (N)" button that only simulates and ranks the picks. Selection is remembered in the browser (`usePersistentState`, stale ids from a deleted saved team or removed KB team are dropped). Updated `docs/PLAN.md` §6 (Mode A) and `scripts/e2e.ts` (ticks two teams before comparing, instead of the old "Rank teams" button).
+- KB changes: none.
+- Tests / validation: `npx vitest run` 138 pass (unchanged; no engine change); lint, typecheck, build clean; `npm run e2e` ok (ticks two teams, confirms only those two are simulated and shown).
+- Blockers: none.
+- Next: unchanged.
+
+---
+
 ## 2026-09-27 — Silver Light + Odette simulation; Stellar Glimmer formula; CRIT ascension fix
 
 - Milestone: M8 (KB upgrades).

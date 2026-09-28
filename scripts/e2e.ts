@@ -66,9 +66,13 @@ try {
     await phone.close();
   }
 
-  // Known teams
+  // Known teams: pick a couple to compare (not a blanket "rank everything").
   await page.getByRole('tab', { name: 'Team comparison' }).click();
-  await page.getByRole('button', { name: /Rank teams/ }).click();
+  await page.getByRole('heading', { name: /Pick teams/ }).waitFor();
+  const teamCheckboxes = page.locator('input[type=checkbox]');
+  await teamCheckboxes.nth(0).check();
+  await teamCheckboxes.nth(1).check();
+  await page.getByRole('button', { name: /Compare selected/ }).click();
   await page.getByText(/DPS relaxed/).first().waitFor({ timeout: 120_000 });
   await page.getByText(/DPS relaxed/).nth(1).waitFor({ timeout: 120_000 });
   console.log('ranking:\n' + (await page.locator('ol > li').allInnerTexts()).map((t) => '  ' + t.split('\n').slice(0, 2).join(' | ')).join('\n'));
