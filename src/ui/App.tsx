@@ -21,7 +21,12 @@ export function App() {
   return (
     <main className="mx-auto max-w-6xl p-4 sm:p-6">
       <header>
-        <h1 className="text-2xl font-bold">Genshin Team Simulator</h1>
+        <div className="flex flex-wrap items-baseline gap-x-3">
+          <h1 className="text-2xl font-bold">Genshin Team Simulator</h1>
+          <span className="rounded bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-600" title={`Built ${__BUILD__.date}`}>
+            v{__BUILD__.version} · {__BUILD__.commit}{__BUILD__.dirty ? '+' : ''} · {__BUILD__.date}
+          </span>
+        </div>
         <p className="text-sm text-slate-600">
           Game version {kb.meta.gameVersion} · {kb.characters.size} characters, {kb.weapons.size} weapons, {kb.artifacts.size} artifact sets, {kb.teams.size} teams in the knowledge base.
           Runs entirely in your browser.

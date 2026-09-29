@@ -16,6 +16,17 @@ Entry format:
 
 ---
 
+## 2026-09-29 — Build stamp in the page header
+
+- Milestone: M8 (UI).
+- Done: the header shows `v<package version> · <commit sha>[+ if uncommitted] · <build time UTC>`, injected at build time by `vite.config.ts` (`__BUILD__`; in CI the sha is `GITHUB_SHA`). Version bumped to 0.2.0; bump `package.json` for each release. Pushing to `claude/keen-ride-2dw4aa` deploys via `.github/workflows/deploy.yml`.
+- KB changes: none.
+- Tests / validation: lint, tsc, `npm run build` clean.
+- Blockers: none.
+- Next: none.
+
+---
+
 ## 2026-09-29 — Stellar Swirl reaction; Mizuki hand-written; Sandrone/Tighnari fixes; two new teams
 
 - Milestone: M8 (KB upgrades / new mechanic).
