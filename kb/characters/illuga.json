@@ -15,12 +15,16 @@
         ]
       },
       {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/geo/illuga",
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga",
         "retrieved": "2026-09-25",
         "fields": [
-          "baseStats (Lv 90 cross-check)"
-        ]
+          "frames (where parsed)",
+          "multiplier cross-check",
+          "particles",
+          "ICD"
+        ],
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       }
     ],
     "conflicts": [],
@@ -29,9 +33,8 @@
   "dataConfidence": "low",
   "assumptions": [
     "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 0/8. Lv 90 base stats confirmed by KeqingMains.",
-    "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
-    "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
+    "Multiplier tables confirmed by gcsim: 8/8. Lv 90 base stats not cross-checked in a second source.",
+    "Frames estimated (gcsim source not parsed for: skill, skill hitmark); taken from arlecchino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
     "main stats are a generic template (KQM quick guide row not parsed)"
@@ -78,21 +81,21 @@
           "scaling": "atk",
           "element": "physical",
           "frames": {
-            "hitmark": 11,
+            "hitmark": 13,
             "cancel": {
-              "normal": 11,
-              "charged": 17,
-              "skill": 11,
-              "burst": 11,
-              "dash": 11,
-              "jump": 11,
-              "swap": 11,
-              "default": 24
+              "normal": 14,
+              "charged": 21,
+              "skill": 13,
+              "burst": 13,
+              "dash": 13,
+              "jump": 13,
+              "swap": 13,
+              "default": 30
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -126,18 +129,18 @@
             "hitmark": 16,
             "cancel": {
               "normal": 21,
-              "charged": 26,
+              "charged": 21,
               "skill": 16,
               "burst": 16,
               "dash": 16,
               "jump": 16,
               "swap": 16,
-              "default": 31
+              "default": 33
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -168,21 +171,21 @@
           "scaling": "atk",
           "element": "physical",
           "frames": {
-            "hitmark": 17,
+            "hitmark": 20,
             "cancel": {
-              "normal": 31,
-              "charged": 33,
-              "skill": 17,
-              "burst": 17,
-              "dash": 17,
-              "jump": 17,
-              "swap": 17,
-              "default": 39
+              "normal": 45,
+              "charged": 52,
+              "skill": 32,
+              "burst": 32,
+              "dash": 32,
+              "jump": 32,
+              "swap": 32,
+              "default": 57
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -191,7 +194,7 @@
           },
           "gauge": 1,
           "extraHitmarks": [
-            23
+            32
           ],
           "extraMv": [
             [
@@ -235,21 +238,21 @@
           "scaling": "atk",
           "element": "physical",
           "frames": {
-            "hitmark": 24,
+            "hitmark": 43,
             "cancel": {
-              "normal": 49,
-              "charged": 49,
-              "skill": 35,
-              "burst": 35,
-              "dash": 35,
-              "jump": 35,
-              "swap": 35,
-              "default": 55
+              "normal": 66,
+              "charged": 80,
+              "skill": 43,
+              "burst": 43,
+              "dash": 43,
+              "jump": 43,
+              "swap": 43,
+              "default": 80
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -285,21 +288,20 @@
           "scaling": "atk",
           "element": "physical",
           "frames": {
-            "hitmark": 37,
+            "hitmark": 23,
             "cancel": {
-              "normal": 42,
-              "charged": 53,
-              "skill": 42,
-              "burst": 42,
-              "dash": 37,
-              "jump": 37,
-              "swap": 58,
-              "default": 60
+              "normal": 63,
+              "skill": 64,
+              "burst": 64,
+              "dash": 23,
+              "jump": 23,
+              "swap": 61,
+              "default": 66
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -344,13 +346,13 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/cyno/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "skill",
-            "group": "standard"
+            "tag": "none",
+            "group": "none"
           },
           "gauge": 1
         },
@@ -385,13 +387,13 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/cyno/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/cyno/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "skill",
-            "group": "standard"
+            "tag": "none",
+            "group": "none"
           },
           "gauge": 1
         }
@@ -423,24 +425,22 @@
           "scaling": "def",
           "element": "geo",
           "frames": {
-            "hitmark": 73,
+            "hitmark": 48,
             "cancel": {
-              "normal": 113,
-              "charged": 124,
-              "dash": 111,
-              "jump": 113,
-              "swap": 145,
-              "default": 146
+              "dash": 64,
+              "jump": 64,
+              "swap": 62,
+              "default": 65
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "burst",
-            "group": "standard"
+            "tag": "none",
+            "group": "none"
           },
           "gauge": 1
         },
@@ -466,24 +466,22 @@
           "scaling": "def",
           "element": "geo",
           "frames": {
-            "hitmark": 76,
+            "hitmark": 51,
             "cancel": {
-              "normal": 113,
-              "charged": 124,
-              "dash": 111,
-              "jump": 113,
-              "swap": 145,
-              "default": 146
+              "dash": 64,
+              "jump": 64,
+              "swap": 62,
+              "default": 65
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/arlecchino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/illuga/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
-            "tag": "burst",
-            "group": "standard"
+            "tag": "none",
+            "group": "none"
           },
           "gauge": 1
         }

@@ -35,7 +35,7 @@ function parseLabel(label: string): ParsedLabel {
   return { name, params };
 }
 
-const NOT_DAMAGE = /(bonus|shield|absorb|heal|regen|cd|cooldown|duration|cost|stamina|reduction|decrease|increase|ratio|interval|range|count|number|max|stacks|energy|res\b|restor|radius|limit|threshold|delay|points|extra)/i;
+const NOT_DAMAGE = /(bonus|shield|absor|heal|regen|cd|cooldown|duration|cost|stamina|reduction|decrease|increase|ratio|interval|range|count|number|max|stacks|energy|res\b|restor|radius|limit|threshold|delay|points|extra)/i;
 
 const detectScaling = (label: string): 'atk' | 'hp' | 'def' | 'em' => (/max hp/i.test(label) ? 'hp' : /\bdef\b/i.test(label) && !/def(ense)? (shred|reduc)/i.test(label) ? 'def' : /elemental mastery/i.test(label) ? 'em' : 'atk');
 

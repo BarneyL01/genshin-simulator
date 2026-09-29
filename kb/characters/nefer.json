@@ -13,14 +13,6 @@
           "talent multipliers",
           "passive/constellation text"
         ]
-      },
-      {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/dendro/nefer",
-        "retrieved": "2026-09-25",
-        "fields": [
-          "baseStats (Lv 90 cross-check)"
-        ]
       }
     ],
     "conflicts": [],
@@ -29,7 +21,7 @@
   "dataConfidence": "low",
   "assumptions": [
     "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 0/17. Lv 90 base stats confirmed by KeqingMains.",
+    "Multiplier tables confirmed by gcsim: 0/17. Lv 90 base stats not cross-checked in a second source.",
     "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
     "Frames estimated (gcsim source not parsed for: N1, N2, N3, N4, charged, skill, skill hitmark, burst, burst hitmark); taken from baizhu or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
@@ -91,8 +83,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/baizhu/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -136,8 +128,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/baizhu/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -181,8 +173,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/baizhu/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -229,8 +221,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/baizhu/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -279,8 +271,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/baizhu/charge.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/baizhu/charge.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -328,8 +320,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -372,8 +364,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -416,8 +408,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -460,8 +452,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -504,8 +496,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -548,8 +540,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -592,8 +584,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -636,8 +628,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -680,8 +672,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/barbara/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/barbara/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -730,8 +722,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/charlotte/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -774,8 +766,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/charlotte/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -818,8 +810,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/charlotte/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -862,8 +854,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/charlotte/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/charlotte/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {

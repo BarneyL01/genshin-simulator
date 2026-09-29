@@ -16,6 +16,21 @@ Entry format:
 
 ---
 
+## 2026-09-29 — Tier-ranking sanity check finds a bulk-import bug (Noelle "Absorption")
+
+- Milestone: M8 (KB upgrades / correctness).
+- Context: user asked to check whether the calculator's team DPS ranking is "somewhat accurate" from a tier-list point of view — do teams the community considers strong actually come out ahead of weaker ones — across at least 5 team comps built from their roster.
+- Done:
+  - Simulated 7 team comps spanning known tiers: Varesa Overloaded (known top-tier), Noelle Mono-Geo (known solid F2P A-tier), Keqing Hypercarry, Varka Pyro, Varka Electro, Xiangling with weak (Mona) hydro support, and a "comfort"/low-synergy team (Barbara/Amber/Kirara/Lisa) as a sanity-check floor.
+  - Found a real data bug via the outlier: Noelle Mono-Geo scored 42,332 relaxed DPS, more than double the Varesa Overloaded team — implausible. Root cause: the bulk importer's `NOT_DAMAGE` label filter (`scripts/kb-import/bulk-character.ts`) excluded `absorb` but not `absorption`; Noelle's Breastplate shield-capacity label ("DMG Absorption", genuinely 770–2431% DEF as a *shield HP amount*) slipped through and was imported as a real 3rd damage hit on her Skill, dealing hundreds of times her DEF as fake damage every cast.
+  - Fixed the regex (`absorb` → `absor`), re-ran the bulk importer for the 5 characters in the whole 429-record KB whose baseline records had any hit with mv > 15 (a quick audit, not just Noelle): noelle (the bug), illuga, ineffa, nefer, kinich (the latter 4 not owned by the user; their high values were confirmed genuine large burst/skill multipliers after the fix, not further bugs).
+  - Re-ran the same 7-team comparison after the fix: Noelle Mono-Geo dropped from 42,332 to 1,405 relaxed DPS — now the *lowest* of the 7, which is itself inaccurate the other way (real mono-Geo Noelle+Gorou is a solid F2P team), because Noelle's own passives/constellations and Gorou's DEF/RES-shred buff are still unmodelled baseline. Final order: Varesa Overloaded (18,011) > Varka Pyro (6,138) > Varka Electro (5,658) > Xiangling weak-hydro (5,320) > Keqing Hypercarry (4,987) > Comfort team (3,009) > Noelle Mono-Geo (1,405).
+- Result / open finding: the tool's *top-team* pick (Varesa Overloaded) and *bottom-team* pick (comfort team near the bottom) are directionally correct, matching community consensus. But rankings **only track real tier-list strength when all 4 team members are hand-written**; any team leaning on an unmodelled baseline character's key passive/constellation (here, Noelle's own kit and especially Gorou's DEF buff) will be significantly under-counted, sometimes enough to flip the ranking outright (as the initial bug also showed it can be over-counted). This is a modelling-completeness gap, not a new bug, and matches the known 16/121-hand-written state.
+- KB changes: see kb/CHANGELOG.md (2026-09-29 entry). Side effect: noelle/illuga/ineffa/nefer/kinich lost their KeqingMains-sourced main stats on re-import (blocked from the cloud session) and fell back to the generic template — re-run `/kb-add-character` for these locally to restore sourced main stats.
+- Tests / validation: `npm test` 165 pass (unchanged — no new characters/hooks added this session); `npm run lint` clean; `npx tsc --noEmit` clean; `npm run kb:validate` ok (429 records); `npm run build` ok.
+- Blockers: KeqingMains still blocked in the cloud environment (per `docs/DATA_SOURCES.md`), so the 5 re-imported characters' main stats need a local re-run to be sourced again.
+- Next: if the user wants team rankings to be trustworthy beyond hand-written-only teams, Gorou (his DEF%/RES-shred buff is Noelle's whole point) and Noelle's own passives/C6 are the natural next upgrade given this session's finding; otherwise continue prioritizing characters in the user's actual saved teams per the 2026-09-28 entry below.
+
 ## 2026-09-28 — Varka/Jean/Sucrose hand-written kits (user's real roster + saved teams)
 
 - Milestone: M8 (KB upgrades).

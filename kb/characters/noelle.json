@@ -16,7 +16,7 @@
       },
       {
         "site": "gcsim",
-        "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle",
+        "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle",
         "retrieved": "2026-09-25",
         "fields": [
           "frames (where parsed)",
@@ -24,33 +24,19 @@
           "particles",
           "ICD"
         ],
-        "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-      },
-      {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/geo/noelle",
-        "retrieved": "2026-09-25",
-        "fields": [
-          "baseStats (Lv 90 cross-check)"
-        ]
-      },
-      {
-        "site": "keqingmains",
-        "url": "https://keqingmains.com/q/noelle-quickguide/",
-        "retrieved": "2026-09-25",
-        "fields": [
-          "recommended main stats"
-        ]
+        "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
       }
     ],
     "conflicts": [],
     "gameVersion": "7.1"
   },
-  "dataConfidence": "high",
+  "dataConfidence": "medium",
   "assumptions": [
     "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 9/9. Lv 90 base stats confirmed by KeqingMains.",
-    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists."
+    "Multiplier tables confirmed by gcsim: 7/7. Lv 90 base stats not cross-checked in a second source.",
+    "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
+    "Main stats are a generic template, not from a source.",
+    "main stats are a generic template (KQM quick guide row not parsed)"
   ],
   "rarity": 4,
   "element": "geo",
@@ -107,8 +93,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -152,8 +138,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -197,8 +183,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -242,8 +228,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -291,96 +277,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "skill",
-            "group": "standard"
-          },
-          "gauge": 2
-        },
-        {
-          "name": "Absorption 1",
-          "mv": [
-            1.6,
-            1.72,
-            1.84,
-            2,
-            2.12,
-            2.24,
-            2.4,
-            2.56,
-            2.72,
-            2.88,
-            3.04,
-            3.2,
-            3.4,
-            3.6,
-            3.8
-          ],
-          "scaling": "def",
-          "element": "geo",
-          "frames": {
-            "hitmark": 17,
-            "cancel": {
-              "normal": 12,
-              "charged": 13,
-              "skill": 14,
-              "burst": 14,
-              "dash": 11,
-              "jump": 11,
-              "default": 78
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
-            }
-          },
-          "icd": {
-            "tag": "skill",
-            "group": "standard"
-          },
-          "gauge": 2
-        },
-        {
-          "name": "Absorption 2",
-          "mv": [
-            769.7851,
-            846.7743,
-            930.17926,
-            1020,
-            1116.2365,
-            1218.8888,
-            1327.9568,
-            1443.4407,
-            1565.3402,
-            1693.6555,
-            1828.3867,
-            1969.5336,
-            2117.0962,
-            2271.0747,
-            2431.4688
-          ],
-          "scaling": "def",
-          "element": "geo",
-          "frames": {
-            "hitmark": 20,
-            "cancel": {
-              "normal": 12,
-              "charged": 13,
-              "skill": 14,
-              "burst": 14,
-              "dash": 11,
-              "jump": 11,
-              "default": 78
-            },
-            "source": {
-              "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -428,8 +326,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -471,8 +369,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/noelle/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/noelle/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -576,7 +474,8 @@
     "artifacts": [],
     "mainStats": {
       "sands": [
-        "atk%"
+        "def%",
+        "er"
       ],
       "goblet": [
         "dmgBonus.geo"
@@ -585,7 +484,7 @@
         "critRate",
         "critDmg"
       ],
-      "source": "keqingmains"
+      "source": "template"
     }
   },
   "hooks": [],
