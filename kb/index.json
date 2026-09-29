@@ -233,7 +233,7 @@
     {
       "id": "jean",
       "name": "Jean",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "kachina",
@@ -393,7 +393,7 @@
     {
       "id": "noelle",
       "name": "Noelle",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "odette",
@@ -503,7 +503,7 @@
     {
       "id": "varka",
       "name": "Varka",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "venti",
@@ -588,7 +588,7 @@
     {
       "id": "yumemizuki-mizuki",
       "name": "Yumemizuki Mizuki",
-      "dataConfidence": "high"
+      "dataConfidence": "medium"
     },
     {
       "id": "yun-jin",
@@ -2144,6 +2144,16 @@
     {
       "id": "sandrone-stellar-conduct-traveler",
       "name": "Sandrone / Fischl / Alyosha + Cryo Traveler",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "sandrone-stellar-swirl-mizuki",
+      "name": "Sandrone / Mizuki + Fischl + Kaeya (Stellar Swirl)",
+      "dataConfidence": "low"
+    },
+    {
+      "id": "tighnari-yaoyao-aggravate",
+      "name": "Tighnari / Yaoyao + Fischl + Beidou (Aggravate)",
       "dataConfidence": "low"
     },
     {

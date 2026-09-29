@@ -270,7 +270,7 @@ describe('lunar-charged', () => {
 describe('KB mechanics', () => {
   it('lists unimplemented reactions explicitly', () => {
     const missing = Object.entries(REACTIONS.reactions).filter(([, r]) => !r.implemented).map(([k]) => k).sort();
-    expect(missing).toEqual(['crystallize', 'lunarBloom', 'lunarCrystallize', 'stellarSwirl']);
+    expect(missing).toEqual(['crystallize', 'lunarBloom', 'lunarCrystallize']);
   });
 });
 
@@ -381,5 +381,33 @@ describe('Stellar-Conduct (Polestar Field)', () => {
     h.hit(a, 'cryo', 200);
     h.hit(a, 'electro', 201);
     expect(h.engine.polestarActive(500)).toBe(true);
+  });
+});
+
+describe('Stellar Swirl', () => {
+  it('replaces Cryo Swirl only, while the field is up: crit-capable (lunar EM curve), 0.6 × base', () => {
+    const h = harness({ stellar: true, chars: [a], stats: { critRate: 0.1, critDmg: 0.5 } });
+    h.hit(a, 'cryo', 0);
+    h.hit(a, 'electro', 1); // starts the Polestar Field (Stellar-Conduct)
+    h.hit(a, 'cryo', 10);
+    const r = h.hit(a, 'anemo', 20);
+    expect(r.reactions).toEqual(['stellarSwirl']);
+    const stellar = h.records.find((x) => x.action === 'stellarSwirl');
+    expect(stellar).toMatchObject({ element: 'cryo', action: 'stellarSwirl' });
+    expect(stellar!.damage).toBeCloseTo(0.6 * LB * (1 + 0.1 * 0.5));
+  });
+
+  it('other Swirl aura pairs (pyro/hydro/electro) stay plain Swirl even with the field up', () => {
+    const h = harness({ stellar: true, chars: [a] });
+    h.hit(a, 'cryo', 0);
+    h.hit(a, 'electro', 1); // field up
+    h.hit(a, 'pyro', 10);
+    expect(h.hit(a, 'anemo', 20).reactions).toEqual(['swirl']);
+  });
+
+  it('is plain Cryo Swirl without a Stellar-Conduct character in the team', () => {
+    const h = harness({ stellar: false });
+    h.hit(a, 'cryo', 0);
+    expect(h.hit(a, 'anemo', 10).reactions).toEqual(['swirl']);
   });
 });

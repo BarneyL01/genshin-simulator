@@ -16,6 +16,24 @@ Entry format:
 
 ---
 
+## 2026-09-29 — Stellar Swirl reaction; Mizuki hand-written; Sandrone/Tighnari fixes; two new teams
+
+- Milestone: M8 (KB upgrades / new mechanic).
+- Context: user added Yumemizuki Mizuki to their roster and asked for (1) a Stellar Swirl team built around her and Sandrone, and (2) a Tighnari + Yaoyao Aggravate team with two electro supports of my choosing.
+- Done:
+  - Implemented the Stellar Swirl reaction end-to-end (previously listed as unimplemented, "needs a source other than gcsim"): `kb/mechanics/reactions.json` (new `stellarSwirl` entry, `lunar` type) and `src/engine/reactions.ts` (new `stellarSwirl()` method, crit-capable via the same expected-value pattern as Lunar-Charged). Gated on a Stellar-Jubilee-passive character being in the team (not on an already-active Polestar Field, unlike Stellar-Conduct — confirmed via web search since gcsim and every reachable KQM/wiki/theorycrafting site are blocked from this cloud session). Retrofitted Varka's A2/C4 and Sucrose's A1 hooks to also recognise it (their kit text already says "Swirl or Stellar Swirl").
+  - yumemizuki-mizuki: hand-written spec + hook (`mizuki`) from gcsim (8/8 multiplier tables) — Dreamdrifter, its cloud pulses, burst snack ticks, and her real value: a team-wide EM-scaled Swirl/Stellar-Swirl reaction DMG bonus using the engine's new `reactionBonus.stellarSwirl` stat.
+  - sandrone (patch): added the other half of her Stellar Jubilee passive — a team-wide ATK-scaled Stellar Swirl reaction DMG bonus — to the already-existing Stellar-Conduct marker.
+  - tighnari (patch): **fixed a real bug** — his Charged Attack ("Wreath Arrow"), the entire point of a Quicken/Aggravate team, was completely absent from the KB. The bulk importer's charged-attack detector only matches literally-named "Charged Attack DMG"/"Fully-Charged Aimed Shot" labels; his own "Wreath Arrow DMG" label didn't match, so the slot silently built empty. Patched in from gcsim. Flagged as likely affecting other bow characters too, not audited further this session.
+  - New teams: `sandrone-stellar-swirl-mizuki` (Sandrone/Mizuki/Fischl/Kaeya) and `tighnari-yaoyao-aggravate` (Tighnari/Yaoyao/Fischl/Beidou). Verified end-to-end with `npm run sim:team`: both produce sensible, non-degenerate per-character DPS splits.
+  - New tests: `tests/reactions.test.ts` (+3, Stellar Swirl), `tests/sandrone-stellar-swirl.test.ts` (2), `tests/mizuki-team.test.ts` (4), `tests/tighnari-aggravate.test.ts` (2) — 11 new, all passing.
+- KB changes: see kb/CHANGELOG.md (2026-09-29 entry, "Stellar Swirl reaction; Yumemizuki Mizuki hand-written; Sandrone/Tighnari fixes; two new teams").
+- Tests / validation: `npm test` 176 pass; `npm run lint` clean; `npx tsc --noEmit` clean; `npm run kb:validate` ok (431 records); `npm run build` ok.
+- Blockers: Stellar Swirl's own base damage coefficient is an assumption (carried over from normal Swirl's 0.6), not independently sourced — gcsim doesn't implement it and every community site that might (keqingmains.com, genshin-impact.fandom.com, mobalytics.gg, icy-veins.com) is blocked from this cloud session's network egress. The delayed "Stellar Vortex" explosion is also unmodelled for the same reason.
+- Next: if a verified Stellar Swirl coefficient becomes available (e.g. run `/kb-sync-patch` locally where KQM is reachable), correct `kb/mechanics/reactions.json`'s `stellarSwirl.multiplier`. The bulk importer's charged-attack label detector likely misses other bow characters the same way it missed Tighnari — worth a full audit. Sandrone's separate "Radiance: Stellar Swirl" personal-hit upgrade and Mizuki's C1/C4/C6-for-others remain unmodelled (engine limitations, documented in each record's assumptions).
+
+---
+
 ## 2026-09-29 — Tier-ranking sanity check finds a bulk-import bug (Noelle "Absorption")
 
 - Milestone: M8 (KB upgrades / correctness).

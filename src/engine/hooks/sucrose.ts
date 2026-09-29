@@ -4,10 +4,11 @@ import { registerHook } from './api';
 /**
  * Sucrose (gcsim internal/characters/sucrose: asc.go, burst.go, cons.go). One hook, by effect id:
  *
- *  sucrose.a1     onReaction  Catalyst Conversion: on Sucrose's own Swirl, +50 EM for 8s to party members
- *                 (excluding Sucrose) whose element matches the swirled element. The engine does not expose
- *                 which element was swirled, so — like Varka's conversion-element mechanic — this assumes it is
- *                 always the team's fixed "conversion element" (first of Pyro/Hydro/Electro/Cryo present).
+ *  sucrose.a1     onReaction  Catalyst Conversion: on Sucrose's own Swirl OR Stellar Swirl, +50 EM for 8s to
+ *                 party members (excluding Sucrose) whose element matches the swirled element. Stellar Swirl
+ *                 always swirls Cryo, so that case is exact; the engine doesn't expose which element a plain
+ *                 Swirl used, so that case still falls back to the team's fixed "conversion element" (first of
+ *                 Pyro/Hydro/Electro/Cryo present), like Varka's conversion-element mechanic.
  *  sucrose.a4     onHit  Mollis Favonius: Skill or Burst hits landing give the rest of the party +20% of
  *                 Sucrose's own EM for 8s.
  *  sucrose.burst  onBurst  Forbidden Creation-Isomer 75/Type II: periodic Anemo DoT ticks (hookHit `burst-dot`),
@@ -49,10 +50,13 @@ registerHook('sucrose', (api) => {
 
   switch (e.id) {
     case 'sucrose.a1': {
-      if (api.reaction?.name !== 'swirl' || api.reaction.actor !== owner) return;
-      const elem = conversionElem();
+      const name = api.reaction?.name;
+      if ((name !== 'swirl' && name !== 'stellarSwirl') || api.reaction!.actor !== owner) return;
+      // Stellar Swirl always swirls Cryo; plain Swirl's element isn't exposed here, so it still falls back
+      // to the team's fixed conversion element (see the module doc comment).
+      const elem = name === 'stellarSwirl' ? 'cryo' : conversionElem();
       if (!elem) return;
-      const f = api.reaction.frame;
+      const f = api.reaction!.frame;
       for (const c of api.characters) {
         if (c === owner || c.element !== elem) continue;
         api.buff({ effectId: 'sucrose.a1', target: c.id, stat: 'em', value: A1_EM, duration: A1_DURATION }, f);

@@ -186,10 +186,15 @@ export class ReactionEngine {
         return;
       }
       case 'swirl': {
+        // Unlike Stellar-Conduct (which needs an active Polestar Field), Stellar Swirl only needs a
+        // Stellar-Jubilee-passive character in the team — it doesn't require the field to already be up.
+        const stellar = pair.aura === 'cryo' && this.host.stellarConduct;
+        const reactionName = stellar ? 'stellarSwirl' : 'swirl';
         this.consume(pair.aura as AuraKey, pair.consume, s);
-        s.reactions.push(name);
+        s.reactions.push(reactionName);
         if (this.gcdReady(`swirl-${pair.aura}`, frame, def.gcd)) {
-          this.transformative(name, s.ctx.char, frame, s.ctx.cycle, pair.aura as Element);
+          if (stellar) this.stellarSwirl(s.ctx.char, frame, s.ctx.cycle);
+          else this.transformative(name, s.ctx.char, frame, s.ctx.cycle, pair.aura as Element);
         }
         return;
       }
@@ -261,6 +266,20 @@ export class ReactionEngine {
       (1 + em(REACTIONS.em.transformative, stats.em) + (mods[`reactionBonus.${name}`] ?? 0)) *
       resMultiplier(this.host.enemyRes(el, frame));
     this.host.record({ cycle, frame, char: owner.id, action: name, element: el, talent: 'reaction', damage: dmg, reactions: [name] });
+  }
+
+  /** Stellar Swirl (Cryo Swirl only, while a Polestar Field is up): crit-capable, 'lunar' EM curve, like lunarCharged. */
+  private stellarSwirl(owner: CharacterInput, frame: number, cycle: number): void {
+    const def = REACTIONS.reactions.stellarSwirl!;
+    const el = def.element as Element;
+    const { stats, mods } = this.host.statsFor(owner, frame);
+    const cr = Math.min(Math.max(stats.critRate, 0), 1);
+    const dmg =
+      def.multiplier! * LEVEL_BASE *
+      (1 + em(REACTIONS.em.lunar, stats.em) + (mods['reactionBonus.stellarSwirl'] ?? 0)) *
+      (1 + cr * stats.critDmg) *
+      resMultiplier(this.host.enemyRes(el, frame));
+    this.host.record({ cycle, frame, char: owner.id, action: 'stellarSwirl', element: el, talent: 'reaction', damage: dmg, reactions: ['stellarSwirl'] });
   }
 
   // --- Stellar-Conduct: Polestar Field ---

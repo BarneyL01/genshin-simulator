@@ -15,7 +15,7 @@ Genshin Impact 4-person team simulator. A static web app (no backend, no LLM at 
 
 ## Current status
 
-Milestones **M0–M3, M5, M6 complete**. KB: 121 characters, 243 weapons, 59 sets, 6 teams. 16 characters (incl. Cryo Traveler, Odette, Chevreuse, Durin, Varesa, Iansan, Varka, Jean, Sucrose) / 12 weapons (incl. Silver Light) / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Next: upgrade more characters and weapons to hand-written specs, then M8. Commands below all work.
+Milestones **M0–M3, M5, M6 complete**. KB: 121 characters, 243 weapons, 59 sets, 8 teams. 17 characters (incl. Cryo Traveler, Odette, Chevreuse, Durin, Varesa, Iansan, Varka, Jean, Sucrose, Yumemizuki Mizuki) / 12 weapons (incl. Silver Light) / 4 sets are hand-written with passives (`high`/`medium`); the rest is a damage-only baseline from the bulk importer (`low` where frames are estimated). Stellar Swirl is now implemented (`kb/mechanics/reactions.json`, `src/engine/reactions.ts`) alongside the existing Stellar-Conduct. Next: upgrade more characters and weapons to hand-written specs, then M8. Commands below all work.
 
 ## Commands
 

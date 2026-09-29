@@ -1,0 +1,101 @@
+{
+  "id": "tighnari-yaoyao-aggravate",
+  "name": "Tighnari / Yaoyao + Fischl + Beidou (Aggravate)",
+  "provenance": {
+    "sources": [
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661",
+        "retrieved": "2026-09-29",
+        "fields": [
+          "Tighnari, Yaoyao, Fischl, Beidou kits: frames, mechanics"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "No published rotation for this exact team: the rotation is ours. Yaoyao and the electro supports (Fischl, Beidou) apply Dendro/Electro and cast their own combo first to establish Quicken, then Tighnari (on-field) casts Skill (grants the fast-draw Vijnana Suffusion state) and repeatedly fires Wreath Arrow (his Charged Attack) until the rotation ends (length = Fischl's 25.3s skill cooldown).",
+    "The Quicken/Spread/Aggravate reaction itself needs no character-specific code (kb/mechanics/reactions.json: quicken/aggravate/spread, all implemented) — Tighnari's Dendro Charged Attack lands as Spread DMG on an already-Quickened target, and Fischl's/Beidou's Electro hits land as Aggravate DMG. Both scale with EM (additive reaction, kb/mechanics/reactions.json em.additive).",
+    "Tighnari's Charged Attack (Wreath Arrow) was missing entirely from the KB before this session (a bulk-import bug: the importer only recognised literally-named 'Charged Attack DMG'/'Fully-Charged Aimed Shot' labels, not his kit's own 'Wreath Arrow DMG'); it's now patched in (see kb/characters/tighnari.json), modelled as always fired right after Skill (the fast-draw case). His A1/A4 EM-scaling passives and constellations are not modelled.",
+    "Yaoyao, Fischl and Beidou are otherwise baseline/partly-patched: Yaoyao's Dendro application/healing passives and constellations are not modelled; Fischl's Oz and A4 follow gcsim (patched); Beidou's counter mechanic and constellations are not modelled.",
+    "Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "yaoyao",
+      "role": "sub-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["em", "atk%"],
+        "goblet": ["dmgBonus.dendro"],
+        "circlet": ["healingBonus", "critRate"]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "fischl",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["atk%", "em"],
+        "goblet": ["dmgBonus.electro"],
+        "circlet": ["dmgBonus.physical", "critRate", "critDmg", "atk%", "em"]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "beidou",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["em", "er"],
+        "goblet": ["dmgBonus.electro"],
+        "circlet": ["critRate", "critDmg"]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "tighnari",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["em", "atk%"],
+        "goblet": ["dmgBonus.dendro"],
+        "circlet": ["critRate", "critDmg"]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      { "char": "yaoyao", "action": "skill" },
+      { "char": "yaoyao", "action": "burst" },
+      { "char": "fischl", "action": "skill" },
+      { "char": "fischl", "action": "burst" },
+      { "char": "beidou", "action": "skill" },
+      { "char": "beidou", "action": "burst" },
+      { "char": "tighnari", "action": "skill" },
+      {
+        "repeat": { "untilCycleTime": 1518 },
+        "steps": [
+          { "char": "tighnari", "action": "charged" }
+        ]
+      }
+    ],
+    "source": "own"
+  },
+  "sourceRank": {},
+  "notes": "Quicken team (community shorthand: 'Tighnari Aggravate'): Yaoyao's Radish/Yuegui and Fischl's/Beidou's Electro form Quicken; Tighnari's Dendro Charged Attack (Wreath Arrow) then Spreads while Fischl's and Beidou's own Electro hits Aggravate.",
+  "status": "active"
+}

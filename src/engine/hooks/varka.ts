@@ -10,13 +10,14 @@ import { registerHook } from './api';
  *                +min(ATK/1000×10%, 25%) base damage to Varka's own Anemo/conversion-element hits, and the
  *                team-comp bonus on top of that for Four Winds' Ascension specifically.
  *  varka.a2      onReaction  (Wind's Vanguard) +7.5% DMG (max 4 independent 8s stacks) to Normal/Charged/Four
- *                Winds' Ascension after any nearby party member's Swirl (approximated as `dmgBonus.normal` +
- *                `dmgBonus.charged` + `dmgBonus.skill`, so it also lightly affects the plain Skill tap).
+ *                Winds' Ascension after any nearby party member's Swirl or Stellar Swirl (approximated as
+ *                `dmgBonus.normal` + `dmgBonus.charged` + `dmgBonus.skill`, so it also lightly affects the plain
+ *                Skill tap) — matches gcsim's asc.go a4Init, which subscribes to both.
  *  varka.c1      onSkill  (C1) the Skill tap (opening Sturm und Drang) arms a flag; the next Four Winds'
  *                Ascension doubles its multiplier and clears the flag.
  *  varka.c2      onSkill  (C2) an extra 800%-ATK Anemo hit (hookHit `c2`) after Four Winds' Ascension.
- *  varka.c4      onReaction  (C4) Varka's own Swirl gives the whole party +20% Anemo and +20% conversion-element
- *                DMG for 600 frames (10s).
+ *  varka.c4      onReaction  (C4) Varka's own Swirl or Stellar Swirl gives the whole party +20% Anemo and +20%
+ *                conversion-element DMG for 600 frames (10s) — matches gcsim's cons.go c4Init.
  *
  * Not modelled: the upgraded Sturm und Drang Normal/Charged Attacks, Azure Devour, C6 (free extra use).
  */
@@ -79,7 +80,7 @@ registerHook('varka', (api) => {
     }
 
     case 'varka.a2': {
-      if (api.reaction?.name !== 'swirl') return;
+      if (api.reaction?.name !== 'swirl' && api.reaction?.name !== 'stellarSwirl') return;
       const f = api.reaction.frame;
       for (const stat of ['dmgBonus.normal', 'dmgBonus.charged', 'dmgBonus.skill']) {
         api.buff({ effectId: `varka.a2.${stat}`, target: owner.id, stat, value: A2_VALUE, duration: A2_DURATION, maxStacks: A2_MAX_STACKS, stackMode: 'independent' }, f);
@@ -111,8 +112,9 @@ registerHook('varka', (api) => {
 
     case 'varka.c4': {
       const { conversionElem } = teamComp();
-      if (api.reaction?.name !== 'swirl' || api.reaction.actor !== owner || !conversionElem) return;
-      const f = api.reaction.frame;
+      const swirlName = api.reaction?.name;
+      if ((swirlName !== 'swirl' && swirlName !== 'stellarSwirl') || api.reaction!.actor !== owner || !conversionElem) return;
+      const f = api.reaction!.frame;
       for (const c of api.characters) {
         api.buff({ effectId: 'varka.c4.anemo', target: c.id, stat: 'dmgBonus.anemo', value: C4_VALUE, duration: C4_DURATION }, f);
         api.buff({ effectId: 'varka.c4.elem', target: c.id, stat: `dmgBonus.${conversionElem}`, value: C4_VALUE, duration: C4_DURATION }, f);

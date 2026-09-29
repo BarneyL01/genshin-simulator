@@ -385,8 +385,18 @@
     },
     "stellarSwirl": {
       "type": "lunar",
-      "implemented": false,
-      "notes": "Not implemented. Needs a source other than gcsim."
+      "implemented": true,
+      "element": "cryo",
+      "multiplier": 0.6,
+      "gcd": 6,
+      "pairs": [
+        {
+          "trigger": "anemo",
+          "aura": "cryo",
+          "consume": 0.5
+        }
+      ],
+      "notes": "Replaces Cryo Swirl only (not Pyro/Hydro/Electro Swirl) whenever a Stellar-Jubilee-passive character is in the team — unlike Stellar-Conduct, it does NOT require a Polestar Field to already be up. No gcsim implementation exists (community sites documenting it are blocked from this environment); the 0.6 base coefficient is carried over from normal Swirl as an ASSUMPTION, not independently confirmed for Stellar Swirl. Crit-capable like other Stellar/Lunar-family reactions (uses the 'lunar' EM curve and an expected-value crit multiplier, gcsim's lunarCharged pattern), unlike plain Swirl. The delayed 'Stellar Vortex' explosion (a second, separate Cryo damage instance after Stellar Swirl) is NOT modelled: no sourced value for it."
     },
     "lunarCrystallize": {
       "type": "lunar",

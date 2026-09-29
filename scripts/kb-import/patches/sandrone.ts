@@ -32,10 +32,17 @@ export function patch(c: Character): Character {
   const p = c.passives.map((x) => ({ ...x }));
   const p3 = p[2];
   if (p3) {
-    p3.effects = [effect.parse({
-      id: 'sandrone.stellar-conduct', trigger: { on: 'always' }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'stellar-conduct',
-      assumption: 'Stellar Jubilee: Superconduct becomes Stellar-Conduct while Sandrone is in the team (Polestar Field: team Cryo/Electro DMG%, −40% physical RES). The team is assumed to stand inside the field.',
-    })];
+    p3.effects = [
+      effect.parse({
+        id: 'sandrone.stellar-conduct', trigger: { on: 'always' }, target: 'self', stat: 'flatDmg.all', value: 0, hook: 'stellar-conduct',
+        assumption: 'Stellar Jubilee: Superconduct becomes Stellar-Conduct, and Cryo Swirl becomes Stellar Swirl, while Sandrone is in the team (Polestar Field: team Cryo/Electro DMG%, −40% physical RES; Stellar Swirl: see src/engine/reactions.ts). The team is assumed to stand inside the field.',
+      }),
+      effect.parse({
+        id: 'sandrone.stellar-swirl-dmg', trigger: { on: 'always' }, target: 'team', stat: 'reactionBonus.stellarSwirl', value: 0,
+        scaling: { from: 'self.atk', ratio: 0.00007, cap: 0.14 },
+        assumption: "Stellar Jubilee: +0.7% Stellar Swirl reaction Base DMG per 100 of Sandrone's ATK (cap 14%), for whichever party member triggers it. (The same clause for Stellar-Conduct's Base DMG has no effect: Stellar-Conduct deals no reaction damage of its own in this engine, matching the real mechanic — its value comes entirely from the Polestar Field's team DMG% and the character-kit direct hits that reference it.)",
+      }),
+    ];
   }
   const p2 = p[1];
   if (p2) {
@@ -47,6 +54,6 @@ export function patch(c: Character): Character {
   c.passives = p;
   c.hooks = ['stellar-conduct'];
   c.needsHook = true;
-  c.assumptions.push('Patched from in-game text: Prism Shot x2 and burst (Bombardment x3 + Ray). Inside a Polestar Field the 2nd Prism Shot and the Ray use their Stellar-Conduct multipliers, apply no element, ignore DEF and gain 0.7% base DMG per 100 ATK (max 14%, A3). Frames are estimated (borrowed from another character). Not modelled: Fagio / Decoding Power, Stellar Swirl, constellations.');
+  c.assumptions.push('Patched from in-game text: Prism Shot x2 and burst (Bombardment x3 + Ray). Inside a Polestar Field the 2nd Prism Shot and the Ray use their Stellar-Conduct multipliers, apply no element, ignore DEF and gain 0.7% base DMG per 100 ATK (max 14%, A3). Frames are estimated (borrowed from another character). Not modelled: Fagio / Decoding Power, the separate "Radiance: Stellar Swirl" upgraded hit forms of Prism Shot 2/Condensed Beam/Ray (this engine\'s `stellar` hit variant only supports one upgraded form, wired to Stellar-Conduct; a Stellar-Swirl-specific one would need a second field and dispatch logic), constellations.');
   return c;
 }

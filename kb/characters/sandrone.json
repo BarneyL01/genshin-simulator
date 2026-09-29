@@ -13,14 +13,6 @@
           "talent multipliers",
           "passive/constellation text"
         ]
-      },
-      {
-        "site": "keqingmains",
-        "url": "https://library.keqingmains.com/characters/cryo/sandrone",
-        "retrieved": "2026-09-25",
-        "fields": [
-          "baseStats (Lv 90 cross-check)"
-        ]
       }
     ],
     "conflicts": [],
@@ -29,13 +21,13 @@
   "dataConfidence": "low",
   "assumptions": [
     "Baseline import: base stats and multipliers come from genshin-db; passives, constellations and special mechanics are NOT modelled (their text is kept). Only normal/charged/skill/burst damage, cooldowns, energy and particles are simulated.",
-    "Multiplier tables confirmed by gcsim: 0/12. Lv 90 base stats confirmed by KeqingMains.",
+    "Multiplier tables confirmed by gcsim: 0/12. Lv 90 base stats not cross-checked in a second source.",
     "Not in gcsim: every frame value is estimated from a same-weapon-type character.",
     "Frames estimated (gcsim source not parsed for: N1, N2, N3, charged, skill, skill hitmark, burst, burst hitmark); taken from aino or a rough guess. Skill/burst damage is placed at a single frame and all hits of a talent are lumped at (nearly) the same time.",
     "Skill and burst are assumed to deal the character's element, with the standard ICD unless gcsim says ICDTagNone; hits are the talent DMG labels genshin-db lists.",
     "Main stats are a generic template, not from a source.",
     "main stats are a generic template (KQM quick guide row not parsed)",
-    "Patched from in-game text: Prism Shot x2 and burst (Bombardment x3 + Ray). Inside a Polestar Field the 2nd Prism Shot and the Ray use their Stellar-Conduct multipliers, apply no element, ignore DEF and gain 0.7% base DMG per 100 ATK (max 14%, A3). Frames are estimated (borrowed from another character). Not modelled: Fagio / Decoding Power, Stellar Swirl, constellations."
+    "Patched from in-game text: Prism Shot x2 and burst (Bombardment x3 + Ray). Inside a Polestar Field the 2nd Prism Shot and the Ray use their Stellar-Conduct multipliers, apply no element, ignore DEF and gain 0.7% base DMG per 100 ATK (max 14%, A3). Frames are estimated (borrowed from another character). Not modelled: Fagio / Decoding Power, the separate \"Radiance: Stellar Swirl\" upgraded hit forms of Prism Shot 2/Condensed Beam/Ray (this engine's `stellar` hit variant only supports one upgraded form, wired to Stellar-Conduct; a Stellar-Swirl-specific one would need a second field and dispatch logic), constellations."
   ],
   "rarity": 5,
   "element": "cryo",
@@ -92,8 +84,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -137,8 +129,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -182,8 +174,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/attack.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/attack.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -230,8 +222,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -273,8 +265,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/skill.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/skill.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -344,8 +336,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -388,8 +380,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -432,8 +424,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -476,8 +468,8 @@
             },
             "source": {
               "site": "gcsim",
-              "url": "https://github.com/genshinsim/gcsim/blob/3d48bd5044b2841d840d59888b48f4483252ff8d/internal/characters/aino/burst.go",
-              "commit": "3d48bd5044b2841d840d59888b48f4483252ff8d"
+              "url": "https://github.com/genshinsim/gcsim/blob/488e22309e4ef43481923bfafe21b62d2a17b661/internal/characters/aino/burst.go",
+              "commit": "488e22309e4ef43481923bfafe21b62d2a17b661"
             }
           },
           "icd": {
@@ -559,7 +551,24 @@
           "maxStacks": 1,
           "snapshot": false,
           "hook": "stellar-conduct",
-          "assumption": "Stellar Jubilee: Superconduct becomes Stellar-Conduct while Sandrone is in the team (Polestar Field: team Cryo/Electro DMG%, −40% physical RES). The team is assumed to stand inside the field."
+          "assumption": "Stellar Jubilee: Superconduct becomes Stellar-Conduct, and Cryo Swirl becomes Stellar Swirl, while Sandrone is in the team (Polestar Field: team Cryo/Electro DMG%, −40% physical RES; Stellar Swirl: see src/engine/reactions.ts). The team is assumed to stand inside the field."
+        },
+        {
+          "id": "sandrone.stellar-swirl-dmg",
+          "trigger": {
+            "on": "always"
+          },
+          "target": "team",
+          "stat": "reactionBonus.stellarSwirl",
+          "value": 0,
+          "scaling": {
+            "from": "self.atk",
+            "ratio": 0.00007,
+            "cap": 0.14
+          },
+          "maxStacks": 1,
+          "snapshot": false,
+          "assumption": "Stellar Jubilee: +0.7% Stellar Swirl reaction Base DMG per 100 of Sandrone's ATK (cap 14%), for whichever party member triggers it. (The same clause for Stellar-Conduct's Base DMG has no effect: Stellar-Conduct deals no reaction damage of its own in this engine, matching the real mechanic — its value comes entirely from the Polestar Field's team DMG% and the character-kit direct hits that reference it.)"
         }
       ],
       "text": "Stellar Jubilee: Light of Rationalisme: Sandrone will enter the Radiance: Stellar-Conduct state when she is inside a **Polestar Field**, or the Radiance: Stellar Swirl state for 8s after a nearby party member triggers a Stellar Swirl reaction.\nWhen a party member triggers a Superconduct or Cryo Swirl reaction, it becomes a Stellar-Conduct or Stellar Swirl reaction instead, and the Base DMG of the aforementioned reaction is also increased by 0.7% for every 100 points of Sandrone's ATK. A maximum increase of 14% can be obtained in this way."

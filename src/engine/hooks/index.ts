@@ -18,3 +18,4 @@ import './iansan';
 import './varka';
 import './jean';
 import './sucrose';
+import './mizuki';

@@ -1,0 +1,103 @@
+{
+  "id": "sandrone-stellar-swirl-mizuki",
+  "name": "Sandrone / Mizuki + Fischl + Kaeya (Stellar Swirl)",
+  "provenance": {
+    "sources": [
+      {
+        "site": "gcsim",
+        "url": "https://github.com/genshinsim/gcsim/tree/488e22309e4ef43481923bfafe21b62d2a17b661",
+        "retrieved": "2026-09-29",
+        "fields": [
+          "Sandrone, Fischl, Kaeya, Mizuki kits: frames, mechanics"
+        ]
+      }
+    ],
+    "conflicts": [],
+    "gameVersion": "7.1"
+  },
+  "dataConfidence": "low",
+  "assumptions": [
+    "No published rotation for this exact team: the rotation is ours. Mizuki, Fischl and Kaeya (all support/off-field here) cast their skill and burst first, then Sandrone (on-field) casts skill and burst and autoattacks until the rotation ends (length = Fischl's 25.3s skill cooldown, matching the sister team sandrone-stellar-conduct-kaeya).",
+    "Fischl's Electro application lets Sandrone's own Cryo hits (and Kaeya's) trigger real Stellar-Conduct (Polestar Field: team Cryo/Electro DMG%, −40% enemy physical RES); Mizuki's Anemo hits then Stellar-Swirl the Cryo aura, boosted by both her own EM-scaled Skill passive and Sandrone's ATK-scaled Stellar Jubilee (kb/characters/sandrone.json, mizuki.json).",
+    "Sandrone is partly baseline: no gcsim source exists for her (frames estimated; Fagio/Decoding Power, the separate Radiance: Stellar Swirl upgraded hit forms, and her constellations are not modelled — only her Stellar-Conduct/Stellar-Swirl passive and its ATK-scaled reaction bonus are). Mizuki's C1 (enemy-status-gated bonus swirl damage) and C6's crit grant to other characters' Swirls are also not modelled — see kb/characters/yumemizuki-mizuki.json.",
+    "Weapons default to the highest base ATK weapon of each type in the KB (no recommendation in the KB); no artifact set bonuses."
+  ],
+  "members": [
+    {
+      "slot": 1,
+      "character": "yumemizuki-mizuki",
+      "role": "support",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["em", "er"],
+        "goblet": ["em"],
+        "circlet": ["em"]
+      }
+    },
+    {
+      "slot": 2,
+      "character": "fischl",
+      "role": "off-field-dps",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["atk%", "em"],
+        "goblet": ["dmgBonus.electro"],
+        "circlet": ["dmgBonus.physical", "critRate", "critDmg", "atk%", "em"]
+      }
+    },
+    {
+      "slot": 3,
+      "character": "kaeya",
+      "role": "stellar-conduct-flex",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["er", "atk%", "em"],
+        "goblet": ["dmgBonus.cryo"],
+        "circlet": ["critRate", "critDmg"]
+      }
+    },
+    {
+      "slot": 4,
+      "character": "sandrone",
+      "role": "driver",
+      "substitutes": [],
+      "weapons": [],
+      "artifacts": [],
+      "mainStats": {
+        "sands": ["atk%", "er"],
+        "goblet": ["dmgBonus.cryo"],
+        "circlet": ["critRate", "critDmg"]
+      }
+    }
+  ],
+  "rotation": {
+    "script": [
+      { "char": "yumemizuki-mizuki", "action": "skill" },
+      { "char": "fischl", "action": "skill" },
+      { "char": "fischl", "action": "burst" },
+      { "char": "kaeya", "action": "skill" },
+      { "char": "kaeya", "action": "burst" },
+      { "char": "yumemizuki-mizuki", "action": "burst" },
+      { "char": "sandrone", "action": "skill" },
+      { "char": "sandrone", "action": "burst" },
+      {
+        "repeat": { "untilCycleTime": 1518 },
+        "steps": [
+          { "char": "sandrone", "action": "n1" },
+          { "char": "sandrone", "action": "n2" },
+          { "char": "sandrone", "action": "n3" }
+        ]
+      }
+    ],
+    "source": "own"
+  },
+  "sourceRank": {},
+  "notes": "Stellar Swirl team: Mizuki's Anemo hits Swirl Sandrone's (or Kaeya's) Cryo aura into Stellar Swirl because Sandrone's Stellar Jubilee passive is in the team; Fischl's Electro also lets Superconduct become Stellar-Conduct for the Polestar Field's team buff. Mizuki cast early (before Fischl/Kaeya apply Electro/Cryo) so her Dreamdrifter window and its team-wide Swirl/Stellar-Swirl DMG bonus are already up when the reactions start landing.",
+  "status": "active"
+}
