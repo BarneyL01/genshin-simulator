@@ -2,6 +2,14 @@
 
 Newest first. One entry per KB change or sync.
 
+## 2026-09-30 — Fixed Tighnari doing almost no damage in a custom team
+
+- User reported Tighnari dealing significantly less damage than Fischl/Kuki Shinobu in a custom Yaoyao (Deepwood Memories) + Fischl + Kuki Shinobu + Tighnari team, and asked to double-check the calculation. Two real bugs found and fixed:
+  1. **tighnari.json (patch)**: when I added his Charged Attack ("Wreath Arrow") in the previous session, I never updated his `usualCombo` — it still repeated plain physical Normal Attacks (the bulk-import default), which get zero benefit from Quicken/Spread since they're not Dendro. Fixed: `usualCombo` now casts Skill, Burst, then repeats Charged Attack (his actual on-field loop).
+  2. **`src/kb/custom.ts` (`buildCustomRotation`), engine bug**: the custom-team rotation builder only ever expanded `repeat` for the `'normal'` action — any other action (Charged Attack, Skill, an extraAction) with `repeat: 'untilRotationEnd'` silently fired once and stopped, no matter what a character's `usualCombo` said. This affected every custom team built through the app UI, not just Tighnari's, though he's the first hand-touched character in this KB whose on-field loop isn't Normal Attacks. Fixed: `repeat` now applies uniformly to any action.
+  - Re-simulated the user's exact team after both fixes: Tighnari went from 1,086 → 5,731 relaxed DPS (now clearly the team's top damage dealer, as expected for the Aggravate driver), Fischl/Kuki-Shinobu unchanged at ~1,000–1,500 each.
+  - New regression test: `tests/teams.test.ts` ("repeats a non-normal action... for the rest of the rotation, not just once").
+
 ## 2026-09-29 — Stellar Swirl reaction; Yumemizuki Mizuki hand-written; Sandrone/Tighnari fixes; two new teams
 
 - User added Mizuki to their roster and asked for a Stellar Swirl team with Sandrone, and a Tighnari + Yaoyao Aggravate team with two electro supports.

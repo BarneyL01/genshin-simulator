@@ -24,5 +24,10 @@ export function patch(c: Character): Character {
     }],
   };
   c.assumptions.push('Charged Attack ("Wreath Arrow") added by patch: the bulk importer only recognises literally-named "Charged Attack DMG"/"Fully-Charged Aimed Shot" labels and missed this one entirely. Modelled as fired right after Skill (Vijnana Suffusion active, the fast-draw case), with its 4 simultaneous Clusterbloom Arrow sub-hits; the plain (non-Suffusion, slower) Aimed Shot and Fully-Charged Aimed Shot are not modelled, since the rotation always casts Skill first. Passives (A1/A4 EM-DMG% scaling) and constellations remain unmodelled baseline.');
+  c.usualCombo = [
+    { variant: 'off-field', actions: [{ action: 'skill' }, { action: 'burst' }, { action: 'charged' }] },
+    { variant: 'on-field', actions: [{ action: 'skill' }, { action: 'burst' }, { action: 'charged', repeat: 'untilRotationEnd' }] },
+  ];
+  c.assumptions.push("usualCombo overridden by patch: the bulk-import default repeated plain (physical) Normal Attacks, which never benefit from Quicken/Spread since they deal no Dendro. His actual playstyle is Skill then repeated Wreath Arrow (Charged Attack) — the only Dendro-applying, EM-scaling hit in his kit and the reason a Quicken/Aggravate team is built around him at all.");
   return c;
 }

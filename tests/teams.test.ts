@@ -102,6 +102,16 @@ describe('Mode B custom teams', () => {
     expect(run.relaxed.dps).toBeGreaterThan(1000);
     expect(run.label).toContain('custom rotation');
   });
+
+  it('repeats a non-normal action (e.g. Tighnari\'s Charged Attack loop) for the rest of the rotation, not just once', () => {
+    const rot = buildCustomRotation(kb, { order: ['tighnari'], variants: { tighnari: 'on-field' }, lengthSeconds: 20 });
+    const last = rot.script[rot.script.length - 1]!;
+    expect('steps' in last).toBe(true);
+    if ('steps' in last) {
+      expect(last.repeat).toEqual({ untilCycleTime: 1200 });
+      expect(last.steps.map((s) => s.action)).toEqual(['charged']);
+    }
+  });
 });
 
 describe('Weapon comparer', () => {

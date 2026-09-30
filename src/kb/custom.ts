@@ -72,11 +72,9 @@ export function buildCustomRotation(kb: KbData, team: CustomTeam): CustomRotatio
   const script: RotationItem[] = [];
   for (const c of chars) {
     for (const a of variantOf(c).actions) {
-      if (a.action !== 'normal') {
-        script.push({ char: c.id, action: a.action });
-        continue;
-      }
-      const seq: RotationStep[] = Array.from({ length: a.hits ?? 1 }, (_, i) => ({ char: c.id, action: `n${i + 1}` }));
+      const seq: RotationStep[] = a.action === 'normal'
+        ? Array.from({ length: a.hits ?? 1 }, (_, i) => ({ char: c.id, action: `n${i + 1}` }))
+        : [{ char: c.id, action: a.action }];
       if (a.then) seq.push({ char: c.id, action: a.then });
       if (a.repeat === undefined) script.push(...seq);
       else if (typeof a.repeat === 'number') script.push({ repeat: { times: a.repeat }, steps: seq });

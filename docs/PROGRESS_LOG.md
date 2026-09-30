@@ -16,6 +16,23 @@ Entry format:
 
 ---
 
+## 2026-09-30 — Fixed Tighnari doing almost no damage in a custom team (2 real bugs)
+
+- Milestone: M8 (correctness).
+- Context: user built a custom team (Yaoyao with Deepwood Memories, Fischl, Kuki Shinobu, Tighnari) in the app and reported Tighnari dealing significantly less damage than the two off-field electro supports, and asked me to double-check the calculation.
+- Done:
+  - Reproduced with `customRunInput`/`runTeam` on the exact composition: Tighnari (1,086 DPS) was indeed behind Fischl (1,503) and Kuki-Shinobu (1,051) — clearly wrong for an Aggravate-team driver.
+  - Root cause #1: `tighnari.json`'s `usualCombo` (via the patch added 2026-09-29 when his missing Charged Attack was fixed) still repeated plain physical Normal Attacks — I'd added the Charged Attack data but never pointed his combo script at it. Physical Normal Attacks get zero Quicken/Spread benefit. Fixed: on-field combo is now Skill → Burst → repeated Charged Attack.
+  - Root cause #2, a real engine bug affecting every custom team in the app, not just Tighnari's: `buildCustomRotation` (`src/kb/custom.ts`) only ever expanded a `repeat` instruction for the `'normal'` action; any other repeated action (Charged Attack, an extraAction, even Skill) silently fired once and stopped, regardless of what a character's `usualCombo` specified. This has presumably been latent since Mode B custom teams were built (M5/M6) — it just never showed up before because every other hand-touched character's on-field loop happens to be a Normal Attack chain. Fixed: `repeat` now applies uniformly to any action type.
+  - Re-simulated the user's exact team after both fixes: Tighnari 1,086 → 5,731 relaxed DPS (now correctly the team's top damage dealer); Fischl/Kuki-Shinobu essentially unchanged.
+  - New regression test in `tests/teams.test.ts` asserting a repeated non-Normal action expands to a `repeat` block, not a single step.
+- KB changes: see kb/CHANGELOG.md (2026-09-30 entry).
+- Tests / validation: `npm test` 177 pass (1 new); `npm run lint` clean; `npx tsc --noEmit` clean; `npm run kb:validate` ok (431 records); `npm run build` ok.
+- Blockers: none.
+- Next: given `buildCustomRotation`'s repeat handling was broken for any non-Normal on-field loop until now, worth spot-checking other custom-team combos (especially any future hand-written character whose on-field playstyle isn't Normal Attacks) for the same silent-single-fire symptom.
+
+---
+
 ## 2026-09-29 — Build stamp in the page header
 
 - Milestone: M8 (UI).
