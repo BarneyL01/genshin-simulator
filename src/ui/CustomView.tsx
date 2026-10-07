@@ -126,7 +126,7 @@ export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; 
             <FilterChip key={c.id} checked={order.includes(c.id)} onChange={() => toggle(c.id)} disabled={!order.includes(c.id) && order.length >= 4}>
               <span aria-hidden="true" className="size-2.5 rounded-full" style={{ background: elementColor(c.element) }} />
               {c.name}
-              <span aria-hidden="true" style={{ color: rarityColor(c.rarity) }}>{c.rarity === 5 ? '★' : ''}</span>
+              {c.rarity === 5 && <span aria-hidden="true" className="after:content-['★']" style={{ color: rarityColor(c.rarity) }} />}
             </FilterChip>
           ))}
         </div>
