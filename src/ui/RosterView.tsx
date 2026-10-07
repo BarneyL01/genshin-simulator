@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import type { KbData } from '../kb';
 import type { Roster } from '../schema/roster';
-import { Badge, Button, Card, CheckRow, Expandable, FilterChip, NumberField, SearchBar, Section, Select, SwitchRow, confidenceTone } from './Common';
-import { ELEMENT_COLOR } from './format';
+import { Badge, Button, Card, CheckRow, ElementTag, Expandable, FilterChip, NumberField, SearchBar, Section, Select, Stars, SwitchRow, confidenceTone } from './Common';
+import { ELEMENT_COLOR, elementColor } from './format';
 
 interface Props {
   kb: KbData;
@@ -81,8 +81,9 @@ export function RosterView({ kb, roster, update }: Props) {
               <div key={c.id}>
                 <CheckRow
                   checked={rc.owned} onChange={(v) => setChar(c.id, { owned: v })}
-                  headline={c.name}
-                  supporting={<>{c.rarity}★ · {cap(c.element)} · {cap(c.weaponType)}</>}
+                  headline={<span className="font-medium">{c.name}</span>}
+                  accent={elementColor(c.element)}
+                  supporting={<span className="flex flex-wrap items-center gap-x-2"><Stars rarity={c.rarity} /><ElementTag element={c.element} /><span>{cap(c.weaponType)}</span></span>}
                   trailing={<Badge tone={confidenceTone(c.dataConfidence)}>{c.dataConfidence}</Badge>}
                 />
                 {rc.owned && (
@@ -134,7 +135,7 @@ export function RosterView({ kb, roster, update }: Props) {
                       <CheckRow
                         checked={rw.owned} onChange={(v) => setWeapon(w.id, { owned: v })}
                         headline={w.name}
-                        supporting={<>{w.rarity}★ · {cap(w.type)}{w.obtain.freeRefinement ? <> · <span className="text-success">R{w.obtain.freeRefinement} obtainable free ({w.obtain.method})</span></> : null}</>}
+                        supporting={<><Stars rarity={w.rarity} /> · {cap(w.type)}{w.obtain.freeRefinement ? <> · <span className="text-success">R{w.obtain.freeRefinement} obtainable free ({w.obtain.method})</span></> : null}</>}
                       />
                     </div>
                     {rw.owned && (

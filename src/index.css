@@ -42,6 +42,10 @@
   --md-surface-container: #efedf4;
   --md-surface-container-high: #eae7ef;
   --md-surface-container-highest: #e4e1e9;
+  /* element and rarity accents: >= 3:1 on the surface in each scheme */
+  --el-pyro: #c4451c; --el-hydro: #1e63c9; --el-electro: #8e3fc9; --el-cryo: #00829e;
+  --el-anemo: #00876a; --el-geo: #8a6a00; --el-dendro: #3f8a1e; --el-physical: #6b7078;
+  --rarity-5: #9a6b00; --rarity-4: #7b4fb8;
   /* chart series: >= 3:1 on the surface in each scheme */
   --chart-1: #3f51b5; --chart-2: #c62828; --chart-3: #00796b; --chart-4: #b45309;
   --chart-5: #6a1b9a; --chart-6: #0277bd; --chart-7: #ad1457; --chart-8: #4d7c0f;
@@ -83,6 +87,9 @@
     --md-surface-container: #1f1f25;
     --md-surface-container-high: #2a292f;
     --md-surface-container-highest: #34343a;
+    --el-pyro: #ff8a65; --el-hydro: #6fb0ff; --el-electro: #c58cff; --el-cryo: #5fd3ee;
+    --el-anemo: #4fd6ad; --el-geo: #e0b93a; --el-dendro: #8fd35f; --el-physical: #aab0b8;
+    --rarity-5: #f2c24f; --rarity-4: #c9a6ff;
     --chart-1: #9fa8ff; --chart-2: #ff8a80; --chart-3: #4dd0b8; --chart-4: #ffb74d;
     --chart-5: #d1a3ff; --chart-6: #6ec1ff; --chart-7: #ff80ab; --chart-8: #aed581;
   }

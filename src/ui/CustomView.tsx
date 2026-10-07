@@ -5,7 +5,7 @@ import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
 import { sim } from './client';
 import { Button, Card, Expandable, ExtendedFab, FilterChip, IconButton, LinearProgress, Notice, SearchBar, Section, Select, TextField } from './Common';
-import { nameOf } from './format';
+import { elementColor, nameOf, rarityColor } from './format';
 import { ResultView } from './ResultView';
 import { usePersistentState } from './store';
 
@@ -123,7 +123,11 @@ export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; 
         {owned.length > 12 && <div className="mb-3"><SearchBar label="Search owned characters" placeholder="Search owned characters" value={query} onChange={setQuery} /></div>}
         <div className="flex flex-wrap gap-x-2">
           {chipChars.map((c) => (
-            <FilterChip key={c.id} checked={order.includes(c.id)} onChange={() => toggle(c.id)} disabled={!order.includes(c.id) && order.length >= 4}>{c.name}</FilterChip>
+            <FilterChip key={c.id} checked={order.includes(c.id)} onChange={() => toggle(c.id)} disabled={!order.includes(c.id) && order.length >= 4}>
+              <span aria-hidden="true" className="size-2.5 rounded-full" style={{ background: elementColor(c.element) }} />
+              {c.name}
+              <span aria-hidden="true" style={{ color: rarityColor(c.rarity) }}>{c.rarity === 5 ? '★' : ''}</span>
+            </FilterChip>
           ))}
         </div>
       </Section>

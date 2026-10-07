@@ -1,5 +1,6 @@
 import { useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import { Icon, type IconName } from './Icon';
+import { elementColor, rarityColor } from './format';
 import { blurValue, draftValue, sanitizeInt } from './intInput';
 
 /**
@@ -90,6 +91,20 @@ export function Expandable({ title, supporting, children, defaultOpen, className
       </summary>
       <div className="px-4 pb-4">{children}</div>
     </details>
+  );
+}
+
+/** Rarity as repeated stars: five gold or four purple, so the tier reads at a glance. */
+export function Stars({ rarity }: { rarity: number }) {
+  return <span role="img" aria-label={`${rarity} star`} className="font-medium tracking-tighter" style={{ color: rarityColor(rarity) }}>{'★'.repeat(rarity)}</span>;
+}
+
+export function ElementTag({ element }: { element: string }) {
+  return (
+    <span className="inline-flex items-center gap-1">
+      <span aria-hidden="true" className="size-2.5 rounded-full" style={{ background: elementColor(element) }} />
+      <span className="capitalize" style={{ color: elementColor(element) }}>{element}</span>
+    </span>
   );
 }
 
@@ -286,9 +301,9 @@ export function SearchBar({ value, onChange, placeholder, label }: { value: stri
 }
 
 /** List item with a leading checkbox; the whole row is the 56dp touch target. */
-export function CheckRow({ checked, onChange, headline, supporting, trailing, disabled }: { checked: boolean; onChange: (v: boolean) => void; headline: ReactNode; supporting?: ReactNode; trailing?: ReactNode; disabled?: boolean }) {
+export function CheckRow({ checked, onChange, headline, supporting, trailing, disabled, accent }: {accent?: string;  checked: boolean; onChange: (v: boolean) => void; headline: ReactNode; supporting?: ReactNode; trailing?: ReactNode; disabled?: boolean }) {
   return (
-    <label className={`state-layer flex min-h-14 cursor-pointer items-center gap-4 px-4 py-2 ${disabled ? 'cursor-not-allowed' : ''}`}>
+    <label className={`state-layer flex min-h-14 cursor-pointer items-center gap-4 border-l-4 px-4 py-2 ${disabled ? 'cursor-not-allowed' : ''}`} style={{ borderLeftColor: accent ?? 'transparent' }}>
       <input type="checkbox" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />
       <span className="min-w-0 flex-1">
         <span className="block text-body-large">{headline}</span>

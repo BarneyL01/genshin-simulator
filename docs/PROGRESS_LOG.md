@@ -16,6 +16,16 @@ Entry format:
 
 ---
 
+## 2026-10-07 — Element colours and rarity stars on characters
+
+- Milestone: M8 (UI).
+- Done: theme-aware `--el-*` element colours and `--rarity-5` (gold) / `--rarity-4` (purple) tokens in `src/index.css` (each >= 3:1 on the surface in light and dark). Roster rows show a 4 px element accent bar, a coloured element name with dot, and five gold or four purple stars (`Stars`, `ElementTag` in `src/ui/Common.tsx`); weapons use the same stars; Custom-team chips show an element dot and a gold star for 5-star characters. `ELEMENT_COLOR` now returns CSS variables, so the hit log dots follow the theme too.
+- KB changes: none.
+- Tests / validation: `npm run e2e` ok, tsc, lint, `npm test` clean; checked at 390 px in light and dark.
+- Blockers: none. Next: none.
+
+---
+
 ## 2026-10-07 — UI redesign to Material 3, mobile first
 
 - Milestone: M8 (UI).
