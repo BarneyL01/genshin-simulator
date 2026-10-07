@@ -3,7 +3,7 @@ import type { KbData, SavedTeam, TeamRun } from '../kb';
 import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
 import { sim } from './client';
-import { Badge, Bar, Button, Section, confidenceTone } from './Common';
+import { Badge, Button, Card, CheckRow, ExtendedFab, LinearProgress, Notice, Section, StackedBar, confidenceTone } from './Common';
 import { charColor, fmt, nameOf, pct } from './format';
 import { ResultView } from './ResultView';
 import { usePersistentState } from './store';
@@ -86,85 +86,98 @@ export function TeamsView({ kb, roster, saved }: Props) {
   }
 
   const maxDps = Math.max(1, ...entries.map((e) => e.run?.relaxed.dps ?? 0));
-  const opened = entries.find((e) => e.teamId === open)?.run;
+  const picked = selected.filter((id) => valid.has(id));
 
   return (
     <div>
-      <p className="text-sm text-slate-600">
+      <p className="text-body-medium text-on-surface-variant">
         Pick the teams you want to compare — known team archetypes from the knowledge base (published rotation) and your saved
         custom teams — then compare them by team DPS. The app never searches for teams by itself.
       </p>
 
-      <Section title={`Pick teams (${selected.length} selected)`}>
+      <Section
+        title="Pick teams" supporting={`${picked.length} selected`}
+        right={picked.length > 0 ? <Button variant="text" onClick={() => setSelected([])} disabled={!!busy}>Clear selection</Button> : undefined}
+      >
         {saved.length > 0 && (
           <>
-            <p className="mb-1 text-sm font-medium text-slate-700">Saved custom teams</p>
-            <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+            <h3 className="mb-2 text-title-small text-on-surface-variant">Saved custom teams</h3>
+            <Card className="mb-5 divide-y divide-outline-variant overflow-hidden">
               {saved.map((s) => (
-                <label key={s.id} className="flex items-center gap-2 text-sm">
-                  <input type="checkbox" checked={selected.includes(`saved:${s.id}`)} onChange={() => toggle(`saved:${s.id}`)} />
-                  {s.name}
-                </label>
+                <CheckRow
+                  key={s.id} checked={selected.includes(`saved:${s.id}`)} onChange={() => toggle(`saved:${s.id}`)}
+                  headline={s.name} supporting={s.team.order.map(nameOf).join(' → ')}
+                />
               ))}
-            </div>
-            <p className="mb-1 mt-3 text-sm font-medium text-slate-700">Known team archetypes</p>
+            </Card>
+            <h3 className="mb-2 text-title-small text-on-surface-variant">Known team archetypes</h3>
           </>
         )}
-        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+        <Card className="divide-y divide-outline-variant overflow-hidden">
           {teams.map((t) => {
             const missing = missingOf(t);
             return (
-              <label key={t.id} className={`flex items-center gap-2 text-sm ${missing.length > 0 ? 'text-slate-400' : ''}`}>
-                <input type="checkbox" checked={selected.includes(t.id)} onChange={() => toggle(t.id)} />
-                {t.name} <Badge tone={confidenceTone(t.dataConfidence)}>{t.dataConfidence}</Badge>
-                {missing.length > 0 && <span className="text-xs">(missing {missing.map(nameOf).join(', ')})</span>}
-              </label>
+              <CheckRow
+                key={t.id} checked={selected.includes(t.id)} onChange={() => toggle(t.id)}
+                headline={t.name}
+                supporting={missing.length > 0 ? <span className="text-error">Missing {missing.map(nameOf).join(', ')}</span> : t.members.map((m) => nameOf(m.character)).join(' · ')}
+                trailing={<Badge tone={confidenceTone(t.dataConfidence)}>{t.dataConfidence}</Badge>}
+              />
             );
           })}
-        </div>
-        <div className="mt-3 flex items-center gap-3">
-          <Button primary onClick={compareSelected} disabled={!!busy || selected.length === 0}>Compare selected ({selected.length})</Button>
-          {selected.length > 0 && <Button onClick={() => setSelected([])} disabled={!!busy}>Clear selection</Button>}
-          {busy && <span className="text-sm text-slate-600">{busy}</span>}
-        </div>
+        </Card>
       </Section>
 
+      {picked.length > 0 && (
+        <ExtendedFab icon="play" compact={entries.length > 0} label={`Compare selected (${picked.length})`} onClick={compareSelected} disabled={!!busy} />
+      )}
+
       <Section title="Results">
-        {entries.length === 0 && <p className="text-sm text-slate-500">No results yet. Pick teams above and press Compare.</p>}
-        <ol className="space-y-2">
+        {busy && <div className="mb-3"><LinearProgress label={busy} /><p className="mt-2 text-body-medium text-on-surface-variant">{busy}</p></div>}
+        {entries.length === 0 && !busy && <p className="text-body-medium text-on-surface-variant">No results yet. Pick teams above and press Compare.</p>}
+        <ol className="space-y-3">
           {entries.map((e, i) => (
-            <li key={e.teamId} className="rounded border border-slate-200 p-3">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <div className="font-medium">
-                  {e.run ? `${i + 1}. ` : ''}{e.name}{' '}
+            <li key={e.teamId}>
+              <Card variant="outlined" className="p-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-title-medium">{e.run ? `${i + 1}. ` : ''}{e.name}</span>
                   {kb.teams.get(e.teamId) && <Badge tone={confidenceTone(kb.teams.get(e.teamId)!.dataConfidence)}>{kb.teams.get(e.teamId)!.dataConfidence}</Badge>}
                 </div>
                 {e.run && (
-                  <div className="text-sm">
-                    <b>{fmt(e.run.relaxed.dps)}</b> DPS relaxed · {fmt(e.run.framePerfect.dps)} frame-perfect · delay costs {pct(1 - e.run.relaxed.dps / e.run.framePerfect.dps, 0)}
-                  </div>
+                  <>
+                    <p className="mt-2 text-body-medium text-on-surface-variant">
+                      <b className="text-headline-small font-normal text-on-surface tabular-nums">{fmt(e.run.relaxed.dps)}</b> DPS relaxed · {fmt(e.run.framePerfect.dps)} frame-perfect · delay costs {pct(1 - e.run.relaxed.dps / e.run.framePerfect.dps, 0)}
+                    </p>
+                    <div className="mt-3">
+                      <StackedBar
+                        max={maxDps}
+                        parts={e.run.members.map((m, k) => ({ value: e.run!.relaxed.perCharacterDps[m.character] ?? 0, color: charColor(k), label: nameOf(m.character) }))}
+                      />
+                    </div>
+                    <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-body-medium">
+                      {e.run.members.map((m, k) => (
+                        <li key={m.character} className="flex items-center gap-1.5">
+                          <span aria-hidden="true" className="size-2.5 rounded-full" style={{ background: charColor(k) }} />
+                          {nameOf(m.character)} <span className="tabular-nums text-on-surface-variant">{fmt(e.run!.relaxed.perCharacterDps[m.character] ?? 0)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {e.run.notices.length > 0 && (
+                      <div className="mt-3"><Notice tone="warning">{e.run.notices[0]}{e.run.notices.length > 1 ? ` (+${e.run.notices.length - 1} more in Assumptions)` : ''}</Notice></div>
+                    )}
+                    <div className="mt-2 -ml-3">
+                      <Button variant="text" onClick={() => setOpen(open === e.teamId ? '' : e.teamId)}>{open === e.teamId ? 'Hide details' : 'Show details'}</Button>
+                    </div>
+                    {open === e.teamId && <div className="mt-2 border-t border-outline-variant pt-4"><ResultView run={e.run} kb={kb} /></div>}
+                  </>
                 )}
-              </div>
-              {e.run && (
-                <>
-                  <div className="mt-1"><Bar value={e.run.relaxed.dps} max={maxDps} /></div>
-                  <div className="mt-1 flex flex-wrap gap-x-4 text-sm">
-                    {e.run.members.map((m, k) => (
-                      <span key={m.character} style={{ color: charColor(k) }}>{nameOf(m.character)} {fmt(e.run!.relaxed.perCharacterDps[m.character] ?? 0)}</span>
-                    ))}
-                  </div>
-                  {e.run.notices.length > 0 && <p className="mt-1 text-xs text-amber-700">{e.run.notices[0]}{e.run.notices.length > 1 ? ` (+${e.run.notices.length - 1} more in Assumptions)` : ''}</p>}
-                  <button className="mt-1 text-sm text-blue-700 underline" onClick={() => setOpen(open === e.teamId ? '' : e.teamId)}>{open === e.teamId ? 'Hide details' : 'Show details'}</button>
-                </>
-              )}
-              {e.missing.length > 0 && <p className="text-sm text-slate-600">Missing: {e.missing.map(nameOf).join(', ')}</p>}
-              {e.error && <p className="text-sm text-red-700">Failed: {e.error}</p>}
+                {e.missing.length > 0 && <p className="mt-2 text-body-medium text-error">Missing: {e.missing.map(nameOf).join(', ')}</p>}
+                {e.error && <div className="mt-2"><Notice tone="error">Failed: {e.error}</Notice></div>}
+              </Card>
             </li>
           ))}
         </ol>
       </Section>
-
-      {opened && <div className="mt-4 rounded border border-slate-200 p-3"><ResultView run={opened} kb={kb} title={opened.label} /></div>}
     </div>
   );
 }

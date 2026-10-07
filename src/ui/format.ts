@@ -8,6 +8,5 @@ export const ELEMENT_COLOR: Record<string, string> = {
   pyro: '#e0653a', hydro: '#3a7ee0', electro: '#a05ad6', cryo: '#4ab9d6', anemo: '#3bb98f', geo: '#c9a227', dendro: '#5aa63a', physical: '#8a8f98', reaction: '#666',
 };
 
-/** Stable colour per character for charts. */
-const PALETTE = ['#2563eb', '#dc2626', '#059669', '#d97706', '#7c3aed', '#0891b2', '#be185d', '#4d7c0f'];
-export const charColor = (index: number) => PALETTE[index % PALETTE.length]!;
+/** Stable colour per character for charts: theme-aware CSS variables (see --chart-N in index.css). */
+export const charColor = (index: number) => `var(--chart-${(index % 8) + 1})`;

@@ -20,57 +20,67 @@ interface Props {
   /** Visible window in frames. */
   from: number;
   to: number;
-  labelWidth?: number;
+  /** Wider label column for long row names (applies from 600dp up; phones always use a narrow one). */
+  wideLabels?: boolean;
   rowHeight?: number;
 }
 
-/** Simple Gantt chart. Time axis in seconds, 60 frames per second. */
-export function Timeline({ rows, from, to, labelWidth = 190, rowHeight = 22 }: Props) {
-  const width = 1000;
-  const chartW = width - labelWidth - 60;
-  const height = rows.length * rowHeight + 28;
-  const scale = (f: number) => labelWidth + ((Math.min(Math.max(f, from), to) - from) / Math.max(1, to - from)) * chartW;
-  const totalS = (to - from) / 60;
+/**
+ * Gantt chart in HTML so text stays at a readable size. Row labels stay pinned while the track scrolls sideways
+ * on narrow screens. Time axis in seconds, 60 frames per second.
+ */
+export function Timeline({ rows, from, to, wideLabels = false, rowHeight = 36 }: Props) {
+  const span = Math.max(1, to - from);
+  const at = (f: number) => (Math.min(Math.max(f, from), to) - from) / span;
+  const totalS = span / 60;
   const tickStep = totalS > 60 ? 10 : totalS > 24 ? 5 : totalS > 10 ? 2 : 1;
   const ticks: number[] = [];
   for (let t = 0; t <= totalS; t += tickStep) ticks.push(t);
+  const hasSuffix = rows.some((r) => r.suffix);
+  const labelCol = `sticky left-0 z-10 shrink-0 bg-surface ${wideLabels ? 'w-36 md:w-56' : 'w-28 md:w-40'}`;
 
   return (
-    <div className="overflow-x-auto">
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full min-w-[640px]" role="img" aria-label="timeline">
-        {ticks.map((t) => (
-          <g key={t}>
-            <line x1={scale(from + t * 60)} x2={scale(from + t * 60)} y1={0} y2={height - 18} stroke="#e2e8f0" />
-            <text x={scale(from + t * 60)} y={height - 5} fontSize="10" textAnchor="middle" fill="#64748b">{t}s</text>
-          </g>
-        ))}
-        {rows.map((row, i) => {
-          const y = i * rowHeight;
-          return (
-            <g key={`${row.label}-${i}`}>
-              <text x={labelWidth - 6} y={y + rowHeight / 2 + 4} fontSize="11" textAnchor="end" fill={row.color ?? '#334155'}>
-                {row.label.length > 30 ? `${row.label.slice(0, 29)}…` : row.label}
-              </text>
-              <line x1={labelWidth} x2={labelWidth + chartW} y1={y + rowHeight} y2={y + rowHeight} stroke="#f1f5f9" />
+    <div className="overflow-x-auto rounded-md border border-outline-variant" role="group" aria-label="timeline">
+      <div className="min-w-[680px]">
+        <div className="flex">
+          <div className={`${labelCol} h-8`} />
+          <div className="relative mx-4 h-8 flex-1">
+            {ticks.map((t) => (
+              <span key={t} className="absolute top-2 -translate-x-1/2 text-label-small text-on-surface-variant" style={{ left: `${(t * 60 / span) * 100}%` }}>{t}s</span>
+            ))}
+          </div>
+          {hasSuffix && <div className="w-12 shrink-0" />}
+        </div>
+        {rows.map((row, i) => (
+          <div key={`${row.label}-${i}`} className="flex items-stretch border-t border-outline-variant" style={{ height: rowHeight }}>
+            <div
+              className={`${labelCol} flex items-center px-3 text-label-medium`}
+              style={{ color: row.color }} title={row.label}
+            >
+              <span className="line-clamp-2 break-all">{row.label}</span>
+            </div>
+            <div className="relative mx-4 flex-1">
+              {ticks.map((t) => (
+                <span key={t} className="absolute inset-y-0 w-px bg-outline-variant/50" style={{ left: `${(t * 60 / span) * 100}%` }} />
+              ))}
               {row.segments.filter((s) => s.end > from && s.start < to).map((s, j) => {
-                const x1 = scale(s.start);
-                const x2 = Math.max(scale(s.end), x1 + 1.5);
+                const left = at(s.start);
+                const width = Math.max(at(s.end) - left, 0.004);
                 return (
-                  <g key={j}>
-                    <rect x={x1} y={y + 3} width={x2 - x1} height={rowHeight - 6} rx={2} fill={s.color ?? row.color ?? '#2563eb'} opacity={s.faint ? 0.35 : 0.9}>
-                      <title>{s.title ?? s.label ?? row.label}</title>
-                    </rect>
-                    {s.label && x2 - x1 > 26 && (
-                      <text x={x1 + 3} y={y + rowHeight / 2 + 3} fontSize="9" fill="#fff" pointerEvents="none">{s.label}</text>
-                    )}
-                  </g>
+                  <div
+                    key={j} title={s.title ?? s.label ?? row.label}
+                    className="absolute inset-y-1 flex items-center overflow-hidden whitespace-nowrap rounded-xs px-1 text-label-small"
+                    style={{ left: `${left * 100}%`, width: `${width * 100}%`, background: s.color ?? row.color ?? 'var(--md-primary)', opacity: s.faint ? 0.35 : 0.92, color: 'var(--md-surface)' }}
+                  >
+                    {width >= 0.07 ? s.label : null}
+                  </div>
                 );
               })}
-              {row.suffix && <text x={labelWidth + chartW + 4} y={y + rowHeight / 2 + 4} fontSize="10" fill="#64748b">{row.suffix}</text>}
-            </g>
-          );
-        })}
-      </svg>
+            </div>
+            {hasSuffix && <div className="flex w-12 shrink-0 items-center justify-end pr-2 text-label-small text-on-surface-variant">{row.suffix}</div>}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

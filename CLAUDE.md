@@ -63,6 +63,7 @@ npm run lint && npm run typecheck
 - TypeScript strict. zod schemas in `src/schema/` are the source of truth for KB types; update `docs/KB_SCHEMA.md` when they change.
 - Frames (60 fps) for all time values inside the engine.
 - Percentages as fractions (0.466, not 46.6).
+- UI follows Material 3, mobile first: colour roles, type, shape and state layers are tokens in `src/index.css` (light and dark follow the OS), primitives are in `src/ui/Common.tsx`. Only M3 role colours exist as Tailwind utilities (no raw `slate-*`/`blue-*`). Bottom navigation bar below 600 px, navigation rail above. Every control needs a 48 px touch target. Verify at 390 px width, light and dark, before shipping UI changes.
 
 ## KB maintenance skills
 

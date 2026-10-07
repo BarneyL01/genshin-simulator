@@ -16,6 +16,26 @@ Entry format:
 
 ---
 
+## 2026-10-07 — UI redesign to Material 3, mobile first
+
+- Milestone: M8 (UI).
+- Context: user asked for a review of the live UI against Material 3, especially on mobile, and a design update. The deployed site could not be opened from this cloud session's Chromium (egress-proxy CA not trusted; TLS verification was not bypassed), so the review used a local build of the same branch at 390x844, 700 and 1200 px.
+- Review findings (before): 1,100 of 1,100 interactive controls on Roster below the 48 px touch target (13 px checkboxes, ~24 px selects/inputs); desktop-style folder tabs wrapping onto two rows on phones; Roster an 18,412 px scroll (121 cards each carrying editing controls, 243 weapons, no search or filter); hard-coded Tailwind slate/blue with no M3 roles, type scale, shape scale or dark theme; dev build stamp the most prominent header element; 9-column result tables and an SVG timeline whose text rendered at about 7 px on a phone.
+- Done:
+  - Design system: M3 colour roles generated from seed #4f5bd5 (material-color-utilities, SchemeTonalSpot) for light and dark, custom success/warning roles, M3 type scale, shape scale, elevation, state layers, focus ring, reduced-motion support, window size classes (compact <600, medium 600, expanded 840, large 1200). Tailwind's default palette is removed so only role colours exist.
+  - Shell: top app bar, bottom navigation bar (compact) / navigation rail (>=600 px) with short labels Roster / Teams / Custom / Weapons / Backup; build stamp moved to the footer; `viewport-fit=cover`, safe-area insets and theme-color meta.
+  - Primitives (`src/ui/Common.tsx`, `src/ui/Icon.tsx`): filled/tonal/outlined/text buttons, icon button, extended FAB (shrinks to an icon once results are shown), filter chips, segmented button, scrollable primary tabs, filled select and text fields, search bar, check/switch rows, expandable list items, cards, notices, linear progress, stacked bar. Inline Material icons; no font or network dependency.
+  - Roster: search, element and Owned filter chips, one list row per character with editing controls only for owned characters, weapons in a collapsed section with type chips and search (60 rows per page).
+  - Teams: M3 selection list with missing members as supporting text, result cards with a stacked per-character bar, details inline, FAB for Compare. Custom: filter chips with search, per-character order cards with 48 px move buttons, save card, FAB. Weapons: stacked fields, result cards on compact and table on >=840 px. Results: segmented profile switch, scrollable tabs, per-character cards on compact and the table on >=840 px, HTML timeline with pinned row labels (replaces the SVG), buff-timeline labels wrap to two lines.
+  - Fixed during verification: search icon rendering at full width (Icon lost its default size when given a className); filter-chip touch target was clipped by its scroll container (now a 48 px label); Icon now always has a size; "C0" truncated in the narrow constellation select (dense fields).
+- Measured after (390 px, hit-tested): interactive controls below 48 px: 0 on every screen, light and dark; horizontal page overflow 0 on all screens and at 700/1200 px; Roster page height 18,412 px -> 8,573 px with all 121 characters listed (shorter with any filter or search); minimum text size 11 px.
+- KB changes: none.
+- Tests / validation: `npm run e2e` (local Chromium via E2E_EXECUTABLE) ok including the mobile talent-input and backup flows; `npm test` 177 pass; `npm run lint`, `npx tsc --noEmit` and `npm run build` clean. e2e updated for the renamed tabs and for talent inputs now only existing for owned characters.
+- Blockers: none. Not checked: real iOS Safari / Android Chrome devices (only emulated Chromium), screen-reader behaviour beyond role/label review, and the deployed site itself (see Context).
+- Next: if wanted, M3 refinements that were left out: floating (non-filled) labels on text fields, a top-app-bar scroll elevation, swipe between tabs, and persisting Roster filters.
+
+---
+
 ## 2026-09-30 — Fixed Tighnari doing almost no damage in a custom team (2 real bugs)
 
 - Milestone: M8 (correctness).

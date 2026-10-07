@@ -4,7 +4,7 @@ import { buildCustomRotation } from '../kb/custom';
 import type { Roster } from '../schema/roster';
 import type { Response } from '../worker/protocol';
 import { sim } from './client';
-import { Button, Section } from './Common';
+import { Button, Card, Expandable, ExtendedFab, FilterChip, IconButton, LinearProgress, Notice, SearchBar, Section, Select, TextField } from './Common';
 import { nameOf } from './format';
 import { ResultView } from './ResultView';
 import { usePersistentState } from './store';
@@ -29,6 +29,7 @@ export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; 
   const [variants, setVariants] = usePersistentState<Record<string, string>>('custom-variants', {}, isRecord);
   const [builds, setBuilds] = usePersistentState<Builds>('custom-builds', {}, isRecord);
   const setBuild = (id: string, patch: { weapon?: string; refinement?: number; set?: string }) => setBuilds((b) => ({ ...b, [id]: { ...b[id], ...patch } }));
+  const [query, setQuery] = useState('');
   const sets = useMemo(() => [...kb.artifacts.values()].sort((a, b) => a.name.localeCompare(b.name)), [kb]);
   const [length, setLength] = usePersistentState('custom-length', '', isString);
   const [json, setJson] = usePersistentState('custom-rotation-json', '', isString);
@@ -90,101 +91,128 @@ export function CustomView({ kb, roster, saved }: { kb: KbData; roster: Roster; 
     }
   }
 
+  const q = query.trim().toLowerCase();
+  const chipChars = owned.filter((c) => order.includes(c.id) || !q || `${c.name} ${c.element} ${c.weaponType}`.toLowerCase().includes(q));
+
   return (
     <div>
-      <p className="text-sm text-slate-600">
+      <p className="text-body-medium text-on-surface-variant">
         Pick any four owned characters and the order they act in. Each performs its usual combo; the app chains them into one rotation.
-        Results are approximate and labelled "custom rotation". Choose each character's weapon and artifact set below, or leave them on the recommended build.
+        Results are approximate and labelled "custom rotation". Choose each character's weapon and artifact set, or leave them on the recommended build.
       </p>
 
       {saved.teams.length > 0 && (
-        <Section title="Saved teams">
-          <ul className="space-y-1">
+        <Section title="Saved teams" supporting="Kept in this browser; you can choose them in the Teams and Weapons tabs.">
+          <Card className="divide-y divide-outline-variant overflow-hidden">
             {saved.teams.map((t) => (
-              <li key={t.id} className={`flex flex-wrap items-center gap-2 rounded border px-2 py-1 text-sm ${t.id === currentId ? 'border-blue-400 bg-blue-50' : 'border-slate-200'}`}>
-                <span className="font-medium">{t.name}</span>
-                <span className="text-xs text-slate-500">{t.team.order.map(nameOf).join(' → ')}{t.rotationJson ? ' · edited rotation' : ''}</span>
-                <Button onClick={() => load(t)}>Load</Button>
-                <Button onClick={() => { saved.remove(t.id); if (t.id === currentId) setCurrentId(''); }}>Delete</Button>
-              </li>
+              <div key={t.id} className={`flex items-center gap-1 py-1 pl-4 pr-2 ${t.id === currentId ? 'bg-secondary-container text-on-secondary-container' : ''}`}>
+                <div className="min-w-0 flex-1 py-1">
+                  <p className="truncate text-body-large">{t.name}</p>
+                  <p className="text-body-medium opacity-80">{t.team.order.map(nameOf).join(' → ')}{t.rotationJson ? ' · edited rotation' : ''}</p>
+                </div>
+                <Button variant="text" onClick={() => load(t)}>Load</Button>
+                <IconButton icon="delete" label={`Delete ${t.name}`} onClick={() => { saved.remove(t.id); if (t.id === currentId) setCurrentId(''); }} />
+              </div>
             ))}
-          </ul>
-          <p className="mt-1 text-xs text-slate-500">Saved teams are kept in this browser and can be chosen in the Team comparison and Weapon comparer tabs.</p>
+          </Card>
         </Section>
       )}
 
-      <Section title={`1. Choose four owned characters (${order.length}/4)`}>
-        {owned.length === 0 && <p className="text-sm text-amber-700">Tick some characters on the Roster tab first.</p>}
-        <div className="flex flex-wrap gap-2">
-          {owned.map((c) => (
-            <label key={c.id} className={`cursor-pointer rounded border px-2 py-1 text-sm ${order.includes(c.id) ? 'border-blue-500 bg-blue-50' : 'border-slate-200'}`}>
-              <input type="checkbox" className="mr-1" checked={order.includes(c.id)} onChange={() => toggle(c.id)} disabled={!order.includes(c.id) && order.length >= 4} />
-              {c.name}
-            </label>
+      <Section title={`Choose four owned characters (${order.length}/4)`}>
+        {owned.length === 0 && <Notice tone="warning">Tick some characters on the Roster tab first.</Notice>}
+        {owned.length > 12 && <div className="mb-3"><SearchBar label="Search owned characters" placeholder="Search owned characters" value={query} onChange={setQuery} /></div>}
+        <div className="flex flex-wrap gap-x-2">
+          {chipChars.map((c) => (
+            <FilterChip key={c.id} checked={order.includes(c.id)} onChange={() => toggle(c.id)} disabled={!order.includes(c.id) && order.length >= 4}>{c.name}</FilterChip>
           ))}
         </div>
       </Section>
 
       {order.length > 0 && (
-        <Section title="2. Order and combo variant">
-          <ol className="space-y-1">
+        <Section title="Order and combo variant">
+          <ol className="space-y-3">
             {order.map((id, i) => {
               const c = kb.characters.get(id)!;
+              const variant = variants[id] ?? c.usualCombo[0]!.variant;
               return (
-                <li key={id} className="flex flex-wrap items-center gap-2 rounded border border-slate-200 px-2 py-1 text-sm">
-                  <span className="w-5 text-slate-500">{i + 1}.</span>
-                  <span className="w-32 font-medium">{c.name}</span>
-                  <Button onClick={() => move(i, -1)} disabled={i === 0} aria-label="move up">▲</Button>
-                  <Button onClick={() => move(i, 1)} disabled={i === order.length - 1} aria-label="move down">▼</Button>
-                  <select className="rounded border px-1" value={variants[id] ?? c.usualCombo[0]!.variant} onChange={(e) => setVariants((v) => ({ ...v, [id]: e.target.value }))}>
-                    {c.usualCombo.map((v) => <option key={v.variant} value={v.variant}>{v.variant}</option>)}
-                  </select>
-                  <label className="text-xs">Weapon <select className="max-w-40 rounded border px-1" value={builds[id]?.weapon ?? ''} onChange={(e) => setBuild(id, { weapon: e.target.value || undefined })}>
-                    <option value="">recommended</option>
-                    {[...kb.weapons.values()].filter((w) => w.type === c.weaponType).sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)).map((w) => <option key={w.id} value={w.id}>{w.name} ({w.rarity}★)</option>)}
-                  </select></label>
-                  {builds[id]?.weapon && (
-                    <select className="rounded border px-1 text-xs" aria-label="refinement" value={builds[id]?.refinement ?? roster.weapons[builds[id]!.weapon!]?.refinement ?? 1} onChange={(e) => setBuild(id, { refinement: Number(e.target.value) })}>
-                      {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>R{n}</option>)}
-                    </select>
-                  )}
-                  <label className="text-xs">Set (4pc) <select className="max-w-40 rounded border px-1" value={builds[id]?.set ?? ''} onChange={(e) => setBuild(id, { set: e.target.value || undefined })}>
-                    <option value="">recommended</option>
-                    {sets.map((a) => <option key={a.id} value={a.id}>{a.name}</option>)}
-                  </select></label>
-                  <span className="text-xs text-slate-500">{c.usualCombo.find((v) => v.variant === (variants[id] ?? c.usualCombo[0]!.variant))?.actions.map((a) => a.action + (a.then ? `→${a.then}` : '')).join(', ')}</span>
+                <li key={id}>
+                  <Card variant="outlined" className="p-4">
+                    <div className="flex items-center gap-3">
+                      <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-container text-label-large text-on-primary-container">{i + 1}</span>
+                      <span className="min-w-0 flex-1 truncate text-title-medium">{c.name}</span>
+                      <IconButton icon="up" label={`Move ${c.name} up`} onClick={() => move(i, -1)} disabled={i === 0} />
+                      <IconButton icon="down" label={`Move ${c.name} down`} onClick={() => move(i, 1)} disabled={i === order.length - 1} />
+                    </div>
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
+                      <Select label="Combo" value={variant} onChange={(e) => setVariants((v) => ({ ...v, [id]: e.target.value }))}>
+                        {c.usualCombo.map((v) => <option key={v.variant} value={v.variant}>{v.variant}</option>)}
+                      </Select>
+                      <Select label="Artifact set (4pc)" value={builds[id]?.set ?? ''} onChange={(e) => setBuild(id, { set: e.target.value || undefined })}>
+                        <option value="">recommended</option>
+                        {sets.map((a) => <option key={a.id} value={a.id}>{a.name}</option>)}
+                      </Select>
+                      <div className="flex gap-3 md:col-span-2">
+                        <Select label="Weapon" className="min-w-0 flex-1" value={builds[id]?.weapon ?? ''} onChange={(e) => setBuild(id, { weapon: e.target.value || undefined })}>
+                          <option value="">recommended</option>
+                          {[...kb.weapons.values()].filter((w) => w.type === c.weaponType).sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)).map((w) => <option key={w.id} value={w.id}>{w.name} ({w.rarity}★)</option>)}
+                        </Select>
+                        {builds[id]?.weapon && (
+                          <Select label="Refine" aria-label={`Refinement for ${c.name}`} className="w-24 shrink-0" value={builds[id]?.refinement ?? roster.weapons[builds[id]!.weapon!]?.refinement ?? 1} onChange={(e) => setBuild(id, { refinement: Number(e.target.value) })}>
+                            {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>R{n}</option>)}
+                          </Select>
+                        )}
+                      </div>
+                    </div>
+                    <p className="mt-3 text-body-small text-on-surface-variant">
+                      Actions: {c.usualCombo.find((v) => v.variant === variant)?.actions.map((a) => a.action + (a.then ? `→${a.then}` : '')).join(', ')}
+                    </p>
+                  </Card>
                 </li>
               );
             })}
           </ol>
-          <label className="mt-2 block text-sm">
-            Rotation length (seconds, optional; default = the longest cooldown used)
-            <input className="ml-2 w-20 rounded border px-1" value={length} onChange={(e) => setLength(e.target.value.replace(/[^0-9.]/g, ''))} placeholder="auto" />
-          </label>
+          <div className="mt-4 md:max-w-xs">
+            <TextField label="Rotation length (seconds, optional)" inputMode="decimal" value={length} onChange={(e) => setLength(e.target.value.replace(/[^0-9.]/g, ''))} placeholder="auto: the longest cooldown used" />
+          </div>
         </Section>
       )}
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Button primary onClick={() => go(false)} disabled={!ready || busy}>{busy ? 'Simulating…' : 'Simulate custom rotation'}</Button>
-        <input className="w-48 rounded border px-2 text-sm" aria-label="team name" placeholder="Team name" value={name} onChange={(e) => setName(e.target.value)} />
-        <Button onClick={saveTeam} disabled={!ready}>{currentId ? 'Update saved team' : 'Save team'}</Button>
-        {currentId && <Button onClick={() => setCurrentId('')}>Save as new</Button>}
-        {preview && <span className="self-center text-sm text-slate-600">rotation length {(preview.lengthFrames / 60).toFixed(1)} s</span>}
-      </div>
-      {error && <p className="mt-2 text-sm text-red-700">{error}</p>}
+      {order.length > 0 && <Section title="Save" supporting={preview ? `Rotation length ${(preview.lengthFrames / 60).toFixed(1)} s` : `Choose ${4 - order.length} more character${order.length === 3 ? '' : 's'} to build a rotation.`}>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center">
+          <TextField label="Team name" aria-label="team name" className="md:w-80" value={name} onChange={(e) => setName(e.target.value)} placeholder={order.map(nameOf).join(' / ')} />
+          <div className="flex flex-wrap gap-2">
+            <Button variant="tonal" icon="save" onClick={saveTeam} disabled={!ready}>{currentId ? 'Update saved team' : 'Save team'}</Button>
+            {currentId && <Button onClick={() => setCurrentId('')}>Save as new</Button>}
+          </div>
+        </div>
+      </Section>}
 
       {preview && (
-        <Section title="Rotation script (editable)" right={<Button onClick={() => setJson(JSON.stringify(preview.script, null, 1))}>Load into editor</Button>}>
-          <textarea className="h-40 w-full rounded border p-2 font-mono text-xs" value={json} onChange={(e) => setJson(e.target.value)} placeholder='Click "Load into editor", change the steps, then run the edited rotation.' />
-          <Button className="mt-1" onClick={() => go(true)} disabled={!json || busy}>Simulate edited rotation</Button>
+        <Section title="Rotation script" supporting="Advanced: edit the generated steps and run your version.">
+          <Expandable title="Edit rotation script">
+            <div className="flex flex-wrap gap-2">
+              <Button variant="tonal" onClick={() => setJson(JSON.stringify(preview.script, null, 1))}>Load into editor</Button>
+              <Button onClick={() => go(true)} disabled={!json || busy}>Simulate edited rotation</Button>
+            </div>
+            <textarea
+              aria-label="rotation script"
+              className="mt-3 h-48 w-full rounded-md border border-outline bg-transparent p-3 font-mono text-body-small focus:border-primary focus:outline-2 focus:outline-primary"
+              value={json} onChange={(e) => setJson(e.target.value)}
+              placeholder='Click "Load into editor", change the steps, then run the edited rotation.'
+            />
+          </Expandable>
         </Section>
       )}
 
+      {ready && <ExtendedFab icon="play" compact={!!run && !busy} label={busy ? 'Simulating…' : 'Simulate custom rotation'} onClick={() => go(false)} disabled={busy} />}
+      {busy && <div className="mt-4"><LinearProgress label="Simulating" /></div>}
+      {error && <div className="mt-4"><Notice tone="error">{error}</Notice></div>}
+
       {run && (
-        <div className="mt-4 rounded border border-slate-200 p-3">
-          {notes.length > 0 && <p className="mb-2 text-xs text-amber-700">{notes.join(' · ')}</p>}
+        <Card variant="outlined" className="mt-6 p-4">
+          {notes.length > 0 && <div className="mb-3"><Notice tone="warning">{notes.join(' · ')}</Notice></div>}
           <ResultView run={run} kb={kb} title={`${run.label}: ${order.map(nameOf).join(' → ')}`} />
-        </div>
+        </Card>
       )}
     </div>
   );

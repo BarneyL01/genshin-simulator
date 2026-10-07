@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { resolveStats, sumMods, type BuffRecord, type SimResult } from '../engine';
 import type { KbData, TeamRun } from '../kb';
-import { Badge, Bar, Section, Table, confidenceTone } from './Common';
+import { Badge, Bar, Button, Card, Expandable, FilterChip, Section, Segmented, Table, Tabs, confidenceTone } from './Common';
 import { ELEMENT_COLOR, charColor, fmt, nameOf, pct, secs } from './format';
 import { Timeline, type Row } from './Timeline';
 
@@ -43,30 +43,27 @@ export function ResultView({ run, kb, title }: { run: TeamRun; kb: KbData; title
 
   return (
     <div>
-      {title && <h2 className="text-xl font-semibold">{title}</h2>}
-      <div className="mt-2 flex flex-wrap items-center gap-2">
-        <div className="flex overflow-hidden rounded border border-slate-300 text-sm">
-          {(['relaxed', 'framePerfect'] as const).map((p) => (
-            <button key={p} onClick={() => setProfile(p)} className={`px-3 py-1 ${profile === p ? 'bg-blue-600 text-white' : 'bg-white hover:bg-slate-50'}`}>
-              {p === 'relaxed' ? 'Relaxed' : 'Frame-perfect'} {fmt((p === 'relaxed' ? run.relaxed : run.framePerfect).dps)} DPS
-            </button>
-          ))}
-        </div>
-        <span className="text-sm text-slate-600">The delay costs {pct(delayCost)} · rotation {secs(run.relaxed.cycleFrames)} relaxed / {secs(run.framePerfect.cycleFrames)} frame-perfect</span>
-      </div>
+      {title && <h2 className="text-title-large">{title}</h2>}
+      <Card className="mt-3 p-4">
+        <Segmented
+          label="Execution profile" value={profile} onChange={setProfile}
+          options={[{ value: 'relaxed', label: 'Relaxed' }, { value: 'framePerfect', label: 'Frame-perfect' }]}
+        />
+        <p className="mt-4 flex items-baseline gap-2">
+          <span className="text-headline-small tabular-nums">{fmt(res.dps)}</span>
+          <span className="text-body-medium text-on-surface-variant">team DPS</span>
+        </p>
+        <p className="text-body-medium text-on-surface-variant">
+          {profile === 'relaxed' ? 'Frame-perfect' : 'Relaxed'} {fmt(other.dps)} · the delay costs {pct(delayCost)}
+        </p>
+        <p className="text-body-small text-on-surface-variant">Rotation {secs(run.relaxed.cycleFrames)} relaxed / {secs(run.framePerfect.cycleFrames)} frame-perfect</p>
+      </Card>
 
-      <div role="tablist" className="mt-3 flex flex-wrap gap-1 border-b border-slate-200">
-        {TABS.map(([id, label]) => (
-          <button key={id} role="tab" aria-selected={tab === id} onClick={() => setTab(id)}
-            className={`-mb-px rounded-t border px-3 py-1.5 text-sm ${tab === id ? 'border-slate-300 border-b-white bg-white font-medium' : 'border-transparent text-slate-600 hover:bg-slate-50'}`}>
-            {label}
-          </button>
-        ))}
-      </div>
+      <div className="mt-4"><Tabs tabs={TABS} value={tab} onChange={setTab} /></div>
 
       {tab === 'summary' && (
         <Section title="Team damage">
-          <Table head={['Character', 'DPS', 'Share', '', 'Weapon', 'Main stats (sands / goblet / circlet)', 'Liquid substat rolls', 'ER: have / needs', 'Δ vs other profile']}>
+          <div className="space-y-3 lg:hidden">
             {run.members.map((m, i) => {
               const dps = res.perCharacterDps[m.character] ?? 0;
               const e = res.energy[m.character];
@@ -74,23 +71,61 @@ export function ResultView({ run, kb, title }: { run: TeamRun; kb: KbData; title
               const er = resolveStats(char.base, char.weaponAtk, sumMods(char.baseMods)).er;
               const short = e && e.requiredEr !== null && e.requiredEr > er + 1e-6;
               return (
-                <tr key={m.character}>
-                  <td className="font-medium" style={{ color: charColor(i) }}>{nameOf(m.character)}</td>
-                  <td>{fmt(dps)}</td>
-                  <td>{pct(dps / Math.max(1, res.dps), 0)}</td>
-                  <td className="w-32"><Bar value={dps} max={maxDps} color={charColor(i)} /></td>
-                  <td>{nameOf(m.weaponId)} R{m.refinement}</td>
-                  <td className="text-xs">{m.mains.sands} / {m.mains.goblet} / {m.mains.circlet}</td>
-                  <td className="text-xs">{Object.entries(m.liquid).filter(([, n]) => n).map(([s, n]) => `${s} ${n}`).join(', ') || '—'}</td>
-                  <td className={short ? 'text-red-700' : ''}>
-                    {e && e.requiredEr !== null ? `${pct(er, 0)} / ${pct(e.requiredEr, 0)}` : 'no burst'} {short && <Badge tone="red">short</Badge>}
-                  </td>
-                  <td className="text-xs text-slate-600">{fmt(other.perCharacterDps[m.character] ?? 0)}</td>
-                </tr>
+                <Card key={m.character} variant="outlined" className="p-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span aria-hidden="true" className="size-3 shrink-0 rounded-full" style={{ background: charColor(i) }} />
+                      <span className="truncate text-title-medium" style={{ color: charColor(i) }}>{nameOf(m.character)}</span>
+                    </span>
+                    <span className="shrink-0 text-title-medium tabular-nums">{fmt(dps)} <span className="text-body-small text-on-surface-variant">DPS · {pct(dps / Math.max(1, res.dps), 0)}</span></span>
+                  </div>
+                  <div className="mt-2"><Bar value={dps} max={maxDps} color={charColor(i)} /></div>
+                  <p className="mt-2 text-body-medium text-on-surface-variant">{nameOf(m.weaponId)} R{m.refinement}</p>
+                  <p className="mt-1 flex flex-wrap items-center gap-2 text-body-medium">
+                    {e && e.requiredEr !== null ? `Energy Recharge ${pct(er, 0)} / needs ${pct(e.requiredEr, 0)}` : 'No burst'}
+                    {short && <Badge tone="red">short</Badge>}
+                  </p>
+                  <details className="group mt-1">
+                    <summary className="state-layer flex min-h-12 cursor-pointer list-none items-center gap-1 rounded-sm text-label-large text-primary [&::-webkit-details-marker]:hidden">
+                      Build details
+                    </summary>
+                    <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 pb-1 text-body-small">
+                      <dt className="text-on-surface-variant">Main stats</dt><dd>{m.mains.sands} / {m.mains.goblet} / {m.mains.circlet}</dd>
+                      <dt className="text-on-surface-variant">Substat rolls</dt><dd>{Object.entries(m.liquid).filter(([, n]) => n).map(([s, n]) => `${s} ${n}`).join(', ') || '—'}</dd>
+                      <dt className="text-on-surface-variant">Other profile</dt><dd>{fmt(other.perCharacterDps[m.character] ?? 0)} DPS</dd>
+                    </dl>
+                  </details>
+                </Card>
               );
             })}
-          </Table>
-          <p className="mt-2 text-xs text-slate-500">
+          </div>
+          <div className="hidden lg:block">
+            <Table head={['Character', 'DPS', 'Share', '', 'Weapon', 'Main stats (sands / goblet / circlet)', 'Liquid substat rolls', 'ER: have / needs', 'Δ vs other profile']}>
+              {run.members.map((m, i) => {
+                const dps = res.perCharacterDps[m.character] ?? 0;
+                const e = res.energy[m.character];
+                const char = run.kqms.characters.find((c) => c.id === m.character)!;
+                const er = resolveStats(char.base, char.weaponAtk, sumMods(char.baseMods)).er;
+                const short = e && e.requiredEr !== null && e.requiredEr > er + 1e-6;
+                return (
+                  <tr key={m.character}>
+                    <td className="font-medium" style={{ color: charColor(i) }}>{nameOf(m.character)}</td>
+                    <td className="tabular-nums">{fmt(dps)}</td>
+                    <td>{pct(dps / Math.max(1, res.dps), 0)}</td>
+                    <td className="w-32"><Bar value={dps} max={maxDps} color={charColor(i)} /></td>
+                    <td>{nameOf(m.weaponId)} R{m.refinement}</td>
+                    <td className="text-body-small">{m.mains.sands} / {m.mains.goblet} / {m.mains.circlet}</td>
+                    <td className="text-body-small">{Object.entries(m.liquid).filter(([, n]) => n).map(([s, n]) => `${s} ${n}`).join(', ') || '—'}</td>
+                    <td className={short ? 'text-error' : ''}>
+                      {e && e.requiredEr !== null ? `${pct(er, 0)} / ${pct(e.requiredEr, 0)}` : 'no burst'} {short && <Badge tone="red">short</Badge>}
+                    </td>
+                    <td className="text-body-small text-on-surface-variant">{fmt(other.perCharacterDps[m.character] ?? 0)}</td>
+                  </tr>
+                );
+              })}
+            </Table>
+          </div>
+          <p className="mt-3 text-body-small text-on-surface-variant">
             Damage is the average of cycles 2–{res.cycleStarts.length}; cycle 1 is warm-up. Enemy: level 100, 10% RES. Artifact stats follow the KQM Standard
             (20 liquid substat rolls placed by the simulator).
           </p>
@@ -109,7 +144,7 @@ export function ResultView({ run, kb, title }: { run: TeamRun; kb: KbData; title
               })),
             }))}
           />
-          <p className="mt-1 text-xs text-slate-500">Bars run from the action's start to its cancel frame; the gap before the next action is the execution delay.</p>
+          <p className="mt-2 text-body-small text-on-surface-variant">Bars run from the action's start to its cancel frame; the gap before the next action is the execution delay. Scroll sideways on a phone.</p>
         </Section>
       )}
 
@@ -137,9 +172,9 @@ function BuffTimeline({ res, from, to, cycleNo, colorOf }: { res: SimResult; fro
   }, [res, from, to, hideMarkers, colorOf]);
 
   return (
-    <Section title={`Buffs and debuffs in cycle ${cycleNo}`} right={<label className="text-sm"><input type="checkbox" checked={hideMarkers} onChange={(e) => setHideMarkers(e.target.checked)} /> hide zero-value state markers</label>}>
-      {rows.length ? <Timeline rows={rows} from={from} to={to} labelWidth={280} /> : <p className="text-sm text-slate-600">No timed buffs in this window.</p>}
-      <p className="mt-1 text-xs text-slate-500">Label: source effect → who it affects ("active" = whoever is on the field). The percentage on the right is uptime in this cycle. Colours are the source character.</p>
+    <Section title={`Buffs and debuffs in cycle ${cycleNo}`} right={<FilterChip checked={hideMarkers} onChange={setHideMarkers}>Hide zero-value markers</FilterChip>}>
+      {rows.length ? <Timeline rows={rows} from={from} to={to} wideLabels /> : <p className="text-body-medium text-on-surface-variant">No timed buffs in this window.</p>}
+      <p className="mt-2 text-body-small text-on-surface-variant">Label: source effect → who it affects ("active" = whoever is on the field). The percentage on the right is uptime in this cycle. Colours are the source character.</p>
     </Section>
   );
 }
@@ -150,20 +185,20 @@ function HitLog({ res, from, to, cycleNo, colorOf }: { res: SimResult; from: num
   const hits = res.hits.filter((h) => h.frame >= from && h.frame < to && (!minDamage || h.damage > 0));
   const shown = all ? hits : hits.slice(0, 120);
   return (
-    <Section title={`Hit log, cycle ${cycleNo} (${hits.length} hits)`} right={<label className="text-sm"><input type="checkbox" checked={minDamage} onChange={(e) => setMinDamage(e.target.checked)} /> only hits that deal damage</label>}>
+    <Section title={`Hit log, cycle ${cycleNo} (${hits.length} hits)`} right={<FilterChip checked={minDamage} onChange={setMinDamage}>Only hits that deal damage</FilterChip>}>
       <Table head={['Time', 'Character', 'Source', 'Element', 'Reactions', 'Damage']}>
         {shown.map((h, i) => (
           <tr key={i}>
-            <td>{((h.frame - from) / 60).toFixed(2)} s</td>
+            <td className="tabular-nums">{((h.frame - from) / 60).toFixed(2)} s</td>
             <td style={{ color: colorOf(h.char) }}>{nameOf(h.char)}</td>
             <td>{h.talent === 'reaction' ? `${h.action} (reaction)` : h.action}</td>
-            <td><span className="mr-1 inline-block h-2 w-2 rounded-full" style={{ background: ELEMENT_COLOR[h.element] ?? '#999' }} />{h.element}</td>
+            <td><span aria-hidden="true" className="mr-1.5 inline-block size-2.5 rounded-full" style={{ background: ELEMENT_COLOR[h.element] ?? '#999' }} />{h.element}</td>
             <td>{h.talent === 'reaction' ? '' : h.reactions.join(', ')}</td>
             <td className="text-right tabular-nums">{fmt(h.damage)}</td>
           </tr>
         ))}
       </Table>
-      {hits.length > shown.length && <button className="mt-2 text-sm text-blue-700 underline" onClick={() => setAll(true)}>Show all {hits.length}</button>}
+      {hits.length > shown.length && <div className="mt-3"><Button variant="tonal" onClick={() => setAll(true)}>Show all {hits.length}</Button></div>}
     </Section>
   );
 }
@@ -182,23 +217,24 @@ function Assumptions({ run, res, kb }: { run: TeamRun; res: SimResult; kb: KbDat
 
   return (
     <Section title="What this result assumes">
-      <h3 className="text-sm font-semibold">This run</h3>
-      <ul className="ml-5 list-disc text-sm">
+      <h3 className="text-title-medium">This run</h3>
+      <ul className="ml-5 mt-1 list-disc space-y-1 text-body-medium">
         {[...new Set([...run.notices, ...res.assumptions])].map((a) => <li key={a}>{a}</li>)}
         {run.notices.length + res.assumptions.length === 0 && <li>Nothing flagged.</li>}
       </ul>
-      <h3 className="mt-4 text-sm font-semibold">Knowledge-base records used</h3>
-      <div className="mt-1 space-y-1">
+      <h3 className="mt-6 text-title-medium">Knowledge-base records used</h3>
+      <div className="mt-2 space-y-2">
         {records.map((r) => (
-          <details key={`${r.kind}-${r.id}`} className="rounded border border-slate-200 px-2 py-1 text-sm">
-            <summary className="cursor-pointer">
-              {r.name} <span className="text-slate-500">({r.kind})</span> <Badge tone={confidenceTone(r.confidence)}>{r.confidence}</Badge>
-            </summary>
-            <ul className="ml-5 mt-1 list-disc text-xs text-slate-700">{r.assumptions.map((a) => <li key={a}>{a}</li>)}</ul>
-          </details>
+          <Expandable
+            key={`${r.kind}-${r.id}`}
+            title={<span className="flex flex-wrap items-center gap-2">{r.name} <Badge tone={confidenceTone(r.confidence)}>{r.confidence}</Badge></span>}
+            supporting={r.kind}
+          >
+            <ul className="ml-5 list-disc space-y-1 text-body-small text-on-surface-variant">{r.assumptions.map((a) => <li key={a}>{a}</li>)}</ul>
+          </Expandable>
         ))}
       </div>
-      <p className="mt-3 text-xs text-slate-500">
+      <p className="mt-4 text-body-small text-on-surface-variant">
         Single-target, stationary enemy; expected-value crits; no enemy attacks. Effects with conditions are assumed met. See docs/SIMULATION.md for the full model and its simplifications.
       </p>
     </Section>

@@ -2,7 +2,8 @@ import { useMemo, useRef, useState } from 'react';
 import type { KbData, SavedTeam } from '../kb';
 import type { Roster } from '../schema/roster';
 import { makeBackup, parseBackup } from './backup';
-import { Button, Section } from './Common';
+import { Button, Notice, Section } from './Common';
+import { Icon } from './Icon';
 import { discardRecoveredCopy, recoveredCopies, withKbEntries } from './store';
 
 interface Props {
@@ -85,52 +86,51 @@ export function BackupView({ kb, roster, setRoster, saved }: Props) {
     setWarnings([]);
   };
 
+  const TEXTAREA = 'mt-3 h-40 w-full rounded-md border border-outline bg-transparent p-3 font-mono text-body-small focus:border-primary focus:outline-2 focus:outline-primary';
   return (
     <div>
-      <p className="text-sm text-slate-600">
+      <p className="text-body-medium text-on-surface-variant">
         Your roster, settings and saved teams are remembered automatically in this browser. Use this tab to move them to another
         browser or device, or to keep a copy in case the browser's site data is cleared.
       </p>
 
-      <Section title="Export">
-        <p className="text-sm">Current: {rosterSummary(roster)}, {saved.teams.length} saved teams.</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          <Button primary onClick={copy}>Copy backup text</Button>
-          <Button onClick={download}>Download .json file</Button>
+      <Section title="Export" supporting={`Current: ${rosterSummary(roster)}, ${saved.teams.length} saved teams.`}>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="filled" icon="copy" onClick={copy}>Copy backup text</Button>
+          <Button variant="tonal" icon="download" onClick={download}>Download .json file</Button>
         </div>
-        {copied && <p className="mt-1 text-sm text-slate-600" role="status">{copied}</p>}
-        <textarea ref={exportRef} readOnly aria-label="backup text" className="mt-2 h-40 w-full rounded border bg-slate-50 p-2 font-mono text-xs" value={exportText} />
+        {copied && <div className="mt-3"><Notice tone="success">{copied}</Notice></div>}
+        <textarea ref={exportRef} readOnly aria-label="backup text" className={`${TEXTAREA} bg-surface-container-low`} value={exportText} />
       </Section>
 
-      <Section title="Import">
-        <p className="text-sm text-slate-600">
-          Paste backup text or choose a file, then Import. The roster is replaced; saved teams are added (a team with the same id is replaced).
-          A roster exported by an earlier version of the app also works.
-        </p>
-        <textarea aria-label="import text" className="mt-2 h-40 w-full rounded border p-2 font-mono text-xs" value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste backup JSON here" />
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <Button primary disabled={!text.trim()} onClick={doImport}>Import</Button>
-          <label className="text-sm">
-            <span className="sr-only">Choose backup file</span>
-            <input type="file" accept=".json,application/json,text/plain" onChange={(e) => void readFile(e.target.files?.[0])} className="text-sm" />
+      <Section
+        title="Import"
+        supporting="Paste backup text or choose a file, then Import. The roster is replaced; saved teams are added (a team with the same id is replaced). A roster exported by an earlier version of the app also works."
+      >
+        <textarea aria-label="import text" className={TEXTAREA} value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste backup JSON here" />
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <Button variant="filled" disabled={!text.trim()} onClick={doImport}>Import</Button>
+          <label className="state-layer hit-48 relative inline-flex h-10 cursor-pointer items-center gap-2 rounded-full border border-outline pl-4 pr-6 text-label-large text-primary focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-secondary">
+            <Icon name="upload" className="size-[18px]" />
+            Choose file
+            <input type="file" aria-label="Choose backup file" accept=".json,application/json,text/plain" onChange={(e) => void readFile(e.target.files?.[0])} className="sr-only" />
           </label>
-          {undo && <Button onClick={doUndo}>Undo import</Button>}
+          {undo && <Button icon="undo" onClick={doUndo}>Undo import</Button>}
         </div>
-        {message && <p className="mt-2 text-sm text-emerald-800" role="status">{message}</p>}
-        {warnings.map((w) => <p key={w} className="text-sm text-amber-800">{w}</p>)}
-        {error && <p className="mt-2 text-sm text-red-700" role="alert">{error}</p>}
+        <div className="mt-3 space-y-2">
+          {message && <Notice tone="success">{message}</Notice>}
+          {warnings.map((w) => <Notice key={w} tone="warning">{w}</Notice>)}
+          {error && <Notice tone="error">{error}</Notice>}
+        </div>
       </Section>
 
       {recovered.length > 0 && (
-        <Section title="Recovered data">
-          <p className="text-sm text-slate-600">
-            Stored data that this version could not fully read was kept here instead of being thrown away. Load it into the import box to restore what can be read.
-          </p>
+        <Section title="Recovered data" supporting="Stored data that this version could not fully read was kept here instead of being thrown away. Load it into the import box to restore what can be read.">
           {recovered.map((r) => (
-            <div key={r.key} className="mt-2 flex flex-wrap items-center gap-2 text-sm">
-              <code className="text-xs">{r.key}</code>
-              <Button onClick={() => setText(r.text)}>Load into import box</Button>
-              <Button onClick={() => { discardRecoveredCopy(r.key); setRecovered(recoveredCopies()); }}>Discard</Button>
+            <div key={r.key} className="flex flex-wrap items-center gap-2 border-b border-outline-variant py-2 last:border-b-0">
+              <code className="min-w-0 flex-1 break-all font-mono text-body-small">{r.key}</code>
+              <Button variant="tonal" onClick={() => setText(r.text)}>Load into import box</Button>
+              <Button variant="text" onClick={() => { discardRecoveredCopy(r.key); setRecovered(recoveredCopies()); }}>Discard</Button>
             </div>
           ))}
         </Section>

@@ -1,6 +1,8 @@
+import { useMemo, useState } from 'react';
 import type { KbData } from '../kb';
 import type { Roster } from '../schema/roster';
-import { Badge, Button, IntInput, Section, confidenceTone } from './Common';
+import { Badge, Button, Card, CheckRow, Expandable, FilterChip, NumberField, SearchBar, Section, Select, SwitchRow, confidenceTone } from './Common';
+import { ELEMENT_COLOR } from './format';
 
 interface Props {
   kb: KbData;
@@ -8,9 +10,20 @@ interface Props {
   update: (fn: (r: Roster) => Roster) => void;
 }
 
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const WEAPON_PAGE = 60;
+
 export function RosterView({ kb, roster, update }: Props) {
-  const chars = [...kb.characters.values()].sort((a, b) => a.name.localeCompare(b.name));
-  const types = [...new Set([...kb.weapons.values()].map((w) => w.type))].sort();
+  const chars = useMemo(() => [...kb.characters.values()].sort((a, b) => a.name.localeCompare(b.name)), [kb]);
+  const elements = useMemo(() => [...new Set(chars.map((c) => c.element))].sort(), [chars]);
+  const types = useMemo(() => [...new Set([...kb.weapons.values()].map((w) => w.type))].sort(), [kb]);
+
+  const [query, setQuery] = useState('');
+  const [ownedOnly, setOwnedOnly] = useState(false);
+  const [picked, setPicked] = useState<string[]>([]);
+  const [wQuery, setWQuery] = useState('');
+  const [wType, setWType] = useState('');
+  const [wLimit, setWLimit] = useState(WEAPON_PAGE);
 
   const setChar = (id: string, patch: Partial<Roster['characters'][string]>) =>
     update((r) => ({ ...r, characters: { ...r.characters, [id]: { ...r.characters[id]!, ...patch } } }));
@@ -23,91 +36,127 @@ export function RosterView({ kb, roster, update }: Props) {
       weapons: Object.fromEntries(Object.entries(r.weapons).map(([k, v]) => [k, { ...v, owned }])),
     }));
 
+  const ownedChars = chars.filter((c) => roster.characters[c.id]?.owned).length;
+  const q = query.trim().toLowerCase();
+  const shown = chars.filter((c) => {
+    if (ownedOnly && !roster.characters[c.id]?.owned) return false;
+    if (picked.length > 0 && !picked.includes(c.element)) return false;
+    return !q || `${c.name} ${c.element} ${c.weaponType} ${c.rarity}★`.toLowerCase().includes(q);
+  });
+
+  const wq = wQuery.trim().toLowerCase();
+  const allWeapons = useMemo(() => [...kb.weapons.values()].sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)), [kb]);
+  const weaponsFiltered = allWeapons.filter((w) => (!wType || w.type === wType) && (!wq || w.name.toLowerCase().includes(wq)));
+  const weaponsReady = Boolean(wType || wq);
+  const ownedWeapons = allWeapons.filter((w) => roster.weapons[w.id]?.owned).length;
+
   return (
     <div>
-      <p className="text-sm text-slate-600">
+      <p className="text-body-medium text-on-surface-variant">
         Tick what you own. Everyone defaults to C0, talents 1/1/1 and Lv 90; weapons to R1 (set your real refinement per weapon).
         Nothing leaves your browser.
       </p>
-      <div className="mt-3 flex flex-wrap gap-2">
-        <Button onClick={() => setAll(true)}>Own everything</Button>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Button variant="tonal" onClick={() => setAll(true)}>Own everything</Button>
         <Button onClick={() => setAll(false)}>Own nothing</Button>
       </div>
 
-      <Section title={`Characters (${chars.filter((c) => roster.characters[c.id]?.owned).length}/${chars.length} owned)`}>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {chars.map((c) => {
+      <Section title="Characters" supporting={`${ownedChars} of ${chars.length} owned${shown.length !== chars.length ? ` · ${shown.length} shown` : ''}`}>
+        <SearchBar label="Search characters" placeholder="Search characters" value={query} onChange={setQuery} />
+        <div className="scrollbar-none -mx-4 mt-1 flex gap-2 overflow-x-auto px-4 md:mx-0 md:flex-wrap md:px-0">
+          <FilterChip checked={ownedOnly} onChange={setOwnedOnly}>Owned</FilterChip>
+          {elements.map((el) => (
+            <FilterChip key={el} checked={picked.includes(el)} onChange={(on) => setPicked((p) => (on ? [...p, el] : p.filter((x) => x !== el)))}>
+              <span aria-hidden="true" className="size-2.5 rounded-full" style={{ background: ELEMENT_COLOR[el] }} />
+              {cap(el)}
+            </FilterChip>
+          ))}
+        </div>
+
+        <Card className="mt-3 divide-y divide-outline-variant overflow-hidden">
+          {shown.length === 0 && <p className="px-4 py-6 text-center text-body-medium text-on-surface-variant">No characters match.</p>}
+          {shown.map((c) => {
             const rc = roster.characters[c.id]!;
             return (
-              <div key={c.id} className={`rounded border p-2 ${rc.owned ? 'border-blue-300 bg-blue-50' : 'border-slate-200'}`}>
-                <label className="flex items-center gap-2 font-medium">
-                  <input type="checkbox" checked={rc.owned} onChange={(e) => setChar(c.id, { owned: e.target.checked })} />
-                  {c.name} <span className="text-xs font-normal text-slate-500">{c.rarity}★ {c.element} {c.weaponType}</span>
-                  <Badge tone={confidenceTone(c.dataConfidence)}>{c.dataConfidence}</Badge>
-                </label>
-                <div className="mt-1 flex flex-wrap items-center gap-2 text-sm">
-                  <label>
-                    C{' '}
-                    <select className="rounded border px-1" value={rc.constellation} onChange={(e) => setChar(c.id, { constellation: Number(e.target.value) })}>
-                      {[0, 1, 2, 3, 4, 5, 6].map((n) => <option key={n} value={n}>{n}</option>)}
-                    </select>
-                  </label>
-                  <span className="text-slate-500">Talents</span>
-                  {([0, 1, 2] as const).map((i) => (
-                    <IntInput
-                      key={i} aria-label={`talent ${i + 1}`} min={1} max={15} className="w-12 rounded border px-1"
-                      value={rc.talents[i]}
-                      onChange={(n) => {
-                        const t = [...rc.talents] as [number, number, number];
-                        t[i] = n;
-                        setChar(c.id, { talents: t });
-                      }}
-                    />
-                  ))}
-                </div>
+              <div key={c.id}>
+                <CheckRow
+                  checked={rc.owned} onChange={(v) => setChar(c.id, { owned: v })}
+                  headline={c.name}
+                  supporting={<>{c.rarity}★ · {cap(c.element)} · {cap(c.weaponType)}</>}
+                  trailing={<Badge tone={confidenceTone(c.dataConfidence)}>{c.dataConfidence}</Badge>}
+                />
+                {rc.owned && (
+                  <div className="grid grid-cols-4 gap-2 bg-surface-container px-4 pb-3 pt-2">
+                    <Select dense label="Const." aria-label={`Const. for ${c.name}`} value={rc.constellation} onChange={(e) => setChar(c.id, { constellation: Number(e.target.value) })}>
+                      {[0, 1, 2, 3, 4, 5, 6].map((n) => <option key={n} value={n}>C{n}</option>)}
+                    </Select>
+                    {(['Normal', 'Skill', 'Burst'] as const).map((label, i) => (
+                      <NumberField
+                        dense key={label} label={label} aria-label={`${label} talent ${i + 1} for ${c.name}`} min={1} max={15}
+                        value={rc.talents[i]!}
+                        onChange={(n) => {
+                          const t = [...rc.talents] as [number, number, number];
+                          t[i] = n;
+                          setChar(c.id, { talents: t });
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}
-        </div>
+        </Card>
       </Section>
 
-      <Section
-        title="Weapons"
-        right={
-          <label className="text-sm">
-            <input type="checkbox" checked={roster.settings.assumeAllWeapons} onChange={(e) => update((r) => ({ ...r, settings: { ...r.settings, assumeAllWeapons: e.target.checked } }))} />{' '}
+      <Section title="Weapons">
+        <Expandable title="Your weapons" supporting={`${ownedWeapons} of ${allWeapons.length} owned${roster.settings.assumeAllWeapons ? ' · assuming you own every weapon' : ''}`}>
+          <SwitchRow checked={roster.settings.assumeAllWeapons} onChange={(v) => update((r) => ({ ...r, settings: { ...r.settings, assumeAllWeapons: v } }))}>
             Assume I own every weapon (theorycrafting)
-          </label>
-        }
-      >
-        {types.map((t) => (
-          <div key={t} className="mb-3">
-            <h3 className="text-sm font-semibold capitalize text-slate-600">{t}</h3>
-            <div className="mt-1 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
-              {[...kb.weapons.values()].filter((w) => w.type === t).sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name)).map((w) => {
+          </SwitchRow>
+          <div className="mt-2">
+            <SearchBar label="Search weapons" placeholder="Search weapons" value={wQuery} onChange={(v) => { setWQuery(v); setWLimit(WEAPON_PAGE); }} />
+          </div>
+          <div className="scrollbar-none -mx-4 mt-1 flex gap-2 overflow-x-auto px-4 md:mx-0 md:flex-wrap md:px-0">
+            {types.map((t) => (
+              <FilterChip key={t} checked={wType === t} onChange={(on) => { setWType(on ? t : ''); setWLimit(WEAPON_PAGE); }}>{cap(t)}</FilterChip>
+            ))}
+          </div>
+          {!weaponsReady && <p className="mt-4 text-body-medium text-on-surface-variant">Pick a weapon type or search by name to list weapons.</p>}
+          {weaponsReady && (
+            <Card className="mt-3 divide-y divide-outline-variant overflow-hidden bg-surface-container">
+              {weaponsFiltered.length === 0 && <p className="px-4 py-6 text-center text-body-medium text-on-surface-variant">No weapons match.</p>}
+              {weaponsFiltered.slice(0, wLimit).map((w) => {
                 const rw = roster.weapons[w.id]!;
                 return (
-                  <div key={w.id} className={`flex flex-wrap items-center gap-2 rounded border px-2 py-1 text-sm ${rw.owned ? 'border-blue-300 bg-blue-50' : 'border-slate-200'}`}>
-                    <label className="flex items-center gap-1">
-                      <input type="checkbox" checked={rw.owned} onChange={(e) => setWeapon(w.id, { owned: e.target.checked })} />
-                      {w.name} <span className="text-xs text-slate-500">{w.rarity}★</span>
-                    </label>
-                    <select className="rounded border px-1" value={rw.refinement} onChange={(e) => setWeapon(w.id, { refinement: Number(e.target.value) })}>
-                      {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>R{n}</option>)}
-                    </select>
-                    {w.obtain.freeRefinement ? <Badge tone="green">R{w.obtain.freeRefinement} obtainable free ({w.obtain.method})</Badge> : null}
+                  <div key={w.id} className="flex items-center gap-2 pr-3">
+                    <div className="min-w-0 flex-1">
+                      <CheckRow
+                        checked={rw.owned} onChange={(v) => setWeapon(w.id, { owned: v })}
+                        headline={w.name}
+                        supporting={<>{w.rarity}★ · {cap(w.type)}{w.obtain.freeRefinement ? <> · <span className="text-success">R{w.obtain.freeRefinement} obtainable free ({w.obtain.method})</span></> : null}</>}
+                      />
+                    </div>
+                    {rw.owned && (
+                      <Select dense label="Refine" aria-label={`Refine ${w.name}`} className="w-24 shrink-0" value={rw.refinement} onChange={(e) => setWeapon(w.id, { refinement: Number(e.target.value) })}>
+                        {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>R{n}</option>)}
+                      </Select>
+                    )}
                   </div>
                 );
               })}
-            </div>
-          </div>
-        ))}
+            </Card>
+          )}
+          {weaponsReady && weaponsFiltered.length > wLimit && (
+            <div className="mt-3"><Button variant="tonal" onClick={() => setWLimit((n) => n + WEAPON_PAGE)}>Show more ({weaponsFiltered.length - wLimit} left)</Button></div>
+          )}
+        </Expandable>
       </Section>
 
-      <Section title="Execution profile">
-        <div className="flex flex-wrap items-center gap-3 text-sm">
-          <select
-            className="rounded border px-2 py-1" value={roster.settings.executionProfile}
+      <Section title="Execution profile" supporting="Results always show Frame-perfect alongside.">
+        <div className="grid gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
+          <Select
+            label="Profile" value={roster.settings.executionProfile}
             onChange={(e) => {
               const p = e.target.value as Roster['settings']['executionProfile'];
               update((r) => ({ ...r, settings: { ...r.settings, executionProfile: p, ...(p === 'relaxed' ? { actionDelay: 18, swapDelay: 18 } : p === 'framePerfect' ? { actionDelay: 0, swapDelay: 0 } : {}) } }));
@@ -116,18 +165,17 @@ export function RosterView({ kb, roster, update }: Props) {
             <option value="relaxed">Relaxed (300 ms after every action and swap)</option>
             <option value="framePerfect">Frame-perfect</option>
             <option value="custom">Custom</option>
-          </select>
+          </Select>
           {roster.settings.executionProfile === 'custom' && (
             <>
-              <label>Action delay (frames) <IntInput min={0} max={120} className="w-16 rounded border px-1" value={roster.settings.actionDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, actionDelay: n } }))} /></label>
-              <label>Swap delay (frames) <IntInput min={0} max={120} className="w-16 rounded border px-1" value={roster.settings.swapDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, swapDelay: n } }))} /></label>
+              <NumberField label="Action delay (frames)" min={0} max={120} value={roster.settings.actionDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, actionDelay: n } }))} />
+              <NumberField label="Swap delay (frames)" min={0} max={120} value={roster.settings.swapDelay} onChange={(n) => update((r) => ({ ...r, settings: { ...r.settings, swapDelay: n } }))} />
             </>
           )}
-          <span className="text-slate-500">Results always show Frame-perfect alongside.</span>
         </div>
       </Section>
 
-      <p className="mt-6 text-xs text-slate-500">
+      <p className="mt-8 text-body-small text-on-surface-variant">
         Your roster is remembered in this browser automatically. To copy it to another browser or keep a backup, use the Backup tab.
       </p>
     </div>

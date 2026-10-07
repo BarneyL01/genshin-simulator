@@ -46,6 +46,8 @@ try {
     const m = await phone.newPage();
     m.on('pageerror', (e) => errors.push(`mobile pageerror: ${e.message}`));
     await m.goto(url);
+    // Editing controls only appear for owned characters.
+    await m.getByRole('button', { name: 'Own everything' }).tap();
     const talent = m.getByLabel('talent 1').first();
     const before = await talent.inputValue();
     await talent.tap();
@@ -67,7 +69,7 @@ try {
   }
 
   // Known teams: pick a couple to compare (not a blanket "rank everything").
-  await page.getByRole('tab', { name: 'Team comparison' }).click();
+  await page.getByRole('tab', { name: 'Teams' }).click();
   await page.getByRole('heading', { name: /Pick teams/ }).waitFor();
   const teamCheckboxes = page.locator('input[type=checkbox]');
   await teamCheckboxes.nth(0).check();
@@ -84,7 +86,7 @@ try {
   }
 
   // Custom team
-  await page.getByRole('tab', { name: 'Custom team' }).click();
+  await page.getByRole('tab', { name: 'Custom' }).click();
   for (const n of ['Xingqiu', 'Bennett', 'Xiangling', 'Raiden Shogun']) await page.getByLabel(n, { exact: true }).check();
   await page.getByRole('button', { name: 'Simulate custom rotation' }).click();
   await page.getByText(/custom rotation\)/).waitFor({ timeout: 120_000 });
@@ -94,7 +96,7 @@ try {
   await page.getByRole('heading', { name: 'Saved teams' }).waitFor();
 
   // Weapon comparer
-  await page.getByRole('tab', { name: 'Weapon comparer' }).click();
+  await page.getByRole('tab', { name: 'Weapons' }).click();
   await page.getByLabel('Team', { exact: false }).first().selectOption({ label: 'E2E team (saved)' });
   await page.getByRole('button', { name: 'Compare' }).click();
   await page.getByText('Results (sorted by team DPS)').waitFor({ timeout: 180_000 });
@@ -114,10 +116,10 @@ try {
     await ownBox(a, 'Hu Tao').check();
     await ownBox(a, 'Xingqiu').check();
     await a.getByLabel('talent 1').first().fill('7');
-    await a.getByRole('tab', { name: 'Custom team' }).click();
+    await a.getByRole('tab', { name: 'Custom' }).click();
     for (const n of ['Hu Tao', 'Xingqiu']) await a.getByLabel(n, { exact: true }).check();
     await a.reload();
-    check(await a.getByRole('tab', { name: 'Custom team' }).getAttribute('aria-selected') === 'true', 'selected tab not remembered after reload');
+    check(await a.getByRole('tab', { name: 'Custom' }).getAttribute('aria-selected') === 'true', 'selected tab not remembered after reload');
     check(await a.getByLabel('Hu Tao', { exact: true }).isChecked(), 'custom team selection not remembered after reload');
     await a.getByRole('tab', { name: 'Roster' }).click();
     check(await ownBox(a, 'Hu Tao').isChecked(), 'owned character not remembered after reload');
